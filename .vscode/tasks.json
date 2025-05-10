@@ -1,0 +1,28 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build source",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/c",
+                "build.bat && code \"${workspaceFolder}\\dist.luau\""
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "clear": false,
+                "close": false
+            }
+        }
+    ]
+}
