@@ -14,9 +14,10 @@ return function()
 	local plaintext = "1234567890abcdef"
 	local key = "GMVIsgHnxm0YDYwUGkBhtRWSrSsfRMjY"
 	local iv = "1234567890abcdef"
+	local mode = "CBC"
 
 	local cryptSuccess, cryptEncrypted = pcall(function()
-		return crypt.encrypt(plaintext, key, iv)
+		return crypt.encrypt(plaintext, key, iv, mode)
 	end)
 
 	if not cryptSuccess then

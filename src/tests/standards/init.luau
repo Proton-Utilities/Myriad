@@ -19,8 +19,8 @@ return function(name)
 		[500] = uni.warn,
 	}
 	local checks = {
-		-- [[ LIBRARIES ]] --
 		-- crypt
+		["crypt"] = require("checks/crypt/crypt.luau"),
 		["crypt.encrypt"] = require("checks/crypt/encrypt.luau"),
 		["crypt.decrypt"] = require("checks/crypt/decrypt.luau"),
 		["crypt.generatekey"] = require("checks/crypt/generatekey.luau"),
@@ -33,21 +33,32 @@ return function(name)
 		["crypt.random"] = require("checks/crypt/random.luau"),
 		["crypt.hmac"] = require("checks/crypt/hmac.luau"),
 
-		-- [[ FUNCTIONS ]] --
 		-- Drawing
-		["getrenderproperty"] = require("checks/getrenderproperty.luau"),
-		["setrenderproperty"] = require("checks/setrenderproperty.luau"),
-		["cleardrawcache"] = require("checks/cleardrawcache.luau"),
+		["Drawing"] = require("checks/Drawing/Drawing.luau"),
+		["Drawing.new"] = require("checks/Drawing/new.luau"),
+		["Drawing.Fonts"] = require("checks/Drawing/Fonts.luau"),
+
+		["getrenderproperty"] = require("checks/Drawing/getrenderproperty.luau"),
+		["setrenderproperty"] = require("checks/Drawing/setrenderproperty.luau"),
+		["cleardrawcache"] = require("checks/Drawing/cleardrawcache.luau"),
+		["isrenderobj"] = require("checks/Drawing/isrenderobj.luau"),
 
 		-- Instances
-		["gethui"] = require("checks/gethui.luau"),
+		["gethui"] = require("checks/Instances/gethui.luau"),
 
 		-- Closures
-		["islclosure"] = require("checks/islclosure.luau"),
-		["iscclosure"] = require("checks/iscclosure.luau"),
+		["islclosure"] = require("checks/Closures/islclosure.luau"),
+		["iscclosure"] = require("checks/Closures/iscclosure.luau"),
+		["clonefunction"] = require("checks/Closures/clonefunction.luau"),
+		["getfunctionhash"] = require("checks/Closures/getfunctionhash.luau"),
+		["hookfunction"] = require("checks/Closures/hookfunction.luau"),
+		["newcclosure"] = require("checks/Closures/newcclosure.luau"),
 		
 		-- Miscellaneous
-		["identifyexecutor"] = require("checks/identifyexecutor.luau"),
+		["identifyexecutor"] = require("checks/Miscellaneous/identifyexecutor.luau"),
+
+		-- Scripts
+		["getscripts"] = require("checks/Scripts/getscripts.luau"),
 	}
 
 	for name in next, checks do

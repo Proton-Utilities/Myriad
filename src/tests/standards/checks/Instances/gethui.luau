@@ -10,12 +10,13 @@ return function()
 	end
 
 	local container = gethui()
-	if not (container:IsA("Folder") or container:IsA("BasePlayerGui")) then
+	if not (container:IsA("ScreenGui") or container:IsA("BasePlayerGui") or container:IsA("Folder")) then
 		return {
 			status = 500,
-			message = "Hidden container is not a Folder or BasePlayerGui",
+			message = "Container is not a ScreenGui or BillboardGui",
 		}
-	elseif container == game:GetService("CoreGui") then
+	end
+	if container == game:GetService("CoreGui") then
 		return {
 			status = 500,
 			message = "Container cannot be an uncloned reference to CoreGui",

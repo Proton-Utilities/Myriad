@@ -1,0 +1,36 @@
+--!nocheck
+--!nolint
+
+return function()
+	if not getfenv(0).isrenderobj then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+		elseif not getfenv(0).Drawing or not getfenv(0).Drawing.new then
+		return {
+			status = 400,
+			message = "Drawing library needed to test this",
+		}
+	end
+
+	local drawing = Drawing.new("Line")
+	drawing.Visible = false
+
+	if not isrenderobj(drawing) then
+		return {
+			status = 500,
+			message = "Didn't return true for a render object",
+		}
+	elseif isrenderobj({}) or isrenderobj(game:GetService("Workspace")) then
+		return {
+			status = 500,
+			message = "Returned true for a non-render object",
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end

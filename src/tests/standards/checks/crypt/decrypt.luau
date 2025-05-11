@@ -14,9 +14,10 @@ return function()
 	local data = referenceCrypt.base64decode("G3H9Fk0PSWKs46qqlbA3VKnzfz7wRRTh")
 	local key = "GMVIsgHnxm0YDYwUGkBhtRWSrSsfRMjY"
 	local iv = "1234567890abcdef"
+	local mode = "CBC"
 
 	local decryptSuccess, cryptDecrypted = pcall(function()
-		return crypt.decrypt(data, key, iv)
+		return crypt.decrypt(data, key, iv, mode)
 	end)
 
 	if not decryptSuccess then
