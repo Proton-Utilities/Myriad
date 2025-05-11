@@ -18,7 +18,7 @@ return function()
 	if not reference or typeof(reference) ~= "string" then
 		return {
 			status = 500,
-			message = "Reference crypt failed ):",
+			message = "Reference crypt failed",
 		}
 	elseif not decoded or typeof(decoded) ~= "string" then
 		return {
@@ -28,7 +28,7 @@ return function()
 	elseif decoded ~= plaintext then
 		return {
 			status = 500,
-			message = "Decoded data mismatch",
+			message = "Decoded data doesn't match reference data",
 		}
 	end
 

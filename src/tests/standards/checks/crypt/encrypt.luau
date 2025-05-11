@@ -32,7 +32,7 @@ return function()
 	if assumed ~= reference then
 		return {
 			status = 500,
-			message = "Encrypted data mismatch",
+			message = "Encrypted data doesn't match reference data",
 		}
     end
 

@@ -1,7 +1,6 @@
 --!nocheck
 
 local tests = {
-	["Identity Validity"] = require("identity/init.luau"),
 	["Standards Naming & Output Conventions"] = require("standards/init.luau"),
 	["Vulnerability Mitigation"] = require("vulnerabilities/init.luau"),
 }
@@ -23,11 +22,12 @@ print(`{uni.bullet} biggaboy212\n`)
 
 print(uni.section1 .. "\n")
 
-for index, test in pairs(tests) do
-	results[index] = test(index)
-    if index ~= "Vulnerability Mitigation" then
-        print(uni.section3 .. "\n")
-    end
+local function test(name)
+	results[name] = tests[name](name)
 end
+
+test("Standards Naming & Output Conventions")
+print(uni.section3 .. "\n")
+test("Vulnerability Mitigation")
 
 print(uni.section2)

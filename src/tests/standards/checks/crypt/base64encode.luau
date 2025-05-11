@@ -22,7 +22,7 @@ return function()
 	elseif encoded ~= referenceCrypt.base64encode(plaintext) then
 		return {
 			status = 500,
-			message = "Encoded data mismatch",
+			message = "Encoded data doesn't match reference data",
 		}
 	end
 

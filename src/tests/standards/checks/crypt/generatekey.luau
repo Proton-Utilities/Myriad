@@ -15,7 +15,7 @@ return function()
 	if type(decoded) ~= "string" then
 		return {
 			status = 500,
-			message = "Generated key is not a string",
+			message = "Generated key doesn't form a string",
 		}
 	elseif #decoded ~= 32 then
 		return {

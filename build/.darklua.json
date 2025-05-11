@@ -9,7 +9,6 @@
 				"tests": "../src/tests",
 				"checks": "../src/tests/standards/checks",
 
-				"identity": "../src/tests/identity",
 				"standards": "../src/tests/standards",
 				"vulnerabilities": "../src/tests/vulnerabilities"
 			  }

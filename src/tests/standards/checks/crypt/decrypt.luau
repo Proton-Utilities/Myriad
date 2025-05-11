@@ -32,7 +32,7 @@ return function()
 	elseif cryptDecrypted ~= "1234567890abcdef" then
 		return {
 			status = 500,
-			message = "Decrypted data mismatch",
+			message = "Decrypted data doesn't match reference data",
 		}
     end
 
