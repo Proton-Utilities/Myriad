@@ -7,7 +7,7 @@ return function()
 			status = 400,
 			message = "Global not found",
 		}
-	elseif not getfenv(0).Drawing and getfenv(0).Drawing.new then
+		elseif not getfenv(0).Drawing or not getfenv(0).Drawing.new then
 		return {
 			status = 400,
 			message = "Drawing library needed to test this",
