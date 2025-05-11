@@ -30,8 +30,6 @@ return function()
 	local assumed = referenceCrypt.base64encode(cryptEncrypted)
 	
 	if assumed ~= reference then
-		print(assumed)
-		print(reference)
 		return {
 			status = 500,
 			message = "Encrypted data mismatch",

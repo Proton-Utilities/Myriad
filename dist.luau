@@ -192,7 +192,7 @@ message='Global not found'}end local c,d,e='1234567890abcdef',
 'GMVIsgHnxm0YDYwUGkBhtRWSrSsfRMjY','1234567890abcdef'local f,g=pcall(function()
 return crypt.encrypt(c,d,e)end)if not f then return{status=500,message=
 'Encrypt failed: '..tostring(g)}end local h,i='G3H9Fk0PSWKs46qqlbA3VKnzfz7wRRTh'
-,b.base64encode(g)if i~=h then print(i)print(h)return{status=500,message=
+,b.base64encode(g)if i~=h then return{status=500,message=
 'Encrypted data mismatch'}end return{status=200,message='Passed'}end end
 function a.g()return function()local b=a.load'e'if not getfenv(0).crypt or not
 getfenv(0).crypt.decrypt then return{status=400,message='Global not found'}end
