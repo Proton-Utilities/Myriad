@@ -25,12 +25,13 @@ return function(name)
 		["crypt.decrypt"] = require("checks/crypt/decrypt.luau"),
 		["crypt.generatekey"] = require("checks/crypt/generatekey.luau"),
 		["crypt.generatebytes"] = require("checks/crypt/generatebytes.luau"),
-		["crypt.hash"] = require("checks/crypt/hash.luau"),
-		["crypt.random"] = require("checks/crypt/random.luau"),
 		["crypt.base64encode"] = require("checks/crypt/base64encode.luau"),
 		["crypt.base64decode"] = require("checks/crypt/base64decode.luau"),
 		["crypt.lz4compress"] = require("checks/crypt/lz4compress.luau"),
 		["crypt.lz4decompress"] = require("checks/crypt/lz4decompress.luau"),
+		["crypt.hash"] = require("checks/crypt/hash.luau"),
+		["crypt.random"] = require("checks/crypt/random.luau"),
+		["crypt.hmac"] = require("checks/crypt/hmac.luau"),
 
 		-- [[ FUNCTIONS ]] --
 		-- Drawing
