@@ -2,8 +2,8 @@
 --!nolint
 
 return function()
-	local base64 = require("dependencies/base64.luau")
-	
+	local Base64 = require("dependencies/HashLib/Base64.luau")
+
 	if not crypt or not crypt.generatekey then
 		return {
 			status = 400,
@@ -11,7 +11,7 @@ return function()
 		}
 	end
 
-	local decoded = base64.decode(crypt.generatekey())
+	local decoded = Base64.Decode(crypt.generatekey())
 	if type(decoded) ~= "string" then
 		return {
 			status = 500,
@@ -20,7 +20,7 @@ return function()
 	elseif #decoded ~= 32 then
 		return {
 			status = 500,
-			message = "Generated key dosen't match the expected length",
+			message = "Key dosen't match the expected length",
 		}
 	end
 

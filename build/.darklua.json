@@ -5,10 +5,13 @@
         "require_mode": {
 			"name": "path",
 			"sources": {
-				"dependencies": "src/dependencies",
-				"tests": "src/tests",
-				"standards": "src/tests/standards",
-				"checks": "src/tests/standards/checks"
+				"dependencies": "../src/dependencies",
+				"tests": "../src/tests",
+				"checks": "../src/tests/standards/checks",
+
+				"identity": "../src/tests/identity",
+				"standards": "../src/tests/standards",
+				"vulnerabilities": "../src/tests/vulnerabilities"
 			  }
 		}
     },
