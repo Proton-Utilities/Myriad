@@ -13,12 +13,12 @@ return function()
 	if not (container:IsA("Folder") or container:IsA("BasePlayerGui")) then
 		return {
 			status = 500,
-			message = "hidden container is not a Folder or BasePlayerGui",
+			message = "Hidden container is not a Folder or BasePlayerGui",
 		}
 	elseif container == game:GetService("CoreGui") then
 		return {
 			status = 500,
-			message = "Container cannot be uncloned CoreGui",
+			message = "Container cannot be an uncloned reference to CoreGui",
 		}
 	end
 
