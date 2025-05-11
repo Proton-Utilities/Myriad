@@ -2,7 +2,7 @@
 --!nolint
 
 return function()
-	local Base64 = require("dependencies/HashLib/Base64.luau")
+	local referenceCrypt = require("dependencies/crypt/crypt.luau")
 
 	if not getfenv(0).crypt or not getfenv(0).crypt.base64decode then
 		return {
@@ -12,7 +12,7 @@ return function()
 	end
 
 	local plaintext = "MYRIAD"
-	local reference = Base64.Encode(plaintext)
+	local reference = referenceCrypt.base64encode(plaintext)
 	local decoded = crypt.base64decode(reference)
 
 	if not reference or typeof(reference) ~= "string" then

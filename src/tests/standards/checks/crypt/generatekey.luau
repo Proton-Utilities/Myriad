@@ -2,7 +2,7 @@
 --!nolint
 
 return function()
-	local Base64 = require("dependencies/HashLib/Base64.luau")
+	local referenceCrypt = require("dependencies/crypt/crypt.luau")
 
 	if not getfenv(0).crypt or not getfenv(0).crypt.generatekey then
 		return {
@@ -11,7 +11,7 @@ return function()
 		}
 	end
 
-	local decoded = Base64.Decode(crypt.generatekey())
+	local decoded = referenceCrypt.base64decode(crypt.generatekey())
 	if type(decoded) ~= "string" then
 		return {
 			status = 500,

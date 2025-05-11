@@ -4,7 +4,7 @@
 return function()
 	local referenceCrypt = require("dependencies/crypt/crypt.luau")
 
-	if not getfenv(0).crypt or not getfenv(0).crypt.base64encode then
+	if not getfenv(0).crypt or not getfenv(0).crypt.lz4compress then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -12,17 +12,18 @@ return function()
 	end
 
 	local plaintext = "MYRIAD"
-	local encoded = crypt.base64encode(plaintext)
+	local referenceCompressed = referenceCrypt.base64decode("YE1ZUklBRA==")
+	local compressed = crypt.lz4compress(plaintext)
 
-	if not encoded or typeof(encoded) ~= "string" then
+	if typeof(compressed) ~= "string" then
 		return {
 			status = 500,
 			message = "Did not return the expected type",
 		}
-	elseif encoded ~= referenceCrypt.base64encode(plaintext) then
+	elseif compressed ~= referenceCompressed then
 		return {
 			status = 500,
-			message = "Encoded data mismatch",
+			message = "Compressed data doesn't match reference data",
 		}
 	end
 

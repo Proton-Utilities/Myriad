@@ -29,6 +29,8 @@ return function(name)
 		["crypt.random"] = require("checks/crypt/random.luau"),
 		["crypt.base64encode"] = require("checks/crypt/base64encode.luau"),
 		["crypt.base64decode"] = require("checks/crypt/base64decode.luau"),
+		["crypt.lz4compress"] = require("checks/crypt/lz4compress.luau"),
+		["crypt.lz4decompress"] = require("checks/crypt/lz4decompress.luau"),
 
 		-- [[ FUNCTIONS ]] --
 		-- Drawing
@@ -73,7 +75,7 @@ return function(name)
 	print(`{uni.bullet} Tested: {numStandards}`)
 	print(`{uni.bullet} Passed: {passed}`)
 	print(`{uni.bullet} Failed: {failed}`)
-	print(`{uni.bullet} Pass Rate: {passed / numStandards * 100}%`)
+	print(`{uni.bullet} Pass Rate: {math.round(passed / numStandards * 100)}%`)
 
 	return {
 		passed = passed,

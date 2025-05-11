@@ -10,7 +10,7 @@ return function()
 	end
 
 	local maxLimSuccess, maxLimMessage = pcall(function()
-		return crypt.random(513)
+		return crypt.random(513) -- TODO: Maximum could be 1024 (on synx at least), AWP uses 512 🤔
 	end)
 	local minLimSuccess, minLimMessage = pcall(function()
 		return crypt.random(-1)

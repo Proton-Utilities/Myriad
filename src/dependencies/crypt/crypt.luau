@@ -1,9 +1,8 @@
 --!nocheck
 --!nolint
 
--- Some of these functions base base64decode such as base64decode and crypt encrypt/decrypt are broken (basically most of the lib lol)
-
-local Base64 = require("./Base64.luau")
+local Base64 = require("../HashLib/Base64.luau")
+local lz4 = require("./lz4.luau")
 -- local sha = require("./sha.luau")
 local AES = require("./AES.luau")
 
@@ -23,13 +22,19 @@ function crypt.decrypt(data: string, key: string, initVector: string) : string
 end
 
 function crypt.base64encode(data: string) : string
-    local bufferData = buffer.fromstring(data)
-    return buffer.tostring(Base64.encode(bufferData))
+	return Base64.Encode(data)
 end
 
 function crypt.base64decode(data: string) : string
-    local decodedBuffer = Base64.decode(data)
-    return buffer.tostring(decodedBuffer) 
+	return Base64.Decode(data)
+end
+
+function crypt.lz4compress(data: string) : string
+	return lz4.compress(data)
+end
+
+function crypt.lz4decompress(data: string) : string
+	return lz4.decompress(data)
 end
 
 --[[ function crypt.hash(data: string) : string

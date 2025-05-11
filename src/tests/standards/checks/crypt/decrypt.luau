@@ -2,7 +2,7 @@
 --!nolint
 
 return function()
-	local Base64 = require("dependencies/HashLib/Base64.luau")
+	local referenceCrypt = require("dependencies/crypt/crypt.luau")
 
 	if not getfenv(0).crypt or not getfenv(0).crypt.decrypt then
 		return {
@@ -11,7 +11,7 @@ return function()
 		}
 	end
 
-	local data = Base64.Decode("G3H9Fk0PSWKs46qqlbA3VKnzfz7wRRTh")
+	local data = referenceCrypt.base64decode("G3H9Fk0PSWKs46qqlbA3VKnzfz7wRRTh")
 	local key = "GMVIsgHnxm0YDYwUGkBhtRWSrSsfRMjY"
 	local iv = "1234567890abcdef"
 
