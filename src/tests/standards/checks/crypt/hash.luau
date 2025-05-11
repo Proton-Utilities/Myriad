@@ -2,7 +2,7 @@
 --!nolint
 
 return function()
-	if not crypt or not crypt.hash then
+	if not getfenv(0).crypt or not getfenv(0).crypt.hash then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -32,7 +32,7 @@ return function()
 		if not success then
 			return {
 				status = 500,
-				message = `Hashing failed. Algorithm: {algo}`,
+				message = `Hashing failed with {algo}: {cryptOutput}`,
 			}
 
 		elseif not cryptOutput then

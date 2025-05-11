@@ -4,7 +4,7 @@
 return function()
 	local referenceCrypt = require("dependencies/crypt/crypt.luau")
 
-	if not crypt or not crypt.encrypt then
+	if not getfenv(0).crypt or not getfenv(0).crypt.encrypt then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -22,7 +22,7 @@ return function()
 	if not cryptSuccess then
 		return {
 			status = 500,
-			message = "Encrypt failed",
+			message = "Encrypt failed: " .. tostring(cryptEncrypted),
 		}
     end
 

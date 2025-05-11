@@ -2,14 +2,39 @@
 --!nolint
 
 return function()
-	local referenceCrypt = require("dependencies/crypt/crypt.luau")
+	local Base64 = require("dependencies/HashLib/Base64.luau")
 
-	if not crypt or not crypt.decrypt then
+	if not getfenv(0).crypt or not getfenv(0).crypt.decrypt then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
 	end
+
+	local data = Base64.Decode("G3H9Fk0PSWKs46qqlbA3VKnzfz7wRRTh")
+	local key = "GMVIsgHnxm0YDYwUGkBhtRWSrSsfRMjY"
+	local iv = "1234567890abcdef"
+
+	local decryptSuccess, cryptDecrypted = pcall(function()
+		return crypt.decrypt(data, key, iv)
+	end)
+
+	if not decryptSuccess then
+		return {
+			status = 500,
+			message = "Decrypt failed: " .. tostring(cryptDecrypted),
+		}
+	elseif not cryptDecrypted then
+		return {
+			status = 500,
+			message = "Decrypt returned nothing",
+		}
+	elseif cryptDecrypted ~= "1234567890abcdef" then
+		return {
+			status = 500,
+			message = "Decrypted data mismatch",
+		}
+    end
 
 	return {
 		status = 200,

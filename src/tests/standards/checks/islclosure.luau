@@ -1,0 +1,33 @@
+--!nocheck
+--!nolint
+
+return function()
+	if not getfenv(0).islclosure then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local function luaClosure()
+		return 1
+	end
+	local cClosure = print
+
+	if not islclosure(luaClosure) then
+		return {
+			status = 500,
+			message = "Failed to identify lua closure",
+		}
+	elseif islclosure(cClosure) then
+		return {
+			status = 500,
+			message = "Identified C closure as lua closure",
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end

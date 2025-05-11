@@ -4,7 +4,7 @@
 return function()
 	local Base64 = require("dependencies/HashLib/Base64.luau")
 
-	if not crypt or not crypt.generatebytes then
+	if not getfenv(0).crypt or not getfenv(0).crypt.generatebytes then
 		return {
 			status = 400,
 			message = "Global not found",

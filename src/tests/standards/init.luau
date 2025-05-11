@@ -19,21 +19,42 @@ return function(name)
 		[500] = uni.warn,
 	}
 	local checks = {
+		-- [[ LIBRARIES ]] --
+		-- crypt
 		["crypt.encrypt"] = require("checks/crypt/encrypt.luau"),
 		["crypt.decrypt"] = require("checks/crypt/decrypt.luau"),
 		["crypt.generatekey"] = require("checks/crypt/generatekey.luau"),
 		["crypt.generatebytes"] = require("checks/crypt/generatebytes.luau"),
 		["crypt.hash"] = require("checks/crypt/hash.luau"),
+		["crypt.random"] = require("checks/crypt/random.luau"),
+		["crypt.base64encode"] = require("checks/crypt/base64encode.luau"),
+		["crypt.base64decode"] = require("checks/crypt/base64decode.luau"),
+
+		-- [[ FUNCTIONS ]] --
+		-- Drawing
+		["getrenderproperty"] = require("checks/getrenderproperty.luau"),
+		["setrenderproperty"] = require("checks/setrenderproperty.luau"),
+		["cleardrawcache"] = require("checks/cleardrawcache.luau"),
+
+		-- Instances
+		["gethui"] = require("checks/gethui.luau"),
+
+		-- Closures
+		["islclosure"] = require("checks/islclosure.luau"),
+		["iscclosure"] = require("checks/iscclosure.luau"),
+		
+		-- Miscellaneous
+		["identifyexecutor"] = require("checks/identifyexecutor.luau"),
 	}
 
-	for name in pairs(checks) do
+	for name in next, checks do
         numStandards += 1
 		lastEntree = name
 	end
 
 	print(`{name}\n`)
 
-	for name, test in pairs(checks) do
+	for name, test in next, checks do
 		local success, result = pcall(test)
 		if not success then
 			warn(`{uni.bullet} {statusCodes[400]} {name}: {result} {lastEntree == name and "\n" or ""}`)
