@@ -22,6 +22,7 @@ return function(name)
 		["crypt.encrypt"] = require("checks/crypt/encrypt.luau"),
 		["crypt.decrypt"] = require("checks/crypt/decrypt.luau"),
 		["crypt.generatekey"] = require("checks/crypt/generatekey.luau"),
+		["crypt.generatebytes"] = require("checks/crypt/generatebytes.luau"),
 		["crypt.hash"] = require("checks/crypt/hash.luau"),
 	}
 

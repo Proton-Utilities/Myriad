@@ -1,4 +1,7 @@
 --!nocheck
+--!nolint
+
+-- Some of these functions base base64decode such as base64decode and crypt encrypt/decrypt are broken (basically most of the lib lol)
 
 local Base64 = require("./Base64.luau")
 -- local sha = require("./sha.luau")
