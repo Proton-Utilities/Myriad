@@ -6,4 +6,4 @@ After the discontinuation of [UNC](https://github.com/unified-naming-convention/
 
 ## Contributors
 
-- biggaboy212
+- @biggaboy212
