@@ -61,6 +61,11 @@ return function(name, output)
 			["gethui"] = require("checks/Instances/gethui.luau"),
 		},
 
+		Metatable = {
+			["getrawmetatable"] = require("checks/Metatable/getrawmetatable.luau"),
+			["setrawmetatable"] = require("checks/Metatable/setrawmetatable.luau"),
+		},
+
 		Closures = {
 			["islclosure"] = require("checks/Closures/islclosure.luau"),
 			["iscclosure"] = require("checks/Closures/iscclosure.luau"),
@@ -88,6 +93,18 @@ return function(name, output)
 			["getloadedmodules"] = require("checks/Scripts/getloadedmodules.luau"),
 			["getsenv"] = require("checks/Scripts/getsenv.luau"),
 			["loadstring"] = require("checks/Scripts/loadstring.luau"),
+		},
+
+		rconsole = {
+			["rconsoleprint"] = require("checks/rconsole/rconsoleprint.luau"),
+			["rconsoleinfo"] = require("checks/rconsole/rconsoleinfo.luau"),
+			["rconsolewarn"] = require("checks/rconsole/rconsolewarn.luau"),
+			["rconsoleerr"] = require("checks/rconsole/rconsoleerr.luau"),
+			["rconsoleinput"] = require("checks/rconsole/rconsoleinput.luau"),
+			["rconsoleclear"] = require("checks/rconsole/rconsoleclear.luau"),
+			["rconsolename"] = require("checks/rconsole/rconsolename.luau"),
+			["rconsolehide"] = require("checks/rconsole/rconsolehide.luau"),
+			["rconsoleshow"] = require("checks/rconsole/rconsoleshow.luau"),
 		},
 	}
 

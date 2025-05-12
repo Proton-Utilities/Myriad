@@ -11,6 +11,6 @@ return function()
 
 	return {
 		status = 200,
-		message = `Passed ({executor}, {vers})`,
+		message = `Passed`,
 	}
 end

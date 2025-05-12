@@ -2,7 +2,7 @@
 --!nolint
 
 return function()
-	if not getfenv(0).setthreadidentity then
+	if not getfenv(0).rconsolename then
 		return {
 			status = 400,
 			message = "Global not found",
