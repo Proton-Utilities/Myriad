@@ -9,7 +9,7 @@ local tests = {
 
 local window = Interface:TabsWindow({
 	Title = "Myriad General Validity Test",
-	Size = UDim2.fromOffset(300, 400),
+	Size = UDim2.fromOffset(400, 500),
 })
 
 do
