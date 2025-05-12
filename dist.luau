@@ -1487,8 +1487,8 @@ return{status=500,message=
 isexecutorclosure(print)then return{status=500,message=
 'Identified a lua standard closure as an executor closure'}end return{status=200
 ,message=`Passed`}end end function a.F()return function()local aa=getfenv(0)if
-not aa.newcclosure or not aa.iscclosure then return{status=400,message=
-'Global not found'}elseif not aa.iscclosure then return{status=500,message=
+not aa.newcclosure then return{status=400,message='Global not found'}elseif not
+aa.iscclosure then return{status=500,message=
 'iscclosure required to test newcclosure'}end local ab=function(...)return...end
 local ac=newcclosure(ab)if iscclosure(ab)then return{status=500,message=
 'iscclosure returned true a lua closure'}elseif not iscclosure(ac)then return{
