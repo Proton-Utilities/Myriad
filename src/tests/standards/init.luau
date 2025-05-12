@@ -54,6 +54,7 @@ return function(name, output)
 			["getgenv"] = require("checks/Environment/getgenv.luau"),
 			["getrenv"] = require("checks/Environment/getrenv.luau"),
 			["getgc"] = require("checks/Environment/getgc.luau"),
+			["filtergc"] = require("checks/Environment/filtergc.luau"),
 		},
 
 		Instances = {
