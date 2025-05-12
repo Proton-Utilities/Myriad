@@ -4,6 +4,16 @@ Myriad is an open-source standardization, functionality, and mitigations test fo
 
 After the discontinuation of [UNC](https://github.com/unified-naming-convention/NamingStandard), multiple forks and continuations of it have popped up, as well as seperate general executor tests such as vulerability tests and identity tests. Myriad hopes to achieve these as one, unified test.
 
+## Script
+
+You can use our official loadstring:
+
+```luau
+loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Proton-Utilities/Myriad/refs/heads/main/dist.luau"))()
+```
+
+Or load the [raw file](https://raw.githubusercontent.com/Proton-Utilities/Myriad/refs/heads/main/dist.luau)
+
 ## Q&A
 
 ### **Q:** Why does this not include standards aliases?
