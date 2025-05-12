@@ -16,8 +16,8 @@ return function()
 	local function1 = function() end
 	local function2 = function(...) end
 	local function3 = function() end
-	local function4 = function() return "Constant" end
-	local function5 = function() return "Constant2" end
+	local function4 = function() return 1 end
+	local function5 = function() return 2 end
 
 	if not hexEncoded(getfunctionhash(function1)) then
 		return {
@@ -37,7 +37,7 @@ return function()
 	elseif getfunctionhash(function4) == getfunctionhash(function5) then
 		return {
 			status = 500,
-			message = "Unequal returns returned equal hashes",
+			message = "Unequal returns gave equal returns",
 		}
 	end
 

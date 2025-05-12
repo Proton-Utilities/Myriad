@@ -63,10 +63,12 @@ return function(name, output)
 		Closures = {
 			["islclosure"] = require("checks/Closures/islclosure.luau"),
 			["iscclosure"] = require("checks/Closures/iscclosure.luau"),
-			["clonefunction"] = require("checks/Closures/clonefunction.luau"),
-			["getfunctionhash"] = require("checks/Closures/getfunctionhash.luau"),
-			["hookfunction"] = require("checks/Closures/hookfunction.luau"),
+			["isexecutorclosure"] = require("checks/Closures/isexecutorclosure.luau"),
 			["newcclosure"] = require("checks/Closures/newcclosure.luau"),
+			["clonefunction"] = require("checks/Closures/clonefunction.luau"),
+			["hookfunction"] = require("checks/Closures/hookfunction.luau"),
+			["getfunctionhash"] = require("checks/Closures/getfunctionhash.luau"),
+			["checkcaller"] = require("checks/Closures/checkcaller.luau"),
 		},
 
 		Miscellaneous = {
@@ -77,6 +79,7 @@ return function(name, output)
 			["getscripts"] = require("checks/Scripts/getscripts.luau"),
 			["getloadedmodules"] = require("checks/Scripts/getloadedmodules.luau"),
 			["getsenv"] = require("checks/Scripts/getsenv.luau"),
+			["loadstring"] = require("checks/Scripts/loadstring.luau"),
 		},
 	}
 

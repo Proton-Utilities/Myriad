@@ -20,7 +20,7 @@ return function()
 	if function1() ~= 1 then
 		return {
 			status = 500,
-			message = "A cosmic ray hit your memory chip and flipped a transistor ):",
+			message = "This should never evaluate. Did a cosmic ray hit your computer and flip a bit?",
 		}
 	end
 

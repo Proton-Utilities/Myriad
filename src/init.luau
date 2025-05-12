@@ -40,20 +40,13 @@ end
 
 for name, test in tests do
 	local tab = window:CreateTab({Name=name})
-	local output
-
-	tab:Button({
-		Text = "Run test",
-		Callback = function()
-			tests[name](name, output)
-		end,
-	})
-
-	output = tab:Console({
+	local output = tab:Console({
 		ReadOnly = true,
 		RichText = true,
-		Size = UDim2.new(1, -5, 1, -25),
+		Size = UDim2.new(1, -5, 1, 0),
 	})
+
+	tests[name](name, output)
 end
 
 --[[ local uni = {

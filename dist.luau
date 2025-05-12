@@ -1478,45 +1478,60 @@ message='Identified C closure as lua closure'}end return{status=200,message=`Pas
 return{status=500,message='C closure not identified as C closure'}elseif not
 iscclosure(ac)then return{status=500,message=
 'C closure not identified as C closure'}end return{status=200,message=`Passed`}
-end end function a.E()return function()if not getfenv(0).clonefunction then
+end end function a.E()return function()if not getfenv(0).isexecutorclosure then
 return{status=400,message='Global not found'}end local aa=function()return 1 end
-local ab=clonefunction(aa)if ab==aa then return{status=500,message=
-'Cloned function is the same as the original'}elseif ab()~=1 then return{status=
-500,message='Cloned function behavior mismatch'}end return{status=200,message=
-'Passed'}end end function a.F()return function()if not getfenv(0).
-getfunctionhash then return{status=400,message='Global not found'}end local aa,
-ab,ac,ad,ae,b=function(aa)return#aa==96 and aa:match'^[0-9a-fA-F]+$'~=nil end,
-function()end,function(...)end,function()end,function()return'Constant'end,
-function()return'Constant2'end if not aa(getfunctionhash(ab))then return{status=
-500,message='Hash is not hex encoded'}elseif getfunctionhash(ab)==
-getfunctionhash(ac)then return{status=500,message=
-'Unequal functions returned equal hashes'}elseif getfunctionhash(ab)~=
-getfunctionhash(ad)then return{status=500,message=
-'Equal functions returned unequal hashes'}elseif getfunctionhash(ae)==
-getfunctionhash(b)then return{status=500,message=
-'Unequal returns returned equal hashes'}end return{status=200,message=`Passed`}
-end end function a.G()return function()if not getfenv(0).hookfunction then
-return{status=400,message='Global not found'}end local aa,ab=function()return 1
-end,function()return 2 end if aa()~=1 then return{status=500,message=
-[[A cosmic ray hit your memory chip and flipped a transistor ):]]}end local ac=
-hookfunction(aa,ab)if aa()~=2 then return{status=500,message=
+if not isexecutorclosure(isexecutorclosure)then return{status=500,message=
+'Failed to identify an executor closure'}elseif not isexecutorclosure(aa)then
+return{status=500,message=
+'Did not identify an lua closure as an executor closure'}elseif
+isexecutorclosure(print)then return{status=500,message=
+'Identified a lua standard closure as an executor closure'}end return{status=200
+,message=`Passed`}end end function a.F()return function()local aa=getfenv(0)if
+not aa.newcclosure or not aa.iscclosure then return{status=400,message=
+'Global not found'}elseif not aa.iscclosure then return{status=500,message=
+'iscclosure required to test newcclosure'}end local ab=function(...)return...end
+local ac=newcclosure(ab)if iscclosure(ab)then return{status=500,message=
+'iscclosure returned true a lua closure'}elseif not iscclosure(ac)then return{
+status=500,message='Returned false for a C closure'}elseif ac(1)~=1 then return{
+status=500,message='C closure did not return the expected value'}end return{
+status=200,message='Passed'}end end function a.G()return function()if not
+getfenv(0).clonefunction then return{status=400,message='Global not found'}end
+local aa=function()return 1 end local ab=clonefunction(aa)if ab==aa then return{
+status=500,message='Cloned function is the same as the original'}elseif ab()~=1
+then return{status=500,message='Cloned function behavior mismatch'}end return{
+status=200,message='Passed'}end end function a.H()return function()if not
+getfenv(0).hookfunction then return{status=400,message='Global not found'}end
+local aa,ab=function()return 1 end,function()return 2 end if aa()~=1 then return
+{status=500,message=
+[[This should never evaluate. Did a cosmic ray hit your computer and flip a bit?]]
+}end local ac=hookfunction(aa,ab)if aa()~=2 then return{status=500,message=
 'Hooked function did not return the expected value'}elseif ac()~=1 then return{
 status=500,message='Old function did not return the expected value'}end return{
-status=200,message=`Passed`}end end function a.H()return function()local aa=
-getfenv(0)if not aa.newcclosure or not aa.iscclosure then return{status=400,
-message='Global not found'}elseif not aa.iscclosure then return{status=500,
-message='iscclosure required to test newcclosure'}end local ab=function(...)
-return...end local ac=newcclosure(ab)if iscclosure(ab)then return{status=500,
-message='iscclosure returned true a lua closure'}elseif not iscclosure(ac)then
-return{status=500,message='Returned false for a C closure'}elseif ac(1)~=1 then
-return{status=500,message='C closure did not return the expected value'}end
-return{status=200,message='Passed'}end end function a.I()return function()if not
+status=200,message=`Passed`}end end function a.I()return function()if not
+getfenv(0).getfunctionhash then return{status=400,message='Global not found'}end
+local aa,ab,ac,ad,ae,b=function(aa)return#aa==96 and aa:match'^[0-9a-fA-F]+$'~=
+nil end,function()end,function(...)end,function()end,function()return 1 end,
+function()return 2 end if not aa(getfunctionhash(ab))then return{status=500,
+message='Hash is not hex encoded'}elseif getfunctionhash(ab)==getfunctionhash(ac
+)then return{status=500,message='Unequal functions returned equal hashes'}elseif
+getfunctionhash(ab)~=getfunctionhash(ad)then return{status=500,message=
+'Equal functions returned unequal hashes'}elseif getfunctionhash(ae)==
+getfunctionhash(b)then return{status=500,message=
+'Unequal returns gave equal returns'}end return{status=200,message=`Passed`}end
+end function a.J()return function()if not getfenv(0).checkcaller then return{
+status=400,message='Global not found'}end local aa,ab,ac=(checkcaller())ac=
+hookmetamethod(game,'__namecall',function(...)if ab==nil then ab=checkcaller()
+end return ac(...)end)task.defer(function()local ad=game.Name end)task.wait()
+hookmetamethod(game,'__namecall',ac)if aa~=true then return{status=500,message=
+'checkcaller() returned false in executor thread'}elseif ab~=false then return{
+status=500,message='checkcaller() did not return false in a hook'}end return{
+status=200,message='Passed'}end end function a.K()return function()if not
 getfenv(0).identifyexecutor then return{status=400,message='Global not found'}
 end local aa,ab=identifyexecutor()if not aa or not ab then return{status=500,
 message=`Did not return expected data (executor, version)`}elseif type(aa)~=
 'string'or type(ab)~='string'then return{status=500,message=`Expected [string, string] got [{
 aa}, {ab}]`}end return{status=200,message=`Passed ({aa}, {ab})`}end end function
-a.J()return function()if not getfenv(0).getscripts then return{status=400,
+a.L()return function()if not getfenv(0).getscripts then return{status=400,
 message='Global not found'}end local aa,ab,ac,ad=Instance.new'LocalScript',
 Instance.new'ModuleScript',Instance.new'Script',Instance.new'Script'ad.
 RunContext=Enum.RunContext.Client if not table.find(getscripts(),aa)then return{
@@ -1527,22 +1542,29 @@ find(getscripts(),ab)then return{status=500,message=
 [[ServerScript w/ client runcontext not found in returned table]]}elseif table.
 find(getscripts(),ac)then return{status=500,message=
 'ServerScript found in returned table'}end return{status=200,message=`Passed`}
-end end function a.K()return function()if not getfenv(0).getloadedmodules then
+end end function a.M()return function()if not getfenv(0).getloadedmodules then
 return{status=400,message='Global not found'}end local aa=game:GetService
 'CorePackages'.InGameServices.MouseIconOverrideService local ab,ac,ad=require(aa
 ),Instance.new'ModuleScript',getloadedmodules()if not table.find(ad,aa)then
 return{status=500,message='Loaded module not found in returned table'}elseif
 table.find(ad,ac)then return{status=500,message=
 'Unloaded module found in returned table'}end return{status=200,message=`Passed`
-}end end function a.L()return function()local aa=game.Players.LocalPlayer.
+}end end function a.N()return function()local aa=game.Players.LocalPlayer.
 Character.Animate if not getfenv(0).getloadedmodules then return{status=400,
 message='Global not found'}elseif not aa then return{status=400,message=
 [[Testing dependency not found. Try testing on 'a literal baseplate']]}end local
 ab=getsenv(aa)if not ab.onSwimming or not typeof(ab.onSwimming)=='function'then
 return{status=500,message=
 [[Global in test script wasn't found, or didn't return the right type]]}end
-return{status=200,message=`Passed`}end end function a.M()return function(aa,ab)
-ab:Clear()local ac,ad,ae,b,c,d={},0,0,0,function(ac)ab:AppendText(`<font color="#FFA500">{
+return{status=200,message=`Passed`}end end function a.O()return function()if not
+getfenv(0).loadstring then return{status=400,message='Global not found'}end
+local aa=loadstring('MYRIAD','MYRIAD')loadstring
+'\r\n\t\tglobalVar = {"Hello", "World"}\r\n\t'()if not globalVar or not(
+globalVar[1]=='Hello'and globalVar[2]=='World')then return{status=500,message=
+'Global variable insert from loadstring not found'}elseif aa~=nil then return{
+status=500,message="Didn't error on incomplete expression"}end return{status=200
+,message=`Passed`}end end function a.P()return function(aa,ab)ab:Clear()local ac
+,ad,ae,b,c,d={},0,0,0,function(ac)ab:AppendText(`<font color="#FFA500">{
 tostring(ac)}</font>`)end,{success='\u{2705}',fail='\u{274c}',warn=
 '\u{26a0}\u{fe0f}',bullet='\u{2022}'}local e,f={[200]=d.success,[400]=d.fail,[
 500]=d.warn},{crypt={crypt=a.load'f',['crypt.encrypt']=a.load'g',[
@@ -1555,9 +1577,10 @@ load's',['Drawing.Fonts']=a.load't',getrenderproperty=a.load'u',
 setrenderproperty=a.load'v',cleardrawcache=a.load'w',isrenderobj=a.load'x'},
 Environment={getgenv=a.load'y',getrenv=a.load'z',getgc=a.load'A'},Instances={
 gethui=a.load'B'},Closures={islclosure=a.load'C',iscclosure=a.load'D',
-clonefunction=a.load'E',getfunctionhash=a.load'F',hookfunction=a.load'G',
-newcclosure=a.load'H'},Miscellaneous={identifyexecutor=a.load'I'},Scripts={
-getscripts=a.load'J',getloadedmodules=a.load'K',getsenv=a.load'L'}}for g,h in f
+isexecutorclosure=a.load'E',newcclosure=a.load'F',clonefunction=a.load'G',
+hookfunction=a.load'H',getfunctionhash=a.load'I',checkcaller=a.load'J'},
+Miscellaneous={identifyexecutor=a.load'K'},Scripts={getscripts=a.load'L',
+getloadedmodules=a.load'M',getsenv=a.load'N',loadstring=a.load'O'}}for g,h in f
 do ac[g]=nil for i in h do ad+=1 ac[g]=i end end for g,h in f do ab:AppendText(g
 ..':')for i,j in h do local k,l=pcall(j)if not k then c(`{d.bullet} {e[400]} {i}: {
 l} {ac[g]==i and'\n'or''}`)b+=1 continue elseif l.status==200 then ab:
@@ -1567,12 +1590,11 @@ AppendText(`{d.bullet} {e[l.status]} {i}: {l.message} {ac[g]==i and'\n'or''}`)ae
 identifyexecutor and identifyexecutor()or'Unknown'}`)ab:AppendText(`{d.bullet} Tested: {
 ad}`)ab:AppendText(`{d.bullet} Passed: {ae}`)ab:AppendText(`{d.bullet} Failed: {
 b}`)ab:AppendText(`{d.bullet} Pass Rate: {math.round(ae/ad*100)}%`)return{passed
-=ae,failed=b}end end end local aa,ab=a.load'a',{Standards=a.load'M'}local ac=aa:
+=ae,failed=b}end end end local aa,ab=a.load'a',{Standards=a.load'P'}local ac=aa:
 TabsWindow{Title='Myriad General Validity Test',Size=UDim2.fromOffset(300,400)}
 do local ad=ac:CreateTab{Name='Home'}ad:Label{RichText=true,Text=
 '<b>Myriad General Validity Test (2025)</b>'}ad:Label{RichText=true,Text=`Executor: <b>{
 (identifyexecutor and identifyexecutor()or'Unknown')}</b>`}ad:Label{RichText=
 true,Text='\nContributors:'}ad:BulletText{RichText=true,Rows={'biggaboy212'}}end
-for ad,ae in ab do local b,c=(ac:CreateTab{Name=ad})b:Button{Text='Run test',
-Callback=function()ab[ad](ad,c)end}c=b:Console{ReadOnly=true,RichText=true,Size=
-UDim2.new(1,-5,1,-25)}end
+for ad,ae in ab do local b=ac:CreateTab{Name=ad}local c=b:Console{ReadOnly=true,
+RichText=true,Size=UDim2.new(1,-5,1,0)}ab[ad](ad,c)end
