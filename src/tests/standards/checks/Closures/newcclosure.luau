@@ -4,7 +4,7 @@
 return function()
 	local env = getfenv(0)
 
-	if not env.newcclosure or not env.iscclosure then
+	if not env.newcclosure then
 		return {
 			status = 400,
 			message = "Global not found",
