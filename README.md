@@ -12,7 +12,7 @@ You can use our official loadstring:
 loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Proton-Utilities/Myriad/refs/heads/main/dist.luau"))()
 ```
 
-Or load the [raw file](https://raw.githubusercontent.com/Proton-Utilities/Myriad/refs/heads/main/dist.luau)
+Or load the [raw file](dist.luau)
 
 ## Q&A
 
