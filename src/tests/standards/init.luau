@@ -26,7 +26,6 @@ return function(name, output)
 
 	local checks = {
 		crypt = {
-			["crypt"] = require("checks/crypt/crypt.luau"),
 			["crypt.encrypt"] = require("checks/crypt/encrypt.luau"),
 			["crypt.decrypt"] = require("checks/crypt/decrypt.luau"),
 			["crypt.generatekey"] = require("checks/crypt/generatekey.luau"),
@@ -41,7 +40,6 @@ return function(name, output)
 		},
 
 		Drawing = {
-			["Drawing"] = require("checks/Drawing/Drawing.luau"),
 			["Drawing.new"] = require("checks/Drawing/new.luau"),
 			["Drawing.Fonts"] = require("checks/Drawing/Fonts.luau"),
 			["getrenderproperty"] = require("checks/Drawing/getrenderproperty.luau"),
@@ -64,6 +62,7 @@ return function(name, output)
 		Metatable = {
 			["getrawmetatable"] = require("checks/Metatable/getrawmetatable.luau"),
 			["setrawmetatable"] = require("checks/Metatable/setrawmetatable.luau"),
+			["setreadonly"] = require("checks/Metatable/setreadonly.luau")
 		},
 
 		Closures = {
@@ -92,6 +91,7 @@ return function(name, output)
 			["getscripts"] = require("checks/Scripts/getscripts.luau"),
 			["getloadedmodules"] = require("checks/Scripts/getloadedmodules.luau"),
 			["getsenv"] = require("checks/Scripts/getsenv.luau"),
+			["getscripthash"] = require("checks/Scripts/getscripthash.luau"),
 			["loadstring"] = require("checks/Scripts/loadstring.luau"),
 		},
 
