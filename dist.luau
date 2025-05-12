@@ -1541,39 +1541,55 @@ end local aa,ab=identifyexecutor()if not aa or not ab then return{status=500,
 message=`Did not return expected data (executor, version)`}elseif type(aa)~=
 'string'or type(ab)~='string'then return{status=500,message=`Expected [string, string] got [{
 aa}, {ab}]`}end return{status=200,message=`Passed ({aa}, {ab})`}end end function
-a.M()return function()if not getfenv(0).getscripts then return{status=400,
-message='Global not found'}end local aa,ab,ac,ad=Instance.new'LocalScript',
-Instance.new'ModuleScript',Instance.new'Script',Instance.new'Script'ad.
-RunContext=Enum.RunContext.Client if not table.find(getscripts(),aa)then return{
-status=500,message='LocalScript not found in returned table'}elseif not table.
-find(getscripts(),ab)then return{status=500,message=
-'ModuleScript not found in returned table'}elseif not table.find(getscripts(),ad
-)then return{status=500,message=
+a.M()return function()if not getfenv(0).setclipboard then return{status=400,
+message='Global not found'}end return{status=200,message=`Passed ({executor}, {
+vers})`}end end function a.N()return function()if not getfenv(0).
+setthreadidentity then return{status=400,message='Global not found'}end return{
+status=200,message=`Passed ({executor}, {vers})`}end end function a.O()return
+function()if not getfenv(0).getthreadidentity then return{status=400,message=
+'Global not found'}end if not typeof(getthreadidentity())=='number'then return{
+status=500,message='Did not return a number'}end return{status=200,message=`Passed ({
+executor}, {vers})`}end end function a.P()return function()if not getfenv(0).
+setscriptable then return{status=400,message='Global not found'}end local aa=
+Instance.new'Part'setscriptable(aa,'BottomParamA',true)if not aa.BottomParamA
+then return{status=500,message=
+'BottomParamA not accessible after being set as scriptable'}end setscriptable(aa
+,'BottomParamA',false)if pcall(function()local ab=aa.BottomParamA end)then
+return{status=500,message=
+'BottomParamA accessible after being set as unscriptable'}end return{status=200,
+message=`Passed ({executor}, {vers})`}end end function a.Q()return function()if
+not getfenv(0).getscripts then return{status=400,message='Global not found'}end
+local aa,ab,ac,ad=Instance.new'LocalScript',Instance.new'ModuleScript',Instance.
+new'Script',Instance.new'Script'ad.RunContext=Enum.RunContext.Client if not
+table.find(getscripts(),aa)then return{status=500,message=
+'LocalScript not found in returned table'}elseif not table.find(getscripts(),ab)
+then return{status=500,message='ModuleScript not found in returned table'}elseif
+not table.find(getscripts(),ad)then return{status=500,message=
 [[ServerScript w/ client runcontext not found in returned table]]}elseif table.
 find(getscripts(),ac)then return{status=500,message=
 'ServerScript found in returned table'}end return{status=200,message=`Passed`}
-end end function a.N()return function()if not getfenv(0).getloadedmodules then
+end end function a.R()return function()if not getfenv(0).getloadedmodules then
 return{status=400,message='Global not found'}end local aa=game:GetService
 'CorePackages'.InGameServices.MouseIconOverrideService local ab,ac,ad=require(aa
 ),Instance.new'ModuleScript',getloadedmodules()if not table.find(ad,aa)then
 return{status=500,message='Loaded module not found in returned table'}elseif
 table.find(ad,ac)then return{status=500,message=
 'Unloaded module found in returned table'}end return{status=200,message=`Passed`
-}end end function a.O()return function()local aa=game.Players.LocalPlayer.
+}end end function a.S()return function()local aa=game.Players.LocalPlayer.
 Character.Animate if not getfenv(0).getloadedmodules then return{status=400,
 message='Global not found'}elseif not aa then return{status=400,message=
 [[Testing dependency not found. Try testing on 'a literal baseplate']]}end local
 ab=getsenv(aa)if not ab.onSwimming or not typeof(ab.onSwimming)=='function'then
 return{status=500,message=
 [[Global in test script wasn't found, or didn't return the right type]]}end
-return{status=200,message=`Passed`}end end function a.P()return function()if not
+return{status=200,message=`Passed`}end end function a.T()return function()if not
 getfenv(0).loadstring then return{status=400,message='Global not found'}end
 local aa=loadstring('MYRIAD','MYRIAD')loadstring
 '\r\n\t\tglobalVar = {"Hello", "World"}\r\n\t'()if not globalVar or not(
 globalVar[1]=='Hello'and globalVar[2]=='World')then return{status=500,message=
 'Global variable insert from loadstring not found'}elseif aa~=nil then return{
 status=500,message="Didn't error on incomplete expression"}end return{status=200
-,message=`Passed`}end end function a.Q()return function(aa,ab)ab:Clear()local ac
+,message=`Passed`}end end function a.U()return function(aa,ab)ab:Clear()local ac
 ,ad,ae,b,c,d={},0,0,0,function(ac)ab:AppendText(`<font color="#FFA500">{
 tostring(ac)}</font>`)end,{success='\u{2705}',fail='\u{274c}',warn=
 '\u{26a0}\u{fe0f}',bullet='\u{2022}'}local e,f={[200]=d.success,[400]=d.fail,[
@@ -1589,20 +1605,22 @@ Environment={getgenv=a.load'y',getrenv=a.load'z',getgc=a.load'A',filtergc=a.load
 'B'},Instances={gethui=a.load'C'},Closures={islclosure=a.load'D',iscclosure=a.
 load'E',isexecutorclosure=a.load'F',newcclosure=a.load'G',clonefunction=a.load
 'H',hookfunction=a.load'I',getfunctionhash=a.load'J',checkcaller=a.load'K'},
-Miscellaneous={identifyexecutor=a.load'L'},Scripts={getscripts=a.load'M',
-getloadedmodules=a.load'N',getsenv=a.load'O',loadstring=a.load'P'}}for g,h in f
-do ac[g]=nil for i in h do ad+=1 ac[g]=i end end for g,h in f do ab:AppendText(g
-..':')for i,j in h do local k,l=pcall(j)if not k then c(`{d.bullet} {e[400]} {i}: {
-l} {ac[g]==i and'\n'or''}`)b+=1 continue elseif l.status==200 then ab:
-AppendText(`{d.bullet} {e[l.status]} {i}: {l.message} {ac[g]==i and'\n'or''}`)ae
-+=1 else c(`{d.bullet} {e[l.status]} {i}: {l.message} {ac[g]==i and'\n'or''}`)b
-+=1 end end end ab:AppendText(`Summary:`)ab:AppendText(`{d.bullet} Executor: {
-identifyexecutor and identifyexecutor()or'Unknown'}`)ab:AppendText(`{d.bullet} Tested: {
-ad}`)ab:AppendText(`{d.bullet} Passed: {ae}`)ab:AppendText(`{d.bullet} Failed: {
-b}`)ab:AppendText(`{d.bullet} Pass Rate: {math.round(ae/ad*100)}%`)return{passed
-=ae,failed=b}end end end local aa,ab=a.load'a',{Standards=a.load'Q'}local ac=aa:
-TabsWindow{Title='Myriad General Validity Test',Size=UDim2.fromOffset(300,400)}
-do local ad=ac:CreateTab{Name='Home'}ad:Label{RichText=true,Text=
+Miscellaneous={identifyexecutor=a.load'L',setclipboard=a.load'M'},Reflection={
+setthreadidentity=a.load'N',getthreadidentity=a.load'O',setscriptable=a.load'P'}
+,Scripts={getscripts=a.load'Q',getloadedmodules=a.load'R',getsenv=a.load'S',
+loadstring=a.load'T'}}for g,h in f do ac[g]=nil for i in h do ad+=1 ac[g]=i end
+end for g,h in f do ab:AppendText(g..':')for i,j in h do local k,l=pcall(j)if
+not k then c(`{d.bullet} {e[400]} {i}: {l} {ac[g]==i and'\n'or''}`)b+=1 continue
+elseif l.status==200 then ab:AppendText(`{d.bullet} {e[l.status]} {i}: {l.
+message} {ac[g]==i and'\n'or''}`)ae+=1 else c(`{d.bullet} {e[l.status]} {i}: {l.
+message} {ac[g]==i and'\n'or''}`)b+=1 end end end ab:AppendText(`Summary:`)ab:
+AppendText(`{d.bullet} Executor: {identifyexecutor and identifyexecutor()or
+'Unknown'}`)ab:AppendText(`{d.bullet} Tested: {ad}`)ab:AppendText(`{d.bullet} Passed: {
+ae}`)ab:AppendText(`{d.bullet} Failed: {b}`)ab:AppendText(`{d.bullet} Pass Rate: {
+math.round(ae/ad*100)}%`)return{passed=ae,failed=b}end end end local aa,ab=a.
+load'a',{Standards=a.load'U'}local ac=aa:TabsWindow{Title=
+'Myriad General Validity Test',Size=UDim2.fromOffset(300,400)}do local ad=ac:
+CreateTab{Name='Home'}ad:Label{RichText=true,Text=
 '<b>Myriad General Validity Test (2025)</b>'}ad:Label{RichText=true,Text=`Executor: <b>{
 (identifyexecutor and identifyexecutor()or'Unknown')}</b>`}ad:Label{RichText=
 true,Text='\nContributors:'}ad:BulletText{RichText=true,Rows={'biggaboy212'}}end

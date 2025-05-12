@@ -74,6 +74,13 @@ return function(name, output)
 
 		Miscellaneous = {
 			["identifyexecutor"] = require("checks/Miscellaneous/identifyexecutor.luau"),
+			["setclipboard"] = require("checks/Miscellaneous/setclipboard.luau"),
+		},
+
+		Reflection = {
+			["setthreadidentity"] = require("checks/Reflection/setthreadidentity.luau"),
+			["getthreadidentity"] = require("checks/Reflection/getthreadidentity.luau"),
+			["setscriptable"] = require("checks/Reflection/setscriptable.luau"),
 		},
 
 		Scripts = {
