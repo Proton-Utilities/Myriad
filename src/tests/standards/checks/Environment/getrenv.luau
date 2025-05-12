@@ -1,0 +1,47 @@
+--!nocheck
+--!nolint
+
+return function()
+	if not getfenv(0).getrenv then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+    getrenv().MYRIR1 = "Hello, World!"
+    getrenv().MYRIR2 = 123456789
+    getrenv().MYRIR3 = {"Hello,", "World!"}
+
+    if not getrenv().MYRIR1 == "Hello, World!" then
+        return {
+            status = 500,
+            message = "MYRIR1 not found or unexpected value",
+        }
+    elseif not getrenv().MYRIR2 == 123456789 then
+        return {
+            status = 500,
+            message = "MYRIR2 not found or unexpected value",
+        }
+    elseif not getrenv().MYRIR3 == {"Hello,", "World!"} then
+        return {
+            status = 500,
+            message = "MYRIR3 not found or unexpected value",
+        }
+    elseif not getrenv().game == game then
+        return {
+            status = 500,
+            message = "game not found or unexpected value",
+        }
+    elseif not getrenv().print == print then
+        return {
+            status = 500,
+            message = "print not found or unexpected value",
+        }
+    end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end

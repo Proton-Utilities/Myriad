@@ -28,7 +28,7 @@ return function()
 		local Line = Drawing.new("Line")
 		if not Line then
 			return {
-				status = 400,
+				status = 500,
 				message = "Line drawing object not found",
 			}
 		end
@@ -55,7 +55,7 @@ return function()
 		local Text = Drawing.new("Text")
 		if not Text then
 			return {
-				status = 400,
+				status = 500,
 				message = "Text drawing object not found",
 			}
 		end
@@ -87,7 +87,7 @@ return function()
 		local Image = Drawing.new("Image")
 		if not Image then
 			return {
-				status = 400,
+				status = 500,
 				message = "Image drawing object not found",
 			}
 		end
@@ -114,7 +114,7 @@ return function()
 		local Circle = Drawing.new("Circle")
 		if not Circle then
 			return {
-				status = 400,
+				status = 500,
 				message = "Circle drawing object not found",
 			}
 		end
@@ -143,7 +143,7 @@ return function()
 		local Square = Drawing.new("Square")
 		if not Square then
 			return {
-				status = 400,
+				status = 500,
 				message = "Square drawing object not found",
 			}
 		end
@@ -171,7 +171,7 @@ return function()
 		local Quad = Drawing.new("Quad")
 		if not Quad then
 			return {
-				status = 400,
+				status = 500,
 				message = "Quad drawing object not found",
 			}
 		end
@@ -201,7 +201,7 @@ return function()
 		local Triangle = Drawing.new("Triangle")
 		if not Triangle then
 			return {
-				status = 400,
+				status = 500,
 				message = "Triangle drawing object not found",
 			}
 		end

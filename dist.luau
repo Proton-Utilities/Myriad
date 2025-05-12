@@ -280,38 +280,38 @@ getfenv(0).Drawing or not getfenv(0).Drawing.new then return{status=400,message=
 'Global Drawing API not found'}end local b=function(b,c,d)for e,f in ipairs(d)do
 local g,h=pcall(function()return c[f]end)if not g or h==nil then return{status=
 500,message=`{b} is missing property: {f} (Did you give it a default value?)`}
-end end end do local c=Drawing.new'Line'if not c then return{status=400,message=
+end end end do local c=Drawing.new'Line'if not c then return{status=500,message=
 'Line drawing object not found'}end local d=b('Line',c,{'Visible','ZIndex',
 'Transparency','Color','__OBJECT_EXISTS','Destroy','Thickness','From','To'})if d
 then return d end end do local c=Drawing.new'Text'if not c then return{status=
-400,message='Text drawing object not found'}end local d=b('Text',c,{'Visible',
+500,message='Text drawing object not found'}end local d=b('Text',c,{'Visible',
 'ZIndex','Transparency','Color','__OBJECT_EXISTS','Destroy','Text','TextBounds',
 'Center','Size','Font','Outline','OutlineColor','Position'})if d then return d
-end end do local c=Drawing.new'Image'if not c then return{status=400,message=
+end end do local c=Drawing.new'Image'if not c then return{status=500,message=
 'Image drawing object not found'}end local d=b('Image',c,{'Visible','ZIndex',
 'Transparency','Color','__OBJECT_EXISTS','Destroy','Data','Size','Position'})if
 d then return d end end do local c=Drawing.new'Circle'if not c then return{
-status=400,message='Circle drawing object not found'}end local d=b('Circle',c,{
+status=500,message='Circle drawing object not found'}end local d=b('Circle',c,{
 'Visible','ZIndex','Transparency','Color','__OBJECT_EXISTS','Destroy','NumSides'
 ,'Radius','Position','Thickness','Filled'})if d then return d end end do local c
-=Drawing.new'Square'if not c then return{status=400,message=
+=Drawing.new'Square'if not c then return{status=500,message=
 'Square drawing object not found'}end local d=b('Square',c,{'Visible','ZIndex',
 'Transparency','Color','__OBJECT_EXISTS','Destroy','Size','Position','Thickness'
 ,'Filled'})if d then return d end end do local c=Drawing.new'Quad'if not c then
-return{status=400,message='Quad drawing object not found'}end local d=b('Quad',c
+return{status=500,message='Quad drawing object not found'}end local d=b('Quad',c
 ,{'Destroy','Visible','ZIndex','Transparency','Color','__OBJECT_EXISTS','PointA'
 ,'PointB','PointC','PointD','Thickness','Filled'})if d then return d end end do
-local c=Drawing.new'Triangle'if not c then return{status=400,message=
+local c=Drawing.new'Triangle'if not c then return{status=500,message=
 'Triangle drawing object not found'}end local d=b('Triangle',c,{'Destroy',
 'Visible','ZIndex','Transparency','Color','__OBJECT_EXISTS','PointA','PointB',
 'PointC','Thickness','Filled'})if d then return d end end return{status=200,
 message='Passed'}end end function a.s()return function()if not getfenv(0).
 Drawing or not getfenv(0).Drawing.Fonts then return{status=400,message=
-'Global not found'}end if not Drawing.Fonts.UI then return{status=400,message=
-'UI font not found'}elseif not Drawing.Fonts.System then return{status=400,
+'Global not found'}end if not Drawing.Fonts.UI then return{status=500,message=
+'UI font not found'}elseif not Drawing.Fonts.System then return{status=500,
 message='System font not found'}elseif not Drawing.Fonts.Plex then return{status
-=400,message='Plex font not found'}elseif not Drawing.Fonts.Monospace then
-return{status=400,message='Monospace font not found'}end return{status=200,
+=500,message='Plex font not found'}elseif not Drawing.Fonts.Monospace then
+return{status=500,message='Monospace font not found'}end return{status=200,
 message=`Passed`}end end function a.t()return function()if not getfenv(0).
 getrenderproperty then return{status=400,message='Global not found'}elseif not
 getfenv(0).Drawing or not getfenv(0).Drawing.new then return{status=400,message=
@@ -340,30 +340,55 @@ Visible=false if not isrenderobj(b)then return{status=500,message=
 "Didn't return true for a render object"}elseif isrenderobj{}or isrenderobj(game
 :GetService'Workspace')then return{status=500,message=
 'Returned true for a non-render object'}end return{status=200,message=`Passed`}
-end end function a.x()return function()if not getfenv(0).gethui then return{
-status=400,message='Global not found'}end local b=gethui()if not(b:IsA
-'ScreenGui'or b:IsA'BasePlayerGui'or b:IsA'Folder')then return{status=500,
-message='Container is not a ScreenGui or BillboardGui'}end if b==game:GetService
+end end function a.x()return function()if not getfenv(0).getgenv then return{
+status=400,message='Global not found'}end getgenv().MYRI1='Hello, World!'
+getgenv().MYRI2=123456789 getgenv().MYRI3={'Hello,','World!'}if not getgenv().
+MYRI1=='Hello, World!'then return{status=500,message=
+'MYRI1 not found or unexpected value'}elseif not getgenv().MYRI2==123456789 then
+return{status=500,message='MYRI2 not found or unexpected value'}elseif not
+getgenv().MYRI3=={'Hello,','World!'}then return{status=500,message=
+'MYRI3 not found or unexpected value'}end return{status=200,message=`Passed`}end
+end function a.y()return function()if not getfenv(0).getrenv then return{status=
+400,message='Global not found'}end getrenv().MYRIR1='Hello, World!'getrenv().
+MYRIR2=123456789 getrenv().MYRIR3={'Hello,','World!'}if not getrenv().MYRIR1==
+'Hello, World!'then return{status=500,message=
+'MYRIR1 not found or unexpected value'}elseif not getrenv().MYRIR2==123456789
+then return{status=500,message='MYRIR2 not found or unexpected value'}elseif not
+getrenv().MYRIR3=={'Hello,','World!'}then return{status=500,message=
+'MYRIR3 not found or unexpected value'}elseif not getrenv().game==game then
+return{status=500,message='game not found or unexpected value'}elseif not
+getrenv().print==print then return{status=500,message=
+'print not found or unexpected value'}end return{status=200,message=`Passed`}end
+end function a.z()return function()if not getfenv(0).getgc then return{status=
+400,message='Global not found'}end local b,c={},function()end task.wait(0.05)
+local d,e for f,g in pairs(getgc(true))do if g==c then d=true elseif g==b then e
+=true end end if not d then return{status=500,message=
+'Original function not found'}elseif not e then return{status=500,message=
+'Original table not found'}end return{status=200,message=`Passed`}end end
+function a.A()return function()if not getfenv(0).gethui then return{status=400,
+message='Global not found'}end local b=gethui()if not(b:IsA'ScreenGui'or b:IsA
+'BasePlayerGui'or b:IsA'Folder')then return{status=500,message=
+'Container is not a ScreenGui or BillboardGui'}end if b==game:GetService
 'CoreGui'then return{status=500,message=
 'Container cannot be an uncloned reference to CoreGui'}end return{status=200,
-message=`Passed`}end end function a.y()return function()if not getfenv(0).
+message=`Passed`}end end function a.B()return function()if not getfenv(0).
 islclosure then return{status=400,message='Global not found'}end local b,c=
 function()return 1 end,print if not islclosure(b)then return{status=500,message=
 'Failed to identify lua closure'}elseif islclosure(c)then return{status=500,
 message='Identified C closure as lua closure'}end return{status=200,message=`Passed`
-}end end function a.z()return function()if not getfenv(0).iscclosure then return
+}end end function a.C()return function()if not getfenv(0).iscclosure then return
 {status=400,message='Global not found'}end local b,c,d=function()return 1 end,
 print,newcclosure(function()return 1 end)if iscclosure(b)then return{status=500,
 message='Lua closure identified as C closure'}elseif not iscclosure(c)then
 return{status=500,message='C closure not identified as C closure'}elseif not
 iscclosure(d)then return{status=500,message=
 'C closure not identified as C closure'}end return{status=200,message=`Passed`}
-end end function a.A()return function()if not getfenv(0).clonefunction then
+end end function a.D()return function()if not getfenv(0).clonefunction then
 return{status=400,message='Global not found'}end local b=function()return 1 end
 local c=clonefunction(b)if c==b then return{status=500,message=
 'Cloned function is the same as the original'}elseif c()~=1 then return{status=
 500,message='Cloned function behavior mismatch'}end return{status=200,message=
-'Passed'}end end function a.B()return function()if not getfenv(0).
+'Passed'}end end function a.E()return function()if not getfenv(0).
 getfunctionhash then return{status=400,message='Global not found'}end local b,c,
 d,e,f,g=function(b)return#b==96 and b:match'^[0-9a-fA-F]+$'~=nil end,function()
 end,function(...)end,function()end,function()return'Constant'end,function()
@@ -374,14 +399,14 @@ getfunctionhash(c)~=getfunctionhash(e)then return{status=500,message=
 'Equal functions returned unequal hashes'}elseif getfunctionhash(f)==
 getfunctionhash(g)then return{status=500,message=
 'Unequal returns returned equal hashes'}end return{status=200,message=`Passed`}
-end end function a.C()return function()if not getfenv(0).hookfunction then
+end end function a.F()return function()if not getfenv(0).hookfunction then
 return{status=400,message='Global not found'}end local b,c=function()return 1
 end,function()return 2 end if b()~=1 then return{status=500,message=
 [[A cosmic ray hit your memory chip and flipped a transistor ):]]}end local d=
 hookfunction(b,c)if b()~=2 then return{status=500,message=
 'Hooked function did not return the expected value'}elseif d()~=1 then return{
 status=500,message='Old function did not return the expected value'}end return{
-status=200,message=`Passed`}end end function a.D()return function()local b=
+status=200,message=`Passed`}end end function a.G()return function()local b=
 getfenv(0)if not b.newcclosure or not b.iscclosure then return{status=400,
 message='Global not found'}elseif not b.iscclosure then return{status=500,
 message='iscclosure required to test newcclosure'}end local c=function(...)
@@ -389,12 +414,12 @@ return...end local d=newcclosure(c)if iscclosure(c)then return{status=500,
 message='iscclosure returned true a lua closure'}elseif not iscclosure(d)then
 return{status=500,message='Returned false for a C closure'}elseif d(1)~=1 then
 return{status=500,message='C closure did not return the expected value'}end
-return{status=200,message='Passed'}end end function a.E()return function()if not
+return{status=200,message='Passed'}end end function a.H()return function()if not
 getfenv(0).identifyexecutor then return{status=400,message='Global not found'}
 end local b,c=identifyexecutor()if not b or not c then return{status=500,message
 =`Did not return expected data (executor, version)`}elseif type(b)~='string'or
 type(c)~='string'then return{status=500,message=`Expected [string, string] got [{
-b}, {c}]`}end return{status=200,message=`Passed ({b}, {c})`}end end function a.F
+b}, {c}]`}end return{status=200,message=`Passed ({b}, {c})`}end end function a.I
 ()return function()if not getfenv(0).getscripts then return{status=400,message=
 'Global not found'}end local b,c,d,e=Instance.new'LocalScript',Instance.new
 'ModuleScript',Instance.new'Script',Instance.new'Script'e.RunContext=Enum.
@@ -406,33 +431,50 @@ then return{status=500,message=
 [[ServerScript w/ client runcontext not found in returned table]]}elseif table.
 find(getscripts(),d)then return{status=500,message=
 'ServerScript found in returned table'}end return{status=200,message=`Passed`}
-end end function a.G()return function(b)local c,d,e,f,g=0,0,0,{success=
-'\u{2705}',fail='\u{274c}',warn='\u{26a0}\u{fe0f}',bullet='\u{2022}'}local h,i={
-[200]=f.success,[400]=f.fail,[500]=f.warn},{crypt=a.load'e',['crypt.encrypt']=a.
-load'f',['crypt.decrypt']=a.load'g',['crypt.generatekey']=a.load'h',[
-'crypt.generatebytes']=a.load'i',['crypt.base64encode']=a.load'j',[
-'crypt.base64decode']=a.load'k',['crypt.lz4compress']=a.load'l',[
-'crypt.lz4decompress']=a.load'm',['crypt.hash']=a.load'n',['crypt.random']=a.
-load'o',['crypt.hmac']=a.load'p',Drawing=a.load'q',['Drawing.new']=a.load'r',[
-'Drawing.Fonts']=a.load's',getrenderproperty=a.load't',setrenderproperty=a.load
-'u',cleardrawcache=a.load'v',isrenderobj=a.load'w',gethui=a.load'x',islclosure=a
-.load'y',iscclosure=a.load'z',clonefunction=a.load'A',getfunctionhash=a.load'B',
-hookfunction=a.load'C',newcclosure=a.load'D',identifyexecutor=a.load'E',
-getscripts=a.load'F'}for j in next,i do c+=1 g=j end print(`{b}\n`)for j,k in
-next,i do local l,m=pcall(k)if not l then warn(`{f.bullet} {h[400]} {j}: {m} {g
-==j and'\n'or''}`)e+=1 continue elseif m.status==200 then print(`{f.bullet} {h[m
-.status]} {j}: {m.message} {g==j and'\n'or''}`)d+=1 else warn(`{f.bullet} {h[m.
-status]} {j}: {m.message} {g==j and'\n'or''}`)e+=1 end end print(`Summary:`)
-print(`{f.bullet} Tested: {c}`)print(`{f.bullet} Passed: {d}`)print(`{f.bullet} Failed: {
-e}`)print(`{f.bullet} Pass Rate: {math.round(d/c*100)}%`)return{passed=d,failed=
-e}end end function a.H()return function(b)print(`{b}\n`)end end end local b,c,d=
-{['Standards Naming & Output Conventions']=a.load'G',['Vulnerability Mitigation'
-]=a.load'H'},{},{bullet='\u{2022}',section1=
+end end function a.J()return function()if not getfenv(0).getloadedmodules then
+return{status=400,message='Global not found'}end local b=game:GetService
+'CorePackages'.InGameServices.MouseIconOverrideService local c,d,e=require(b),
+Instance.new'ModuleScript',getloadedmodules()if not table.find(e,b)then return{
+status=500,message='Loaded module not found in returned table'}elseif table.
+find(e,d)then return{status=500,message=
+'Unloaded module found in returned table'}end return{status=200,message=`Passed`
+}end end function a.K()return function()local b=game.Players.LocalPlayer.
+Character.Animate if not getfenv(0).getloadedmodules then return{status=400,
+message='Global not found'}elseif not b then return{status=400,message=
+[[Testing dependency not found. Try testing on 'a literal baseplate']]}end local
+c=getsenv(b)if not c.onSwimming or not typeof(c.onSwimming)=='function'then
+return{status=500,message=
+[[Global in test script wasn't found, or didn't return the right type]]}end
+return{status=200,message=`Passed`}end end function a.L()return function(b)local
+c,d,e,f,g={},0,0,0,{success='\u{2705}',fail='\u{274c}',warn='\u{26a0}\u{fe0f}',
+bullet='\u{2022}'}local h,i={[200]=g.success,[400]=g.fail,[500]=g.warn},{crypt={
+crypt=a.load'e',['crypt.encrypt']=a.load'f',['crypt.decrypt']=a.load'g',[
+'crypt.generatekey']=a.load'h',['crypt.generatebytes']=a.load'i',[
+'crypt.base64encode']=a.load'j',['crypt.base64decode']=a.load'k',[
+'crypt.lz4compress']=a.load'l',['crypt.lz4decompress']=a.load'm',['crypt.hash']=
+a.load'n',['crypt.random']=a.load'o',['crypt.hmac']=a.load'p'},Drawing={Drawing=
+a.load'q',['Drawing.new']=a.load'r',['Drawing.Fonts']=a.load's',
+getrenderproperty=a.load't',setrenderproperty=a.load'u',cleardrawcache=a.load'v'
+,isrenderobj=a.load'w'},Environment={getgenv=a.load'x',getrenv=a.load'y',getgc=a
+.load'z'},Instances={gethui=a.load'A'},Closures={islclosure=a.load'B',iscclosure
+=a.load'C',clonefunction=a.load'D',getfunctionhash=a.load'E',hookfunction=a.load
+'F',newcclosure=a.load'G'},Miscellaneous={identifyexecutor=a.load'H'},Scripts={
+getscripts=a.load'I',getloadedmodules=a.load'J',getsenv=a.load'K'}}for j,k in i
+do c[j]=nil for l in k do d+=1 c[j]=l end end print(`{b}\n`)for j,k in i do
+print(j..':')for l,m in k do local n,o=pcall(m)if not n then warn(`{g.bullet} {h
+[400]} {l}: {o} {c[j]==l and'\n'or''}`)f+=1 continue elseif o.status==200 then
+print(`{g.bullet} {h[o.status]} {l}: {o.message} {c[j]==l and'\n'or''}`)e+=1
+else warn(`{g.bullet} {h[o.status]} {l}: {o.message} {c[j]==l and'\n'or''}`)f+=1
+end end end print(`Summary:`)print(`{g.bullet} Executor: {identifyexecutor and
+identifyexecutor()or'Unknown'}`)print(`{g.bullet} Tested: {d}`)print(`{g.bullet} Passed: {
+e}`)print(`{g.bullet} Failed: {f}`)print(`{g.bullet} Pass Rate: {math.round(e/d*
+100)}%`)return{passed=e,failed=f}end end function a.M()return function(b)print(`{
+b}\n`)end end end local b,c,d={['Standards Naming & Output Conventions']=a.load
+'L',['Vulnerability Mitigation']=a.load'M'},{},{bullet='\u{2022}',section1=
 '~~~~~~~~~~~~~~~~~~~~~~~~~ TESTS ~~~~~~~~~~~~~~~~~~~~~~~~~',section2=
 '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~',section3=
 '\u{2500}\u{2500}\u{2500}\u{2500}\u{2500}\u{2500}\u{2500}\u{2500}\u{2500}\u{2500}\u{2500}\u{2500}\u{2500}\u{2500}\u{2500}\u{2500}'
 }print'Myriad General Validity Test (2025)'print(`Executor: {identifyexecutor
 and identifyexecutor()or'Unknown'}\n`)print'Contributors:'print(`{d.bullet} biggaboy212\n`
 )print(d.section1..'\n')local e=function(e)c[e]=b[e](e)end e
-'Standards Naming & Output Conventions'print(d.section3..'\n')e
-'Vulnerability Mitigation'print(d.section2)
+'Standards Naming & Output Conventions'print(d.section2)

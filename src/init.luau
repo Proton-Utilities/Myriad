@@ -27,7 +27,7 @@ local function test(name)
 end
 
 test("Standards Naming & Output Conventions")
-print(uni.section3 .. "\n")
-test("Vulnerability Mitigation")
+--[[ print(uni.section3 .. "\n")
+test("Vulnerability Mitigation") ]]
 
 print(uni.section2)

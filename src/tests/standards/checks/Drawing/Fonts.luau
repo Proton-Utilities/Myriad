@@ -11,22 +11,22 @@ return function()
 
 	if not Drawing.Fonts["UI"] then
 		return {
-			status = 400,
+			status = 500,
 			message = "UI font not found",
 		}
 	elseif not Drawing.Fonts["System"] then
 		return {
-			status = 400,
+			status = 500,
 			message = "System font not found",
 		}
 	elseif not Drawing.Fonts["Plex"] then
 		return {
-			status = 400,
+			status = 500,
 			message = "Plex font not found",
 		}
 	elseif not Drawing.Fonts["Monospace"] then
 		return {
-			status = 400,
+			status = 500,
 			message = "Monospace font not found",
 		}
 	end
