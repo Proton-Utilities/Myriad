@@ -1463,8 +1463,8 @@ then ad=true end end if not ac then return{status=500,message=
 function a.B()return function()if not getfenv(0).gethui then return{status=400,
 message='Global not found'}end local aa=gethui()if not(aa:IsA'ScreenGui'or aa:
 IsA'BasePlayerGui'or aa:IsA'Folder')then return{status=500,message=
-'Container is not a ScreenGui or BillboardGui'}end if aa==game:GetService
-'CoreGui'then return{status=500,message=
+'Container is not a ScreenGui, BasePlayerGui, or Folder'}end if aa==game:
+GetService'CoreGui'then return{status=500,message=
 'Container cannot be an uncloned reference to CoreGui'}end return{status=200,
 message=`Passed`}end end function a.C()return function()if not getfenv(0).
 islclosure then return{status=400,message='Global not found'}end local aa,ab=
