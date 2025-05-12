@@ -11,7 +11,7 @@ return function()
 	elseif not Animate then
 		return {
 			status = 400,
-			message = "Testing dependency not found. Try testing on 'a literal baseplate'",
+			message = "Testing dependency 'Animate' not found. Try testing on 'a literal baseplate'",
 		}
 	end
 

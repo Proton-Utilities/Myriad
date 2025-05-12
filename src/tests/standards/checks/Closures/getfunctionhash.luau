@@ -18,6 +18,9 @@ return function()
 	local function3 = function() end
 	local function4 = function() return 1 end
 	local function5 = function() return 2 end
+	local cHashSuccess = pcall(function()
+		getfunctionhash(print)
+	end)
 
 	if not hexEncoded(getfunctionhash(function1)) then
 		return {
@@ -38,6 +41,11 @@ return function()
 		return {
 			status = 500,
 			message = "Unequal returns gave equal returns",
+		}
+	elseif cHashSuccess then
+		return {
+			status = 500,
+			message = "Passed when given a lua standard C closure",
 		}
 	end
 
