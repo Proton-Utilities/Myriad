@@ -47,6 +47,17 @@ return function()
 
 	local newAnimate = Animate:Clone()
 	local oldSource = Animate.Source
+	Animate.Source = "return 1"
+	local newHash = getscripthash(Animate)
+
+	if animateReturned == newHash then
+		return {
+			status = 500,
+			message = "Gave the same hash for a modified script",
+		}
+	end
+
+	Animate.Source = oldSource
 
 	return {
 		status = 200,
