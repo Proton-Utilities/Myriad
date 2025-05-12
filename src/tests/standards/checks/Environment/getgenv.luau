@@ -9,10 +9,17 @@ return function()
 		}
 	end
 
+    getfenv().MYRI = "Hello, World!"
     getgenv().MYRI1 = "Hello, World!"
     getgenv().MYRI2 = 123456789
     getgenv().MYRI3 = {"Hello,", "World!"}
 
+    if not getgenv().MYRI == "Hello, World!" then
+        return {
+            status = 500,
+            message = "getfenv unaffected getgenv",
+        }
+    end
     if not getgenv().MYRI1 == "Hello, World!" then
         return {
             status = 500,

@@ -1436,20 +1436,21 @@ Visible=false if not isrenderobj(aa)then return{status=500,message=
 :GetService'Workspace')then return{status=500,message=
 'Returned true for a non-render object'}end return{status=200,message=`Passed`}
 end end function a.y()return function()if not getfenv(0).getgenv then return{
-status=400,message='Global not found'}end getgenv().MYRI1='Hello, World!'
-getgenv().MYRI2=123456789 getgenv().MYRI3={'Hello,','World!'}if not getgenv().
-MYRI1=='Hello, World!'then return{status=500,message=
-'MYRI1 not found or unexpected value'}elseif not getgenv().MYRI2==123456789 then
-return{status=500,message='MYRI2 not found or unexpected value'}elseif not
-getgenv().MYRI3=={'Hello,','World!'}then return{status=500,message=
-'MYRI3 not found or unexpected value'}end return{status=200,message=`Passed`}end
-end function a.z()return function()if not getfenv(0).getrenv then return{status=
-400,message='Global not found'}end getrenv().MYRIR1='Hello, World!'getrenv().
-MYRIR2=123456789 getrenv().MYRIR3={'Hello,','World!'}if not getrenv().MYRIR1==
-'Hello, World!'then return{status=500,message=
-'MYRIR1 not found or unexpected value'}elseif not getrenv().MYRIR2==123456789
-then return{status=500,message='MYRIR2 not found or unexpected value'}elseif not
-getrenv().MYRIR3=={'Hello,','World!'}then return{status=500,message=
+status=400,message='Global not found'}end getfenv().MYRI='Hello, World!'getgenv(
+).MYRI1='Hello, World!'getgenv().MYRI2=123456789 getgenv().MYRI3={'Hello,',
+'World!'}if not getgenv().MYRI=='Hello, World!'then return{status=500,message=
+'getfenv unaffected getgenv'}end if not getgenv().MYRI1=='Hello, World!'then
+return{status=500,message='MYRI1 not found or unexpected value'}elseif not
+getgenv().MYRI2==123456789 then return{status=500,message=
+'MYRI2 not found or unexpected value'}elseif not getgenv().MYRI3=={'Hello,',
+'World!'}then return{status=500,message='MYRI3 not found or unexpected value'}
+end return{status=200,message=`Passed`}end end function a.z()return function()if
+not getfenv(0).getrenv then return{status=400,message='Global not found'}end
+getrenv().MYRIR1='Hello, World!'getrenv().MYRIR2=123456789 getrenv().MYRIR3={
+'Hello,','World!'}if not getrenv().MYRIR1=='Hello, World!'then return{status=500
+,message='MYRIR1 not found or unexpected value'}elseif not getrenv().MYRIR2==
+123456789 then return{status=500,message='MYRIR2 not found or unexpected value'}
+elseif not getrenv().MYRIR3=={'Hello,','World!'}then return{status=500,message=
 'MYRIR3 not found or unexpected value'}elseif not getrenv().game==game then
 return{status=500,message='game not found or unexpected value'}elseif not
 getrenv().print==print then return{status=500,message=
