@@ -29,7 +29,7 @@ return function()
 	elseif originalObject.MYRI ~= true then
 		return {
 			status = 400,
-			message = "return function gave true, MYRI not found",
+			message = "Return function gave true, MYRI not found",
 		}
 	elseif not returnedObject then
 		return {

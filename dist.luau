@@ -1486,7 +1486,7 @@ getfenv(0).setrawmetatable then return{status=400,message='Global not found'}end
 local aa=setmetatable({},{__index=function()return false end,__metatable=
 'Locked'})local ab=setrawmetatable(aa,{__index=function()return true end})if not
 aa then return{status=400,message='Original object not given'}elseif aa.MYRI~=
-true then return{status=400,message='return function gave true, MYRI not found'}
+true then return{status=400,message='Return function gave true, MYRI not found'}
 elseif not ab then return{status=400,message='Returned object not given'}elseif
 ab==aa then return{status=400,message=
 'Returned object is the same as original (???)'}end return{status=200,message=
@@ -1652,10 +1652,11 @@ l.message} {ac[g]==i and'\n'or''}`)b+=1 end end end ab:AppendText(`Summary:`)ab:
 AppendText(`{d.bullet} Executor: {identifyexecutor and identifyexecutor()or
 'Unknown'}`)ab:AppendText(`{d.bullet} Tested: {ad}`)ab:AppendText(`{d.bullet} Passed: {
 ae}`)ab:AppendText(`{d.bullet} Failed: {b}`)ab:AppendText(`{d.bullet} Pass Rate: {
-math.round(ae/ad*100)}%`)return{passed=ae,failed=b}end end end local aa,ab=a.
-load'a',{Standards=a.load'ae'}local ac=aa:TabsWindow{Title=
-'Myriad General Validity Test',Size=UDim2.fromOffset(300,400)}do local ad=ac:
-CreateTab{Name='Home'}ad:Label{RichText=true,Text=
+math.round(ae/ad*100)}%`)return{passed=ae,failed=b}end end function a.af()return
+function(aa,ab)ab:Clear()ab:AppendText'Not implemented'end end end local aa,ab=a
+.load'a',{Standards=a.load'ae',Vulnerability=a.load'af'}local ac=aa:TabsWindow{
+Title='Myriad General Validity Test',Size=UDim2.fromOffset(300,400)}do local ad=
+ac:CreateTab{Name='Home'}ad:Label{RichText=true,Text=
 '<b>Myriad General Validity Test (2025)</b>'}ad:Label{RichText=true,Text=`Executor: <b>{
 (identifyexecutor and identifyexecutor()or'Unknown')}</b>`}ad:Label{RichText=
 true,Text='\nContributors:'}ad:BulletText{RichText=true,Rows={'biggaboy212'}}end
