@@ -1,10 +1,15 @@
 --!nocheck
 
-return function(name)
+return function(name, output)
+	output:Clear()
+
 	local lastEntreePerGroup = {}
 	local numStandards = 0
 	local passed = 0
 	local failed = 0
+	local warn = function(message)
+		output:AppendText(`<font color="#FFA500">{tostring(message)}</font>`)
+	end
 
 	local uni = {
 		success = "✅",
@@ -83,10 +88,8 @@ return function(name)
 		end
 	end
 
-	print(`{name}\n`)
-
 	for groupName, group in checks do
-		print(groupName .. ":")
+		output:AppendText(groupName .. ":")
 		for name, test in group do
 			local success, result = pcall(test)
 			if not success then
@@ -94,7 +97,7 @@ return function(name)
 				failed += 1
 				continue
 			elseif result.status == 200 then
-				print(
+				output:AppendText(
 					`{uni.bullet} {statusCodes[result.status]} {name}: {result.message} {lastEntreePerGroup[groupName] == name and "\n" or ""}`
 				)
 				passed += 1
@@ -107,12 +110,12 @@ return function(name)
 		end
 	end
 
-	print(`Summary:`)
-	print(`{uni.bullet} Executor: {identifyexecutor and identifyexecutor() or "Unknown"}`)
-	print(`{uni.bullet} Tested: {numStandards}`)
-	print(`{uni.bullet} Passed: {passed}`)
-	print(`{uni.bullet} Failed: {failed}`)
-	print(`{uni.bullet} Pass Rate: {math.round(passed / numStandards * 100)}%`)
+	output:AppendText(`Summary:`)
+	output:AppendText(`{uni.bullet} Executor: {identifyexecutor and identifyexecutor() or "Unknown"}`)
+	output:AppendText(`{uni.bullet} Tested: {numStandards}`)
+	output:AppendText(`{uni.bullet} Passed: {passed}`)
+	output:AppendText(`{uni.bullet} Failed: {failed}`)
+	output:AppendText(`{uni.bullet} Pass Rate: {math.round(passed / numStandards * 100)}%`)
 
 	return {
 		passed = passed,

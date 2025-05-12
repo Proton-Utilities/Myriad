@@ -1,12 +1,62 @@
 --!nocheck
 
-local tests = {
-	["Standards Naming & Output Conventions"] = require("standards/init.luau"),
-	["Vulnerability Mitigation"] = require("vulnerabilities/init.luau"),
-}
-local results = {}
+local Interface = require("dependencies/ReGui/ReGui.luau")
 
-local uni = {
+local tests = {
+	["Standards"] = require("tests/standards/init.luau"),
+	--["Vulnerability"] = require("tests/vulnerabilities/init.luau"),
+}
+
+local window = Interface:TabsWindow({
+	Title = "Myriad General Validity Test",
+	Size = UDim2.fromOffset(300, 400)
+})
+
+do
+	local home = window:CreateTab({
+		Name = "Home",
+	})
+	
+	home:Label({
+		RichText = true,
+		Text = "<b>Myriad General Validity Test (2025)</b>",
+	})
+	home:Label({
+		RichText = true,
+		Text = `Executor: <b>{(identifyexecutor and identifyexecutor() or "Unknown")}</b>`,
+	})
+
+	home:Label({
+		RichText = true,
+		Text = "\nContributors:",
+	})
+	home:BulletText({
+		RichText = true,
+		Rows = {
+			"biggaboy212",
+		}
+	})
+end
+
+for name, test in tests do
+	local tab = window:CreateTab({Name=name})
+	local output
+
+	tab:Button({
+		Text = "Run test",
+		Callback = function()
+			tests[name](name, output)
+		end,
+	})
+
+	output = tab:Console({
+		ReadOnly = true,
+		RichText = true,
+		Size = UDim2.new(1, -5, 1, -25),
+	})
+end
+
+--[[ local uni = {
 	bullet = "•",
 	section1 = "~~~~~~~~~~~~~~~~~~~~~~~~~ TESTS ~~~~~~~~~~~~~~~~~~~~~~~~~",
 	section2 = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
@@ -27,7 +77,7 @@ local function test(name)
 end
 
 test("Standards Naming & Output Conventions")
---[[ print(uni.section3 .. "\n")
-test("Vulnerability Mitigation") ]]
+-- print(uni.section3 .. "\n")
+--test("Vulnerability Mitigation")
 
-print(uni.section2)
+print(uni.section2) ]]
