@@ -13,7 +13,7 @@ return function()
 	if not (container:IsA("ScreenGui") or container:IsA("BasePlayerGui") or container:IsA("Folder")) then
 		return {
 			status = 500,
-			message = "Container is not a ScreenGui or BillboardGui",
+			message = "Container is not a ScreenGui, BasePlayerGui, or Folder",
 		}
 	end
 	if container == game:GetService("CoreGui") then
