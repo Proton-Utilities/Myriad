@@ -23,22 +23,22 @@ return function()
 
 	if not originalObject then
 		return {
-			status = 400,
+			status = 500,
 			message = "Original object not given",
 		}
 	elseif originalObject.MYRI ~= true then
 		return {
-			status = 400,
+			status = 500,
 			message = "Return function gave true, MYRI not found",
 		}
 	elseif not returnedObject then
 		return {
-			status = 400,
+			status = 500,
 			message = "Returned object not given",
 		}
 	elseif returnedObject == originalObject then
 		return {
-			status = 400,
+			status = 500,
 			message = "Returned object is the same as original (???)",
 		}
 	end

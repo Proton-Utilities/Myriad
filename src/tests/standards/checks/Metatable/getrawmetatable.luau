@@ -13,12 +13,12 @@ return function()
 
 	if not typeof(mt) == "table" then
 		return {
-			status = 400,
+			status = 500,
 			message = "Didn't return a table",
 		}
 	elseif not mt.__index(game, "Workspace") == game:GetService("Workspace") then
 		return {
-			status = 400,
+			status = 500,
 			message = "Didn't give correct index",
 		}
 	end
