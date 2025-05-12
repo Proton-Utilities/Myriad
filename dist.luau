@@ -1614,9 +1614,11 @@ message=
 [[Failed to get script w/ no bytecode. Errored instead of returning nil.]]}
 elseif typeof(b)~='string'then return{status=500,message=
 'Did not return a hash string'}elseif hashNoBytecode~=nil then return{status=500
-,message='A script with no bytecode returned non-nil data'}end do aa:Clone()
-local e=aa.Source end return{status=200,message=`Passed`}end end function a.V()
-return function()if not getfenv(0).loadstring then return{status=400,message=
+,message='A script with no bytecode returned non-nil data'}end local e,f=aa:
+Clone(),aa.Source aa.Source='return 1'local g=getscripthash(aa)if b==g then
+return{status=500,message='Gave the same hash for a modified script'}end aa.
+Source=f return{status=200,message=`Passed`}end end function a.V()return
+function()if not getfenv(0).loadstring then return{status=400,message=
 'Global not found'}end local aa=loadstring('MYRIAD','MYRIAD')loadstring
 '\r\n\t\tglobalVar = {"Hello", "World"}\r\n\t'()if not globalVar or not(
 globalVar[1]=='Hello'and globalVar[2]=='World')then return{status=500,message=
