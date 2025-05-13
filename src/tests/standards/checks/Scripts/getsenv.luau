@@ -2,15 +2,15 @@
 --!nolint
 
 return function()
-	local Animate = game.Players.LocalPlayer.Character.Animate
+	local indexedAnimate, Animate = pcall(function() return game.Players.LocalPlayer.Character.Animate end)
 	if not getfenv(0).getloadedmodules then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
-	elseif not Animate then
+	elseif not indexedAnimate then
 		return {
-			status = 400,
+			status = 401,
 			message = "Testing dependency 'Animate' not found. Try testing on 'a literal baseplate'",
 		}
 	end
@@ -27,7 +27,7 @@ return function()
 
 	if not envIndex then
 		return {
-			status = 500,
+			status = 501,
 			message = `Alias not found: {failedIndex}`,
 		}
 	end

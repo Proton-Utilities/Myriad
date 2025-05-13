@@ -44,7 +44,7 @@ return function()
 
 	if not envIndex then
 		return {
-			status = 500,
+			status = 501,
 			message = `Alias not found: {failedIndex}`,
 		}
 	end

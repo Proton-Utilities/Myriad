@@ -38,7 +38,16 @@ do
 		},
 	})
 
-	home:Separator()
+	home:Separator({"STANDARDS TEST"})
+
+	home:Label({
+		Text = [[❓ - Call errored or failed
+✅ - Passed
+🔎 - Global not found
+📦 - Dependency not found
+🛠️ - Failed functionality test
+🏷️ - Missing alias]]
+	})
 
 	local inputOutput = nil
 	home:Button({
@@ -58,7 +67,7 @@ for name, test in tests do
 	local output = tab:Console({
 		ReadOnly = true,
 		RichText = true,
-		Size = UDim2.new(1, -5, 1, -25),
+		Size = UDim2.new(1, -5, 1, 0),
 	})
 
 	tests[name](name, output)

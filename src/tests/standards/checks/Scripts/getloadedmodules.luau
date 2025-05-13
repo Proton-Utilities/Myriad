@@ -2,14 +2,19 @@
 --!nolint
 
 return function()
+	local indexedModule, module = pcall(function() return game.Players.LocalPlayer.Character.Animate end)
 	if not getfenv(0).getloadedmodules then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
+	elseif not indexedModule then
+		return {
+			status = 401,
+			message = "Testing dependency 'PlayerModule' not found. Try testing on 'a literal baseplate'",
+		}
 	end
 
-	local module = game:GetService("CorePackages").InGameServices.MouseIconOverrideService
 	local loadedModule = require(module)
 	local unloadedModule = Instance.new("ModuleScript")
 
@@ -30,7 +35,7 @@ return function()
 
 	if not envIndex then
 		return {
-			status = 500,
+			status = 501,
 			message = `Alias not found: {failedIndex}`,
 		}
 	end

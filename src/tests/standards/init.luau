@@ -12,16 +12,15 @@ return function(name, output)
 	end
 
 	local uni = {
-		success = "✅",
-		fail = "❌",
-		warn = "⚠️",
-
 		bullet = "•",
 	}
 	local statusCodes = {
-		[200] = uni.success,
-		[400] = uni.fail,
-		[500] = uni.warn,
+		[0] = "❓", -- Call errored/failed
+		[200] = "✅", -- Passed
+		[400] = "🔎", -- Global not found
+		[401] = "📦", -- Dependency not found
+		[500] = "🛠️", -- Failed functionality test
+		[501] = "🏷️" -- Missing alias
 	}
 
 	local checks = {
@@ -121,7 +120,7 @@ return function(name, output)
 		for name, test in group do
 			local success, result = pcall(test)
 			if not success then
-				warn(`{uni.bullet} {statusCodes[400]} {name}: {result} {lastEntreePerGroup[groupName] == name and "\n" or ""}`)
+				warn(`{uni.bullet} {statusCodes[0]} {name}: {result} {lastEntreePerGroup[groupName] == name and "\n" or ""}`)
 				failed += 1
 				continue
 			elseif result.status == 200 then

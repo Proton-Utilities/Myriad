@@ -9,7 +9,7 @@ return function()
 		}
 		elseif not getfenv(0).Drawing or not getfenv(0).Drawing.new then
 		return {
-			status = 400,
+			status = 401,
 			message = "Drawing library needed to test this",
 		}
 	end
@@ -32,7 +32,7 @@ return function()
 
 	if not envIndex then
 		return {
-			status = 500,
+			status = 501,
 			message = `Alias not found: {failedIndex}`,
 		}
 	end
