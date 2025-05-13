@@ -87,6 +87,25 @@ do
 			output = output .. "```"
 			inputOutput:SetValue(output)
 		end,
+	})
+
+	home:Button({
+		Text = "Append metadata",
+		Callback = function(self)
+			inputOutput:SetValue(inputOutput:GetValue():gsub("<br%s*/>", "\n"):gsub("<[^<>]->", ""))
+			local input = inputOutput:GetValue()
+	
+			local executor, executorVers = identifyexecutor()
+	
+			local metadata = string.format(
+				"\n\n-- Metadata --\nGenerated: %s\nExecutor: %s\nVersion: %s",
+				os.date("%Y-%m-%d %H:%M:%S"),
+				executor,
+				executorVers
+			)
+	
+			inputOutput:SetValue(input .. metadata)
+		end,
 	})	
 
 	inputOutput = home:Console({
