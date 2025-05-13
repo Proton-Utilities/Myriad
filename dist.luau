@@ -1768,4 +1768,4 @@ GetValue(),'```diff\n'for i in g:gmatch'[^\r\n]+'do local j=i:gsub(
 '\u{1f3f7}\u{fe0f}'then h=h..'- '..j..'\n'else h=h..j..'\n'end end h=h..'```'e:
 SetValue(h)end}e=d:Console{ReadOnly=false,Size=UDim2.new(1,-5,0,50)}end for d,e
 in ab do local f=ad:CreateTab{Name=d}local g=f:Console{ReadOnly=true,RichText=
-true,Size=UDim2.new(1,-5,1,0)}ab[d](d,g)end
+true,LineHeight=1.3,Size=UDim2.new(1,-5,1,0)}ab[d](d,g)end
