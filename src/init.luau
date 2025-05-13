@@ -65,7 +65,7 @@ do
 		Callback = function(self)
 			inputOutput:SetValue(inputOutput:GetValue():gsub("<br%s*/>", "\n"):gsub("<[^<>]->", ""))
 			local input = inputOutput:GetValue()
-			local output = "```diff\n"
+			local output = ""
 	
 			for line in input:gmatch("[^\r\n]+") do
 				local cleaned = line:gsub("^•%s*", "")
@@ -84,8 +84,7 @@ do
 					output = output .. cleaned .. "\n"
 				end
 			end
-	
-			output = output .. "```"
+
 			inputOutput:SetValue(output)
 		end,
 	})

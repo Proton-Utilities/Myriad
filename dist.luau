@@ -1762,13 +1762,13 @@ Separator{Text='Standards Test'}d:Label{Text=
 Callback=function(f)e:SetValue(e:GetValue():gsub('<br%s*/>','\n'):gsub(
 '<[^<>]->',''))end}d:Button{Text='Format in diff',Callback=function(f)e:
 SetValue(e:GetValue():gsub('<br%s*/>','\n'):gsub('<[^<>]->',''))local g,h=e:
-GetValue(),'```diff\n'for i in g:gmatch'[^\r\n]+'do local j=i:gsub(
-'^\u{2022}%s*','')if j:find'\u{2705}'then h=h..'+ '..j..'\n'elseif j:find
-'\u{1f50e}'or j:find'\u{2753}'or j:find'\u{1f6e0}\u{fe0f}'or j:find'\u{1f4e6}'or
-j:find'\u{1f3f7}\u{fe0f}'then h=h..'- '..j..'\n'else h=h..j..'\n'end end h=h..
-'```'e:SetValue(h)end}d:Button{Text='Append metadata',Callback=function(f)e:
-SetValue(e:GetValue():gsub('<br%s*/>','\n'):gsub('<[^<>]->',''))local g,h,i=e:
-GetValue(),identifyexecutor()local j=string.format(
+GetValue(),''for i in g:gmatch'[^\r\n]+'do local j=i:gsub('^\u{2022}%s*','')if j
+:find'\u{2705}'then h=h..'+ '..j..'\n'elseif j:find'\u{1f50e}'or j:find
+'\u{2753}'or j:find'\u{1f6e0}\u{fe0f}'or j:find'\u{1f4e6}'or j:find
+'\u{1f3f7}\u{fe0f}'then h=h..'- '..j..'\n'else h=h..j..'\n'end end e:SetValue(h)
+end}d:Button{Text='Append metadata',Callback=function(f)e:SetValue(e:GetValue():
+gsub('<br%s*/>','\n'):gsub('<[^<>]->',''))local g,h,i=e:GetValue(),
+identifyexecutor()local j=string.format(
 '\n\n-- Metadata --\nGenerated: %s\nExecutor: %s\nVersion: %s',os.date
 '%Y-%m-%d %H:%M:%S',h,i)e:SetValue(g..j)end}e=d:Console{ReadOnly=false,Size=
 UDim2.new(1,-5,0,50)}end for d,e in ab do local f=ad:CreateTab{Name=d}local g=f:
