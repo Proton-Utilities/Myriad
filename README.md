@@ -18,10 +18,6 @@ Or load the [raw file](dist.luau)
 
 ## Q&A
 
-### **Q:** Why does this not include standards aliases?
-
-**A:** The point of a **Unified Naming Convention** is to have, well, a *Unified* naming scheme. Allowing aliases breaks the entire point.
-
 ### **Q:** How do I use and contribute to this project?
 
 **A:** To build this project, you need [DarkLua](https://github.com/seaofvoices/darklua), if you need help setting it up, DM @biggaboy_212 on discord. The build keybind is ***Ctrl+Shift+B***

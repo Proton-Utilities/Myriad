@@ -38,7 +38,21 @@ return function()
             status = 500,
             message = "print not found or unexpected value",
         }
+    elseif getrenv()._G == _G then
+        return {
+            status = 500,
+            message = "_G in roblox environment shouldn't match the executor's",
+        }
     end
+
+    local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+
+	if not envIndex then
+		return {
+			status = 500,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
 
 	return {
 		status = 200,

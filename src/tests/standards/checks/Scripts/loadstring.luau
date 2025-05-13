@@ -25,7 +25,16 @@ return function()
 			status = 500,
 			message = "Didn't error on incomplete expression",
 		}
-	end	
+	end
+
+	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+
+	if not envIndex then
+		return {
+			status = 500,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
 
 	return {
 		status = 200,

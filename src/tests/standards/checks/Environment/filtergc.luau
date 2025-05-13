@@ -20,7 +20,7 @@ return function()
 		__index = function() end
 	})
 
-	task.wait(0.05)
+	task.wait(0.1)
 
 	local foundFunc = filtergc("function", {
 		Constants = { "MYRIAD" },
@@ -42,6 +42,15 @@ return function()
 		return {
 			status = 500,
 			message = "filtergc failed to retrieve the original table",
+		}
+	end
+
+	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+
+	if not envIndex then
+		return {
+			status = 500,
+			message = `Alias not found: {failedIndex}`,
 		}
 	end
 

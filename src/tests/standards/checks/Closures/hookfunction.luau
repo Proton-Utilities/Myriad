@@ -38,6 +38,18 @@ return function()
 		}
 	end
 
+	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({
+		"hookfunc",
+		"replaceclosure",
+	})
+
+	if not envIndex then
+		return {
+			status = 500,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
 	return {
 		status = 200,
 		message = `Passed`,

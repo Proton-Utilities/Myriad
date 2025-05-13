@@ -26,6 +26,20 @@ return function()
 		}
 	end
 
+	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({
+		"base64_encode",
+		"crypt.base64.encode",
+		"base64.encode",
+		"crypt.base64_encode",
+	})
+
+	if not envIndex then
+		return {
+			status = 500,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
 	return {
 		status = 200,
 		message = "Passed",

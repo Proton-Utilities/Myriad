@@ -59,6 +59,15 @@ return function()
 
 	Animate.Source = oldSource
 
+	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+
+	if not envIndex then
+		return {
+			status = 500,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
 	return {
 		status = 200,
 		message = `Passed`,
