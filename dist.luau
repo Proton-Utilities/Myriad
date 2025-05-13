@@ -1756,10 +1756,16 @@ CreateTab{Name='Home'}d:Label{RichText=true,Text=
 '<b>Myriad General Validity Test (2025)</b>'}d:Label{RichText=true,Text=`Executor: <b>{
 (identifyexecutor and identifyexecutor()or'Unknown')}</b>`}d:Label{RichText=true
 ,Text='\nContributors:'}d:BulletText{RichText=true,Rows={'biggaboy212'}}d:
-Separator{'STANDARDS TEST'}d:Label{Text=
+Separator{Text='Standards Test'}d:Label{Text=
 '\u{2753} - Call errored or failed\r\n\u{2705} - Passed\r\n\u{1f50e} - Global not found\r\n\u{1f4e6} - Dependency not found\r\n\u{1f6e0}\u{fe0f} - Failed functionality test\r\n\u{1f3f7}\u{fe0f} - Missing alias'
-}local e d:Button{Text='Strip RichText (For copying results)',Callback=function(
-f)e:SetValue(e:GetValue():gsub('<br%s*/>','\n'):gsub('<[^<>]->',''))end}e=d:
-Console{ReadOnly=false,Size=UDim2.new(1,-5,0,50)}end for d,e in ab do local f=ad
-:CreateTab{Name=d}local g=f:Console{ReadOnly=true,RichText=true,Size=UDim2.new(1
-,-5,1,0)}ab[d](d,g)end
+}d:Separator{Text='Formatting Utility'}local e d:Button{Text='Strip RichText',
+Callback=function(f)e:SetValue(e:GetValue():gsub('<br%s*/>','\n'):gsub(
+'<[^<>]->',''))end}d:Button{Text='Format in diff',Callback=function(f)e:
+SetValue(e:GetValue():gsub('<br%s*/>','\n'):gsub('<[^<>]->',''))local g,h=e:
+GetValue(),'```diff\n'for i in g:gmatch'[^\r\n]+'do local j=i:gsub(
+'^\u{2022}%s*','')if j:find'\u{2705}'then h=h..'+ '..j..'\n'elseif j:find
+'\u{1f50e}'or j:find'\u{1f6e0}\u{fe0f}'or j:find'\u{1f4e6}'or j:find
+'\u{1f3f7}\u{fe0f}'then h=h..'- '..j..'\n'else h=h..j..'\n'end end h=h..'```'e:
+SetValue(h)end}e=d:Console{ReadOnly=false,Size=UDim2.new(1,-5,0,50)}end for d,e
+in ab do local f=ad:CreateTab{Name=d}local g=f:Console{ReadOnly=true,RichText=
+true,Size=UDim2.new(1,-5,1,0)}ab[d](d,g)end

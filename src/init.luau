@@ -38,7 +38,7 @@ do
 		},
 	})
 
-	home:Separator({"STANDARDS TEST"})
+	home:Separator({ Text = "Standards Test" })
 
 	home:Label({
 		Text = [[❓ - Call errored or failed
@@ -46,16 +46,49 @@ do
 🔎 - Global not found
 📦 - Dependency not found
 🛠️ - Failed functionality test
-🏷️ - Missing alias]]
+🏷️ - Missing alias]],
 	})
 
+	home:Separator({ Text = "Formatting Utility" })
+
 	local inputOutput = nil
+
 	home:Button({
-		Text = "Strip RichText (For copying results)",
+		Text = "Strip RichText",
 		Callback = function(self)
 			inputOutput:SetValue(inputOutput:GetValue():gsub("<br%s*/>", "\n"):gsub("<[^<>]->", ""))
 		end,
 	})
+
+	home:Button({
+		Text = "Format in diff",
+		Callback = function(self)
+			inputOutput:SetValue(inputOutput:GetValue():gsub("<br%s*/>", "\n"):gsub("<[^<>]->", ""))
+			local input = inputOutput:GetValue()
+			local output = "```diff\n"
+	
+			for line in input:gmatch("[^\r\n]+") do
+				local cleaned = line:gsub("^•%s*", "")
+	
+				if cleaned:find("✅") then
+					output = output .. "+ " .. cleaned .. "\n"
+				elseif
+					cleaned:find("🔎")
+					or cleaned:find("🛠️")
+					or cleaned:find("📦")
+					or cleaned:find("🏷️")
+				then
+					output = output .. "- " .. cleaned .. "\n"
+				else
+					output = output .. cleaned .. "\n"
+				end
+			end
+	
+			output = output .. "```"
+			inputOutput:SetValue(output)
+		end,
+	})	
+
 	inputOutput = home:Console({
 		ReadOnly = false,
 		Size = UDim2.new(1, -5, 0, 50),
