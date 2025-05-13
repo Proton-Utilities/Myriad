@@ -1645,10 +1645,10 @@ not table.find(getscripts(),d)then return{status=500,message=
 find(getscripts(),ad)then return{status=500,message=
 'ServerScript found in returned table'}end local e,f=a.load'f'{}if not e then
 return{status=501,message=`Alias not found: {f}`}end return{status=200,message=`Passed`
-}end end function a.T()return function()local aa,ab=pcall(function()return game.
-Players.LocalPlayer.Character.Animate end)if not getfenv(0).getloadedmodules
-then return{status=400,message='Global not found'}elseif not aa then return{
-status=401,message=
+}end end function a.T()return function()local aa,ab=pcall(function()return game:
+GetService'StarterPlayer'.StarterPlayerScripts.PlayerModule end)if not getfenv(0
+).getloadedmodules then return{status=400,message='Global not found'}elseif not
+aa then return{status=401,message=
 [[Testing dependency 'PlayerModule' not found. Try testing on 'a literal baseplate']]
 }end local ad,d,e=require(ab),Instance.new'ModuleScript',getloadedmodules()if
 not table.find(e,ab)then return{status=500,message=

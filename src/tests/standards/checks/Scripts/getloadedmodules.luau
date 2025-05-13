@@ -2,7 +2,7 @@
 --!nolint
 
 return function()
-	local indexedModule, module = pcall(function() return game.Players.LocalPlayer.Character.Animate end)
+	local indexedModule, module = pcall(function() return game:GetService("StarterPlayer").StarterPlayerScripts.PlayerModule end)
 	if not getfenv(0).getloadedmodules then
 		return {
 			status = 400,
