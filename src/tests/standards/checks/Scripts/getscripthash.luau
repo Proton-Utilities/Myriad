@@ -20,7 +20,7 @@ return function()
 		return getscripthash(Animate)
 	end)
 	local noBytecodeSuccess, noBytecodeReturned = pcall(function()
-		return getscripthash(hashNoBytecode)
+		return getscripthash(noBytecodeScript)
 	end)
 
 	if not animateSuccess then

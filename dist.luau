@@ -1670,10 +1670,9 @@ end)if not getfenv(0).getscripthash then return{status=400,message=
 'Global not found'}elseif not aa then return{status=401,message=
 [[Testing dependency 'Animate' not found. Try testing on 'a literal baseplate']]
 }end local ad,d,e=Instance.new'LocalScript',pcall(function()return
-getscripthash(ab)end)local f,g=pcall(function()return getscripthash(
-hashNoBytecode)end)if not d then return{status=500,message=
-"Failed to get bytecode of 'Animate'"}elseif not f then return{status=500,
-message=
+getscripthash(ab)end)local f,g=pcall(function()return getscripthash(ad)end)if
+not d then return{status=500,message="Failed to get bytecode of 'Animate'"}
+elseif not f then return{status=500,message=
 [[Failed to get script w/ no bytecode. Errored instead of returning nil.]]}
 elseif typeof(e)~='string'then return{status=500,message=
 'Did not return a hash string'}elseif hashNoBytecode~=nil then return{status=500
