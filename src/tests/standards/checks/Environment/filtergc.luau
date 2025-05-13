@@ -15,7 +15,7 @@ return function()
 	end
 
 	local originalTable = setmetatable({
-		dummy_key = "dummy_value",
+		MYRIAD = "MYRI",
 	}, {
 		__index = function() end
 	})
@@ -29,7 +29,7 @@ return function()
 	}, true)
 
 	local foundTable = filtergc("table", {
-		KeyValuePairs = { dummy_key = "dummy_value" },
+		KeyValuePairs = { MYRIAD = "MYRI" },
 		Metatable = getmetatable(originalTable),
 	}, true)
 

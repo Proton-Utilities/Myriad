@@ -1492,20 +1492,19 @@ return{status=500,message='Original table not found'}end local c,d=a.load'f'{}if
 not c then return{status=501,message=`Alias not found: {d}`}end return{status=
 200,message=`Passed`}end end function a.A()return function()if not getfenv(0).
 filtergc then return{status=400,message='Global not found'}end local aa='MYRIAD'
-local ab,ac=function()print('MYRIAD',aa)end,setmetatable({dummy_key=
-'dummy_value'},{__index=function()end})task.wait(0.1)local ad,c=filtergc(
-'function',{Constants={'MYRIAD'},Upvalues={'MYRIAD'},IgnoreExecutor=false},true)
-,filtergc('table',{KeyValuePairs={dummy_key='dummy_value'},Metatable=
-getmetatable(ac)},true)if ad~=ab then return{status=500,message=
-'filtergc failed to retrieve the original function'}elseif c~=ac then return{
-status=500,message='filtergc failed to retrieve the original table'}end local d,
-e=a.load'f'{}if not d then return{status=501,message=`Alias not found: {e}`}end
-return{status=200,message='Passed'}end end function a.B()return function()if not
-getfenv(0).gethui then return{status=400,message='Global not found'}end local aa
-=gethui()if not(aa:IsA'ScreenGui'or aa:IsA'BasePlayerGui'or aa:IsA'Folder')then
-return{status=500,message=
-'Container is not a ScreenGui, BasePlayerGui, or Folder'}end if aa==game:
-GetService'CoreGui'then return{status=500,message=
+local ab,ac=function()print('MYRIAD',aa)end,setmetatable({MYRIAD='MYRI'},{
+__index=function()end})task.wait(0.1)local ad,c=filtergc('function',{Constants={
+'MYRIAD'},Upvalues={'MYRIAD'},IgnoreExecutor=false},true),filtergc('table',{
+KeyValuePairs={MYRIAD='MYRI'},Metatable=getmetatable(ac)},true)if ad~=ab then
+return{status=500,message='filtergc failed to retrieve the original function'}
+elseif c~=ac then return{status=500,message=
+'filtergc failed to retrieve the original table'}end local d,e=a.load'f'{}if not
+d then return{status=501,message=`Alias not found: {e}`}end return{status=200,
+message='Passed'}end end function a.B()return function()if not getfenv(0).gethui
+then return{status=400,message='Global not found'}end local aa=gethui()if not(aa
+:IsA'ScreenGui'or aa:IsA'BasePlayerGui'or aa:IsA'Folder')then return{status=500,
+message='Container is not a ScreenGui, BasePlayerGui, or Folder'}end if aa==game
+:GetService'CoreGui'then return{status=500,message=
 'Container cannot be an uncloned reference to CoreGui'}end local ab,ac=a.load'f'
 {'get_hidden_gui'}if not ab then return{status=501,message=`Alias not found: {ac
 }`}end return{status=200,message=`Passed`}end end function a.C()return function(
