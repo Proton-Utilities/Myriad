@@ -1277,15 +1277,15 @@ then error('Expected number within range (0, 1024), got: '..tostring(c),0)else
 local d={}for e=33,57 do table.insert(d,string.char(e))end for e=65,90 do table.
 insert(d,string.char(e))end for e=97,122 do table.insert(d,string.char(e))end
 local e={}for f=1,c do local g=math.random(1,#d)table.insert(e,d[g])end return
-table.concat(e)end end return b end function a.f()return function(aa)local ab=
-function(ab)local ac=getfenv(0)for ad in string.gmatch(ab,'[^%.]+')do ac=ac and
-ac[ad]if ac==nil then break end end return ac end for ac,ad in ipairs(aa)do if
-not ab(ad)then return false,ad end end return true end end function a.g()return
-function()local aa=a.load'e'if not getfenv(0).crypt or not getfenv(0).crypt.
-encrypt then return{status=400,message='Global not found'}end local ab,ac,ad,ae=
-'1234567890abcdef','GMVIsgHnxm0YDYwUGkBhtRWSrSsfRMjY','1234567890abcdef','CBC'
-local b,c=pcall(function()return crypt.encrypt(ab,ac,ad,ae)end)if not b then
-return{status=500,message='Encrypt failed: '..tostring(c)}end local d,e=
+table.concat(e)end end return b end function a.f()return function(aa)for ab,ac
+in ipairs(aa)do local ad=getfenv(0)for ae in string.gmatch(ac,'[^%.]+')do ad=ad
+and ad[ae]if ad==nil then break end end if not ad then return false,ac end end
+return true end end function a.g()return function()local aa=a.load'e'if not
+getfenv(0).crypt or not getfenv(0).crypt.encrypt then return{status=400,message=
+'Global not found'}end local ab,ac,ad,ae='1234567890abcdef',
+'GMVIsgHnxm0YDYwUGkBhtRWSrSsfRMjY','1234567890abcdef','CBC'local b,c=pcall(
+function()return crypt.encrypt(ab,ac,ad,ae)end)if not b then return{status=500,
+message='Encrypt failed: '..tostring(c)}end local d,e=
 'G3H9Fk0PSWKs46qqlbA3VKnzfz7wRRTh',aa.base64encode(c)if e~=d then return{status=
 500,message="Encrypted data doesn't match reference data"}end local f,g=a.load
 'f'{}if not f then return{status=500,message=`Alias not found: {g}`}end return{
@@ -1754,6 +1754,9 @@ Vulnerability=a.load'ag'}local ad=aa:TabsWindow{Title=
 CreateTab{Name='Home'}d:Label{RichText=true,Text=
 '<b>Myriad General Validity Test (2025)</b>'}d:Label{RichText=true,Text=`Executor: <b>{
 (identifyexecutor and identifyexecutor()or'Unknown')}</b>`}d:Label{RichText=true
-,Text='\nContributors:'}d:BulletText{RichText=true,Rows={'biggaboy212'}}end for
-d,e in ab do local f=ad:CreateTab{Name=d}local g=f:Console{ReadOnly=true,
-RichText=true,Size=UDim2.new(1,-5,1,0)}ab[d](d,g)end
+,Text='\nContributors:'}d:BulletText{RichText=true,Rows={'biggaboy212'}}d:
+Separator()local e d:Button{Text='Strip RichText (For copying results)',Callback
+=function(f)e:SetValue(e:GetValue():gsub('<br%s*/>','\n'):gsub('<[^<>]->',''))
+end}e=d:Console{ReadOnly=false,Size=UDim2.new(1,-5,0,50)}end for d,e in ab do
+local f=ad:CreateTab{Name=d}local g=f:Console{ReadOnly=true,RichText=true,Size=
+UDim2.new(1,-5,1,-25)}ab[d](d,g)end

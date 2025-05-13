@@ -1,4 +1,5 @@
 --!nocheck
+--!nolint UnknownGlobal
 
 local Interface = require("dependencies/ReGui/ReGui.luau")
 
@@ -36,6 +37,20 @@ do
 			"biggaboy212",
 		},
 	})
+
+	home:Separator()
+
+	local inputOutput = nil
+	home:Button({
+		Text = "Strip RichText (For copying results)",
+		Callback = function(self)
+			inputOutput:SetValue(inputOutput:GetValue():gsub("<br%s*/>", "\n"):gsub("<[^<>]->", ""))
+		end,
+	})
+	inputOutput = home:Console({
+		ReadOnly = false,
+		Size = UDim2.new(1, -5, 0, 50),
+	})
 end
 
 for name, test in tests do
@@ -43,7 +58,7 @@ for name, test in tests do
 	local output = tab:Console({
 		ReadOnly = true,
 		RichText = true,
-		Size = UDim2.new(1, -5, 1, 0),
+		Size = UDim2.new(1, -5, 1, -25),
 	})
 
 	tests[name](name, output)

@@ -2,19 +2,15 @@
 --!nolint
 
 return function(aliases)
-    local function resolvePath(path)
+    for _, alias in ipairs(aliases) do
         local index = getfenv(0)
     
-        for segment in string.gmatch(path, "[^%.]+") do
+        for segment in string.gmatch(alias, "[^%.]+") do
             index = index and index[segment]
             if index == nil then break end
         end
     
-        return index
-    end    
-
-    for _, alias in ipairs(aliases) do
-        if not resolvePath(alias) then
+        if not index then
             return false, alias 
         end
     end
