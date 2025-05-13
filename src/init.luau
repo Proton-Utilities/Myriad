@@ -74,6 +74,7 @@ do
 					output = output .. "+ " .. cleaned .. "\n"
 				elseif
 					cleaned:find("🔎")
+					or cleaned:find("❓")
 					or cleaned:find("🛠️")
 					or cleaned:find("📦")
 					or cleaned:find("🏷️")
