@@ -254,13 +254,13 @@ return function(name, tab)
 				local executor, executorVers = identifyexecutor()
 
 				local metadata = string.format(
-					"\n\n-- Metadata --\nGenerated: %s\nExecutor: %s\nVersion: %s",
-					os.date("%Y-%m-%d %H:%M:%S"),
+					"@metadata {\n  \"generated\": \"%s\",\n  \"executor\": \"%s\",\n  \"version\": \"%s\",\n} \n\n",
+					DateTime.now():ToIsoDate(),
 					executor,
 					executorVers
-				)
+				)				
 
-				output:SetValue(input .. metadata)
+				output:SetValue(metadata .. input)
 			end
 		end)
 	end

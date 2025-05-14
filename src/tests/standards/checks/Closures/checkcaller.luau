@@ -7,6 +7,11 @@ return function()
 			status = 400,
 			message = "Global not found",
 		}
+	elseif not getfenv(0).hookmetamethod then
+		return {
+			status = 401,
+			message = "Dependency 'hookmetamethod' missing",
+		}
 	end
 
 	local callerFromThread = checkcaller()
@@ -19,6 +24,8 @@ return function()
 		end
 		return original(...)
 	end)
+
+	tostring(game)
 
 	task.wait(0.1)
 

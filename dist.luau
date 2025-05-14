@@ -1650,9 +1650,11 @@ getfunctionhash(d)then return{status=500,message=
 'Passed when given a lua standard C closure'}end local f,g=a.load'f'{}if not f
 then return{status=501,message=`Alias not found: {g}`}end return{status=200,
 message=`Passed`}end end function a.R()return function()if not getfenv(0).
-checkcaller then return{status=400,message='Global not found'}end local aa,ab,ad
-=(checkcaller())ad=hookmetamethod(game,'__namecall',function(...)if ab==nil then
-ab=checkcaller()end return ad(...)end)task.wait(0.1)hookmetamethod(game,
+checkcaller then return{status=400,message='Global not found'}elseif not
+getfenv(0).hookmetamethod then return{status=401,message=
+"Dependency 'hookmetamethod' missing"}end local aa,ab,ad=(checkcaller())ad=
+hookmetamethod(game,'__namecall',function(...)if ab==nil then ab=checkcaller()
+end return ad(...)end)tostring(game)task.wait(0.1)hookmetamethod(game,
 '__namecall',ad)if aa~=true then return{status=500,message=
 'checkcaller() returned false in executor thread'}elseif ab~=false then return{
 status=500,message='checkcaller() did not return false in a hook'}end local b,c=
@@ -1819,10 +1821,16 @@ identifyexecutor and identifyexecutor()or'Unknown'}`)i(`{d.bullet} Tested: {n}`)
 i(`{d.bullet} Passed: {l}`)i(`{d.bullet} Failed: {m}`)i(`{d.bullet} Pass Rate: {
 math.round(l/n*100)}%`)if c.includeMetadata then local o,p,q=h:GetValue(),
 identifyexecutor()local r=string.format(
-'\n\n-- Metadata --\nGenerated: %s\nExecutor: %s\nVersion: %s',os.date
-'%Y-%m-%d %H:%M:%S',p,q)h:SetValue(o..r)end end)end ab:Button{Text='Run test',
-Callback=function()coroutine.wrap(k)()end}do local l=ab:TreeNode{Title=
-'Test options'}l:Combo{Label='Status filter',Selected='All',Items={'All',
+[[@metadata {
+  "generated": "%s",
+  "executor": "%s",
+  "version": "%s",
+} 
+
+]]
+,DateTime.now():ToIsoDate(),p,q)h:SetValue(r..o)end end)end ab:Button{Text=
+'Run test',Callback=function()coroutine.wrap(k)()end}do local l=ab:TreeNode{
+Title='Test options'}l:Combo{Label='Status filter',Selected='All',Items={'All',
 '\u{2705} Pass','\u{2753} Ambiguous','\u{1f50e} Missing','\u{1f4e6} Dependency',
 '\u{1f6e0}\u{fe0f} Functionality','\u{1f3f7}\u{fe0f} Alias'},Callback=function(m
 ,n)local o={All=false,['\u{2705} Pass']=e[200],['\u{2753} Ambiguous']=e[0],[
