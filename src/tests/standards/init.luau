@@ -29,6 +29,18 @@ return function(name, tab)
 	}
 
 	local checks = {
+		Closures = {
+			["islclosure"] = require("checks/Closures/islclosure.luau"),
+			["iscclosure"] = require("checks/Closures/iscclosure.luau"),
+			["isexecutorclosure"] = require("checks/Closures/isexecutorclosure.luau"),
+			["newcclosure"] = require("checks/Closures/newcclosure.luau"),
+			["clonefunction"] = require("checks/Closures/clonefunction.luau"),
+			["hookfunction"] = require("checks/Closures/hookfunction.luau"),
+			["restorefunction"] = require("checks/Closures/restorefunction.luau"),
+			["getfunctionhash"] = require("checks/Closures/getfunctionhash.luau"),
+			["checkcaller"] = require("checks/Closures/checkcaller.luau"),
+		},
+
 		crypt = {
 			["crypt.encrypt"] = require("checks/crypt/encrypt.luau"),
 			["crypt.decrypt"] = require("checks/crypt/decrypt.luau"),
@@ -36,11 +48,14 @@ return function(name, tab)
 			["crypt.generatebytes"] = require("checks/crypt/generatebytes.luau"),
 			["crypt.base64encode"] = require("checks/crypt/base64encode.luau"),
 			["crypt.base64decode"] = require("checks/crypt/base64decode.luau"),
-			["crypt.lz4compress"] = require("checks/crypt/lz4compress.luau"),
-			["crypt.lz4decompress"] = require("checks/crypt/lz4decompress.luau"),
 			["crypt.hash"] = require("checks/crypt/hash.luau"),
 			["crypt.random"] = require("checks/crypt/random.luau"),
 			["crypt.hmac"] = require("checks/crypt/hmac.luau"),
+		},
+
+		debug = {
+			["getconstant"] = require("checks/debug/getconstant.luau"),
+			["getconstants"] = require("checks/debug/getconstants.luau"),
 		},
 
 		Drawing = {
@@ -59,12 +74,15 @@ return function(name, tab)
 			["filtergc"] = require("checks/Environment/filtergc.luau"),
 		},
 
+		Filesystem = {},
+
 		Instances = {
 			["gethui"] = require("checks/Instances/gethui.luau"),
 			["cloneref"] = require("checks/Instances/cloneref.luau"),
 			["compareinstances"] = require("checks/Instances/compareinstances.luau"),
 			["fireclickdetector"] = require("checks/Instances/fireclickdetector.luau"),
 			["fireproximityprompt"] = require("checks/Instances/fireproximityprompt.luau"),
+			["saveinstance"] = require("checks/Instances/saveinstance.luau"),
 		},
 
 		Metatable = {
@@ -73,21 +91,27 @@ return function(name, tab)
 			["setreadonly"] = require("checks/Metatable/setreadonly.luau"),
 		},
 
-		Closures = {
-			["islclosure"] = require("checks/Closures/islclosure.luau"),
-			["iscclosure"] = require("checks/Closures/iscclosure.luau"),
-			["isexecutorclosure"] = require("checks/Closures/isexecutorclosure.luau"),
-			["newcclosure"] = require("checks/Closures/newcclosure.luau"),
-			["clonefunction"] = require("checks/Closures/clonefunction.luau"),
-			["hookfunction"] = require("checks/Closures/hookfunction.luau"),
-			["restorefunction"] = require("checks/Closures/restorefunction.luau"),
-			["getfunctionhash"] = require("checks/Closures/getfunctionhash.luau"),
-			["checkcaller"] = require("checks/Closures/checkcaller.luau"),
-		},
-
 		Miscellaneous = {
 			["identifyexecutor"] = require("checks/Miscellaneous/identifyexecutor.luau"),
 			["setclipboard"] = require("checks/Miscellaneous/setclipboard.luau"),
+			["setfpscap"] = require("checks/Miscellaneous/setfpscap.luau"),
+			["getfpscap"] = require("checks/Miscellaneous/getfpscap.luau"),
+			["request"] = require("checks/Miscellaneous/request.luau"),
+			["lz4compress"] = require("checks/Miscellaneous/lz4compress.luau"),
+			["lz4decompress"] = require("checks/Miscellaneous/lz4decompress.luau"),
+		},
+
+		External = {
+			["messagebox"] = require("checks/External/messagebox.luau"),
+			["rconsoleprint"] = require("checks/External/rconsoleprint.luau"),
+			["rconsoleinfo"] = require("checks/External/rconsoleinfo.luau"),
+			["rconsolewarn"] = require("checks/External/rconsolewarn.luau"),
+			["rconsoleerr"] = require("checks/External/rconsoleerr.luau"),
+			["rconsoleinput"] = require("checks/External/rconsoleinput.luau"),
+			["rconsoleclear"] = require("checks/External/rconsoleclear.luau"),
+			["rconsolename"] = require("checks/External/rconsolename.luau"),
+			["rconsolehide"] = require("checks/External/rconsolehide.luau"),
+			["rconsoleshow"] = require("checks/External/rconsoleshow.luau"),
 		},
 
 		Reflection = {
@@ -102,18 +126,13 @@ return function(name, tab)
 			["getsenv"] = require("checks/Scripts/getsenv.luau"),
 			["getscripthash"] = require("checks/Scripts/getscripthash.luau"),
 			["loadstring"] = require("checks/Scripts/loadstring.luau"),
+			["decompile"] = require("checks/Scripts/decompile.luau"),
 		},
 
-		rconsole = {
-			["rconsoleprint"] = require("checks/rconsole/rconsoleprint.luau"),
-			["rconsoleinfo"] = require("checks/rconsole/rconsoleinfo.luau"),
-			["rconsolewarn"] = require("checks/rconsole/rconsolewarn.luau"),
-			["rconsoleerr"] = require("checks/rconsole/rconsoleerr.luau"),
-			["rconsoleinput"] = require("checks/rconsole/rconsoleinput.luau"),
-			["rconsoleclear"] = require("checks/rconsole/rconsoleclear.luau"),
-			["rconsolename"] = require("checks/rconsole/rconsolename.luau"),
-			["rconsolehide"] = require("checks/rconsole/rconsolehide.luau"),
-			["rconsoleshow"] = require("checks/rconsole/rconsoleshow.luau"),
+		Signals = {},
+
+		WebSocket = {
+			["connect"] = require("checks/WebSocket/connect.luau"),
 		},
 	}
 
@@ -254,11 +273,11 @@ return function(name, tab)
 				local executor, executorVers = identifyexecutor()
 
 				local metadata = string.format(
-					"@metadata {\n  \"generated\": \"%s\",\n  \"executor\": \"%s\",\n  \"version\": \"%s\",\n} \n\n",
+					'@metadata {\n  "generated": "%s",\n  "executor": "%s",\n  "version": "%s",\n} \n\n',
 					DateTime.now():ToIsoDate(),
 					executor,
 					executorVers
-				)				
+				)
 
 				output:SetValue(metadata .. input)
 			end
@@ -304,14 +323,14 @@ return function(name, tab)
 		})
 
 		testOptions:SliderFloat({
-			Label = "Checkpoint delay", 
+			Label = "Checkpoint delay",
 			Default = 0.0,
-			Minimum = 0.0, 
-			Maximum = 1.0, 
+			Minimum = 0.0,
+			Maximum = 1.0,
 			Format = "Delay = %.2f",
 			Callback = function(self, value)
 				testConfig.checkpointDelay = value
-			end
+			end,
 		})
 
 		testOptions:Checkbox({

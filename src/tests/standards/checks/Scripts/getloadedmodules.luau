@@ -11,10 +11,11 @@ return function()
 	elseif not indexedModule then
 		return {
 			status = 401,
-			message = "Testing dependency 'PlayerModule' not found. Try testing on 'a literal baseplate'",
+			message = "Testing dependency 'PlayerModule' not found.",
 		}
 	end
 
+	--// Functionality test
 	local loadedModule = require(module)
 	local unloadedModule = Instance.new("ModuleScript")
 

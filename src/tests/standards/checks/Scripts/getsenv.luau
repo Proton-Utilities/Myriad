@@ -11,7 +11,7 @@ return function()
 	elseif not indexedAnimate then
 		return {
 			status = 401,
-			message = "Testing dependency 'Animate' not found. Try testing on 'a literal baseplate'",
+			message = "Testing dependency 'Animate' not found.",
 		}
 	end
 

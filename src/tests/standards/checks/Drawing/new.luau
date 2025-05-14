@@ -20,6 +20,7 @@ return function()
 					message = `{objectName} is missing property: {property} (Did you give it a default value?)`,
 				}
 			end
+			instance:Destroy()
 		end
 	end
 
