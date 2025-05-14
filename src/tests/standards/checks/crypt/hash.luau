@@ -31,7 +31,7 @@ return function()
 
 		if not success then
 			return {
-				status = 500,
+				status = 0,
 				message = `Hashing failed with {algo}: {cryptOutput}`,
 			}
 
@@ -49,6 +49,7 @@ return function()
 		end
 	end
 
+	--// Alias test
 	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
 
 	if not envIndex then

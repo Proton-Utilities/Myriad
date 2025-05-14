@@ -26,7 +26,7 @@ return function()
 	if not animateSuccess then
 		return {
 			status = 500,
-			message = "Failed to get bytecode of 'Animate'",
+			message = "Failed to get bytecode of 'Animate': " .. animateReturned,
 		}
 	elseif not noBytecodeSuccess then
 		return {
@@ -59,6 +59,7 @@ return function()
 
 	Animate.Source = oldSource
 
+	--// Alias test
 	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
 
 	if not envIndex then

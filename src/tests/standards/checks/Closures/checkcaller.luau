@@ -20,11 +20,7 @@ return function()
 		return original(...)
 	end)
 
-	task.defer(function()
-		local _ = game.Name
-	end)
-
-	task.wait()
+	task.wait(0.1)
 
 	hookmetamethod(game, "__namecall", original)
 
@@ -40,6 +36,7 @@ return function()
 		}
 	end
 
+	--// Alias test
 	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
 
 	if not envIndex then

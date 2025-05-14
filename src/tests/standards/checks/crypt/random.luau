@@ -21,7 +21,7 @@ return function()
 
 	if not baseSuccess then
 		return {
-			status = 500,
+			status = 0,
 			message = "Failed: " .. tostring(baseMessage),
 		}
 	elseif minLimSuccess then
@@ -41,6 +41,7 @@ return function()
 		}
 	end
 
+	--// Alias test
 	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
 
 	if not envIndex then

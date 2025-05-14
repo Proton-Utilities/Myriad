@@ -11,7 +11,7 @@ return function()
 
     local originalTable = {}
     local function originalFunction() end
-    task.wait(0.05)
+    task.wait(0.1)
 
     local check1
     local check2
@@ -35,7 +35,8 @@ return function()
         }
     end
 
-    local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+    --// Alias test
+	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

@@ -19,7 +19,7 @@ return function()
 	drawing.Thickness = 2
 
 	task.defer(cleardrawcache)
-	task.wait()
+	task.wait(0.1)
 	if drawing.__OBJECT_EXISTS then
 		return {
 			status = 500,
@@ -27,6 +27,7 @@ return function()
 		}
 	end
 
+	--// Alias test
 	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
 
 	if not envIndex then

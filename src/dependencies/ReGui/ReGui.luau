@@ -5053,13 +5053,17 @@ ReGui:DefineElement("Console", {
 		end
 
 		function Config:AppendText(...)
-			local NewString = "\n" .. ReGui:Concat({ ... }, " ")
+			local newContent = ReGui:Concat({ ... }, " ")
+			local value = self:GetValue()
 
-			--// Append string
-			local Value = self:GetValue()
-			self:SetValue(Value .. NewString)
+			local newString
+			if value == "" then
+				newString = newContent
+			else
+				newString = "\n" .. newContent
+			end
 
-			--// Check if content needs to be cut
+			self:SetValue(value .. newString)
 			self:CheckLineCount()
 
 			return self
@@ -7937,8 +7941,8 @@ ReGui:DefineElement("PopupModal", {
 })
 
 local PrefabsId = `rbxassetid://` .. ReGui.PrefabsId
-ReGui:Init({ 
-    Prefabs = game:GetService("InsertService"):LoadLocalAsset(PrefabsId) 
+ReGui:Init({
+	Prefabs = game:GetService("InsertService"):LoadLocalAsset(PrefabsId),
 })
 
 return ReGui

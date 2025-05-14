@@ -11,7 +11,7 @@ return function()
 
 	local upvalue = "MYRIAD"
 	local function originalFunction()
-		print("MYRIAD", upvalue)
+		return "MYRIAD", upvalue
 	end
 
 	local originalTable = setmetatable({
@@ -20,7 +20,11 @@ return function()
 		__index = function() end
 	})
 
-	task.wait(0.1)
+	local _ = originalTable.MYRIAD -- Localize
+	local _ = upvalue
+	local _ = originalFunction()
+
+	task.wait(0.2)
 
 	local foundFunc = filtergc("function", {
 		Constants = { "MYRIAD" },
@@ -45,6 +49,7 @@ return function()
 		}
 	end
 
+	--// Alias test
 	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
 
 	if not envIndex then

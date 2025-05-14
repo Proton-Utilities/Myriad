@@ -1,15 +1,19 @@
 --!nocheck
 
-return function(name, output)
-	output:Clear()
-
+return function(name, tab)
+	--// Variables
+	local currentTask = nil
+	local output = nil
 	local lastEntreePerGroup = {}
-	local numStandards = 0
-	local passed = 0
-	local failed = 0
-	local warn = function(message)
-		output:AppendText(`<font color="#FFA500">{tostring(message)}</font>`)
-	end
+	local results = {}
+
+	local testConfig = {
+		checkpointDelay = 0,
+		statusFilter = false,
+		stripRichtext = false,
+		formatDiff = false,
+		includeMetadata = false,
+	}
 
 	local uni = {
 		bullet = "•",
@@ -20,7 +24,7 @@ return function(name, output)
 		[400] = "🔎", -- Global not found
 		[401] = "📦", -- Dependency not found
 		[500] = "🛠️", -- Failed functionality test
-		[501] = "🏷️" -- Missing alias
+		[501] = "🏷️", -- Missing alias
 	}
 
 	local checks = {
@@ -56,12 +60,16 @@ return function(name, output)
 
 		Instances = {
 			["gethui"] = require("checks/Instances/gethui.luau"),
+			["cloneref"] = require("checks/Instances/cloneref.luau"),
+			["compareinstances"] = require("checks/Instances/compareinstances.luau"),
+			["fireclickdetector"] = require("checks/Instances/fireclickdetector.luau"),
+			["fireproximityprompt"] = require("checks/Instances/fireproximityprompt.luau"),
 		},
 
 		Metatable = {
 			["getrawmetatable"] = require("checks/Metatable/getrawmetatable.luau"),
 			["setrawmetatable"] = require("checks/Metatable/setrawmetatable.luau"),
-			["setreadonly"] = require("checks/Metatable/setreadonly.luau")
+			["setreadonly"] = require("checks/Metatable/setreadonly.luau"),
 		},
 
 		Closures = {
@@ -71,6 +79,7 @@ return function(name, output)
 			["newcclosure"] = require("checks/Closures/newcclosure.luau"),
 			["clonefunction"] = require("checks/Closures/clonefunction.luau"),
 			["hookfunction"] = require("checks/Closures/hookfunction.luau"),
+			["restorefunction"] = require("checks/Closures/restorefunction.luau"),
 			["getfunctionhash"] = require("checks/Closures/getfunctionhash.luau"),
 			["checkcaller"] = require("checks/Closures/checkcaller.luau"),
 		},
@@ -107,45 +116,234 @@ return function(name, output)
 		},
 	}
 
-	for groupName, group in checks do
-		lastEntreePerGroup[groupName] = nil
-		for name in group do
-			numStandards += 1
-			lastEntreePerGroup[groupName] = name
-		end
+	--// Functions
+	local printc = function(...)
+		local message = table.concat({ ... }, " ")
+		output:AppendText(message)
 	end
 
-	for groupName, group in checks do
-		output:AppendText(groupName .. ":")
-		for name, test in group do
-			local success, result = pcall(test)
-			if not success then
-				warn(`{uni.bullet} {statusCodes[0]} {name}: {result} {lastEntreePerGroup[groupName] == name and "\n" or ""}`)
-				failed += 1
-				continue
-			elseif result.status == 200 then
-				output:AppendText(
-					`{uni.bullet} {statusCodes[result.status]} {name}: {result.message} {lastEntreePerGroup[groupName] == name and "\n" or ""}`
-				)
-				passed += 1
-			else
-				warn(
-					`{uni.bullet} {statusCodes[result.status]} {name}: {result.message} {lastEntreePerGroup[groupName] == name and "\n" or ""}`
-				)
-				failed += 1
+	local warnc = function(...)
+		local message = table.concat({ ... }, " ")
+		output:AppendText(`<font color="#FFA500">{message}</font>`)
+	end
+
+	local function test()
+		if currentTask then
+			task.cancel(currentTask)
+		end
+
+		currentTask = task.spawn(function()
+			local passed = 0
+			local failed = 0
+			local numStandards = 0
+
+			for groupName, group in checks do
+				lastEntreePerGroup[groupName] = nil
+				results[groupName] = {}
+
+				for name in group do
+					numStandards += 1
+					lastEntreePerGroup[groupName] = name
+				end
 			end
-		end
+
+			for groupName, group in checks do
+				for name, test in group do
+					output:SetValue(`Testing {name}`)
+
+					local success, result = pcall(test)
+					local status, message
+
+					if not success then
+						status = 0
+						message = result
+						failed += 1
+						output:SetValue(`{name} failed`)
+					elseif result.status == 200 then
+						status = result.status
+						message = result.message
+						passed += 1
+						output:SetValue(`{name} passed`)
+					else
+						status = result.status
+						message = result.message
+						failed += 1
+						output:SetValue(`{name} failed`)
+					end
+
+					table.insert(results[groupName], {
+						name = name,
+						status = status,
+						message = message,
+						isLast = lastEntreePerGroup[groupName] == name,
+					})
+
+					if testConfig.checkpointDelay ~= 0 then
+						task.wait(testConfig.checkpointDelay)
+					end
+				end
+			end
+
+			output:Clear()
+
+			for groupName, groupResults in results do
+				local includesFilter = false
+				local groupProcessed = false
+
+				for _, result in groupResults do
+					if not testConfig.statusFilter or statusCodes[result.status] == testConfig.statusFilter then
+						if not groupProcessed then
+							printc(groupName .. ":")
+							groupProcessed = true
+						end
+						local displayFunc = (result.status == 200) and printc or warnc
+						displayFunc(`{uni.bullet} {statusCodes[result.status]} {result.name}: {result.message}`)
+						includesFilter = true
+					end
+				end
+
+				if includesFilter then
+					printc("")
+				end
+			end
+
+			if testConfig.stripRichtext then
+				output:SetValue(output:GetValue():gsub("<br%s*/>", "\n"):gsub("<[^<>]->", ""))
+			end
+			if testConfig.formatDiff then -- Why is GPT so goated
+				output:SetValue(output:GetValue():gsub("<br%s*/>", "\n"):gsub("<[^<>]->", ""))
+				local input = output:GetValue()
+				local lines = {}
+
+				for i, line in ipairs(string.split(input, "\n")) do
+					local cleaned = line:gsub("^•%s*", ""):gsub("^%s*(.-)%s*$", "%1")
+
+					if cleaned ~= "" then
+						if cleaned:find("✅") then
+							lines[i] = "+ " .. cleaned
+						elseif
+							cleaned:find("🔎")
+							or cleaned:find("❓")
+							or cleaned:find("🛠️")
+							or cleaned:find("📦")
+							or cleaned:find("🏷️")
+						then
+							lines[i] = "- " .. cleaned
+						else
+							lines[i] = cleaned
+						end
+					else
+						lines[i] = ""
+					end
+				end
+
+				output:SetValue(table.concat(lines, "\n"))
+			end
+
+			printc(`Summary:`)
+			printc(`{uni.bullet} Executor: {identifyexecutor and identifyexecutor() or "Unknown"}`)
+			printc(`{uni.bullet} Tested: {numStandards}`)
+			printc(`{uni.bullet} Passed: {passed}`)
+			printc(`{uni.bullet} Failed: {failed}`)
+			printc(`{uni.bullet} Pass Rate: {math.round(passed / numStandards * 100)}%`)
+
+			if testConfig.includeMetadata then
+				local input = output:GetValue()
+
+				local executor, executorVers = identifyexecutor()
+
+				local metadata = string.format(
+					"\n\n-- Metadata --\nGenerated: %s\nExecutor: %s\nVersion: %s",
+					os.date("%Y-%m-%d %H:%M:%S"),
+					executor,
+					executorVers
+				)
+
+				output:SetValue(input .. metadata)
+			end
+		end)
 	end
 
-	output:AppendText(`Summary:`)
-	output:AppendText(`{uni.bullet} Executor: {identifyexecutor and identifyexecutor() or "Unknown"}`)
-	output:AppendText(`{uni.bullet} Tested: {numStandards}`)
-	output:AppendText(`{uni.bullet} Passed: {passed}`)
-	output:AppendText(`{uni.bullet} Failed: {failed}`)
-	output:AppendText(`{uni.bullet} Pass Rate: {math.round(passed / numStandards * 100)}%`)
+	--// Initialize
+	tab:Button({
+		Text = "Run test",
+		Callback = function()
+			coroutine.wrap(test)()
+		end,
+	})
 
-	return {
-		passed = passed,
-		failed = failed,
-	}
+	do -- Test Options
+		local testOptions = tab:TreeNode({ Title = "Test options" })
+
+		testOptions:Combo({
+			Label = "Status filter",
+			Selected = "All",
+			Items = {
+				"All",
+				"✅ Pass",
+				"❓ Ambiguous",
+				"🔎 Missing",
+				"📦 Dependency",
+				"🛠️ Functionality",
+				"🏷️ Alias",
+			},
+			Callback = function(self, value)
+				local lookup = { -- It won't be in order if I don't do it this way
+					["All"] = false,
+					["✅ Pass"] = statusCodes[200],
+					["❓ Ambiguous"] = statusCodes[0],
+					["🔎 Missing"] = statusCodes[400],
+					["📦 Dependency"] = statusCodes[401],
+					["🛠️ Functionality"] = statusCodes[500],
+					["🏷️ Alias"] = statusCodes[501],
+				}
+
+				testConfig.statusFilter = lookup[value]
+			end,
+		})
+
+		testOptions:SliderFloat({
+			Label = "Checkpoint delay", 
+			Default = 0.0,
+			Minimum = 0.0, 
+			Maximum = 1.0, 
+			Format = "Delay = %.2f",
+			Callback = function(self, value)
+				testConfig.checkpointDelay = value
+			end
+		})
+
+		testOptions:Checkbox({
+			Value = false,
+			Label = "Include Metadata",
+			Callback = function(self, value)
+				testConfig.includeMetadata = value
+			end,
+		})
+
+		testOptions:Checkbox({
+			Value = false,
+			Label = "Strip Rich-text",
+			Callback = function(self, value)
+				testConfig.stripRichtext = value
+			end,
+		})
+
+		testOptions:Checkbox({
+			Value = false,
+			Label = "Format in diff",
+			Callback = function(self, value)
+				testConfig.formatDiff = value
+			end,
+		})
+	end
+
+	output = tab:Console({
+		ReadOnly = true,
+		RichText = true,
+		LineHeight = 1.3,
+		Fill = true,
+	}):Clear()
+
+	return results
 end

@@ -22,7 +22,7 @@ return function()
 
 	if not cryptSuccess then
 		return {
-			status = 500,
+			status = 0,
 			message = "Encrypt failed: " .. tostring(cryptEncrypted),
 		}
     end
@@ -37,6 +37,7 @@ return function()
 		}
     end
 
+	--// Alias test
 	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
 
 	if not envIndex then

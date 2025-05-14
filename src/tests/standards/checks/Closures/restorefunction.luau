@@ -2,10 +2,15 @@
 --!nolint
 
 return function()
-	if not getfenv(0).hookfunction then
+	if not getfenv(0).restorefunction then
 		return {
 			status = 400,
 			message = "Global not found",
+		}
+	elseif not getfenv(0).hookfunction then
+		return {
+			status = 401,
+			message = "'hookfunction' needed to test this",
 		}
 	end
 
@@ -40,9 +45,10 @@ return function()
 		}
 	end
 
-	hookfunction(function1, original)
+	restorefunction(function1)
 
 	if function1() ~= 1 then
+		hookfunction(function1, original)
 		return {
 			status = 500,
 			message = "Restored function did not return the expected value",
@@ -51,8 +57,7 @@ return function()
 
 	--// Alias test
 	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({
-		"hookfunc",
-		"replaceclosure",
+		"restorefunc",
 	})
 
 	if not envIndex then

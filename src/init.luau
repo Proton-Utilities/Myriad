@@ -1,127 +1,73 @@
 --!nocheck
 --!nolint UnknownGlobal
 
-local Interface = require("dependencies/ReGui/ReGui.luau")
+--// Imports
+local interface = require("dependencies/ReGui/ReGui.luau")
 
+--// Services
+local players: Players = game:GetService("Players")
+local replicatedStorage: ReplicatedStorage = game:GetService("ReplicatedStorage")
+local teleportService: TeleportService = game:GetService("TeleportService")
+
+--// References
+local localPlayer: Player = players.LocalPlayer
+
+--// Variables
+local gameId = 80776325854596
 local tests = {
 	["Standards"] = require("tests/standards/init.luau"),
 	["Vulnerability"] = require("tests/vulnerabilities/init.luau"),
 }
 
-local window = Interface:TabsWindow({
-	Title = "Myriad General Validity Test",
-	Size = UDim2.fromOffset(400, 500),
-})
-
-do
-	local home = window:CreateTab({
-		Name = "Home",
+--// Initialize
+if game.PlaceId ~= gameId then
+	interface:PopupModal({
+		Title = "Teleporting to test game...",
 	})
 
-	home:Label({
-		RichText = true,
-		Text = "<b>Myriad General Validity Test (2025)</b>",
-	})
-	home:Label({
-		RichText = true,
-		Text = `Executor: <b>{(identifyexecutor and identifyexecutor() or "Unknown")}</b>`,
-	})
+	teleportService:Teleport(gameId, localPlayer)
+else
+	replicatedStorage:FindFirstChild("connected"):FireServer()
 
-	home:Label({
-		RichText = true,
-		Text = "\nContributors:",
-	})
-	home:BulletText({
-		RichText = true,
-		Rows = {
-			"biggaboy212",
-		},
+	--// UI Begin
+	local window = interface:TabsWindow({
+		Title = "Myriad General Validity Test",
+		Size = UDim2.fromOffset(400, 500),
+		Theme = "ImGui"
 	})
 
-	home:Separator({ Text = "Standards Test" })
+	-- Home
+	do
+		local home = window:CreateTab({
+			Name = "Home",
+		})
 
-	home:Label({
-		Text = [[❓ - Call errored or failed
-✅ - Passed
-🔎 - Global not found
-📦 - Dependency not found
-🛠️ - Failed functionality test
-🏷️ - Missing alias]],
-	})
+		home:Label({
+			RichText = true,
+			Text = "<b>Myriad General Validity Test (2025)</b>",
+		})
+		home:Label({
+			RichText = true,
+			Text = `Executor: <b>{(identifyexecutor and identifyexecutor() or "Unknown")}</b>`,
+		})
 
-	home:Separator({ Text = "Formatting Utility" })
+		home:Label({
+			RichText = true,
+			Text = "\nContributors:",
+		})
+		home:BulletText({
+			RichText = true,
+			Rows = {
+				"biggaboy212",
+			},
+		})
+	end
 
-	local inputOutput = nil
+	for name, test in tests do
+		local tab = window:CreateTab({ Name = name })
 
-	home:Button({
-		Text = "Strip RichText",
-		Callback = function(self)
-			inputOutput:SetValue(inputOutput:GetValue():gsub("<br%s*/>", "\n"):gsub("<[^<>]->", ""))
-		end,
-	})
-
-	home:Button({
-		Text = "Format in diff",
-		Callback = function(self)
-			inputOutput:SetValue(inputOutput:GetValue():gsub("<br%s*/>", "\n"):gsub("<[^<>]->", ""))
-			local input = inputOutput:GetValue()
-			local output = ""
-	
-			for line in input:gmatch("[^\r\n]+") do
-				local cleaned = line:gsub("^•%s*", "")
-	
-				if cleaned:find("✅") then
-					output = output .. "+ " .. cleaned .. "\n"
-				elseif
-					cleaned:find("🔎")
-					or cleaned:find("❓")
-					or cleaned:find("🛠️")
-					or cleaned:find("📦")
-					or cleaned:find("🏷️")
-				then
-					output = output .. "- " .. cleaned .. "\n"
-				else
-					output = output .. cleaned .. "\n"
-				end
-			end
-
-			inputOutput:SetValue(output)
-		end,
-	})
-
-	home:Button({
-		Text = "Append metadata",
-		Callback = function(self)
-			inputOutput:SetValue(inputOutput:GetValue():gsub("<br%s*/>", "\n"):gsub("<[^<>]->", ""))
-			local input = inputOutput:GetValue()
-	
-			local executor, executorVers = identifyexecutor()
-	
-			local metadata = string.format(
-				"\n\n-- Metadata --\nGenerated: %s\nExecutor: %s\nVersion: %s",
-				os.date("%Y-%m-%d %H:%M:%S"),
-				executor,
-				executorVers
-			)
-	
-			inputOutput:SetValue(input .. metadata)
-		end,
-	})	
-
-	inputOutput = home:Console({
-		ReadOnly = false,
-		Size = UDim2.new(1, -5, 0, 50),
-	})
-end
-
-for name, test in tests do
-	local tab = window:CreateTab({ Name = name })
-	local output = tab:Console({
-		ReadOnly = true,
-		RichText = true,
-		LineHeight = 1.3,
-		Size = UDim2.new(1, -5, 1, 0),
-	})
-
-	tests[name](name, output)
+		coroutine.wrap(function()
+			tests[name](name, tab)
+		end)()
+	end
 end

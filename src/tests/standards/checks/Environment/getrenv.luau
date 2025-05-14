@@ -45,7 +45,8 @@ return function()
         }
     end
 
-    local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+    --// Alias test
+	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

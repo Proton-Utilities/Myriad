@@ -2,30 +2,31 @@
 --!nolint
 
 return function()
-	if not getfenv(0).gethui then
+	if not getfenv(0).cloneref then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
 	end
 
-	local container = gethui()
-	if not (container:IsA("ScreenGui") or container:IsA("BasePlayerGui") or container:IsA("Folder")) then
+	local originalPart = Instance.new("Part")
+	local originalService = game:GetService("CoreGui")
+
+	if cloneref(originalPart) == originalPart then
 		return {
 			status = 500,
-			message = "Container is not a ScreenGui, BasePlayerGui, or Folder",
+			message = `Cloned part cannot be equal to original reference`,
 		}
-	end
-	if container == game:GetService("CoreGui") then
+	elseif cloneref(originalService) == originalService then
 		return {
 			status = 500,
-			message = "Container cannot be an uncloned reference to CoreGui",
+			message = `Cloned service cannot be equal to original reference`,
 		}
 	end
 
 	--// Alias test
 	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({
-		"get_hidden_gui"
+		"clonereference",
 	})
 
 	if not envIndex then
