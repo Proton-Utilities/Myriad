@@ -1,5 +1,5 @@
 {
-    "generator": "readable",
+    "generator": "dense",
     "bundle": {
         "modules_identifier": "__DIST",
         "require_mode": {
