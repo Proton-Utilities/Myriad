@@ -18,6 +18,7 @@ return function(name, tab)
 	local uni = {
 		bullet = "•",
 	}
+
 	local statusCodes = {
 		[0] = "❓", -- Call errored/failed
 		[200] = "✅", -- Passed
@@ -158,17 +159,17 @@ return function(name, tab)
 						status = 0
 						message = result
 						failed += 1
-						output:SetValue(`{name} failed`)
+						output:SetValue(`<font color="#FFA500">{name} failed</font>`)
 					elseif result.status == 200 then
 						status = result.status
 						message = result.message
 						passed += 1
-						output:SetValue(`{name} passed`)
+						output:SetValue(`<font color="#84FF00">{name} passed</font>`)
 					else
 						status = result.status
 						message = result.message
 						failed += 1
-						output:SetValue(`{name} failed`)
+						output:SetValue(`<font color="#FFA500">{name} failed</font>`)
 					end
 
 					table.insert(results[groupName], {

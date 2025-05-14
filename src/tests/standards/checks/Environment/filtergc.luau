@@ -24,7 +24,7 @@ return function()
 	local _ = upvalue
 	local _ = originalFunction()
 
-	task.wait(0.2)
+	task.wait(0.1)
 
 	local foundFunc = filtergc("function", {
 		Constants = { "MYRIAD" },

@@ -8651,7 +8651,7 @@ do
                 ab()
             end
 
-            task.wait(0.2)
+            task.wait(0.1)
 
             local ad, ae = filtergc('function', {
                 Constants = {
@@ -10369,21 +10369,21 @@ do
 
                                 m += 1
 
-                                h:SetValue(`{q} failed`)
+                                h:SetValue(`<font color="#FFA500">{q} failed</font>`)
                             elseif t.status == 200 then
                                 v = t.status
                                 w = t.message
 
                                 l += 1
 
-                                h:SetValue(`{q} passed`)
+                                h:SetValue(`<font color="#84FF00">{q} passed</font>`)
                             else
                                 v = t.status
                                 w = t.message
 
                                 m += 1
 
-                                h:SetValue(`{q} failed`)
+                                h:SetValue(`<font color="#FFA500">{q} failed</font>`)
                             end
 
                             table.insert(b[o], {
