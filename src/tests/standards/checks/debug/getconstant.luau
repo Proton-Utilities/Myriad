@@ -25,57 +25,59 @@ return function()
 	if debug.getconstant(originalFunction, 1) ~= "A" then
 		return {
 			status = 500,
-			message = "Constant 1 missing or unexpected value"
+			message = "Constant 1 missing or unexpected value",
 		}
 	elseif debug.getconstant(originalFunction, 2) ~= "print" then
 		return {
 			status = 500,
-			message = "Constant 2 missing or unexpected value"
+			message = "Constant 2 missing or unexpected value",
 		}
 	elseif debug.getconstant(originalFunction, 3) ~= nil then
 		return {
 			status = 500,
-			message = "Constant 3 should be nil"
+			message = "Constant 3 should be nil",
 		}
 	elseif debug.getconstant(originalFunction, 4) ~= "tostring" then
 		return {
 			status = 500,
-			message = "Constant 4 missing or unexpected value"
+			message = "Constant 4 missing or unexpected value",
 		}
 	elseif debug.getconstant(originalFunction, 5) ~= nil then
 		return {
 			status = 500,
-			message = "Constant 5 should be nil"
+			message = "Constant 5 should be nil",
 		}
 	elseif debug.getconstant(originalFunction, 6) ~= "Date" then
 		return {
 			status = 500,
-			message = "Constant 6 missing or unexpected value"
+			message = "Constant 6 missing or unexpected value",
 		}
 	elseif debug.getconstant(originalFunction, 7) ~= "now" then
 		return {
 			status = 500,
-			message = "Constant 7 missing or unexpected value"
+			message = "Constant 7 missing or unexpected value",
 		}
 	elseif not invalidIndexSuccess then
 		return {
 			status = 500,
-			message = "Should pass nil instead of errroing for invalid indexes"
+			message = "Should pass nil instead of errroing for invalid indexes",
 		}
 	elseif returnedMsg then
 		return {
 			status = 500,
-			message = "Constant 8 shouldn't exist"
+			message = "Constant 8 shouldn't exist",
 		}
 	elseif pcall(debug.getconstant, print, 1) then
 		return {
 			status = 500,
-			message = "Should error with C closures"
+			message = "Should error with C closures",
 		}
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({
+		"getconstant",
+	})
 
 	if not envIndex then
 		return {

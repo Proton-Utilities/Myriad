@@ -226,6 +226,37 @@ return function()
 		end
 	end
 
+	-- Lua drawing lib
+	local x1, y1, z1 = math.random(1, 255), math.random(1, 255), math.random(1, 255)
+	local parent = gethui and gethui() or game:GetService("CoreGui")
+	local parent2 = game:GetService("CoreGui")
+	local refObj = Drawing.new("Line")
+
+	refObj.Color = Color3.fromRGB(x1, y1, z1)
+	refObj.Transparency = 1 - x1 / 255
+
+	if parent then
+		for i, v in pairs(parent:GetDescendants()) do
+			if v:IsA("Frame") and v.BackgroundColor3 == refObj.Color and v.BackgroundTransparency == refObj.Transparency then
+				return {
+					status = 500,
+					message = "Drawing library almost certainly depends on ScreenGui"
+				}
+			end
+		end
+	end
+
+	if parent2 then
+		for i, v in pairs(parent2:GetDescendants()) do
+			if v:IsA("Frame") and v.BackgroundColor3 == refObj.Color and v.BackgroundTransparency == refObj.Transparency then
+				return {
+					status = 500,
+					message = "Drawing library almost certainly depends on ScreenGui"
+				}
+			end
+		end
+	end
+
 	--// Alias test
 	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
 

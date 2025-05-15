@@ -13,4 +13,5 @@
         "editor.defaultFormatter": "JohnnyMorganz.stylua"
     },
     "stylua.targetReleaseVersion": "latest",
+    "liveServer.settings.port": 5501,
 }

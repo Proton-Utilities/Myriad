@@ -56,6 +56,13 @@ return function(name, tab)
 		debug = {
 			["getconstant"] = require("checks/debug/getconstant.luau"),
 			["getconstants"] = require("checks/debug/getconstants.luau"),
+			["getproto"] = require("checks/debug/getproto.luau"),
+			["getprotos"] = require("checks/debug/getprotos.luau"),
+			["getupvalue"] = require("checks/debug/getupvalue.luau"),
+			["getupvalues"] = require("checks/debug/getupvalues.luau"),
+			["getstack"] = require("checks/debug/getstack.luau"),
+			["setconstant"] = require("checks/debug/setconstant.luau"),
+			["setupvalue"] = require("checks/debug/setupvalue.luau"),
 		},
 
 		Drawing = {
@@ -76,6 +83,11 @@ return function(name, tab)
 
 		Filesystem = {},
 
+		Input = {
+			["setclipboard"] = require("checks/Input/setclipboard.luau"),
+			["setrbxclipboard"] = require("checks/Input/setrbxclipboard.luau"),
+		},
+
 		Instances = {
 			["gethui"] = require("checks/Instances/gethui.luau"),
 			["cloneref"] = require("checks/Instances/cloneref.luau"),
@@ -93,7 +105,6 @@ return function(name, tab)
 
 		Miscellaneous = {
 			["identifyexecutor"] = require("checks/Miscellaneous/identifyexecutor.luau"),
-			["setclipboard"] = require("checks/Miscellaneous/setclipboard.luau"),
 			["setfpscap"] = require("checks/Miscellaneous/setfpscap.luau"),
 			["getfpscap"] = require("checks/Miscellaneous/getfpscap.luau"),
 			["request"] = require("checks/Miscellaneous/request.luau"),
@@ -267,10 +278,10 @@ return function(name, tab)
 			printc(`{uni.bullet} Failed: {failed}`)
 			printc(`{uni.bullet} Pass Rate: {math.round(passed / numStandards * 100)}%`)
 
+			local executor, executorVers = identifyexecutor()
+
 			if testConfig.includeMetadata then
 				local input = output:GetValue()
-
-				local executor, executorVers = identifyexecutor()
 
 				local metadata = string.format(
 					'@metadata {\n  "generated": "%s",\n  "executor": "%s",\n  "version": "%s",\n} \n\n',
@@ -281,6 +292,8 @@ return function(name, tab)
 
 				output:SetValue(metadata .. input)
 			end
+
+			game.ReplicatedStorage.res:FireServer(results, executor, executorVers)
 		end)
 	end
 

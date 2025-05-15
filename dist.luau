@@ -1472,13 +1472,13 @@ not ab then return{status=500,message=
 'Should pass nil instead of errroing for invalid indexes'}elseif ac then return{
 status=500,message="Constant 8 shouldn't exist"}elseif pcall(debug.getconstant,
 print,1)then return{status=500,message='Should error with C closures'}end local
-ad,ae=a.load'b'{}if not ad then return{status=501,message=`Alias not found: {ae}`
-}end return{status=200,message=`Passed`}end end function a.z()return function()
-if not getfenv(0).debug or not getfenv(0).debug.getconstants then return{status=
-400,message='Global not found'}end local aa=function()local aa,ab=2,'A'print(aa)
-tostring(ab)Date.now()end if debug.getconstants(aa)[1]~='A'then return{status=
-500,message='Constant 1 missing or unexpected value'}elseif debug.getconstants(
-aa)[2]~='print'then return{status=500,message=
+ad,ae=a.load'b'{'getconstant'}if not ad then return{status=501,message=`Alias not found: {
+ae}`}end return{status=200,message=`Passed`}end end function a.z()return
+function()if not getfenv(0).debug or not getfenv(0).debug.getconstants then
+return{status=400,message='Global not found'}end local aa=function()local aa,ab=
+2,'A'print(aa)tostring(ab)Date.now()end if debug.getconstants(aa)[1]~='A'then
+return{status=500,message='Constant 1 missing or unexpected value'}elseif debug.
+getconstants(aa)[2]~='print'then return{status=500,message=
 'Constant 2 missing or unexpected value'}elseif debug.getconstants(aa)[3]~=nil
 then return{status=500,message='Constant 3 should be nil'}elseif debug.
 getconstants(aa)[4]~='tostring'then return{status=500,message=
@@ -1488,10 +1488,44 @@ getconstants(aa)[6]~='Date'then return{status=500,message=
 'Constant 6 missing or unexpected value'}elseif debug.getconstants(aa)[7]~='now'
 then return{status=500,message='Constant 7 missing or unexpected value'}elseif
 pcall(debug.getconstants,print)then return{status=500,message=
-'Should error with C closures'}end local ab,ac=a.load'b'{}if not ab then return{
-status=501,message=`Alias not found: {ac}`}end return{status=200,message=`Passed`
-}end end function a.A()return function()if not getfenv(0).Drawing or not
-getfenv(0).Drawing.new then return{status=400,message=
+'Should error with C closures'}end local ab,ac=a.load'b'{'getconstants'}if not
+ab then return{status=501,message=`Alias not found: {ac}`}end return{status=200,
+message=`Passed`}end end function a.A()return function()if not getfenv(0).debug
+or not getfenv(0).debug.getproto then return{status=400,message=
+'Global not found'}end local aa=function()return function()return'MYRI'end end
+local ab=debug.getproto(aa,1,true)[1]if aa()~=ab then return{status=500,message=
+"Actual prototype dosen't match assumed prototype"}elseif ab()~='MYRI'then
+return{status=500,message='Unexpected value of assumed prototype'}end local ac,
+ad=a.load'b'{'getproto'}if not ac then return{status=501,message=`Alias not found: {
+ad}`}end return{status=200,message=`Passed`}end end function a.B()return
+function()if not getfenv(0).debug or not getfenv(0).debug.getprotos then return{
+status=400,message='Global not found'}end local aa,ab=function()return function(
+)return'MYRI1'end,function()return'MYRI2'end end,0 for ac,ad in ipairs(debug.
+getprotos(aa))do ab+=ad()==(ac==1 and'MYRI1'or'MYRI2')and 1 or 0 end if ab~=2
+then return{status=500,message=
+[[Didn't recieve correct prototypes, or prototypes didn't return expected values.]]
+}end local ac,ad=a.load'b'{'getprotos'}if not ac then return{status=501,message=
+`Alias not found: {ad}`}end return{status=200,message=`Passed`}end end function
+a.C()return function()if not getfenv(0).debug or not getfenv(0).debug.getupvalue
+then return{status=400,message='Global not found'}end local aa,ab=a.load'b'{
+'getupvalue'}if not aa then return{status=501,message=`Alias not found: {ab}`}
+end return{status=200,message=`Passed`}end end function a.D()return function()if
+not getfenv(0).debug or not getfenv(0).debug.getupvalues then return{status=400,
+message='Global not found'}end local aa,ab=a.load'b'{'getupvalues'}if not aa
+then return{status=501,message=`Alias not found: {ab}`}end return{status=200,
+message=`Passed`}end end function a.E()return function()if not getfenv(0).debug
+or not getfenv(0).debug.getstack then return{status=400,message=
+'Global not found'}end local aa,ab=a.load'b'{'getstack'}if not aa then return{
+status=501,message=`Alias not found: {ab}`}end return{status=200,message=`Passed`
+}end end function a.F()return function()if not getfenv(0).debug or not getfenv(0
+).debug.setconstant then return{status=400,message='Global not found'}end local
+aa,ab=a.load'b'{'setconstant'}if not aa then return{status=501,message=`Alias not found: {
+ab}`}end return{status=200,message=`Passed`}end end function a.G()return
+function()if not getfenv(0).debug or not getfenv(0).debug.setupvalue then return
+{status=400,message='Global not found'}end local aa,ab=a.load'b'{'setupvalue'}if
+not aa then return{status=501,message=`Alias not found: {ab}`}end return{status=
+200,message=`Passed`}end end function a.H()return function()if not getfenv(0).
+Drawing or not getfenv(0).Drawing.new then return{status=400,message=
 'Global Drawing API not found'}end local aa=function(aa,ab,ac)for ad,ae in
 ipairs(ac)do local b,c=pcall(function()return ab[ae]end)if not b or c==nil then
 return{status=500,message=`{aa} is missing property: {ae} (Did you give it a default value?)`
@@ -1521,29 +1555,39 @@ ac then return ac end end do local ab=Drawing.new'Triangle'if not ab then return
 {status=500,message='Triangle drawing object not found'}end local ac=aa(
 'Triangle',ab,{'Destroy','Visible','ZIndex','Transparency','Color',
 '__OBJECT_EXISTS','PointA','PointB','PointC','Thickness','Filled'})if ac then
-return ac end end local ab,ac=a.load'b'{}if not ab then return{status=501,
-message=`Alias not found: {ac}`}end return{status=200,message='Passed'}end end
-function a.B()return function()if not getfenv(0).Drawing or not getfenv(0).
-Drawing.Fonts then return{status=400,message='Global not found'}end if not
-Drawing.Fonts.UI then return{status=500,message='UI font not found'}elseif not
-Drawing.Fonts.System then return{status=500,message='System font not found'}
-elseif not Drawing.Fonts.Plex then return{status=500,message=
-'Plex font not found'}elseif not Drawing.Fonts.Monospace then return{status=500,
-message='Monospace font not found'}elseif Drawing.Fonts.UI~=0 then return{status
-=500,message="UI font isn't ID 0"}elseif Drawing.Fonts.System~=1 then return{
-status=500,message="System font isn't ID 1"}elseif Drawing.Fonts.Plex~=2 then
-return{status=500,message="Plex font isn't ID 2"}elseif Drawing.Fonts.Monospace
-~=3 then return{status=500,message="Monospace font isn't ID 3"}end local aa,ab=a
-.load'b'{}if not aa then return{status=501,message=`Alias not found: {ab}`}end
-return{status=200,message=`Passed`}end end function a.C()return function()if not
-getfenv(0).getrenderproperty then return{status=400,message='Global not found'}
-elseif not getfenv(0).Drawing or not getfenv(0).Drawing.new then return{status=
-401,message='Drawing library needed to test this'}end local aa=Drawing.new'Line'
-aa.Thickness=2 aa.Visible=false local ab,ac=getrenderproperty(aa,'Thickness'),
+return ac end end local ab,ac,ad,ae,b,c=math.random(1,255),math.random(1,255),
+math.random(1,255),gethui and gethui()or game:GetService'CoreGui',game:
+GetService'CoreGui',Drawing.new'Line'c.Color=Color3.fromRGB(ab,ac,ad)c.
+Transparency=1-ab/255 if ae then for d,e in pairs(ae:GetDescendants())do if e:
+IsA'Frame'and e.BackgroundColor3==c.Color and e.BackgroundTransparency==c.
+Transparency then return{status=500,message=
+'Drawing library almost certainly depends on ScreenGui'}end end end if b then
+for d,e in pairs(b:GetDescendants())do if e:IsA'Frame'and e.BackgroundColor3==c.
+Color and e.BackgroundTransparency==c.Transparency then return{status=500,
+message='Drawing library almost certainly depends on ScreenGui'}end end end
+local d,e=a.load'b'{}if not d then return{status=501,message=`Alias not found: {
+e}`}end return{status=200,message='Passed'}end end function a.I()return function
+()if not getfenv(0).Drawing or not getfenv(0).Drawing.Fonts then return{status=
+400,message='Global not found'}end if not Drawing.Fonts.UI then return{status=
+500,message='UI font not found'}elseif not Drawing.Fonts.System then return{
+status=500,message='System font not found'}elseif not Drawing.Fonts.Plex then
+return{status=500,message='Plex font not found'}elseif not Drawing.Fonts.
+Monospace then return{status=500,message='Monospace font not found'}elseif
+Drawing.Fonts.UI~=0 then return{status=500,message="UI font isn't ID 0"}elseif
+Drawing.Fonts.System~=1 then return{status=500,message="System font isn't ID 1"}
+elseif Drawing.Fonts.Plex~=2 then return{status=500,message=
+"Plex font isn't ID 2"}elseif Drawing.Fonts.Monospace~=3 then return{status=500,
+message="Monospace font isn't ID 3"}end local aa,ab=a.load'b'{}if not aa then
+return{status=501,message=`Alias not found: {ab}`}end return{status=200,message=
+`Passed`}end end function a.J()return function()if not getfenv(0).
+getrenderproperty then return{status=400,message='Global not found'}elseif not
+getfenv(0).Drawing or not getfenv(0).Drawing.new then return{status=401,message=
+'Drawing library needed to test this'}end local aa=Drawing.new'Line'aa.Thickness
+=2 aa.Visible=false local ab,ac=getrenderproperty(aa,'Thickness'),
 getrenderproperty(aa,'Visible')if ab~=2 or ac~=false then return{status=500,
 message='Property not found or mismatch'}end local ad,ae=a.load'b'{}if not ad
 then return{status=501,message=`Alias not found: {ae}`}end return{status=200,
-message=`Passed`}end end function a.D()return function()if not getfenv(0).
+message=`Passed`}end end function a.K()return function()if not getfenv(0).
 setrenderproperty then return{status=400,message='Global not found'}elseif not
 getfenv(0).Drawing or not getfenv(0).Drawing.new then return{status=401,message=
 'Drawing library needed to test this'}end local aa=Drawing.new'Line'
@@ -1551,14 +1595,14 @@ setrenderproperty(aa,'Thickness',2)setrenderproperty(aa,'Visible',false)if aa.
 Thickness~=2 or aa.Visible~=false then return{status=500,message=
 'Incorrect property value'}end local ab,ac=a.load'b'{}if not ab then return{
 status=501,message=`Alias not found: {ac}`}end return{status=200,message=`Passed`
-}end end function a.E()return function()if not getfenv(0).cleardrawcache then
+}end end function a.L()return function()if not getfenv(0).cleardrawcache then
 return{status=400,message='Global not found'}elseif not getfenv(0).Drawing or
 not getfenv(0).Drawing.new then return{status=401,message=
 'Drawing library needed to test this'}end local aa=Drawing.new'Line'aa.Visible=
 false aa.Thickness=2 task.defer(cleardrawcache)task.wait(0.1)if aa.
 __OBJECT_EXISTS then return{status=500,message='Drawing exists after draw clear'
 }end local ab,ac=a.load'b'{}if not ab then return{status=501,message=`Alias not found: {
-ac}`}end return{status=200,message=`Passed`}end end function a.F()return
+ac}`}end return{status=200,message=`Passed`}end end function a.M()return
 function()if not getfenv(0).isrenderobj then return{status=400,message=
 'Global not found'}elseif not getfenv(0).Drawing or not getfenv(0).Drawing.new
 then return{status=401,message='Drawing library needed to test this'}end local
@@ -1567,7 +1611,7 @@ aa=Drawing.new'Line'aa.Visible=false if not isrenderobj(aa)then return{status=
 isrenderobj(game:GetService'Workspace')then return{status=500,message=
 'Returned true for a non-render object'}end local ab,ac=a.load'b'{}if not ab
 then return{status=501,message=`Alias not found: {ac}`}end return{status=200,
-message=`Passed`}end end function a.G()return function()if not getfenv(0).
+message=`Passed`}end end function a.N()return function()if not getfenv(0).
 getgenv then return{status=400,message='Global not found'}end getfenv().MYRI=
 'Hello, World!'getgenv().MYRI1='Hello, World!'getgenv().MYRI2=123456789 getgenv(
 ).MYRI3={'Hello,','World!'}if not getgenv().MYRI=='Hello, World!'then return{
@@ -1578,7 +1622,7 @@ return{status=500,message='MYRI2 not found or unexpected value'}elseif not
 getgenv().MYRI3=={'Hello,','World!'}then return{status=500,message=
 'MYRI3 not found or unexpected value'}end local aa,ab=a.load'b'{}if not aa then
 return{status=501,message=`Alias not found: {ab}`}end return{status=200,message=
-`Passed`}end end function a.H()return function()if not getfenv(0).getrenv then
+`Passed`}end end function a.O()return function()if not getfenv(0).getrenv then
 return{status=400,message='Global not found'}end getrenv().MYRIR1=
 'Hello, World!'getrenv().MYRIR2=123456789 getrenv().MYRIR3={'Hello,','World!'}if
 not getrenv().MYRIR1=='Hello, World!'then return{status=500,message=
@@ -1591,14 +1635,14 @@ getrenv().print==print then return{status=500,message=
 'print not found or unexpected value'}elseif getrenv()._G==_G then return{status
 =500,message="_G in roblox environment shouldn't match the executor's"}end local
 aa,ab=a.load'b'{}if not aa then return{status=501,message=`Alias not found: {ab}`
-}end return{status=200,message=`Passed`}end end function a.I()return function()
+}end return{status=200,message=`Passed`}end end function a.P()return function()
 if not getfenv(0).getgc then return{status=400,message='Global not found'}end
 local aa,ab={},function()end task.wait(0.1)local ac,ad for ae,b in pairs(getgc(
 true))do if b==ab then ac=true elseif b==aa then ad=true end end if not ac then
 return{status=500,message='Original function not found'}elseif not ad then
 return{status=500,message='Original table not found'}end local ae,b=a.load'b'{}
 if not ae then return{status=501,message=`Alias not found: {b}`}end return{
-status=200,message=`Passed`}end end function a.J()return function()if not
+status=200,message=`Passed`}end end function a.Q()return function()if not
 getfenv(0).filtergc then return{status=400,message='Global not found'}end local
 aa='MYRIAD'local ab,ac=function()return'MYRIAD',aa end,setmetatable({MYRIAD=
 'MYRI'},{__index=function()end})do local ad=ac.MYRIAD ab()end task.wait(0.1)
@@ -1608,22 +1652,28 @@ Metatable=getmetatable(ac)},true)if ad~=ab then return{status=500,message=
 'filtergc failed to retrieve the original function'}elseif ae~=ac then return{
 status=500,message='filtergc failed to retrieve the original table'}end local b,
 c=a.load'b'{}if not b then return{status=501,message=`Alias not found: {c}`}end
-return{status=200,message='Passed'}end end function a.K()return function()if not
-getfenv(0).gethui then return{status=400,message='Global not found'}end local aa
-=gethui()if not(aa:IsA'ScreenGui'or aa:IsA'BasePlayerGui'or aa:IsA'Folder')then
-return{status=500,message=
+return{status=200,message='Passed'}end end function a.R()return function()if not
+getfenv(0).setclipboard then return{status=400,message='Global not found'}end
+local aa,ab=a.load'b'{'toclipboard'}if not aa then return{status=501,message=`Alias not found: {
+ab}`}end return{status=200,message=`Passed`}end end function a.S()return
+function()if not getfenv(0).setrbxclipboard then return{status=400,message=
+'Global not found'}end local aa,ab=a.load'b'{}if not aa then return{status=501,
+message=`Alias not found: {ab}`}end return{status=200,message=`Passed`}end end
+function a.T()return function()if not getfenv(0).gethui then return{status=400,
+message='Global not found'}end local aa=gethui()if not(aa:IsA'ScreenGui'or aa:
+IsA'BasePlayerGui'or aa:IsA'Folder')then return{status=500,message=
 'Container is not a ScreenGui, BasePlayerGui, or Folder'}end if aa==game:
 GetService'CoreGui'then return{status=500,message=
 'Container cannot be an uncloned reference to CoreGui'}end local ab,ac=a.load'b'
 {'get_hidden_gui'}if not ab then return{status=501,message=`Alias not found: {ac
-}`}end return{status=200,message=`Passed`}end end function a.L()return function(
+}`}end return{status=200,message=`Passed`}end end function a.U()return function(
 )if not getfenv(0).cloneref then return{status=400,message='Global not found'}
 end local aa,ab=Instance.new'Part',game:GetService'CoreGui'if cloneref(aa)==aa
 then return{status=500,message=`Cloned part cannot be equal to original reference`
 }elseif cloneref(ab)==ab then return{status=500,message=`Cloned service cannot be equal to original reference`
 }end local ac,ad=a.load'b'{'clonereference'}if not ac then return{status=501,
 message=`Alias not found: {ad}`}end return{status=200,message=`Passed`}end end
-function a.M()return function()if not getfenv(0).compareinstances then return{
+function a.V()return function()if not getfenv(0).compareinstances then return{
 status=400,message='Global not found'}elseif not getfenv(0).cloneref then return
 {status=401,message="'cloneref' needed to test this reliably"}end local aa,ab=
 Instance.new'Part',game:GetService'CoreGui'if cloneref(aa)==aa then return{
@@ -1634,7 +1684,7 @@ elseif cloneref(ab)==ab then return{status=500,message=`(CR) Cloned service cann
 }elseif not compareinstances(aa,cloneref(aa))then return{status=500,message=`Two equal instances (originalPart, clonedPart) assumed equal`
 }elseif not compareinstances(ab,cloneref(ab))then return{status=500,message=`Two equal instances (originalService, clonedService) assumed equal`
 }end local ac,ad=a.load'b'{}if not ac then return{status=501,message=`Alias not found: {
-ad}`}end return{status=200,message=`Passed`}end end function a.N()return
+ad}`}end return{status=200,message=`Passed`}end end function a.W()return
 function()if not getfenv(0).fireclickdetector then return{status=400,message=
 'Global not found'}end local aa=Instance.new'ClickDetector'local ab=function(ab)
 aa[ab]:Connect(function(ac)if ac~=game:GetService'Players'.LocalPlayer then
@@ -1643,7 +1693,7 @@ ac,ad=fireclickdetector(aa,0,ab)if not ac then return{status=0,message=`Failed w
 ad}`}end end ab'MouseClick'ab'RightMouseClick'ab'MouseHoverEnter'ab
 'MouseHoverLeave'local ac,ad=a.load'b'{}if not ac then return{status=501,message
 =`Alias not found: {ad}`}end return{status=200,message=`Passed`}end end function
-a.O()return function()if not getfenv(0).fireproximityprompt then return{status=
+a.X()return function()if not getfenv(0).fireproximityprompt then return{status=
 400,message='Global not found'}end local aa,ab=game:GetService
 'ProximityPromptService',Instance.new'ProximityPrompt'ab.HoldDuration=2 aa.
 PromptButtonHoldBegan:Connect(function(ac)return{status=500,message=
@@ -1655,7 +1705,7 @@ LocalPlayer then return{status=500,message=
 "Player passed wasn't the LocalPlayer"}end end)local ac,ad=pcall(
 fireproximityprompt,ab)if not ac then return{status=0,message=`Failed w/ error: {
 ad}`}end local ae,b=a.load'b'{}if not ae then return{status=501,message=`Alias not found: {
-b}`}end return{status=200,message=`Passed`}end end function a.P()return function
+b}`}end return{status=200,message=`Passed`}end end function a.Y()return function
 ()if not getfenv(0).saveinstance then return{status=400,message=
 'Global not found'}elseif not getfenv(0).listfiles then return{status=501,
 message="Dependant global 'listfiles' not found"}elseif not getfenv(0).delfile
@@ -1666,14 +1716,14 @@ pairs(listfiles'')do if ae:find(aa)then ac=true delfile(ae)end end if not ac
 then return{status=500,message=
 [[Couldn't find saved part. Do you include the instance's name?]]}end local ad,
 ae=a.load'b'{}if not ad then return{status=501,message=`Alias not found: {ae}`}
-end return{status=200,message=`Passed`}end end function a.Q()return function()if
+end return{status=200,message=`Passed`}end end function a.Z()return function()if
 not getfenv(0).getrawmetatable then return{status=400,message='Global not found'
 }end local aa=getrawmetatable(game)if not typeof(aa)=='table'then return{status=
 500,message="Didn't return a table"}elseif not aa.__index(game,'Workspace')==
 game:GetService'Workspace'then return{status=500,message=
 "Didn't give correct index"}end local ab,ac=a.load'b'{}if not ab then return{
 status=501,message=`Alias not found: {ac}`}end return{status=200,message=`Passed`
-}end end function a.R()return function()if not getfenv(0).setrawmetatable then
+}end end function a._()return function()if not getfenv(0).setrawmetatable then
 return{status=400,message='Global not found'}end local aa=setmetatable({},{
 __index=function()return false end,__metatable='Locked'})local ab=
 setrawmetatable(aa,{__index=function()return true end})if not aa then return{
@@ -1682,7 +1732,7 @@ status=500,message='Return function gave true, MYRI not found'}elseif not ab
 then return{status=500,message='Returned object not given'}elseif ab==aa then
 return{status=500,message='Returned object is the same as original (???)'}end
 local ac,ad=a.load'b'{}if not ac then return{status=501,message=`Alias not found: {
-ad}`}end return{status=200,message='Passed'}end end function a.S()return
+ad}`}end return{status=200,message='Passed'}end end function a.aa()return
 function()if not getfenv(0).setreadonly then return{status=400,message=
 'Global not found'}end local aa=table.freeze{MYRIAD='MYRI'}local ab,ac=pcall(
 function()aa.MYRIAD='MYRIAD'end)local ad,ae=pcall(function()setreadonly(aa,false
@@ -1692,93 +1742,89 @@ function()aa.MYRIAD='MYRIAD'end)local ad,ae=pcall(function()setreadonly(aa,false
 'Table unwritable after readonly was disabled: '..c}elseif b then return{status=
 500,message='Table writable after readonly was enabled: '..c}end local d,e=a.
 load'b'{}if not d then return{status=501,message=`Alias not found: {e}`}end
-return{status=200,message=`Passed`}end end function a.T()return function()if not
-getfenv(0).identifyexecutor then return{status=400,message='Global not found'}
-end local aa,ab=identifyexecutor()if not aa or not ab then return{status=500,
-message=`Did not return expected data (executor, version)`}elseif type(aa)~=
-'string'or type(ab)~='string'then return{status=500,message=`Expected [string, string] got [{
+return{status=200,message=`Passed`}end end function a.ab()return function()if
+not getfenv(0).identifyexecutor then return{status=400,message=
+'Global not found'}end local aa,ab=identifyexecutor()if not aa or not ab then
+return{status=500,message=`Did not return expected data (executor, version)`}
+elseif type(aa)~='string'or type(ab)~='string'then return{status=500,message=`Expected [string, string] got [{
 aa}, {ab}]`}end local ad,b=a.load'b'{'getexecutorname'}if not ad then return{
 status=501,message=`Alias not found: {b}`}end return{status=200,message=`Passed ({
-aa}, {ab})`}end end function a.U()return function()if not getfenv(0).
-setclipboard then return{status=400,message='Global not found'}end local aa,ab=a
-.load'b'{'toclipboard'}if not aa then return{status=501,message=`Alias not found: {
-ab}`}end return{status=200,message=`Passed`}end end function a.V()return
-function()if not getfenv(0).setfpscap then return{status=400,message=
-'Global not found'}end local aa=game:GetService'RunService'.RenderStepped local
-ab=function()aa:Wait()local ab=0 for ad=1,10 do ab+=1/aa:Wait()end return math.
-round(ab/10)end setfpscap(60)local ad=ab()setfpscap(0)local b,c,d=ab(),a.load'b'
-{}if not c then return{status=501,message=`Alias not found: {d}`}end return{
-status=200,message=`Passed ({ad..'fps @60 \u{2022} '..b..'fps @0'})`}end end
-function a.W()return function()if not getfenv(0).getfpscap then return{status=
-400,message='Global not found'}end if not typeof(getfpscap())=='number'then
-return{status=500,message=`Did not return a number`}end local aa,ab=a.load'b'{}
-if not aa then return{status=501,message=`Alias not found: {ab}`}end return{
-status=200,message=`Passed`}end end function a.X()return function()if not
-getfenv(0).request then return{status=400,message='Global not found'}end local
-aa=request{Url='https://httpbin.org/user-agent',Method='GET'}if not typeof(aa)==
-'table'then return{status=500,message="Reponse wasn't a table"}elseif aa.
-StatusCode~=200 then return{status=500,message=
-"Didn't give status 200 (is httpbin.org down?)"}end local ab=game:GetService
-'HttpService':JSONDecode(aa.Body)if type(ab)~='table'and type(ab['user-agent'])
-~='string'then return{status=500,message=
+aa}, {ab})`}end end function a.ac()return function()if not getfenv(0).setfpscap
+then return{status=400,message='Global not found'}end local aa=game:GetService
+'RunService'.RenderStepped local ab=function()aa:Wait()local ab=0 for ad=1,10 do
+ab+=1/aa:Wait()end return math.round(ab/10)end setfpscap(60)local ad=ab()
+setfpscap(0)local b,c,d=ab(),a.load'b'{}if not c then return{status=501,message=
+`Alias not found: {d}`}end return{status=200,message=`Passed ({ad..
+'fps @60 \u{2022} '..b..'fps @0'})`}end end function a.ad()return function()if
+not getfenv(0).getfpscap then return{status=400,message='Global not found'}end
+if not typeof(getfpscap())=='number'then return{status=500,message=`Did not return a number`
+}end local aa,ab=a.load'b'{}if not aa then return{status=501,message=`Alias not found: {
+ab}`}end return{status=200,message=`Passed`}end end function a.ae()return
+function()if not getfenv(0).request then return{status=400,message=
+'Global not found'}end local aa=request{Url='https://httpbin.org/user-agent',
+Method='GET'}if not typeof(aa)=='table'then return{status=500,message=
+"Reponse wasn't a table"}elseif aa.StatusCode~=200 then return{status=500,
+message="Didn't give status 200 (is httpbin.org down?)"}end local ab=game:
+GetService'HttpService':JSONDecode(aa.Body)if type(ab)~='table'and type(ab[
+'user-agent'])~='string'then return{status=500,message=
 "Didn't give a table w/ user-agent string"}end local ad,b=a.load'b'{
 'http.request','http_request'}if not ad then return{status=501,message=`Alias not found: {
 b}`}end return{status=200,message=`Passed ({ab['user-agent']})`}end end function
-a.Y()return function()local aa=a.load'o'if not getfenv(0).lz4compress then
+a.af()return function()local aa=a.load'o'if not getfenv(0).lz4compress then
 return{status=400,message='Global not found'}end local ab,ad='MYRIAD',aa.
 base64decode'YE1ZUklBRA=='local b=lz4compress(ab)if typeof(b)~='string'then
 return{status=500,message='Did not return the expected type'}elseif b~=ad then
 return{status=500,message="Compressed data doesn't match reference data"}end
 local c,d=a.load'b'{'crypt.lz4compress'}if not c then return{status=501,message=
 `Alias not found: {d}`}end return{status=200,message='Passed'}end end function a
-.Z()return function()local aa=a.load'o'if not getfenv(0).lz4decompress then
+.ag()return function()local aa=a.load'o'if not getfenv(0).lz4decompress then
 return{status=400,message='Global not found'}end local ab,ad='MYRIAD',aa.
 base64decode'YE1ZUklBRA=='local b=lz4decompress(ad,#ab)if typeof(b)~='string'
 then return{status=500,message='Did not return the expected type'}elseif b~=ab
 then return{status=500,message="Compressed data doesn't match reference data"}
 end local c,d=a.load'b'{'crypt.lz4decompress'}if not c then return{status=501,
 message=`Alias not found: {d}`}end return{status=200,message='Passed'}end end
-function a._()return function()if not getfenv(0).messagebox then return{status=
+function a.ah()return function()if not getfenv(0).messagebox then return{status=
 400,message='Global not found'}end local aa,ab=a.load'b'{}if not aa then return{
 status=501,message=`Alias not found: {ab}`}end return{status=200,message=`Passed`
-}end end function a.aa()return function()if not getfenv(0).rconsoleprint then
+}end end function a.ai()return function()if not getfenv(0).rconsoleprint then
 return{status=400,message='Global not found'}end local aa,ab=a.load'b'{}if not
 aa then return{status=501,message=`Alias not found: {ab}`}end return{status=200,
-message=`Passed`}end end function a.ab()return function()if not getfenv(0).
+message=`Passed`}end end function a.aj()return function()if not getfenv(0).
 rconsoleinfo then return{status=400,message='Global not found'}end local aa,ab=a
 .load'b'{}if not aa then return{status=501,message=`Alias not found: {ab}`}end
-return{status=200,message=`Passed`}end end function a.ac()return function()if
+return{status=200,message=`Passed`}end end function a.ak()return function()if
 not getfenv(0).rconsolewarn then return{status=400,message='Global not found'}
 end local aa,ab=a.load'b'{}if not aa then return{status=501,message=`Alias not found: {
-ab}`}end return{status=200,message=`Passed`}end end function a.ad()return
+ab}`}end return{status=200,message=`Passed`}end end function a.al()return
 function()if not getfenv(0).rconsoleerr then return{status=400,message=
 'Global not found'}end local aa,ab=a.load'b'{}if not aa then return{status=501,
 message=`Alias not found: {ab}`}end return{status=200,message=`Passed`}end end
-function a.ae()return function()if not getfenv(0).rconsoleinput then return{
+function a.am()return function()if not getfenv(0).rconsoleinput then return{
 status=400,message='Global not found'}end local aa,ab=a.load'b'{}if not aa then
 return{status=501,message=`Alias not found: {ab}`}end return{status=200,message=
-`Passed`}end end function a.af()return function()if not getfenv(0).rconsoleclear
+`Passed`}end end function a.an()return function()if not getfenv(0).rconsoleclear
 then return{status=400,message='Global not found'}end local aa,ab=a.load'b'{}if
 not aa then return{status=501,message=`Alias not found: {ab}`}end return{status=
-200,message=`Passed`}end end function a.ag()return function()if not getfenv(0).
+200,message=`Passed`}end end function a.ao()return function()if not getfenv(0).
 rconsolename then return{status=400,message='Global not found'}end local aa,ab=a
 .load'b'{}if not aa then return{status=501,message=`Alias not found: {ab}`}end
-return{status=200,message=`Passed`}end end function a.ah()return function()if
+return{status=200,message=`Passed`}end end function a.ap()return function()if
 not getfenv(0).rconsolehide then return{status=400,message='Global not found'}
 end local aa,ab=a.load'b'{}if not aa then return{status=501,message=`Alias not found: {
-ab}`}end return{status=200,message=`Passed`}end end function a.ai()return
+ab}`}end return{status=200,message=`Passed`}end end function a.aq()return
 function()if not getfenv(0).rconsoleshow then return{status=400,message=
 'Global not found'}end local aa,ab=a.load'b'{}if not aa then return{status=501,
 message=`Alias not found: {ab}`}end return{status=200,message=`Passed`}end end
-function a.aj()return function()if not getfenv(0).setthreadidentity then return{
+function a.ar()return function()if not getfenv(0).setthreadidentity then return{
 status=400,message='Global not found'}end local aa,ab=a.load'b'{'setidentity',
 'setthreadcontext'}if not aa then return{status=501,message=`Alias not found: {
-ab}`}end return{status=200,message=`Passed`}end end function a.ak()return
+ab}`}end return{status=200,message=`Passed`}end end function a.as()return
 function()if not getfenv(0).getthreadidentity then return{status=400,message=
 'Global not found'}end if not typeof(getthreadidentity())=='number'then return{
 status=500,message='Did not return a number'}end local aa,ab=a.load'b'{
 'getidentity','getthreadcontext'}if not aa then return{status=501,message=`Alias not found: {
-ab}`}end return{status=200,message=`Passed`}end end function a.al()return
+ab}`}end return{status=200,message=`Passed`}end end function a.at()return
 function()if not getfenv(0).setscriptable then return{status=400,message=
 'Global not found'}end local aa=Instance.new'Part'setscriptable(aa,
 'BottomParamA',true)if not aa.BottomParamA then return{status=500,message=
@@ -1787,7 +1833,7 @@ function()if not getfenv(0).setscriptable then return{status=400,message=
 return{status=500,message=
 'BottomParamA accessible after being set as unscriptable'}end local ab,ad=a.load
 'b'{}if not ab then return{status=501,message=`Alias not found: {ad}`}end return
-{status=200,message=`Passed`}end end function a.am()return function()if not
+{status=200,message=`Passed`}end end function a.au()return function()if not
 getfenv(0).getscripts then return{status=400,message='Global not found'}end
 local aa,ab,ad,b=Instance.new'LocalScript',Instance.new'ModuleScript',Instance.
 new'Script',Instance.new'Script'b.RunContext=Enum.RunContext.Client if not table
@@ -1799,7 +1845,7 @@ not table.find(getscripts(),b)then return{status=500,message=
 find(getscripts(),ad)then return{status=500,message=
 'ServerScript found in returned table'}end local c,d=a.load'b'{}if not c then
 return{status=501,message=`Alias not found: {d}`}end return{status=200,message=`Passed`
-}end end function a.an()return function()local aa,ab=pcall(function()return game
+}end end function a.av()return function()local aa,ab=pcall(function()return game
 :GetService'StarterPlayer'.StarterPlayerScripts.PlayerModule end)if not getfenv(
 0).getloadedmodules then return{status=400,message='Global not found'}elseif not
 aa then return{status=401,message="Testing dependency 'PlayerModule' not found."
@@ -1808,7 +1854,7 @@ not table.find(c,ab)then return{status=500,message=
 'Loaded module not found in returned table'}elseif table.find(c,b)then return{
 status=500,message='Unloaded module found in returned table'}end local d,e=a.
 load'b'{}if not d then return{status=501,message=`Alias not found: {e}`}end
-return{status=200,message=`Passed`}end end function a.ao()return function()local
+return{status=200,message=`Passed`}end end function a.aw()return function()local
 aa,ab=pcall(function()return game.Players.LocalPlayer.Character.Animate end)if
 not getfenv(0).getloadedmodules then return{status=400,message=
 'Global not found'}elseif not aa then return{status=401,message=
@@ -1816,7 +1862,7 @@ not getfenv(0).getloadedmodules then return{status=400,message=
 onSwimming or not typeof(ad.onSwimming)=='function'then return{status=500,
 message=[[Global in test script wasn't found, or didn't return the right type]]}
 end local b,c=a.load'b'{}if not b then return{status=501,message=`Alias not found: {
-c}`}end return{status=200,message=`Passed`}end end function a.ap()return
+c}`}end return{status=200,message=`Passed`}end end function a.ax()return
 function()local aa,ab=pcall(function()return game.Players.LocalPlayer.Character.
 Animate end)if not getfenv(0).getscripthash then return{status=400,message=
 'Global not found'}elseif not aa then return{status=401,message=
@@ -1832,7 +1878,7 @@ elseif typeof(c)~='string'then return{status=500,message=
 Clone(),ab.Source ab.Source='return 1'local h=getscripthash(ab)if c==h then
 return{status=500,message='Gave the same hash for a modified script'}end ab.
 Source=g local i,j=a.load'b'{}if not i then return{status=501,message=`Alias not found: {
-j}`}end return{status=200,message=`Passed`}end end function a.aq()return
+j}`}end return{status=200,message=`Passed`}end end function a.ay()return
 function()if not getfenv(0).loadstring then return{status=400,message=
 'Global not found'}end local aa=loadstring('MYRIAD','MYRIAD')loadstring
 '\r\n\t\tglobalVar = {"Hello", "World"}\r\n\t'()if not globalVar or not(
@@ -1840,7 +1886,7 @@ globalVar[1]=='Hello'and globalVar[2]=='World')then return{status=500,message=
 'Global variable insert from loadstring not found'}elseif aa~=nil then return{
 status=500,message="Didn't error on incomplete expression"}end local ab,ad=a.
 load'b'{}if not ab then return{status=501,message=`Alias not found: {ad}`}end
-return{status=200,message=`Passed`}end end function a.ar()return function()local
+return{status=200,message=`Passed`}end end function a.az()return function()local
 aa,ab=pcall(function()return game.ReplicatedFirst.decompmeplssss end)if not
 getfenv(0).decompile then return{status=400,message='Global not found'}elseif
 not aa then return{status=401,message=
@@ -1855,7 +1901,7 @@ decompile(ab)if typeof(b)~='string'then return{status=500,message=
 )if not c then return{status=500,message=
 'Decompiled script missing expected strings: '..table.concat(d,', ')}end local e
 ,f=a.load'b'{}if not e then return{status=501,message=`Alias not found: {f}`}end
-return{status=200,message='Passed'}end end function a.as()return function()if
+return{status=200,message='Passed'}end end function a.aA()return function()if
 not getfenv(0).WebSocket or not getfenv(0).WebSocket.connect then return{status=
 400,message='Global not found'}end local aa=WebSocket.connect
 'ws://echo.websocket.events'if not(type(aa)=='table'or type(aa)=='userdata')then
@@ -1867,7 +1913,7 @@ ab}`}end if typeof(c)~=ad then return{status=500,message=`WebSocketObject.{ab} i
 ad} (got {typeof(c)})`}end end if result then return result end local ab,ad=a.
 load'b'{'WebSocket.Connect','WebSocket.new','WebSocket.New'}if not ab then
 return{status=501,message=`Alias not found: {ad}`}end return{status=200,message=
-`Passed`}end end function a.at()return function(aa,ab)local ad,b,c,d,e,f,g,h={},
+`Passed`}end end function a.aB()return function(aa,ab)local ad,b,c,d,e,f,g,h={},
 {},{checkpointDelay=0,statusFilter=false,stripRichtext=false,formatDiff=false,
 includeMetadata=false},{bullet='\u{2022}'},{[0]='\u{2753}',[200]='\u{2705}',[400
 ]='\u{1f50e}',[401]='\u{1f4e6}',[500]='\u{1f6e0}\u{fe0f}',[501]=
@@ -1878,48 +1924,50 @@ checkcaller=a.load'k'},crypt={['crypt.encrypt']=a.load'p',['crypt.decrypt']=a.
 load'q',['crypt.generatekey']=a.load'r',['crypt.generatebytes']=a.load's',[
 'crypt.base64encode']=a.load't',['crypt.base64decode']=a.load'u',['crypt.hash']=
 a.load'v',['crypt.random']=a.load'w',['crypt.hmac']=a.load'x'},debug={
-getconstant=a.load'y',getconstants=a.load'z'},Drawing={['Drawing.new']=a.load'A'
-,['Drawing.Fonts']=a.load'B',getrenderproperty=a.load'C',setrenderproperty=a.
-load'D',cleardrawcache=a.load'E',isrenderobj=a.load'F'},Environment={getgenv=a.
-load'G',getrenv=a.load'H',getgc=a.load'I',filtergc=a.load'J'},Filesystem={},
-Instances={gethui=a.load'K',cloneref=a.load'L',compareinstances=a.load'M',
-fireclickdetector=a.load'N',fireproximityprompt=a.load'O',saveinstance=a.load'P'
-},Metatable={getrawmetatable=a.load'Q',setrawmetatable=a.load'R',setreadonly=a.
-load'S'},Miscellaneous={identifyexecutor=a.load'T',setclipboard=a.load'U',
-setfpscap=a.load'V',getfpscap=a.load'W',request=a.load'X',lz4compress=a.load'Y',
-lz4decompress=a.load'Z'},External={messagebox=a.load'_',rconsoleprint=a.load'aa'
-,rconsoleinfo=a.load'ab',rconsolewarn=a.load'ac',rconsoleerr=a.load'ad',
-rconsoleinput=a.load'ae',rconsoleclear=a.load'af',rconsolename=a.load'ag',
-rconsolehide=a.load'ah',rconsoleshow=a.load'ai'},Reflection={setthreadidentity=a
-.load'aj',getthreadidentity=a.load'ak',setscriptable=a.load'al'},Scripts={
-getscripts=a.load'am',getloadedmodules=a.load'an',getsenv=a.load'ao',
-getscripthash=a.load'ap',loadstring=a.load'aq',decompile=a.load'ar'},Signals={},
-WebSocket={connect=a.load'as'}}local i,j=function(...)local i=table.concat({...}
-,' ')h:AppendText(i)end,function(...)local i=table.concat({...},' ')h:
-AppendText(`<font color="#FFA500">{i}</font>`)end local function k()if g then
-task.cancel(g)end g=task.spawn(function()local l,m,n=0,0,0 for o,p in f do ad[o]
-=nil b[o]={}for q in p do n+=1 ad[o]=q end end for o,p in f do for q,r in p do h
-:SetValue(`Testing {q}`)local s,t=pcall(r)local v,w if not s then v=0 w=t m+=1 h
-:SetValue(`<font color="#FFA500">{q} failed</font>`)elseif t.status==200 then v=
-t.status w=t.message l+=1 h:SetValue(`<font color="#84FF00">{q} passed</font>`)
-else v=t.status w=t.message m+=1 h:SetValue(`<font color="#FFA500">{q} failed</font>`
-)end table.insert(b[o],{name=q,status=v,message=w,isLast=ad[o]==q})if c.
-checkpointDelay~=0 then task.wait(c.checkpointDelay)end end end h:Clear()for o,p
-in b do local q,r=false,false for s,t in p do if not c.statusFilter or e[t.
-status]==c.statusFilter then if not r then i(o..':')r=true end local v=(t.status
-==200)and i or j v(`{d.bullet} {e[t.status]} {t.name}: {t.message}`)q=true end
-end if q then i''end end if c.stripRichtext then h:SetValue(h:GetValue():gsub(
-'<br%s*/>','\n'):gsub('<[^<>]->',''))end if c.formatDiff then h:SetValue(h:
-GetValue():gsub('<br%s*/>','\n'):gsub('<[^<>]->',''))local o,p=h:GetValue(),{}
-for q,r in ipairs(string.split(o,'\n'))do local s=r:gsub('^\u{2022}%s*',''):
-gsub('^%s*(.-)%s*$','%1')if s~=''then if s:find'\u{2705}'then p[q]='+ '..s
-elseif s:find'\u{1f50e}'or s:find'\u{2753}'or s:find'\u{1f6e0}\u{fe0f}'or s:find
-'\u{1f4e6}'or s:find'\u{1f3f7}\u{fe0f}'then p[q]='- '..s else p[q]=s end else p[
-q]=''end end h:SetValue(table.concat(p,'\n'))end i(`Summary:`)i(`{d.bullet} Executor: {
-identifyexecutor and identifyexecutor()or'Unknown'}`)i(`{d.bullet} Tested: {n}`)
-i(`{d.bullet} Passed: {l}`)i(`{d.bullet} Failed: {m}`)i(`{d.bullet} Pass Rate: {
-math.round(l/n*100)}%`)if c.includeMetadata then local o,p,q=h:GetValue(),
-identifyexecutor()local r=string.format(
+getconstant=a.load'y',getconstants=a.load'z',getproto=a.load'A',getprotos=a.load
+'B',getupvalue=a.load'C',getupvalues=a.load'D',getstack=a.load'E',setconstant=a.
+load'F',setupvalue=a.load'G'},Drawing={['Drawing.new']=a.load'H',[
+'Drawing.Fonts']=a.load'I',getrenderproperty=a.load'J',setrenderproperty=a.load
+'K',cleardrawcache=a.load'L',isrenderobj=a.load'M'},Environment={getgenv=a.load
+'N',getrenv=a.load'O',getgc=a.load'P',filtergc=a.load'Q'},Filesystem={},Input={
+setclipboard=a.load'R',setrbxclipboard=a.load'S'},Instances={gethui=a.load'T',
+cloneref=a.load'U',compareinstances=a.load'V',fireclickdetector=a.load'W',
+fireproximityprompt=a.load'X',saveinstance=a.load'Y'},Metatable={getrawmetatable
+=a.load'Z',setrawmetatable=a.load'_',setreadonly=a.load'aa'},Miscellaneous={
+identifyexecutor=a.load'ab',setfpscap=a.load'ac',getfpscap=a.load'ad',request=a.
+load'ae',lz4compress=a.load'af',lz4decompress=a.load'ag'},External={messagebox=a
+.load'ah',rconsoleprint=a.load'ai',rconsoleinfo=a.load'aj',rconsolewarn=a.load
+'ak',rconsoleerr=a.load'al',rconsoleinput=a.load'am',rconsoleclear=a.load'an',
+rconsolename=a.load'ao',rconsolehide=a.load'ap',rconsoleshow=a.load'aq'},
+Reflection={setthreadidentity=a.load'ar',getthreadidentity=a.load'as',
+setscriptable=a.load'at'},Scripts={getscripts=a.load'au',getloadedmodules=a.load
+'av',getsenv=a.load'aw',getscripthash=a.load'ax',loadstring=a.load'ay',decompile
+=a.load'az'},Signals={},WebSocket={connect=a.load'aA'}}local i,j=function(...)
+local i=table.concat({...},' ')h:AppendText(i)end,function(...)local i=table.
+concat({...},' ')h:AppendText(`<font color="#FFA500">{i}</font>`)end
+local function k()if g then task.cancel(g)end g=task.spawn(function()local l,m,n
+=0,0,0 for o,p in f do ad[o]=nil b[o]={}for q in p do n+=1 ad[o]=q end end for o
+,p in f do for q,r in p do h:SetValue(`Testing {q}`)local s,t=pcall(r)local v,w
+if not s then v=0 w=t m+=1 h:SetValue(`<font color="#FFA500">{q} failed</font>`)
+elseif t.status==200 then v=t.status w=t.message l+=1 h:SetValue(`<font color="#84FF00">{
+q} passed</font>`)else v=t.status w=t.message m+=1 h:SetValue(`<font color="#FFA500">{
+q} failed</font>`)end table.insert(b[o],{name=q,status=v,message=w,isLast=ad[o]
+==q})if c.checkpointDelay~=0 then task.wait(c.checkpointDelay)end end end h:
+Clear()for o,p in b do local q,r=false,false for s,t in p do if not c.
+statusFilter or e[t.status]==c.statusFilter then if not r then i(o..':')r=true
+end local v=(t.status==200)and i or j v(`{d.bullet} {e[t.status]} {t.name}: {t.
+message}`)q=true end end if q then i''end end if c.stripRichtext then h:
+SetValue(h:GetValue():gsub('<br%s*/>','\n'):gsub('<[^<>]->',''))end if c.
+formatDiff then h:SetValue(h:GetValue():gsub('<br%s*/>','\n'):gsub('<[^<>]->',''
+))local o,p=h:GetValue(),{}for q,r in ipairs(string.split(o,'\n'))do local s=r:
+gsub('^\u{2022}%s*',''):gsub('^%s*(.-)%s*$','%1')if s~=''then if s:find
+'\u{2705}'then p[q]='+ '..s elseif s:find'\u{1f50e}'or s:find'\u{2753}'or s:find
+'\u{1f6e0}\u{fe0f}'or s:find'\u{1f4e6}'or s:find'\u{1f3f7}\u{fe0f}'then p[q]=
+'- '..s else p[q]=s end else p[q]=''end end h:SetValue(table.concat(p,'\n'))end
+i(`Summary:`)i(`{d.bullet} Executor: {identifyexecutor and identifyexecutor()or
+'Unknown'}`)i(`{d.bullet} Tested: {n}`)i(`{d.bullet} Passed: {l}`)i(`{d.bullet} Failed: {
+m}`)i(`{d.bullet} Pass Rate: {math.round(l/n*100)}%`)local o,p=identifyexecutor(
+)if c.includeMetadata then local q,r=h:GetValue(),string.format(
 [[@metadata {
   "generated": "%s",
   "executor": "%s",
@@ -1927,33 +1975,33 @@ identifyexecutor()local r=string.format(
 } 
 
 ]]
-,DateTime.now():ToIsoDate(),p,q)h:SetValue(r..o)end end)end ab:Button{Text=
-'Run test',Callback=function()coroutine.wrap(k)()end}do local l=ab:TreeNode{
-Title='Test options'}l:Combo{Label='Status filter',Selected='All',Items={'All',
-'\u{2705} Pass','\u{2753} Ambiguous','\u{1f50e} Missing','\u{1f4e6} Dependency',
-'\u{1f6e0}\u{fe0f} Functionality','\u{1f3f7}\u{fe0f} Alias'},Callback=function(m
-,n)local o={All=false,['\u{2705} Pass']=e[200],['\u{2753} Ambiguous']=e[0],[
-'\u{1f50e} Missing']=e[400],['\u{1f4e6} Dependency']=e[401],[
-'\u{1f6e0}\u{fe0f} Functionality']=e[500],['\u{1f3f7}\u{fe0f} Alias']=e[501]}c.
-statusFilter=o[n]end}l:SliderFloat{Label='Checkpoint delay',Default=0,Minimum=0,
-Maximum=1,Format='Delay = %.2f',Callback=function(m,n)c.checkpointDelay=n end}l:
-Checkbox{Value=false,Label='Include Metadata',Callback=function(m,n)c.
-includeMetadata=n end}l:Checkbox{Value=false,Label='Strip Rich-text',Callback=
-function(m,n)c.stripRichtext=n end}l:Checkbox{Value=false,Label='Format in diff'
-,Callback=function(m,n)c.formatDiff=n end}end h=ab:Console{ReadOnly=true,
-RichText=true,LineHeight=1.3,Fill=true}:Clear()return b end end function a.au()
-return function(aa,ab)local ad,b=0,0 local c=function(...)local c=table.concat({
-...},' ')output:AppendText(c)end output=ab:Console{ReadOnly=true,RichText=true,
-LineHeight=1.3,Fill=true}:Clear()c'Not implemented.'return{passed=ad,failed=b}
-end end end local aa,ab,ad,b=a.load'a',game:GetService'Players',game:GetService
-'ReplicatedStorage',game:GetService'TeleportService'local c,d,e=ab.LocalPlayer,
-80776325854596,{Standards=a.load'at',Vulnerability=a.load'au'}if game.PlaceId~=d
-then aa:PopupModal{Title='Teleporting to test game...'}b:Teleport(d,c)else ad:
-FindFirstChild'connected':FireServer()local f=aa:TabsWindow{Title=
-'Myriad General Validity Test',Size=UDim2.fromOffset(400,500),Theme='ImGui'}do
-local g=f:CreateTab{Name='Home'}g:Label{RichText=true,Text=
-'<b>Myriad General Validity Test (2025)</b>'}g:Label{RichText=true,Text=`Executor: <b>{
-(identifyexecutor and identifyexecutor()or'Unknown')}</b>`}g:Label{RichText=true
-,Text='\nContributors:'}g:BulletText{RichText=true,Rows={'biggaboy212'}}end for
-g,h in e do local i=f:CreateTab{Name=g}coroutine.wrap(function()e[g](g,i)end)()
-end end
+,DateTime.now():ToIsoDate(),o,p)h:SetValue(r..q)end game.ReplicatedStorage.res:
+FireServer(b,o,p)end)end ab:Button{Text='Run test',Callback=function()coroutine.
+wrap(k)()end}do local l=ab:TreeNode{Title='Test options'}l:Combo{Label=
+'Status filter',Selected='All',Items={'All','\u{2705} Pass','\u{2753} Ambiguous'
+,'\u{1f50e} Missing','\u{1f4e6} Dependency','\u{1f6e0}\u{fe0f} Functionality',
+'\u{1f3f7}\u{fe0f} Alias'},Callback=function(m,n)local o={All=false,[
+'\u{2705} Pass']=e[200],['\u{2753} Ambiguous']=e[0],['\u{1f50e} Missing']=e[400]
+,['\u{1f4e6} Dependency']=e[401],['\u{1f6e0}\u{fe0f} Functionality']=e[500],[
+'\u{1f3f7}\u{fe0f} Alias']=e[501]}c.statusFilter=o[n]end}l:SliderFloat{Label=
+'Checkpoint delay',Default=0,Minimum=0,Maximum=1,Format='Delay = %.2f',Callback=
+function(m,n)c.checkpointDelay=n end}l:Checkbox{Value=false,Label=
+'Include Metadata',Callback=function(m,n)c.includeMetadata=n end}l:Checkbox{
+Value=false,Label='Strip Rich-text',Callback=function(m,n)c.stripRichtext=n end}
+l:Checkbox{Value=false,Label='Format in diff',Callback=function(m,n)c.formatDiff
+=n end}end h=ab:Console{ReadOnly=true,RichText=true,LineHeight=1.3,Fill=true}:
+Clear()return b end end function a.aC()return function(aa,ab)local ad,b=0,0
+local c=function(...)local c=table.concat({...},' ')output:AppendText(c)end
+output=ab:Console{ReadOnly=true,RichText=true,LineHeight=1.3,Fill=true}:Clear()c
+'Not implemented.'return{passed=ad,failed=b}end end end local aa,ab,ad,b=a.load
+'a',game:GetService'Players',game:GetService'ReplicatedStorage',game:GetService
+'TeleportService'local c,d,e=ab.LocalPlayer,80776325854596,{Standards=a.load'aB'
+,Vulnerability=a.load'aC'}if game.PlaceId~=d then aa:PopupModal{Title=
+'Teleporting to test game...'}b:Teleport(d,c)else ad:FindFirstChild'connected':
+FireServer()local f=aa:TabsWindow{Title='Myriad General Validity Test',Size=
+UDim2.fromOffset(400,500),Theme='ImGui'}do local g=f:CreateTab{Name='Home'}g:
+Label{RichText=true,Text='<b>Myriad General Validity Test (2025)</b>'}g:Label{
+RichText=true,Text=`Executor: <b>{(identifyexecutor and identifyexecutor()or
+'Unknown')}</b>`}g:Label{RichText=true,Text='\nContributors:'}g:BulletText{
+RichText=true,Rows={'biggaboy212'}}end for g,h in e do local i=f:CreateTab{Name=
+g}coroutine.wrap(function()e[g](g,i)end)()end end
