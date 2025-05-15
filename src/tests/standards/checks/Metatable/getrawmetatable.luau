@@ -19,7 +19,17 @@ return function()
 	elseif not mt.__index(game, "Workspace") == game:GetService("Workspace") then
 		return {
 			status = 500,
-			message = "Didn't give correct index",
+			message = "Didn't give correct index for Workspace",
+		}
+	elseif not mt.__index(game, "ReplicatedStorage") == game:GetService("ReplicatedStorage") then
+		return {
+			status = 500,
+			message = "Didn't give correct index for ReplicatedStorage",
+		}
+	elseif not mt.__index(game, "Stats") == game:GetService("Stats") then
+		return {
+			status = 500,
+			message = "Didn't give correct index for Stats",
 		}
 	end
 

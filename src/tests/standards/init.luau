@@ -178,42 +178,62 @@ return function(name, tab)
 				end
 			end
 
-			for groupName, group in checks do
-				for name, test in group do
-					output:SetValue(`Testing {name}`)
+			-- Step 1: Flatten all tests across groups
+local flatTests = {}
+for groupName, group in checks do
+	for name, test in group do
+		table.insert(flatTests, {
+			groupName = groupName,
+			name = name,
+			test = test,
+		})
+	end
+end
 
-					local success, result = pcall(test)
-					local status, message
+-- Step 2: Run tests in sequence, with global "next test"
+for i, entry in ipairs(flatTests) do
+	local groupName = entry.groupName
+	local name = entry.name
+	local test = entry.test
 
-					if not success then
-						status = 0
-						message = result
-						failed += 1
-						output:SetValue(`<font color="#FFA500">{name} failed</font>`)
-					elseif result.status == 200 then
-						status = result.status
-						message = result.message
-						passed += 1
-						output:SetValue(`<font color="#84FF00">{name} passed</font>`)
-					else
-						status = result.status
-						message = result.message
-						failed += 1
-						output:SetValue(`<font color="#FFA500">{name} failed</font>`)
-					end
+	local nextEntry = flatTests[i + 1]
 
-					table.insert(results[groupName], {
-						name = name,
-						status = status,
-						message = message,
-						isLast = lastEntreePerGroup[groupName] == name,
-					})
+	local success, result = pcall(test)
+	local status, message
 
-					if testConfig.checkpointDelay ~= 0 then
-						task.wait(testConfig.checkpointDelay)
-					end
-				end
-			end
+	if not success then
+		status = 0
+		message = result
+		failed += 1
+		output:SetValue(`<font color="#FFA500">{name} failed</font>`)
+	elseif result.status == 200 then
+		status = result.status
+		message = result.message
+		passed += 1
+		output:SetValue(`<font color="#84FF00">{name} passed</font>`)
+	else
+		status = result.status
+		message = result.message
+		failed += 1
+		output:SetValue(`<font color="#FFA500">{name} failed</font>`)
+	end
+
+	if nextEntry then
+		printc(`Next test: {nextEntry.name}`)
+	end
+
+	-- results[groupName] must be initialized somewhere before this
+	table.insert(results[groupName], {
+		name = name,
+		status = status,
+		message = message,
+		isLast = lastEntreePerGroup[groupName] == name,
+	})
+
+	if testConfig.checkpointDelay ~= 0 then
+		task.wait(testConfig.checkpointDelay)
+	end
+end
 
 			output:Clear()
 

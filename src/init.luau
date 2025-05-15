@@ -36,6 +36,39 @@ else
 		Theme = "ImGui"
 	})
 
+	local discModal = window:PopupModal({
+		Title = "Would you like to join our discord?",
+	})
+
+	discModal:Label({
+		Text = "Get commit logs when we push changes, interact with communitys, and get support for problems",
+		TextWrapped = true
+	})
+
+	discModal:Separator()
+
+	local Row = discModal:Row({
+		Expanded = true
+	})
+
+	Row:Button({
+		Text = "Yes",
+		Callback = function()
+			if setclipboard or toclipboard then
+				(setclipboard or toclipboard)("https://discord.gg/nn4NxHU3Pu")
+			else
+				print("Failed to copy link: " .. "https://discord.gg/nn4NxHU3Pu")
+			end
+			discModal:ClosePopup()
+		end,
+	})
+	Row:Button({
+		Text = "No",
+		Callback = function()
+			discModal:ClosePopup()
+		end,
+	})
+
 	-- Home
 	do
 		local home = window:CreateTab({

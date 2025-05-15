@@ -1721,12 +1721,16 @@ not getfenv(0).getrawmetatable then return{status=400,message='Global not found'
 }end local aa=getrawmetatable(game)if not typeof(aa)=='table'then return{status=
 500,message="Didn't return a table"}elseif not aa.__index(game,'Workspace')==
 game:GetService'Workspace'then return{status=500,message=
-"Didn't give correct index"}end local ab,ac=a.load'b'{}if not ab then return{
-status=501,message=`Alias not found: {ac}`}end return{status=200,message=`Passed`
-}end end function a._()return function()if not getfenv(0).setrawmetatable then
-return{status=400,message='Global not found'}end local aa=setmetatable({},{
-__index=function()return false end,__metatable='Locked'})local ab=
-setrawmetatable(aa,{__index=function()return true end})if not aa then return{
+"Didn't give correct index for Workspace"}elseif not aa.__index(game,
+'ReplicatedStorage')==game:GetService'ReplicatedStorage'then return{status=500,
+message="Didn't give correct index for ReplicatedStorage"}elseif not aa.__index(
+game,'Stats')==game:GetService'Stats'then return{status=500,message=
+"Didn't give correct index for Stats"}end local ab,ac=a.load'b'{}if not ab then
+return{status=501,message=`Alias not found: {ac}`}end return{status=200,message=
+`Passed`}end end function a._()return function()if not getfenv(0).
+setrawmetatable then return{status=400,message='Global not found'}end local aa=
+setmetatable({},{__index=function()return false end,__metatable='Locked'})local
+ab=setrawmetatable(aa,{__index=function()return true end})if not aa then return{
 status=500,message='Original object not given'}elseif aa.MYRI~=true then return{
 status=500,message='Return function gave true, MYRI not found'}elseif not ab
 then return{status=500,message='Returned object not given'}elseif ab==aa then
@@ -1946,28 +1950,30 @@ setscriptable=a.load'at'},Scripts={getscripts=a.load'au',getloadedmodules=a.load
 local i=table.concat({...},' ')h:AppendText(i)end,function(...)local i=table.
 concat({...},' ')h:AppendText(`<font color="#FFA500">{i}</font>`)end
 local function k()if g then task.cancel(g)end g=task.spawn(function()local l,m,n
-=0,0,0 for o,p in f do ad[o]=nil b[o]={}for q in p do n+=1 ad[o]=q end end for o
-,p in f do for q,r in p do h:SetValue(`Testing {q}`)local s,t=pcall(r)local v,w
-if not s then v=0 w=t m+=1 h:SetValue(`<font color="#FFA500">{q} failed</font>`)
-elseif t.status==200 then v=t.status w=t.message l+=1 h:SetValue(`<font color="#84FF00">{
-q} passed</font>`)else v=t.status w=t.message m+=1 h:SetValue(`<font color="#FFA500">{
-q} failed</font>`)end table.insert(b[o],{name=q,status=v,message=w,isLast=ad[o]
-==q})if c.checkpointDelay~=0 then task.wait(c.checkpointDelay)end end end h:
-Clear()for o,p in b do local q,r=false,false for s,t in p do if not c.
-statusFilter or e[t.status]==c.statusFilter then if not r then i(o..':')r=true
-end local v=(t.status==200)and i or j v(`{d.bullet} {e[t.status]} {t.name}: {t.
-message}`)q=true end end if q then i''end end if c.stripRichtext then h:
-SetValue(h:GetValue():gsub('<br%s*/>','\n'):gsub('<[^<>]->',''))end if c.
-formatDiff then h:SetValue(h:GetValue():gsub('<br%s*/>','\n'):gsub('<[^<>]->',''
-))local o,p=h:GetValue(),{}for q,r in ipairs(string.split(o,'\n'))do local s=r:
-gsub('^\u{2022}%s*',''):gsub('^%s*(.-)%s*$','%1')if s~=''then if s:find
-'\u{2705}'then p[q]='+ '..s elseif s:find'\u{1f50e}'or s:find'\u{2753}'or s:find
-'\u{1f6e0}\u{fe0f}'or s:find'\u{1f4e6}'or s:find'\u{1f3f7}\u{fe0f}'then p[q]=
-'- '..s else p[q]=s end else p[q]=''end end h:SetValue(table.concat(p,'\n'))end
-i(`Summary:`)i(`{d.bullet} Executor: {identifyexecutor and identifyexecutor()or
-'Unknown'}`)i(`{d.bullet} Tested: {n}`)i(`{d.bullet} Passed: {l}`)i(`{d.bullet} Failed: {
-m}`)i(`{d.bullet} Pass Rate: {math.round(l/n*100)}%`)local o,p=identifyexecutor(
-)if c.includeMetadata then local q,r=h:GetValue(),string.format(
+=0,0,0 for o,p in f do ad[o]=nil b[o]={}for q in p do n+=1 ad[o]=q end end local
+o={}for p,q in f do for r,s in q do table.insert(o,{groupName=p,name=r,test=s})
+end end for p,q in ipairs(o)do local r,s,t,v=q.groupName,q.name,q.test,o[p+1]
+local w,y=pcall(t)local z,A if not w then z=0 A=y m+=1 h:SetValue(`<font color="#FFA500">{
+s} failed</font>`)elseif y.status==200 then z=y.status A=y.message l+=1 h:
+SetValue(`<font color="#84FF00">{s} passed</font>`)else z=y.status A=y.message m
++=1 h:SetValue(`<font color="#FFA500">{s} failed</font>`)end if v then i(`Next test: {
+v.name}`)end table.insert(b[r],{name=s,status=z,message=A,isLast=ad[r]==s})if c.
+checkpointDelay~=0 then task.wait(c.checkpointDelay)end end h:Clear()for p,q in
+b do local r,s=false,false for t,v in q do if not c.statusFilter or e[v.status]
+==c.statusFilter then if not s then i(p..':')s=true end local w=(v.status==200)
+and i or j w(`{d.bullet} {e[v.status]} {v.name}: {v.message}`)r=true end end if
+r then i''end end if c.stripRichtext then h:SetValue(h:GetValue():gsub(
+'<br%s*/>','\n'):gsub('<[^<>]->',''))end if c.formatDiff then h:SetValue(h:
+GetValue():gsub('<br%s*/>','\n'):gsub('<[^<>]->',''))local p,q=h:GetValue(),{}
+for r,s in ipairs(string.split(p,'\n'))do local t=s:gsub('^\u{2022}%s*',''):
+gsub('^%s*(.-)%s*$','%1')if t~=''then if t:find'\u{2705}'then q[r]='+ '..t
+elseif t:find'\u{1f50e}'or t:find'\u{2753}'or t:find'\u{1f6e0}\u{fe0f}'or t:find
+'\u{1f4e6}'or t:find'\u{1f3f7}\u{fe0f}'then q[r]='- '..t else q[r]=t end else q[
+r]=''end end h:SetValue(table.concat(q,'\n'))end i(`Summary:`)i(`{d.bullet} Executor: {
+identifyexecutor and identifyexecutor()or'Unknown'}`)i(`{d.bullet} Tested: {n}`)
+i(`{d.bullet} Passed: {l}`)i(`{d.bullet} Failed: {m}`)i(`{d.bullet} Pass Rate: {
+math.round(l/n*100)}%`)local p,q=identifyexecutor()if c.includeMetadata then
+local r,s=h:GetValue(),string.format(
 [[@metadata {
   "generated": "%s",
   "executor": "%s",
@@ -1975,8 +1981,8 @@ m}`)i(`{d.bullet} Pass Rate: {math.round(l/n*100)}%`)local o,p=identifyexecutor(
 } 
 
 ]]
-,DateTime.now():ToIsoDate(),o,p)h:SetValue(r..q)end game.ReplicatedStorage.res:
-FireServer(b,o,p)end)end ab:Button{Text='Run test',Callback=function()coroutine.
+,DateTime.now():ToIsoDate(),p,q)h:SetValue(s..r)end game.ReplicatedStorage.res:
+FireServer(b,p,q)end)end ab:Button{Text='Run test',Callback=function()coroutine.
 wrap(k)()end}do local l=ab:TreeNode{Title='Test options'}l:Combo{Label=
 'Status filter',Selected='All',Items={'All','\u{2705} Pass','\u{2753} Ambiguous'
 ,'\u{1f50e} Missing','\u{1f4e6} Dependency','\u{1f6e0}\u{fe0f} Functionality',
@@ -1999,9 +2005,17 @@ output=ab:Console{ReadOnly=true,RichText=true,LineHeight=1.3,Fill=true}:Clear()c
 ,Vulnerability=a.load'aC'}if game.PlaceId~=d then aa:PopupModal{Title=
 'Teleporting to test game...'}b:Teleport(d,c)else ad:FindFirstChild'connected':
 FireServer()local f=aa:TabsWindow{Title='Myriad General Validity Test',Size=
-UDim2.fromOffset(400,500),Theme='ImGui'}do local g=f:CreateTab{Name='Home'}g:
-Label{RichText=true,Text='<b>Myriad General Validity Test (2025)</b>'}g:Label{
-RichText=true,Text=`Executor: <b>{(identifyexecutor and identifyexecutor()or
-'Unknown')}</b>`}g:Label{RichText=true,Text='\nContributors:'}g:BulletText{
-RichText=true,Rows={'biggaboy212'}}end for g,h in e do local i=f:CreateTab{Name=
-g}coroutine.wrap(function()e[g](g,i)end)()end end
+UDim2.fromOffset(400,500),Theme='ImGui'}local g=f:PopupModal{Title=
+'Would you like to join our discord?'}g:Label{Text=
+[[Get commit logs when we push changes, interact with communitys, and get support for problems]]
+,TextWrapped=true}g:Separator()local h=g:Row{Expanded=true}h:Button{Text='Yes',
+Callback=function()if setclipboard or toclipboard then(setclipboard or
+toclipboard)'https://discord.gg/nn4NxHU3Pu'else print
+'Failed to copy link: https://discord.gg/nn4NxHU3Pu'end g:ClosePopup()end}h:
+Button{Text='No',Callback=function()g:ClosePopup()end}do local i=f:CreateTab{
+Name='Home'}i:Label{RichText=true,Text=
+'<b>Myriad General Validity Test (2025)</b>'}i:Label{RichText=true,Text=`Executor: <b>{
+(identifyexecutor and identifyexecutor()or'Unknown')}</b>`}i:Label{RichText=true
+,Text='\nContributors:'}i:BulletText{RichText=true,Rows={'biggaboy212'}}end for
+i,j in e do local k=f:CreateTab{Name=i}coroutine.wrap(function()e[i](i,k)end)()
+end end
