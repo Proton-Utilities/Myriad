@@ -11,29 +11,23 @@ return function()
 
     getrenv().MYRIR1 = "Hello, World!"
     getrenv().MYRIR2 = 123456789
-    getrenv().MYRIR3 = {"Hello,", "World!"}
 
-    if not getrenv().MYRIR1 == "Hello, World!" then
+    if getrenv().MYRIR1 ~= "Hello, World!" then
         return {
             status = 500,
             message = "MYRIR1 not found or unexpected value",
         }
-    elseif not getrenv().MYRIR2 == 123456789 then
+    elseif getrenv().MYRIR2 ~= 123456789 then
         return {
             status = 500,
             message = "MYRIR2 not found or unexpected value",
         }
-    elseif not getrenv().MYRIR3 == {"Hello,", "World!"} then
-        return {
-            status = 500,
-            message = "MYRIR3 not found or unexpected value",
-        }
-    elseif not getrenv().game == game then
+    elseif getrenv().game ~= game then
         return {
             status = 500,
             message = "game not found or unexpected value",
         }
-    elseif not getrenv().print == print then
+    elseif getrenv().print ~= print then
         return {
             status = 500,
             message = "print not found or unexpected value",

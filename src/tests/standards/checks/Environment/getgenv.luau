@@ -12,28 +12,22 @@ return function()
     getfenv().MYRI = "Hello, World!"
     getgenv().MYRI1 = "Hello, World!"
     getgenv().MYRI2 = 123456789
-    getgenv().MYRI3 = {"Hello,", "World!"}
 
-    if not getgenv().MYRI == "Hello, World!" then
+    if getgenv().MYRI == "Hello, World!" then
         return {
             status = 500,
-            message = "getfenv unaffected getgenv",
+            message = "getfenv affected getgenv",
         }
     end
-    if not getgenv().MYRI1 == "Hello, World!" then
+    if getgenv().MYRI1 ~= "Hello, World!" then
         return {
             status = 500,
             message = "MYRI1 not found or unexpected value",
         }
-    elseif not getgenv().MYRI2 == 123456789 then
+    elseif getgenv().MYRI2 ~= 123456789 then
         return {
             status = 500,
             message = "MYRI2 not found or unexpected value",
-        }
-    elseif not getgenv().MYRI3 == {"Hello,", "World!"} then
-        return {
-            status = 500,
-            message = "MYRI3 not found or unexpected value",
         }
     end
 
