@@ -9,28 +9,60 @@ return function()
 		}
 	end
 
-	local mt = getrawmetatable(game)
+	local rawMt = getrawmetatable(game)
 
-	if typeof(mt) ~= "table" then
+	if typeof(rawMt) ~= "table" then
 		return {
 			status = 500,
 			message = "Didn't return a table",
 		}
-	elseif mt.__index(game, "Workspace") ~= game:GetService("Workspace") then
+	elseif rawMt.__index(game, "Workspace") ~= game:GetService("Workspace") then
 		return {
 			status = 500,
 			message = "Didn't give correct index for Workspace",
 		}
-	elseif mt.__index(game, "ReplicatedStorage") ~= game:GetService("ReplicatedStorage") then
+	elseif rawMt.__index(game, "ReplicatedStorage") ~= game:GetService("ReplicatedStorage") then
 		return {
 			status = 500,
 			message = "Didn't give correct index for ReplicatedStorage",
 		}
-	elseif mt.__index(game, "Stats") ~= game:GetService("Stats") then
+	elseif rawMt.__index(game, "Stats") ~= game:GetService("Stats") then
 		return {
 			status = 500,
 			message = "Didn't give correct index for Stats",
 		}
+	end
+
+	local methods = {
+		__add = "add",
+		__sub = "sub",
+		__mul = "mul",
+		__div = "div",
+		__mod = "mod",
+		__pow = "pow",
+		__unm = "unm",
+		__idiv = "idiv",
+		__band = "band",
+		__bor = "bor",
+		__bxor = "bxor",
+		__bnot = "bnot",
+		__shl = "shl",
+		__shr = "shr",
+		__concat = "concat",
+		__len = "len",
+		__eq = "eq",
+		__lt = "lt",
+		__le = "le",
+		__call = "call",
+	}
+	
+	for method, name in pairs(methods) do
+		if rawMt[method] then
+			return {
+				status = 500,
+				message = `Found {name} metamethod in the raw meta table`,
+			}
+		end
 	end
 
 	--// Alias test
