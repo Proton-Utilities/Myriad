@@ -7,11 +7,6 @@ return function()
 			status = 400,
 			message = "Global not found",
 		}
-	elseif not getfenv(0).setreadonly then
-		return {
-			status = 401,
-			message = "Dependency 'setreadonly' not found",
-		}
 	end
 
 	--// Functionality test
@@ -24,7 +19,7 @@ return function()
 		}
 	end
 
-	setreadonly(originalTable, true)
+	table.freeze(originalTable)
 
 	if not isreadonly(originalTable) then
 		return {
