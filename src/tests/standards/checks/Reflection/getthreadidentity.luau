@@ -9,7 +9,7 @@ return function()
 		}
 	end
 
-	if not typeof(getthreadidentity()) == "number" then
+	if typeof(getthreadidentity()) ~= "number" then
 		return {
 			status = 500,
 			message = "Did not return a number",

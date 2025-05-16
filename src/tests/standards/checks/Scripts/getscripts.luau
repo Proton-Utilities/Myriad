@@ -9,28 +9,30 @@ return function()
 		}
 	end
 
+	--// Functionality test
 	local localScript = Instance.new("LocalScript")
 	local moduleScript = Instance.new("ModuleScript")
 	local serverScript = Instance.new("Script")
 	local clientRunContextScript = Instance.new("Script")
 	clientRunContextScript.RunContext = Enum.RunContext.Client
+	local scripts = getscripts()
 
-	if not table.find(getscripts(), localScript) then
+	if not table.find(scripts, localScript) then
 		return {
 			status = 500,
 			message = "LocalScript not found in returned table",
 		}
-	elseif not table.find(getscripts(), moduleScript) then
+	elseif not table.find(scripts, moduleScript) then
 		return {
 			status = 500,
 			message = "ModuleScript not found in returned table",
 		}
-	elseif not table.find(getscripts(), clientRunContextScript) then
+	elseif not table.find(scripts, clientRunContextScript) then
 		return {
 			status = 500,
 			message = "ServerScript w/ client runcontext not found in returned table",
 		}
-	elseif table.find(getscripts(), serverScript) then
+	elseif table.find(scripts, serverScript) then
 		return {
 			status = 500,
 			message = "ServerScript found in returned table",

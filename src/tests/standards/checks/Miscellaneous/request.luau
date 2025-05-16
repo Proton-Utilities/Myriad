@@ -15,7 +15,7 @@ return function()
 		Method = "GET",
 	})
 
-	if not typeof(response) == "table" then
+	if typeof(response) ~= "table" then
 		return {
 			status = 500,
 			message = "Reponse wasn't a table"

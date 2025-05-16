@@ -29,6 +29,12 @@ return function(name, tab)
 	}
 
 	local checks = {
+		cache = {
+			["cache.invalidate"] = require("checks/cache/invalidate.luau"),
+			["cache.iscached"] = require("checks/cache/iscached.luau"),
+			["cache.replace"] = require("checks/cache/replace.luau"),
+		},
+
 		Closures = {
 			["islclosure"] = require("checks/Closures/islclosure.luau"),
 			["iscclosure"] = require("checks/Closures/iscclosure.luau"),
@@ -54,15 +60,15 @@ return function(name, tab)
 		},
 
 		debug = {
-			["getconstant"] = require("checks/debug/getconstant.luau"),
-			["getconstants"] = require("checks/debug/getconstants.luau"),
-			["getproto"] = require("checks/debug/getproto.luau"),
-			["getprotos"] = require("checks/debug/getprotos.luau"),
-			["getupvalue"] = require("checks/debug/getupvalue.luau"),
-			["getupvalues"] = require("checks/debug/getupvalues.luau"),
-			["getstack"] = require("checks/debug/getstack.luau"),
-			["setconstant"] = require("checks/debug/setconstant.luau"),
-			["setupvalue"] = require("checks/debug/setupvalue.luau"),
+			["debug.getconstant"] = require("checks/debug/getconstant.luau"),
+			["debug.getconstants"] = require("checks/debug/getconstants.luau"),
+			["debug.getproto"] = require("checks/debug/getproto.luau"),
+			["debug.getprotos"] = require("checks/debug/getprotos.luau"),
+			["debug.getupvalue"] = require("checks/debug/getupvalue.luau"),
+			["debug.getupvalues"] = require("checks/debug/getupvalues.luau"),
+			["debug.getstack"] = require("checks/debug/getstack.luau"),
+			["debug.setconstant"] = require("checks/debug/setconstant.luau"),
+			["debug.setupvalue"] = require("checks/debug/setupvalue.luau"),
 		},
 
 		Drawing = {
@@ -81,7 +87,11 @@ return function(name, tab)
 			["filtergc"] = require("checks/Environment/filtergc.luau"),
 		},
 
-		Filesystem = {},
+		Filesystem = {
+			["writefile"] = require("checks/Filesystem/writefile.luau"),
+			["readfile"] = require("checks/Filesystem/readfile.luau"),
+			["makefolder"] = require("checks/Filesystem/makefolder.luau"),
+		},
 
 		Input = {
 			["setclipboard"] = require("checks/Input/setclipboard.luau"),
@@ -101,6 +111,7 @@ return function(name, tab)
 			["getrawmetatable"] = require("checks/Metatable/getrawmetatable.luau"),
 			["setrawmetatable"] = require("checks/Metatable/setrawmetatable.luau"),
 			["setreadonly"] = require("checks/Metatable/setreadonly.luau"),
+			["isreadonly"] = require("checks/Metatable/isreadonly.luau"),
 		},
 
 		Miscellaneous = {
@@ -110,6 +121,7 @@ return function(name, tab)
 			["request"] = require("checks/Miscellaneous/request.luau"),
 			["lz4compress"] = require("checks/Miscellaneous/lz4compress.luau"),
 			["lz4decompress"] = require("checks/Miscellaneous/lz4decompress.luau"),
+			["queue_on_teleport"] = require("checks/Miscellaneous/queue_on_teleport.luau"),
 		},
 
 		External = {
@@ -133,10 +145,14 @@ return function(name, tab)
 
 		Scripts = {
 			["getscripts"] = require("checks/Scripts/getscripts.luau"),
+			["getrunningscripts"] = require("checks/Scripts/getrunningscripts.luau"),
+			["getcallingscript"] = require("checks/Scripts/getcallingscript.luau"),
 			["getloadedmodules"] = require("checks/Scripts/getloadedmodules.luau"),
 			["getsenv"] = require("checks/Scripts/getsenv.luau"),
 			["getscripthash"] = require("checks/Scripts/getscripthash.luau"),
 			["loadstring"] = require("checks/Scripts/loadstring.luau"),
+			["getscriptbytecode"] = require("checks/Scripts/getscriptbytecode.luau"),
+			["getscriptclosure"] = require("checks/Scripts/getscriptclosure.luau"),
 			["decompile"] = require("checks/Scripts/decompile.luau"),
 		},
 
@@ -385,6 +401,14 @@ return function(name, tab)
 			Callback = function(self, value)
 				testConfig.formatDiff = value
 			end,
+		})
+	end
+
+	do -- Info
+		local info = tab:TreeNode({ Title = "Info" })
+		info:Label({
+			Text = "Alias testing comes after the functionality test. So if you see the alias missing that means you still passed the functionality test.",
+			TextWrapped = true
 		})
 	end
 

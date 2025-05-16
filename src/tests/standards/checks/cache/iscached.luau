@@ -2,27 +2,34 @@
 --!nolint
 
 return function()
-	local indexedAnimate, Animate = pcall(function()
-		return game.Players.LocalPlayer.Character.Animate
-	end)
-	if not getfenv(0).getloadedmodules then
+	if not getfenv(0).cache or not getfenv(0).cache.iscached then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
-	elseif not indexedAnimate then
+	elseif not getfenv(0).cache.invalidate then
 		return {
 			status = 401,
-			message = "Testing dependency 'Animate' not found.",
+			message = "Dependency 'cache.invalidate' missing",
 		}
 	end
 
 	--// Functionality test
-	local enironment = getsenv(Animate)
-	if not enironment.onSwimming or not typeof(enironment.onSwimming) == "function" then
+	local part = Instance.new("Part")
+
+	if not cache.iscached(part) then
 		return {
 			status = 500,
-			message = "Global in test script wasn't found, or didn't return the right type",
+			message = "Cached part assumed uncached"
+		}
+	end
+
+	cache.invalidate(part)
+
+	if cache.iscached(part) then
+		return {
+			status = 500,
+			message = "Uncached part assumed cached"
 		}
 	end
 

@@ -34,12 +34,12 @@ return function()
 	if callerFromThread ~= true then
 		return {
 			status = 500,
-			message = "checkcaller() returned false in executor thread",
+			message = "Returned false in executor thread",
 		}
 	elseif fromHook ~= false then
 		return {
 			status = 500,
-			message = "checkcaller() did not return false in a hook",
+			message = "Did not return false in a hook",
 		}
 	end
 

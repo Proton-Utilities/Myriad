@@ -11,22 +11,22 @@ return function()
 
 	local mt = getrawmetatable(game)
 
-	if not typeof(mt) == "table" then
+	if typeof(mt) ~= "table" then
 		return {
 			status = 500,
 			message = "Didn't return a table",
 		}
-	elseif not mt.__index(game, "Workspace") == game:GetService("Workspace") then
+	elseif mt.__index(game, "Workspace") ~= game:GetService("Workspace") then
 		return {
 			status = 500,
 			message = "Didn't give correct index for Workspace",
 		}
-	elseif not mt.__index(game, "ReplicatedStorage") == game:GetService("ReplicatedStorage") then
+	elseif mt.__index(game, "ReplicatedStorage") ~= game:GetService("ReplicatedStorage") then
 		return {
 			status = 500,
 			message = "Didn't give correct index for ReplicatedStorage",
 		}
-	elseif not mt.__index(game, "Stats") == game:GetService("Stats") then
+	elseif mt.__index(game, "Stats") ~= game:GetService("Stats") then
 		return {
 			status = 500,
 			message = "Didn't give correct index for Stats",

@@ -2,27 +2,34 @@
 --!nolint
 
 return function()
-	local indexedAnimate, Animate = pcall(function()
-		return game.Players.LocalPlayer.Character.Animate
-	end)
-	if not getfenv(0).getloadedmodules then
+	if not getfenv(0).isreadonly then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
-	elseif not indexedAnimate then
+	elseif not getfenv(0).setreadonly then
 		return {
 			status = 401,
-			message = "Testing dependency 'Animate' not found.",
+			message = "Dependency 'setreadonly' not found",
 		}
 	end
 
 	--// Functionality test
-	local enironment = getsenv(Animate)
-	if not enironment.onSwimming or not typeof(enironment.onSwimming) == "function" then
+	local originalTable = {}
+
+	if isreadonly(originalTable) then
 		return {
 			status = 500,
-			message = "Global in test script wasn't found, or didn't return the right type",
+			message = "Writable table is assumed read-only"
+		}
+	end
+
+	setreadonly(originalTable, true)
+
+	if not isreadonly(originalTable) then
+		return {
+			status = 500,
+			message = "Table assumed writable after being set as read-only"
 		}
 	end
 

@@ -10,7 +10,7 @@ return function()
 	end
 
 	--// Functionality Test
-	if not typeof(getfpscap()) == "number" then
+	if typeof(getfpscap()) ~= "number" then
 		return {
 			status = 500,
 			message = `Did not return a number`,
