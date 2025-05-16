@@ -33,18 +33,18 @@ return function()
 		}
 	elseif illegal1Suc then
 		return {
-			status = 0,
+			status = 500,
 			message = "Didn't fail to make in illegal location: @ C:/test3"
 		}
 	elseif illegal2Suc then
 		return {
-			status = 0,
+			status = 500,
 			message = "Didn't fail to make in illegal location: @ ../test4"
 		}
 	end
 
-	delfolder("test1.txt")
-	delfolder("./test2.txt")
+	delfolder("test1")
+	delfolder("./test2")
 
 	--// Alias test
 	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})

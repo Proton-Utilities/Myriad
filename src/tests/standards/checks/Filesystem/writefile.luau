@@ -12,6 +12,11 @@ return function()
 			status = 401,
 			message = "Dependency 'delfile' not found",
 		}
+	elseif not getfenv(0).readfile then
+		return {
+			status = 401,
+			message = "Dependency 'readfile' not found",
+		}
 	end
 
 	--// Functionality test
@@ -33,13 +38,23 @@ return function()
 		}
 	elseif illegal1Suc then
 		return {
-			status = 0,
+			status = 500,
 			message = "Didn't fail to write in illegal location: @ C:/test3.txt"
 		}
 	elseif illegal2Suc then
 		return {
-			status = 0,
+			status = 500,
 			message = "Didn't fail to write in illegal location: @ ../test4.txt"
+		}
+	elseif readfile("test1.txt") ~= "Content" then
+		return {
+			status = 500,
+			message = "File didn't give expected contnet"
+		}
+	elseif readfile("test2.txt") ~= "Content" then
+		return {
+			status = 500,
+			message = "File didn't give expected contnet"
 		}
 	end
 

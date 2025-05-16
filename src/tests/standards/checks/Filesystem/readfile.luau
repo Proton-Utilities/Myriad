@@ -29,7 +29,7 @@ return function()
 		}
 	elseif readfile("test1.txt") ~= "Content" then
 		return {
-			status = 0,
+			status = 500,
 			message = "File didn't return the expected content"
 		}
 	end
