@@ -88,12 +88,33 @@ return function(name, tab)
 		},
 
 		Filesystem = {
+			["getcustomasset"] = require("checks/Filesystem/getcustomasset.luau"),
+			["listfiles"] = require("checks/Filesystem/listfiles.luau"),
+			["loadfile"] = require("checks/Filesystem/loadfile.luau"),
+			["appendfile"] = require("checks/Filesystem/appendfile.luau"),
+			["delfile"] = require("checks/Filesystem/delfile.luau"),
+			["delfolder"] = require("checks/Filesystem/delfolder.luau"),
+			["isfile"] = require("checks/Filesystem/isfile.luau"),
+			["isfolder"] = require("checks/Filesystem/isfolder.luau"),
 			["writefile"] = require("checks/Filesystem/writefile.luau"),
 			["readfile"] = require("checks/Filesystem/readfile.luau"),
 			["makefolder"] = require("checks/Filesystem/makefolder.luau"),
 		},
 
 		Input = {
+			["isrbxactive"] = require("checks/Input/isrbxactive.luau"),
+			["keypress"] = require("checks/Input/keypress.luau"),
+			["keyrelease"] = require("checks/Input/keyrelease.luau"),
+			["keytap"] = require("checks/Input/keytap.luau"),
+			["mouse1click"] = require("checks/Input/mouse1click.luau"),
+			["mouse1press"] = require("checks/Input/mouse1press.luau"),
+			["mouse1release"] = require("checks/Input/mouse1release.luau"),
+			["mouse2click"] = require("checks/Input/mouse2click.luau"),
+			["mouse2press"] = require("checks/Input/mouse2press.luau"),
+			["mouse2release"] = require("checks/Input/mouse2release.luau"),
+			["mousemoveabs"] = require("checks/Input/mousemoveabs.luau"),
+			["mousemoverel"] = require("checks/Input/mousemoverel.luau"),
+			["mousescroll"] = require("checks/Input/mousescroll.luau"),
 			["setclipboard"] = require("checks/Input/setclipboard.luau"),
 			["setrbxclipboard"] = require("checks/Input/setrbxclipboard.luau"),
 		},
@@ -102,15 +123,22 @@ return function(name, tab)
 			["gethui"] = require("checks/Instances/gethui.luau"),
 			["cloneref"] = require("checks/Instances/cloneref.luau"),
 			["compareinstances"] = require("checks/Instances/compareinstances.luau"),
+			["getinstances"] = require("checks/Instances/getinstances.luau"),
+			["getnilinstances"] = require("checks/Instances/getnilinstances.luau"),
+			["getcallbackvalue"] = require("checks/Instances/getcallbackvalue.luau"),
 			["fireclickdetector"] = require("checks/Instances/fireclickdetector.luau"),
 			["fireproximityprompt"] = require("checks/Instances/fireproximityprompt.luau"),
+			["firetouchinterest"] = require("checks/Instances/firetouchinterest.luau"),
 			["saveinstance"] = require("checks/Instances/saveinstance.luau"),
 		},
 
 		Metatable = {
 			["getrawmetatable"] = require("checks/Metatable/getrawmetatable.luau"),
 			["setrawmetatable"] = require("checks/Metatable/setrawmetatable.luau"),
+			["hookmetamethod"] = require("checks/Metatable/hookmetamethod.luau"),
+			["getnamecallmethod"] = require("checks/Metatable/getnamecallmethod.luau"),
 			["setreadonly"] = require("checks/Metatable/setreadonly.luau"),
+			["makereadonly"] = require("checks/Metatable/makereadonly.luau"),
 			["isreadonly"] = require("checks/Metatable/isreadonly.luau"),
 		},
 
@@ -138,9 +166,12 @@ return function(name, tab)
 		},
 
 		Reflection = {
+			["sethiddenproperty"] = require("checks/Reflection/sethiddenproperty.luau"),
+			["gethiddenproperty"] = require("checks/Reflection/gethiddenproperty.luau"),
 			["setthreadidentity"] = require("checks/Reflection/setthreadidentity.luau"),
 			["getthreadidentity"] = require("checks/Reflection/getthreadidentity.luau"),
 			["setscriptable"] = require("checks/Reflection/setscriptable.luau"),
+			["isscriptable"] = require("checks/Reflection/isscriptable.luau"),
 		},
 
 		Scripts = {
@@ -180,6 +211,7 @@ return function(name, tab)
 		end
 
 		currentTask = task.spawn(function()
+			local startTime = time()
 			local passed = 0
 			local failed = 0
 			local numStandards = 0
@@ -304,14 +336,16 @@ return function(name, tab)
 				output:SetValue(table.concat(lines, "\n"))
 			end
 
+			local endTime = math.floor((time() - startTime) * 10^2 + 0.5) / 10^2
+			local executor, executorVers = identifyexecutor()
+
 			printc(`Summary:`)
-			printc(`{uni.bullet} Executor: {identifyexecutor and identifyexecutor() or "Unknown"}`)
+			printc(`{uni.bullet} Took: {endTime}s`)
+			printc(`{uni.bullet} Executor: {executor or "Unknown"}`)
 			printc(`{uni.bullet} Tested: {numStandards}`)
 			printc(`{uni.bullet} Passed: {passed}`)
 			printc(`{uni.bullet} Failed: {failed}`)
 			printc(`{uni.bullet} Pass Rate: {math.round(passed / numStandards * 100)}%`)
-
-			local executor, executorVers = identifyexecutor()
 
 			if testConfig.includeMetadata then
 				local input = output:GetValue()
@@ -407,8 +441,8 @@ return function(name, tab)
 	do -- Info
 		local info = tab:TreeNode({ Title = "Info" })
 		info:Label({
-			Text = "Alias testing comes after the functionality test. So if you see the alias missing that means you still passed the functionality test.",
-			TextWrapped = true
+			Text = "Test checks are in this order:\n- Global check\n- Dependency check \n- Functionality check \n- Alias Test\nThis means that if you are missing an alias, you still passed the functionality test. Aliases are important, it helps preserve old scripts, and conventions for programmers who use one over the other.",
+			TextWrapped = true,
 		})
 	end
 

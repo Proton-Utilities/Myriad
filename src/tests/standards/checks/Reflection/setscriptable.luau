@@ -11,19 +11,26 @@ return function()
 
 	local originalPart = Instance.new("Part")
 
-	setscriptable(originalPart, "BottomParamA", true)
-	if not originalPart.BottomParamA then
+	if pcall(function() local _ = originalPart.MaterialVariantSerialized end) then
 		return {
 			status = 500,
-			message = "BottomParamA not accessible after being set as scriptable",
+			message = "Unaccessible property accessible",
 		}
 	end
 
-	setscriptable(originalPart, "BottomParamA", false)
-	if pcall(function() local _ = originalPart.BottomParamA end) then
+	setscriptable(originalPart, "MaterialVariantSerialized", true)
+	if not pcall(function() local _ = originalPart.MaterialVariantSerialized end) then
 		return {
 			status = 500,
-			message = "BottomParamA accessible after being set as unscriptable",
+			message = "MaterialVariantSerialized inaccessible after being set as scriptable",
+		}
+	end
+
+	setscriptable(originalPart, "MaterialVariantSerialized", false)
+	if pcall(function() local _ = originalPart.MaterialVariantSerialized end) then
+		return {
+			status = 500,
+			message = "MaterialVariantSerialized accessible after being set as unscriptable",
 		}
 	end
 
