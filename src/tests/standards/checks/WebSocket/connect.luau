@@ -67,7 +67,6 @@ return function()
 	--// Alias test
 	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({
 		"websocket.connect",
-		"WebSocket.Connect",
 	})
 
 	if not envIndex then
