@@ -2271,18 +2271,83 @@ if typeof(c)~='string'then return{status=500,message=
 'Decompiled script missing expected strings: '..table.concat(e,', ')}end local f
 ,g=a.load'b'{}if not f then return{status=501,message=`Alias not found: {g}`}end
 return{status=200,message='Passed'}end end function a.bg()return function()if
-not getfenv(0).WebSocket or not getfenv(0).WebSocket.connect then return{status=
-400,message='Global not found'}end local aa=WebSocket.connect
-'ws://echo.websocket.events'if not(type(aa)=='table'or type(aa)=='userdata')then
-return{status=500,message="Didn't give a table | userdata"}end for ab,b in pairs
-{OnClose='RBXScriptSignal',OnMessage='RBXScriptSignal',Send='function',Close=
+not getfenv(0).isparallel then return{status=400,message='Global not found'}
+elseif not getfenv(0).run_on_actor then return{status=401,message=
+"Dependency 'run_on_actor' not found"}end local aa=game.Players.LocalPlayer.
+Character:FindFirstChild'PMOVON'if isparallel()then return{status=500,message=
+'Non-parallel thread assumed to be in a parallel state'}end run_on_actor(aa,
+'\r\n\t\tprint("MYRIAD: Ignore start -----------")\r\n\t\ttask.desynchronize()\r\n\t\tif isparallel() then\r\n\t\t\ttask.synchronize()\r\n\t\t\tprint("MYRIAD: Ignore end -----------")\r\n\t\t\tlocal originalPart = Instance.new("Part")\r\n\t\t\toriginalPart.Name = os.date("%H") .. "(1)"\r\n\t\t\toriginalPart.Parent = game.ReplicatedStorage\r\n\t\tend\r\n\t'
+)task.wait(0.1)if not game.ReplicatedStorage:FindFirstChild(os.date'%H'..'(1)')
+then return{status=500,message=
+'Parallel thread assumed to be in a non-parallel state'}end task.wait()if
+isparallel()then return{status=500,message=
+'Non-parallel thread assumed to be in a parallel state'}end local ab,b=a.load'b'
+{}if not ab then return{status=501,message=`Alias not found: {b}`}end return{
+status=200,message=`Passed`}end end function a.bh()return function()if not
+getfenv(0).run_on_actor then return{status=400,message='Global not found'}end
+local aa=game.Players.LocalPlayer.Character:FindFirstChild'PMOVON'if not aa then
+return{status=500,message='Failed find to actor'}end run_on_actor(aa,
+'local originalPart = Instance.new("Part")\r\n\t\toriginalPart.Name = os.date("%H")\r\n\t\toriginalPart.Parent = game.ReplicatedStorage\r\n\t'
+)task.wait(0.1)if not game.ReplicatedStorage:FindFirstChild(os.date'%H')then
+return{status=500,message='Failed to find a part created by the actor'}end game.
+ReplicatedStorage:FindFirstChild(os.date'%H'):Destroy()local ab,b=a.load'b'{}if
+not ab then return{status=501,message=`Alias not found: {b}`}end return{status=
+200,message=`Passed`}end end function a.bi()return function()if not getfenv(0).
+create_comm_channel then return{status=400,message='Global not found'}elseif not
+getfenv(0).run_on_actor then return{status=401,message=
+"Dependency 'run_on_actor' not found"}elseif not getfenv(0).get_comm_channel
+then return{status=401,message="Dependency 'get_comm_channel' not found"}end
+local aa,ab=0,game.Players.LocalPlayer.Character:FindFirstChild'PMOVON'if not ab
+then return{status=500,message='Failed to find actor'}end local b,c=
+create_comm_channel()if not c then return{status=500,message=`EventObject dosen't exist`
+}elseif typeof(b)~='number'then return{status=500,message=
+"Communication ID isn't a number"}end c.Event:Connect(function(d)if d~='abs'then
+aa=-1 end aa=1 end)run_on_actor(ab,
+"\r\n\t\tlocal channel = get_comm_channel(...)\r\n\t\tchannel:Fire('abs')\r\n\t"
+,b)task.wait(0.1)if aa==0 then return{status=500,message=
+'Did not fire the event'}elseif not aa==-1 then return{status=500,message=
+"Passed argument[1] wasn't the expected value"}end local d,e=a.load'b'{}if not d
+then return{status=501,message=`Alias not found: {e}`}end return{status=200,
+message=`Passed`}end end function a.bj()return function()if not getfenv(0).
+get_comm_channel then return{status=400,message='Global not found'}elseif not
+getfenv(0).run_on_actor then return{status=401,message=
+"Dependency 'run_on_actor' not found"}elseif not getfenv(0).create_comm_channel
+then return{status=401,message="Dependency 'create_comm_channel' not found"}end
+local aa,ab=0,game.Players.LocalPlayer.Character:FindFirstChild'PMOVON'if not ab
+then return{status=500,message='Failed to find actor'}end local b,c=
+create_comm_channel()if not c then return{status=500,message=`EventObject dosen't exist`
+}elseif typeof(b)~='number'then return{status=500,message=
+"Communication ID isn't a number"}end c.Event:Connect(function(d)if d~='abs'then
+aa=-1 end aa=1 end)run_on_actor(ab,
+"\r\n\t\tlocal channel = get_comm_channel(...)\r\n\t\tchannel:Fire('abs')\r\n\t"
+,b)task.wait()if aa==0 then return{status=500,message='Did not fire the event'}
+elseif not aa==-1 then return{status=500,message=
+"Passed argument[1] wasn't the expected value"}end local d,e=a.load'b'{}if not d
+then return{status=501,message=`Alias not found: {e}`}end return{status=200,
+message=`Passed`}end end function a.bk()return function()if not getfenv(0).
+getactors then return{status=400,message='Global not found'}end local aa,ab=
+false,game.Players.LocalPlayer.Character:FindFirstChild'PMOVON'for b,c in pairs(
+getactors())do if c==ab then aa=true end end if not aa then return{status=500,
+message="Didn't find a game actor"}end local b,c=a.load'b'{}if not b then return
+{status=501,message=`Alias not found: {c}`}end return{status=200,message=`Passed`
+}end end function a.bl()return function()if not getfenv(0).WebSocket or not
+getfenv(0).WebSocket.connect then return{status=400,message='Global not found'}
+end local aa=WebSocket.connect'ws://echo.websocket.events'if not(type(aa)==
+'table'or type(aa)=='userdata')then return{status=500,message=
+"Didn't give a table | userdata"}end for ab,b in pairs{OnClose={
+'RBXScriptSignal',{table={'Connect','Once','Wait'}}},OnMessage={
+'RBXScriptSignal',{table={'Connect','Once','Wait'}}},Send='function',Close=
 'function',send='function',close='function'}do local c,d=pcall(function()return
 aa[ab]end)if not c or d==nil then return{status=500,message=`WebSocketObject is missing: {
-ab}`}end if typeof(d)~=b then return{status=500,message=`WebSocketObject.{ab} is not a {
-b} (got {typeof(d)})`}end end if result then return result end local ab,b=a.load
-'b'{'WebSocket.Connect','WebSocket.new','WebSocket.New'}if not ab then return{
-status=501,message=`Alias not found: {b}`}end return{status=200,message=`Passed`
-}end end function a.bh()return function(aa,ab)local b,c,d,e,f,g,h,i={},{},{
+ab}`}end local e=typeof(b)=='table'and b[1]or b if typeof(d)~=e then return{
+status=500,message=`WebSocketObject.{ab} is not a {e} (got {typeof(d)})`}end if
+typeof(b)=='table'and b[2]and typeof(b[2])=='table'then for f,g in pairs(b[2])do
+if f=='table'and typeof(d)=='table'then for h,i in ipairs(g)do if typeof(d[i])~=
+'function'then return{status=500,message=`WebSocketObject.{ab}.{i} is not a function`
+}end end end end end end if result then return result end local ab,b=a.load'b'{
+'WebSocket.Connect','WebSocket.new','WebSocket.New'}if not ab then return{status
+=501,message=`Alias not found: {b}`}end return{status=200,message=`Passed`}end
+end function a.bm()return function(aa,ab)local b,c,d,e,f,g,h,i={},{},{
 checkpointDelay=0,statusFilter=false,stripRichtext=false,formatDiff=false,
 includeMetadata=false},{bullet='\u{2022}'},{[0]='\u{2753}',[200]='\u{2705}',[400
 ]='\u{1f50e}',[401]='\u{1f4e6}',[500]='\u{1f6e0}\u{fe0f}',[501]=
@@ -2326,34 +2391,36 @@ load'a3',setscriptable=a.load'a4',isscriptable=a.load'a5'},Scripts={getscripts=a
 .load'a6',getrunningscripts=a.load'a7',getcallingscript=a.load'a8',
 getloadedmodules=a.load'a9',getsenv=a.load'ba',getscripthash=a.load'bb',
 loadstring=a.load'bc',getscriptbytecode=a.load'bd',getscriptclosure=a.load'be',
-decompile=a.load'bf'},Signals={},WebSocket={connect=a.load'bg'}}local j,k=
-function(...)local j=table.concat({...},' ')i:AppendText(j)end,function(...)
-local j=table.concat({...},' ')i:AppendText(`<font color="#FFA500">{j}</font>`)
-end local function l()if h then task.cancel(h)end h=task.spawn(function()local m
-,n,o,p=time(),0,0,0 for q,r in g do b[q]=nil c[q]={}for s in r do p+=1 b[q]=s
-end end local q={}for r,s in g do for t,v in s do table.insert(q,{groupName=r,
-name=t,test=v})end end for r,s in ipairs(q)do local t,v,w,y=s.groupName,s.name,s
-.test,q[r+1]local z,A=pcall(w)local B,C if not z then B=0 C=A o+=1 i:SetValue(`<font color="#FFA500">{
-v} failed</font>`)elseif A.status==200 then B=A.status C=A.message n+=1 i:
-SetValue(`<font color="#84FF00">{v} passed</font>`)else B=A.status C=A.message o
-+=1 i:SetValue(`<font color="#FFA500">{v} failed</font>`)end if y then j(`Next test: {
-y.name}`)end table.insert(c[t],{name=v,status=B,message=C,isLast=b[t]==v})if d.
-checkpointDelay~=0 then task.wait(d.checkpointDelay)end end i:Clear()for r,s in
-c do local t,v=false,false for w,y in s do if not d.statusFilter or f[y.status]
-==d.statusFilter then if not v then j(r..':')v=true end local z=(y.status==200)
-and j or k z(`{e.bullet} {f[y.status]} {y.name}: {y.message}`)t=true end end if
-t then j''end end if d.stripRichtext then i:SetValue(i:GetValue():gsub(
-'<br%s*/>','\n'):gsub('<[^<>]->',''))end if d.formatDiff then i:SetValue(i:
-GetValue():gsub('<br%s*/>','\n'):gsub('<[^<>]->',''))local r,s=i:GetValue(),{}
-for t,v in ipairs(string.split(r,'\n'))do local w=v:gsub('^\u{2022}%s*',''):
-gsub('^%s*(.-)%s*$','%1')if w~=''then if w:find'\u{2705}'then s[t]='+ '..w
-elseif w:find'\u{1f50e}'or w:find'\u{2753}'or w:find'\u{1f6e0}\u{fe0f}'or w:find
-'\u{1f4e6}'or w:find'\u{1f3f7}\u{fe0f}'then s[t]='- '..w else s[t]=w end else s[
-t]=''end end i:SetValue(table.concat(s,'\n'))end local r,s,t=math.floor((time()-
-m)*100+0.5)/100,identifyexecutor()j(`Summary:`)j(`{e.bullet} Took: {r}s`)j(`{e.
-bullet} Executor: {s or'Unknown'}`)j(`{e.bullet} Tested: {p}`)j(`{e.bullet} Passed: {
-n}`)j(`{e.bullet} Failed: {o}`)j(`{e.bullet} Pass Rate: {math.round(n/p*100)}%`)
-if d.includeMetadata then local v,w=i:GetValue(),string.format(
+decompile=a.load'bf'},Signals={},Actors={isparallel=a.load'bg',run_on_actor=a.
+load'bh',create_comm_channel=a.load'bi',get_comm_channel=a.load'bj',getactors=a.
+load'bk'},WebSocket={connect=a.load'bl'}}local j,k=function(...)local j=table.
+concat({...},' ')i:AppendText(j)end,function(...)local j=table.concat({...},' ')
+i:AppendText(`<font color="#FFA500">{j}</font>`)end local function l()if h then
+task.cancel(h)end h=task.spawn(function()local m,n,o,p=time(),0,0,0 for q,r in g
+do b[q]=nil c[q]={}for s in r do p+=1 b[q]=s end end local q={}for r,s in g do
+for t,v in s do table.insert(q,{groupName=r,name=t,test=v})end end for r,s in
+ipairs(q)do local t,v,w,y=s.groupName,s.name,s.test,q[r+1]local z,A=pcall(w)
+local B,C if not z then B=0 C=A o+=1 i:SetValue(`<font color="#FFA500">{v} failed</font>`
+)elseif A.status==200 then B=A.status C=A.message n+=1 i:SetValue(`<font color="#84FF00">{
+v} passed</font>`)else B=A.status C=A.message o+=1 i:SetValue(`<font color="#FFA500">{
+v} failed</font>`)end if y then j(`Next test: {y.name}`)end table.insert(c[t],{
+name=v,status=B,message=C})if d.checkpointDelay~=0 then task.wait(d.
+checkpointDelay)end end i:Clear()for r,s in c do local t,v=false,false for w,y
+in s do if not d.statusFilter or f[y.status]==d.statusFilter then if not v then
+j(r..':')v=true end local z=(y.status==200)and j or k z(`{e.bullet} {f[y.status]
+} {y.name}: {y.message}`)t=true end end if t then j''end end if d.stripRichtext
+then i:SetValue(i:GetValue():gsub('<br%s*/>','\n'):gsub('<[^<>]->',''))end if d.
+formatDiff then i:SetValue(i:GetValue():gsub('<br%s*/>','\n'):gsub('<[^<>]->',''
+))local r,s=i:GetValue(),{}for t,v in ipairs(string.split(r,'\n'))do local w=v:
+gsub('^\u{2022}%s*',''):gsub('^%s*(.-)%s*$','%1')if w~=''then if w:find
+'\u{2705}'then s[t]='+ '..w elseif w:find'\u{1f50e}'or w:find'\u{2753}'or w:find
+'\u{1f6e0}\u{fe0f}'or w:find'\u{1f4e6}'or w:find'\u{1f3f7}\u{fe0f}'then s[t]=
+'- '..w else s[t]=w end else s[t]=''end end i:SetValue(table.concat(s,'\n'))end
+local r,s,t=math.floor((time()-m)*100+0.5)/100,identifyexecutor()j(`Summary:`)j(
+`{e.bullet} Took: {r}s`)j(`{e.bullet} Executor: {s or'Unknown'}`)j(`{e.bullet} Tested: {
+p}`)j(`{e.bullet} Passed: {n}`)j(`{e.bullet} Failed: {o}`)j(`{e.bullet} Pass Rate: {
+math.round(n/p*100)}%`)if d.includeMetadata then local v,w=i:GetValue(),string.
+format(
 [[@metadata {
   "generated": "%s",
   "executor": "%s",
@@ -2362,20 +2429,22 @@ if d.includeMetadata then local v,w=i:GetValue(),string.format(
 
 ]]
 ,DateTime.now():ToIsoDate(),s,t)i:SetValue(w..v)end game.ReplicatedStorage.res:
-FireServer(c,s,t)end)end ab:Button{Text='Run test',Callback=function()coroutine.
-wrap(l)()end}do local m=ab:TreeNode{Title='Test options'}m:Combo{Label=
-'Status filter',Selected='All',Items={'All','\u{2705} Pass','\u{2753} Ambiguous'
-,'\u{1f50e} Missing','\u{1f4e6} Dependency','\u{1f6e0}\u{fe0f} Functionality',
-'\u{1f3f7}\u{fe0f} Alias'},Callback=function(n,o)local p={All=false,[
-'\u{2705} Pass']=f[200],['\u{2753} Ambiguous']=f[0],['\u{1f50e} Missing']=f[400]
-,['\u{1f4e6} Dependency']=f[401],['\u{1f6e0}\u{fe0f} Functionality']=f[500],[
-'\u{1f3f7}\u{fe0f} Alias']=f[501]}d.statusFilter=p[o]end}m:SliderFloat{Label=
-'Checkpoint delay',Default=0,Minimum=0,Maximum=1,Format='Delay = %.2f',Callback=
-function(n,o)d.checkpointDelay=o end}m:Checkbox{Value=false,Label=
-'Include Metadata',Callback=function(n,o)d.includeMetadata=o end}m:Checkbox{
-Value=false,Label='Strip Rich-text',Callback=function(n,o)d.stripRichtext=o end}
-m:Checkbox{Value=false,Label='Format in diff',Callback=function(n,o)d.formatDiff
-=o end}end do local m=ab:TreeNode{Title='Info'}m:Label{Text=
+FireServer(c,{executor=s,executorVersion=t,tested=p,passed=n,failed=o,testTime=r
+,generated=DateTime.now():ToIsoDate()})end)end ab:Button{Text='Run test',
+Callback=function()coroutine.wrap(l)()end}do local m=ab:TreeNode{Title=
+'Test options'}m:Combo{Label='Status filter',Selected='All',Items={'All',
+'\u{2705} Pass','\u{2753} Ambiguous','\u{1f50e} Missing','\u{1f4e6} Dependency',
+'\u{1f6e0}\u{fe0f} Functionality','\u{1f3f7}\u{fe0f} Alias'},Callback=function(n
+,o)local p={All=false,['\u{2705} Pass']=f[200],['\u{2753} Ambiguous']=f[0],[
+'\u{1f50e} Missing']=f[400],['\u{1f4e6} Dependency']=f[401],[
+'\u{1f6e0}\u{fe0f} Functionality']=f[500],['\u{1f3f7}\u{fe0f} Alias']=f[501]}d.
+statusFilter=p[o]end}m:SliderFloat{Label='Checkpoint delay',Default=0,Minimum=0,
+Maximum=1,Format='Delay = %.2f',Callback=function(n,o)d.checkpointDelay=o end}m:
+Checkbox{Value=false,Label='Include Metadata',Callback=function(n,o)d.
+includeMetadata=o end}m:Checkbox{Value=false,Label='Strip Rich-text',Callback=
+function(n,o)d.stripRichtext=o end}m:Checkbox{Value=false,Label='Format in diff'
+,Callback=function(n,o)d.formatDiff=o end}end do local m=ab:TreeNode{Title=
+'Info'}m:Label{Text=
 [[Test checks are in this order:
 - Global check
 - Dependency check 
@@ -2383,13 +2452,13 @@ m:Checkbox{Value=false,Label='Format in diff',Callback=function(n,o)d.formatDiff
 - Alias Test
 This means that if you are missing an alias, you still passed the functionality test. Aliases are important, it helps preserve old scripts, and conventions for programmers who use one over the other.]]
 ,TextWrapped=true}end i=ab:Console{ReadOnly=true,RichText=true,LineHeight=1.3,
-Fill=true}:Clear()return c end end function a.bi()return function(aa,ab)local b,
+Fill=true}:Clear()return c end end function a.bn()return function(aa,ab)local b,
 c=0,0 local d=function(...)local d=table.concat({...},' ')output:AppendText(d)
 end output=ab:Console{ReadOnly=true,RichText=true,LineHeight=1.3,Fill=true}:
 Clear()d'Not implemented.'return{passed=b,failed=c}end end end local aa,ab,b,c=a
 .load'a',game:GetService'Players',game:GetService'ReplicatedStorage',game:
 GetService'TeleportService'local d,e,f=ab.LocalPlayer,80776325854596,{Standards=
-a.load'bh',Vulnerability=a.load'bi'}if game.PlaceId~=e then aa:PopupModal{Title=
+a.load'bm',Vulnerability=a.load'bn'}if game.PlaceId~=e then aa:PopupModal{Title=
 'Teleporting to test game...'}c:Teleport(e,d)else b:FindFirstChild'connected':
 FireServer()local g=aa:TabsWindow{Title='Myriad General Validity Test',Size=
 UDim2.fromOffset(400,500),Theme='ImGui'}local h=g:PopupModal{Title=

@@ -189,6 +189,14 @@ return function(name, tab)
 
 		Signals = {},
 
+		Actors = {
+			["isparallel"] = require("checks/Actors/isparallel.luau"),
+			["run_on_actor"] = require("checks/Actors/run_on_actor.luau"),
+			["create_comm_channel"] = require("checks/Actors/create_comm_channel.luau"),
+			["get_comm_channel"] = require("checks/Actors/get_comm_channel.luau"),
+			["getactors"] = require("checks/Actors/getactors.luau"),
+		},
+
 		WebSocket = {
 			["connect"] = require("checks/WebSocket/connect.luau"),
 		},
@@ -272,7 +280,6 @@ return function(name, tab)
 					name = name,
 					status = status,
 					message = message,
-					isLast = lastEntreePerGroup[groupName] == name,
 				})
 
 				if testConfig.checkpointDelay ~= 0 then
@@ -336,7 +343,7 @@ return function(name, tab)
 				output:SetValue(table.concat(lines, "\n"))
 			end
 
-			local endTime = math.floor((time() - startTime) * 10^2 + 0.5) / 10^2
+			local endTime = math.floor((time() - startTime) * 10 ^ 2 + 0.5) / 10 ^ 2
 			local executor, executorVers = identifyexecutor()
 
 			printc(`Summary:`)
@@ -360,7 +367,15 @@ return function(name, tab)
 				output:SetValue(metadata .. input)
 			end
 
-			game.ReplicatedStorage.res:FireServer(results, executor, executorVers)
+			game.ReplicatedStorage.res:FireServer(results, {
+				["executor"] = executor,
+				["executorVersion"] = executorVers,
+				["tested"] = numStandards,
+				["passed"] = passed,
+				["failed"] = failed,
+				["testTime"] = endTime,
+				["generated"] = DateTime.now():ToIsoDate(),
+			})
 		end)
 	end
 

@@ -19,8 +19,9 @@ return function()
 	end
 
 	for property, expected in pairs({
-		["OnClose"] = "RBXScriptSignal",
-		["OnMessage"] = "RBXScriptSignal",
+		-- prop name, type(s)[subtype(s), tableProp]
+		["OnClose"] = {"RBXScriptSignal", {["table"] = {"Connect", "Once", "Wait"}}},
+		["OnMessage"] = {"RBXScriptSignal", {["table"] = {"Connect", "Once", "Wait"}}},
 		["Send"] = "function",
 		["Close"] = "function",
 		["send"] = "function",
@@ -29,22 +30,38 @@ return function()
 		local success, value = pcall(function()
 			return socket[property]
 		end)
-
+	
 		if not success or value == nil then
 			return {
 				status = 500,
 				message = `WebSocketObject is missing: {property}`,
 			}
 		end
-
-		if typeof(value) ~= expected then
+	
+		local expectedType = typeof(expected) == "table" and expected[1] or expected
+		if typeof(value) ~= expectedType then
 			return {
 				status = 500,
-				message = `WebSocketObject.{property} is not a {expected} (got {typeof(value)})`,
+				message = `WebSocketObject.{property} is not a {expectedType} (got {typeof(value)})`,
 			}
 		end
+	
+		if typeof(expected) == "table" and expected[2] and typeof(expected[2]) == "table" then
+			for containerType, subProps in pairs(expected[2]) do
+				if containerType == "table" and typeof(value) == "table" then
+					for _, subProp in ipairs(subProps) do
+						if typeof(value[subProp]) ~= "function" then
+							return {
+								status = 500,
+								message = `WebSocketObject.{property}.{subProp} is not a function`,
+							}
+						end
+					end
+				end
+			end
+		end
 	end
-
+	
 	if result then
 		return result
 	end
