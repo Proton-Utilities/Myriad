@@ -2337,60 +2337,59 @@ end local aa=WebSocket.connect'ws://echo.websocket.events'if not(type(aa)==
 "Didn't give a table | userdata"}end for ab,b in pairs{OnClose={
 'RBXScriptSignal',{table={'Connect','Once','Wait'}}},OnMessage={
 'RBXScriptSignal',{table={'Connect','Once','Wait'}}},Send='function',Close=
-'function',send='function',close='function'}do local c,d=pcall(function()return
-aa[ab]end)if not c or d==nil then return{status=500,message=`WebSocketObject is missing: {
-ab}`}end local e=typeof(b)=='table'and b[1]or b if typeof(d)~=e then return{
-status=500,message=`WebSocketObject.{ab} is not a {e} (got {typeof(d)})`}end if
-typeof(b)=='table'and b[2]and typeof(b[2])=='table'then for f,g in pairs(b[2])do
-if f=='table'and typeof(d)=='table'then for h,i in ipairs(g)do if typeof(d[i])~=
-'function'then return{status=500,message=`WebSocketObject.{ab}.{i} is not a function`
-}end end end end end end if result then return result end local ab,b=a.load'b'{
-'WebSocket.Connect','WebSocket.new','WebSocket.New'}if not ab then return{status
-=501,message=`Alias not found: {b}`}end return{status=200,message=`Passed`}end
-end function a.bm()return function(aa,ab)local b,c,d,e,f,g,h,i={},{},{
-checkpointDelay=0,statusFilter=false,stripRichtext=false,formatDiff=false,
-includeMetadata=false},{bullet='\u{2022}'},{[0]='\u{2753}',[200]='\u{2705}',[400
-]='\u{1f50e}',[401]='\u{1f4e6}',[500]='\u{1f6e0}\u{fe0f}',[501]=
-'\u{1f3f7}\u{fe0f}'},{cache={['cache.invalidate']=a.load'c',['cache.iscached']=a
-.load'd',['cache.replace']=a.load'e'},Closures={islclosure=a.load'f',iscclosure=
-a.load'g',isexecutorclosure=a.load'h',newcclosure=a.load'i',clonefunction=a.load
-'j',hookfunction=a.load'k',restorefunction=a.load'l',getfunctionhash=a.load'm',
-checkcaller=a.load'n'},crypt={['crypt.encrypt']=a.load's',['crypt.decrypt']=a.
-load't',['crypt.generatekey']=a.load'u',['crypt.generatebytes']=a.load'v',[
-'crypt.base64encode']=a.load'w',['crypt.base64decode']=a.load'x',['crypt.hash']=
-a.load'y',['crypt.random']=a.load'z',['crypt.hmac']=a.load'A'},debug={[
-'debug.getconstant']=a.load'B',['debug.getconstants']=a.load'C',[
-'debug.getproto']=a.load'D',['debug.getprotos']=a.load'E',['debug.getupvalue']=a
-.load'F',['debug.getupvalues']=a.load'G',['debug.getstack']=a.load'H',[
-'debug.setconstant']=a.load'I',['debug.setupvalue']=a.load'J'},Drawing={[
-'Drawing.new']=a.load'K',['Drawing.Fonts']=a.load'L',getrenderproperty=a.load'M'
-,setrenderproperty=a.load'N',cleardrawcache=a.load'O',isrenderobj=a.load'P'},
-Environment={getgenv=a.load'Q',getrenv=a.load'R',getgc=a.load'S',filtergc=a.load
-'T'},Filesystem={getcustomasset=a.load'U',listfiles=a.load'V',loadfile=a.load'W'
-,appendfile=a.load'X',delfile=a.load'Y',delfolder=a.load'Z',isfile=a.load'_',
-isfolder=a.load'aa',writefile=a.load'ab',readfile=a.load'ac',makefolder=a.load
-'ad'},Input={isrbxactive=a.load'ae',keypress=a.load'af',keyrelease=a.load'ag',
-keytap=a.load'ah',mouse1click=a.load'ai',mouse1press=a.load'aj',mouse1release=a.
-load'ak',mouse2click=a.load'al',mouse2press=a.load'am',mouse2release=a.load'an',
-mousemoveabs=a.load'ao',mousemoverel=a.load'ap',mousescroll=a.load'aq',
-setclipboard=a.load'ar',setrbxclipboard=a.load'as'},Instances={gethui=a.load'at'
-,cloneref=a.load'au',compareinstances=a.load'av',getinstances=a.load'aw',
-getnilinstances=a.load'ax',getcallbackvalue=a.load'ay',fireclickdetector=a.load
-'az',fireproximityprompt=a.load'aA',firetouchinterest=a.load'aB',saveinstance=a.
-load'aC'},Metatable={getrawmetatable=a.load'aD',setrawmetatable=a.load'aE',
-hookmetamethod=a.load'aF',getnamecallmethod=a.load'aG',setreadonly=a.load'aH',
-makereadonly=a.load'aI',isreadonly=a.load'aJ'},Miscellaneous={identifyexecutor=a
-.load'aK',setfpscap=a.load'aL',getfpscap=a.load'aM',request=a.load'aN',
-lz4compress=a.load'aO',lz4decompress=a.load'aP',queue_on_teleport=a.load'aQ'},
-External={messagebox=a.load'aR',rconsoleprint=a.load'aS',rconsoleinfo=a.load'aT'
-,rconsolewarn=a.load'aU',rconsoleerr=a.load'aV',rconsoleinput=a.load'aW',
-rconsoleclear=a.load'aX',rconsolename=a.load'aY',rconsolehide=a.load'aZ',
-rconsoleshow=a.load'a_'},Reflection={sethiddenproperty=a.load'a0',
-gethiddenproperty=a.load'a1',setthreadidentity=a.load'a2',getthreadidentity=a.
-load'a3',setscriptable=a.load'a4',isscriptable=a.load'a5'},Scripts={getscripts=a
-.load'a6',getrunningscripts=a.load'a7',getcallingscript=a.load'a8',
-getloadedmodules=a.load'a9',getsenv=a.load'ba',getscripthash=a.load'bb',
-loadstring=a.load'bc',getscriptbytecode=a.load'bd',getscriptclosure=a.load'be',
+'function'}do local c,d=pcall(function()return aa[ab]end)if not c or d==nil then
+return{status=500,message=`WebSocketObject is missing: {ab}`}end local e=typeof(
+b)=='table'and b[1]or b if typeof(d)~=e then return{status=500,message=`WebSocketObject.{
+ab} is not a {e} (got {typeof(d)})`}end if typeof(b)=='table'and b[2]and typeof(
+b[2])=='table'then for f,g in pairs(b[2])do if f=='table'and typeof(d)=='table'
+then for h,i in ipairs(g)do if typeof(d[i])~='function'then return{status=500,
+message=`WebSocketObject.{ab}.{i} is not a function`}end end end end end end if
+result then return result end local ab,b=a.load'b'{'websocket.connect',
+'WebSocket.Connect'}if not ab then return{status=501,message=`Alias not found: {
+b}`}end return{status=200,message=`Passed`}end end function a.bm()return
+function(aa,ab)local b,c,d,e,f,g,h,i={},{},{checkpointDelay=0,statusFilter=false
+,stripRichtext=false,formatDiff=false,includeMetadata=false},{bullet='\u{2022}'}
+,{[0]='\u{2753}',[200]='\u{2705}',[400]='\u{1f50e}',[401]='\u{1f4e6}',[500]=
+'\u{1f6e0}\u{fe0f}',[501]='\u{1f3f7}\u{fe0f}'},{cache={['cache.invalidate']=a.
+load'c',['cache.iscached']=a.load'd',['cache.replace']=a.load'e'},Closures={
+islclosure=a.load'f',iscclosure=a.load'g',isexecutorclosure=a.load'h',
+newcclosure=a.load'i',clonefunction=a.load'j',hookfunction=a.load'k',
+restorefunction=a.load'l',getfunctionhash=a.load'm',checkcaller=a.load'n'},crypt
+={['crypt.encrypt']=a.load's',['crypt.decrypt']=a.load't',['crypt.generatekey']=
+a.load'u',['crypt.generatebytes']=a.load'v',['crypt.base64encode']=a.load'w',[
+'crypt.base64decode']=a.load'x',['crypt.hash']=a.load'y',['crypt.random']=a.load
+'z',['crypt.hmac']=a.load'A'},debug={['debug.getconstant']=a.load'B',[
+'debug.getconstants']=a.load'C',['debug.getproto']=a.load'D',['debug.getprotos']
+=a.load'E',['debug.getupvalue']=a.load'F',['debug.getupvalues']=a.load'G',[
+'debug.getstack']=a.load'H',['debug.setconstant']=a.load'I',['debug.setupvalue']
+=a.load'J'},Drawing={['Drawing.new']=a.load'K',['Drawing.Fonts']=a.load'L',
+getrenderproperty=a.load'M',setrenderproperty=a.load'N',cleardrawcache=a.load'O'
+,isrenderobj=a.load'P'},Environment={getgenv=a.load'Q',getrenv=a.load'R',getgc=a
+.load'S',filtergc=a.load'T'},Filesystem={getcustomasset=a.load'U',listfiles=a.
+load'V',loadfile=a.load'W',appendfile=a.load'X',delfile=a.load'Y',delfolder=a.
+load'Z',isfile=a.load'_',isfolder=a.load'aa',writefile=a.load'ab',readfile=a.
+load'ac',makefolder=a.load'ad'},Input={isrbxactive=a.load'ae',keypress=a.load
+'af',keyrelease=a.load'ag',keytap=a.load'ah',mouse1click=a.load'ai',mouse1press=
+a.load'aj',mouse1release=a.load'ak',mouse2click=a.load'al',mouse2press=a.load
+'am',mouse2release=a.load'an',mousemoveabs=a.load'ao',mousemoverel=a.load'ap',
+mousescroll=a.load'aq',setclipboard=a.load'ar',setrbxclipboard=a.load'as'},
+Instances={gethui=a.load'at',cloneref=a.load'au',compareinstances=a.load'av',
+getinstances=a.load'aw',getnilinstances=a.load'ax',getcallbackvalue=a.load'ay',
+fireclickdetector=a.load'az',fireproximityprompt=a.load'aA',firetouchinterest=a.
+load'aB',saveinstance=a.load'aC'},Metatable={getrawmetatable=a.load'aD',
+setrawmetatable=a.load'aE',hookmetamethod=a.load'aF',getnamecallmethod=a.load
+'aG',setreadonly=a.load'aH',makereadonly=a.load'aI',isreadonly=a.load'aJ'},
+Miscellaneous={identifyexecutor=a.load'aK',setfpscap=a.load'aL',getfpscap=a.load
+'aM',request=a.load'aN',lz4compress=a.load'aO',lz4decompress=a.load'aP',
+queue_on_teleport=a.load'aQ'},External={messagebox=a.load'aR',rconsoleprint=a.
+load'aS',rconsoleinfo=a.load'aT',rconsolewarn=a.load'aU',rconsoleerr=a.load'aV',
+rconsoleinput=a.load'aW',rconsoleclear=a.load'aX',rconsolename=a.load'aY',
+rconsolehide=a.load'aZ',rconsoleshow=a.load'a_'},Reflection={sethiddenproperty=a
+.load'a0',gethiddenproperty=a.load'a1',setthreadidentity=a.load'a2',
+getthreadidentity=a.load'a3',setscriptable=a.load'a4',isscriptable=a.load'a5'},
+Scripts={getscripts=a.load'a6',getrunningscripts=a.load'a7',getcallingscript=a.
+load'a8',getloadedmodules=a.load'a9',getsenv=a.load'ba',getscripthash=a.load'bb'
+,loadstring=a.load'bc',getscriptbytecode=a.load'bd',getscriptclosure=a.load'be',
 decompile=a.load'bf'},Signals={},Actors={isparallel=a.load'bg',run_on_actor=a.
 load'bh',create_comm_channel=a.load'bi',get_comm_channel=a.load'bj',getactors=a.
 load'bk'},WebSocket={connect=a.load'bl'}}local j,k=function(...)local j=table.

@@ -24,8 +24,6 @@ return function()
 		["OnMessage"] = {"RBXScriptSignal", {["table"] = {"Connect", "Once", "Wait"}}},
 		["Send"] = "function",
 		["Close"] = "function",
-		["send"] = "function",
-		["close"] = "function",
 	}) do
 		local success, value = pcall(function()
 			return socket[property]
@@ -68,9 +66,8 @@ return function()
 
 	--// Alias test
 	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({
+		"websocket.connect",
 		"WebSocket.Connect",
-		"WebSocket.new",
-		"WebSocket.New",
 	})
 
 	if not envIndex then
