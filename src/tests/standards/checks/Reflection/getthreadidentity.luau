@@ -9,6 +9,7 @@ return function()
 		}
 	end
 
+	--// Functionality test
 	if typeof(getthreadidentity()) ~= "number" then
 		return {
 			status = 500,
