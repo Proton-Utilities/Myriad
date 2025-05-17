@@ -59,7 +59,7 @@ return function()
 		channel:Fire('abs')
 	]], comm_id)
 
-	task.wait()
+	task.wait(0.1)
 
 	if passed == 0 then
 		return {

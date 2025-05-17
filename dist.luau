@@ -2320,8 +2320,8 @@ create_comm_channel()if not c then return{status=500,message=`EventObject dosen'
 "Communication ID isn't a number"}end c.Event:Connect(function(d)if d~='abs'then
 aa=-1 end aa=1 end)run_on_actor(ab,
 "\r\n\t\tlocal channel = get_comm_channel(...)\r\n\t\tchannel:Fire('abs')\r\n\t"
-,b)task.wait()if aa==0 then return{status=500,message='Did not fire the event'}
-elseif not aa==-1 then return{status=500,message=
+,b)task.wait(0.1)if aa==0 then return{status=500,message=
+'Did not fire the event'}elseif not aa==-1 then return{status=500,message=
 "Passed argument[1] wasn't the expected value"}end local d,e=a.load'b'{}if not d
 then return{status=501,message=`Alias not found: {e}`}end return{status=200,
 message=`Passed`}end end function a.bk()return function()if not getfenv(0).
