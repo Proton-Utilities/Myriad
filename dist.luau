@@ -2130,42 +2130,14 @@ return{status=500,message='Hidden property value incorrect'}end local e,f=a.load
 'b'{}if not e then return{status=501,message=`Alias not found: {f}`}end return{
 status=200,message=`Passed`}end end function a.a2()return function()if not
 getfenv(0).setthreadidentity then return{status=400,message='Global not found'}
-end local aa={{name='None',number=0,canAccess=try(function()return game.Name end
-)},{name='PluginSecurity',number=1,canAccess=try(function()return game:
-GetService'CoreGui'.Name end)},{name='LocalUserSecurity',number=3,canAccess=try(
-function()return game.DataCost end)},{name='WritePlayerSecurity',number=4,
-canAccess=try(Instance.new,'Player')},{name='RobloxScriptSecurity',number=5,
-canAccess=try(function()return game:GetService'CorePackages'.Name end)},{name=
-'RobloxSecurity',number=6,canAccess=try(function()return Instance.new
-'SurfaceAppearance'.TexturePack end)},{name='NotAccessibleSecurity',number=7,
-canAccess=try(function()Instance.new'MeshPart'.MeshId=''end)},{name=
-'RobloxScriptExecution',number=8,canAccess=try(function()return settings().
-Rendering.EnableFRM end)}}for ab,b in ipairs(aa)do local c,d=pcall(function()
-setthreadidentity(b.number)if getidentity()~=b.number then error
-'Identity did not set properly'end local c=try(b.canAccess)if not c then error(
-'Access check failed at identity level '..tostring(b.number))end end)if not c
-then return{status=500,message=string.format('Failed identity %d (%s): %s',b.
-number,b.name,tostring(d))}end end local ab,b=a.load'b'{'setidentity',
-'setthreadcontext'}if not ab then return{status=501,message=`Alias not found: {b
-}`}end return{status=200,message=`Passed`}end end function a.a3()return function
-()if not getfenv(0).getthreadidentity then return{status=400,message=
-'Global not found'}end if typeof(getthreadidentity())~='number'then return{
-status=500,message='Did not return a number'}end local aa=function(aa,...)return
-(pcall(aa,...))end local ab={{name='None',number=0,canAccess=aa(function()return
-game.Name end)},{name='PluginSecurity',number=1,canAccess=aa(function()return
-game:GetService'CoreGui'.Name end)},{name='LocalUserSecurity',number=3,canAccess
-=aa(function()return game.DataCost end)},{name='WritePlayerSecurity',number=4,
-canAccess=aa(Instance.new,'Player')},{name='RobloxScriptSecurity',number=5,
-canAccess=aa(function()return game:GetService'CorePackages'.Name end)},{name=
-'RobloxSecurity',number=6,canAccess=aa(function()return Instance.new
-'SurfaceAppearance'.TexturePack end)},{name='NotAccessibleSecurity',number=7,
-canAccess=aa(function()Instance.new'MeshPart'.MeshId=''end)},{name=
-'RobloxScriptExecution',number=8,canAccess=aa(function()return settings().
-Rendering.EnableFRM end)}}for b,c in pairs(ab)do if not c.canAccess and
-getidentity()~=c.number then return{status=500,message=
-"Given identity dosen't match with permissions"}end end local b,c=a.load'b'{
-'getidentity','getthreadcontext'}if not b then return{status=501,message=`Alias not found: {
-c}`}end return{status=200,message=`Passed`}end end function a.a4()return
+end local aa,ab=a.load'b'{'setidentity','setthreadcontext'}if not aa then return
+{status=501,message=`Alias not found: {ab}`}end return{status=200,message=`Passed`
+}end end function a.a3()return function()if not getfenv(0).getthreadidentity
+then return{status=400,message='Global not found'}end if typeof(
+getthreadidentity())~='number'then return{status=500,message=
+'Did not return a number'}end local aa,ab=a.load'b'{'getidentity',
+'getthreadcontext'}if not aa then return{status=501,message=`Alias not found: {
+ab}`}end return{status=200,message=`Passed`}end end function a.a4()return
 function()if not getfenv(0).setscriptable then return{status=400,message=
 'Global not found'}end local aa=Instance.new'Part'if pcall(function()local ab=aa
 .MaterialVariantSerialized end)then return{status=500,message=
