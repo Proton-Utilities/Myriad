@@ -1265,6 +1265,13 @@ function ReGui:Init(Overwrites)
 	local Overlays = Container.Overlays
 	local LastClick = 0
 
+	ReGui:SetProperties(Container.Windows, {
+		OnTopOfCoreBlur = true
+	})
+	ReGui:SetProperties(Overlays, {
+		OnTopOfCoreBlur = true
+	})
+
 	--// Create tooltips container
 	self.TooltipsContainer = ReGui.Elements:Overlay({
 		Parent = Overlays,
@@ -1385,7 +1392,7 @@ function ReGui:ResolveUIParent(): GuiObject?
 			self:Warn(`Step: {Step} was chosen as the parent!: {Parent}`)
 		end
 
-		return Parent
+		return Parent, pcall(function() Instance.new("ScreenGui").OnTopOfCoreBlur = true end)
 	end
 
 	--// Error message

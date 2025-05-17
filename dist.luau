@@ -249,17 +249,18 @@ self,{ContainerParent=function()return self:ResolveUIParent()end,Prefabs=
 function()return self:LoadPrefabs()end},true)self:CheckConfig(self,{Container=
 function()return self:InsertPrefab('Container',{Parent=self.ContainerParent,Name
 =self.ContainerName})end},true)local s,t,u=self.Container,self.TooltipOffset,
-self.ActiveTooltips local v,w=s.Overlays,0 self.TooltipsContainer=b.Elements:
-Overlay{Parent=v}k.InputBegan:Connect(function(x)if not self:IsMouseEvent(x,true
-)then return end local y=tick()local z=y-w local A=self:IsDoubleClick(z)w=A and
-0 or y self:UpdateWindowFocuses()end)local x=function()local x,y=self.
-TooltipsContainer,#u>0 x.Visible=y if not y then return end local z,A=b:
-GetMouseLocation()local B=v.AbsolutePosition x.Position=UDim2.fromOffset(z-B.X+t
-,A-B.Y+t)end m:BindToRenderStep('ReGui_InputUpdate',Enum.RenderPriority.Input.
-Value,x)end function b:GetVersion()return self.Version end function b:
-IsMobileDevice()return k.TouchEnabled end function b:IsConsoleDevice()return k.
-GamepadEnabled end function b:GetScreenSize()return workspace.CurrentCamera.
-ViewportSize end function b:LoadPrefabs()local r,s=self.PlayerGui,
+self.ActiveTooltips local v,w=s.Overlays,0 b:SetProperties(s.Windows,{
+OnTopOfCoreBlur=true})b:SetProperties(v,{OnTopOfCoreBlur=true})self.
+TooltipsContainer=b.Elements:Overlay{Parent=v}k.InputBegan:Connect(function(x)if
+not self:IsMouseEvent(x,true)then return end local y=tick()local z=y-w local A=
+self:IsDoubleClick(z)w=A and 0 or y self:UpdateWindowFocuses()end)local x=
+function()local x,y=self.TooltipsContainer,#u>0 x.Visible=y if not y then return
+end local z,A=b:GetMouseLocation()local B=v.AbsolutePosition x.Position=UDim2.
+fromOffset(z-B.X+t,A-B.Y+t)end m:BindToRenderStep('ReGui_InputUpdate',Enum.
+RenderPriority.Input.Value,x)end function b:GetVersion()return self.Version end
+function b:IsMobileDevice()return k.TouchEnabled end function b:IsConsoleDevice(
+)return k.GamepadEnabled end function b:GetScreenSize()return workspace.
+CurrentCamera.ViewportSize end function b:LoadPrefabs()local r,s=self.PlayerGui,
 'ReGui-Prefabs'local t=script:WaitForChild(s,2)if t then return t end local u=r:
 WaitForChild(s,2)if u then return u end return nil end function b:
 ResolveUIParent()local r,s=self.PlayerGui,self.Debug local t,u={[1]=function()
@@ -267,24 +268,24 @@ local t=e()if t.Parent==j then return end return t end,[2]=function()return j
 end,[3]=function()return r end},self:CreateInstance'ScreenGui'for v,w in next,t
 do local x,y=pcall(w)if not x or not y then continue end local z=pcall(function(
 )u.Parent=y end)if not z then continue end if s then self:Warn(`Step: {v} was chosen as the parent!: {
-y}`)end return y end self:Warn
-'The ReGui container does not have a parent defined'return nil end function b:
-CheckConfig(r,s,t,u)if not r then return end for v,w in next,s do if r[v]~=nil
-then continue end if u then if table.find(u,v)then continue end end if t then w=
-w()end r[v]=w end return r end function b:CheckAssetUrl(r)if tonumber(r)then
-return`rbxassetid://{r}`end return r end function b:CreateInstance(r,s,t)local u
-=Instance.new(r,s)if t then local v=t.UsePropertiesList if not v then self:
-SetProperties(u,t)else self:ApplyFlags{Object=u,Class=t}end end return u end
-function b:ConnectMouseEvent(r,s)local t,u,v,w,x=s.Callback,s.DoubleClick,s.
-OnlyMouseHovering,0 if v then x=self:DetectHover(v)end r.Activated:Connect(
-function(...)local y=tick()local z=y-w if x and not x.Hovering then return end
-if u then if not b:IsDoubleClick(z)then w=y return end w=0 end t(...)end)end
-function b:GetAnimation(r)return r and self.Animation or TweenInfo.new(0)end
-function b:GetDictSize(r)local s=0 for t,u in r do s+=1 end return s end
-function b:RemoveAnimations(r)local s=self:GetAnimationData(r)local t=s.
-Connections for u,v in next,t do v:Disconnect()end end function b:
-GetAnimationData(r)local s=self.AnimationConnections local t=s[r]if t then
-return t end local u={Connections={}}s[r]=u return u end function b:
+y}`)end return y,pcall(function()Instance.new'ScreenGui'.OnTopOfCoreBlur=true
+end)end self:Warn'The ReGui container does not have a parent defined'return nil
+end function b:CheckConfig(r,s,t,u)if not r then return end for v,w in next,s do
+if r[v]~=nil then continue end if u then if table.find(u,v)then continue end end
+if t then w=w()end r[v]=w end return r end function b:CheckAssetUrl(r)if
+tonumber(r)then return`rbxassetid://{r}`end return r end function b:
+CreateInstance(r,s,t)local u=Instance.new(r,s)if t then local v=t.
+UsePropertiesList if not v then self:SetProperties(u,t)else self:ApplyFlags{
+Object=u,Class=t}end end return u end function b:ConnectMouseEvent(r,s)local t,u
+,v,w,x=s.Callback,s.DoubleClick,s.OnlyMouseHovering,0 if v then x=self:
+DetectHover(v)end r.Activated:Connect(function(...)local y=tick()local z=y-w if
+x and not x.Hovering then return end if u then if not b:IsDoubleClick(z)then w=y
+return end w=0 end t(...)end)end function b:GetAnimation(r)return r and self.
+Animation or TweenInfo.new(0)end function b:GetDictSize(r)local s=0 for t,u in r
+do s+=1 end return s end function b:RemoveAnimations(r)local s=self:
+GetAnimationData(r)local t=s.Connections for u,v in next,t do v:Disconnect()end
+end function b:GetAnimationData(r)local s=self.AnimationConnections local t=s[r]
+if t then return t end local u={Connections={}}s[r]=u return u end function b:
 AddAnimationSignal(r,s)local t=self:GetAnimationData(r)local u=t.Connections
 table.insert(u,s)end function b:SetAnimationsEnabled(r)self.NoAnimations=not r
 end function b:SetAnimation(r,s,t)t=t or r local u,v=self.Animations,s if
@@ -2344,52 +2345,52 @@ ab} is not a {e} (got {typeof(d)})`}end if typeof(b)=='table'and b[2]and typeof(
 b[2])=='table'then for f,g in pairs(b[2])do if f=='table'and typeof(d)=='table'
 then for h,i in ipairs(g)do if typeof(d[i])~='function'then return{status=500,
 message=`WebSocketObject.{ab}.{i} is not a function`}end end end end end end if
-result then return result end local ab,b=a.load'b'{'websocket.connect',
-'WebSocket.Connect'}if not ab then return{status=501,message=`Alias not found: {
-b}`}end return{status=200,message=`Passed`}end end function a.bm()return
-function(aa,ab)local b,c,d,e,f,g,h,i={},{},{checkpointDelay=0,statusFilter=false
-,stripRichtext=false,formatDiff=false,includeMetadata=false},{bullet='\u{2022}'}
-,{[0]='\u{2753}',[200]='\u{2705}',[400]='\u{1f50e}',[401]='\u{1f4e6}',[500]=
-'\u{1f6e0}\u{fe0f}',[501]='\u{1f3f7}\u{fe0f}'},{cache={['cache.invalidate']=a.
-load'c',['cache.iscached']=a.load'd',['cache.replace']=a.load'e'},Closures={
-islclosure=a.load'f',iscclosure=a.load'g',isexecutorclosure=a.load'h',
-newcclosure=a.load'i',clonefunction=a.load'j',hookfunction=a.load'k',
-restorefunction=a.load'l',getfunctionhash=a.load'm',checkcaller=a.load'n'},crypt
-={['crypt.encrypt']=a.load's',['crypt.decrypt']=a.load't',['crypt.generatekey']=
-a.load'u',['crypt.generatebytes']=a.load'v',['crypt.base64encode']=a.load'w',[
-'crypt.base64decode']=a.load'x',['crypt.hash']=a.load'y',['crypt.random']=a.load
-'z',['crypt.hmac']=a.load'A'},debug={['debug.getconstant']=a.load'B',[
-'debug.getconstants']=a.load'C',['debug.getproto']=a.load'D',['debug.getprotos']
-=a.load'E',['debug.getupvalue']=a.load'F',['debug.getupvalues']=a.load'G',[
-'debug.getstack']=a.load'H',['debug.setconstant']=a.load'I',['debug.setupvalue']
-=a.load'J'},Drawing={['Drawing.new']=a.load'K',['Drawing.Fonts']=a.load'L',
-getrenderproperty=a.load'M',setrenderproperty=a.load'N',cleardrawcache=a.load'O'
-,isrenderobj=a.load'P'},Environment={getgenv=a.load'Q',getrenv=a.load'R',getgc=a
-.load'S',filtergc=a.load'T'},Filesystem={getcustomasset=a.load'U',listfiles=a.
-load'V',loadfile=a.load'W',appendfile=a.load'X',delfile=a.load'Y',delfolder=a.
-load'Z',isfile=a.load'_',isfolder=a.load'aa',writefile=a.load'ab',readfile=a.
-load'ac',makefolder=a.load'ad'},Input={isrbxactive=a.load'ae',keypress=a.load
-'af',keyrelease=a.load'ag',keytap=a.load'ah',mouse1click=a.load'ai',mouse1press=
-a.load'aj',mouse1release=a.load'ak',mouse2click=a.load'al',mouse2press=a.load
-'am',mouse2release=a.load'an',mousemoveabs=a.load'ao',mousemoverel=a.load'ap',
-mousescroll=a.load'aq',setclipboard=a.load'ar',setrbxclipboard=a.load'as'},
-Instances={gethui=a.load'at',cloneref=a.load'au',compareinstances=a.load'av',
-getinstances=a.load'aw',getnilinstances=a.load'ax',getcallbackvalue=a.load'ay',
-fireclickdetector=a.load'az',fireproximityprompt=a.load'aA',firetouchinterest=a.
-load'aB',saveinstance=a.load'aC'},Metatable={getrawmetatable=a.load'aD',
-setrawmetatable=a.load'aE',hookmetamethod=a.load'aF',getnamecallmethod=a.load
-'aG',setreadonly=a.load'aH',makereadonly=a.load'aI',isreadonly=a.load'aJ'},
-Miscellaneous={identifyexecutor=a.load'aK',setfpscap=a.load'aL',getfpscap=a.load
-'aM',request=a.load'aN',lz4compress=a.load'aO',lz4decompress=a.load'aP',
-queue_on_teleport=a.load'aQ'},External={messagebox=a.load'aR',rconsoleprint=a.
-load'aS',rconsoleinfo=a.load'aT',rconsolewarn=a.load'aU',rconsoleerr=a.load'aV',
-rconsoleinput=a.load'aW',rconsoleclear=a.load'aX',rconsolename=a.load'aY',
-rconsolehide=a.load'aZ',rconsoleshow=a.load'a_'},Reflection={sethiddenproperty=a
-.load'a0',gethiddenproperty=a.load'a1',setthreadidentity=a.load'a2',
-getthreadidentity=a.load'a3',setscriptable=a.load'a4',isscriptable=a.load'a5'},
-Scripts={getscripts=a.load'a6',getrunningscripts=a.load'a7',getcallingscript=a.
-load'a8',getloadedmodules=a.load'a9',getsenv=a.load'ba',getscripthash=a.load'bb'
-,loadstring=a.load'bc',getscriptbytecode=a.load'bd',getscriptclosure=a.load'be',
+result then return result end local ab,b=a.load'b'{'websocket.connect'}if not ab
+then return{status=501,message=`Alias not found: {b}`}end return{status=200,
+message=`Passed`}end end function a.bm()return function(aa,ab)local b,c,d,e,f,g,
+h,i={},{},{checkpointDelay=0,statusFilter=false,stripRichtext=false,formatDiff=
+false,includeMetadata=false},{bullet='\u{2022}'},{[0]='\u{2753}',[200]=
+'\u{2705}',[400]='\u{1f50e}',[401]='\u{1f4e6}',[500]='\u{1f6e0}\u{fe0f}',[501]=
+'\u{1f3f7}\u{fe0f}'},{cache={['cache.invalidate']=a.load'c',['cache.iscached']=a
+.load'd',['cache.replace']=a.load'e'},Closures={islclosure=a.load'f',iscclosure=
+a.load'g',isexecutorclosure=a.load'h',newcclosure=a.load'i',clonefunction=a.load
+'j',hookfunction=a.load'k',restorefunction=a.load'l',getfunctionhash=a.load'm',
+checkcaller=a.load'n'},crypt={['crypt.encrypt']=a.load's',['crypt.decrypt']=a.
+load't',['crypt.generatekey']=a.load'u',['crypt.generatebytes']=a.load'v',[
+'crypt.base64encode']=a.load'w',['crypt.base64decode']=a.load'x',['crypt.hash']=
+a.load'y',['crypt.random']=a.load'z',['crypt.hmac']=a.load'A'},debug={[
+'debug.getconstant']=a.load'B',['debug.getconstants']=a.load'C',[
+'debug.getproto']=a.load'D',['debug.getprotos']=a.load'E',['debug.getupvalue']=a
+.load'F',['debug.getupvalues']=a.load'G',['debug.getstack']=a.load'H',[
+'debug.setconstant']=a.load'I',['debug.setupvalue']=a.load'J'},Drawing={[
+'Drawing.new']=a.load'K',['Drawing.Fonts']=a.load'L',getrenderproperty=a.load'M'
+,setrenderproperty=a.load'N',cleardrawcache=a.load'O',isrenderobj=a.load'P'},
+Environment={getgenv=a.load'Q',getrenv=a.load'R',getgc=a.load'S',filtergc=a.load
+'T'},Filesystem={getcustomasset=a.load'U',listfiles=a.load'V',loadfile=a.load'W'
+,appendfile=a.load'X',delfile=a.load'Y',delfolder=a.load'Z',isfile=a.load'_',
+isfolder=a.load'aa',writefile=a.load'ab',readfile=a.load'ac',makefolder=a.load
+'ad'},Input={isrbxactive=a.load'ae',keypress=a.load'af',keyrelease=a.load'ag',
+keytap=a.load'ah',mouse1click=a.load'ai',mouse1press=a.load'aj',mouse1release=a.
+load'ak',mouse2click=a.load'al',mouse2press=a.load'am',mouse2release=a.load'an',
+mousemoveabs=a.load'ao',mousemoverel=a.load'ap',mousescroll=a.load'aq',
+setclipboard=a.load'ar',setrbxclipboard=a.load'as'},Instances={gethui=a.load'at'
+,cloneref=a.load'au',compareinstances=a.load'av',getinstances=a.load'aw',
+getnilinstances=a.load'ax',getcallbackvalue=a.load'ay',fireclickdetector=a.load
+'az',fireproximityprompt=a.load'aA',firetouchinterest=a.load'aB',saveinstance=a.
+load'aC'},Metatable={getrawmetatable=a.load'aD',setrawmetatable=a.load'aE',
+hookmetamethod=a.load'aF',getnamecallmethod=a.load'aG',setreadonly=a.load'aH',
+makereadonly=a.load'aI',isreadonly=a.load'aJ'},Miscellaneous={identifyexecutor=a
+.load'aK',setfpscap=a.load'aL',getfpscap=a.load'aM',request=a.load'aN',
+lz4compress=a.load'aO',lz4decompress=a.load'aP',queue_on_teleport=a.load'aQ'},
+External={messagebox=a.load'aR',rconsoleprint=a.load'aS',rconsoleinfo=a.load'aT'
+,rconsolewarn=a.load'aU',rconsoleerr=a.load'aV',rconsoleinput=a.load'aW',
+rconsoleclear=a.load'aX',rconsolename=a.load'aY',rconsolehide=a.load'aZ',
+rconsoleshow=a.load'a_'},Reflection={sethiddenproperty=a.load'a0',
+gethiddenproperty=a.load'a1',setthreadidentity=a.load'a2',getthreadidentity=a.
+load'a3',setscriptable=a.load'a4',isscriptable=a.load'a5'},Scripts={getscripts=a
+.load'a6',getrunningscripts=a.load'a7',getcallingscript=a.load'a8',
+getloadedmodules=a.load'a9',getsenv=a.load'ba',getscripthash=a.load'bb',
+loadstring=a.load'bc',getscriptbytecode=a.load'bd',getscriptclosure=a.load'be',
 decompile=a.load'bf'},Signals={},Actors={isparallel=a.load'bg',run_on_actor=a.
 load'bh',create_comm_channel=a.load'bi',get_comm_channel=a.load'bj',getactors=a.
 load'bk'},WebSocket={connect=a.load'bl'}}local j,k=function(...)local j=table.
@@ -2457,11 +2458,18 @@ end output=ab:Console{ReadOnly=true,RichText=true,LineHeight=1.3,Fill=true}:
 Clear()d'Not implemented.'return{passed=b,failed=c}end end end local aa,ab,b,c=a
 .load'a',game:GetService'Players',game:GetService'ReplicatedStorage',game:
 GetService'TeleportService'local d,e,f=ab.LocalPlayer,80776325854596,{Standards=
-a.load'bm',Vulnerability=a.load'bn'}if game.PlaceId~=e then aa:PopupModal{Title=
-'Teleporting to test game...'}c:Teleport(e,d)else b:FindFirstChild'connected':
-FireServer()local g=aa:TabsWindow{Title='Myriad General Validity Test',Size=
-UDim2.fromOffset(400,500),Theme='ImGui'}local h=g:PopupModal{Title=
-'Would you like to join our discord?'}h:Label{Text=
+a.load'bm',Vulnerability=a.load'bn'}if game.PlaceId~=e then local g=aa:
+PopupModal{Title='Teleporting you to the test game...'}g:Label{Text=
+[[If teleporting dosen't work, press 'Copy' to copy the game link]],TextWrapped=
+true}g:Separator()local h=g:Row{Expanded=true}h:Button{Text='Copy',Callback=
+function()if setclipboard or toclipboard then(setclipboard or toclipboard)
+'https://www.roblox.com/games/80776325854596'else print
+[[Failed to copy link: https://www.roblox.com/games/80776325854596]]end g:
+ClosePopup()end}h:Button{Text='Cancel',Callback=function()g:ClosePopup()end}c:
+Teleport(e,d)else b:FindFirstChild'connected':FireServer()local g=aa:TabsWindow{
+Title='Myriad General Validity Test',Size=UDim2.fromOffset(400,500),Theme=
+'ImGui'}local h=g:PopupModal{Title='Would you like to copy our discord link?'}h:
+Label{Text=
 [[Get commit logs when we push changes, interact with communitys, and get support for problems]]
 ,TextWrapped=true}h:Separator()local i=h:Row{Expanded=true}i:Button{Text='Yes',
 Callback=function()if setclipboard or toclipboard then(setclipboard or

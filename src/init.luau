@@ -21,8 +21,37 @@ local tests = {
 
 --// Initialize
 if game.PlaceId ~= gameId then
-	interface:PopupModal({
-		Title = "Teleporting to test game...",
+	local gameModal = interface:PopupModal({
+		Title = "Teleporting you to the test game...",
+	})
+
+	gameModal:Label({
+		Text = "If teleporting dosen't work, press 'Copy' to copy the game link",
+		TextWrapped = true
+	})
+
+	gameModal:Separator()
+
+	local Row = gameModal:Row({
+		Expanded = true
+	})
+
+	Row:Button({
+		Text = "Copy",
+		Callback = function()
+			if setclipboard or toclipboard then
+				(setclipboard or toclipboard)("https://www.roblox.com/games/80776325854596")
+			else
+				print("Failed to copy link: " .. "https://www.roblox.com/games/80776325854596")
+			end
+			gameModal:ClosePopup()
+		end,
+	})
+	Row:Button({
+		Text = "Cancel",
+		Callback = function()
+			gameModal:ClosePopup()
+		end,
 	})
 
 	teleportService:Teleport(gameId, localPlayer)
@@ -37,7 +66,7 @@ else
 	})
 
 	local discModal = window:PopupModal({
-		Title = "Would you like to join our discord?",
+		Title = "Would you like to copy our discord link?",
 	})
 
 	discModal:Label({
