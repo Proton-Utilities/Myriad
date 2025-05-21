@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myriad results</title>
+    <style>
+        :root {
+            --bg-color: rgb(1, 9, 19);
+            --text-color: #e0e0e0;
+            --card-bg-color: #171822;
+            --border-color: #5b608a;
+            --pass-color: #4CAF50;
+            --fail-color: #F44336;
+            --progress-bar-empty: #444;
+            --tooltip-bg: #333;
+            --tooltip-text: #f1f1f1;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card-bg-color);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        h1, h2 {
+            color: var(--text-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .metadata {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 10px 20px;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .metadata-item { display: contents; }
+        .metadata-label { font-weight: bold; color: #aaa; }
+        .metadata-value { color: var(--text-color); }
+
+        .progress-section {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+
+        .radial-progress-bar {
+            width: 150px; height: 150px; border-radius: 50%;
+            position: relative; display: flex;
+            justify-content: center; align-items: center;
+        }
+        .radial-progress-bar::after {
+            content: ''; position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px; height: 120px;
+            background-color: var(--card-bg-color); 
+            border-radius: 50%; z-index: 1; 
+        }
+        .progress-bar-inner-text {
+            font-size: 2em; font-weight: bold; color: var(--text-color);
+            z-index: 2; position: relative; 
+        }
+        
+        .test-categories { margin-top: 20px; }
+        .test-items { display: flex; flex-wrap: wrap; gap: 8px; }
+
+        .test-item {
+            padding: 5px 10px; border-radius: 4px;
+            font-size: 0.9em;
+            cursor: default;
+            transition: transform 0.2s ease-in-out;
+            position: relative; 
+        }
+        .test-item:hover { transform: translateY(-2px); }
+        .test-item.pass { background-color: var(--pass-color); color: white; }
+        .test-item.fail { background-color: var(--fail-color); color: white; }
+
+        .error-message {
+            color: var(--fail-color); text-align: center;
+            font-size: 1.2em; padding: 20px;
+        }
+        a { color: #64b5f6; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        #tooltp {
+            position: absolute;
+            display: none;
+            background-color: var(--tooltip-bg);
+            color: var(--tooltip-text);
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 0.85em;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            max-width: 300px;
+            pointer-events: none;
+            white-space: pre-wrap;
+            transition: opacity 0.15s ease-in-out;
+            opacity: 0;
+        }
+        #tooltp.visible {
+            display: block;
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Myriad Results</h1>
+        
+        <div id="loadingmsg">Fetching scrap data</div>
+        <div id="errormsgs" class="error-message" style="display: none;"></div>
+
+        <div id="resdisp" style="display: none;">
+            
+            <div class="metadata">
+                <div class="progress-section">
+                    <div class="radial-progress-bar" id="radialProgressBar">
+                        <span class="progress-bar-inner-text" id="progressText">0/0</span>
+                    </div>
+                </div>
+                <div class="metadata-item"><span class="metadata-label">Executor:</span><span class="metadata-value" id="execname">N/A</span></div>
+                <div class="metadata-item"><span class="metadata-label">Version:</span><span class="metadata-value" id="execvers">N/A</span></div>
+                <div class="metadata-item"><span class="metadata-label">Tested:</span><span class="metadata-value" id="testnum">0</span></div>
+                <div class="metadata-item"><span class="metadata-label">Passed:</span><span class="metadata-value" id="passtest" style="color: var(--pass-color);">0</span></div>
+                <div class="metadata-item"><span class="metadata-label">Failed:</span><span class="metadata-value" id="failedtestnum" style="color: var(--fail-color);">0</span></div>
+                <div class="metadata-item"><span class="metadata-label">Test Time:</span><span class="metadata-value" id="thetimethatthetesttookcurrentlyorinthepastrightnowmaybeidkcouldbekillmealrholyshitihatehtl">0s</span></div>
+                <div class="metadata-item"><span class="metadata-label">Generated:</span><span class="metadata-value" id="buildgendate">N/A</span></div>
+                <div class="metadata-item"><span class="metadata-label">Test Build Info:</span><span class="metadata-value" id="testBuildVersion">N/A</span></div>
+                <div class="metadata-item"><span class="metadata-label">Scrap ID:</span><span class="metadata-value"><a id="rubisscrap" href="#" target="_blank">N/A</a></span></div>
+            </div>
+
+            <div id="testCategories" class="test-categories">
+                
+            </div>
+        </div>
+    </div>
+
+    <div id="tooltp"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const loadingmsg = document.getElementById('loadingmsg');
+            const errormsgsElement = document.getElementById('errormsgs');
+            const resdisp = document.getElementById('resdisp');
+            const rubisscrap = document.getElementById('rubisscrap');
+            const tooltp = document.getElementById('tooltp');
+
+            function errsh(message) {}
+            function theWheelsOnTheBusGoRoundAndRound(passed, total) {}
+            function formatthatnigga(dateString) {}
+            
+            function tooltipmak(event, text) {
+                tooltp.innerHTML = text;
+                tooltp.classList.add('visible');
+
+                let x = event.clientX + 15; 
+                let y = event.clientY + 15;
+
+                const rectftt = tooltp.getBoundingClientRect();
+                const viewportWidth = window.innerWidth;
+                const viewportHeight = window.innerHeight;
+
+                if (x + rectftt.width > viewportWidth - 10) {
+                    x = viewportWidth - rectftt.width - 10;
+                }
+                if (y + rectftt.height > viewportHeight - 10) {
+                    y = event.clientY - rectftt.height - 10;
+                }
+                 if (x < 10) { x = 10; }
+                 if (y < 10) { y = 10; }
+
+
+                tooltp.style.left = `${x + window.scrollX}px`;
+                tooltp.style.top = `${y + window.scrollY}px`;
+            }
+
+            function hideTooltip() {
+                tooltp.classList.remove('visible');
+            }
+
+            function renderResults(data, currentScrapId) {
+                loadingmsg.style.display = 'none';
+                resdisp.style.display = 'block';
+
+                const meta = data.metadata;
+                document.getElementById('execname').textContent = meta.executor || 'N/A';
+                document.getElementById('execvers').textContent = meta.executorVersion || 'N/A';
+                document.getElementById('testnum').textContent = meta.tested || 0;
+                document.getElementById('passtest').textContent = meta.passed || 0;
+                document.getElementById('failedtestnum').textContent = meta.failed || 0;
+                document.getElementById('thetimethatthetesttookcurrentlyorinthepastrightnowmaybeidkcouldbekillmealrholyshitihatehtl').textContent = `${parseFloat(meta.testTime || 0).toFixed(2)}s`;
+                document.getElementById('buildgendate').textContent = formatthatnigga(meta.generated);
+                
+                let buildInfo = 'N/A';
+                if (meta.testBuildMetadata) {
+                    buildInfo = `${meta.testBuildMetadata.vers || 'v?'} (${meta.testBuildMetadata.cfg || '?'}, Gen: ${formatthatnigga(meta.testBuildMetadata.genDate)})`;
+                }
+                document.getElementById('testBuildVersion').textContent = buildInfo;
+
+                rubisscrap.textContent = currentScrapId;
+                rubisscrap.href = `https://api.rubis.app/v2/scrap/${currentScrapId}/raw`;
+
+                theWheelsOnTheBusGoRoundAndRound(meta.passed, meta.tested);
+
+                const categoriesContainer = document.getElementById('testCategories');
+                categoriesContainer.innerHTML = ''; 
+
+                const results = data.results;
+                for (const catName in results) {
+                    if (results.hasOwnProperty(catName)) {
+                        const tests = results[catName];
+
+                        const catDiv = document.createElement('div');
+                        catDiv.className = 'cat';
+                        
+                        const catTitle = document.createElement('h2');
+                        catTitle.textContent = catName;
+                        catDiv.appendChild(catTitle);
+
+                        const itemsDiv = document.createElement('div');
+                        itemsDiv.className = 'test-items';
+
+                        if (tests.length === 0) {
+                            const noTestsMessage = document.createElement('p');
+                            noTestsMessage.textContent = 'No tests in this category.';
+                            itemsDiv.appendChild(noTestsMessage);
+                        } else {
+                            tests.forEach(test => {
+                                const itemSpan = document.createElement('span');
+                                itemSpan.className = 'test-item';
+                                itemSpan.textContent = test.name || 'Unknown Test'; 
+                                
+                                const status = test.status !== undefined ? test.status : 'N/A';
+                                const message = test.message || 'No message provided.';
+                                const tooltipContent = `<b>Status ${status}:</b><br>${message.replace(/\n/g, "<br>")}`;
+                                
+                                itemSpan.addEventListener('mouseenter', (event) => {
+                                    tooltipmak(event, tooltipContent);
+                                });
+                                itemSpan.addEventListener('mouseleave', () => {
+                                    hideTooltip();
+                                });
+
+                                 itemSpan.addEventListener('mousemove', (event) => {
+                                    tooltipmak(event, tooltipContent);
+                                });
+
+
+                                if (test.status === 200) {
+                                    itemSpan.classList.add('pass');
+                                } else {
+                                    itemSpan.classList.add('fail');
+                                }
+                                itemsDiv.appendChild(itemSpan);
+                            });
+                        }
+                        catDiv.appendChild(itemsDiv);
+                        categoriesContainer.appendChild(catDiv);
+                    }
+                }
+            }
+
+            const pathParts = window.location.pathname.split('/');
+            const scrapIdFromPath = pathParts.pop() || pathParts.pop(); 
+            const scrapIdFromHash = window.location.hash.substring(1);
+            const scrapId = scrapIdFromPath || scrapIdFromHash; 
+
+            if (!scrapId) {
+                errsh('No Scrap ID found in URL. Use site.com/scrapId or site.com#scrapId');
+                document.title = "Error - No Scrap ID";
+                return;
+            }
+            document.title = `Results: ${scrapId}`;
+            const apiUrl = `https://api.rubis.app/v2/scrap/${scrapId}/raw`;
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    if (response.status === 404) {
+                         throw new Error(`Scrap ID "${scrapId}" not found. Please check the ID.`);
+                    }
+                    throw new Error(`Failed to fetch scrap data: ${response.status} ${response.statusText}`);
+                }
+                const testData = await response.json();
+                if (!testData || !testData.metadata || !testData.results) {
+                    throw new Error("Invalid or empty test data received from API.");
+                }
+                renderResults(testData, scrapId);
+            } catch (error) {
+                console.error('Error fetching or processing test results:', error);
+                errsh(`Error: ${error.message}. Check console for details.`);
+                document.title = `Error - ${scrapId}`;
+            }
+
+            function errsh(message) {
+                loadingmsg.style.display = 'none';
+                errormsgsElement.textContent = message;
+                errormsgsElement.style.display = 'block';
+                resdisp.style.display = 'none';
+            }
+            function theWheelsOnTheBusGoRoundAndRound(passed, total) {
+                const progressBar = document.getElementById('radialProgressBar');
+                const progressText = document.getElementById('progressText');
+                const percentage = total > 0 ? (passed / total) * 100 : 0;
+                progressBar.style.background = `conic-gradient(var(--pass-color) 0% ${percentage}%, var(--progress-bar-empty) ${percentage}% 100%)`;
+                progressText.textContent = `${Math.round(percentage)}%`;
+            }
+            function formatthatnigga(dateString) {
+                if (!dateString) return 'N/A';
+                try {
+                    const date = new Date(dateString);
+                    if (isNaN(date.getTime())) return dateString; 
+                    return date.toLocaleString(undefined, { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+                } catch (e) { return dateString; }
+            }
+
+        });
+    </script>
+</body>
+</html>
