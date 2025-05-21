@@ -47,25 +47,27 @@ return function()
 		touchEnded = true
 	end)
 
-	firetouchinterest(touchPart, originalPart, true)
-	game:GetService("RunService").PostSimulation:Wait()
-
 	firetouchinterest(touchPart, originalPart, false)
 	game:GetService("RunService").PostSimulation:Wait()
-
-	originalPart:Destroy()
 
 	if not touched then
 		return {
 			status = 500,
 			message = "Touched event wasn't fired",
 		}
-	elseif not touchEnded then
+	end
+
+	firetouchinterest(touchPart, originalPart, true)
+	game:GetService("RunService").PostSimulation:Wait()
+
+	if not touchEnded then
 		return {
 			status = 500,
-			message = "TouchEnded event wasn't fired",
+			message = "Touched event wasn't fired",
 		}
 	end
+
+	originalPart:Destroy()
 
 	--// Alias test
 	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
