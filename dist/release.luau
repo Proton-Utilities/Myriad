@@ -11,9 +11,9 @@
 --]]
 
 _P = {
-    genDate = "2025-05-21T06:11:35.542982100+00:00",
+    genDate = "2025-05-21T19:42:28.464494600+00:00",
     cfg = "Release",
-    vers = "v1.0.0"
+    vers = "v1.0.1"
 }
 
 local a a={cache={},load=function(b)if not a.cache[b]then a.cache[b]={c=a[b]()}
@@ -1945,21 +1945,20 @@ Position=Vector3.new(0,-100,0)ad.Parent=workspace ad.Touched:Connect(function(ae
 "Touch part given wasn't the passed touch part"}end ab=true end)ad.TouchEnded:
 Connect(function(ae)if ae~=aa then ad:Destroy()return{status=500,message=
 "Touch part given wasn't the passed touch part"}end ac=true end)
-firetouchinterest(aa,ad,true)game:GetService'RunService'.PostSimulation:Wait()
 firetouchinterest(aa,ad,false)game:GetService'RunService'.PostSimulation:Wait()
-ad:Destroy()if not ab then return{status=500,message=
-"Touched event wasn't fired"}elseif not ac then return{status=500,message=
-"TouchEnded event wasn't fired"}end local ae,b=a.load'b'{}if not ae then return{
-status=501,message=`Alias not found: {b}`}end return{status=200,message=`Passed`
-}end end function a.aC()return function()if not getfenv(0).saveinstance then
-return{status=400,message='Global not found'}elseif not getfenv(0).listfiles
-then return{status=501,message="Dependant global 'listfiles' not found"}elseif
-not getfenv(0).delfile then return{status=501,message=
-"Dependant global 'delfile' not found"}end local aa,ab=game:GetService
-'HttpService':GenerateGUID(false):gsub('-',''),Instance.new'Part'saveinstance(ab
-,{FileName=aa})task.wait(0.5)local ac=false for ad,ae in pairs(listfiles'')do if
-ae:find(aa)then ac=true delfile(ae)end end if not ac then return{status=500,
-message=
+if not ab then return{status=500,message="Touched event wasn't fired"}end
+firetouchinterest(aa,ad,true)game:GetService'RunService'.PostSimulation:Wait()if
+not ac then return{status=500,message="Touched event wasn't fired"}end ad:
+Destroy()local ae,b=a.load'b'{}if not ae then return{status=501,message=`Alias not found: {
+b}`}end return{status=200,message=`Passed`}end end function a.aC()return
+function()if not getfenv(0).saveinstance then return{status=400,message=
+'Global not found'}elseif not getfenv(0).listfiles then return{status=501,
+message="Dependant global 'listfiles' not found"}elseif not getfenv(0).delfile
+then return{status=501,message="Dependant global 'delfile' not found"}end local
+aa,ab=game:GetService'HttpService':GenerateGUID(false):gsub('-',''),Instance.new
+'Part'saveinstance(ab,{FileName=aa})task.wait(0.5)local ac=false for ad,ae in
+pairs(listfiles'')do if ae:find(aa)then ac=true delfile(ae)end end if not ac
+then return{status=500,message=
 [[Couldn't find saved part. Args passed: (Instance, { FileName = string })]]}end
 local ad,ae=a.load'b'{}if not ad then return{status=501,message=`Alias not found: {
 ae}`}end return{status=200,message=`Passed`}end end function a.aD()return
@@ -2423,10 +2422,10 @@ format(
 
 ]]
 ,DateTime.now():ToIsoDate(),s,t)i:SetValue(w..v)end game.ReplicatedStorage.res:
-FireServer(c,{executor=s,executorVersion=t,tested=p,passed=n,failed=o,testTime=r
-,generated=DateTime.now():ToIsoDate()})end)end ab:Button{Text='Run test',
-Callback=function()coroutine.wrap(l)()end}do local m=ab:TreeNode{Title=
-'Test options'}m:Combo{Label='Status filter',Selected='All',Items={'All',
+FireServer(c,{testBuildMetadata=_P,executor=s,executorVersion=t,tested=p,passed=
+n,failed=o,testTime=r,generated=DateTime.now():ToIsoDate()})end)end ab:Button{
+Text='Run test',Callback=function()coroutine.wrap(l)()end}do local m=ab:TreeNode
+{Title='Test options'}m:Combo{Label='Status filter',Selected='All',Items={'All',
 '\u{2705} Pass','\u{2753} Ambiguous','\u{1f50e} Missing','\u{1f4e6} Dependency',
 '\u{1f6e0}\u{fe0f} Functionality','\u{1f3f7}\u{fe0f} Alias'},Callback=function(n
 ,o)local p={All=false,['\u{2705} Pass']=f[200],['\u{2753} Ambiguous']=f[0],[
@@ -2471,8 +2470,9 @@ toclipboard)'https://discord.gg/nn4NxHU3Pu'else print
 'Failed to copy link: https://discord.gg/nn4NxHU3Pu'end h:ClosePopup()end}i:
 Button{Text='No',Callback=function()h:ClosePopup()end}do local j=g:CreateTab{
 Name='Home'}j:Label{RichText=true,Text=
-'<b>Myriad General Validity Test (2025)</b>'}j:Label{RichText=true,Text=`Version: <b>{
-_P.vers}</b>`}j:Label{RichText=true,Text=`Executor: <b>{(identifyexecutor and
-identifyexecutor()or'Unknown')}</b>`}j:Label{RichText=true,Text=
-'\nContributors:'}j:BulletText{RichText=true,Rows={'biggaboy212'}}end for j,k in
-f do local l=g:CreateTab{Name=j}coroutine.wrap(function()f[j](j,l)end)()end end
+'<b>Myriad General Validity Test (2025)</b>'}j:Label{RichText=true,Text=`Build: <b>{
+_P.cfg}</b>`}j:Label{RichText=true,Text=`Build Version: <b>{_P.vers}</b>`}j:
+Label{RichText=true,Text=`Executor: <b>{(identifyexecutor and identifyexecutor()
+or'Unknown')}</b>`}j:Label{RichText=true,Text='\nContributors:'}j:BulletText{
+RichText=true,Rows={'biggaboy212'}}end for j,k in f do local l=g:CreateTab{Name=
+j}coroutine.wrap(function()f[j](j,l)end)()end end
