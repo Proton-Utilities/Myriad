@@ -20,42 +20,31 @@ return function()
 		Date.now()
 	end
 
-	if debug.getconstants(originalFunction)[1] ~= "A" then
-		return {
-			status = 500,
-			message = "Constant 1 missing or unexpected value"
-		}
-	elseif debug.getconstants(originalFunction)[2] ~= "print" then
-		return {
-			status = 500,
-			message = "Constant 2 missing or unexpected value"
-		}
-	elseif debug.getconstants(originalFunction)[3] ~= nil then
-		return {
-			status = 500,
-			message = "Constant 3 should be nil"
-		}
-	elseif debug.getconstants(originalFunction)[4] ~= "tostring" then
-		return {
-			status = 500,
-			message = "Constant 4 missing or unexpected value"
-		}
-	elseif debug.getconstants(originalFunction)[5] ~= nil then
-		return {
-			status = 500,
-			message = "Constant 5 should be nil"
-		}
-	elseif debug.getconstants(originalFunction)[6] ~= "Date" then
-		return {
-			status = 500,
-			message = "Constant 6 missing or unexpected value"
-		}
-	elseif debug.getconstants(originalFunction)[7] ~= "now" then
-		return {
-			status = 500,
-			message = "Constant 7 missing or unexpected value"
-		}
-	elseif pcall(debug.getconstants, print) then
+	local constOrder = {
+		[1] = "print",
+
+		[3] = "A",
+		[4] = "tostring",
+
+		[6] = "Date",
+		[7] = "now"
+	}
+
+	for i, v in pairs(debug.getconstants(originalFunction)) do
+		if not constOrder[i] then
+			return {
+				status = 500,
+				message = `{i} dosen't exist in expected constant order`
+			}
+		elseif constOrder[i] ~= v then
+			return {
+				status = 500,
+				message = `Constant at {i} should be: {constOrder[i]}. Got: {v}`
+			}
+		end
+	end
+
+	if pcall(debug.getconstants, print) then
 		return {
 			status = 500,
 			message = "Should error with C closures"

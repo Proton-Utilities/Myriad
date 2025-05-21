@@ -11,9 +11,9 @@
 --]]
 
 _P = {
-    genDate = "2025-05-21T06:08:32.635049900+00:00",
-    cfg = "Beta",
-    vers = "v1.0.0-beta.3"
+    genDate = "2025-05-21T06:11:35.542982100+00:00",
+    cfg = "Release",
+    vers = "v1.0.0"
 }
 
 local a a={cache={},load=function(b)if not a.cache[b]then a.cache[b]={c=a[b]()}

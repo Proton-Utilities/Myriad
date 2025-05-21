@@ -1,7 +1,5 @@
 --!nolint
 --!nocheck
---!native
---!optimize 2
 
 --[[
     @repository https://github.com/Proton-Utilities/Myriad
@@ -12,9 +10,11 @@
     This file was automatically generated with darklua, it is not intended for manual editing.
 --]]
 
-_P.genDate = "2025-05-21T02:42:00.541785+00:00"
-_P.cfg = "Debug"
-_P.vers = "v0.0.0"
+_P = {
+    genDate = "2025-05-21T06:07:59.747708900+00:00",
+    cfg = "Debug",
+    vers = "v0.0.0"
+}
 
 local a a={cache={},load=function(b)if not a.cache[b]then a.cache[b]={c=a[b]()}
 end return a.cache[b].c end}do function a.a()local b={Version='1.4.3',Author=
@@ -1495,40 +1495,26 @@ ae~=ad then return{status=500,message="Data doesn't match reference data"}end
 local b,c=a.load'b'{}if not b then return{status=501,message=`Alias not found: {
 c}`}end return{status=200,message='Passed'}end end function a.B()return function
 ()if not getfenv(0).debug or not getfenv(0).debug.getconstant then return{status
-=400,message='Global not found'}end local aa=function()local aa,ab=2,'A'print(aa
-)tostring(ab)Date.now()end local ab,ac=pcall(debug.getconstant,aa,8)if debug.
-getconstant(aa,1)~='A'then return{status=500,message=
-'Constant 1 missing or unexpected value'}elseif debug.getconstant(aa,2)~='print'
-then return{status=500,message='Constant 2 missing or unexpected value'}elseif
-debug.getconstant(aa,3)~=nil then return{status=500,message=
-'Constant 3 should be nil'}elseif debug.getconstant(aa,4)~='tostring'then return
-{status=500,message='Constant 4 missing or unexpected value'}elseif debug.
-getconstant(aa,5)~=nil then return{status=500,message='Constant 5 should be nil'
-}elseif debug.getconstant(aa,6)~='Date'then return{status=500,message=
-'Constant 6 missing or unexpected value'}elseif debug.getconstant(aa,7)~='now'
-then return{status=500,message='Constant 7 missing or unexpected value'}elseif
-not ab then return{status=500,message=
-'Should pass nil instead of errroing for invalid indexes'}elseif ac then return{
-status=500,message="Constant 8 shouldn't exist"}elseif pcall(debug.getconstant,
-print,1)then return{status=500,message='Should error with C closures'}end local
-ad,ae=a.load'b'{'getconstant'}if not ad then return{status=501,message=`Alias not found: {
-ae}`}end return{status=200,message=`Passed`}end end function a.C()return
-function()if not getfenv(0).debug or not getfenv(0).debug.getconstants then
-return{status=400,message='Global not found'}end local aa=function()local aa,ab=
-2,'A'print(aa)tostring(ab)Date.now()end if debug.getconstants(aa)[1]~='A'then
-return{status=500,message='Constant 1 missing or unexpected value'}elseif debug.
-getconstants(aa)[2]~='print'then return{status=500,message=
-'Constant 2 missing or unexpected value'}elseif debug.getconstants(aa)[3]~=nil
-then return{status=500,message='Constant 3 should be nil'}elseif debug.
-getconstants(aa)[4]~='tostring'then return{status=500,message=
-'Constant 4 missing or unexpected value'}elseif debug.getconstants(aa)[5]~=nil
-then return{status=500,message='Constant 5 should be nil'}elseif debug.
-getconstants(aa)[6]~='Date'then return{status=500,message=
-'Constant 6 missing or unexpected value'}elseif debug.getconstants(aa)[7]~='now'
-then return{status=500,message='Constant 7 missing or unexpected value'}elseif
-pcall(debug.getconstants,print)then return{status=500,message=
-'Should error with C closures'}end local ab,ac=a.load'b'{'getconstants'}if not
-ab then return{status=501,message=`Alias not found: {ac}`}end return{status=200,
+=400,message='Global not found'}end local aa,ab=function()local aa,ab=2,'A'
+print(aa)tostring(ab)Date.now()end,{[1]='print',[3]='A',[4]='tostring',[6]=
+'Date',[7]='now'}for ac,ad in ipairs(ab)do local ae=debug.getconstant(aa,ac)if
+ae~=ad then return{status=500,message=`Constant at {ac} should be: {ad}. Got: {
+ae}`}end end local ac,ad=pcall(debug.getconstant,aa,9)if not ac then return{
+status=500,message='Should pass nil instead of errroing for invalid indexes'}
+elseif ad then return{status=500,message="Constant 9 shouldn't exist"}elseif
+pcall(debug.getconstant,print,1)then return{status=500,message=
+'Should error with C closures'}end local ae,b=a.load'b'{'getconstant'}if not ae
+then return{status=501,message=`Alias not found: {b}`}end return{status=200,
+message=`Passed`}end end function a.C()return function()if not getfenv(0).debug
+or not getfenv(0).debug.getconstants then return{status=400,message=
+'Global not found'}end local aa,ab=function()local aa,ab=2,'A'print(aa)tostring(
+ab)Date.now()end,{[1]='print',[3]='A',[4]='tostring',[6]='Date',[7]='now'}for ac
+,ad in pairs(debug.getconstants(aa))do if not ab[ac]then return{status=500,
+message=`{ac} dosen't exist in expected constant order`}elseif ab[ac]~=ad then
+return{status=500,message=`Constant at {ac} should be: {ab[ac]}. Got: {ad}`}end
+end if pcall(debug.getconstants,print)then return{status=500,message=
+'Should error with C closures'}end local ac,ad=a.load'b'{'getconstants'}if not
+ac then return{status=501,message=`Alias not found: {ad}`}end return{status=200,
 message=`Passed`}end end function a.D()return function()if not getfenv(0).debug
 or not getfenv(0).debug.getproto then return{status=400,message=
 'Global not found'}end local aa=function()return function()return'MYRI'end end
@@ -1959,20 +1945,21 @@ Position=Vector3.new(0,-100,0)ad.Parent=workspace ad.Touched:Connect(function(ae
 "Touch part given wasn't the passed touch part"}end ab=true end)ad.TouchEnded:
 Connect(function(ae)if ae~=aa then ad:Destroy()return{status=500,message=
 "Touch part given wasn't the passed touch part"}end ac=true end)
-firetouchinterest(aa,ad,0)game:GetService'RunService'.PostSimulation:Wait()
-firetouchinterest(aa,ad,1)game:GetService'RunService'.PostSimulation:Wait()ad:
-Destroy()if not ab then return{status=500,message="Touched event wasn't fired"}
-elseif not ac then return{status=500,message="TouchEnded event wasn't fired"}end
-local ae,b=a.load'b'{}if not ae then return{status=501,message=`Alias not found: {
-b}`}end return{status=200,message=`Passed`}end end function a.aC()return
-function()if not getfenv(0).saveinstance then return{status=400,message=
-'Global not found'}elseif not getfenv(0).listfiles then return{status=501,
-message="Dependant global 'listfiles' not found"}elseif not getfenv(0).delfile
-then return{status=501,message="Dependant global 'delfile' not found"}end local
-aa,ab=game:GetService'HttpService':GenerateGUID(false):gsub('-',''),Instance.new
-'Part'saveinstance(ab,{FileName=aa})task.wait(0.5)local ac=false for ad,ae in
-pairs(listfiles'')do if ae:find(aa)then ac=true delfile(ae)end end if not ac
-then return{status=500,message=
+firetouchinterest(aa,ad,true)game:GetService'RunService'.PostSimulation:Wait()
+firetouchinterest(aa,ad,false)game:GetService'RunService'.PostSimulation:Wait()
+ad:Destroy()if not ab then return{status=500,message=
+"Touched event wasn't fired"}elseif not ac then return{status=500,message=
+"TouchEnded event wasn't fired"}end local ae,b=a.load'b'{}if not ae then return{
+status=501,message=`Alias not found: {b}`}end return{status=200,message=`Passed`
+}end end function a.aC()return function()if not getfenv(0).saveinstance then
+return{status=400,message='Global not found'}elseif not getfenv(0).listfiles
+then return{status=501,message="Dependant global 'listfiles' not found"}elseif
+not getfenv(0).delfile then return{status=501,message=
+"Dependant global 'delfile' not found"}end local aa,ab=game:GetService
+'HttpService':GenerateGUID(false):gsub('-',''),Instance.new'Part'saveinstance(ab
+,{FileName=aa})task.wait(0.5)local ac=false for ad,ae in pairs(listfiles'')do if
+ae:find(aa)then ac=true delfile(ae)end end if not ac then return{status=500,
+message=
 [[Couldn't find saved part. Args passed: (Instance, { FileName = string })]]}end
 local ad,ae=a.load'b'{}if not ad then return{status=501,message=`Alias not found: {
 ae}`}end return{status=200,message=`Passed`}end end function a.aD()return
@@ -1997,10 +1984,9 @@ end,__metatable='Locked'})local ab=setrawmetatable(aa,{__index=function()return
 true end})if not aa then return{status=500,message='Original object not given'}
 elseif aa.MYRI~=true then return{status=500,message=
 'Return function gave true, MYRI not found'}elseif not ab then return{status=500
-,message='Returned object not given'}elseif ab~=aa then return{status=500,
-message="Returned object isn't same as original"}end local ac,ad=a.load'b'{}if
-not ac then return{status=501,message=`Alias not found: {ad}`}end return{status=
-200,message='Passed'}end end function a.aF()return function()if not getfenv(0).
+,message='Returned object not given'}end local ac,ad=a.load'b'{}if not ac then
+return{status=501,message=`Alias not found: {ad}`}end return{status=200,message=
+'Passed'}end end function a.aF()return function()if not getfenv(0).
 hookmetamethod then return{status=400,message='Global not found'}end local aa,ab
 =false ab=hookmetamethod(game,'__namecall',function(...)aa=true return ab(...)
 end)game:GetService'RunService'.Heartbeat:Wait()if not aa then return{status=500

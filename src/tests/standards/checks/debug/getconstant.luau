@@ -20,44 +20,29 @@ return function()
 		Date.now()
 	end
 
-	local invalidIndexSuccess, returnedMsg = pcall(debug.getconstant, originalFunction, 8)
+	local constOrder = {
+		[1] = "print",
 
-	if debug.getconstant(originalFunction, 1) ~= "A" then
-		return {
-			status = 500,
-			message = "Constant 1 missing or unexpected value",
-		}
-	elseif debug.getconstant(originalFunction, 2) ~= "print" then
-		return {
-			status = 500,
-			message = "Constant 2 missing or unexpected value",
-		}
-	elseif debug.getconstant(originalFunction, 3) ~= nil then
-		return {
-			status = 500,
-			message = "Constant 3 should be nil",
-		}
-	elseif debug.getconstant(originalFunction, 4) ~= "tostring" then
-		return {
-			status = 500,
-			message = "Constant 4 missing or unexpected value",
-		}
-	elseif debug.getconstant(originalFunction, 5) ~= nil then
-		return {
-			status = 500,
-			message = "Constant 5 should be nil",
-		}
-	elseif debug.getconstant(originalFunction, 6) ~= "Date" then
-		return {
-			status = 500,
-			message = "Constant 6 missing or unexpected value",
-		}
-	elseif debug.getconstant(originalFunction, 7) ~= "now" then
-		return {
-			status = 500,
-			message = "Constant 7 missing or unexpected value",
-		}
-	elseif not invalidIndexSuccess then
+		[3] = "A",
+		[4] = "tostring",
+
+		[6] = "Date",
+		[7] = "now"
+	}
+
+	for i, v in ipairs(constOrder) do
+		local const = debug.getconstant(originalFunction, i)
+		if const ~= v then
+			return {
+				status = 500,
+				message = `Constant at {i} should be: {v}. Got: {const}`,
+			}
+		end
+	end
+
+	local invalidIndexSuccess, returnedMsg = pcall(debug.getconstant, originalFunction, 9)
+
+	if not invalidIndexSuccess then
 		return {
 			status = 500,
 			message = "Should pass nil instead of errroing for invalid indexes",
@@ -65,7 +50,7 @@ return function()
 	elseif returnedMsg then
 		return {
 			status = 500,
-			message = "Constant 8 shouldn't exist",
+			message = "Constant 9 shouldn't exist",
 		}
 	elseif pcall(debug.getconstant, print, 1) then
 		return {
