@@ -20,7 +20,7 @@ return function()
 		end
 		return math.round(average / 10)
 	end
-	
+
 	setfpscap(60)
 	local step60 = step()
 	setfpscap(0)
@@ -38,6 +38,6 @@ return function()
 
 	return {
 		status = 200,
-		message = `Passed ({step60 .. "fps @60 • " .. step0 .. "fps @0"})`,
+		message = `Passed (60: {step60}, 0: {step0})`,
 	}
 end

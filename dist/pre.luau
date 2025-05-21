@@ -12,10 +12,9 @@
     This file was automatically generated with darklua, it is not intended for manual editing.
 --]]
 
-getfenv(0)._MYRIAD_BUILD = {
-    Configuration = "Debug",
-    Version = "v0.0.0",
-}
+_P.genDate = "2025-05-21T02:57:44.986586100+00:00"
+_P.cfg = "Beta"
+_P.vers = "v1.0.0-beta.1"
 
 local a a={cache={},load=function(b)if not a.cache[b]then a.cache[b]={c=a[b]()}
 end return a.cache[b].c end}do function a.a()local b={Version='1.4.3',Author=
@@ -2486,8 +2485,8 @@ toclipboard)'https://discord.gg/nn4NxHU3Pu'else print
 'Failed to copy link: https://discord.gg/nn4NxHU3Pu'end h:ClosePopup()end}i:
 Button{Text='No',Callback=function()h:ClosePopup()end}do local j=g:CreateTab{
 Name='Home'}j:Label{RichText=true,Text=
-'<b>Myriad General Validity Test (2025)</b>'}j:Label{RichText=true,Text=`Executor: <b>{
-(identifyexecutor and identifyexecutor()or'Unknown')}</b>`}j:Label{RichText=true
-,Text='\nContributors:'}j:BulletText{RichText=true,Rows={'biggaboy212'}}end for
-j,k in f do local l=g:CreateTab{Name=j}coroutine.wrap(function()f[j](j,l)end)()
-end end
+'<b>Myriad General Validity Test (2025)</b>'}j:Label{RichText=true,Text=`Version: <b>{
+_P.vers}</b>`}j:Label{RichText=true,Text=`Executor: <b>{(identifyexecutor and
+identifyexecutor()or'Unknown')}</b>`}j:Label{RichText=true,Text=
+'\nContributors:'}j:BulletText{RichText=true,Rows={'biggaboy212'}}end for j,k in
+f do local l=g:CreateTab{Name=j}coroutine.wrap(function()f[j](j,l)end)()end end

@@ -70,7 +70,7 @@ else
 	})
 
 	discModal:Label({
-		Text = "Get commit logs when we push changes, interact with communitys, and get support for problems",
+		Text = "Get commit logs when we push changes, interact with the community, and get support for problems",
 		TextWrapped = true
 	})
 
@@ -107,6 +107,10 @@ else
 		home:Label({
 			RichText = true,
 			Text = "<b>Myriad General Validity Test (2025)</b>",
+		})
+		home:Label({
+			RichText = true,
+			Text = `Version: <b>{_P.vers}</b>`,
 		})
 		home:Label({
 			RichText = true,

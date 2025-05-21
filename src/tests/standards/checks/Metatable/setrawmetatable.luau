@@ -36,10 +36,10 @@ return function()
 			status = 500,
 			message = "Returned object not given",
 		}
-	elseif returnedObject == originalObject then
+	elseif returnedObject ~= originalObject then
 		return {
 			status = 500,
-			message = "Returned object is the same as original (???)",
+			message = "Returned object isn't same as original",
 		}
 	end
 

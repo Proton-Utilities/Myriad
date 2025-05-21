@@ -1,28 +1,22 @@
 {
     "version": "2.0.0",
     "tasks": [
-        {
-            "label": "Build source",
-            "type": "shell",
-            "command": "cmd",
-            "args": [
-                "/c",
-                "build.bat && code \"${workspaceFolder}\\dist.luau\""
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}/build"
-            },
-            "problemMatcher": [],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "presentation": {
-                "reveal": "always",
-                "panel": "dedicated",
-                "clear": false,
-                "close": false
-            }
-        }
+      {
+        "label": "Run ProCMP",
+        "type": "shell",
+        "command": "lune",
+        "args": [
+          "run",
+          "build/build.luau",
+          "build/.pcmp.json"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": [],
+        "detail": "Builds and composes source with ProCMP"
+      }
     ]
-}
+  }
+  
