@@ -8,7 +8,7 @@
 [badges/stars]: https://img.shields.io/github/stars/Proton-Utilities/Myriad?label=Stars&logo=GitHub
 [badges/lastrel]: https://img.shields.io/github/v/release/Proton-Utilities/Myriad?label=Latest%20Release
 [badges/lastcom]: https://img.shields.io/github/last-commit/Proton-Utilities/Myriad?label=Last%20Modifed
-[badges/disc]: https://img.shields.io/discord/892211155303538748?style=for-the-badge&label=Discord
+[badges/disc]: https://img.shields.io/discord/1371325686278651985?style=for-the-badge&label=Discord
 
 [![Stars][badges/stars]][stars]
 [![Latest Release][badges/lastrel]][lastrel]
