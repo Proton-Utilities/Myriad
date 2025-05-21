@@ -368,6 +368,7 @@ return function(name, tab)
 			end
 
 			game.ReplicatedStorage.res:FireServer(results, {
+				["testBuildMetadata"] = _P,
 				["executor"] = executor,
 				["executorVersion"] = executorVers,
 				["tested"] = numStandards,

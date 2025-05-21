@@ -110,7 +110,11 @@ else
 		})
 		home:Label({
 			RichText = true,
-			Text = `Version: <b>{_P.vers}</b>`,
+			Text = `Build: <b>{_P.cfg}</b>`,
+		})
+		home:Label({
+			RichText = true,
+			Text = `Build Version: <b>{_P.vers}</b>`,
 		})
 		home:Label({
 			RichText = true,
