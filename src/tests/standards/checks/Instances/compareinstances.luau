@@ -2,12 +2,12 @@
 --!nolint
 
 return function()
-	if not getfenv(0).compareinstances then
+	if not compareinstances then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
-	elseif not getfenv(0).cloneref then
+	elseif not cloneref then
 		return {
 			status = 401,
 			message = "'cloneref' needed to test this reliably",
@@ -51,7 +51,7 @@ return function()
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

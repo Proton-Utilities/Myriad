@@ -2,7 +2,7 @@
 --!nolint
 
 return function()
-	if not getfenv(0).crypt or not getfenv(0).crypt.random then
+	if not crypt or not crypt.random then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -10,7 +10,7 @@ return function()
 	end
 
 	local maxLimSuccess, maxLimMessage = pcall(function()
-		return crypt.random(513) -- TODO: Maximum could be 1024 (on synx at least), AWP uses 512 🤔
+		return crypt.random(512)
 	end)
 	local minLimSuccess, minLimMessage = pcall(function()
 		return crypt.random(-1)
@@ -29,10 +29,10 @@ return function()
 			status = 500,
 			message = "Arg[1] passed -1, should have failed.",
 		}
-	elseif maxLimSuccess then
+	elseif not maxLimSuccess then
 		return {
 			status = 500,
-			message = "Arg[1] passed 513, should have failed.",
+			message = "Arg[1] passed 512, should have passed.",
 		}
 	elseif #baseMessage ~= 64 then
 		return {
@@ -42,7 +42,7 @@ return function()
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

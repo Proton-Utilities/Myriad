@@ -2,9 +2,9 @@
 --!nolint
 
 return function()
-	local referenceCrypt = require("dependencies/crypt/crypt.luau")
+	local referenceCrypt = require("@dependencies/crypt/crypt.luau")
 
-	if not getfenv(0).crypt or not getfenv(0).crypt.base64decode then
+	if not crypt or not crypt.base64decode then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -33,7 +33,7 @@ return function()
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({
 		"base64_decode",
 		"crypt.base64.decode",
 		"base64.decode",

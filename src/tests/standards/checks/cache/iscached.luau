@@ -2,12 +2,12 @@
 --!nolint
 
 return function()
-	if not getfenv(0).cache or not getfenv(0).cache.iscached then
+	if not cache or not cache.iscached then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
-	elseif not getfenv(0).cache.invalidate then
+	elseif not cache.invalidate then
 		return {
 			status = 401,
 			message = "Dependency 'cache.invalidate' missing",
@@ -34,7 +34,7 @@ return function()
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

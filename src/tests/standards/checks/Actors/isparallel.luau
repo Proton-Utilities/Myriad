@@ -2,12 +2,12 @@
 --!nolint
 
 return function()
-	if not getfenv(0).isparallel then
+	if not isparallel then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
-	elseif not getfenv(0).run_on_actor then
+	elseif not run_on_actor then
 		return {
 			status = 401,
 			message = "Dependency 'run_on_actor' not found",
@@ -56,7 +56,7 @@ return function()
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {
@@ -79,7 +79,7 @@ end
 --!nolint
 
 return function()
-	if not getfenv(0).create_comm_channel then
+	if not create_comm_channel then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -160,7 +160,7 @@ return function()
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

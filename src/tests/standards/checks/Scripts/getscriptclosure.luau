@@ -2,8 +2,8 @@
 --!nolint
 
 return function()
-	local cryptReference = require("dependencies/crypt/crypt.luau")
-	if not getfenv(0).getscriptclosure then
+	local cryptReference = require("@dependencies/crypt/crypt.luau")
+	if not getscriptclosure then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -27,7 +27,7 @@ return function()
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({
 		"getscriptfunction"
 	})
 

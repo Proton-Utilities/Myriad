@@ -2,7 +2,7 @@
 --!nolint
 
 return function()
-	if not getfenv(0).debug or not getfenv(0).debug.getconstants then
+	if not debug or not debug.getconstants then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -52,7 +52,7 @@ return function()
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({
 		"getconstants"
 	})
 

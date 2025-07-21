@@ -2,12 +2,12 @@
 --!nolint
 
 return function()
-	if not getfenv(0).getrenderproperty then
+	if not getrenderproperty then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
-		elseif not getfenv(0).Drawing or not getfenv(0).Drawing.new then
+		elseif not Drawing or not Drawing.new then
 		return {
 			status = 401,
 			message = "Drawing library needed to test this",
@@ -29,7 +29,7 @@ return function()
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

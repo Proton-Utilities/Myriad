@@ -2,15 +2,15 @@
 --!nolint
 
 return function()
-	if not getfenv(0).sethiddenproperty then
+	if not sethiddenproperty then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
-	elseif not getfenv(0).gethiddenproperty then
+	elseif not gethiddenproperty then
 		return {
-			status = 400,
-			message = "Global not found",
+			status = 401,
+			message = "Dependant global 'gethiddenproperty' not found",
 		}
 	end
 
@@ -52,7 +52,7 @@ return function()
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

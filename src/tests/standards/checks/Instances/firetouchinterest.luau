@@ -2,7 +2,7 @@
 --!nolint
 
 return function()
-	if not getfenv(0).firetouchinterest then
+	if not firetouchinterest then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -70,7 +70,7 @@ return function()
 	originalPart:Destroy()
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

@@ -2,17 +2,17 @@
 --!nolint
 
 return function()
-	if not getfenv(0).writefile then
+	if not writefile then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
-	elseif not getfenv(0).delfile then
+	elseif not delfile then
 		return {
 			status = 401,
 			message = "Dependency 'delfile' not found",
 		}
-	elseif not getfenv(0).readfile then
+	elseif not readfile then
 		return {
 			status = 401,
 			message = "Dependency 'readfile' not found",
@@ -62,7 +62,7 @@ return function()
 	delfile("./test2.txt")
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

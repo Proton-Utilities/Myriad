@@ -2,12 +2,12 @@
 --!nolint
 
 return function()
-	if not getfenv(0).getnamecallmethod then
+	if not getnamecallmethod then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
-	elseif not getfenv(0).hookmetamethod then
+	elseif not hookmetamethod then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -37,7 +37,7 @@ return function()
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

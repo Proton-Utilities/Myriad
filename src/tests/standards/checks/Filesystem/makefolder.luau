@@ -2,12 +2,12 @@
 --!nolint
 
 return function()
-	if not getfenv(0).makefolder then
+	if not makefolder then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
-	elseif not getfenv(0).delfolder then
+	elseif not delfolder then
 		return {
 			status = 401,
 			message = "Dependency 'delfolder' not found",
@@ -47,7 +47,7 @@ return function()
 	delfolder("./test2")
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

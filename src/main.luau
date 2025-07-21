@@ -1,8 +1,7 @@
 --!nocheck
---!nolint UnknownGlobal
 
 --// Imports
-local interface = require("dependencies/ReGui/ReGui.luau")
+local interface = require("@dependencies/ReGui/ReGui.luau")
 
 --// Services
 local players: Players = game:GetService("Players")
@@ -15,8 +14,8 @@ local localPlayer: Player = players.LocalPlayer
 --// Variables
 local gameId = 80776325854596
 local tests = {
-	["Standards"] = require("tests/standards/init.luau"),
-	["Vulnerability"] = require("tests/vulnerabilities/init.luau"),
+	["Standards"] = require("@tests/standards/init.luau"),
+	["Vulnerability"] = require("@tests/vulnerabilities/init.luau"),
 }
 
 --// Initialize
@@ -72,7 +71,7 @@ else
 	discModal:Label({
 		Text = "Get commit logs when we push changes, interact with the community, and get support for problems",
 		TextWrapped = true
-	})
+		})
 
 	discModal:Separator()
 

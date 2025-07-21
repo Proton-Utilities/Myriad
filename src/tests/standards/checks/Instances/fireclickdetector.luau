@@ -2,7 +2,7 @@
 --!nolint
 
 return function()
-	if not getfenv(0).fireclickdetector then
+	if not fireclickdetector then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -73,7 +73,7 @@ return function()
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

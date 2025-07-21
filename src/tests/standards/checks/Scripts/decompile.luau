@@ -6,7 +6,7 @@ return function()
 		return game.ReplicatedFirst.decompmeplssss
 	end)
 
-	if not getfenv(0).decompile then
+	if not decompile then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -75,7 +75,7 @@ return function()
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 	if not envIndex then
 		return {
 			status = 501,

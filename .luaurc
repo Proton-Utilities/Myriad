@@ -1,0 +1,10 @@
+{
+    "aliases": {
+        "dependencies": "./src/dependencies",
+        "tests": "./src/tests",
+        "checks": "./src/tests/standards/checks",
+
+        "standards": "./src/tests/standards",
+        "vulnerabilities": "./src/tests/vulnerabilities"
+    }
+}

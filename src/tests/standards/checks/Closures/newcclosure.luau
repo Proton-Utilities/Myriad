@@ -2,14 +2,12 @@
 --!nolint
 
 return function()
-	local env = getfenv(0)
-
-	if not env.newcclosure then
+    if not newcclosure then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
-    elseif not env.iscclosure then
+    elseif not iscclosure then
         return {
             status = 500,
             message = "iscclosure required to test newcclosure",
@@ -39,7 +37,7 @@ return function()
     end
 
     --// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

@@ -2,7 +2,7 @@
 --!nolint
 
 return function()
-	if not getfenv(0).Drawing or not getfenv(0).Drawing.new then
+	if not Drawing or not Drawing.new then
 		return {
 			status = 400,
 			message = "Global Drawing API not found",
@@ -246,7 +246,7 @@ return function()
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

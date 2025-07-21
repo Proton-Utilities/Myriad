@@ -1,7 +1,6 @@
 {
     "luau-lsp.types.definitionFiles": [
-        ".globals\\globalsBase.d.luau",
-        ".globals\\globalsDrawing.d.luau",
+        ".globals\\customEnv.d.luau",
         ".globals\\pcmp.d.luau"
     ],
     "luau-lsp.sourcemap.sourcemapFile": "",

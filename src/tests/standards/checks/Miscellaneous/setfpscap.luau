@@ -2,7 +2,7 @@
 --!nolint
 
 return function()
-	if not getfenv(0).setfpscap then
+	if not setfpscap then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -27,7 +27,7 @@ return function()
 	local step0 = step()
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

@@ -3,7 +3,7 @@
 
 return function()
 	local indexedAnimate, Animate = pcall(function() return game.Players.LocalPlayer.Character.Animate end)
-	if not getfenv(0).getscripthash then
+	if not getscripthash then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -60,7 +60,7 @@ return function()
 	Animate.Source = oldSource
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

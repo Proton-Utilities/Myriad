@@ -2,7 +2,7 @@
 --!nolint
 
 return function()
-	if not getfenv(0).debug or not getfenv(0).debug.getstack then
+	if not debug or not debug.getstack then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -12,7 +12,7 @@ return function()
 	--// Functionality test
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({
 		"getstack"
 	})
 

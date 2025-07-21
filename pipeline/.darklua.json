@@ -4,14 +4,7 @@
         "modules_identifier": "__DIST",
         "require_mode": {
 			"name": "path",
-			"sources": {
-				"dependencies": "../src/dependencies",
-				"tests": "../src/tests",
-				"checks": "../src/tests/standards/checks",
-
-				"standards": "../src/tests/standards",
-				"vulnerabilities": "../src/tests/vulnerabilities"
-			  }
+			"use_luau_configuration": true
 		}
     },
     "rules": [

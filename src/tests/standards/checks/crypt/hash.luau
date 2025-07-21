@@ -2,7 +2,7 @@
 --!nolint
 
 return function()
-	if not getfenv(0).crypt or not getfenv(0).crypt.hash then
+	if not crypt or not crypt.hash then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -50,7 +50,7 @@ return function()
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

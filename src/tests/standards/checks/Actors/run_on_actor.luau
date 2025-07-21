@@ -2,7 +2,7 @@
 --!nolint
 
 return function()
-	if not getfenv(0).run_on_actor then
+	if not run_on_actor then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -36,7 +36,7 @@ task.wait(0.1)
 	game.ReplicatedStorage:FindFirstChild(os.date("%H")):Destroy()
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

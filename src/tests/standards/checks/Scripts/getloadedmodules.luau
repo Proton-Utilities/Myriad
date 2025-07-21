@@ -3,7 +3,7 @@
 
 return function()
 	local indexedModule, module = pcall(function() return game:GetService("StarterPlayer").StarterPlayerScripts.PlayerModule end)
-	if not getfenv(0).getloadedmodules then
+	if not getloadedmodules then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -33,7 +33,7 @@ return function()
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {

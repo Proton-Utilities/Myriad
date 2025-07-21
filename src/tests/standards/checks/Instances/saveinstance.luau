@@ -2,17 +2,17 @@
 --!nolint
 
 return function()
-	if not getfenv(0).saveinstance then
+	if not saveinstance then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
-	elseif not getfenv(0).listfiles then
+	elseif not listfiles then
 		return {
 			status = 501,
 			message = "Dependant global 'listfiles' not found",
 		}
-	elseif not getfenv(0).delfile then
+	elseif not delfile then
 		return {
 			status = 501,
 			message = "Dependant global 'delfile' not found",
@@ -46,7 +46,7 @@ return function()
 	end
 
 	--// Alias test
-	local envIndex, failedIndex = require("dependencies/aliasTest.luau")({})
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
 
 	if not envIndex then
 		return {
