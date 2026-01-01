@@ -10,7 +10,7 @@ return function()
 	end
 
 	--// Functionality test
-	local socket = WebSocket.connect("ws://echo.websocket.events")
+	local socket = WebSocket.connect("wss://echo.websocket.org/")
 	if not (type(socket) == "table" or type(socket) == "userdata") then
 		return {
 			status = 500,
