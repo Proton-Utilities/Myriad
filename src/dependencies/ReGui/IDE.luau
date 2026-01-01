@@ -2,14 +2,13 @@
 --!nolint
 
 --[[
-@author biggaboy212 & LorekeeperZinnia???
-@description Integrated Development Environment to view and edit code within a ROBLOX experience.
+	@author biggaboy212 & LorekeeperZinnia???
+	@description Integrated Development Environment to view and edit code within a ROBLOX experience.
 ]]
 
 local IDEVersion = "8.0"
 
 --// Compatibility 
-local SetClipboard = setclipboard or toclipboard or set_clipboard
 local NewReference = cloneref or function(Ins): Instance 
 	return Ins 
 end
@@ -17,25 +16,25 @@ end
 local Settings = {
 	Theme = {
 		Syntax = {
-			Text = Color3.fromRGB(204,204,204),
+			Text = Color3.fromRGB(204, 204, 204),
 			Background = Color3.fromRGB(20,20,20),
 			Selection = Color3.fromRGB(255,255,255),
 			SelectionBack = Color3.fromRGB(102, 161, 255),
-			Operator = Color3.fromRGB(249, 117, 131),
-			Number = Color3.fromRGB(121, 184, 255),
-			String = Color3.fromRGB(158, 203, 255),
-			Comment = Color3.fromRGB(102,102,102),
-			Keyword = Color3.fromRGB(249, 117, 131),
-			BuiltIn = Color3.fromRGB(121, 184, 255),
-			LocalMethod = Color3.fromRGB(121, 184, 255),
-			LocalProperty = Color3.fromRGB(179, 146, 240),
-			Nil = Color3.fromRGB(121, 184, 255),
-			Bool = Color3.fromRGB(121, 184, 255),
-			Function = Color3.fromRGB(249, 117, 131),
-			Local = Color3.fromRGB(249, 117, 131),
-			Self = Color3.fromRGB(179, 146, 240),
-			FunctionName = Color3.fromRGB(179, 146, 240),
-			Bracket = Color3.fromRGB(121, 184, 255)
+			Operator = Color3.fromRGB(204, 204, 204),
+			Number = Color3.fromRGB(255, 198, 0),
+			String = Color3.fromRGB(172, 240, 148),
+			Comment = Color3.fromRGB(102, 102, 102),
+			Keyword = Color3.fromRGB(248, 109, 124),
+			BuiltIn = Color3.fromRGB(132, 214, 247),
+			LocalMethod = Color3.fromRGB(253, 251, 172),
+			LocalProperty = Color3.fromRGB(97, 161, 241),
+			Nil = Color3.fromRGB(255, 198, 0),
+			Bool = Color3.fromRGB(255, 198, 0),
+			Function = Color3.fromRGB(248, 109, 124),
+			Local = Color3.fromRGB(248, 109, 124),
+			Self = Color3.fromRGB(248, 109, 124),
+			FunctionName = Color3.fromRGB(253, 251, 172),
+			Bracket = Color3.fromRGB(204, 204, 204)
 		},
 	}
 }
@@ -48,7 +47,16 @@ local Services = setmetatable({}, {
 	end,
 })
 
-local cursor = Instance.new("Frame")
+local UserInputTypes = {
+	StartAndEnd = {
+		Enum.UserInputType.MouseButton1,
+		Enum.UserInputType.Touch
+	},
+	Movement = {
+		Enum.UserInputType.MouseMovement,
+		Enum.UserInputType.Touch
+	}
+}
 
 --// Services
 local Players: Players = Services.Players
@@ -56,25 +64,8 @@ local UserInputService: UserInputService = Services.UserInputService
 local RunService: RunService = Services.RunService
 local TweenService: TweenService = Services.TweenService
 
-local LocalPlayer = Players.LocalPlayer
-local Mouse = LocalPlayer:GetMouse()
-
-local create = function(data)
-	local insts = {}
-	for i,v in pairs(data) do insts[v[1]] = Instance.new(v[2]) end
-
-	for _,v in pairs(data) do
-		for prop,val in pairs(v[3]) do
-			if type(val) == "table" then
-				insts[v[1]][prop] = insts[val[1]]
-			else
-				insts[v[1]][prop] = val
-			end
-		end
-	end
-
-	return insts[1]
-end
+local LocalPlayer = NewReference(Players.LocalPlayer)
+local Mouse = NewReference(LocalPlayer:GetMouse())
 
 local function Merge(Base, New)
 	for Key, Value in next, New do
@@ -83,14 +74,32 @@ local function Merge(Base, New)
 	return Base
 end
 
+local function InputTypeAllowed(Key, Type: string)
+	local InputType = Key.UserInputType
+	return table.find(UserInputTypes[Type], InputType)
+end
+
+local function NewInstance(...)
+	return NewReference(Instance.new(...))
+end
+
+local function createSimple(class,props)
+	local inst = NewInstance(class)
+	for i,v in next,props do
+		inst[i] = v
+	end
+	return inst
+end
+
 local Lib = {}
+local cursor = NewInstance("Frame")
 
 Lib.CheckMouseInGui = function(gui)
 	if gui == nil then return false end
 	local guiPosition = gui.AbsolutePosition
 	local guiSize = gui.AbsoluteSize	
 
-	return mouse.X >= guiPosition.X and mouse.X < guiPosition.X + guiSize.X and mouse.Y >= guiPosition.Y and mouse.Y < guiPosition.Y + guiSize.Y
+	return Mouse.X >= guiPosition.X and Mouse.X < guiPosition.X + guiSize.X and Mouse.Y >= guiPosition.Y and Mouse.Y < guiPosition.Y + guiSize.Y
 end
 
 Lib.Signal = (function()
@@ -135,14 +144,6 @@ Lib.Signal = (function()
 	return {new = new}
 end)()
 
-local createSimple = function(class,props)
-	local inst = Instance.new(class)
-	for i,v in next,props do
-		inst[i] = v
-	end
-	return inst
-end
-
 Lib.CreateArrow = function(size,num,dir)
 	local max = num
 	local arrowFrame = createSimple("Frame",{
@@ -152,7 +153,7 @@ Lib.CreateArrow = function(size,num,dir)
 	})
 	if dir == "up" then
 		for i = 1,num do
-			local newLine = createSimple("Frame",{
+			createSimple("Frame",{
 				BackgroundColor3 = Color3.new(220/255,220/255,220/255),
 				BorderSizePixel = 0,
 				Position = UDim2.new(0,math.floor(size/2)-(i-1),0,math.floor(size/2)+i-math.floor(max/2)-1),
@@ -163,7 +164,7 @@ Lib.CreateArrow = function(size,num,dir)
 		return arrowFrame
 	elseif dir == "down" then
 		for i = 1,num do
-			local newLine = createSimple("Frame",{
+			createSimple("Frame",{
 				BackgroundColor3 = Color3.new(220/255,220/255,220/255),
 				BorderSizePixel = 0,
 				Position = UDim2.new(0,math.floor(size/2)-(i-1),0,math.floor(size/2)-i+math.floor(max/2)+1),
@@ -174,7 +175,7 @@ Lib.CreateArrow = function(size,num,dir)
 		return arrowFrame
 	elseif dir == "left" then
 		for i = 1,num do
-			local newLine = createSimple("Frame",{
+			createSimple("Frame",{
 				BackgroundColor3 = Color3.new(220/255,220/255,220/255),
 				BorderSizePixel = 0,
 				Position = UDim2.new(0,math.floor(size/2)+i-math.floor(max/2)-1,0,math.floor(size/2)-(i-1)),
@@ -185,7 +186,7 @@ Lib.CreateArrow = function(size,num,dir)
 		return arrowFrame
 	elseif dir == "right" then
 		for i = 1,num do
-			local newLine = createSimple("Frame",{
+			createSimple("Frame",{
 				BackgroundColor3 = Color3.new(220/255,220/255,220/255),
 				BorderSizePixel = 0,
 				Position = UDim2.new(0,math.floor(size/2)-i+math.floor(max/2)+1,0,math.floor(size/2)-(i-1)),
@@ -195,7 +196,7 @@ Lib.CreateArrow = function(size,num,dir)
 		end
 		return arrowFrame
 	end
-	error()
+	error("")
 end
 
 Lib.FastWait = (function(arg)
@@ -210,7 +211,6 @@ Lib.ScrollBar = (function()
 	local function drawThumb(self)
 		local total = self.TotalSpace
 		local visible = self.VisibleSpace
-		local index = self.Index
 		local scrollThumb = self.GuiElems.ScrollThumb
 		local scrollThumbFrame = self.GuiElems.ScrollThumbFrame
 
@@ -317,18 +317,19 @@ Lib.ScrollBar = (function()
 		local thumbPress = false
 		local thumbFramePress = false
 
-		--local thumbColor = Color3.new(120/255,120/255,120/255)
-		--local thumbSelectColor = Color3.new(140/255,140/255,140/255)
 		button1.InputBegan:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseMovement and not buttonPress and self:CanScrollUp() then button1.BackgroundTransparency = 0.8 end
-			if input.UserInputType ~= Enum.UserInputType.MouseButton1 or not self:CanScrollUp() then return end
+			if InputTypeAllowed(input, "Movement") and not buttonPress and self:CanScrollUp() then button1.BackgroundTransparency = 0.8 end
+			if not InputTypeAllowed(input, "StartAndEnd") or not self:CanScrollUp() then return end
 			buttonPress = true
 			button1.BackgroundTransparency = 0.5
-			if self:CanScrollUp() then self:ScrollUp() self.Scrolled:Fire() end
+			if self:CanScrollUp() then 
+				self:ScrollUp() 
+				self.Scrolled:Fire() 
+			end
 			local buttonTick = tick()
 			local releaseEvent
 			releaseEvent = UserInputService.InputEnded:Connect(function(input)
-				if input.UserInputType ~= Enum.UserInputType.MouseButton1 then return end
+				if not InputTypeAllowed(input, "StartAndEnd") then return end
 				releaseEvent:Disconnect()
 				if checkMouseInGui(button1) and self:CanScrollUp() then button1.BackgroundTransparency = 0.8 else button1.BackgroundTransparency = 1 end
 				buttonPress = false
@@ -342,18 +343,21 @@ Lib.ScrollBar = (function()
 			end
 		end)
 		button1.InputEnded:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseMovement and not buttonPress then button1.BackgroundTransparency = 1 end
+			if InputTypeAllowed(input, "Movement") and not buttonPress then button1.BackgroundTransparency = 1 end
 		end)
 		button2.InputBegan:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseMovement and not buttonPress and self:CanScrollDown() then button2.BackgroundTransparency = 0.8 end
-			if input.UserInputType ~= Enum.UserInputType.MouseButton1 or not self:CanScrollDown() then return end
+			if InputTypeAllowed(input, "Movement") and not buttonPress and self:CanScrollDown() then button2.BackgroundTransparency = 0.8 end
+			if not InputTypeAllowed(input, "StartAndEnd") or not self:CanScrollDown() then return end
 			buttonPress = true
 			button2.BackgroundTransparency = 0.5
-			if self:CanScrollDown() then self:ScrollDown() self.Scrolled:Fire() end
+			if self:CanScrollDown() then 
+				self:ScrollDown() 
+				self.Scrolled:Fire() 
+			end
 			local buttonTick = tick()
 			local releaseEvent
 			releaseEvent = UserInputService.InputEnded:Connect(function(input)
-				if input.UserInputType ~= Enum.UserInputType.MouseButton1 then return end
+				if not InputTypeAllowed(input, "StartAndEnd") then return end
 				releaseEvent:Disconnect()
 				if checkMouseInGui(button2) and self:CanScrollDown() then button2.BackgroundTransparency = 0.8 else button2.BackgroundTransparency = 1 end
 				buttonPress = false
@@ -367,12 +371,15 @@ Lib.ScrollBar = (function()
 			end
 		end)
 		button2.InputEnded:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseMovement and not buttonPress then button2.BackgroundTransparency = 1 end
+			if InputTypeAllowed(input, "Movement") and not buttonPress then button2.BackgroundTransparency = 1 end
 		end)
 
 		scrollThumb.InputBegan:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseMovement and not thumbPress then scrollThumb.BackgroundTransparency = 0.2 scrollThumb.BackgroundColor3 = self.ThumbSelectColor end
-			if input.UserInputType ~= Enum.UserInputType.MouseButton1 then return end
+			if InputTypeAllowed(input, "Movement") and not thumbPress then 
+				scrollThumb.BackgroundTransparency = 0.2 
+				scrollThumb.BackgroundColor3 = self.ThumbSelectColor 
+			end
+			if not InputTypeAllowed(input, "StartAndEnd") then return end
 
 			local dir = self.Horizontal and "X" or "Y"
 			local lastThumbPos = nil
@@ -382,21 +389,24 @@ Lib.ScrollBar = (function()
 			thumbPress = true
 			scrollThumb.BackgroundTransparency = 0
 			local mouseOffset = Mouse[dir] - scrollThumb.AbsolutePosition[dir]
-			local mouseStart = Mouse[dir]
 			local releaseEvent
 			local mouseEvent
 			releaseEvent = UserInputService.InputEnded:Connect(function(input)
-
-				if input.UserInputType ~= Enum.UserInputType.MouseButton1 then return end
+				if not InputTypeAllowed(input, "StartAndEnd") then return end
 				releaseEvent:Disconnect()
 				if mouseEvent then mouseEvent:Disconnect() end
-				if checkMouseInGui(scrollThumb) then scrollThumb.BackgroundTransparency = 0.2 else scrollThumb.BackgroundTransparency = 0 scrollThumb.BackgroundColor3 = self.ThumbColor end
+				if checkMouseInGui(scrollThumb) then 
+					scrollThumb.BackgroundTransparency = 0.2 
+				else 
+					scrollThumb.BackgroundTransparency = 0 
+					scrollThumb.BackgroundColor3 = self.ThumbColor 
+				end
 				thumbPress = false
 			end)
 			self:Update()
 
 			mouseEvent = UserInputService.InputChanged:Connect(function(input)
-				if input.UserInputType == Enum.UserInputType.MouseMovement and thumbPress and releaseEvent.Connected then
+				if InputTypeAllowed(input, "Movement") and thumbPress and releaseEvent.Connected then
 					local thumbFrameSize = scrollThumbFrame.AbsoluteSize[dir]-scrollThumb.AbsoluteSize[dir]
 					local pos = Mouse[dir] - scrollThumbFrame.AbsolutePosition[dir] - mouseOffset
 					if pos > thumbFrameSize then
@@ -413,10 +423,13 @@ Lib.ScrollBar = (function()
 			end)
 		end)
 		scrollThumb.InputEnded:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseMovement and not thumbPress then scrollThumb.BackgroundTransparency = 0 scrollThumb.BackgroundColor3 = self.ThumbColor end
+			if InputTypeAllowed(input, "Movement") and not thumbPress then 
+				scrollThumb.BackgroundTransparency = 0 
+				scrollThumb.BackgroundColor3 = self.ThumbColor 
+			end
 		end)
 		scrollThumbFrame.InputBegan:Connect(function(input)
-			if input.UserInputType ~= Enum.UserInputType.MouseButton1 or checkMouseInGui(scrollThumb) then return end
+			if not InputTypeAllowed(input, "StartAndEnd") or checkMouseInGui(scrollThumb) then return end
 
 			local dir = self.Horizontal and "X" or "Y"
 			local scrollDir = 0
@@ -439,7 +452,7 @@ Lib.ScrollBar = (function()
 			local thumbFrameTick = tick()
 			local releaseEvent
 			releaseEvent = UserInputService.InputEnded:Connect(function(input)
-				if input.UserInputType ~= Enum.UserInputType.MouseButton1 then return end
+				if not InputTypeAllowed(input, "StartAndEnd") then return end
 				releaseEvent:Disconnect()
 				thumbFramePress = false
 			end)
@@ -471,7 +484,6 @@ Lib.ScrollBar = (function()
 	funcs.Update = function(self,nocallback)
 		local total = self.TotalSpace
 		local visible = self.VisibleSpace
-		local index = self.Index
 		local button1 = self.GuiElems.Button1
 		local button2 = self.GuiElems.Button2
 
@@ -573,8 +585,14 @@ Lib.ScrollBar = (function()
 	end
 
 	funcs.SetScrollFrame = function(self,frame)
-		if self.ScrollUpEvent then self.ScrollUpEvent:Disconnect() self.ScrollUpEvent = nil end
-		if self.ScrollDownEvent then self.ScrollDownEvent:Disconnect() self.ScrollDownEvent = nil end
+		if self.ScrollUpEvent then 
+			self.ScrollUpEvent:Disconnect() 
+			self.ScrollUpEvent = nil 
+		end
+		if self.ScrollDownEvent then 
+			self.ScrollDownEvent:Disconnect() 
+			self.ScrollDownEvent = nil 
+		end
 		self.ScrollUpEvent = frame.MouseWheelForward:Connect(function() self:ScrollTo(self.Index - self.WheelIncrement) end)
 		self.ScrollDownEvent = frame.MouseWheelBackward:Connect(function() self:ScrollTo(self.Index + self.WheelIncrement) end)
 	end
@@ -915,13 +933,14 @@ Lib.CodeFrame = (function()
 		local lines = obj.Lines
 
 		codeFrame.InputBegan:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			if InputTypeAllowed(input, "StartAndEnd") then
 				local fontSizeX,fontSizeY = math.ceil(obj.FontSize/2),obj.FontSize
 
 				local relX = Mouse.X - codeFrame.AbsolutePosition.X
 				local relY = Mouse.Y - codeFrame.AbsolutePosition.Y
 				local selX = math.round(relX / fontSizeX) + obj.ViewX
 				local selY = math.floor(relY / fontSizeY) + obj.ViewY
+
 				local releaseEvent,mouseEvent,scrollEvent
 				local scrollPowerV,scrollPowerH = 0,0
 				selY = math.min(#lines-1,selY)
@@ -929,7 +948,7 @@ Lib.CodeFrame = (function()
 				selX = math.min(#relativeLine, selX + obj:TabAdjust(selX,selY))
 
 				obj.SelectionRange = {{-1,-1},{-1,-1}}
-				obj:MoveCursor(selX,selY)
+				obj:MoveCursor(selX, selY)
 				obj.FloatCursorX = selX
 
 				local function updateSelection()
@@ -954,7 +973,7 @@ Lib.CodeFrame = (function()
 				end
 
 				releaseEvent = UserInputService.InputEnded:Connect(function(input)
-					if input.UserInputType == Enum.UserInputType.MouseButton1 then
+					if InputTypeAllowed(input, "StartAndEnd") then
 						releaseEvent:Disconnect()
 						mouseEvent:Disconnect()
 						scrollEvent:Disconnect()
@@ -964,7 +983,7 @@ Lib.CodeFrame = (function()
 				end)
 
 				mouseEvent = UserInputService.InputChanged:Connect(function(input)
-					if input.UserInputType == Enum.UserInputType.MouseMovement then
+					if InputTypeAllowed(input, "Movement") then
 						local upDelta = Mouse.Y - codeFrame.AbsolutePosition.Y
 						local downDelta = Mouse.Y - codeFrame.AbsolutePosition.Y - codeFrame.AbsoluteSize.Y
 						local leftDelta = Mouse.X - codeFrame.AbsolutePosition.X
@@ -998,20 +1017,23 @@ Lib.CodeFrame = (function()
 	end
 
 	function funcs.MakeEditorFrame(self)
-		local frame = Instance.new('TextButton')
+		local frame = NewInstance('TextButton')
 		frame.BackgroundTransparency = 1
 		frame.TextTransparency = 1
-		frame.BackgroundColor3=Color3.new(0.15686275064945,0.15686275064945,0.15686275064945);frame.BorderSizePixel=0; frame.Size=UDim2.new(1, 0, 1, 0);frame.Visible=true;
+		frame.BackgroundColor3=Color3.fromRGB(40, 40, 40);
+		frame.BorderSizePixel=0; 
+		frame.Size=UDim2.fromOffset(100,100);
+		frame.Visible=true;
 		local elems = {}
 
-		local linesFrame = Instance.new("Frame")
+		local linesFrame = NewInstance("Frame")
 		linesFrame.Name = "Lines"
 		linesFrame.BackgroundTransparency = 1
 		linesFrame.Size = UDim2.new(1,0,1,0)
 		linesFrame.ClipsDescendants = true
 		linesFrame.Parent = frame
 
-		local lineNumbersLabel = Instance.new("TextLabel")
+		local lineNumbersLabel = NewInstance("TextLabel")
 		lineNumbersLabel.Name = "LineNumbers"
 		lineNumbersLabel.BackgroundTransparency = 1
 		lineNumbersLabel.FontFace = self.FontFace
@@ -1026,27 +1048,29 @@ Lib.CodeFrame = (function()
 		cursor.BorderSizePixel = 0
 		cursor.Parent = frame
 
-		local editBox = Instance.new("TextBox")
+		local editBox = NewInstance("TextBox")
 		editBox.Name = "EditBox"
 		editBox.MultiLine = true
 		editBox.Visible = false
 		editBox.Parent = frame
 		editBox.TextSize = self.FontSize
+		editBox.FontFace = self.FontFace
 
 		lineTweens.Invis = TweenService:Create(cursor,TweenInfo.new(0,Enum.EasingStyle.Quart,Enum.EasingDirection.Out),{BackgroundTransparency = 1})
 		lineTweens.Vis = TweenService:Create(cursor,TweenInfo.new(0,Enum.EasingStyle.Quart,Enum.EasingDirection.Out),{BackgroundTransparency = 0})
 
+		local scrcfrm = NewInstance('Frame')
+		scrcfrm.BackgroundColor3=Color3.new(0.15686275064945,0.15686275064945,0.15686275064945);scrcfrm.BorderSizePixel=0;scrcfrm.Name="ScrollCorner";scrcfrm.Position=UDim2.new(1,-10,1,-10);scrcfrm.Size=UDim2.new(0,10,0,10);scrcfrm.Visible=false;
+		
+		elems.ScrollCorner = scrcfrm
 		elems.LinesFrame = linesFrame
 		elems.LineNumbersLabel = lineNumbersLabel
 		elems.Cursor = cursor
 		elems.EditBox = editBox
-		local scrcfrm = Instance.new('Frame')
-		scrcfrm.BackgroundColor3=Color3.new(0.15686275064945,0.15686275064945,0.15686275064945);scrcfrm.BorderSizePixel=0;scrcfrm.Name="ScrollCorner";scrcfrm.Position=UDim2.new(1,-10,1,-10);scrcfrm.Size=UDim2.new(0,10,0,10);scrcfrm.Visible=false;
-		elems.ScrollCorner = scrcfrm
-
 		elems.ScrollCorner.Parent = frame
+		
 		linesFrame.InputBegan:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			if InputTypeAllowed(input, "StartAndEnd") then
 				self:SetEditing(true,input)
 			end
 		end)
@@ -1118,7 +1142,10 @@ Lib.CodeFrame = (function()
 				end)
 				func()
 				Lib.FastWait(0.5)
-				while not finished do func() Lib.FastWait(0.03) end
+				while not finished do 
+					func() 
+					Lib.FastWait(0.03) 
+				end
 			end
 
 			if keycode == keycodes.Down then
@@ -1401,8 +1428,8 @@ Lib.CodeFrame = (function()
 		local linesOffset = #totalLinesStr*fontWidth + 4*fontWidth
 
 		if input then
-			local linesFrame = self.GuiElems.LinesFrame
-			local frameX,frameY = linesFrame.AbsolutePosition.X,linesFrame.AbsolutePosition.Y
+			local LinesFrame = self.GuiElems.LinesFrame
+			local frameX,frameY = LinesFrame.AbsolutePosition.X,LinesFrame.AbsolutePosition.Y
 			local mouseX,mouseY = input.Position.X,input.Position.Y
 			local fontSizeX,fontSizeY = math.ceil(self.FontSize/2),self.FontSize
 
@@ -1460,9 +1487,7 @@ Lib.CodeFrame = (function()
 	end
 
 	funcs.PreHighlight = function(self)
-		local start = tick()
 		local text = self.Text:gsub("\\\\","  ")
-		--print("BACKSLASH SUB",tick()-start)
 		local textLen = #text
 		local found = {}
 		local foundMap = {}
@@ -1487,7 +1512,7 @@ Lib.CodeFrame = (function()
 				x,y,extra = find(str,pattern,init,raw)
 			end
 		end
-		local start = tick()
+
 		findAll(text,'"',1,true)
 		findAll(text,"'",2,true)
 		findAll(text,"%[(=*)%[",3)
@@ -1496,8 +1521,6 @@ Lib.CodeFrame = (function()
 
 		local newLines = self.NewLines
 		local curLine = 0
-		local lineTableCount = 1
-		local lineStart = 0
 		local lineEnd = 0
 		local lastEnding = 0
 		local foundHighlights = {}
@@ -1541,7 +1564,10 @@ Lib.CodeFrame = (function()
 			end
 			while true do
 				local lineTable = foundHighlights[curLine]
-				if not lineTable then lineTable = {} foundHighlights[curLine] = lineTable end
+				if not lineTable then 
+					lineTable = {} 
+					foundHighlights[curLine] = lineTable 
+				end
 				lineTable[pos] = {typ,ending}
 				--lineTableCount = lineTableCount + 1
 
@@ -1571,7 +1597,6 @@ Lib.CodeFrame = (function()
 		local highlights = {}
 		local preHighlights = self.PreHighlights[line] or {}
 		local lineText = self.Lines[line] or ""
-		local lineLen = #lineText
 		local lastEnding = 0
 		local currentType = 0
 		local lastWord = nil
@@ -1592,7 +1617,10 @@ Lib.CodeFrame = (function()
 		end
 
 		for col = 1,#lineText do
-			if col <= lastEnding then highlights[col] = currentType continue end
+			if col <= lastEnding then 
+				highlights[col] = currentType 
+				continue 
+			end
 
 			local pre = preHighlightMap[col]
 			if pre then
@@ -1617,7 +1645,7 @@ Lib.CodeFrame = (function()
 						end
 
 						if wordType ~= 8 then
-							local x,y,br = find(lineText,"^%s*([%({\"'])",lastEnding+1)
+							local x,_,br = find(lineText,"^%s*([%({\"'])",lastEnding+1)
 							if x then
 								wordType = (funcStatus > 0 and br == "(" and 16) or 9
 								funcStatus = 0
@@ -1693,8 +1721,6 @@ Lib.CodeFrame = (function()
 	end
 
 	funcs.Refresh = function(self)
-		local start = tick()
-
 		local linesFrame = self.Frame.Lines
 		local hSize = math.max(0,linesFrame.AbsoluteSize.X)
 		local vSize = math.max(0,linesFrame.AbsoluteSize.Y)
@@ -1710,21 +1736,21 @@ Lib.CodeFrame = (function()
 		for row = 1,maxLines do
 			local lineFrame = self.LineFrames[row]
 			if not lineFrame then
-				lineFrame = Instance.new("Frame")
+				lineFrame = NewInstance("Frame")
 				lineFrame.Name = "Line"
 				lineFrame.Position = UDim2.new(0,0,0,(row-1)*self.FontSize)
 				lineFrame.Size = UDim2.new(1,0,0,self.FontSize)
 				lineFrame.BorderSizePixel = 0
 				lineFrame.BackgroundTransparency = 1
 
-				local selectionHighlight = Instance.new("Frame")
+				local selectionHighlight = NewInstance("Frame")
 				selectionHighlight.Name = "SelectionHighlight"
 				selectionHighlight.BorderSizePixel = 0
 				selectionHighlight.BackgroundColor3 = Settings.Theme.Syntax.SelectionBack
 				selectionHighlight.Parent = lineFrame
 				selectionHighlight.BackgroundTransparency = 0.7
 
-				local label = Instance.new("TextLabel")
+				local label = NewInstance("TextLabel")
 				label.Name = "Label"
 				label.BackgroundTransparency = 1
 				label.FontFace = self.FontFace
@@ -1756,9 +1782,7 @@ Lib.CodeFrame = (function()
 			local selectionRange = self.SelectionRange
 			local selPos1 = selectionRange[1]
 			local selPos2 = selectionRange[2]
-			local selRow,selColumn = selPos1[2],selPos1[1]
-			local sel2Row,sel2Column = selPos2[2],selPos2[1]
-			local selRelaX,selRelaY = viewX,relaY-1
+			local _,selRelaY = viewX,relaY-1
 
 			if selRelaY >= selPos1[2] and selRelaY <= selPos2[2] then
 				local fontSizeX = math.ceil(self.FontSize/2)
@@ -1772,20 +1796,9 @@ Lib.CodeFrame = (function()
 				lineFrame.SelectionHighlight.Visible = false
 			end
 
-			-- Selection Text Color for first char
-			--[[local inSelection = selRelaY >= selRow and selRelaY <= sel2Row and (selRelaY == selRow and viewX >= selColumn or selRelaY ~= selRow) and (selRelaY == sel2Row and viewX < sel2Column or selRelaY ~= sel2Row)
-			if inSelection then
-				curType = -999
-				curTemplate = selectionTemplate
-			end]]
-
 			for col = 2,maxCols do
 				local relaX = viewX + col
-				local selRelaX = relaX-1
 				local posType = highlights[relaX]
-
-				-- Selection Text Color
-				local inSelection = selRelaY >= selRow and selRelaY <= sel2Row and (selRelaY == selRow and selRelaX >= selColumn or selRelaY ~= selRow) and (selRelaY == sel2Row and selRelaX < sel2Column or selRelaY ~= sel2Row)
 
 				if posType ~= curType then
 					local template = (false and selectionTemplate) or richTemplates[typeMap[posType]] or textTemplate
@@ -1914,7 +1927,6 @@ Lib.CodeFrame = (function()
 		local count = 1
 
 		for line in txt:gmatch("([^\n\r]*)[\n\r]?") do
-			local len = #line
 			lines[count] = line
 			count = count + 1
 		end
@@ -1929,7 +1941,6 @@ Lib.CodeFrame = (function()
 		local count = 1
 
 		for line in txt:gmatch("([^\n\r]*)[\n\r]?") do
-			local len = #line
 			lines[count] = line
 			count = count + 1
 		end
@@ -1938,17 +1949,13 @@ Lib.CodeFrame = (function()
 	end
 
 	funcs.CompileText = function(self)
-		local loaded, err = pcall(function()
+		local loaded = pcall(function()
 			local source = table.concat(self.Lines, "\n")
 			local convertedSource = self:ConvertText(source, false)
 			loadstring(convertedSource)()
 		end)
 
-		if loaded then
-			return true
-		else
-			return false
-		end
+		return loaded
 	end
 
 	funcs.ReturnErrors = function(self)
@@ -1958,9 +1965,7 @@ Lib.CodeFrame = (function()
 			loadstring(convertedSource)()
 		end)
 
-		if not loaded then
-			return err
-		end
+		return not loaded and err or nil
 	end
 
 	funcs.GetVersion = function(self)
@@ -1991,15 +1996,13 @@ Lib.CodeFrame = (function()
 		Overwrites = Overwrites or {}
 		if not builtInInited then initBuiltIn() end
 
-		local starttime = tick()
-
 		local scrollV = Lib.ScrollBar.new()
 		local scrollH = Lib.ScrollBar.new(true)
 		scrollH.Gui.Position = UDim2.new(0,0,1,-10)
 		
 		local Base = {
 			FontFace = Font.fromEnum(Enum.Font.Code),
-			FontSize = 16,
+			FontSize = 14,
 			ViewX = 0,
 			ViewY = 0,
 			Colors = Settings.Theme.Syntax,
@@ -2021,7 +2024,8 @@ Lib.CodeFrame = (function()
 			ScrollH = scrollH
 		}
 		
-		local obj = setmetatable(Merge(Base, Overwrites), mt)
+		local Properties = Merge(Base, Overwrites)
+		local obj = setmetatable(Properties, mt)
 
 		funcs.SetTextMultiplier = (function(arg)
 			obj.FontSize = arg
@@ -2052,13 +2056,12 @@ Lib.CodeFrame = (function()
 		scrollH.Gui.Parent = obj.Frame
 
 		obj:UpdateView()
+		obj:SetText(Properties.Text)
+
 		obj.Frame:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
 			obj:UpdateView()
 			obj:Refresh()
 		end)
-
-		local endtime = tick()
-		local loadtime = endtime - starttime
 
 		return obj
 	end
