@@ -1,5 +1,16 @@
 # Changelog
 
+## ✅ v1.0.3
+
+```diff
+! Update outdated webscoket reference (https://github.com/Proton-Utilities/Myriad/issues/1#issue-3774060932)
+! Fix UI library icon issues
+! Move gh key to dotenv, releasing the .pcmp config
+! Move standard definitions out of the lua entrypoint
+
++ Add keytap alias "keyclick"
+```
+
 ## ✅ v1.0.2
 
 ```diff
