@@ -7,15251 +7,8707 @@
     @author Proton-Utilities
     @name Myriad
 
-    This file was automatically generated with darklua, it is not intended for manual editing.
+    This file was automatically @generated with darklua, it is not intended for manual editing.
 --]]
 
 _P = {
-    genDate = "2025-07-21T11:11:47.430001700+00:00",
+    genDate = "2026-01-01T03:45:06.534537100+00:00",
     cfg = "Debug",
     vers = "v0.0.0"
 }
 
-type ThemeData__DARKLUA_TYPE_a={
-[string]:any
-}
-
-type FlagFunc__DARKLUA_TYPE_b={
-Data:{
-Class:{},
-WindowClass:table__DARKLUA_TYPE_c?
-},
-Object:GuiObject
-}
-
-type table__DARKLUA_TYPE_c={
-[any]:any
-}
-
-type ObjectTable__DARKLUA_TYPE_d={
-[GuiObject]:any
-}
-
-type TagsList__DARKLUA_TYPE_e={
-[GuiObject]:string
-}
-
-type AnimationTween__DARKLUA_TYPE_f={
-Object:Instance,
-NoAnimation:boolean?,
-Tweeninfo:TweenInfo?,
-EndProperties:{},
-Completed:(()->any?)?
-}
-
-type Animate__DARKLUA_TYPE_g={
-NoAnimation:boolean?,
-Objects:ObjectTable__DARKLUA_TYPE_d,
-Tweeninfo:TweenInfo?,
-Completed:()->any
-}
-
-type HeaderCollapseToggle__DARKLUA_TYPE_h={
-Rotations:{
-Open:number?,
-Closed:number?
-},
-Toggle:GuiObject,
-NoAnimation:boolean?,
-Collapsed:boolean,
-Tweeninfo:TweenInfo?
-}
-
-type HeaderCollapse__DARKLUA_TYPE_i={
-Collapsed:boolean,
-ClosedSize:UDim2,
-OpenSize:UDim2,
-Toggle:Instance,
-Resize:Instance?,
-Hide:Instance?,
-NoAnimation:boolean?,
-NoAutomaticSize:boolean?,
-IconOnly:boolean?,
-Completed:(()->any)?,
-IconRotations:{
-Open:number?,
-Closed:number?
-}
-}
-
-type SignalClass__DARKLUA_TYPE_j={
-Connections:{
-[number]:(...any)->nil
-},
-Fire:(SignalClass__DARKLUA_TYPE_j,...any)->nil,
-GetConnections:(SignalClass__DARKLUA_TYPE_j)->table__DARKLUA_TYPE_c,
-Connect:(SignalClass__DARKLUA_TYPE_j,(...any)->nil)->table__DARKLUA_TYPE_c,
-DisconnectConnections:(SignalClass__DARKLUA_TYPE_j)->nil
-}
-
-type ConnectDrag__DARKLUA_TYPE_k={
-DragStart:()->nil,
-DragEnd:()->nil,
-DragMovement:()->nil
-}
-
-type MakeDraggableFlags__DARKLUA_TYPE_l={
-Move:Instance,
-Grab:Instance,
-Enabled:boolean?,
-OnUpdate:((Vector2)->...any)?,
-DragBegin:((InputObject)->...any)?,
-StateChanged:((MakeDraggableFlags__DARKLUA_TYPE_l)->any)?
-}
-
-type MakeResizableFlags__DARKLUA_TYPE_m={
-MinimumSize:Vector2,
-MaximumSize:Vector2?,
-
-Resize:Instance,
-OnUpdate:(UDim2)->...any
-}
-
-type DetectHover__DARKLUA_TYPE_n={
-OnInput:((boolean,InputObject?)->...any?)?,
-Anykey:boolean?,
-MouseMove:boolean?,
-MouseOnly:boolean?,
-MouseEnter:boolean?,
-Hovering:boolean?
-}
-
-type UpdateColors__DARKLUA_TYPE_o={
-Object:GuiObject,
-Tag:(string|table__DARKLUA_TYPE_c),
-NoAnimation:boolean?,
-Theme:string?,
-TagsList:TagsList__DARKLUA_TYPE_e?,
-Tweeninfo:TweenInfo?
-}
-
-type MultiUpdateColorsConfig__DARKLUA_TYPE_p={
-Objects:ObjectsTable,
-TagsList:TagsList__DARKLUA_TYPE_e?,
-Theme:string?,
-Animate:boolean?,
-Tweeninfo:TweenInfo?
-}
-
-type ApplyFlags__DARKLUA_TYPE_q={
-Object:Instance,
-Class:table__DARKLUA_TYPE_c,
-WindowClass:table__DARKLUA_TYPE_c?
-}
-
-type MakeCanvas__DARKLUA_TYPE_r={
-Element:Instance,
-WindowClass:WindowClass?,
-Class:{}?
-}
-
-type OnElementCreateData__DARKLUA_TYPE_s={
-Flags:table__DARKLUA_TYPE_c,
-Object:GuiObject,
-Canvas:table__DARKLUA_TYPE_c
-}
-
-type Image__DARKLUA_TYPE_t={
-Image:(string|number),
-Callback:((...any)->unknown)?
-}
-
-type VideoPlayer__DARKLUA_TYPE_u={
-Video:(string|number),
-Callback:((...any)->unknown)?
-}
-
-type Button__DARKLUA_TYPE_v={
-Text:string?,
-DoubleClick:boolean?,
-Callback:((...any)->unknown)?
-}
-
-type Selectable__DARKLUA_TYPE_w={
-Text:string?,
-Selected:boolean?,
-Disabled:boolean?,
-Callback:((...any)->unknown)?
-}
-
-type ImageButton__DARKLUA_TYPE_x={
-Image:(string|number),
-Callback:((...any)->unknown)?
-}
-
-type KeyId__DARKLUA_TYPE_y=(Enum.UserInputType|Enum.KeyCode)
-
-type Keybind__DARKLUA_TYPE_z={
-Value:Enum.KeyCode?,
-DeleteKey:Enum.KeyCode?,
-Enabled:boolean?,
-IgnoreGameProcessed:boolean?,
-Callback:((KeyId__DARKLUA_TYPE_y)->any)?,
-OnKeybindSet:((KeyId__DARKLUA_TYPE_y)->any)?,
-OnBlacklistedKeybindSet:((KeyId__DARKLUA_TYPE_y)->any)?,
-KeyBlacklist:{
-[number]:KeyId__DARKLUA_TYPE_y
-},
-
-SetValue:((Keybind__DARKLUA_TYPE_z,New:Enum.KeyCode)->any)?,
-WaitForNewKey:((Keybind__DARKLUA_TYPE_z)->any)?
-}
-
-type Label__DARKLUA_TYPE_A={
-Text:string,
-Bold:boolean?,
-Italic:boolean?,
-Font:string?
-}
-
-type Tab__DARKLUA_TYPE_B={
-Name:string,
-Focused:boolean?,
-TabButton:boolean?,
-Closeable:boolean?,
-OnClosure:(Tab__DARKLUA_TYPE_B)->nil,
-Icon:(string|number)?
-}
-
-type TabBar__DARKLUA_TYPE_C={
-AutoSelectNewTabs:boolean,
-OnActiveTabChange:((TabBar__DARKLUA_TYPE_C,Tab:Tab__DARKLUA_TYPE_B,Previous:Tab__DARKLUA_TYPE_B)->nil)?,
-OnTabCreate:((TabBar__DARKLUA_TYPE_C,Tab:Tab__DARKLUA_TYPE_B)->nil)?,
-OnTabRemove:((TabBar__DARKLUA_TYPE_C,Tab:Tab__DARKLUA_TYPE_B)->nil)?
-}
-
-type TabSelector__DARKLUA_TYPE_D={
-NoTabsBar:boolean?,
-NoAnimation:boolean?
-}&TabBar__DARKLUA_TYPE_C
-
-type RadioButton__DARKLUA_TYPE_E={
-Icon:string?,
-IconRotation:number?,
-Callback:((...any)->unknown)?
-}
-
-type Checkbox__DARKLUA_TYPE_F={
-Label:string?,
-IsRadio:boolean?,
-Value:boolean,
-NoAnimation:boolean?,
-Callback:((...any)->unknown)?,
-SetValue:(self:Checkbox__DARKLUA_TYPE_F,Value:boolean,NoAnimation:boolean)->...any,
-Toggle:(self:Checkbox__DARKLUA_TYPE_F)->...any,
-TickedImageSize:UDim2,
-UntickedImageSize:UDim2
-}
-
-type PlotHistogram__DARKLUA_TYPE_G={
-Label:string?,
-Points:{
-[number]:number
-},
-Minimum:number?,
-Maximum:number?,
-GetBaseValues:(PlotHistogram__DARKLUA_TYPE_G)->(number,number),
-UpdateGraph:(PlotHistogram__DARKLUA_TYPE_G)->PlotHistogram__DARKLUA_TYPE_G,
-PlotGraph:(PlotHistogram__DARKLUA_TYPE_G,Points:{
-[number]:number
-})->PlotHistogram__DARKLUA_TYPE_G,
-Plot:(PlotHistogram__DARKLUA_TYPE_G,Value:number)->{
-SetValue:(Plot,Value:number)->nil,
-GetPointIndex:(Plot)->number,
-Remove:(Plot,Value:number)->nil
-}
-}
-
-type Viewport__DARKLUA_TYPE_H={
-Model:Instance,
-WorldModel:WorldModel?,
-Viewport:ViewportFrame?,
-Camera:Camera?,
-Clone:boolean?,
-
-SetCamera:(self:Viewport__DARKLUA_TYPE_H,Camera:Camera)->Viewport__DARKLUA_TYPE_H,
-SetModel:(self:Viewport__DARKLUA_TYPE_H,Model:Model,PivotTo:CFrame?)->Model
-}
-
-type InputText__DARKLUA_TYPE_I={
-Value:string,
-Placeholder:string?,
-MultiLine:boolean?,
-Label:string?,
-Disabled:boolean?,
-
-Callback:((string,...any)->unknown)?,
-Clear:(InputText__DARKLUA_TYPE_I)->InputText__DARKLUA_TYPE_I,
-SetValue:(InputText__DARKLUA_TYPE_I,Value:string)->InputText__DARKLUA_TYPE_I,
-SetDisabled:(InputText__DARKLUA_TYPE_I,Disabled:boolean)->InputText__DARKLUA_TYPE_I
-}
-
-type InputInt__DARKLUA_TYPE_J={
-Value:number,
-Maximum:number?,
-Minimum:number?,
-Placeholder:string?,
-MultiLine:boolean?,
-NoButtons:boolean?,
-Label:string?,
-Increment:number?,
-Callback:((string,...any)->unknown)?,
-SetValue:(InputInt__DARKLUA_TYPE_J,Value:number,NoTextUpdate:boolean?)->InputInt__DARKLUA_TYPE_J,
-Decrease:(InputInt__DARKLUA_TYPE_J)->nil,
-Increase:(InputInt__DARKLUA_TYPE_J)->nil
-}
-
-type Console__DARKLUA_TYPE_K={
-Enabled:boolean?,
-ReadOnly:boolean?,
-Value:string?,
-RichText:boolean?,
-TextWrapped:boolean?,
-LineNumbers:boolean?,
-AutoScroll:boolean,
-LinesFormat:string,
-MaxLines:number,
-
-CountLines:(Console__DARKLUA_TYPE_K)->number,
-UpdateLineNumbers:(Console__DARKLUA_TYPE_K)->Console__DARKLUA_TYPE_K,
-UpdateScroll:(Console__DARKLUA_TYPE_K)->Console__DARKLUA_TYPE_K,
-SetValue:(Console__DARKLUA_TYPE_K,Value:string)->Console__DARKLUA_TYPE_K,
-GetValue:(Console__DARKLUA_TYPE_K)->string,
-Clear:(Console__DARKLUA_TYPE_K)->Console__DARKLUA_TYPE_K,
-AppendText:(Console__DARKLUA_TYPE_K,...string)->Console__DARKLUA_TYPE_K,
-CheckLineCount:(Console__DARKLUA_TYPE_K)->Console__DARKLUA_TYPE_K
-}
-
-type Table__DARKLUA_TYPE_L={
-Align:string?,
-Border:boolean?,
-RowBackground:boolean?,
-RowBgTransparency:number?,
-MaxColumns:number?,
-
-Row:(Table__DARKLUA_TYPE_L)->{
-Column:(Row__DARKLUA_TYPE_U)->Elements
-},
-ClearRows:(Table__DARKLUA_TYPE_L)->unknown
-}
-
-type List__DARKLUA_TYPE_M={
-Spacing:number?
-}
-
-type CollapsingHeader__DARKLUA_TYPE_N={
-Title:string,
-CollapseIcon:string?,
-Icon:string?,
-NoAnimation:boolean?,
-Collapsed:boolean?,
-Offset:number?,
-NoArrow:boolean?,
-OpenOnDoubleClick:boolean?,
-OpenOnArrow:boolean?,
-Activated:(CollapsingHeader__DARKLUA_TYPE_N)->nil,
-
-Remove:(CollapsingHeader__DARKLUA_TYPE_N)->nil,
-SetArrowVisible:(CollapsingHeader__DARKLUA_TYPE_N,Visible:boolean)->nil,
-SetTitle:(CollapsingHeader__DARKLUA_TYPE_N,Title:string)->nil,
-SetIcon:(CollapsingHeader__DARKLUA_TYPE_N,Icon:string)->nil,
-SetVisible:(CollapsingHeader__DARKLUA_TYPE_N,Visible:boolean)->nil,
-SetCollapsed:(CollapsingHeader__DARKLUA_TYPE_N,Open:boolean)->CollapsingHeader__DARKLUA_TYPE_N
-}
-
-type Separator__DARKLUA_TYPE_O={
-Text:string?
-}
-
-type Canvas__DARKLUA_TYPE_P={
-Scroll:boolean?,
-Class:table__DARKLUA_TYPE_c?
-}
-
-type Region__DARKLUA_TYPE_Q={
-Scroll:boolean?
-}
-
-type Indent__DARKLUA_TYPE_R={
-Offset:number?
-}
-
-type BulletText__DARKLUA_TYPE_S={
-Padding:number,
-Icon:(string|number)?,
-Rows:{
-[number]:string?
-}
-}
-
-type Bullet__DARKLUA_TYPE_T={
-Padding:number?
-}
-
-type Row__DARKLUA_TYPE_U={
-Spacing:number?,
-Expanded:boolean?,
-HorizontalFlex:Enum.UIFlexAlignmen?,
-VerticalFlex:Enum.UIFlexAlignmen?,
-Expand:(Row__DARKLUA_TYPE_U)->Row__DARKLUA_TYPE_U
-}
-
-type SliderIntFlags__DARKLUA_TYPE_V={
-Value:number?,
-Format:string?,
-Label:string?,
-Progress:boolean?,
-NoGrab:boolean?,
-Minimum:number,
-Maximum:number,
-NoAnimation:boolean?,
-Callback:(number)->any?,
-ReadOnly:boolean?,
-SetValue:(SliderInt,Value:number,IsSlider:boolean?)->SliderInt?,
-SetDisabled:(SliderInt,Disabled:boolean)->SliderInt,
-MakeProgress:(SliderInt)->nil?
-}
-
-type SliderEnumFlags__DARKLUA_TYPE_W={
-Items:{
-[number]:any
-},
-Label:string,
-Value:number
-}&SliderIntFlags__DARKLUA_TYPE_V
-
-type DragIntFlags__DARKLUA_TYPE_X={
-Format:string?,
-Label:string?,
-Callback:(DragIntFlags__DARKLUA_TYPE_X,number)->any,
-Minimum:number?,
-Maximum:number?,
-Value:number?,
-ReadOnly:boolean?,
-
-SetValue:(DragIntFlags__DARKLUA_TYPE_X,number)->DragIntFlags__DARKLUA_TYPE_X
-}
-
-type InputColor3Flags__DARKLUA_TYPE_Y={
-Label:string?,
-Value:Color3?,
-Callback:(InputColor3Flags__DARKLUA_TYPE_Y,Value:Color3)->any,
-
-ValueChanged:(InputColor3Flags__DARKLUA_TYPE_Y)->nil,
-SetValue:(InputColor3Flags__DARKLUA_TYPE_Y,Value:Color3)->InputColor3Flags__DARKLUA_TYPE_Y
-}
-
-type InputCFrameFlags__DARKLUA_TYPE_Z={
-Label:string?,
-Value:CFrame?,
-Callback:(InputCFrameFlags__DARKLUA_TYPE_Z,Value:CFrame)->any,
-
-ValueChanged:(InputCFrameFlags__DARKLUA_TYPE_Z)->nil,
-SetValue:(InputCFrameFlags__DARKLUA_TYPE_Z,Value:CFrame)->InputCFrameFlags__DARKLUA_TYPE_Z
-}
-
-type ProgressBar__DARKLUA_TYPE__={
-SetPercentage:(ProgressBar__DARKLUA_TYPE__,Value:number)->nil
-}
-
-type Combo__DARKLUA_TYPE_0={
-Label:string?,
-Placeholder:string?,
-Callback:((Combo__DARKLUA_TYPE_0,Value:any)->any)?,
-Items:{[(number?)]:any}?,
-GetItems:(()->table__DARKLUA_TYPE_c)?
-}
-
-type TitleBarCanvas__DARKLUA_TYPE_1={
-Right:table__DARKLUA_TYPE_c,
-Left:table__DARKLUA_TYPE_c
-}
-
-type WindowFlags__DARKLUA_TYPE_2={
-AutoSize:string?,
-CloseCallback:(Window)->boolean?,
-Collapsed:boolean?,
-IsDragging:boolean?,
-MinSize:Vector2?,
-Theme:any?,
-Title:string?,
-NoTabs:boolean?,
-NoMove:boolean?,
-NoResize:boolean?,
-NoTitleBar:boolean?,
-NoClose:boolean?,
-NoCollapse:boolean?,
-NoScrollBar:boolean?,
-NoSelectEffect:boolean?,
-NoFocusOnAppearing:boolean?,
-NoDefaultTitleBarButtons:boolean?,
-NoWindowRegistor:boolean?,
-OpenOnDoubleClick:boolean?,
-SetTheme:(Window,ThemeName:string)->Window,
-SetTitle:(Window,Title:string)->Window,
-UpdateConfig:(Window,Config:table__DARKLUA_TYPE_c)->Window,
-SetCollapsed:(Window,Collapsed:boolean,NoAnimation:boolean?)->Window,
-SetCollapsible:(Window,Collapsible:boolean)->Window,
-SetFocused:(Window,Focused:boolean)->Window,
-Center:(Window)->Window,
-SetVisible:(Window,Visible:boolean)->Window,
-TagElements:(Window,Objects:{
-[GuiObject]:string
-})->nil,
-Close:(Window)->nil
-}
-
-type TabsWindowFlags__DARKLUA_TYPE_3={
-AutoSelectNewTabs:boolean?
-}&WindowFlags__DARKLUA_TYPE_2
-
-type PopupCanvas__DARKLUA_TYPE_4={
-Scroll:boolean?,
-AutoClose:boolean?,
-RelativeTo:GuiObject,
-MaxSizeY:number?,
-MinSizeX:number?,
-MaxSizeX:number?,
-
-UpdateScale:(PopupCanvas__DARKLUA_TYPE_4)->nil,
-UpdatePosition:(PopupCanvas__DARKLUA_TYPE_4)->nil,
-ClosePopup:(PopupCanvas__DARKLUA_TYPE_4)->nil,
-SetPopupVisible:(PopupCanvas__DARKLUA_TYPE_4,Visible:boolean)->nil
-}
-
-type Streamer__DARKLUA_TYPE_5={
-Offset:number,
-Source:string,
-Length:number,
-IsFinished:boolean,
-LastUnreadBytes:number,
-
-read:(Streamer__DARKLUA_TYPE_5,len:number?,shiftOffset:boolean?)->string,
-seek:(Streamer__DARKLUA_TYPE_5,len:number)->(),
-append:(Streamer__DARKLUA_TYPE_5,newData:string)->(),
-toEnd:(Streamer__DARKLUA_TYPE_5)->()
-}
-
-type BlockData__DARKLUA_TYPE_6={
-[number]:{
-Literal:string,
-LiteralLength:number,
-MatchOffset:number?,
-MatchLength:number?
-}
-}
-
-type bytes__DARKLUA_TYPE_7={number}local a a={cache={}, load=function(b)if not a.cache[b]then a.cache[b]={c=a[b]()}end return a.cache[b].c end}do function a.a()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-local b={
-
-Version="1.4.3",
-Author="Depso",
-License="MIT",
-Repository="https://github.com/depthso/Dear-ReGui/",
-
-
-Debug=false,
-PrefabsId=71968920594655,
-DefaultTitle="ReGui",
-ContainerName="ReGui",
-DoubleClickThreshold=0.3,
-TooltipOffset=15,
-IniToSave={
-"Value"
-},
-
-
-Container=nil,
-Prefabs=nil,
-FocusedWindow=nil,
-
-
-ThemeConfigs={},
-Elements={},
-Signaling={},
-Animation={
-DefaultTweenInfo=TweenInfo.new(0.08),
-},
-
-
-_FlagCache={},
-_ErrorCache={},
-Windows={},
-ActiveTooltips={},
-IniSettings={},
-AnimationConnections={}
-}
-
-b.Icons={
-Dot="rbxasset://textures/whiteCircle.png",
-Arrow="rbxasset://textures/DeveloperFramework/button_arrow_right.png",
-Close="rbxasset://textures/AnimationEditor/icon_close.png",
-Checkmark="rbxasset://textures/AnimationEditor/icon_checkmark.png",
-Cat="rbxassetid://16211812161",
-Script="rbxassetid://11570895459",
-Settings="rbxassetid://9743465390",
-Info="rbxassetid://18754976792",
-Move="rbxassetid://6710235139",
-Roblox="rbxassetid://7414445494",
-Warning="rbxassetid://11745872910",
-Audio="rbxassetid://302250236",
-Shop="rbxassetid://6473525198",
-CharacterDance="rbxassetid://11932783331",
-Pants="rbxassetid://10098755331",
-Home="rbxassetid://4034483344",
-Robux="rbxassetid://5986143282",
-Badge="rbxassetid://16170504068",
-SpawnLocation="rbxassetid://6400507398",
-Sword="rbxassetid://7485051715",
-Clover="rbxassetid://11999300014",
-Star="rbxassetid://3057073083",
-Code="rbxassetid://11348555035",
-Paw="rbxassetid://13001190533",
-Shield="rbxassetid://7461510428",
-Shield2="rbxassetid://7169354142",
-File="rbxassetid://7276823330",
-Book="rbxassetid://16061686835",
-Location="rbxassetid://13549782519",
-Puzzle="rbxassetid://8898417863",
-Discord="rbxassetid://84828491431270",
-Premium="rbxassetid://6487178625",
-Friend="rbxassetid://10885655986",
-User="rbxassetid://18854794412",
-Duplicate="rbxassetid://11833749507",
-ChatBox="rbxassetid://15839118471",
-ChatBox2="rbxassetid://15839116089",
-Devices="rbxassetid://4458812712",
-Weight="rbxassetid://9855685269",
-Image="rbxassetid://123311808092347",
-Profile="rbxassetid://13585614795",
-Admin="rbxassetid://11656483170",
-PaintBrush="rbxassetid://12111879608",
-Speed="rbxassetid://12641434961",
-NoConnection="rbxassetid://9795340967",
-Connection="rbxassetid://119759670842477",
-Globe="rbxassetid://18870359747",
-Box="rbxassetid://140217940575618",
-Crown="rbxassetid://18826490498",
-Control="rbxassetid://18979524646",
-Send="rbxassetid://18940312887",
-FastForward="rbxassetid://112963221295680",
-Pause="rbxassetid://109949100737970",
-Reload="rbxassetid://11570018242",
-Joystick="rbxassetid://18749336354",
-Controller="rbxassetid://11894535915",
-Lock="rbxassetid://17783082088",
-Calculator="rbxassetid://85861816563977",
-Sun="rbxassetid://13492317832",
-Moon="rbxassetid://8498174594",
-Prohibited="rbxassetid://5248916036",
-Flag="rbxassetid://251346532",
-Website="rbxassetid://98455290625865",
-Telegram="rbxassetid://115860270107061",
-MusicNote="rbxassetid://18187351229",
-Music="rbxassetid://253830398",
-Headphones="rbxassetid://1311321471",
-Phone="rbxassetid://8411963035",
-Smartphone="rbxassetid://14040313879",
-Desktop="rbxassetid://3120635703",
-Desktop2="rbxassetid://4728059490",
-Laptop="rbxassetid://4728059725",
-Server="rbxassetid://9692125126",
-Wedge="rbxassetid://9086583059",
-Drill="rbxassetid://11959189471",
-Character="rbxassetid://13285102351",
-}
-
-b.DynamicImages={
-[b.Icons.Arrow]="ImageFollowsText",
-[b.Icons.Close]="ImageFollowsText",
-[b.Icons.Dot]="ImageFollowsText",
-}
-
-b.Accent={
-
-Light=Color3.fromRGB(50,150,250),
-Dark=Color3.fromRGB(30,66,115),
-ExtraDark=Color3.fromRGB(28,39,53),
-White=Color3.fromRGB(240,240,240),
-Gray=Color3.fromRGB(172,171,175),
-Black=Color3.fromRGB(15,19,24),
-Yellow=Color3.fromRGB(230,180,0),
-Orange=Color3.fromRGB(230,150,0),
-Green=Color3.fromRGB(130,188,91),
-Red=Color3.fromRGB(255,69,69),
-
-
-ImGui={
-Light=Color3.fromRGB(66,150,250),
-Dark=Color3.fromRGB(41,74,122),
-Black=Color3.fromRGB(15,15,15),
-Gray=Color3.fromRGB(36,36,36)
-}
-}
-
-
-
-
-
-local c=b.ThemeConfigs
-c.DarkTheme={
-Values={
-AnimationTweenInfo=TweenInfo.new(0.08),
-TextFont=Font.fromEnum(Enum.Font.RobotoMono),
-TextSize=14,
-Text=b.Accent.White,
-TextDisabled=b.Accent.Gray,
-ErrorText=b.Accent.Red,
-
-FrameBg=b.Accent.Dark,
-FrameBgTransparency=0.4,
-FrameBgActive=b.Accent.Light,
-FrameBgTransparencyActive=0.4,
-FrameRounding=UDim.new(0,0),
-
-
-SliderGrab=b.Accent.Light,
-ButtonsBg=b.Accent.Light,
-CollapsingHeaderBg=b.Accent.Light,
-CollapsingHeaderText=b.Accent.White,
-CheckMark=b.Accent.Light,
-ResizeGrab=b.Accent.Light,
-HeaderBg=b.Accent.Gray,
-HeaderBgTransparency=0.7,
-HistogramBar=b.Accent.Yellow,
-ProgressBar=b.Accent.Yellow,
-RegionBg=b.Accent.Dark,
-RegionBgTransparency=0.1,
-Separator=b.Accent.Gray,
-SeparatorTransparency=0.5,
-ConsoleLineNumbers=b.Accent.White,
-LabelPaddingTop=UDim.new(0,0),
-LabelPaddingBottom=UDim.new(0,0),
-MenuBar=b.Accent.ExtraDark,
-MenuBarTransparency=0.1,
-PopupCanvas=b.Accent.Black,
-
-
-TabTextPaddingTop=UDim.new(0,3),
-TabTextPaddingBottom=UDim.new(0,8),
-TabText=b.Accent.Gray,
-TabBg=b.Accent.Dark,
-TabTextActive=b.Accent.White,
-TabBgActive=b.Accent.Light,
-TabsBarBg=Color3.fromRGB(36,36,36),
-TabsBarBgTransparency=1,
-TabPagePadding=UDim.new(0,8),
-
-
-ModalWindowDimBg=Color3.fromRGB(230,230,230),
-ModalWindowDimTweenInfo=TweenInfo.new(0.2),
-
-WindowBg=b.Accent.Black,
-WindowBgTransparency=0.05,
-
-Border=b.Accent.Gray,
-BorderTransparency=0.8,
-BorderTransparencyActive=0.5,
-
-Title=b.Accent.White,
-TitleAlign=Enum.TextXAlignment.Left,
-TitleBarBg=b.Accent.Black,
-TitleBarTransparency=0,
-TitleActive=b.Accent.White,
-TitleBarBgActive=b.Accent.Dark,
-TitleBarTransparencyActive=0.05,
-TitleBarBgCollapsed=Color3.fromRGB(0,0,0),
-TitleBarTransparencyCollapsed=0.6,
-}
-}
-c.LightTheme={
-BaseTheme=c.DarkTheme,
-Values={
-Text=b.Accent.Black,
-TextFont=Font.fromEnum(Enum.Font.Ubuntu),
-TextSize=14,
-
-FrameBg=b.Accent.Gray,
-FrameBgTransparency=0.4,
-FrameBgActive=b.Accent.Light,
-FrameBgTransparencyActive=0.6,
-
-SliderGrab=b.Accent.Light,
-ButtonsBg=b.Accent.Light,
-CollapsingHeaderText=b.Accent.Black,
-Separator=b.Accent.Black,
-ConsoleLineNumbers=b.Accent.Yellow,
-MenuBar=Color3.fromRGB(219,219,219),
-PopupCanvas=b.Accent.White,
-
-TabText=b.Accent.Black,
-TabTextActive=b.Accent.Black,
-
-WindowBg=b.Accent.White,
-Border=b.Accent.Gray,
-ResizeGrab=b.Accent.Gray,
-
-Title=b.Accent.Black,
-TitleAlign=Enum.TextXAlignment.Center,
-TitleBarBg=b.Accent.Gray,
-TitleActive=b.Accent.Black,
-TitleBarBgActive=Color3.fromRGB(186,186,186),
-TitleBarBgCollapsed=b.Accent.Gray
-}
-}
-c.ImGui={
-BaseTheme=c.DarkTheme,
-Values={
-AnimationTweenInfo=TweenInfo.new(0),
-Text=Color3.fromRGB(255,255,255),
-
-FrameBg=b.Accent.ImGui.Dark,
-FrameBgTransparency=0.4,
-FrameBgActive=b.Accent.ImGui.Light,
-FrameBgTransparencyActive=0.5,
-FrameRounding=UDim.new(0,0),
-
-ButtonsBg=b.Accent.ImGui.Light,
-CollapsingHeaderBg=b.Accent.ImGui.Light,
-CollapsingHeaderText=b.Accent.White,
-CheckMark=b.Accent.ImGui.Light,
-ResizeGrab=b.Accent.ImGui.Light,
-MenuBar=b.Accent.ImGui.Gray,
-MenuBarTransparency=0,
-PopupCanvas=b.Accent.ImGui.Black,
-
-TabText=b.Accent.Gray,
-TabBg=b.Accent.ImGui.Dark,
-TabTextActive=b.Accent.White,
-TabBgActive=b.Accent.ImGui.Light,
-
-WindowBg=b.Accent.ImGui.Black,
-WindowBgTransparency=0.05,
-Border=b.Accent.Gray,
-BorderTransparency=0.7,
-BorderTransparencyActive=0.4,
-
-Title=b.Accent.White,
-TitleBarBg=b.Accent.ImGui.Black,
-TitleBarTransparency=0,
-TitleBarBgActive=b.Accent.ImGui.Dark,
-TitleBarTransparencyActive=0,
-}
-}
-
-b.ElementColors={MenuBar=
-{
-BackgroundColor3="MenuBar",
-BackgroundTransparency="MenuBarTransparency",
-},FrameRounding=
-{
-CornerRadius="FrameRounding"
-},PopupCanvas=
-{
-BackgroundColor3="PopupCanvas"
-},ModalWindowDim=
-{
-BackgroundColor3="ModalWindowDimBg"
-},Selectable=
-"Button",MenuButton=
-"Button",Separator=
-{
-BackgroundColor3="Separator",
-BackgroundTransparency="SeparatorTransparency",
-},Region=
-{
-BackgroundColor3="RegionBg",
-BackgroundTransparency="RegionBgTransparency",
-},Label=
-{
-TextColor3="Text",
-FontFace="TextFont",
-TextSize="TextSize",
-},ImageFollowsText=
-{
-ImageColor3="Text",
-},ConsoleLineNumbers=
-{
-TextColor3="ConsoleLineNumbers",
-FontFace="TextFont",
-TextSize="TextSize",
-},ConsoleText=
-"Label",LabelDisabled=
-{
-TextColor3="TextDisabled",
-FontFace="TextFont",
-TextSize="TextSize",
-},Plot=
-{
-BackgroundColor3="HistogramBar",
-},Header=
-{
-BackgroundColor3="HeaderBg",
-BackgroundTransparency="HeaderBgTransparency",
-},WindowTitle=
-{
-TextXAlignment="TitleAlign",
-FontFace="TextFont",
-TextSize="TextSize",
-},TitleBar=
-{
-BackgroundColor3="TitleBarBgActive"
-},Window=
-{
-BackgroundColor3="WindowBg",
-BackgroundTransparency="WindowBgTransparency"
-},TitleBarBgCollapsed=
-{
-BackgroundColor3="TitleBarBgCollapsed",
-BackgroundTransparency="TitleBarTransparencyCollapsed"
-},TitleBarBgActive=
-{
-BackgroundColor3="TitleBarBgActive",
-BackgroundTransparency="TitleBarTransparencyActive"
-},TitleBarBg=
-{
-BackgroundColor3="TitleBarBg",
-BackgroundTransparency="TitleBarTransparency"
-},TabsBar=
-{
-BackgroundColor3="TabsBarBg",
-BackgroundTransparency="TabsBarBgTransparency",
-},Border=
-{
-Color="Border",
-Transparency="BorderTransparency"
-},ResizeGrab=
-{
-TextColor3="ResizeGrab"
-},BorderActive=
-{
-Transparency="BorderTransparencyActive"
-},Frame=
-{
-BackgroundColor3="FrameBg",
-BackgroundTransparency="FrameBgTransparency",
-TextColor3="Text",
-FontFace="TextFont",
-TextSize="TextSize",
-},FrameActive=
-{
-BackgroundColor3="FrameBgActive",
-BackgroundTransparency="FrameBgTransparencyActive"
-},SliderGrab=
-{
-BackgroundColor3="SliderGrab"
-},Button=
-{
-BackgroundColor3="ButtonsBg",
-TextColor3="Text",
-FontFace="TextFont",
-TextSize="TextSize",
-},CollapsingHeader=
-{
-FontFace="TextFont",
-TextSize="TextSize",
-TextColor3="CollapsingHeaderText",
-BackgroundColor3="CollapsingHeaderBg",
-},Checkbox=
-{
-BackgroundColor3="FrameBg",
-},CheckMark=
-{
-ImageColor3="CheckMark",
-BackgroundColor3="CheckMark",
-},RadioButton=
-{
-BackgroundColor3="ButtonsBg",
-}
-}
-
-b.Styles={
-RadioButton={
-Animation="RadioButtons",
-CornerRadius=UDim.new(1,0),
-},
-Button={
-Animation="Buttons"
-},
-CollapsingHeader={
-Animation="Buttons"
-},
-TreeNode={
-Animation="TransparentButtons"
-},
-TransparentButton={
-Animation="TransparentButtons"
-}
-}
-
-b.Animations={Invisible=
-{
-Connections={
-MouseEnter={
-Visible=true,
-},
-MouseLeave={
-Visible=false,
-}
-},
-Init="MouseLeave"
-},Buttons=
-{
-Connections={
-MouseEnter={
-BackgroundTransparency=0.3,
-},
-MouseLeave={
-BackgroundTransparency=0.7,
-}
-},
-Init="MouseLeave"
-},TextButtons=
-{
-Connections={
-MouseEnter={
-TextTransparency=0.3,
-},
-MouseLeave={
-TextTransparency=0.7,
-}
-},
-Init="MouseLeave"
-},TransparentButtons=
-{
-Connections={
-MouseEnter={
-BackgroundTransparency=0.3,
-},
-MouseLeave={
-BackgroundTransparency=1,
-}
-},
-Init="MouseLeave"
-},RadioButtons=
-{
-Connections={
-MouseEnter={
-BackgroundTransparency=0.5,
-},
-MouseLeave={
-BackgroundTransparency=1,
-}
-},
-Init="MouseLeave"
-},Inputs=
-{
-Connections={
-MouseEnter={
-BackgroundTransparency=0,
-},
-MouseLeave={
-BackgroundTransparency=0.5,
-},
-},
-Init="MouseLeave"
-},Plots=
-{
-Connections={
-MouseEnter={
-BackgroundTransparency=0.3,
-},
-MouseLeave={
-BackgroundTransparency=0,
-},
-},
-Init="MouseLeave"
-},Border=
-{
-Connections={
-Selected={
-Transparency=0,
-Thickness=1
-},
-Deselected={
-Transparency=0.7,
-Thickness=1
-}
-},
-Init="Selected"
-},
-}
-
-
-
-
-
-
-
-
-
-b.ElementFlags={
-{
-Properties={"Center"},
-Callback=function<FlagFunc>(d,e,f)
-local g=e.Position
-b:SetProperties(e,{
-Position=UDim2.new(
-f:find"X"and 0.5 or g.X.Scale,
-g.X.Offset,
-f:find"Y"and 0.5 or g.Y.Scale,
-g.Y.Offset
-),
-AnchorPoint=Vector2.new(
-f:find"X"and 0.5 or 0,
-f:find"Y"and 0.5 or 0
-)
-})
-end,
-},
-{
-Properties={"ElementStyle"},
-Callback=function<StyleFunc>(d,e,f)
-b:ApplyStyle(e,f)
-end,
-},
-{
-Properties={"ColorTag"},
-Callback=function<StyleFunc>(d,e,f)
-local g=d.Class
-local h=d.WindowClass
-local i=g.NoAutoTheme
-
-
-if not h then return end
-if i then return end
-
-b:UpdateColors{
-Object=e,
-Tag=f,
-NoAnimation=true,
-Theme=h.Theme,
-}
-end,
-},
-{
-Properties={"Animation"},
-Callback=function<StyleFunc>(d,e,f)
-
-local g=d.Class.NoAnimation
-if g then return end
-
-b:SetAnimation(e,f)
-end,
-},
-{
-Properties={"Image"},
-Callback=function<StyleFunc>(d,e,f)
-local g=d.WindowClass
-e.Image=b:CheckAssetUrl(f)
-b:DynamicImageTag(e,f,g)
-end,
-},
-{
-Properties={"Icon","IconSize","IconRotation","IconPadding"},
-Callback=function<StyleFunc>(d,e,f)
-
-local g=e:FindFirstChild("Icon",true)
-if not g then
-return b:Warn("No icon for",e)
-end
-
-
-local h=d.Class
-b:CheckConfig(h,{
-Icon="",
-IconSize=UDim2.fromScale(1,1),
-IconRotation=0,
-IconPadding=UDim2.new(0,2)
-})
-
-
-local i=g.Parent:FindFirstChild"UIPadding"
-b:SetPadding(i,h.IconPadding)
-
-
-local j=h.Icon
-j=b:CheckAssetUrl(j)
-
-
-local k=d.WindowClass
-b:DynamicImageTag(g,j,k)
-b:SetProperties(g,{
-Visible=g~="",
-Image=b:CheckAssetUrl(j),
-Size=h.IconSize,
-Rotation=h.IconRotation
-})
-end,
-},
-{
-Properties={"BorderThickness","Border","BorderColor"},
-Callback=function<StyleFunc>(d,e,f)
-local g=d.Class local h=
-d.WindowClass
-local i=g.Border==true
-
-b:CheckConfig(g,{
-BorderTransparency=d:GetThemeKey"BorderTransparencyActive",
-BorderColor=d:GetThemeKey"Border",
-BorderThickness=1,
-BorderStrokeMode=Enum.ApplyStrokeMode.Border,
-})
-
-
-local j=b:GetChildOfClass(e,"UIStroke")
-b:SetProperties(j,{
-Transparency=g.BorderTransparency,
-Thickness=g.BorderThickness,
-Color=g.BorderColor,
-ApplyStrokeMode=g.BorderStrokeMode,
-Enabled=i
-})
-end,
-},
-{
-Properties={"Ratio"},
-Callback=function<StyleFunc>(d,e,f)
-local g=d.Class
-
-b:CheckConfig(g,{
-Ratio=1.3333333333333333,
-RatioAxis=Enum.DominantAxis.Height,
-RatioAspectType=Enum.AspectType.ScaleWithParentSize
-})
-
-
-local h=g.Ratio
-local i=g.RatioAxis
-local j=g.RatioAspectType
-
-local k=b:GetChildOfClass(e,"UIAspectRatioConstraint")
-b:SetProperties(k,{
-DominantAxis=i,
-AspectType=j,
-AspectRatio=h
-})
-end,
-},
-{
-Properties={"FlexMode"},
-Callback=function<StyleFunc>(d,e,f)
-local g=b:GetChildOfClass(e,"UIFlexItem")
-g.FlexMode=f
-end,
-},
-{
-
-Properties={"CornerRadius"},
-Callback=function<StyleFunc>(d,e,f)
-local g=b:GetChildOfClass(e,"UICorner")
-g.CornerRadius=f
-end,
-},
-{
-Properties={"Fill"},
-Callback=function<StyleFunc>(d,e,f)
-if f~=true then return end
-
-local g=d.Class
-
-b:CheckConfig(g,{
-Size=UDim2.fromScale(1,1),
-UIFlexMode=Enum.UIFlexMode.Fill,
-AutomaticSize=Enum.AutomaticSize.None
-})
-
-
-local h=b:GetChildOfClass(e,"UIFlexItem")
-h.FlexMode=g.UIFlexMode
-
-e.Size=g.Size
-e.AutomaticSize=g.AutomaticSize
-end,
-},
-{
-Properties={"Label"},
-Callback=function<StyleFunc>(d,e,f)
-local g=e:FindFirstChild"Label"
-if not g then return end
-
-local h=d.Class
-function h.SetLabel(i,j)
-g.Text=j
-return i
-end
-
-g.Text=tostring(f)
-end,
-},
-{
-Properties={"NoGradient"},
-WindowProperties={"NoGradients"},
-Callback=function<StyleFunc>(d,e,f)
-local g=e:FindFirstChildOfClass"UIGradient"
-if not g then return end
-
-g.Enabled=f
-end,
-},
-{
-Properties={
-"UiPadding",
-"PaddingBottom",
-"PaddingTop",
-"PaddingRight",
-"PaddingTop"
-},
-Callback=function<StyleFunc>(d,e,f)
-f=f or 0
-
-
-if typeof(f)=="number"then
-f=UDim.new(0,f)
-end
-
-local g=d.Class
-
-local h=g.UiPadding
-if h then
-b:CheckConfig(g,{
-PaddingBottom=f,
-PaddingLeft=f,
-PaddingRight=f,
-PaddingTop=f,
-})
-end
-
-local i=b:GetChildOfClass(e,"UIPadding")
-b:SetProperties(i,{
-PaddingBottom=g.PaddingBottom,
-PaddingLeft=g.PaddingLeft,
-PaddingRight=g.PaddingRight,
-PaddingTop=g.PaddingTop,
-})
-end,
-},
-{
-Properties={"Callback"},
-Callback=function<StyleFunc>(d,e)
-local f=d.Class
-
-function f.SetCallback(g,h)
-g.Callback=h
-return g
-end
-function f.FireCallback(g,h)
-g.Callback(e)
-return g
-end
-end,
-},
-{
-Properties={"Value"},
-Callback=function<StyleFunc>(d,e)
-local f=d.Class
-b:CheckConfig(f,{
-GetValue=function(g)
-return f.Value
-end,
-})
-end,
-}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-local d=function()end
-local e=get_hidden_gui or gethui
-local f=cloneref or function(f):Instance
-return f
-end
-
-
-local g=setmetatable({},{
-__index=function(g,h:string)
-local i=game:GetService(h)
-return f(i)
-end,
-})
-
-
-
-local h=game:GetService"HttpService"
-local i:Players=g.Players
-local j=g.CoreGui
-local k=g.UserInputService
-local l=g.TweenService
-local m=g.RunService
-
-
-local n=i.LocalPlayer
-b.PlayerGui=n.PlayerGui
-b.Mouse=n:GetMouse()
-
-
-local o=b.Animation
-
-
-
-
-
-
-
-
-function o.Tween(p,q:AnimationTween__DARKLUA_TYPE_f):Tween?
-local r=p.DefaultTweenInfo
-
-
-local s=q.Object
-local t=q.NoAnimation
-local u=q.Tweeninfo or r
-local v=q.EndProperties
-local w=q.StartProperties
-local x=q.Completed
-
-
-if w then
-b:SetProperties(s,w)
-end
-
-
-if t then
-b:SetProperties(s,v)
-
-
-if x then
-x()
-end
-return
-end
-
-
-local y
-for z,A in next,v do
-local B={
-[z]=A
-}
-
-
-local C,D=pcall(function()
-return l:Create(s,u,B)
-end)
-
-
-if not C then
-b:SetProperties(s,B)
-continue
-end
-
-
-if not y then
-y=D
-end
-
-D:Play()
-end
-
-
-if x then
-if y then
-y.Completed:Connect(x)
-else
-x()
-end
-end
-
-return y
-end
-
-
-
-
-
-
-
-function o.Animate(p,q:Animate__DARKLUA_TYPE_g):Tween
-local r=q.NoAnimation
-local s=q.Objects
-local t=q.Tweeninfo
-local u=q.Completed
-
-local v
-
-
-for w,x in next,s do
-local y=p:Tween{
-NoAnimation=r,
-Object=w,
-Tweeninfo=t,
-EndProperties=x
-}
-
-if not v then
-v=y
-end
-end
-
-
-if u then
-v.Completed:Connect(u)
-end
-
-return v
-end
-
-
-
-
-
-
-
-
-
-
-
-function o.HeaderCollapseToggle(p,q:HeaderCollapseToggle__DARKLUA_TYPE_h)
-
-b:CheckConfig(q,{
-Rotations={
-Open=90,
-Closed=0
-}
-})
-
-
-local r=q.Toggle
-local s=q.NoAnimation
-local t=q.Rotations
-local u=q.Collapsed
-local v=q.Tweeninfo
-
-local w=u and t.Closed or t.Open
-
-
-p:Tween{
-Tweeninfo=v,
-NoAnimation=s,
-Object=r,
-EndProperties={
-Rotation=w,
-}
-}
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function o.HeaderCollapse(p,q:HeaderCollapse__DARKLUA_TYPE_i):Tween
-
-local r=q.Tweeninfo
-local s=q.Collapsed
-local t=q.ClosedSize
-local u:UDim2=q.OpenSize
-local v=q.Toggle
-local w=q.Resize
-local x=q.Hide
-local y=q.NoAnimation
-local z=q.NoAutomaticSize
-local A=q.IconRotations
-local B=q.Completed
-
-
-if not z then
-w.AutomaticSize=Enum.AutomaticSize.None
-end
-if not s then
-x.Visible=true
-end
-
-
-p:HeaderCollapseToggle{
-Tweeninfo=r,
-Collapsed=s,
-NoAnimation=y,
-Toggle=v,
-Rotations=A
-}
-
-local C=p:Tween{
-Tweeninfo=r,
-NoAnimation=y,
-Object=w,
-StartProperties={
-Size=s and u or t
-},
-EndProperties={
-Size=s and t or u
-},
-Completed=function()
-x.Visible=not s
-
-
-if B then
-B()
-end
-
-
-if s then return end
-if z then return end
-
-
-w.Size=UDim2.fromScale(1,0)
-w.AutomaticSize=Enum.AutomaticSize.Y
-end,
-}
-
-return C
-end
-
-
-
-
-
-
-
-
-
-
-
-
-local p=b.Signaling
-
-local q:SignalClass__DARKLUA_TYPE_j={}
-q.__index=q
-
-function q.Fire(r,...)
-local s=r:GetConnections()
-if#s<=0 then return end
-
-for t,u in next,s do
-u(...)
-end
-end
-function q.GetConnections(r):table__DARKLUA_TYPE_c
-local s=r.Connections
-return s
-end
-function q.Connect(r,s:(...any)->nil)
-local t=r:GetConnections()
-table.insert(t,s)
-end
-function q.DisconnectConnections(r)
-local s=r:GetConnections()
-table.clear(s)
-end
-
-function p.NewSignal(r):SignalClass__DARKLUA_TYPE_j
-return NewClass(q,{
-Connections={}
-})
-end
-
-function GetAndRemove(r:string,s:table__DARKLUA_TYPE_c)
-local t=s[r]
-if t then
-s[r]=nil
-end
-return t
-end
-
-function MoveTableItem(r:table__DARKLUA_TYPE_c,s,t:number)
-local u=table.find(r,s)
-if not u then return end
-
-local v=table.remove(r,u)
-table.insert(r,t,v)
-end
-
-function Merge(r,s)
-for t,u in next,s do
-r[t]=u
-end
-end
-
-function Copy(r:table__DARKLUA_TYPE_c,s:table__DARKLUA_TYPE_c?)
-local t=table.clone(r)
-
-
-if s then
-Merge(t,s)
-end
-
-return t
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function NewClass(r,s)
-s=s or{}
-r.__index=r
-return setmetatable(s,r)
-end
-
-function b.Warn(r,...:string?)
-warn("[ReGui]::",...)
-end
-
-function b.Error(r,...:string?)
-local s=b:Concat({...}," ")
-local t=`\n[ReGui]:: {s}`
-coroutine.wrap(error)(t)
-end
-
-function b.IsDoubleClick(r,s:number):boolean
-local t=r.DoubleClickThreshold
-return s<t
-end
-
-function b.Init(r,s)
-s=s or{}
-
-
-if r.Initialised then return end
-
-
-Merge(r,s)
-Merge(r,{
-Initialised=true,
-HasGamepad=r:IsConsoleDevice(),
-HasTouchScreen=r:IsMobileDevice(),
-})
-
-
-r:CheckConfig(r,{
-ContainerParent=function()
-return r:ResolveUIParent()
-end,
-Prefabs=function()
-return r:LoadPrefabs()
-end,
-},true)
-
-
-r:CheckConfig(r,{
-Container=function()
-return r:InsertPrefab("Container",{
-Parent=r.ContainerParent,
-Name=r.ContainerName
-})
-end,
-},true)
-
-
-local t=r.Container
-local u=r.TooltipOffset
-local v=r.ActiveTooltips
-local w=t.Overlays
-local x=0
-
-
-b:SetProperties(t.Windows,{
-OnTopOfCoreBlur=true
-})
-b:SetProperties(w,{
-OnTopOfCoreBlur=true
-})
-
-
-r.TooltipsContainer=b.Elements:Overlay{
-Parent=w
-}
-
-
-k.InputBegan:Connect(function(y:InputObject)
-if not r:IsMouseEvent(y,true)then return end
-
-local z=tick()
-local A=z-x
-local B=r:IsDoubleClick(A)
-
-
-x=B and 0 or z
-
-
-r:UpdateWindowFocuses()
-end)
-
-local function InputUpdate()
-local y=r.TooltipsContainer
-local z=#v>0
-y.Visible=z
-
-if not z then return end
-
-
-local A,B=b:GetMouseLocation()
-local C=w.AbsolutePosition
-
-y.Position=UDim2.fromOffset(
-A-C.X+u,
-B-C.Y+u
-)
-end
-
-
-m:BindToRenderStep("ReGui_InputUpdate",Enum.RenderPriority.Input.Value,InputUpdate)
-end
-
-function b.GetVersion(r):string
-return r.Version
-end
-
-function b.IsMobileDevice(r):boolean
-return k.TouchEnabled
-end
-
-function b.IsConsoleDevice(r):boolean
-return k.GamepadEnabled
-end
-
-function b.GetScreenSize(r):Vector2
-return workspace.CurrentCamera.ViewportSize
-end
-
-function b.LoadPrefabs(r):Folder?
-local s=r.PlayerGui
-local t="ReGui-Prefabs"
-
-
-local u=script:WaitForChild(t,2)
-if u then return u end
-
-
-local v=s:WaitForChild(t,2)
-if v then return v end
-
-return nil
-end
-
-function b.ResolveUIParent(r):GuiObject?
-local s=r.PlayerGui
-local t=r.Debug
-
-local u={
-[1]=function()
-local u=e()
-if u.Parent==j then return end
-
-return u
-end,
-[2]=function()
-return j
-end,
-[3]=function()
-return s
-end
-}
-
-local v=r:CreateInstance"ScreenGui"
-
-
-for w,x in next,u do
-
-local y,z=pcall(x)
-if not y or not z then continue end
-
-
-local A=pcall(function()
-v.Parent=z
-end)
-if not A then continue end
-
-if t then
-r:Warn(`Step: {w} was chosen as the parent!: {z}`)
-end
-
-return z
-end
-
-
-r:Warn"The ReGui container does not have a parent defined"
-
-return nil
-end
-
-function b.CheckConfig(r,s:table__DARKLUA_TYPE_c,t:table__DARKLUA_TYPE_c,u:boolean?,v:table__DARKLUA_TYPE_c?)
-if not s then return end
-
-for w:string?,x in next,t do
-if s[w]~=nil then continue end
-
-
-if v then
-if table.find(v,w)then continue end
-end
-
-
-if u then
-x=x()
-end
-
-
-s[w]=x
-end
-
-return s
-end
-
-function b.CheckAssetUrl(r,s:(string|number)):string
-
-if tonumber(s)then
-return`rbxassetid://{s}`
-end
-return s
-end
-
-function b.CreateInstance(r,s,t,u):Instance
-local v=Instance.new(s,t)
-
-
-if u then
-local w=u.UsePropertiesList
-
-if not w then
-r:SetProperties(v,u)
-else
-r:ApplyFlags{
-Object=v,
-Class=u
-}
-end
-end
-
-return v
-end
-
-function b.ConnectMouseEvent(r,s:GuiObject,t)
-local u=t.Callback
-local v=t.DoubleClick
-local w=t.OnlyMouseHovering
-
-local x=0
-local y
-
-if w then
-y=r:DetectHover(w)
-end
-
-s.Activated:Connect(function(...)
-local z=tick()
-local A=z-x
-
-
-if y and not y.Hovering then return end
-
-
-if v then
-if not b:IsDoubleClick(A)then
-x=z
-return
-end
-x=0
-end
-
-u(...)
-end)
-end
-
-function b.GetAnimation(r,s:boolean?)
-return s and r.Animation or TweenInfo.new(0)
-end
-
-function b.DynamicImageTag(r,s:Instance,t:string,u:table__DARKLUA_TYPE_c)
-local v=r.DynamicImages
-local w=v[t]
-
-if not w then return end
-if not u then return end
-
-u:TagElements{
-[s]=w
-}
-end
-
-function b.GetDictSize(r,s:table__DARKLUA_TYPE_c):number
-local t=0
-for u,v in s do
-t+=1
-end
-return t
-end
-
-function b.RemoveAnimations(r,s:GuiObject)
-local t=r:GetAnimationData(s)
-local u=t.Connections
-
-
-for v,w in next,u do
-w:Disconnect()
-end
-end
-
-function b.GetAnimationData(r,s:GuiObject):table__DARKLUA_TYPE_c
-local t=r.AnimationConnections
-local u=t[s]
-
-
-if u then return u end
-
-local v={
-Connections={}
-}
-
-t[s]=v
-return v
-end
-
-function b.AddAnimationSignal(r,s:GuiObject,t:RBXScriptSignal)
-local u=r:GetAnimationData(s)
-local v=u.Connections
-
-table.insert(v,t)
-end
-
-function b.SetAnimationsEnabled(r,s:boolean)
-r.NoAnimations=not s
-end
-
-function b.SetAnimation(r,s:GuiObject,t:(string|table__DARKLUA_TYPE_c),u:GuiObject?)
-u=u or s
-
-local v=r.Animations
-
-
-local w=t
-if typeof(t)~="table"then
-w=v[t]
-end
-
-assert(w,`No animation data for Class {t}!`)
-
-
-r:RemoveAnimations(u)
-
-
-local x=w.Init
-local y=w.Connections
-local z=w.Tweeninfo
-local A=w.NoAnimation
-
-
-local B=r:GetAnimationData(s)
-local C=B.State
-
-
-local D
-local E=true
-local F
-local G={}
-
-
-local H={}
-function H.Reset(I,J:boolean?)
-if not D then return end
-D(J)
-end
-function H.FireSignal(I,J:string,K:boolean?)
-G[J](K)
-end
-function H.Refresh(I,J:boolean?)
-if not F then return end
-G[F](J)
-end
-function H.SetEnabled(I,J:boolean)
-E=J
-end
-
-for I:string,J in next,y do
-local function OnSignal(K:boolean?)
-K=K==true
-F=I
-
-
-local L=r.NoAnimations
-if L then return end
-
-
-if not E then return end
-
-B.State=I
-
-o:Tween{
-NoAnimation=K or A,
-Object=s,
-Tweeninfo=z,
-EndProperties=J
-}
-end
-
-
-local K=u[I]
-local L=K:Connect(OnSignal)
-
-
-r:AddAnimationSignal(u,L)
-
-G[I]=OnSignal
-
-
-if I==x then
-D=OnSignal
-end
-end
-
-if C then
-
-H:FireSignal(C)
-else
-
-H:Reset(true)
-end
-
-return H
-end
-
-function b.GetChildOfClass(r,s:GuiObject,t:string):GuiObject
-local u=s:FindFirstChildOfClass(t)
-
-
-if not u then
-u=r:CreateInstance(t,s)
-end
-
-return u
-end
-
-function b.SetPadding(r,s:UIPadding,t:UDim)
-if not s then return end
-
-r:SetProperties(s,{
-PaddingBottom=t,
-PaddingLeft=t,
-PaddingRight=t,
-PaddingTop=t
-})
-end
-
-
-
-
-
-
-function b.ConnectDrag(r,s:GuiObject,t)
-r:CheckConfig(t,{
-DragStart=d,
-DragEnd=d,
-DragMovement=d,
-OnDragStateChange=d,
-})
-
-
-local u=t.DragStart
-local v=t.DragEnd
-local w=t.DragMovement
-local x=t.OnDragStateChange
-
-
-local y={
-StartAndEnd={
-Enum.UserInputType.MouseButton1,
-Enum.UserInputType.Touch
-},
-Movement={
-Enum.UserInputType.MouseMovement,
-Enum.UserInputType.Touch
-}
-}
-
-local z=false
-
-local function InputTypeAllowed(A,B:string)
-local C=A.UserInputType
-return table.find(y[B],C)
-end
-local function KeyToVector(A):Vector2
-local B=A.Position
-return Vector2.new(B.X,B.Y)
-end
-local function SetIsDragging(A:boolean)
-
-r._DraggingDisabled=A
-
-z=A
-x(A)
-end
-local function MakeSignal(A)
-local B=A.IsDragging
-local C=A.InputType
-local D=A.Callback
-
-return function(E)
-if A.DraggingRequired~=z then return end
-if A.CheckDraggingDisabled and r._DraggingDisabled then return end
-if not InputTypeAllowed(E,C)then return end
-
-
-if A.UpdateState then
-SetIsDragging(B)
-end
-
-local F=KeyToVector(E)
-D(F)
-end
-end
-
-
-s.InputBegan:Connect(MakeSignal{
-CheckDraggingDisabled=true,
-DraggingRequired=false,
-UpdateState=true,
-IsDragging=true,
-InputType="StartAndEnd",
-Callback=u,
-})
-k.InputEnded:Connect(MakeSignal{
-DraggingRequired=true,
-UpdateState=true,
-IsDragging=false,
-InputType="StartAndEnd",
-Callback=v,
-})
-k.InputChanged:Connect(MakeSignal{
-DraggingRequired=true,
-InputType="Movement",
-Callback=w,
-})
-end
-
-
-
-
-
-
-
-
-
-function b.MakeDraggable(r,s:MakeDraggableFlags__DARKLUA_TYPE_l)
-
-local t=s.Move
-local u=s.Grab
-local v=s.OnDragStateChange
-
-local w
-local x
-
-
-local y={}
-function y.SetEnabled(z,A:boolean)
-local B=s.StateChanged
-z.Enabled=A
-
-
-
-if B then
-B(z)
-end
-end
-function y.CanDrag(z,A):boolean
-return z.Enabled
-end
-
-
-local function DragStart(z)
-if not y:CanDrag()then return end
-local A=s.DragBegin
-
-x=z
-A(x)
-end
-
-local function DragMovement(z)
-if not y:CanDrag()then return end
-
-local A=z-x
-local B=s.OnUpdate
-
-B(A)
-end
-
-
-local function PositionBegan(z)
-w=t.Position
-end
-local function UpdatePosition(z:number)
-local A=UDim2.new(
-w.X.Scale,
-w.X.Offset+z.X,
-w.Y.Scale,
-w.Y.Offset+z.Y
-)
-s:SetPosition(A)
-end
-local function SetPosition(z,A:UDim2)
-
-o:Tween{
-Object=t,
-EndProperties={
-Position=A
-}
-}
-end
-
-
-r:CheckConfig(s,{
-Enabled=true,
-OnUpdate=UpdatePosition,
-SetPosition=SetPosition,
-DragBegin=PositionBegan
-})
-
-
-r:ConnectDrag(u,{
-DragStart=DragStart,
-DragMovement=DragMovement,
-OnDragStateChange=v
-})
-
-
-local z=s.Enabled
-y:SetEnabled(z)
-
-return y
-end
-
-
-
-
-
-
-
-
-function b.MakeResizable(r,s:MakeResizableFlags__DARKLUA_TYPE_m)
-b:CheckConfig(s,{
-MinimumSize=Vector2.new(160,90),
-MaximumSize=Vector2.new(math.huge,math.huge)
-})
-
-
-local t=s.MaximumSize
-local u=s.MinimumSize
-local v=s.Resize
-local w=s.OnUpdate
-
-local x
-
-
-local y=b:InsertPrefab("ResizeGrab",{
-Parent=v
-})
-
-local function StateChanged(z)
-y.Visible=z.Enabled
-end
-
-
-local function UpdateSize(z)
-local A=x+z
-
-
-local B=UDim2.fromOffset(
-math.clamp(A.X,u.X,t.X),
-math.clamp(A.Y,u.Y,t.Y)
-)
-
-
-if w then
-w(B)
-return
-end
-
-
-o:Tween{
-Object=v,
-EndProperties={
-Size=B
-}
-}
-end
-local function ResizeBegin(z)
-x=v.AbsoluteSize
-end
-
-
-local z=r:MakeDraggable{
-Grab=y,
-OnUpdate=UpdateSize,
-DragBegin=ResizeBegin,
-StateChanged=StateChanged
-}
-
-z.Grab=y
-
-return z
-end
-
-function b.IsMouseEvent(r,s:InputObject,t:boolean)
-local u=s.UserInputType.Name
-
-
-if t and u:find"Movement"then return end
-
-return u:find"Touch"or u:find"Mouse"
-end
-
-
-
-
-
-
-
-
-
-function b.DetectHover(r,s:GuiObject,t:DetectHover__DARKLUA_TYPE_n)
-t=t or{}
-
-
-local u=t.OnInput
-local v=t.OnHoverChange
-local w=t.Anykey
-local x=t.MouseMove
-local y=t.MouseEnter
-local z=t.MouseOnly
-
-t.Hovering=false
-
-local function Update(A,B:boolean?,C:boolean?)
-
-if A and z then
-if not b:IsMouseEvent(A,true)then return end
-end
-
-
-if B~=nil then
-local D=t.Hovering
-t.Hovering=B
-
-
-if B~=D and v then
-v(B)
-end
-end
-
-
-if not y and C then return end
-
-
-if u then
-local D=t.Hovering
-return u(D,A)
-end
-end
-
-
-local A={
-s.MouseEnter:Connect(function()
-Update(nil,true,true)
-end),
-s.MouseLeave:Connect(function()
-Update(nil,false,true)
-end)
-}
-
-
-if w or z then
-table.insert(A,k.InputBegan:Connect(function(B)
-Update(B)
-end))
-end
-
-
-if x then
-local B=s.MouseMoved:Connect(function()
-Update()
-end)
-table.insert(A,B)
-end
-
-function t.Disconnect(B)
-for C,D in next,A do
-D:Disconnect()
-end
-end
-
-return t
-end
-
-function b.StackWindows(r)
-local s=r.Windows
-local t=20
-
-for u,v in next,s do
-local w=v.WindowFrame
-
-local x=UDim2.fromOffset(t*u,t*u)
-
-v:Center()
-w.Position+=x
-end
-end
-
-function b.GetElementFlags(r,s:GuiObject):table__DARKLUA_TYPE_c?
-local t=r._FlagCache
-return t[s]
-end
-
-
-
-
-
-
-
-
-
-function b.UpdateColors(r,s:UpdateColors__DARKLUA_TYPE_o)
-
-local t=s.Object
-local u=s.Tag
-local v=s.NoAnimation
-local w=s.TagsList
-local x=s.Theme
-local y=s.Tweeninfo
-
-
-local z=r.ElementColors local A=
-r.ThemeConfigs
-local B=r.Debug
-local C=r:GetElementFlags(t)
-
-local D=z[u]
-
-
-if typeof(D)=="string"then
-D=z[D]
-end
-
-if typeof(u)=="table"then
-D=u
-elseif w then
-w[t]=u
-end
-
-
-if not D then return end
-
-
-local E={}
-for F:string,G:string in next,D do
-local H=r:GetThemeKey(x,G)
-
-
-if C and C[F]then
-continue
-end
-
-
-if not H then
-if B then
-r:Warn(`Color: '{G}' does not exist!`)
-end
-continue
-end
-
-E[F]=H
-end
-
-
-o:Tween{
-Tweeninfo=y,
-Object=t,
-NoAnimation=v,
-EndProperties=E
-}
-end
-
-
-
-
-
-
-
-
-function b.MultiUpdateColors(r,s:MultiUpdateColorsConfig__DARKLUA_TYPE_p)
-local t=s.Objects
-
-for u:GuiObject,v:string?in next,t do
-r:UpdateColors{
-TagsList=s.TagsList,
-Theme=s.Theme,
-NoAnimation=not s.Animate,
-Tweeninfo=s.Tweeninfo,
-
-Object=u,
-Tag=v,
-}
-end
-end
-
-function b.ApplyStyle(r,s:GuiObject,t:string)
-local u=r.Styles
-
-local v=u[t]
-if not v then return end
-
-
-r:ApplyFlags{
-Object=s,
-Class=v
-}
-end
-
-function b.MergeMetatables(r,s,t:GuiObject)
-local u=r.Debug
-local v={}
-
-v.__index=function(w,x:string)
-
-local y=s[x]
-if y~=nil then return y end
-
-
-local z,A=pcall(function()
-local z=t[x]
-return r:PatchSelf(t,z)
-end)
-
-return z and A or nil
-end
-
-v.__newindex=function(w,x:string,z)
-local A=s[x]~=nil or typeof(z)=="function"
-
-if A then
-s[x]=z
-return
-end
-
-xpcall(function()
-t[x]=z
-end,function(B)
-if u then
-r:Warn(`Newindex Error: {t}.{x} = {z}\n{B}`)
-end
-
-s[x]=z
-end)
-end
-
-return setmetatable({},v)
-end
-
-function b.Concat(r,s,t:" ")
-local u=""
-for v,w in next,s do
-u..=tostring(w)..(v~=#s and t or"")
-end
-return u
-end
-
-function b.GetValueFromAliases(r,s,t)
-for u,v:string in s do
-local w=t[v]
-if w~=nil then
-return w
-end
-end
-
-return nil
-end
-
-function b.RecursiveCall(r,s:GuiObject,t:(GuiObject)->...any)
-for u,v in next,s:GetDescendants()do
-t(v)
-end
-end
-
-
-
-
-
-
-function b.ApplyFlags(r,s:ApplyFlags__DARKLUA_TYPE_q)
-local t=r.ElementFlags
-
-
-local u=s.Object
-local v=s.Class
-local w=s.WindowClass
-
-function s.GetThemeKey(x,z:string)
-if w then
-return w:GetThemeKey(z)
-else
-return b:GetThemeKey(nil,z)
-end
-end
-
-
-r:SetProperties(u,v)
-
-
-for x,z in next,t do
-local A=z.Properties
-local B=z.Callback
-local C=z.Recursive
-local D=z.WindowProperties
-
-
-local E=r:GetValueFromAliases(A,v)
-
-
-if w and D and E==nil then
-E=r:GetValueFromAliases(D,w)
-end
-
-if E==nil then continue end
-
-
-B(s,u,E)
-
-
-if C then
-r:RecursiveCall(u,function(F)
-B(s,F,E)
-end)
-end
-end
-end
-
-function b.SetProperties(r,s:Instance,t:table__DARKLUA_TYPE_c)
-for u:string,v in next,t do
-pcall(function()
-s[u]=v
-end)
-end
-end
-
-function b.InsertPrefab(r,s:string,t):GuiObject
-local u=r.Prefabs
-local v=u.Prefabs
-
-local w=v:WaitForChild(s)
-local x=w:Clone()
-
-
-if t then
-local z=t.UsePropertiesList
-
-if not z then
-r:SetProperties(x,t)
-else
-r:ApplyFlags{
-Object=x,
-Class=t
-}
-end
-end
-
-return x
-end
-
-function b.GetContentSize(r,s:GuiObject,t:boolean?):Vector2
-local u=s:FindFirstChildOfClass"UIListLayout"
-local v=s:FindFirstChildOfClass"UIPadding"
-local w=s:FindFirstChildOfClass"UIStroke"
-
-local x:Vector2
-
-
-if u and not t then
-x=u.AbsoluteContentSize
-else
-x=s.AbsoluteSize
-end
-
-
-if v then
-local z=v.PaddingTop.Offset
-local A=v.PaddingBottom.Offset
-local B=v.PaddingLeft.Offset
-local C=v.PaddingRight.Offset
-
-x+=Vector2.new(B+C,z+A)
-end
-
-if w then
-local z=w.Thickness
-x+=Vector2.new(z/2,z/2)
-end
-
-return x
-end
-
-function b.PatchSelf(r,s,t)
-
-if typeof(t)~="function"then
-return t
-end
-
-return function(u,...)
-return t(s,...)
-end
-end
-
-
-
-
-
-
-function b.MakeCanvas(r,s:MakeCanvas__DARKLUA_TYPE_r)
-
-local t=r.Elements
-local u=r.Debug
-local v=r.Signaling
-
-
-local w=s.Element
-local x=s.WindowClass
-local z=s.Class
-local A=s.OnChildChange
-
-local B=v:NewSignal()
-
-
-if A then
-B:Connect(A)
-end
-
-
-if not x and u then
-r:Warn(`No WindowClass for {w}`)
-r:Warn(s)
-end
-
-
-local C=NewClass(t,{
-Class=z,
-RawObject=w,
-WindowClass=x or false,
-OnChildChange=B,
-Elements={}
-})
-
-
-local D={
-__index=function(D,E:string)
-
-local F=C[E]
-if F~=nil then
-return r:PatchSelf(C,F)
-end
-
-
-local G=z[E]
-if G~=nil then
-return r:PatchSelf(z,G)
-end
-
-
-local H=w[E]
-return r:PatchSelf(w,H)
-end,
-__newindex=function(D,E:string,F)
-local G=z[E]~=nil
-
-
-if G then
-z[E]=F
-else
-w[E]=F
-end
-end,
-}
-
-return setmetatable({},D)
-end
-
-
-function b.GetIniData(r,s):table__DARKLUA_TYPE_c
-local t=r.IniToSave
-local u={}
-
-for v,w in next,t do
-u[w]=s[w]
-end
-
-return u
-end
-
-function b.DumpIni(r,s:boolean?):table__DARKLUA_TYPE_c
-local t=r.IniSettings
-local u={}
-
-for v,w in next,t do
-u[v]=r:GetIniData(w)
-end
-
-
-if s then
-return h:JSONEncode(u)
-end
-
-return u
-end
-
-function b.LoadIniIntoElement(r,s,t:table__DARKLUA_TYPE_c)
-local u={Value=
-function(u)
-s:SetValue(u)
-end,
-}
-
-for v,w in next,t do
-
-local x=u[v]
-if x then
-x(w)
-continue
-end
-
-s[v]=w
-end
-end
-
-function b.LoadIni(r,s:(table__DARKLUA_TYPE_c|string),t:boolean?)
-local u=r.IniSettings
-assert(s,"No Ini configuration was passed")
-
-
-if t then
-s=h:JSONDecode(s)
-end
-
-for v,w in next,s do
-local x=u[v]
-r:LoadIniIntoElement(x,w)
-end
-end
-
-function b.AddIniFlag(r,s:string,t:table__DARKLUA_TYPE_c)
-local u=r.IniSettings
-u[s]=t
-end
-
-
-
-
-
-
-function b.OnElementCreate(r,s:OnElementCreateData__DARKLUA_TYPE_s)
-local t=r._FlagCache
-
-local u=s.Flags
-local v=s.Object
-local w=s.Canvas
-local x=s.Class
-
-local z=w.WindowClass
-
-local A=u.NoAutoTag
-local B=u.NoAutoFlags
-local C=u.ColorTag
-local D=u.NoStyle
-local E=u.IniFlag
-
-
-t[v]=u
-
-
-if E then
-r:AddIniFlag(E,x)
-end
-
-
-if D then return end
-
-
-if not A and z then
-z:TagElements{
-[v]=C
-}
-end
-
-
-if z then
-z:LoadStylesIntoElement(s)
-end
-
-if not B then
-
-r:ApplyFlags{
-Object=v,
-Class=u,
-WindowClass=z
-}
-end
-end
-
-function b.WrapGeneration(r,s,t:table__DARKLUA_TYPE_c)
-local u=r._ErrorCache
-
-local v=t.Base
-local w=t.IgnoreDefaults
-
-return function(x,z,...)
-z=z or{}
-
-
-r:CheckConfig(z,v)
-
-
-local A=z.CloneTable
-
-
-if A then
-z=table.clone(z)
-end
-
-local B=x.RawObject
-local C=x.Elements
-local D=x.OnChildChange
-
-
-r:CheckConfig(z,{
-Parent=B,
-Name=z.ColorTag
-},nil,w)
-
-
-if x==r then
-x=r.Elements
-end
-
-
-
-local E,F,G=pcall(s,x,z,...)
-
-
-if E==false then
-if B then
-if u[B]then return end
-u[B]=F
-end
-
-
-if x.Error then
-x:Error{
-Parent=B,
-Text=F
-}
-end
-
-r:Error("Class:",F)
-r:Error(debug.traceback())
-end
-
-
-if G==nil then
-G=F
-end
-
-
-if D then
-D:Fire(F)
-end
-
-
-if G then
-if C then
-table.insert(C,G)
-end
-
-r:OnElementCreate{
-Object=G,
-Flags=z,
-Class=F,
-Canvas=x
-}
-end
-
-return F,G
-end
-end
-
-function b.DefineElement(r,s:string,t)
-local u=r.Elements
-local v=r.ThemeConfigs
-local w=r.ElementColors
-
-local x=v.DarkTheme
-
-
-local z=t.Base
-local A=t.Create
-local B=t.Export
-local C=t.ThemeTags
-local D=t.ColorData
-
-
-r:CheckConfig(z,{
-ColorTag=s,
-ElementStyle=s
-})
-
-
-if C then
-Merge(x,C)
-end
-
-
-if D then
-Merge(w,D)
-end
-
-
-local E=r:WrapGeneration(A,t)
-
-
-if B then
-r[s]=E
-end
-
-
-u[s]=E
-
-return E
-end
-
-function b.DefineGlobalFlag(r,s)
-local t=r.ElementFlags
-table.insert(t,s)
-end
-
-function b.DefineTheme(r,s:string,t:ThemeData__DARKLUA_TYPE_a)
-local u=r.ThemeConfigs
-
-
-r:CheckConfig(t,{
-BaseTheme=u.DarkTheme
-})
-
-local v=GetAndRemove("BaseTheme",t)
-local w={
-BaseTheme=v,
-Values=t
-}
-
-
-u[s]=w
-
-return w
-end
-
-function b.GetMouseLocation(r):(number,number)
-local s=r.Mouse
-return s.X,s.Y
-end
-
-function b.SetWindowFocusesEnabled(r,s:boolean)
-r.WindowFocusesEnabled=s
-end
-
-function b.UpdateWindowFocuses(r)
-local s=r.Windows
-local t=r.WindowFocusesEnabled
-
-if not t then return end
-
-
-for u,v in s do
-local w=v.HoverConnection
-if not w then continue end
-
-
-local x=w.Hovering
-if x then
-r:SetFocusedWindow(v)
-return
-end
-end
-
-r:SetFocusedWindow(nil)
-end
-
-function b.WindowCanFocus(r,s:table__DARKLUA_TYPE_c):boolean
-if s.NoSelect then return false end
-if s.Collapsed then return false end
-if s._SelectDisabled then return false end
-
-return true
-end
-
-function b.GetFocusedWindow(r):table__DARKLUA_TYPE_c?
-return r.FocusedWindow
-end
-
-function b.BringWindowToFront(r,s:table__DARKLUA_TYPE_c)
-local t=r.Windows
-
-
-local u=s.NoBringToFrontOnFocus
-if u then return end
-
-
-MoveTableItem(t,s,1)
-end
-
-function b.SetFocusedWindow(r,s:table__DARKLUA_TYPE_c?)
-local t=r:GetFocusedWindow()
-local u=r.Windows
-
-
-if t==s then return end
-r.FocusedWindow=s
-
-
-if s then
-local v=r:WindowCanFocus(s)
-if not v then return end
-
-
-r:BringWindowToFront(s)
-end
-
-
-local v=#u
-for w,x in u do
-local z=r:WindowCanFocus(x)
-local A=x.WindowFrame
-
-
-if not z then continue end
-
-v-=1
-
-
-if v then
-A.ZIndex=v
-end
-
-
-local B=x==s
-x:SetFocused(B,v)
-end
-end
-
-function b.SetItemTooltip(r,s:GuiObject,t:(Elements)->...any)local u=
-r.Elements
-local v=r.TooltipsContainer
-local w=r.ActiveTooltips
-
-
-local x,z=v:Canvas{
-Visible=false,
-UiPadding=UDim.new()
-}
-
-
-task.spawn(t,x)
-
-
-b:DetectHover(s,{
-MouseMove=true,
-MouseEnter=true,
-OnHoverChange=function(A:boolean)
-
-if A then
-table.insert(w,x)
-return
-end
-
-
-local B=table.find(w,x)
-table.remove(w,B)
-end,
-OnInput=function(A:boolean,B)
-z.Visible=A
-end,
-})
-end
-
-function b.CheckFlags(r,s,t)
-for u:string,v in next,s do
-local w=t[u]
-if not w then continue end
-
-v(w)
-end
-end
-
-function b.GetThemeKey(r,s:(string|table__DARKLUA_TYPE_c),t:string)
-local u=r.ThemeConfigs
-
-
-if typeof(s)=="string"then
-s=u[s]
-end
-
-local v=u.DarkTheme
-s=s or v
-
-local w=s.BaseTheme
-local x=s.Values
-
-
-local z=x[t]
-if z then return z end
-
-
-if w then
-return r:GetThemeKey(w,t)
-end
-end
-
-function b.SelectionGroup(r,s)
-local t
-local u=false
-
-local function ForEach(w,x)
-for z,A in next,s do
-if typeof(A)=="Instance"then continue end
-if A==x then continue end
-
-w(A)
-end
-end
-
-local function Callback(w)
-if u then return end
-u=true
-
-local x=t
-t=w:GetValue()
-
-if not x then
-x=t
-end
-
-ForEach(function(z)
-z:SetValue(x)
-end,w)
-
-u=false
-end
-
-ForEach(function(w)
-w.Callback=Callback
-end)
-end
-
-
-local r=b.Elements
-r.__index=r
-
-function r.GetObject(s)
-return s.RawObject
-end
-
-function r.ApplyFlags(s,t,u)
-local w=s.WindowClass
-
-b:ApplyFlags{
-WindowClass=w,
-Object=t,
-Class=u
-}
-end
-
-function r.Remove(s)
-local t=s.OnChildChange
-local u=s:GetObject()
-local w=s.Class
-
-
-local x=w.Remove
-if x then
-return x(w)
-end
-
-
-if t then
-t:Fire(w or s)
-end
-
-if w then
-table.clear(w)
-end
-
-u:Destroy()
-table.clear(s)
-end
-
-function r.GetChildElements(s):table__DARKLUA_TYPE_c
-local t=s.Elements
-return t
-end
-
-function r.ClearChildElements(s)
-local t=s:GetChildElements()
-for u,w in next,t do
-w:Destroy()
-end
-end
-
-function r.TagElements(s,t:ObjectTable__DARKLUA_TYPE_d)
-local u=s.WindowClass
-local w=b.Debug
-
-
-if not u then
-if w then
-b:Warn("No WindowClass for TagElements:",t)
-end
-return
-end
-
-u:TagElements(t)
-end
-
-function r.GetThemeKey(s,t:string)
-local u=s.WindowClass
-
-if u then
-return u:GetThemeKey(t)
-end
-
-return b:GetThemeKey(nil,t)
-end
-
-function r.SetColorTags(s,t:ObjectTables,u:boolean?)
-local w=s.WindowClass
-if not w then return end
-
-local x=w.TagsList
-local z=w.Theme
-
-b:MultiUpdateColors{
-Animate=u,
-Theme=z,
-TagsList=x,
-Objects=t,
-}
-end
-
-function r.SetElementFocused(s,t:GuiObject,u)
-local w=s.WindowClass
-local x=b.HasTouchScreen
-
-local z=u.Focused
-local A=u.Animation
-
-
-b:SetAnimationsEnabled(not z)
-
-
-if not z and A then
-A:Refresh()
-end
-
-
-if not w then return end
-if not x then return end
-local B=w.ContentCanvas
-
-
-B.Interactable=not z
-end
-
-b:DefineElement("Dropdown",{
-Base={
-ColorTag="PopupCanvas",
-Disabled=false,
-AutoClose=true,
-OnSelected=d
-},
-Create=function(s,t)
-t.Parent=b.Container.Overlays
-
-
-local u=t.Selected
-local w=t.Items
-local x=t.OnSelected
-
-
-local z,A=s:PopupCanvas(t)
-local B=b:MergeMetatables(t,z)
-
-local C={}
-
-local function SetValue(D)
-x(D)
-end
-
-function t.ClearEntries(D)
-for E,F in C do
-F:Remove()
-end
-end
-
-function t.SetItems(D,E:table__DARKLUA_TYPE_c,F)
-local G=E[1]
-
-
-D:ClearEntries()
-
-
-for H,I in E do
-local J=G and I or H
-local K=H==F or I==F
-
-
-local L=z:Selectable{
-Text=tostring(J),
-Selected=K,
-ZIndex=6,
-Callback=function()
-return SetValue(J)
-end,
-}
-
-table.insert(C,L)
-end
-end
-
-
-if w then
-t:SetItems(w,u)
-end
-
-return B,A
-end,
-})
-
-b:DefineElement("OverlayScroll",{
-Base={
-ElementClass="OverlayScroll",
-Spacing=UDim.new(0,4),
-},
-Create=function(s,t)
-local u=s.WindowClass
-
-local w=t.ElementClass
-local x=t.Spacing
-
-
-local z=b:InsertPrefab(w,t)
-local A=z:FindFirstChild"ContentFrame"or z
-local B=z:FindFirstChild("UIListLayout",true)
-
-B.Padding=x
-
-local C=b:MergeMetatables(s,t)
-
-
-local D=b:MakeCanvas{
-Element=A,
-WindowClass=u,
-Class=C
-}
-
-function t.GetCanvasSize(E)
-return A.AbsoluteCanvasSize
-end
-
-return D,z
-end,
-})
-
-b:DefineElement("Overlay",{
-Base={
-ElementClass="Overlay"
-},
-Create=r.OverlayScroll,
-})
-
-
-
-
-
-b:DefineElement("Image",{
-Base={
-Image="",
-Callback=d
-},
-Create=function(s,t:Image__DARKLUA_TYPE_t):ImageButton__DARKLUA_TYPE_x
-
-local u=b:InsertPrefab("Image",t)
-u.Activated:Connect(function(...)
-local w=t.Callback
-return w(u,...)
-end)
-
-return u
-end,
-})
-
-
-
-
-
-b:DefineElement("VideoPlayer",{
-Base={
-Video="",
-Callback=d
-},
-Create=function(s,t:VideoPlayer__DARKLUA_TYPE_u):VideoFrame
-
-local u=t.Video
-t.Video=b:CheckAssetUrl(u)
-
-
-local w=b:InsertPrefab("VideoPlayer",t)
-return w
-end,
-})
-
-
-
-
-
-
-b:DefineElement("Button",{
-Base={
-Text="Button",
-DoubleClick=false,
-Callback=d
-},
-Create=function(s,t:Button__DARKLUA_TYPE_v):TextButton
-
-local u=b:InsertPrefab("Button",t)
-
-local w=t.DoubleClick
-
-
-b:ConnectMouseEvent(u,{
-DoubleClick=w,
-Callback=function(...)
-local x=t.Callback
-return x(u,...)
-end,
-})
-
-return u
-end,
-})
-
-
-
-
-
-
-
-b:DefineElement("Selectable",{
-Base={
-Text="Selectable",
-Callback=d,
-Selected=false,
-Disabled=false,
-Size=UDim2.fromScale(1,0),
-AutomaticSize=Enum.AutomaticSize.Y,
-TextXAlignment=Enum.TextXAlignment.Left,
-AnimationTags={
-Selected="Buttons",
-Unselected="TransparentButtons"
-},
-},
-Create=function(s,t:Selectable__DARKLUA_TYPE_w):(table__DARKLUA_TYPE_c,TextButton)
-local u=s.Class.AfterClick
-
-local w=t.Selected
-local x=t.Disabled
-
-
-local z=b:InsertPrefab("Button",t)
-local A=b:MergeMetatables(t,z)
-
-z.Activated:Connect(function(...)
-
-local B=t.Callback
-B(z,...)
-
-
-if u then
-u(z,...)
-end
-end)
-
-function t.SetSelected(B,C:boolean?)
-local D=B.AnimationTags
-local E=C and D.Selected or D.Unselected
-
-B.Selected=C
-b:SetAnimation(z,E)
-end
-
-function t.SetDisabled(B,C:boolean?)
-B.Disabled=C
-z.Interactable=not C
-end
-
-
-t:SetSelected(w)
-t:SetDisabled(x)
-
-return A,z
-end,
-})
-
-
-
-
-
-b:DefineElement("ImageButton",{
-Base={
-ElementStyle="Button",
-Callback=d
-},
-Create=r.Image,
-})
-
-b:DefineElement("SmallButton",{
-Base={
-Text="Button",
-PaddingTop=UDim.new(),
-PaddingBottom=UDim.new(),
-PaddingLeft=UDim.new(0,2),
-PaddingRight=UDim.new(0,2),
-ColorTag="Button",
-ElementStyle="Button",
-Callback=d,
-},
-Create=r.Button
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-b:DefineElement("Keybind",{
-Base={
-Label="Keybind",
-ColorTag="Frame",
-Value=nil,
-DeleteKey=Enum.KeyCode.Backspace,
-IgnoreGameProcessed=true,
-Enabled=true,
-Disabled=false,
-Callback=d,
-OnKeybindSet=d,
-OnBlacklistedKeybindSet=d,
-KeyBlacklist={},
-UiPadding=UDim.new(),
-AutomaticSize=Enum.AutomaticSize.None,
-Size=UDim2.new(0.3,0,0,19)
-},
-Create=function(s,t:Keybind__DARKLUA_TYPE_z)
-local u=t.Value
-local w=t.Label
-local x=t.Disabled
-local z=t.KeyBlacklist
-
-
-local A=b:InsertPrefab("Button",t)
-local B=b:MergeMetatables(t,A)
-
-local C=s:Label{
-Parent=A,
-Text=w,
-Position=UDim2.new(1,4,0.5),
-AnchorPoint=Vector2.new(0,0.5)
-}
-
-local function Callback(D,...)
-return D(A,...)
-end
-
-local function KeyIsBlacklisted(D:KeyId__DARKLUA_TYPE_y)
-local E=table.find(z,D)
-return E
-end
-
-function t.SetDisabled(D,E:boolean)
-D.Disabled=E
-A.Interactable=not E
-s:SetColorTags({
-[C]=E and"LabelDisabled"or"Label"
-},true)
-end
-
-function t.SetValue(D,E:KeyId__DARKLUA_TYPE_y)
-local F=D.OnKeybindSet
-local G=D.DeleteKey
-
-
-if E==G then
-E=nil
-end
-
-D.Value=E
-A.Text=E and E.Name or"Not set"
-
-
-Callback(F,E)
-end
-
-function t.WaitForNewKey(D)
-D._WaitingForNewKey=true
-A.Text="..."
-A.Interactable=false
-end
-
-local function GetKeyId(D:InputObject)
-local E=D.KeyCode
-local F=D.UserInputType
-
-
-if F~=Enum.UserInputType.Keyboard then
-return F
-end
-
-return E
-end
-
-local function CheckNewKey(D:InputObject)
-local E=t.OnBlacklistedKeybindSet
-local F=t.Value
-
-local G=GetKeyId(D)
-
-
-if not k.WindowFocused then return end
-
-
-if KeyIsBlacklisted(G)then
-
-Callback(E,G)
-return
-end
-
-A.Interactable=true
-t._WaitingForNewKey=false
-
-
-if G.Name=="Unknown"then
-return t:SetValue(F)
-end
-
-
-t:SetValue(G)
-end
-
-local function InputBegan(D:InputObject,E:boolean)
-local F=t.IgnoreGameProcessed
-local G=t.DeleteKey
-local H=t.Enabled
-local I=t.Value
-local J=t.Callback
-
-local K=GetKeyId(D)
-
-
-if t._WaitingForNewKey then
-CheckNewKey(D)
-return
-end
-
-
-if not H and A.Interactable then return end
-if not F and E then return end
-
-
-if not I then return end
-if K==G then return end
-if K.Name~=I.Name then return end
-
-
-Callback(J,K)
-end
-
-
-t:SetValue(u)
-t:SetDisabled(x)
-
-
-t.Connection=k.InputBegan:Connect(InputBegan)
-A.Activated:Connect(function()
-t:WaitForNewKey()
-end)
-
-b:SetAnimation(A,"Inputs")
-
-return B,A
-end
-})
-
-b:DefineElement("ArrowButton",{
-Base={
-Direction="Left",
-ColorTag="Button",
-Icon=b.Icons.Arrow,
-Size=UDim2.fromOffset(21,21),
-IconSize=UDim2.fromScale(1,1),
-IconPadding=UDim.new(0,4),
-Rotations={
-Left=180,
-Right=0,
-}
-},
-Create=function(s,t):ScrollingFrame
-
-local u=t.Direction
-local w=t.Rotations
-
-local x=w[u]
-t.IconRotation=x
-
-
-local z=b:InsertPrefab("ArrowButton",t)
-z.Activated:Connect(function(...)
-local A=t.Callback
-return A(z,...)
-end)
-
-return z
-end,
-})
-
-
-
-
-
-
-
-b:DefineElement("Label",{
-Base={
-Font="Inconsolata"
-},
-ColorData={LabelPadding=
-{
-PaddingTop="LabelPaddingTop",
-PaddingBottom="LabelPaddingBottom"
-},
-},
-Create=function(s,t:Label__DARKLUA_TYPE_A):TextLabel
-
-local u=t.Bold
-local w=t.Italic
-local x=t.Font
-local z=t.FontFace
-
-
-local A=Enum.FontWeight.Medium
-local B=Enum.FontWeight.Bold
-
-
-local C=Enum.FontStyle.Normal
-local D=Enum.FontStyle.Italic
-
-local E=u and B or A
-local F=w and D or C
-local G=u or w
-
-if not z and G then
-t.FontFace=Font.fromName(x,E,F)
-end
-
-local H=b:InsertPrefab("Label",t)
-local I=H:FindFirstChildOfClass"UIPadding"
-
-s:TagElements{
-[I]="LabelPadding",
-}
-
-
-return H
-end,
-})
-
-b:DefineElement("Error",{
-Base={
-RichText=true,
-TextWrapped=true
-},
-ColorData={Error=
-{
-TextColor3="ErrorText",
-FontFace="TextFont",
-},
-},
-Create=function(s,t:Label__DARKLUA_TYPE_A)
-local u=t.Text
-t.Text=`<b>⛔ Error:</b> {u}`
-
-return s:Label(t)
-end,
-})
-
-
-local s={
-Engaged=false
-}
-s.__index=s
-
-function s.SetEngaged(t,u:boolean)local w=
-t.Object
-local x=t.WindowClass
-
-t.Engaged=u
-
-
-if x then
-x:SetCanvasInteractable(not u)
-end
-end
-
-function s.IsHovering(t):boolean
-local u=false
-
-
-t:Foreach(function(w)
-u=w.Popup:IsMouseHovering()
-return u
-end)
-
-return u
-end
-
-function s.Foreach(t,u)
-local w=t.Menus
-for x,z in next,w do
-
-local A=u(z)
-if A then break end
-end
-end
-
-function s.SetFocusedMenu(t,u)
-t:Foreach(function(w)
-
-local x=w==u
-w:SetActiveState(x)
-end)
-end
-
-function s.Close(t)
-t:SetEngaged(false)
-t:SetFocusedMenu(nil)
-end
-
-function s.MenuItem(t,u)
-local w=t.Canvas
-local x=t.Menus
-
-
-local z=w:MenuButton(u)
-local A=w:PopupCanvas{
-RelativeTo=z,
-MaxSizeX=210,
-Visible=false,
-AutoClose=false,
-AfterClick=function()
-t:Close()
-end,
-}
-
-
-local B={
-Popup=A,
-Button=z
-}
-
-
-b:DetectHover(z,{
-MouseEnter=true,
-OnInput=function()
-if not t.Engaged then return end
-t:SetFocusedMenu(B)
-end,
-})
-
-function B.SetActiveState(C,D:boolean)
-A:SetPopupVisible(D)
-z:SetSelected(D)
-end
-
-
-z.Activated:Connect(function()
-t:SetFocusedMenu(B)
-t:SetEngaged(true)
-end)
-
-
-table.insert(x,B)
-
-return A,B
-end
-
-b:DefineElement("MenuBar",{
-Base={},
-Create=function(t,u):Elements
-local w=t.WindowClass
-
-
-local x=b:InsertPrefab("MenuBar",u)
-
-
-local z=b:MakeCanvas{
-Element=x,
-WindowClass=w,
-Class=u
-}
-
-
-local A=NewClass(s,{
-WindowClass=w,
-Canvas=z,
-Object=x,
-Menus={}
-})
-Merge(A,u)
-
-
-b:DetectHover(x,{
-MouseOnly=true,
-OnInput=function()
-if not A.Engaged then return end
-if A:IsHovering()then return end
-
-A:Close()
-end,
-})
-
-local B=b:MergeMetatables(A,z)
-return B,x
-end,
-})
-
-b:DefineElement("MenuButton",{
-Base={
-Text="MenuButton",
-PaddingLeft=UDim.new(0,8),
-PaddingRight=UDim.new(0,8),
-Size=UDim2.fromOffset(0,19),
-AutomaticSize=Enum.AutomaticSize.XY
-},
-Create=r.Selectable
-})
-
-
-local t={
-ColorTags={
-BGSelected={
-[true]="SelectedTab",
-[false]="DeselectedTab"
-},
-LabelSelected={
-[true]="SelectedTabLabel",
-[false]="DeselectedTabLabel"
-},
-}
-}
-function t.SetButtonSelected(u,w:table__DARKLUA_TYPE_c,x:boolean)
-
-if w.IsSelected==x then return end
-w.IsSelected=x
-
-local z=u.NoAnimation
-local A=u.WindowClass
-local B=u.ColorTags
-
-
-local C=A.Theme
-local D=A.TagsList
-
-
-local E=B.BGSelected
-local F=B.LabelSelected
-
-local G=w.TabButton
-local H=G.Button
-local I=H.Label
-
-b:MultiUpdateColors{
-Animate=not z,
-Theme=C,
-TagsList=D,
-Objects={
-[H]=E[x],
-[I]=F[x],
-},
-}
-end
-
-function t.CompareTabs(u,w,x)
-if not w then return false end
-return w.MatchBy==x or w==x
-end
-
-function t.ForEachTab(u,w:(Tab__DARKLUA_TYPE_B|string),x:(Tab__DARKLUA_TYPE_B,IsMatch:boolean,Index:number)->nil)
-local z=typeof(w)=="string"
-local A=u.Tabs
-
-for B,C in A do
-local D=C.Name
-local E=false
-
-
-if z then
-E=D==w
-else
-E=u:CompareTabs(C,w)
-end
-
-
-x(C,E,B)
-end
-end
-
-function t.RemoveTab(u,w:(Tab__DARKLUA_TYPE_B|string))
-local x=u.OnTabRemove
-local z=u.Tabs
-
-u:ForEachTab(w,function(A,B,C)
-if not B then return end
-local D=A.TabButton
-local E=A.OnClosure
-
-
-table.remove(z,C)
-D:Destroy()
-
-
-x(u,A)
-E(A)
-end)
-
-return u
-end
-
-
-
-
-
-
-
-
-
-function t.CreateTab(u,w:Tab__DARKLUA_TYPE_B):Elements
-w=w or{}
-b:CheckConfig(w,{
-Name="Tab",
-AutoSize="Y",
-Focused=false,
-OnClosure=d
-})
-
-
-local x=u.AutoSelectNewTabs
-local z=u.WindowClass
-local A=u.ParentCanvas
-local B=u.Tabs
-local C=u.TabsFrame
-local D=u.OnTabCreate
-
-
-local E=w.Focused
-local F=w.Name local G=
-w.Icon
-local H=E or#B<=0 and x
-
-
-local I=b:InsertPrefab("TabButton",w)
-I.Parent=C
-
-
-local J=I.Button
-local K=J:FindFirstChildOfClass"UIPadding"
-local L=J.Label
-L.Text=tostring(F)
-
-Merge(w,{
-TabButton=I
-})
-
-local function SetActive()
-u:SetActiveTab(w)
-end
-
-
-local M={Closeable=
-function()
-local M=A:RadioButton{
-Parent=J,
-Visible=not u.NoClose,
-Icon=b.Icons.Close,
-IconSize=UDim2.fromOffset(11,11),
-LayoutOrder=3,
-ZIndex=2,
-UsePropertiesList=true,
-Callback=function()
-u:RemoveTab(w)
-end,
-}
-
-
-local N=M.Icon
-b:SetAnimation(N,{
-Connections={
-MouseEnter={
-ImageTransparency=0,
-},
-MouseLeave={
-ImageTransparency=1,
-}
-},
-Init="MouseLeave"
-},I)
-end,
-}
-
-
-J.Activated:Connect(SetActive)
-
-
-b:CheckFlags(M,w)
-
-
-table.insert(B,w)
-
-
-if z then
-z:TagElements{
-[K]="TabPadding",
-}
-end
-
-
-b:SetAnimation(J,"Buttons")
-u:SetButtonSelected(w,H)
-
-
-A:ApplyFlags(I,w)
-
-local N=D(u,w)
-
-
-if H then
-u:SetActiveTab(w)
-end
-
-return N or w
-end
-
-function t.SetActiveTab(u,w:(table__DARKLUA_TYPE_c|string))local x=
-
-u.Tabs local z=
-u.NoAnimation
-local A=u.ActiveTab
-local B=u.OnActiveTabChange local C=
-
-typeof(w)=="string"
-local D
-
-
-u:ForEachTab(w,function(E,F,G)
-if F then
-D=E
-end
-u:SetButtonSelected(E,F)
-end)
-
-if not D then return u end
-if u:CompareTabs(D,A)then return u end
-
-u.ActiveTab=D
-
-
-B(u,D,A)
-
-return u
-end
-
-
-
-
-
-
-
-b:DefineElement("TabBar",{
-Base={
-AutoSelectNewTabs=true,
-OnActiveTabChange=d,
-OnTabCreate=d,
-OnTabRemove=d,
-},
-ColorData={DeselectedTab=
-{
-BackgroundColor3="TabBg"
-},SelectedTab=
-{
-BackgroundColor3="TabBgActive"
-},DeselectedTabLabel=
-{
-FontFace="TextFont",
-TextColor3="TabText",
-},SelectedTabLabel=
-{
-FontFace="TextFont",
-TextColor3="TabTextActive",
-},TabsBarSeparator=
-{
-BackgroundColor3="TabBgActive",
-},TabPadding=
-{
-PaddingTop="TabTextPaddingTop",
-PaddingBottom="TabTextPaddingBottom"
-},TabPagePadding=
-{
-PaddingBottom="TabPagePadding",
-PaddingLeft="TabPagePadding",
-PaddingRight="TabPagePadding",
-PaddingTop="TabPagePadding",
-}
-},
-Create=function(u,w:TabBar__DARKLUA_TYPE_C)
-local A=u.WindowClass
-
-
-local B=b:InsertPrefab("TabsBar",w)
-local C=NewClass(t)
-
-local D=B.Separator
-local E=B.TabsFrame
-
-
-local F=b:MakeCanvas{
-Element=E,
-WindowClass=A,
-Class=C
-}
-
-
-Merge(C,w)
-Merge(C,{
-ParentCanvas=u,
-Object=B,
-TabsFrame=E,
-WindowClass=A,
-Tabs={}
-})
-
-
-u:TagElements{
-[B]="TabsBar",
-[D]="TabsBarSeparator",
-}
-
-local G=b:MergeMetatables(F,B)
-return G,B
-end,
-})
-
-
-
-
-
-b:DefineElement("TabSelector",{
-Base={
-NoTabsBar=false,
-OnActiveTabChange=d,
-OnTabCreate=d,
-OnTabRemove=d,
-},
-Create=function(u,w:TabSelector__DARKLUA_TYPE_D):(TabSelector__DARKLUA_TYPE_D,GuiObject)
-local A=u.WindowClass
-
-local B=w.NoTabsBar
-local C=w.NoAnimation
-
-
-local D=b:InsertPrefab("TabSelector",w)
-
-local E=D.Body
-local F=E.PageTemplate
-F.Visible=false
-
-
-local function OnTabCreate(G,H,...)
-local I=H.AutoSize
-local J=H.Name
-
-
-local K=F:Clone()
-local L=b:GetChildOfClass(K,"UIPadding")
-
-b:SetProperties(K,{
-Parent=E,
-Name=J,
-AutomaticSize=Enum.AutomaticSize[I],
-Size=UDim2.fromScale(
-I=="Y"and 1 or 0,
-I=="X"and 1 or 0
-)
-})
-
-
-u:TagElements{
-[L]="TabPagePadding",
-}
-
-
-local M=b:MakeCanvas{
-Element=K,
-WindowClass=A,
-Class=H
-}
-
-
-w.OnTabCreate(G,H,...)
-
-Merge(H,{
-Page=K,
-MatchBy=M
-})
-
-return M
-end
-local function OnActiveTabChange(G,H,...)
-G:ForEachTab(H,function(I,J,K)
-local L=I.Page
-L.Visible=J
-
-if not J then return end
-
-
-local M=u:GetThemeKey"AnimationTweenInfo"
-o:Tween{
-Object=L,
-Tweeninfo=M,
-NoAnimation=C,
-StartProperties={
-Position=UDim2.fromOffset(0,4)
-},
-EndProperties={
-Position=UDim2.fromOffset(0,0)
-}
-}
-end)
-
-
-w.OnActiveTabChange(G,H,...)
-end
-
-
-local G=u:TabBar{
-Parent=D,
-Visible=not B,
-OnTabCreate=OnTabCreate,
-OnActiveTabChange=OnActiveTabChange,
-OnTabRemove=function(G,H,...)
-H.Page:Remove()
-w.OnTabRemove(...)
-end,
-}
-
-local H=b:MergeMetatables(G,D)
-return H,D
-end,
-})
-
-
-
-
-
-
-b:DefineElement("RadioButton",{
-Base={
-Callback=d,
-},
-Create=function(u,w:RadioButton__DARKLUA_TYPE_E):GuiButton
-local A=b:InsertPrefab("RadioButton",w)
-A.Activated:Connect(function(...)
-local B=w.Callback
-return B(A,...)
-end)
-
-return A
-end,
-})
-
-
-
-
-
-
-
-
-
-
-
-
-b:DefineElement("Checkbox",{
-Base={
-Label="Checkbox",
-IsRadio=false,
-Value=false,
-NoAutoTag=true,
-TickedImageSize=UDim2.fromScale(1,1),
-UntickedImageSize=UDim2.fromScale(0,0),
-Callback=d,
-Disabled=false
-},
-Create=function(u,w:Checkbox__DARKLUA_TYPE_F):Checkbox__DARKLUA_TYPE_F
-
-local A=w.IsRadio
-local B=w.Value
-local C=w.Label
-local D=w.TickedImageSize
-local E=w.UntickedImageSize
-local F=w.Disabled
-
-
-local G=b:InsertPrefab("CheckBox",w)
-local H=b:MergeMetatables(w,G)
-
-local I=G.Tickbox
-local J=I.Tick
-J.Image=b.Icons.Checkmark
-
-
-local K=I:FindFirstChildOfClass"UIPadding"
-local L=b:GetChildOfClass(I,"UICorner")
-
-
-local M=u:Label{
-Text=C,
-Parent=G,
-LayoutOrder=2
-}
-
-
-local N=UDim.new(0,3)
-if A then
-J.ImageTransparency=1
-J.BackgroundTransparency=0
-L.CornerRadius=UDim.new(1,0)
-else
-N=UDim.new(0,2)
-end
-
-
-b:SetProperties(K,{
-PaddingBottom=N,
-PaddingLeft=N,
-PaddingRight=N,
-PaddingTop=N,
-})
-
-
-local function Callback(...)
-local O=w.Callback
-return O(H,...)
-end
-
-local function SetStyle(O:boolean,P:boolean)
-local Q=u:GetThemeKey"AnimationTweenInfo"
-
-
-local R=O and D or E
-o:Tween{
-Object=J,
-Tweeninfo=Q,
-NoAnimation=P,
-EndProperties={
-Size=R
-}
-}
-end
-
-function w.SetDisabled(O,P:boolean)
-O.Disabled=P
-G.Interactable=not P
-
-u:SetColorTags({
-[M]=P and"LabelDisabled"or"Label"
-},true)
-end
-
-function w.SetValue(O,P:boolean,Q:boolean)
-O.Value=P
-
-
-SetStyle(P,Q)
-
-
-Callback(P)
-
-return O
-end
-
-function w.SetTicked(O,...)
-b:Warn"Checkbox:SetTicked is deprecated, please use :SetValue"
-return O:SetValue(...)
-end
-
-function w.Toggle(O)
-local P=not O.Value
-O.Value=P
-O:SetValue(P)
-
-return O
-end
-
-
-local function Clicked()
-w:Toggle()
-end
-
-
-G.Activated:Connect(Clicked)
-I.Activated:Connect(Clicked)
-
-
-w:SetValue(B,true)
-w:SetDisabled(F)
-
-
-b:SetAnimation(I,"Buttons",G)
-u:TagElements{
-[J]="CheckMark",
-[I]="Checkbox"
-}
-
-return H,G
-end,
-})
-
-b:DefineElement("Radiobox",{
-Base={
-IsRadio=true,
-CornerRadius=UDim.new(1,0),
-},
-Create=r.Checkbox,
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-b:DefineElement("PlotHistogram",{
-Base={
-ColorTag="Frame",
-Label="Histogram"
-},
-Create=function(u,w:PlotHistogram__DARKLUA_TYPE_G)
-
-local A=w.Label
-local B=w.Points
-
-
-local C=b:InsertPrefab("Histogram",w)
-local D=b:MergeMetatables(w,C)
-
-local E=C.Canvas
-local F=E.PointTemplate
-F.Visible=false
-
-u:Label{
-Text=A,
-Parent=C,
-Position=UDim2.new(1,4)
-}
-
-
-local G
-b:SetItemTooltip(C,function(H)
-G=H:Label()
-end)
-
-Merge(w,{
-_Plots={},
-_Cache={}
-})
-
-function w.GetBaseValues(H):(number,number)
-local I=H.Minimum
-local J=H.Maximum
-
-
-if I and J then
-return I,J
-end
-
-local K=H._Plots
-
-for L,M in K do
-local N=M.Value
-
-
-if not I or N<I then
-I=N
-end
-
-
-if not J or N>J then
-J=N
-end
-end
-
-return I,J
-end
-
-function w.UpdateGraph(H)
-local I=H._Plots
-
-local J,K=H:GetBaseValues()
-if not J or not K then return end
-
-local L=K-J
-
-
-for M,N in I do
-local O=N.Point
-local P=N.Value
-
-local Q=(P-J)/L
-Q=math.clamp(Q,0.05,1)
-
-O.Size=UDim2.fromScale(1,Q)
-end
-
-return H
-end
-
-function w.Plot(H,I)
-local J=H._Plots
-local K={}
-
-
-local L=F:Clone()
-local M=L.Bar
-
-b:SetProperties(L,{
-Parent=E,
-Visible=true
-})
-
-local N=b:DetectHover(L,{
-MouseEnter=true,
-OnInput=function()
-K:UpdateTooltip()
-end,
-})
-
-local O={
-Object=L,
-Point=M,
-Value=I
-}
-
-function K.UpdateTooltip(P)
-local Q=K:GetPointIndex()
-G.Text=`{Q}:	{O.Value}`
-end
-
-function K.SetValue(P,Q)
-O.Value=Q
-w:UpdateGraph()
-
-
-if N.Hovering then
-P:UpdateTooltip()
-end
-end
-
-function K.GetPointIndex(P):number
-return table.find(J,O)
-end
-
-function K.Remove(P,Q)
-table.remove(J,P:GetPointIndex())
-L:Remove()
-w:UpdateGraph()
-end
-
-
-table.insert(J,O)
-
-
-H:UpdateGraph()
-
-
-b:SetAnimation(M,"Plots",L)
-u:TagElements{
-[M]="Plot"
-}
-
-return K
-end
-
-function w.PlotGraph(H,I)
-local J=H._Cache
-
-
-local K=#J-#I
-if K>=1 then
-
-for L=1,K do
-local M=table.remove(J,L)
-if M then
-M:Remove()
-end
-end
-end
-
-for L,M in I do
-
-local N=J[L]
-if N then
-N:SetValue(M)
-continue
-end
-
-
-J[L]=H:Plot(M)
-end
-
-return H
-end
-
-
-if B then
-w:PlotGraph(B)
-end
-
-return D,C
-end,
-})
-
-
-
-
-
-
-
-
-
-
-
-
-b:DefineElement("Viewport",{
-Base={
-IsRadio=true,
-},
-Create=function(u,w:Viewport__DARKLUA_TYPE_H):Viewport__DARKLUA_TYPE_H
-
-local A=w.Model
-local B=w.Camera
-
-
-local C=b:InsertPrefab("Viewport",w)
-local D=b:MergeMetatables(w,C)
-
-local E=C.Viewport
-local F=E.WorldModel
-
-if not B then
-B=b:CreateInstance("Camera",E)
-B.CFrame=CFrame.new(0,0,0)
-end
-
-Merge(w,{
-Camera=B,
-WorldModel=F,
-Viewport=E
-})
-
-function w.SetCamera(G,H)
-G.Camera=H
-E.CurrentCamera=H
-return G
-end
-
-function w.SetModel(G,H:Model,I:CFrame?)
-local J=G.Clone
-
-F:ClearAllChildren()
-
-
-if J then
-H=H:Clone()
-end
-
-if I then
-H:PivotTo(I)
-end
-
-H.Parent=F
-G.Model=H
-
-return H
-end
-
-
-if A then
-w:SetModel(A)
-end
-
-w:SetCamera(B)
-
-return D,C
-end,
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-b:DefineElement("InputText",{
-Base={
-Value="",
-Placeholder="",
-Label="Input text",
-Callback=d,
-MultiLine=false,
-NoAutoTag=true,
-Disabled=false
-},
-Create=function(u,w:InputText__DARKLUA_TYPE_I):InputText__DARKLUA_TYPE_I
-
-local A=w.MultiLine
-local B=w.Placeholder
-local C=w.Label
-local D=w.Disabled
-local E=w.Value
-
-
-local F=b:InsertPrefab("InputBox",w)
-local G=F.Frame
-local H=G.Input
-
-local I=b:MergeMetatables(w,F)
-
-u:Label{
-Parent=F,
-Text=C,
-AutomaticSize=Enum.AutomaticSize.X,
-Size=UDim2.fromOffset(0,19),
-Position=UDim2.new(1,4),
-LayoutOrder=2
-}
-
-b:SetProperties(H,{
-PlaceholderText=B,
-MultiLine=A
-})
-
-local function Callback(...)
-local J=w.Callback
-J(I,...)
-end
-
-function w.SetValue(J,K:string?)
-H.Text=tostring(K)
-J.Value=K
-return J
-end
-
-function w.SetDisabled(J,K:boolean)
-J.Disabled=K
-F.Interactable=not K
-u:SetColorTags({
-[C]=K and"LabelDisabled"or"Label"
-},true)
-return J
-end
-
-function w.Clear(J)
-H.Text=""
-return J
-end
-
-local function TextChanged()
-local J=H.Text
-w.Value=J
-Callback(J)
-end
-
-
-H:GetPropertyChangedSignal"Text":Connect(TextChanged)
-
-
-w:SetDisabled(D)
-w:SetValue(E)
-
-u:TagElements{
-[H]="Frame"
-}
-
-return I,F
-end,
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-b:DefineElement("InputInt",{
-Base={
-Value=0,
-Increment=1,
-Placeholder="",
-Label="Input Int",
-Callback=d,
-},
-Create=function(u,w:InputInt__DARKLUA_TYPE_J):InputInt__DARKLUA_TYPE_J
-
-local A=w.Value
-local B=w.Placeholder
-local C=w.Label
-local D=w.Disabled
-local E=w.NoButtons
-
-
-local F=b:InsertPrefab("InputBox",w)
-local G=b:MergeMetatables(w,F)
-
-local H=F.Frame
-local I=H.Input
-I.PlaceholderText=B
-
-
-local J=u:Button{
-Text="-",
-Parent=H,
-LayoutOrder=2,
-Ratio=1,
-AutomaticSize=Enum.AutomaticSize.None,
-FlexMode=Enum.UIFlexMode.None,
-Size=UDim2.fromScale(1,1),
-Visible=not E,
-Callback=function()
-w:Decrease()
-end,
-}
-
-
-local K=u:Button{
-Text="+",
-Parent=H,
-LayoutOrder=3,
-Ratio=1,
-AutomaticSize=Enum.AutomaticSize.None,
-FlexMode=Enum.UIFlexMode.None,
-Size=UDim2.fromScale(1,1),
-Visible=not E,
-Callback=function()
-w:Increase()
-end,
-}
-
-local L=u:Label{
-Parent=F,
-Text=C,
-AutomaticSize=Enum.AutomaticSize.X,
-Size=UDim2.fromOffset(0,19),
-Position=UDim2.new(1,4),
-LayoutOrder=4
-}
-
-local function Callback(...)
-local M=w.Callback
-M(G,...)
-end
-
-function w.Increase(M)
-local N=M.Value
-local O=M.Increment
-w:SetValue(N+O)
-end
-
-function w.Decrease(M)
-local N=M.Value
-local O=M.Increment
-w:SetValue(N-O)
-end
-
-function w.SetDisabled(M,N:boolean)
-M.Disabled=N
-F.Interactable=not N
-u:SetColorTags({
-[L]=N and"LabelDisabled"or"Label"
-},true)
-end
-
-function w.SetValue(M,N:number?)
-local O=M.Value
-local P=M.Minimum
-local Q=M.Maximum
-
-
-N=tonumber(N)
-
-
-if not N then
-N=O
-end
-
-
-if P and Q then
-N=math.clamp(N,P,Q)
-end
-
-
-I.Text=N
-w.Value=N
-Callback(N)
-
-return M
-end
-
-local function TextChanged()
-local M=I.Text
-w:SetValue(M)
-end
-
-
-w:SetValue(A)
-w:SetDisabled(D)
-
-
-I.FocusLost:Connect(TextChanged)
-
-
-u:TagElements{
-[K]="Button",
-[J]="Button",
-[I]="Frame",
-}
-
-return G,F
-end,
-})
-
-b:DefineElement("InputTextMultiline",{
-Base={
-Label="",
-Size=UDim2.new(1,0,0,39),
-Border=false,
-ColorTag="Frame"
-},
-Create=function(u,w)
-return u:Console(w)
-end,
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-b:DefineElement("Console",{
-Base={
-Enabled=true,
-Value="",
-TextWrapped=false,
-Border=true,
-MaxLines=300,
-LinesFormat="%s",
-Callback=d,
-},
-Create=function(u,w:Console__DARKLUA_TYPE_K):Console__DARKLUA_TYPE_K
-
-local A=w.ReadOnly
-local B=w.LineNumbers local C=
-w.Fill
-local D=w.Value
-local E=w.Placeholder
-
-
-local F=b:InsertPrefab("Console",w)
-local G=b:MergeMetatables(w,F)
-
-local H:TextBox=F.Source
-local I=F.Lines
-I.Visible=B
-
-function w.CountLines(J,K:boolean?):number
-local L=H.Text:split"\n"
-local M=#L
-
-if M==1 and L[1]==""then
-return 0
-end
-
-return M
-end
-
-function w.UpdateLineNumbers(J)
-
-local K=J.LineNumbers
-local L=J.LinesFormat
-
-
-if not K then return end
-
-
-local M=J:CountLines()
-I.Text=""
-
-for N=1,M do
-local O=L:format(N)
-local P=N~=M and'\n'or''
-I.Text..=`{O}{P}`
-end
-
-
-local N=I.AbsoluteSize.X
-H.Size=UDim2.new(1,-N,0,0)
-
-return J
-end
-
-function w.CheckLineCount(J)
-
-local K=w.MaxLines
-if not K then return end
-
-local L=H.Text
-local M=L:split"\n"
-
-
-if#M>K then
-local N=`{M[1]}\\n`
-local O=L:sub(#N)
-J:SetValue(O)
-end
-
-return J
-end
-
-function w.UpdateScroll(J)
-local K=F.AbsoluteCanvasSize
-F.CanvasPosition=Vector2.new(0,K.Y)
-return J
-end
-
-function w.SetValue(J,K:string?)
-if not J.Enabled then return end
-
-H.Text=tostring(K)
-J:Update()
-
-return J
-end
-
-function w.GetValue(J)
-return H.Text
-end
-
-function w.Clear(J)
-H.Text=""
-J:Update()
-return J
-end
-
-function w.AppendText(J,...)
-local K=J:CountLines(true)
-local L=b:Concat({...}," ")
-
-
-if K==0 then
-return J:SetValue(L)
-end
-
-local M=J:GetValue()
-local N=`{M}\n{L}`
-
-
-J:SetValue(N)
-
-return J
-end
-
-function w.Update(J)
-
-local K=J.AutoScroll
-
-J:CheckLineCount()
-J:UpdateLineNumbers()
-
-
-if K then
-J:UpdateScroll()
-end
-end
-
-local function Changed()
-local J=w:GetValue()
-w:Update()
-w.Callback(J)
-end
-
-
-w:SetValue(D)
-
-
-b:SetProperties(H,w)
-b:SetProperties(H,{
-TextEditable=not A,
-Parent=F,
-PlaceholderText=E
-})
-
-u:TagElements{
-[H]="ConsoleText",
-[I]="ConsoleLineNumbers",
-}
-
-
-H:GetPropertyChangedSignal"Text":Connect(Changed)
-
-return G,F
-end,
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-b:DefineElement("Table",{
-Base={
-VerticalAlignment=Enum.VerticalAlignment.Top,
-RowBackground=false,
-RowBgTransparency=0.87,
-Border=false,
-Spacing=UDim.new(0,4)
-},
-Create=function(u,w:Table__DARKLUA_TYPE_L):Table__DARKLUA_TYPE_L
-local A=u.WindowClass
-
-
-local B=w.RowBgTransparency
-local C=w.RowBackground
-local D=w.Border
-local E=w.VerticalAlignment
-local F=w.MaxColumns
-local G=w.Spacing
-
-
-local H=b:InsertPrefab("Table",w)
-local I=b:MergeMetatables(w,H)
-
-local J=H.RowTemp
-local K=0
-local L={}
-local M=D and C
-
-function w.Row(N,O)
-O=O or{}
-
-local P=O.IsHeader
-
-local Q=0
-local R={}
-
-
-local S=J:Clone()
-b:SetProperties(S,{
-Name="Row",
-Visible=true,
-Parent=H,
-})
-
-
-local T=S:FindFirstChildOfClass"UIListLayout"
-b:SetProperties(T,{
-VerticalAlignment=E,
-Padding=not M and G or UDim.new(0,1)
-})
-
-
-if P then
-u:TagElements{
-[S]="Header"
-}
-else
-K+=1
-end
-
-
-if C and not P then
-local U=K%2~=1 and B or 1
-S.BackgroundTransparency=U
-end
-
-
-local U={}
-local V=b:MergeMetatables(U,S)
-
-function U.Column(W,X)
-X=X or{}
-
-b:CheckConfig(X,{
-HorizontalAlign=Enum.HorizontalAlignment.Left,
-VerticalAlignment=Enum.VerticalAlignment.Top,
-})
-
-
-local Y=S.ColumnTemp:Clone()
-
-
-local Z=Y:FindFirstChildOfClass"UIListLayout"
-b:SetProperties(Z,X)
-
-
-local _=Y:FindFirstChildOfClass"UIStroke"
-_.Enabled=D
-
-
-local aa=Y:FindFirstChildOfClass"UIPadding"
-if not M then
-aa:Destroy()
-end
-
-
-b:SetProperties(Y,{
-Parent=S,
-Visible=true,
-Name="Column"
-})
-
-
-return b:MakeCanvas{
-Element=Y,
-WindowClass=A,
-Class=V
-}
-end
-
-function U.NextColumn(aa)
-Q+=1
-
-local W=Q%F+1
-local X=R[W]
-
-
-if not X then
-X=aa:Column()
-R[W]=X
-end
-
-return X
-end
-
-table.insert(L,U)
-
-
-return V
-end
-
-
-function w.NextRow(aa)
-return aa:Row()
-end
-
-function w.HeaderRow(aa)
-return aa:Row{
-IsHeader=true
-}
-end
-
-function w.ClearRows(aa)
-K=0
-
-
-for N,O:Frame in next,H:GetChildren()do
-if not O:IsA"Frame"then continue end
-if O==J then continue end
-
-O:Destroy()
-end
-
-return w
-end
-
-return I,H
-end,
-})
-
-
-
-
-b:DefineElement("List",{
-Base={
-Spacing=4,
-HorizontalFlex=Enum.UIFlexAlignment.None,
-VerticalFlex=Enum.UIFlexAlignment.None,
-HorizontalAlignment=Enum.HorizontalAlignment.Left,
-VerticalAlignment=Enum.VerticalAlignment.Top,
-FillDirection=Enum.FillDirection.Horizontal,
-},
-Create=function(aa,u)
-local w=aa.WindowClass
-
-
-local A=u.Spacing
-local B=u.HorizontalFlex
-local C=u.VerticalFlex
-local D=u.HorizontalAlignment
-local E=u.VerticalAlignment
-local F=u.FillDirection
-
-
-local G=b:InsertPrefab("List",u)
-local H=b:MergeMetatables(u,G)
-
-local I:UIListLayout=G.UIListLayout
-b:SetProperties(I,{
-Padding=UDim.new(0,A),
-HorizontalFlex=B,
-VerticalFlex=C,
-HorizontalAlignment=D,
-VerticalAlignment=E,
-FillDirection=F,
-})
-
-
-local J=b:MakeCanvas{
-Element=G,
-WindowClass=w,
-Class=H
-}
-
-return J,G
-end,
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-b:DefineElement("CollapsingHeader",{
-Base={
-Title="Collapsing Header",
-CollapseIcon=b.Icons.Arrow,
-Collapsed=true,
-Offset=0,
-NoAutoTag=true,
-NoAutoFlags=true,
-IconPadding=UDim.new(0,4),
-Activated=d
-},
-Create=function(aa,u:CollapsingHeader__DARKLUA_TYPE_N):CollapsingHeader__DARKLUA_TYPE_N
-
-local w=u.Title
-local A=u.Collapsed
-local B=u.ElementStyle
-local C=u.Offset
-local D=u.TitleBarProperties
-local E=u.OpenOnDoubleClick
-local F=u.OpenOnArrow
-local G=u.CollapseIcon
-local H=u.IconPadding
-local I=u.Icon
-local J=u.NoArrow
-
-
-local K=b:InsertPrefab("CollapsingHeader",u)
-
-local L=K.TitleBar
-local M=L.Collapse
-local N=L.Icon
-aa:ApplyFlags(N,{
-Image=I
-})
-
-local O=M.CollapseIcon
-local P=M.UIPadding
-b:SetPadding(P,H)
-aa:ApplyFlags(O,{
-Image=G
-})
-
-local Q=aa:Label{
-ColorTag="CollapsingHeader",
-Parent=L,
-LayoutOrder=2
-}
-
-
-local R,S=aa:Indent{
-Class=u,
-Parent=K,
-Offset=C,
-LayoutOrder=2,
-Size=UDim2.fromScale(1,0),
-AutomaticSize=Enum.AutomaticSize.None,
-PaddingTop=UDim.new(0,4),
-PaddingBottom=UDim.new(0,1),
-}
-
-local function Activated()
-local T=u.Activated
-T(R)
-end
-
-function u.Remove(T)
-K:Destroy()
-table.clear(T)
-end
-function u.SetArrowVisible(T,U:boolean)
-O.Visible=U
-end
-function u.SetTitle(T,U:string)
-Q.Text=U
-end
-function u.SetVisible(T,U:boolean)
-K.Visible=U
-end
-function u.SetIcon(T,U:(string|number)?)
-local V=U and U~=""
-N.Visible=V
-
-if V then
-N.Image=b:CheckAssetUrl(U)
-end
-end
-
-
-function u.SetCollapsed(T,U)
-T.Collapsed=U
-
-local V=b:GetContentSize(S)
-local W=R:GetThemeKey"AnimationTweenInfo"
-
-
-local X=UDim2.fromScale(1,0)
-local Y=X+UDim2.fromOffset(0,V.Y)
-
-o:HeaderCollapse{
-Tweeninfo=W,
-Collapsed=U,
-Toggle=O,
-Resize=S,
-Hide=S,
-
-
-ClosedSize=X,
-OpenSize=Y,
-}
-
-return T
-end
-
-local function Toggle()
-u:SetCollapsed(not u.Collapsed)
-end
-
-
-if D then
-R:ApplyFlags(L,D)
-end
-
-
-if not F then
-b:ConnectMouseEvent(L,{
-DoubleClick=E,
-Callback=Toggle,
-})
-end
-O.Activated:Connect(Toggle)
-L.Activated:Connect(Activated)
-
-
-u:SetCollapsed(A)
-u:SetTitle(w)
-u:SetArrowVisible(not J)
-
-
-b:ApplyStyle(L,B)
-R:TagElements{
-[L]="CollapsingHeader",
-}
-
-return R,K
-end,
-})
-
-b:DefineElement("TreeNode",{
-Base={
-Offset=21,
-IconPadding=UDim.new(0,2),
-TitleBarProperties={
-Size=UDim2.new(1,0,0,13)
-}
-},
-Create=r.CollapsingHeader,
-})
-
-
-
-
-b:DefineElement("Separator",{
-Base={
-NoAutoTag=true,
-NoAutoTheme=true
-},
-Create=function(aa,u)
-local w=u.Text
-
-
-local A=b:InsertPrefab("SeparatorText",u)
-
-aa:Label{
-Text=tostring(w),
-Visible=w~=nil,
-Parent=A,
-LayoutOrder=2,
-Size=UDim2.new(),
-PaddingLeft=UDim.new(0,4),
-PaddingRight=UDim.new(0,4),
-}
-
-aa:TagElements{
-[A.Left]="Separator",
-[A.Right]="Separator",
-}
-
-return A
-end,
-})
-
-
-
-
-
-b:DefineElement("Canvas",{
-Base={},
-Create=function(aa,u:Canvas__DARKLUA_TYPE_P)
-local w=aa.WindowClass
-
-local A=u.Scroll
-local B=u.Class or u
-
-
-local C=A and"ScrollingCanvas"or"Canvas"
-local D=b:InsertPrefab(C,u)
-
-
-local E=b:MakeCanvas{
-Element=D,
-WindowClass=w,
-Class=B
-}
-
-return E,D
-end,
-})
-
-b:DefineElement("ScrollingCanvas",{
-Base={
-Scroll=true
-},
-Create=r.Canvas
-})
-
-
-
-
-b:DefineElement("Region",{
-Base={
-Scroll=false,
-AutomaticSize=Enum.AutomaticSize.Y
-},
-Create=function(aa,u:Region__DARKLUA_TYPE_Q)
-local w=aa.WindowClass
-
-local A=u.Scroll
-local B=A and"ScrollingCanvas"or"Canvas"
-
-
-local C=b:InsertPrefab(B,u)
-
-
-local D=b:MakeCanvas{
-Element=C,
-WindowClass=w,
-Class=u
-}
-
-return D,C
-end,
-})
-
-b:DefineElement("Group",{
-Base={
-Scroll=false,
-AutomaticSize=Enum.AutomaticSize.Y
-},
-Create=function(aa,u)
-local w=aa.WindowClass
-
-
-local A=b:InsertPrefab("Group",u)
-
-
-local B=b:MakeCanvas{
-Element=A,
-WindowClass=w,
-Class=u
-}
-
-return B,A
-end,
-})
-
-
-
-
-b:DefineElement("Indent",{
-Base={
-Offset=15,
-PaddingTop=UDim.new(),
-PaddingBottom=UDim.new(),
-PaddingRight=UDim.new(),
-},
-Create=function(aa,u:Indent__DARKLUA_TYPE_R)
-local w=u.Offset
-u.PaddingLeft=UDim.new(0,w)
-
-return aa:Canvas(u)
-end,
-})
-
-
-
-
-
-
-
-
-b:DefineElement("BulletText",{
-Base={},
-Create=function(aa,u:BulletText__DARKLUA_TYPE_S)
-local w=u.Rows
-
-
-for A,B in next,w do
-local C=aa:Bullet(u)
-C:Label{
-Text=tostring(B),
-LayoutOrder=2,
-Size=UDim2.fromOffset(0,14),
-}
-end
-end,
-})
-
-
-
-
-b:DefineElement("Bullet",{
-Base={
-Padding=3,
-Icon=b.Icons.Dot,
-IconSize=UDim2.fromOffset(5,5)
-},
-Create=function(aa,u:Bullet__DARKLUA_TYPE_T)
-local w=aa.WindowClass
-
-
-local A=u.Padding
-
-
-local B=b:InsertPrefab("Bullet",u)
-
-
-local C=b:MakeCanvas{
-Element=B,
-WindowClass=w,
-Class=aa
-}
-
-
-local D=B.UIListLayout
-D.Padding=UDim.new(0,A)
-
-return C,B
-end,
-})
-
-
-
-
-
-
-
-
-b:DefineElement("Row",{
-Base={
-Spacing=4,
-Expanded=false,
-HorizontalFlex=Enum.UIFlexAlignment.None,
-VerticalFlex=Enum.UIFlexAlignment.None,
-},
-Create=function(aa,u:Row__DARKLUA_TYPE_U)
-local w=aa.WindowClass
-
-
-local A=u.Spacing
-local B=u.Expanded
-local C=u.HorizontalFlex
-local D=u.VerticalFlex
-
-
-local E=b:InsertPrefab("Row",u)
-local F=b:MergeMetatables(u,E)
-
-local G=E:FindFirstChildOfClass"UIListLayout"
-G.Padding=UDim.new(0,A)
-G.HorizontalFlex=C
-G.VerticalFlex=D
-
-
-local H=b:MakeCanvas{
-Element=E,
-WindowClass=w,
-Class=F
-}
-
-function u.Expand(I)
-G.HorizontalFlex=Enum.UIFlexAlignment.Fill
-return I
-end
-
-
-if B then
-u:Expand()
-end
-
-return H,E
-end,
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-b:DefineElement("SliderBase",{
-Base={
-Format="%.f",
-Label="",
-Type="Slider",
-Callback=d,
-NoGrab=false,
-NoClick=false,
-Minimum=0,
-Maximum=100,
-ColorTag="Frame",
-Disabled=false,
-},
-Create=function(aa,u)
-
-local w=u.Value or u.Minimum
-local A=u.Format
-local B=u.Label
-local C=u.NoAnimation
-local D=u.NoGrab
-local E=u.NoClick
-local F=u.Type
-local G=u.Disabled
-
-
-local H=b:InsertPrefab"Slider"
-local I=H.Track
-local J=I.Grab
-local K=I.ValueText
-
-
-I:FindFirstChildOfClass"UIPadding"
-
-local L=b:MergeMetatables(u,H)
-local M=J.AbsoluteSize
-
-
-local N=b:SetAnimation(H,"Inputs")
-
-local O=aa:Label{
-Parent=H,
-Text=B,
-Position=UDim2.new(1,4),
-Size=UDim2.fromScale(0,1)
-}
-
-Merge(u,{
-Grab=J,
-Name=B,
-})
-
-
-if F=="Slider"then
-I.Position=UDim2.fromOffset(M.X/2,0)
-I.Size=UDim2.new(1,-M.X,1,0)
-end
-
-local P={Slider=
-function(P)
-return{
-AnchorPoint=Vector2.new(0.5,0.5),
-Position=UDim2.fromScale(P,0.5)
-}
-end,Progress=
-function(P)
-return{
-Size=UDim2.fromScale(P,1)
-}
-end,Snap=
-function(P,Q,R,S)
-local T=(math.round(Q)-R)/S
-return{
-Size=UDim2.fromScale(1/S,1),
-Position=UDim2.fromScale(T,0.5)
-}
-end,
-}
-
-local function Callback(...)
-local Q=u.Callback
-return Q(L,...)
-end
-
-function u.SetDisabled(Q,R:boolean)
-Q.Disabled=R
-H.Interactable=not R
-aa:SetColorTags({
-[O]=R and"LabelDisabled"or"Label"
-},true)
-return Q
-end
-
-function u.SetValueText(Q,R:string)
-K.Text=tostring(R)
-end
-
-function u.SetValue(Q,R,S:boolean)
-local T=aa:GetThemeKey"AnimationTweenInfo"
-
-local U=u.Minimum
-local V=u.Maximum
-
-local W=R
-local X=V-U
-
-
-if not S then
-W=(R-U)/X
-else
-
-R=U+(X*W)
-end
-
-
-W=math.clamp(W,0,1)
-
-
-local Y=P[F](W,R,U,V)
-
-
-o:Tween{
-Object=J,
-Tweeninfo=T,
-NoAnimation=C,
-EndProperties=Y
-}
-
-
-Q.Value=R
-Q:SetValueText(A:format(R,V))
-
-
-Callback(R)
-
-return Q
-end
-
-local function SetFocused(Q:boolean)
-
-aa:SetColorTags({
-[H]=Q and"FrameActive"or"Frame"
-},true)
-aa:SetElementFocused(H,{
-Focused=Q,
-Animation=N
-})
-end
-
-
-local function CanDrag()
-if u.Disabled then return end
-if u.ReadOnly then return end
-
-return true
-end
-local function DragMovement(Q)
-if not CanDrag()then return end
-
-
-local R=I.AbsolutePosition.X
-local S=I.AbsoluteSize.X
-
-
-local T=Q.X
-local U=T-R
-
-
-local V=math.clamp(U/S,0,1)
-
-u:SetValue(V,true)
-end
-local function DragBegan(...)
-if not CanDrag()then return end
-
-SetFocused(true)
-
-if not E then
-DragMovement(...)
-end
-end
-local function DragEnded()
-SetFocused(false)
-end
-
-
-J.Visible=not D
-u:SetValue(w)
-u:SetDisabled(G)
-
-aa:TagElements{
-[K]="Label",
-[J]="SliderGrab"
-}
-
-
-b:ConnectDrag(I,{
-DragStart=DragBegan,
-DragMovement=DragMovement,
-DragEnd=DragEnded,
-})
-
-return L,H
-end,
-})
-
-
-
-
-
-
-
-
-b:DefineElement("SliderEnum",{
-Base={
-Items={},
-Label="Slider Enum",
-Type="Snap",
-Minimum=1,
-Maximum=10,
-Value=1,
-Callback=d,
-ColorTag="Frame"
-},
-Create=function(aa,u:SliderEnumFlags__DARKLUA_TYPE_W)
-
-local w=u.Callback
-local A=u.Value
-
-local function Calculate(B,C:number)
-C=math.round(C)
-
-
-local D=B.Items
-B.Maximum=#D
-
-
-return D[C]
-end
-
-
-u.Callback=function(B,C,D:boolean)
-local E=Calculate(B,C)
-B:SetValueText(E)
-
-u.Value=E
-
-return w(B,E)
-end
-
-Calculate(u,A)
-
-
-return aa:SliderBase(u)
-end,
-})
-
-b:DefineElement("SliderInt",{
-Base={
-Label="Slider Int",
-ColorTag="Frame",
-},
-Create=r.SliderBase,
-})
-
-b:DefineElement("SliderFloat",{
-Base={
-Label="Slider Float",
-Format="%.3f",
-ColorTag="Frame",
-},
-Create=r.SliderBase,
-})
-
-
-
-
-
-
-
-
-
-
-
-
-b:DefineElement("DragInt",{
-Base={
-Format="%.f",
-Label="Drag Int",
-Callback=d,
-Minimum=0,
-Maximum=100,
-ColorTag="Frame",
-Disabled=false
-},
-Create=function(aa,u:DragIntFlags__DARKLUA_TYPE_X)
-
-local w=u.Value or u.Minimum
-local A=u.Format
-local B=u.Label
-local C=u.Disabled
-
-
-local D=b:InsertPrefab"Slider"
-local E=b:MergeMetatables(u,D)
-
-local F=D.Track
-local G=F.ValueText
-local H=F.Grab
-H.Visible=false
-
-b:GetChildOfClass(F,"UIDragDetector")
-
-local I=aa:Label{
-Parent=D,
-Text=B,
-Position=UDim2.new(1,7),
-Size=UDim2.fromScale(0,1)
-}
-
-local J
-local K=0
-local L=0
-
-
-local M=b:SetAnimation(D,"Inputs")
-
-local function Callback(...)
-local N=u.Callback
-return N(E,...)
-end
-
-function u.SetValue(N,O:number,P:boolean)
-local Q=N.Minimum
-local R=N.Maximum
-
-local S=R-Q
-
-
-if not P then
-K=((O-Q)/S)*100
-else
-
-O=Q+(S*(K/100))
-end
-
-O=math.clamp(O,Q,R)
-
-
-N.Value=O
-G.Text=A:format(O,R)
-
-
-Callback(O)
-
-return N
-end
-function u.SetDisabled(N,O:boolean)
-N.Disabled=O
-
-aa:SetColorTags({
-[I]=O and"LabelDisabled"or"Label"
-},true)
-end
-
-local function SetFocused(N:boolean)
-
-aa:SetColorTags({
-[D]=N and"FrameActive"or"Frame"
-},true)
-
-aa:SetElementFocused(D,{
-Focused=N,
-Animation=M
-})
-end
-
-
-local function CanDrag():boolean
-if u.Disabled then return end
-if u.ReadOnly then return end
-
-return true
-end
-local function DragStart(N)
-if not CanDrag()then return end
-SetFocused(true)
-
-J=N
-L=K
-end
-local function DragMovement(N)
-if not CanDrag()then return end
-
-local O=N.X-J.X
-local P=L+(O/2)
-
-K=math.clamp(P,0,100)
-u:SetValue(K,true)
-end
-local function DragEnded()
-SetFocused(false)
-end
-
-
-u:SetValue(w)
-u:SetDisabled(C)
-
-
-b:ConnectDrag(F,{
-DragStart=DragStart,
-DragEnd=DragEnded,
-DragMovement=DragMovement,
-})
-
-aa:TagElements{
-[G]="Label"
-}
-
-return E,D
-end,
-})
-
-b:DefineElement("DragFloat",{
-Base={
-Format="%.3f",
-Label="Drag Float",
-ColorTag="Frame"
-},
-Create=r.DragInt,
-})
-
-b:DefineElement("MultiElement",{
-Base={
-Callback=d,
-Label="",
-Disabled=false,
-BaseInputConfig={},
-InputConfigs={},
-Value={},
-Minimum={},
-Maximum={},
-MultiCallback=d,
-},
-Create=function(aa,u)
-
-local w=u.Label
-local A=u.BaseInputConfig
-local B=u.InputConfigs
-local C=u.InputType
-local D=u.Disabled
-local E=u.Value
-local F=u.Minimum
-local G=u.Maximum
-
-assert(C,"No input type provided for MultiElement")
-
-
-
-
-local H,I=aa:Row{
-Spacing=4
-}
-
-local J=H:Row{
-Size=UDim2.fromScale(0.65,0),
-Expanded=true,
-}
-
-local K=H:Label{
-Size=UDim2.fromScale(0.35,0),
-LayoutOrder=2,
-Text=w
-}
-
-local L=b:MergeMetatables(u,H)
-local M={}
-local N=false
-
-local function GetValue()
-local O={}
-for P,Q in M do
-O[P]=Q:GetValue()
-end
-
-u.Value=O
-return O
-end
-
-local function Callback(...)
-local O=u.MultiCallback
-O(L,...)
-end
-
-local function InputChanged()
-
-if#M~=#B then return end
-if not N then return end
-
-local O=GetValue()
-Callback(O)
-end
-
-function u.SetDisabled(O,P:boolean)
-O.Disabled=P
-
-
-aa:SetColorTags({
-[K]=P and"LabelDisabled"or"Label"
-},true)
-
-
-for Q,R in M do
-R:SetDisabled(P)
-end
-end
-
-function u.SetValue(O,P)
-N=false
-
-
-for Q,R in P do
-local S=M[Q]
-assert(S,`No input object for index: {Q}`)
-
-S:SetValue(R)
-end
-
-N=true
-Callback(P)
-end
-
-
-A=Copy(A,{
-Size=UDim2.new(1,0,0,19),
-Label="",
-Callback=InputChanged,
-})
-
-
-for O,P in B do
-local Q=Copy(A,P)
-b:CheckConfig(Q,{
-Minimum=F[O],
-Maximum=G[O],
-})
-
-
-local R=J[C](J,Q)
-table.insert(M,R)
-end
-
-
-Merge(u,{
-Row=J,
-Inputs=M
-})
-
-N=true
-
-
-u:SetDisabled(D)
-u:SetValue(E)
-
-return L,I
-end,
-})
-
-local function GenerateMultiInput(aa:string,u:string,w:number,A)
-b:DefineElement(aa,{
-Base={
-Label=aa,
-Callback=d,
-InputType=u,
-InputConfigs=table.create(w,{}),
-BaseInputConfig={},
-},
-Create=function(B,C)
-local D=C.BaseInputConfig
-
-
-if A then
-Merge(D,A)
-end
-
-b:CheckConfig(D,{
-ReadOnly=C.ReadOnly,
-Format=C.Format,
-})
-
-C.MultiCallback=function(...)
-local E=C.Callback
-E(...)
-end
-
-return B:MultiElement(C)
-end,
-})
-end
-
-
-
-
-
-
-
-
-
-local function GenerateColor3Input(aa:string,u:string,w:number,A)
-A=A or{}
-b:DefineElement(aa,{
-Base={
-Label=aa,
-Callback=d,
-Value=b.Accent.Light,
-Disabled=false,
-Minimum={0,0,0},
-Maximum={255,255,255,100},
-BaseInputConfig={},
-InputConfigs={
-[1]={Format="R: %.f"},
-[2]={Format="G: %.f"},
-[3]={Format="B: %.f"},
-}
-},
-Create=function(B,C:InputColor3Flags__DARKLUA_TYPE_Y)local D=
-
-C.BaseInputConfig
-local E=C.InputConfigs
-local F=C.Value local G=
-C.Disabled
-
-
-if A.Color4 then
-E[4]={Format="A: %.f"}
-end
-
-
-local H=Copy(C,{
-Value={1,1,1},
-Callback=function(H,...)
-if C.ValueChanged then
-C:ValueChanged(...)
-end
-end,
-})
-
-local I,J=B[u](B,H)
-local K=b:MergeMetatables(C,I)
-local L=I.Row
-
-
-local M=L:Button{
-BackgroundTransparency=0,
-Size=UDim2.fromOffset(19,19),
-UiPadding=0,
-Text="",
-Ratio=1,
-ColorTag="",
-ElementStyle=""
-}
-
-local function Callback(...)
-local N=C.Callback
-return N(K,...)
-end
-
-local function SetPreview(N:Color3)
-M.BackgroundColor3=N
-Callback(N)
-end
-
-function C.ValueChanged(N,O)
-local P,Q,R=O[1],O[2],O[3]
-local S=Color3.fromRGB(P,Q,R)
-
-N.Value=S
-SetPreview(S)
-end
-
-function C.SetValue(N,O:Color3)
-N.Value=O
-SetPreview(O)
-
-
-I:SetValue{
-math.round(O.R*255),
-math.round(O.G*255),
-math.round(O.B*255)
-}
-end
-
-
-C:SetValue(F)
-
-return K,J
-end,
-})
-end
-
-
-
-
-
-
-
-
-
-local function GenerateCFrameInput(aa:string,u:string,w:number,A)
-b:DefineElement(aa,{
-Base={
-Label=aa,
-Callback=d,
-Disabled=false,
-Value=CFrame.new(10,10,10),
-Minimum=CFrame.new(0,0,0),
-Maximum=CFrame.new(100,100,100),
-BaseInputConfig={},
-InputConfigs={
-[1]={Format="X: %.f"},
-[2]={Format="Y: %.f"},
-[3]={Format="Z: %.f"}
-}
-},
-Create=function(B,C:InputCFrameFlags__DARKLUA_TYPE_Z)local E=
-
-C.BaseInputConfig
-local F=C.Value local G=
-C.Disabled
-local H=C.Maximum
-local I=C.Minimum
-
-local J=Copy(C,{
-Maximum={H.X,H.Y,H.Z},
-Minimum={I.X,I.Y,I.Z},
-Value={F.X,F.Y,F.Z},
-Callback=function(J,...)
-if C.ValueChanged then
-C:ValueChanged(...)
-end
-end,
-})
-
-
-local K,L=B[u](B,J)
-local M=b:MergeMetatables(C,K)local N=
-K.Row
-
-local function Callback(...)
-local O=C.Callback
-return O(M,...)
-end
-
-function C.ValueChanged(O,P)
-local Q,R,S=P[1],P[2],P[3]
-local T=CFrame.new(Q,R,S)
-O.Value=T
-Callback(T)
-end
-
-function C.SetValue(O,P:CFrame)
-O.Value=P
-
-
-K:SetValue{
-math.round(P.X),
-math.round(P.Y),
-math.round(P.Z)
-}
-end
-
-
-C:SetValue(F)
-
-return M,L
-end,
-})
-end
-
-GenerateMultiInput("InputInt2","InputInt",2,{NoButtons=true})
-GenerateMultiInput("InputInt3","InputInt",3,{NoButtons=true})
-GenerateMultiInput("InputInt4","InputInt",4,{NoButtons=true})
-GenerateMultiInput("SliderInt2","SliderInt",2)
-GenerateMultiInput("SliderInt3","SliderInt",3)
-GenerateMultiInput("SliderInt4","SliderInt",4)
-GenerateMultiInput("SliderFloat2","SliderFloat",2)
-GenerateMultiInput("SliderFloat3","SliderFloat",3)
-GenerateMultiInput("SliderFloat4","SliderFloat",4)
-GenerateMultiInput("DragInt2","DragInt",2)
-GenerateMultiInput("DragInt3","DragInt",3)
-GenerateMultiInput("DragInt4","DragInt",4)
-GenerateMultiInput("DragFloat2","DragFloat",2)
-GenerateMultiInput("DragFloat3","DragFloat",3)
-GenerateMultiInput("DragFloat4","DragFloat",4)
-
-GenerateColor3Input("InputColor3","InputInt3")
-GenerateColor3Input("SliderColor3","SliderInt3")
-GenerateColor3Input("DragColor3","DragInt3")
-
-GenerateCFrameInput("InputCFrame","InputInt3")
-GenerateCFrameInput("SliderCFrame","SliderInt3")
-GenerateCFrameInput("DragCFrame","DragInt3")
-
-b:DefineElement("SliderProgress",{
-Base={
-Label="Slider Progress",
-Type="Progress",
-ColorTag="Frame",
-},
-Create=r.SliderBase,
-})
-
-
-
-
-b:DefineElement("ProgressBar",{
-Base={
-Label="Progress Bar",
-Type="Progress",
-ReadOnly=true,
-MinValue=0,
-MaxValue=100,
-Format="% i%%",
-Interactable=false,
-ColorTag="Frame"
-},
-Create=function(aa,u)
-function u.SetPercentage(w,A:number)
-u:SetValue(A)
-end
-
-local w,A=aa:SliderBase(u)
-local B=w.Grab
-
-aa:TagElements{
-[B]={
-BackgroundColor3="ProgressBar"
-}
-}
-
-return w,A
-end,
-})
-
-
-
-
-
-
-
-
-b:DefineElement("Combo",{
-Base={
-Value="",
-Placeholder="",
-Callback=d,
-Items={},
-Disabled=false,
-WidthFitPreview=false,
-Label="Combo"
-},
-Create=function(aa,u:Combo__DARKLUA_TYPE_0)
-
-local w=u.Placeholder
-local A=u.NoAnimation
-local B=u.Selected
-local C=u.Label
-local F=u.Disabled
-local H=u.WidthFitPreview
-
-
-
-local I=b:InsertPrefab("Combo",u)
-local J=b:MergeMetatables(u,I)
-
-local K=I.Combo
-local L
-
-
-local M=aa:Label{
-Text=tostring(w),
-Parent=K,
-
-Name="ValueText"
-}
-local N=aa:ArrowButton{
-Parent=K,
-Interactable=false,
-Size=UDim2.fromOffset(19,19),
-LayoutOrder=2,
-}
-local O=aa:Label{
-Text=C,
-Parent=I,
-LayoutOrder=2,
-}
-
-
-if H then
-b:SetProperties(I,{
-AutomaticSize=Enum.AutomaticSize.XY,
-Size=UDim2.new(0,0,0,0)
-})
-b:SetProperties(K,{
-AutomaticSize=Enum.AutomaticSize.XY,
-Size=UDim2.fromScale(0,1)
-})
-end
-
-local function Callback(P,...)
-u:SetOpen(false)
-return u.Callback(J,P,...)
-end
-
-local function SetAnimationState(P:boolean,Q:boolean?)
-local R=aa:GetThemeKey"AnimationTweenInfo"
-
-I.Interactable=not P
-
-
-o:HeaderCollapseToggle{
-Tweeninfo=R,
-NoAnimation=Q,
-Collapsed=not P,
-Toggle=N.Icon,
-}
-end
-
-local function GetItems()
-local P=u.GetItems
-local Q=u.Items
-
-
-if P then
-return P()
-end
-
-
-return Q
-end
-
-function u.SetValueText(P,Q:string?)
-M.Text=tostring(Q)
-end
-
-function u.ClosePopup(P)
-if L then
-L:ClosePopup(true)
-end
-end
-
-function u.SetDisabled(P,Q:boolean)
-P.Disabled=Q
-I.Interactable=not Q
-aa:SetColorTags({
-[O]=Q and"LabelDisabled"or"Label"
-},true)
-end
-
-function u.SetValue(P,Q)
-local R=GetItems()
-local S=R[Q]
-local T=S or Q
-
-P.Selected=Q
-P.Value=T
-
-P:ClosePopup()
-
-
-if typeof(Q)=="number"then
-P:SetValueText(T)
-else
-P:SetValueText(Q)
-end
-
-return Callback(Q,T)
-end
-
-function u.SetOpen(P,Q:boolean)
-local R=P.Selected
-
-P.Open=Q
-SetAnimationState(Q,A)
-
-if not Q then
-
-P:ClosePopup()
-return
-end
-
-
-L=aa:Dropdown{
-RelativeTo=K,
-Items=GetItems(),
-Selected=R,
-OnSelected=function(...)
-u:SetValue(...)
-end,
-OnClosed=function()
-P:SetOpen(false)
-end,
-}
-
-return P
-end
-
-local function ToggleOpen()
-local P=u.Open
-u:SetOpen(not P)
-end
-
-
-K.Activated:Connect(ToggleOpen)
-
-
-SetAnimationState(false,true)
-u:SetDisabled(F)
-
-if B then
-u:SetValue(B)
-end
-
-
-b:SetAnimation(K,"Inputs")
-
-aa:TagElements{
-[K]="Frame",
-}
-
-return J,I
-end,
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-local aa={
-
-TileBarConfig={
-Close={
-Image=b.Icons.Close,
-IconPadding=UDim.new(0,3)
-},
-Collapse={
-Image=b.Icons.Arrow,
-IconPadding=UDim.new(0,3)
-},
-},
-
-CloseCallback=d,
-
-
-Collapsible=true,
-Open=true,
-Focused=false
-}
-
-function aa.Tween(u,w)
-b:CheckConfig(w,{
-Tweeninfo=u:GetThemeKey"AnimationTweenInfo"
-})
-return o:Tween(w)
-end
-
-function aa.TagElements(u,w:ObjectTable__DARKLUA_TYPE_d)local A=
-b.Debug
-
-
-local B=u.TagsList
-local C=u.Theme
-
-b:MultiUpdateColors{
-Theme=C,
-TagsList=B,
-Objects=w
-}
-end
-
-
-
-
-
-function aa.MakeTitleBarCanvas(u):TitleBarCanvas__DARKLUA_TYPE_1
-local w=u.TitleBar
-
-
-local A=b:MakeCanvas{
-WindowClass=u,
-Element=w
-}
-u.TitleBarCanvas=A
-
-return A
-end
-
-function aa.AddDefaultTitleButtons(u)
-local w=u.TileBarConfig local A=
-u.TitleBar
-
-local B=w.Collapse
-local C=w.Close
-
-
-local F=u.TitleBarCanvas
-if not F then
-F=u:MakeTitleBarCanvas()
-end
-
-b:CheckConfig(u,{
-
-Toggle=F:RadioButton{
-Icon=B.Image,
-IconPadding=B.IconPadding,
-LayoutOrder=1,
-Ratio=1,
-Size=UDim2.new(0,0),
-Callback=function()
-u:ToggleCollapsed()
-end,
-},
-CloseButton=F:RadioButton{
-Icon=C.Image,
-IconPadding=C.IconPadding,
-LayoutOrder=3,
-Ratio=1,
-Size=UDim2.new(0,0),
-Callback=function()
-u:SetVisible(false)
-end,
-},
-TitleLabel=F:Label{
-ColorTag="Title",
-LayoutOrder=2,
-Size=UDim2.new(1,0),
-Active=false,
-Fill=true,
-ClipsDescendants=true,
-AutomaticSize=Enum.AutomaticSize.XY
-}
-})
-
-
-u:TagElements{
-[u.TitleLabel]="WindowTitle"
-}
-end
-
-function aa.Close(u)
-local w=u.CloseCallback
-
-
-if w then
-local A=w(u)
-if A==false then return end
-end
-
-u:Remove()
-end
-
-function aa.SetVisible(u,w:boolean):WindowClass
-local A=u.WindowFrame
-local B=u.NoFocusOnAppearing
-
-u.Visible=w
-A.Visible=w
-
-
-if w and not B then
-b:SetFocusedWindow(u)
-end
-
-return u
-end
-
-function aa.ToggleVisibility(u,w:boolean):WindowClass
-local A=u.Visible
-u:SetVisible(not A)
-end
-
-function aa.GetWindowSize(u):Vector2
-return u.WindowFrame.AbsoluteSize
-end
-
-function aa.GetTitleBarSizeY(u):number
-local w=u.TitleBar
-return w.Visible and w.AbsoluteSize.Y or 0
-end
-
-function aa.SetTitle(u,w:string?):WindowClass
-u.TitleLabel.Text=tostring(w)
-return u
-end
-
-function aa.SetPosition(u,w):WindowClass
-u.WindowFrame.Position=w
-return u
-end
-
-function aa.SetSize(u,w:(Vector2|UDim2),A:boolean):WindowClass
-local B=u.WindowFrame
-
-
-if typeof(w)=="Vector2"then
-w=UDim2.fromOffset(w.X,w.Y)
-end
-
-B.Size=w
-u.Size=w
-
-return u
-end
-
-function aa.SetCanvasInteractable(u,w:boolean)
-local A=u.Body
-A.Interactable=w
-end
-
-function aa.Center(u):WindowClass
-local w=u:GetWindowSize()/2
-local A=UDim2.new(0.5,-w.X,0.5,-w.Y)
-
-u:SetPosition(A)
-return u
-end
-
-function aa.LoadStylesIntoElement(u,w)
-local A=w.Flags
-local B=w.Object
-local C=w.Canvas
-
-local F={FrameRounding=
-function()
-if A.CornerRadius then return end
-if not C then return end
-
-local F=B:FindFirstChild("FrameRounding",true)
-if not F then return end
-
-C:TagElements{
-[F]="FrameRounding"
-}
-end,
-}
-
-for H,I in F do
-local J=u:GetThemeKey(H)
-if J==nil then continue end
-
-task.spawn(I,J)
-end
-end
-
-function aa.SetTheme(u,w:string):WindowClass
-local A=b.ThemeConfigs
-
-local B=u.TagsList local C=
-u.Focused
-local F=u.WindowState
-
-
-if not w then
-w=u.Theme
-end
-
-
-assert(A[w],`{w} is not a valid theme!`)
-
-u.Theme=w
-
-
-b:MultiUpdateColors{
-Animate=false,
-Theme=w,
-Objects=B
-}
-
-
-u:SetFocusedColors(F)
-
-return u
-end
-
-function aa.SetFocusedColors(u,w:string)
-
-local A=u.WindowFrame
-local B=u.TitleBar
-local C=u.Theme
-local F=u.TitleLabel
-local H=u:GetThemeKey"AnimationTweenInfo"
-
-local I=A:FindFirstChildOfClass"UIStroke"
-
-
-local J={
-Focused={
-[I]="BorderActive",
-[B]="TitleBarBgActive",
-[F]={
-TextColor3="TitleActive"
-}
-},
-UnFocused={
-[I]="Border",
-[B]="TitleBarBg",
-[F]={
-TextColor3="Title"
-}
-},
-Collapsed={
-[I]="Border",
-[B]="TitleBarBgCollapsed",
-[F]={
-TextColor3="Title"
-}
-}
-}
-
-
-b:MultiUpdateColors{
-Tweeninfo=H,
-Animate=true,
-Objects=J[w],
-Theme=C,
-}
-end
-
-function aa.SetFocused(u,w:true)
-w=w==nil and true or w
-
-
-local A=u.Collapsed
-local B=u.WindowState
-
-
-if w then
-b:SetFocusedWindow(u)
-end
-
-
-local C=A and"Collapsed"or w and"Focused"or"UnFocused"
-
-
-if C==B then return end
-u.Focused=w
-u.WindowState=C
-
-
-u:SetFocusedColors(C)
-end
-
-function aa.GetThemeKey(u,w:string)
-return b:GetThemeKey(u.Theme,w)
-end
-
-function aa.ResetColors(u):WindowClass
-local w=b.Theme
-local A=u.Theme
-local B=u.TagsList
-
-
-table.clear(A)
-
-b:MultiUpdateColors{
-Animate=false,
-Theme=w,
-Objects=B
-}
-
-return aa
-end
-
-function aa.SetCollapsible(u,w:boolean):WindowClass
-u.Collapsible=w
-return u
-end
-
-function aa.ToggleCollapsed(u,w:boolean?):WindowClass
-local A=u.Collapsed
-local B=u.Collapsible
-
-
-if not w and not B then return u end
-
-u:SetCollapsed(not A)
-return u
-end
-
-function aa.SetCollapsed(u,w:boolean,A:false):WindowClass
-local B=u.WindowFrame
-local C=u.Body
-local F=u.Toggle
-local H=u.ResizeGrab
-local I=u.Size
-local J=u.AutoSize
-local K=u:GetThemeKey"AnimationTweenInfo"
-
-local L=u:GetWindowSize()
-local M=u:GetTitleBarSizeY()
-
-local N=F.Icon
-local O=UDim2.fromOffset(L.X,M)
-
-u.Collapsed=w
-u:SetCollapsible(false)
-
-
-u:SetFocused(not w)
-
-
-o:HeaderCollapse{
-Tweeninfo=K,
-NoAnimation=A,
-Collapsed=w,
-Toggle=N,
-Resize=B,
-NoAutomaticSize=not J,
-Hide=C,
-
-ClosedSize=O,
-OpenSize=I,
-Completed=function()
-u:SetCollapsible(true)
-end
-}
-
-
-u:Tween{
-Object=H,
-NoAnimation=A,
-EndProperties={
-TextTransparency=w and 1 or 0.6,
-Interactable=not w
-}
-}
-
-return u
-end
-
-function aa.UpdateConfig(u,w)
-local A={
-NoTitleBar=function(A)
-local B=u.TitleBar
-B.Visible=not A
-end,
-NoClose=function(A)
-local B=u.CloseButton
-B.Visible=not A
-end,
-NoCollapse=function(A)
-local B=u.Toggle
-B.Visible=not A
-end,
-NoTabsBar=function(A)
-local B=u.WindowTabSelector
-if not B then return end
-
-local C=B.TabsBar
-C.Visible=not A
-end,
-NoScrollBar=function(A)
-local B=A and 0 or 9
-local C=u.NoScroll
-local F=u.WindowTabSelector
-local H=u.ContentCanvas
-
-
-if F then
-F.Body.ScrollBarThickness=B
-end
-
-if not C then
-H.ScrollBarThickness=B
-end
-end,
-NoScrolling=function(A)
-local B=u.NoScroll
-local C=u.WindowTabSelector
-local F=u.ContentCanvas
-
-if C then
-C.Body.ScrollingEnabled=not A
-end
-if not B then
-F.ScrollingEnabled=not A
-end
-end,
-NoMove=function(A)
-local B=u.DragConnection
-B:SetEnabled(not A)
-end,
-NoResize=function(A)
-local B=u.ResizeConnection
-B:SetEnabled(not A)
-end,
-NoBackground=function(A)
-local B=u:GetThemeKey"WindowBgTransparency"
-local C=u.CanvasFrame
-C.BackgroundTransparency=A and 1 or B
-end,
-}
-
-
-Merge(u,w)
-
-
-for B,C in w do
-local F=A[B]
-if F then
-F(C)
-end
-end
-
-return u
-end
-
-
-function aa.Remove(u)
-local w=u.WindowFrame
-local A=u.WindowClass
-local B=b.Windows
-
-
-local C=table.find(B,A)
-if C then
-table.remove(B,C)
-end
-
-
-w:Destroy()
-end
-
-function aa.MenuBar(u,w,...)
-local A=u.ContentCanvas
-local B=u.ContentFrame
-
-w=w or{}
-
-Merge(w,{
-Parent=B,
-Layout=-1
-})
-
-return A:MenuBar(w,...)
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-b:DefineElement("Window",{
-Export=true,
-Base={
-Theme="DarkTheme",
-NoSelect=false,
-NoTabs=true,
-NoScroll=false,
-Collapsed=false,
-Visible=true,
-AutoSize=false,
-MinimumSize=Vector2.new(160,90),
-OpenOnDoubleClick=true,
-NoAutoTheme=true,
-NoWindowRegistor=false,
-NoBringToFrontOnFocus=false,
-IsDragging=false,
-},
-Create=function(u,w:WindowFlags__DARKLUA_TYPE_2)
-
-local A=b.Windows
-local B=b.Container.Windows
-
-b:CheckConfig(w,{
-Parent=B,
-Title=b.DefaultTitle
-})
-
-
-local C=w.NoDefaultTitleBarButtons
-local F=w.Collapsed
-local H=w.MinimumSize
-local I=w.Title
-local J=w.NoTabs
-local K=w.NoScroll
-local L=w.Theme
-local M=w.AutomaticSize
-local N=w.NoWindowRegistor
-local O=w.AutoSelectNewTabs local P=
-w.OpenOnDoubleClick local Q=
-w.NoCollapse
-local R=w.Parent~=B
-
-local S={
-Scroll=not K,
-Fill=not M and true or nil,
-UiPadding=UDim.new(0,J and 8 or 0),
-AutoSelectNewTabs=O
-}
-
-
-if M then
-Merge(S,{
-AutomaticSize=M,
-Size=UDim2.new(1,0)
-})
-end
-
-
-local T:CanvasGroup=b:InsertPrefab("Window",w)
-local U:Frame=T.Content
-local V:Frame=U.TitleBar
-
-
-local W=NewClass(aa)
-
-
-local X=b:MakeCanvas{
-Element=U,
-WindowClass=W,
-Class=W
-}
-
-
-local Y,Z,_
-local ab,ac=X:Canvas(Copy(S,{
-Parent=U,
-CornerRadius=UDim.new(0,0),
-
-}))
-
-
-local ad=b:MakeResizable{
-MinimumSize=H,
-Resize=T,
-OnUpdate=function(ad)
-W:SetSize(ad,true)
-end,
-}
-
-
-Merge(W,w)
-Merge(W,{
-WindowFrame=T,
-ContentFrame=U,
-CanvasFrame=ac,
-ResizeGrab=ad.Grab,
-TitleBar=V,
-Elements=r,
-TagsList={},
-_SelectDisabled=R,
-
-
-ResizeConnection=ad,
-HoverConnection=b:DetectHover(U),
-DragConnection=b:MakeDraggable{
-Grab=U,
-Move=T,
-SetPosition=function(ae,af:UDim2)
-local ag=Y:GetThemeKey"AnimationTweenInfo"
-
-o:Tween{
-Tweeninfo=ag,
-Object=ae.Move,
-EndProperties={
-Position=af
-}
-}
-end,
-OnDragStateChange=function(ae:boolean)
-W.IsDragging=ae
-ac.Interactable=not ae
-
-
-if ae then
-b:SetFocusedWindow(_)
-end
-
-
-b:SetWindowFocusesEnabled(not ae)
-end,
-},
-})
-
-
-if J then
-
-Y,Z=ab,ac
-else
-
-Y,Z=ab:TabSelector(S)
-W.WindowTabSelector=Y
-end
-
-
-_=b:MergeMetatables(W,Y)
-
-
-Merge(W,{
-ContentCanvas=Y,
-WindowClass=_,
-Body=Z
-})
-
-
-b:ConnectMouseEvent(U,{
-DoubleClick=true,
-OnlyMouseHovering=V,
-Callback=function(...)
-if not W.OpenOnDoubleClick then return end
-if W.NoCollapse then return end
-
-W:ToggleCollapsed()
-end,
-})
-
-
-if not C then
-W:AddDefaultTitleButtons()
-end
-
-
-W:SetTitle(I)
-W:SetCollapsed(F,true)
-
-
-W:SetTheme(L)
-W:UpdateConfig(w)
-
-
-W:SetFocused()
-
-
-local ae=ad.Grab
-b:SetAnimation(ae,"TextButtons")
-
-_:TagElements{
-[ae]="ResizeGrab",
-[V]="TitleBar",
-[ac]="Window"
-}
-
-
-if not N then
-table.insert(A,_)
-end
-
-return _,T
-end,
-})
-
-
-
-
-b:DefineElement("TabsWindow",{
-Export=true,
-Base={
-NoTabs=false,
-AutoSelectNewTabs=true
-},
-Create=function(ab,ac:TabsWindowFlags__DARKLUA_TYPE_3)
-return ab:Window(ac)
-end,
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-b:DefineElement("PopupCanvas",{
-Base={
-AutoClose=false,
-Scroll=false,
-Visible=true,
-Spacing=UDim.new(0,1),
-AutomaticSize=Enum.AutomaticSize.XY,
-MaxSizeY=150,
-MinSizeX=100,
-MaxSizeX=math.huge,
-OnClosed=d
-},
-Create=function(ab,ac:PopupCanvas__DARKLUA_TYPE_4)
-ac.Parent=b.Container.Overlays
-
-local ad=ac.RelativeTo
-local ae=ac.MaxSizeY
-local af=ac.MinSizeX
-local ag=ac.MaxSizeX
-local u=ac.Visible
-local w=ac.AutoClose
-local A=ac.NoAnimation
-
-
-local B,C=ab:OverlayScroll(ac)
-local F=C.UIStroke
-
-local H=F.Thickness
-local I=C.Parent.AbsolutePosition
-
-local J,K,L,M
-
-
-local N=b:DetectHover(C,{
-MouseOnly=true,
-OnInput=function(N,O)
-if N then return end
-if not C.Visible then return end
-ac:OnFocusLost()
-end,
-})
-
-function ac.FetchScales(O)
-
-local Q=B:GetCanvasSize()
-
-J=ad.AbsolutePosition
-K=ad.AbsoluteSize
-
-L=math.clamp(Q.Y,K.Y,ae)
-M=math.clamp(K.X,af,ag)
-end
-
-function ac.UpdatePosition(O)
-C.Position=UDim2.fromOffset(
-J.X-I.X+H,
-J.Y-I.Y+K.Y
-)
-end
-
-function ac.GetScale(O,Q:boolean):UDim2
-local R=UDim2.fromOffset(M,L)
-local S=UDim2.fromOffset(M,0)
-
-return Q and R or S
-end
-
-function ac.IsMouseHovering(O):boolean
-return N.Hovering
-end
-
-function ac.OnFocusLost(O)
-local Q=O.OnClosed
-
-O:SetPopupVisible(false)
-Q(O)
-
-
-if w then
-O:ClosePopup()
-end
-end
-
-function ac.ClosePopup(O,Q:boolean?)
-O:SetPopupVisible(false,A,Q)
-N:Disconnect()
-C:Remove()
-end
-
-function ac.SetPopupVisible(O,Q:boolean,R:boolean?)
-
-if C.Visible==Q then return end
-
-ad.Interactable=not Q
-O:UpdateScales(Q,A,R)
-O.Visible=Q
-end
-
-function ac.UpdateScales(O,Q:boolean,R:boolean,S:boolean?)
-local T=B:GetThemeKey"AnimationTweenInfo"
-
-if Q==nil then
-Q=C.Visible
-end
-
-ac:FetchScales()
-ac:UpdatePosition()
-
-local U=o:Tween{
-Tweeninfo=T,
-Object=C,
-NoAnimation=R,
-EndProperties={
-Size=ac:GetScale(Q),
-Visible=Q,
-}
-}
-
-
-if U and S then
-U.Completed:Wait()
-end
-end
-
-
-ac:UpdateScales(false,true)
-ac:SetPopupVisible(u)
-
-B.OnChildChange:Connect(ac.UpdateScales)
-
-return B,C
-end,
-})
-
-b:DefineElement("PopupModal",{
-Export=true,
-Base={
-NoAnimation=false,
-NoCollapse=true,
-NoClose=true,
-NoResize=true,
-NoSelect=true,
-NoAutoFlags=true,
-NoWindowRegistor=true,
-NoScroll=true,
-},
-Create=function(ab,ac:WindowFlags__DARKLUA_TYPE_2)
-ac.Parent=b.Container.Overlays
-
-local ad=ab.WindowClass
-
-
-local ae=ac.NoAnimation
-local af
-
-
-if ad then
-af=ad:GetThemeKey"ModalWindowDimTweenInfo"
-ac.Theme=ad.Theme
-end
-
-
-local ag=b:InsertPrefab("ModalEffect",ac)
-
-
-local u=ab:Window(Copy(ac,{
-NoAutoFlags=false,
-Parent=ag,
-AnchorPoint=Vector2.new(0.5,0.5),
-Position=UDim2.fromScale(0.5,0.5),
-Size=UDim2.fromOffset(372,38),
-AutomaticSize=Enum.AutomaticSize.Y
-}))
-
-function ac.ClosePopup(w)
-o:Tween{
-Object=ag,
-Tweeninfo=af,
-NoAnimation=ae,
-EndProperties={
-BackgroundTransparency=1
-},
-Completed=function()
-ag:Destroy()
-end
-}
-
-u:Close()
-end
-
-
-o:Tween{
-Object=ag,
-Tweeninfo=af,
-NoAnimation=ae,
-StartProperties={
-BackgroundTransparency=1
-},
-EndProperties={
-BackgroundTransparency=0.8
-}
-}
-
-
-ab:TagElements{
-[ag]="ModalWindowDim"
-}
-
-
-local w=b:MergeMetatables(ac,u)
-return w,ag
-end,
-})
-
-local ab=`rbxassetid://`..b.PrefabsId
-b:Init{
-Prefabs=game:GetService"InsertService":LoadLocalAsset(ab),
-}
-
-return b end function a.b()
-
-
-
-return function(aa)
-for ab,ac in ipairs(aa)do
-local ad=getfenv(0)
-
-for ae in string.gmatch(ac,"[^%.]+")do
-ad=ad and ad[ae]
-if ad==nil then break end
-end
-
-if not ad then
-return false,ac
-end
-end
-
-return true
-end end function a.c()
-
-
-
-return function()
-if not cache or not cache.invalidate then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa=game:GetService"BadgeService"
-
-if aa~=game:GetService"BadgeService"then
-return{
-status=500,
-message="Did a cosmic ray just hit your computer? This should never evaluate"
-}
-end
-
-cache.invalidate(aa)
-
-if aa==game:GetService"BadgeService"then
-return{
-status=500,
-message="Reference to service object retained"
-}
-elseif typeof(aa)~="Instance"then
-return{
-status=500,
-message="Reference type wasn't retained"
-}
-end
-
-
-local ab,ac=a.load'b'{}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {ac}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.d()
-
-
-
-
-return function()
-if not cache or not cache.iscached then
-return{
-status=400,
-message="Global not found",
-}
-elseif not cache.invalidate then
-return{
-status=401,
-message="Dependency 'cache.invalidate' missing",
-}
-end
-
-
-local aa=Instance.new"Part"
-
-if not cache.iscached(aa)then
-return{
-status=500,
-message="Cached part assumed uncached"
-}
-end
-
-cache.invalidate(aa)
-
-if cache.iscached(aa)then
-return{
-status=500,
-message="Uncached part assumed cached"
-}
-end
-
-
-local ab,ac=a.load'b'{}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {ac}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.e()
-
-
-
-
-return function()
-if not cache or not cache.replace then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa=game:GetService"BadgeService"
-local ab=game:GetService"Stats"
-
-if aa==ab then
-return{
-status=500,
-message="Did a cosmic ray just hit your computer? This should never evaluate"
-}
-end
-
-cache.replace(aa,ab)
-
-if aa==ab then
-return{
-status=500,
-message="Reference is old reference"
-}
-elseif aa==game:GetService"Stats"then
-return{
-status=500,
-message="Reference is old references object"
-}
-end
-
-
-local ac,ad=a.load'b'{}
-
-if not ac then
-return{
-status=501,
-message=`Alias not found: {ad}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.f()
-
-
-
-
-return function()
-if not islclosure then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local function luaClosure()
-return 1
-end
-local aa=print
-
-if not islclosure(luaClosure)then
-return{
-status=500,
-message="Failed to identify lua closure",
-}
-elseif islclosure(aa)then
-return{
-status=500,
-message="Identified C closure as lua closure",
-}
-end
-
-
-local ab,ac=a.load'b'{}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {ac}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.g()
-
-
-
-
-return function()
-if not iscclosure then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local function luaClosure()
-return 1
-end
-local aa=print
-local ab=newcclosure(function()
-return 1
-end)
-
-if iscclosure(luaClosure)then
-return{
-status=500,
-message="Lua closure identified as C closure",
-}
-elseif not iscclosure(aa)then
-return{
-status=500,
-message="C closure not identified as C closure",
-}
-elseif not iscclosure(ab)then
-return{
-status=500,
-message="C closure not identified as C closure",
-}
-end
-
-
-local ac,ad=a.load'b'{}
-
-if not ac then
-return{
-status=501,
-message=`Alias not found: {ad}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.h()
-
-
-
-
-return function()
-if not isexecutorclosure then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local function luaClosure()
-return 1
-end
-
-if not isexecutorclosure(isexecutorclosure)then
-return{
-status=500,
-message="Failed to identify an executor closure",
-}
-elseif not isexecutorclosure(luaClosure)then
-return{
-status=500,
-message="Did not identify an lua closure as an executor closure",
-}
-elseif isexecutorclosure(print)then
-return{
-status=500,
-message="Identified a lua standard closure as an executor closure",
-}
-end
-
-
-local aa,ab=a.load'b'{
-"checkclosure",
-"isourclosure"
-}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.i()
-
-
-
-
-return function()
-if not newcclosure then
-return{
-status=400,
-message="Global not found",
-}
-elseif not iscclosure then
-return{
-status=500,
-message="iscclosure required to test newcclosure",
-}
-end
-
-local aa=function(...)
-return...
-end
-local ab=newcclosure(aa)
-
-if iscclosure(aa)then
-return{
-status=500,
-message="iscclosure returned true a lua closure",
-}
-elseif not iscclosure(ab)then
-return{
-status=500,
-message="Returned false for a C closure",
-}
-elseif ab(1)~=1 then
-return{
-status=500,
-message="C closure did not return the expected value",
-}
-end
-
-
-local ac,ad=a.load'b'{}
-
-if not ac then
-return{
-status=501,
-message=`Alias not found: {ad}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.j()
-
-
-
-return function()
-if not clonefunction then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local function originalFunction()
-return 1
-end
-local aa=clonefunction(originalFunction)
-
-if aa==originalFunction then
-return{
-status=500,
-message="Cloned function is the same as the original",
-}
-elseif aa()~=1 then
-return{
-status=500,
-message="Cloned function behavior mismatch",
-}
-end
-
-
-local ab,ac=a.load'b'{}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {ac}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.k()
-
-
-
-
-return function()
-if not hookfunction then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local function originalFunc1()
-return 1
-end
-
-local aa=originalFunc1
-
-local function function2()
-return 2
-end
-
-if aa()~=1 then
-return{
-status=500,
-message="This should never evaluate. Did a cosmic ray hit your computer and flip a bit?",
-}
-end
-
-local ab=hookfunction(aa,function2)
-
-if aa()~=2 then
-return{
-status=500,
-message="Hooked function did not return the expected value",
-}
-elseif ab()~=1 then
-return{
-status=500,
-message="Old function did not return the expected value",
-}
-end
-
-hookfunction(aa,ab)
-
-if aa()~=1 then
-return{
-status=500,
-message="Restored function did not return the expected value",
-}
-end
-
-
-local ac,ad=a.load'b'{
-"hookfunc",
-"replaceclosure",
-}
-
-if not ac then
-return{
-status=501,
-message=`Alias not found: {ad}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.l()
-
-
-
-
-return function()
-if not restorefunction then
-return{
-status=400,
-message="Global not found",
-}
-elseif not hookfunction then
-return{
-status=401,
-message="'hookfunction' needed to test this",
-}
-end
-
-local function originalFunc1()
-return 1
-end
-
-local aa=originalFunc1
-
-local function function2()
-return 2
-end
-
-if aa()~=1 then
-return{
-status=500,
-message="This should never evaluate. Did a cosmic ray hit your computer and flip a bit?",
-}
-end
-
-local ab=hookfunction(aa,function2)
-
-if aa()~=2 then
-return{
-status=500,
-message="Hooked function did not return the expected value",
-}
-elseif ab()~=1 then
-return{
-status=500,
-message="Old function did not return the expected value",
-}
-end
-
-restorefunction(aa)
-
-if aa()~=1 then
-hookfunction(aa,ab)
-return{
-status=500,
-message="Restored function did not return the expected value",
-}
-end
-
-
-local ac,ad=a.load'b'{
-"restorefunc",
-}
-
-if not ac then
-return{
-status=501,
-message=`Alias not found: {ad}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.m()
-
-
-
-
-return function()
-if not getfunctionhash then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local function hexEncoded(aa)
-return#aa==96 and aa:match"^[0-9a-fA-F]+$"~=nil
-end
-
-local aa=function()end
-local ab=function(...)end
-local ac=function()end
-local ad=function()return 1 end
-local ae=function()return 2 end
-local af=pcall(function()
-getfunctionhash(print)
-end)
-
-if not hexEncoded(getfunctionhash(aa))then
-return{
-status=500,
-message="Hash is not hex encoded",
-}
-elseif getfunctionhash(aa)==getfunctionhash(ab)then
-return{
-status=500,
-message="Unequal functions returned equal hashes",
-}
-elseif getfunctionhash(aa)~=getfunctionhash(ac)then
-return{
-status=500,
-message="Equal functions returned unequal hashes",
-}
-elseif getfunctionhash(ad)==getfunctionhash(ae)then
-return{
-status=500,
-message="Unequal returns gave equal returns",
-}
-elseif af then
-return{
-status=500,
-message="Passed when given a lua standard C closure",
-}
-end
-
-
-local ag,b=a.load'b'{}
-
-if not ag then
-return{
-status=501,
-message=`Alias not found: {b}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.n()
-
-
-
-
-return function()
-if not checkcaller then
-return{
-status=400,
-message="Global not found",
-}
-elseif not hookmetamethod then
-return{
-status=401,
-message="Dependency 'hookmetamethod' missing",
-}
-end
-
-local aa=checkcaller()
-
-local ab
-local ac
-ac=hookmetamethod(game,"__namecall",function(...)
-if ab==nil then
-ab=checkcaller()
-end
-return ac(...)
-end)
-
-tostring(game)
-
-task.wait(0.1)
-
-hookmetamethod(game,"__namecall",ac)
-
-if aa~=true then
-return{
-status=500,
-message="Returned false in executor thread",
-}
-elseif ab~=false then
-return{
-status=500,
-message="Did not return false in a hook",
-}
-end
-
-
-local ad,ae=a.load'b'{}
-
-if not ad then
-return{
-status=501,
-message=`Alias not found: {ae}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.o()
-
-local aa={}
-local ab={}
-
-for ac=65,90 do
-table.insert(aa,ac)
-end
-
-for ac=97,122 do
-table.insert(aa,ac)
-end
-
-for ac=48,57 do
-table.insert(aa,ac)
-end
-table.insert(aa,43)
-table.insert(aa,47)
-for ac,ad in ipairs(aa)do
-ab[ad]=ac
-end
-local ac={}
-local ad=bit32.rshift
-local ae=bit32.lshift
-local af=bit32.band
-
-
-
-
-
-function ac.Encode(ag)
-local b={}
-local c=0
-for d=1,#ag,3 do
-local e,f,g=string.byte(ag,d,d+2)
-local h=ad(e,2)
-local i=ae(af(e,3),4)+ad(f or 0,4)
-local j=ae(af(f or 0,15),2)+ad(g or 0,6)
-local k=af(g or 0,63)
-c=c+1
-b[c]=aa[h+1]
-c=c+1
-b[c]=aa[i+1]
-c=c+1
-b[c]=f and aa[j+1]or 61
-c=c+1
-b[c]=g and aa[k+1]or 61
-end
-local d={}
-local e=0
-local f
-for g=1,c,4096 do
-e=e+1
-f=g+4096-1
-d[e]=string.char(table.unpack(
-b,
-g,
-f>c and c or f
-))
-end
-return table.concat(d)
-end
-
-
-
-
-
-function ac.Decode(ag)
-local b={}
-local c=0
-for d=1,#ag,4 do
-local e,f,g,h=string.byte(ag,d,d+3)
-local i=ab[e]-1
-local j=ab[f]-1
-local k=(ab[g]or 1)-1
-local l=(ab[h]or 1)-1
-local m=ae(i,2)+ad(j,4)
-local n=ae(af(j,15),4)+ad(k,2)
-local o=ae(af(k,3),6)+l
-c=c+1
-b[c]=m
-if g~=61 then
-c=c+1
-b[c]=n
-end
-if h~=61 then
-c=c+1
-b[c]=o
-end
-end
-local d={}
-local e=0
-local f
-for g=1,c,4096 do
-e=e+1
-f=g+4096-1
-d[e]=string.char(table.unpack(
-b,
-g,
-f>c and c or f
-))
-end
-return table.concat(d)
-end
-return ac end function a.p()
-
-
-
-
-local aa={}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-local function plainFind(ab,ac)
-return string.find(ab,ac,0,true)
-end
-
-local function streamer(ab):Streamer__DARKLUA_TYPE_5
-local ac={}
-ac.Offset=0
-ac.Source=ab
-ac.Length=string.len(ab)
-ac.IsFinished=false
-ac.LastUnreadBytes=0
-
-function ac.read(ad:Streamer__DARKLUA_TYPE_5,ae:number?,af:boolean?):string
-local ag=ae or 1
-local b=if af~=nil then af else true
-local c=string.sub(ad.Source,ad.Offset+1,ad.Offset+ag)
-
-local d=string.len(c)
-local e=ag-d
-
-if b then
-ad:seek(ag)
-end
-
-ad.LastUnreadBytes=e
-return c
-end
-
-function ac.seek(ad:Streamer__DARKLUA_TYPE_5,ae:number)
-local af=ae or 1
-
-ad.Offset=math.clamp(ad.Offset+af,0,ad.Length)
-ad.IsFinished=ad.Offset>=ad.Length
-end
-
-function ac.append(ad:Streamer__DARKLUA_TYPE_5,ae:string)
-
-ad.Source..=ae
-ad.Length=string.len(ad.Source)
-ad:seek(0)
-end
-
-function ac.toEnd(ad:Streamer__DARKLUA_TYPE_5)
-ad:seek(ad.Length)
-end
-
-return ac
-end
-
-function aa.compress(ab:string):string
-local ac:BlockData__DARKLUA_TYPE_6={}
-local ad=streamer(ab)
-
-if ad.Length>12 then
-local ae=ad:read(4)
-
-local af=ae
-local ag=ae
-local b=""
-local c=""
-local d=true
-
-repeat
-d=true
-local e=ad:read()
-
-if plainFind(af,e)then
-local f=ad:read(3,false)
-
-if string.len(f)<3 then
-
-c=e..f
-ad:seek(3)
-else
-b=e..f
-
-local g=plainFind(af,b)
-if g then
-ad:seek(3)
-repeat
-local h=ad:read(1,false)
-local i=b..h
-
-local j=plainFind(af,i)
-if j then
-b=i
-g=j
-ad:seek(1)
-end
-until not plainFind(af,i)or ad.IsFinished
-
-local h=string.len(b)
-local i=true
-
-if ad.Length-ad.Offset<=5 then
-c=b
-i=false
-
-end
-
-if i then
-d=false
-
-
-local j=string.len(af)-g
-af=af..b
-
-table.insert(ac,{
-Literal=ag,
-LiteralLength=string.len(ag),
-MatchOffset=j+1,
-MatchLength=h,
-})
-ag=""
-end
-else
-c=e
-end
-end
-else
-c=e
-end
-
-if d then
-ag=ag..c
-af=af..e
-end
-until ad.IsFinished
-table.insert(ac,{
-Literal=ag,
-LiteralLength=string.len(ag)
-})
-else
-local ae=ad.Source
-ac[1]={
-Literal=ae,
-LiteralLength=string.len(ae)
-}
-end
-
-
-
-local ae=string.rep("\x00",4)
-local function write(af)
-ae=ae..af
-end
-
-for af,ag in ac do
-local b=ag.LiteralLength
-local c=(ag.MatchLength or 4)-4
-
-
-local d=math.clamp(b,0,15)
-local e=math.clamp(c,0,15)
-
-local f=bit32.lshift(d,4)+e
-write(string.pack("<I1",f))
-
-if b>=15 then
-b=b-15
-
-repeat
-local g=math.clamp(b,0,0xFF)
-write(string.pack("<I1",g))
-if g==0xFF then
-b=b-255
-end
-until g<0xFF
-end
-
-
-write(ag.Literal)
-
-if af~=#ac then
-
-write(string.pack("<I2",ag.MatchOffset))
-
-
-if c>=15 then
-c=c-15
-
-repeat
-local g=math.clamp(c,0,0xFF)
-write(string.pack("<I1",g))
-if g==0xFF then
-c=c-255
-end
-until g<0xFF
-end
-end
-end
-
-local af=string.len(ae)-4
-local ag=ad.Length
-
-return string.pack("<I4",af)..string.pack("<I4",ag)..ae
-end
-
-function aa.decompress(ab:string):string
-local ac=streamer(ab)
-
-local ad=string.unpack("<I4",ac:read(4))
-local ae=string.unpack("<I4",ac:read(4))
-
-if ad==0 then
-return ac:read(ae)
-end
-
-local af=streamer""
-
-repeat
-local ag=string.byte(ac:read())
-local b=bit32.rshift(ag,4)
-local c=bit32.band(ag,15)+4
-
-if b>=15 then
-repeat
-local d=string.byte(ac:read())
-b+=d
-until d~=0xFF
-end
-
-local d=ac:read(b)
-af:append(d)
-af:toEnd()
-if af.Length<ae then
-
-local e=string.unpack("<I2",ac:read(2))
-if c>=19 then
-repeat
-local f=string.byte(ac:read())
-c+=f
-until f~=0xFF
-end
-
-af:seek(-e)
-local f=af.Offset
-local g=af:read(c)
-local h=af.LastUnreadBytes
-local i
-if h then
-repeat
-af.Offset=f
-i=af:read(h)
-h=af.LastUnreadBytes
-g..=i
-until h<=0
-end
-
-af:append(g)
-af:toEnd()
-end
-
-until af.Length>=ae
-
-return af.Source
-end
-
-return aa end function a.q()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-local aa={99,124,119,123,242,107,111,197,48,1,103,43,254,215,171,118,202,
-130,201,125,250,89,71,240,173,212,162,175,156,164,114,192,183,253,147,38,54,
-63,247,204,52,165,229,241,113,216,49,21,4,199,35,195,24,150,5,154,7,
-18,128,226,235,39,178,117,9,131,44,26,27,110,90,160,82,59,214,179,41,
-227,47,132,83,209,0,237,32,252,177,91,106,203,190,57,74,76,88,207,208,
-239,170,251,67,77,51,133,69,249,2,127,80,60,159,168,81,163,64,143,146,
-157,56,245,188,182,218,33,16,255,243,210,205,12,19,236,95,151,68,23,196,
-167,126,61,100,93,25,115,96,129,79,220,34,42,144,136,70,238,184,20,222,
-94,11,219,224,50,58,10,73,6,36,92,194,211,172,98,145,149,228,121,231,
-200,55,109,141,213,78,169,108,86,244,234,101,122,174,8,186,120,37,46,28,
-166,180,198,232,221,116,31,75,189,139,138,112,62,181,102,72,3,246,14,97,
-53,87,185,134,193,29,158,225,248,152,17,105,217,142,148,155,30,135,233,206,
-85,40,223,140,161,137,13,191,230,66,104,65,153,45,15,176,84,187,22}
-local ab={82,9,106,213,48,54,165,56,191,64,163,158,129,243,215,251,124,
-227,57,130,155,47,255,135,52,142,67,68,196,222,233,203,84,123,148,50,166,
-194,35,61,238,76,149,11,66,250,195,78,8,46,161,102,40,217,36,178,118,
-91,162,73,109,139,209,37,114,248,246,100,134,104,152,22,212,164,92,204,93,
-101,182,146,108,112,72,80,253,237,185,218,94,21,70,87,167,141,157,132,144,
-216,171,0,140,188,211,10,247,228,88,5,184,179,69,6,208,44,30,143,202,
-63,15,2,193,175,189,3,1,19,138,107,58,145,17,65,79,103,220,234,151,
-242,207,206,240,180,230,115,150,172,116,34,231,173,53,133,226,249,55,232,28,
-117,223,110,71,241,26,113,29,41,197,137,111,183,98,14,170,24,190,27,252,
-86,62,75,198,210,121,32,154,219,192,254,120,205,90,244,31,221,168,51,136,
-7,199,49,177,18,16,89,39,128,236,95,96,81,127,169,25,181,74,13,45,
-229,122,159,147,201,156,239,160,224,59,77,174,42,245,176,200,235,187,60,131,
-83,153,97,23,43,4,126,186,119,214,38,225,105,20,99,85,33,12,125}
-
-
-local ac={0,1,2,4,8,16,32,64,128,27,54,108,216,171,77,154,47,94,
-188,99,198,151,53,106,212,179,125,250,239,197,145,57}
-
-local function xtime(ad)
-local ae=bit32.lshift(ad,1)
-return if bit32.band(ad,128)==0 then ae else bit32.bxor(ae,27)%256
-end
-
-
-local function subBytes(ad,ae)
-ae=if ae then ab else aa
-for af=1,4 do
-for ag=1,4 do
-ad[af][ag]=ae[ad[af][ag]+1]
-end
-end
-end
-local function shiftRows(ad,ae)
-ad[1][3],ad[2][3],ad[3][3],ad[4][3]=ad[3][3],ad[4][3],ad[1][3],ad[2][3]
-if ae then
-ad[1][2],ad[2][2],ad[3][2],ad[4][2]=ad[4][2],ad[1][2],ad[2][2],ad[3][2]
-ad[1][4],ad[2][4],ad[3][4],ad[4][4]=ad[2][4],ad[3][4],ad[4][4],ad[1][4]
-else
-ad[1][2],ad[2][2],ad[3][2],ad[4][2]=ad[2][2],ad[3][2],ad[4][2],ad[1][2]
-ad[1][4],ad[2][4],ad[3][4],ad[4][4]=ad[4][4],ad[1][4],ad[2][4],ad[3][4]
-end
-end
-local function addRoundKey(ad,ae)
-for af=1,4 do
-for ag=1,4 do
-ad[af][ag]=bit32.bxor(ad[af][ag],ae[af][ag])
-end
-end
-end
-local function mixColumns(ad,ae)
-local af,ag
-if ae then
-for b=1,4 do
-af=xtime(xtime(bit32.bxor(ad[b][1],ad[b][3])))
-ag=xtime(xtime(bit32.bxor(ad[b][2],ad[b][4])))
-ad[b][1],ad[b][2]=bit32.bxor(ad[b][1],af),bit32.bxor(ad[b][2],ag)
-ad[b][3],ad[b][4]=bit32.bxor(ad[b][3],af),bit32.bxor(ad[b][4],ag)
-end
-end
-
-local b
-for c=1,4 do
-b=ad[c]
-af,ag=bit32.bxor(b[1],b[2],b[3],b[4]),b[1]
-for d=1,4 do
-b[d]=bit32.bxor(b[d],af,xtime(bit32.bxor(b[d],b[d+1]or ag)))
-end
-end
-end
-
-
-local function bytesToMatrix(ad,ae,af)
-if af then
-table.move(ae[1],1,4,1,ad)
-table.move(ae[2],1,4,5,ad)
-table.move(ae[3],1,4,9,ad)
-table.move(ae[4],1,4,13,ad)
-else
-for ag=1,#ae/4 do
-table.clear(ad[ag])
-table.move(ae,ag*4-3,ag*4,1,ad[ag])
-end
-end
-
-return ad
-end
-local function xorBytes(ad,ae,af)
-table.clear(ad)
-
-for ag=1,math.min(#ae,#af)do
-table.insert(ad,bit32.bxor(ae[ag],af[ag]))
-end
-return ad
-end
-local function incBytes(ad,ae)
-local af=true
-for ag=if ae then 1 else#ad,if ae then#ad else 1,if ae then 1 else-1 do
-if ad[ag]==255 then
-ad[ag]=0
-else
-ad[ag]+=1
-af=false
-break
-end
-end
-
-return af,ad
-end
-
-
-local function expandKey(ad)
-local ae=bytesToMatrix(if#ad==16 then{{},{},{},{}}elseif#ad==24 then{{},{},{},{}
-,{},{}}else{{},{},{},{},{},{},{},{}},ad)
-local af=#ad/4
-local ag,b,c=2,{}
-
-while#ae<(#ad/4+7)*4 do
-c=table.clone(ae[#ae])
-if#ae%af==0 then
-table.insert(c,table.remove(c,1))
-for d=1,4 do
-c[d]=aa[c[d]+1]
-end
-c[1]=bit32.bxor(c[1],ac[ag])
-ag+=1
-elseif#ad==32 and#ae%af==4 then
-for d=1,4 do
-c[d]=aa[c[d]+1]
-end
-end
-
-table.clear(b)
-xorBytes(c,table.move(c,1,4,1,b),ae[#ae-af+1])
-table.insert(ae,c)
-end
-
-table.clear(b)
-for d=1,#ae/4 do
-table.insert(b,{})
-table.move(ae,d*4-3,d*4,1,b[#b])
-end
-return b
-end
-local function encrypt(ad,ae,af,ag,b)
-bytesToMatrix(ag,af)
-addRoundKey(ag,ae[1])
-
-for c=2,#ad/4+6 do
-subBytes(ag)
-shiftRows(ag)
-mixColumns(ag)
-addRoundKey(ag,ae[c])
-end
-subBytes(ag)
-shiftRows(ag)
-addRoundKey(ag,ae[#ae])
-
-return bytesToMatrix(b,ag,true)
-end
-local function decrypt(ad,ae,af,ag,b)
-bytesToMatrix(ag,af)
-
-addRoundKey(ag,ae[#ae])
-shiftRows(ag,true)
-subBytes(ag,true)
-for c=#ad/4+6,2,-1 do
-addRoundKey(ag,ae[c])
-mixColumns(ag,true)
-shiftRows(ag,true)
-subBytes(ag,true)
-end
-
-addRoundKey(ag,ae[1])
-return bytesToMatrix(b,ag,true)
-end
-
-
-local function convertType(ad)
-if type(ad)=="string"then
-local ae={}
-
-for af=1,string.len(ad),7997 do
-table.move({string.byte(ad,af,af+7996)},1,7997,af,ae)
-end
-return ae
-elseif type(ad)=="table"then
-for ae,af in ipairs(ad)do
-assert(type(af)=="number"and math.floor(af)==af and 0<=af and af<256,
-"Unable to cast value to bytes")
-end
-return ad
-else
-error"Unable to cast value to bytes"
-end
-end
-local function init(ad,ae,af,ag,b)
-ad=convertType(ad)
-assert(#ad==16 or#ad==24 or#ad==32,"Key must be either 16, 24 or 32 bytes long")
-ae=convertType(ae)
-assert(#ae%(b or 16)==0,"Input must be a multiple of "..(if b then"segment size "..b
-else"16").." bytes in length")
-if af then
-if type(ag)=="table"then
-ag=table.clone(ag)
-local c,d=ag.Length,ag.LittleEndian
-assert(type(c)=="number"and 0<c and c<=16,
-"Counter value length must be between 1 and 16 bytes")
-ag.Prefix=convertType(ag.Prefix or{})
-ag.Suffix=convertType(ag.Suffix or{})
-assert(#ag.Prefix+#ag.Suffix+c==16,"Counter must be 16 bytes long")
-ag.InitValue=if ag.InitValue==nil then{1}else table.clone(convertType(ag.InitValue
-))
-assert(#ag.InitValue<=c,"Initial value length must be of the counter value")
-ag.InitOverflow=if ag.InitOverflow==nil then table.create(c,0)else table.clone(
-convertType(ag.InitOverflow))
-assert(#ag.InitOverflow<=c,
-"Initial overflow value length must be of the counter value")
-for e=1,c-#ag.InitValue do
-table.insert(ag.InitValue,1+if d then#ag.InitValue else 0,0)
-end
-for e=1,c-#ag.InitOverflow do
-table.insert(ag.InitOverflow,1+if d then#ag.InitOverflow else 0,0)
-end
-elseif type(ag)~="function"then
-local c,d=if ag then convertType(ag)else table.create(16,0),{}
-assert(#c==16,"Counter must be 16 bytes long")
-ag={Length=16,Prefix=d,Suffix=d,InitValue=c,
-InitOverflow=table.create(16,0)}
-end
-elseif af==false then
-ag=if ag==nil then table.create(16,0)else convertType(ag)
-assert(#ag==16,"Initialization vector must be 16 bytes long")
-end
-if b then
-b=math.floor(tonumber(b)or 1)
-assert(type(b)=="number"and 0<b and b<=16,"Segment size must be between 1 and 16 bytes"
-)
-end
-
-return ad,ae,expandKey(ad),ag,b
-end
-
-
-
-return{
-
-encrypt_ECB=function(ad:bytes__DARKLUA_TYPE_7,ae:bytes__DARKLUA_TYPE_7):bytes__DARKLUA_TYPE_7
-local af
-ad,ae,af=init(ad,ae)
-
-local ag,b,c,d={},{},{{},{},{},{}},{}
-for e=1,#ae,16 do
-table.move(ae,e,e+15,1,b)
-table.move(encrypt(ad,af,b,c,d),1,16,e,ag)
-end
-
-return ag
-end,
-decrypt_ECB=function(ad:bytes__DARKLUA_TYPE_7,ae:bytes__DARKLUA_TYPE_7):bytes__DARKLUA_TYPE_7
-local af
-ad,ae,af=init(ad,ae)
-
-local ag,b,c,d={},{},{{},{},{},{}},{}
-for e=1,#ae,16 do
-table.move(ae,e,e+15,1,b)
-table.move(decrypt(ad,af,b,c,d),1,16,e,ag)
-end
-
-return ag
-end,
-
-encrypt_CBC=function(ad:bytes__DARKLUA_TYPE_7,ae:bytes__DARKLUA_TYPE_7,af:bytes__DARKLUA_TYPE_7?):bytes__DARKLUA_TYPE_7
-local ag
-ad,ae,ag,af=init(ad,ae,false,af)
-
-local b,c,d,e,f={},{},af,{{},{},{},{}},{}
-for g=1,#ae,16 do
-table.move(ae,g,g+15,1,c)
-table.move(encrypt(ad,ag,xorBytes(f,c,d),e,d),1,16,g,b)
-end
-
-return b
-end,
-decrypt_CBC=function(ad:bytes__DARKLUA_TYPE_7,ae:bytes__DARKLUA_TYPE_7,af:bytes__DARKLUA_TYPE_7?):bytes__DARKLUA_TYPE_7
-local ag
-ad,ae,ag,af=init(ad,ae,false,af)
-
-local b,c,d,e,f={},{},af,{{},{},{},{}},{}
-for g=1,#ae,16 do
-table.move(ae,g,g+15,1,c)
-table.move(xorBytes(c,decrypt(ad,ag,c,e,f),d),1,16,g,b)
-table.move(ae,g,g+15,1,d)
-end
-
-return b
-end,
-
-encrypt_PCBC=function(ad:bytes__DARKLUA_TYPE_7,ae:bytes__DARKLUA_TYPE_7,af:bytes__DARKLUA_TYPE_7?):bytes__DARKLUA_TYPE_7
-local ag
-ad,ae,ag,af=init(ad,ae,false,af)
-
-local b,c,d,e,f,g={},{},af,table.create(16,0),{{},{},{},{}},{}
-for h=1,#ae,16 do
-table.move(ae,h,h+15,1,c)
-table.move(encrypt(ad,ag,xorBytes(c,xorBytes(g,d,c),e),f,d),1,16,h,b)
-table.move(ae,h,h+15,1,e)
-end
-
-return b
-end,
-decrypt_PCBC=function(ad:bytes__DARKLUA_TYPE_7,ae:bytes__DARKLUA_TYPE_7,af:bytes__DARKLUA_TYPE_7?):bytes__DARKLUA_TYPE_7
-local ag
-ad,ae,ag,af=init(ad,ae,false,af)
-
-local b,c,d,e,f,g={},{},af,table.create(16,0),{{},{},{},{}},{}
-for h=1,#ae,16 do
-table.move(ae,h,h+15,1,c)
-table.move(xorBytes(e,decrypt(ad,ag,c,f,g),xorBytes(c,d,e)),1,16,h,b)
-table.move(ae,h,h+15,1,d)
-end
-
-return b
-end,
-
-encrypt_CFB=function(ad:bytes__DARKLUA_TYPE_7,ae:bytes__DARKLUA_TYPE_7,af:bytes__DARKLUA_TYPE_7?,ag:number?)
-:bytes__DARKLUA_TYPE_7
-local b
-ad,ae,b,af,ag=init(ad,ae,false,af,
-if ag==nil then 1 else ag)
-
-local c,d,e,f,g,h={},{},af,{},{{},{},{},{}},{}
-for i=1,#ae,ag do
-table.move(ae,i,i+ag-1,1,d)
-table.move(xorBytes(f,encrypt(ad,b,e,g,h),d),1,ag,i,c)
-for j=16,ag+1,-1 do
-table.insert(f,1,e[j])
-end
-table.move(f,1,16,1,e)
-end
-
-return c
-end,
-decrypt_CFB=function(ad:bytes__DARKLUA_TYPE_7,ae:bytes__DARKLUA_TYPE_7,af:bytes__DARKLUA_TYPE_7,ag:number?)
-:bytes__DARKLUA_TYPE_7
-local b
-ad,ae,b,af,ag=init(ad,ae,false,af,
-if ag==nil then 1 else ag)
-
-local c,d,e,f,g,h={},{},af,{},{{},{},{},{}},{}
-for i=1,#ae,ag do
-table.move(ae,i,i+ag-1,1,d)
-table.move(xorBytes(f,encrypt(ad,b,e,g,h),d),1,ag,i,c)
-for j=16,ag+1,-1 do
-table.insert(d,1,e[j])
-end
-table.move(d,1,16,1,e)
-end
-
-return c
-end,
-
-encrypt_OFB=function(ad:bytes__DARKLUA_TYPE_7,ae:bytes__DARKLUA_TYPE_7,af:bytes__DARKLUA_TYPE_7?):bytes__DARKLUA_TYPE_7
-local ag
-ad,ae,ag,af=init(ad,ae,false,af)
-
-local b,c,d,e,f={},{},af,{{},{},{},{}},{}
-for g=1,#ae,16 do
-table.move(ae,g,g+15,1,c)
-table.move(encrypt(ad,ag,d,e,f),1,16,1,d)
-table.move(xorBytes(f,c,d),1,16,g,b)
-end
-
-return b
-end,
-
-encrypt_CTR=function(ad:bytes__DARKLUA_TYPE_7,ae:bytes__DARKLUA_TYPE_7,af:((bytes__DARKLUA_TYPE_7)->bytes__DARKLUA_TYPE_7)|bytes__DARKLUA_TYPE_7|{[
-string]:any}?):bytes__DARKLUA_TYPE_7
-local ag
-ad,ae,ag,af=init(ad,ae,true,af)
-
-local b,c,d,e,f,g,h={},{},{},{{},{},{},{}},{},(type(af)=="table")
-for i=1,#ae,16 do
-if g then
-if i>1 and incBytes(af.InitValue,af.LittleEndian)then
-table.move(af.InitOverflow,1,16,1,af.InitValue)
-end
-table.clear(d)
-table.move(af.Prefix,1,#af.Prefix,1,d)
-table.move(af.InitValue,1,af.Length,#d+1,d)
-table.move(af.Suffix,1,#af.Suffix,#d+1,d)
-else
-h=convertType(af(d,(i+15)/16))
-assert(#h==16,"Counter must be 16 bytes long")
-table.move(h,1,16,1,d)
-end
-table.move(ae,i,i+15,1,c)
-table.move(xorBytes(d,encrypt(ad,ag,d,e,f),c),1,16,i,b)
-end
-
-return b
-end
-}end function a.r()
-
-
-
-local aa=a.load'o'
-local ab=a.load'p'
-
-local ac=a.load'q'local ad=
-
-buffer.tostring
-
-
-local ae=bit32.lshift(1,10)
-
-local af={}
-
-function af.encrypt(ag:string,b:string,c:string):string
-return ac.encrypt_CBC(b,ag,c)
-end
-
-function af.decrypt(ag:string,b:string,c:string):string
-return ac.decrypt_CBC(b,ag,c)
-end
-
-function af.base64encode(ag:string):string
-return aa.Encode(ag)
-end
-
-function af.base64decode(ag:string):string
-return aa.Decode(ag)
-end
-
-function af.lz4compress(ag:string):string
-return ab.compress(ag)
-end
-
-function af.lz4decompress(ag:string):string
-return ab.decompress(ag)
-end
-
-
-
-
-
-function af.random(ag:number):number
-if ag>ae or ag<0 then
-error("Expected number within range (0, 1024), got: "..tostring(ag),0)
-else
-local b={}
-
-for c=33,57 do
-table.insert(b,string.char(c))
-end
-
-for c=65,90 do
-table.insert(b,string.char(c))
-end
-
-for c=97,122 do
-table.insert(b,string.char(c))
-end
-
-
-
-
-
-
-local c={}
-for d=1,ag do
-local e=math.random(1,#b)
-table.insert(c,b[e])
-end
-
-return table.concat(c)
-end
-end
-
-return af end function a.s()
-
-
-
-return function()
-local aa=a.load'r'
-
-if not crypt or not crypt.encrypt then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local ab="1234567890abcdef"
-local ac="GMVIsgHnxm0YDYwUGkBhtRWSrSsfRMjY"
-local ad="1234567890abcdef"
-local ae="CBC"
-
-local af,ag=pcall(function()
-return crypt.encrypt(ab,ac,ad,ae)
-end)
-
-if not af then
-return{
-status=0,
-message="Encrypt failed: "..tostring(ag),
-}
-end
-
-local b="G3H9Fk0PSWKs46qqlbA3VKnzfz7wRRTh"
-local c=aa.base64encode(ag)
-
-if c~=b then
-return{
-status=500,
-message="Encrypted data doesn't match reference data",
-}
-end
-
-
-local d,e=a.load'b'{}
-
-if not d then
-return{
-status=501,
-message=`Alias not found: {e}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.t()
-
-
-
-
-return function()
-local aa=a.load'r'
-
-if not crypt or not crypt.decrypt then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local ab=aa.base64decode"G3H9Fk0PSWKs46qqlbA3VKnzfz7wRRTh"
-local ac="GMVIsgHnxm0YDYwUGkBhtRWSrSsfRMjY"
-local ad="1234567890abcdef"
-local ae="CBC"
-
-local af,ag=pcall(function()
-return crypt.decrypt(ab,ac,ad,ae)
-end)
-
-if not af then
-return{
-status=0,
-message="Decrypt failed: "..tostring(ag),
-}
-elseif not ag then
-return{
-status=500,
-message="Decrypt returned nothing",
-}
-elseif ag~="1234567890abcdef"then
-return{
-status=500,
-message="Decrypted data doesn't match reference data",
-}
-end
-
-
-local b,c=a.load'b'{}
-
-if not b then
-return{
-status=501,
-message=`Alias not found: {c}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.u()
-
-
-
-
-return function()
-local aa=a.load'r'
-
-if not crypt or not crypt.generatekey then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local ab=aa.base64decode(crypt.generatekey())
-if type(ab)~="string"then
-return{
-status=500,
-message="Generated key doesn't form a string",
-}
-elseif#ab~=32 then
-return{
-status=500,
-message="Key dosen't match the expected length",
-}
-end
-
-
-local ac,ad=a.load'b'{}
-
-if not ac then
-return{
-status=501,
-message=`Alias not found: {ad}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.v()
-
-
-
-
-return function()
-local aa=a.load'r'
-
-if not crypt or not crypt.generatebytes then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local ab=math.random(1,512)
-local ac=crypt.generatebytes(ab)
-local ad=aa.base64decode(ac)
-if type(ad)~="string"then
-return{
-status=500,
-message="Generated bytes do not form a string",
-}
-elseif#ad~=ab then
-return{
-status=500,
-message="Bytes length mismatch: "..tostring(#ad).." != "..tostring(ab),
-}
-end
-
-
-local ae,af=a.load'b'{
-"base64_decode",
-"crypt.base64.decode",
-"base64.decode",
-"crypt.base64_decode",
-}
-
-if not ae then
-return{
-status=501,
-message=`Alias not found: {af}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.w()
-
-
-
-
-return function()
-local aa=a.load'r'
-
-if not crypt or not crypt.base64encode then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local ab="MYRIAD"
-local ac=crypt.base64encode(ab)
-
-if not ac or typeof(ac)~="string"then
-return{
-status=500,
-message="Did not return the expected type",
-}
-elseif ac~=aa.base64encode(ab)then
-return{
-status=500,
-message="Encoded data doesn't match reference data",
-}
-end
-
-
-local ad,ae=a.load'b'{
-"base64_encode",
-"crypt.base64.encode",
-"base64.encode",
-"crypt.base64_encode",
-}
-
-if not ad then
-return{
-status=501,
-message=`Alias not found: {ae}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.x()
-
-
-
-
-return function()
-local aa=a.load'r'
-
-if not crypt or not crypt.base64decode then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local ab="MYRIAD"
-local ac=aa.base64encode(ab)
-local ad=crypt.base64decode(ac)
-
-if not ac or typeof(ac)~="string"then
-return{
-status=500,
-message="Reference crypt failed",
-}
-elseif not ad or typeof(ad)~="string"then
-return{
-status=500,
-message="Did not return the expected type",
-}
-elseif ad~=ab then
-return{
-status=500,
-message="Decoded data doesn't match reference data",
-}
-end
-
-
-local ae,af=a.load'b'{
-"base64_decode",
-"crypt.base64.decode",
-"base64.decode",
-"crypt.base64_decode",
-}
-
-if not ae then
-return{
-status=501,
-message=`Alias not found: {af}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.y()
-
-
-
-
-return function()
-if not crypt or not crypt.hash then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local aa="MYRIAD"
-
-local ab={
-md5="4f4c0116fe2faa1318448c548b35db329d04b95d6a564c9952674be7470292a8",
-
-sha1="fc7f43037330bdab9a8a3b19a7cbcde1ca35f0f3413e8109f2378d448e09d746",
-
-sha224="c289f37be9147ea83aea5178831674ac35512679c9ac728b0af58d1354aa9586",
-sha256="c9d5cae0702443d77159a3da3993a31e21fe71347946e8088e29c329b2fad67d",
-sha384="75805da0851cdb609be9cce35c7cf9b8c560fe1d015370d9ffdc7dc974cec3d2",
-sha512="9e5a7723b2776d0a26cfc7a1ee141ee7e23ab9be07a7bbe9a83ad9a44d6c932c",
-
-["sha3-256"]="508c76d7f914e8f434b11c84fa5c55a086f86b8b0b38ce0dffa861fdfbdc77b3",
-["sha3-384"]="1fb780f81b5a6013af2bfe6677a34439970c63b8447a00e0c23c0e5ff1a4bbd2",
-["sha3-512"]="bc49e307d6fd0fc8f9ab5c9236ea93194dfa99dd89fea20e75aed6530bd6820b",
-}
-
-for ac,ad in pairs(ab)do
-local ae,af=pcall(crypt.hash,aa,ac)
-
-if not ae then
-return{
-status=0,
-message=`Hashing failed with {ac}: {af}`,
-}
-
-elseif not af then
-return{
-status=500,
-message=`Hashing failed, expected a hash. Algorithm: {ac}`,
-}
-
-elseif af~=ad then
-return{
-status=500,
-message=`Hash mismatch. Algorithm: {ac}`,
-}
-end
-end
-
-
-local ac,ad=a.load'b'{}
-
-if not ac then
-return{
-status=501,
-message=`Alias not found: {ad}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.z()
-
-
-
-return function()
-if not crypt or not crypt.random then
-return{
-status=400,
-message="Global not found",
-}
-end local
-
-aa, ab=pcall(function()
-return crypt.random(512)
-end)local
-ac, ad=pcall(function()
-return crypt.random(-1)
-end)
-local ae,af=pcall(function()
-return crypt.random(64)
-end)
-
-if not ae then
-return{
-status=0,
-message="Failed: "..tostring(af),
-}
-elseif ac then
-return{
-status=500,
-message="Arg[1] passed -1, should have failed.",
-}
-elseif not aa then
-return{
-status=500,
-message="Arg[1] passed 512, should have passed.",
-}
-elseif#af~=64 then
-return{
-status=500,
-message="Len mismatch. Expected 64, got: "..tostring(#af),
-}
-end
-
-
-local ag,b=a.load'b'{}
-
-if not ag then
-return{
-status=501,
-message=`Alias not found: {b}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.A()
-
-
-
-
-return function()a.load'r'
-
-
-if not crypt or not crypt.hmac then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local aa="MYRIAD"
-local ab="secret_key"
-local ac="sha256"
-
-local ad="FaDPiTSLlbxRP5rKvomt0dzwl7zhszc46/QFPsZRGWY="
-local ae=crypt.hmac(ab,aa,ac)
-
-if not ae then
-return{
-status=500,
-message="Did not return the expected type",
-}
-elseif ae~=ad then
-return{
-status=500,
-message="Data doesn't match reference data",
-}
-end
-
-
-local af,ag=a.load'b'{}
-
-if not af then
-return{
-status=501,
-message=`Alias not found: {ag}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.B()
-
-
-
-
-return function()
-if not debug or not debug.getconstant then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local function originalFunction()
-local aa=2
-local ab="A"
-
-print(aa)
-tostring(ab)
-
-Date.now()
-end
-
-local aa={
-[1]="print",
-
-[3]="A",
-[4]="tostring",
-
-[6]="Date",
-[7]="now"
-}
-
-for ab,ac in ipairs(aa)do
-local ad=debug.getconstant(originalFunction,ab)
-if ad~=ac then
-return{
-status=500,
-message=`Constant at {ab} should be: {ac}. Got: {ad}`,
-}
-end
-end
-
-local ab,ac=pcall(debug.getconstant,originalFunction,9)
-
-if not ab then
-return{
-status=500,
-message="Should pass nil instead of errroing for invalid indexes",
-}
-elseif ac then
-return{
-status=500,
-message="Constant 9 shouldn't exist",
-}
-elseif pcall(debug.getconstant,print,1)then
-return{
-status=500,
-message="Should error with C closures",
-}
-end
-
-
-local ad,ae=a.load'b'{
-"getconstant",
-}
-
-if not ad then
-return{
-status=501,
-message=`Alias not found: {ae}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.C()
-
-
-
-
-return function()
-if not debug or not debug.getconstants then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local function originalFunction()
-local aa=2
-local ab="A"
-
-print(aa)
-tostring(ab)
-
-Date.now()
-end
-
-local aa={
-[1]="print",
-
-[3]="A",
-[4]="tostring",
-
-[6]="Date",
-[7]="now"
-}
-
-for ab,ac in pairs(debug.getconstants(originalFunction))do
-if not aa[ab]then
-return{
-status=500,
-message=`{ab} dosen't exist in expected constant order`
-}
-elseif aa[ab]~=ac then
-return{
-status=500,
-message=`Constant at {ab} should be: {aa[ab]}. Got: {ac}`
-}
-end
-end
-
-if pcall(debug.getconstants,print)then
-return{
-status=500,
-message="Should error with C closures"
-}
-end
-
-
-local ab,ac=a.load'b'{
-"getconstants"
-}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {ac}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.D()
-
-
-
-
-return function()
-if not debug or not debug.getproto then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local function originalFunction()
-return function()
-return"MYRI"
-end
-end
-
-local aa=debug.getproto(originalFunction,1,true)[1]
-
-if originalFunction()~=aa then
-return{
-status=500,
-message="Actual prototype dosen't match assumed prototype"
-}
-elseif aa()~="MYRI"then
-return{
-status=500,
-message="Unexpected value of assumed prototype"
-}
-end
-
-
-local ab,ac=a.load'b'{
-"getproto"
-}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {ac}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.E()
-
-
-
-
-return function()
-if not debug or not debug.getprotos then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local function originalFunction()
-return function()
-return"MYRI1"
-end,function()
-return"MYRI2"
-end
-end
-
-local aa=0
-for ab,ac in ipairs(debug.getprotos(originalFunction))do
-aa+=ac()==(ab==1 and"MYRI1"or"MYRI2")and 1 or 0
-end
-
-if aa~=2 then
-return{
-status=500,
-message="Didn't recieve correct prototypes, or prototypes didn't return expected values.",
-}
-end
-
-
-local ab,ac=a.load'b'{
-"getprotos",
-}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {ac}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.F()
-
-
-
-
-return function()
-if not debug or not debug.getupvalue then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-
-
-local aa,ab=a.load'b'{
-"getupvalue"
-}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.G()
-
-
-
-
-return function()
-if not debug or not debug.getupvalues then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-
-
-local aa,ab=a.load'b'{
-"getupvalues"
-}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.H()
-
-
-
-
-return function()
-if not debug or not debug.getstack then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-
-
-local aa,ab=a.load'b'{
-"getstack"
-}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.I()
-
-
-
-
-return function()
-if not debug or not debug.setconstant then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-
-
-local aa,ab=a.load'b'{
-"setconstant"
-}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.J()
-
-
-
-
-return function()
-if not debug or not debug.setupvalue then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-
-
-local aa,ab=a.load'b'{
-"setupvalue"
-}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.K()
-
-
-
-
-return function()
-if not Drawing or not Drawing.new then
-return{
-status=400,
-message="Global Drawing API not found",
-}
-end
-
-local function checkProperties(aa,ab,ac)
-for ad,ae in ipairs(ac)do
-local af,ag=pcall(function()
-return ab[ae]
-end)
-if not af or ag==nil then
-return{
-status=500,
-message=`{aa} is missing property: {ae} (Did you give it a default value?)`,
-}
-end
-ab:Destroy()
-end
-end
-
-
-do
-local aa=Drawing.new"Line"
-if not aa then
-return{
-status=500,
-message="Line drawing object not found",
-}
-end
-
-local ab=checkProperties("Line",aa,{
-"Visible",
-"ZIndex",
-"Transparency",
-"Color",
-"__OBJECT_EXISTS",
-"Destroy",
-
-"Thickness",
-"From",
-"To",
-})
-if ab then
-return ab
-end
-end
-
-
-do
-local aa=Drawing.new"Text"
-if not aa then
-return{
-status=500,
-message="Text drawing object not found",
-}
-end
-
-local ab=checkProperties("Text",aa,{
-"Visible",
-"ZIndex",
-"Transparency",
-"Color",
-"__OBJECT_EXISTS",
-"Destroy",
-
-"Text",
-"TextBounds",
-"Center",
-"Size",
-"Font",
-"Outline",
-"OutlineColor",
-"Position",
-})
-if ab then
-return ab
-end
-end
-
-
-do
-local aa=Drawing.new"Image"
-if not aa then
-return{
-status=500,
-message="Image drawing object not found",
-}
-end
-
-local ab=checkProperties("Image",aa,{
-"Visible",
-"ZIndex",
-"Transparency",
-"Color",
-"__OBJECT_EXISTS",
-"Destroy",
-
-"Data",
-"Size",
-"Position",
-})
-if ab then
-return ab
-end
-end
-
-
-do
-local aa=Drawing.new"Circle"
-if not aa then
-return{
-status=500,
-message="Circle drawing object not found",
-}
-end
-
-local ab=checkProperties("Circle",aa,{
-"Visible",
-"ZIndex",
-"Transparency",
-"Color",
-"__OBJECT_EXISTS",
-"Destroy",
-
-"NumSides",
-"Radius",
-"Position",
-"Thickness",
-"Filled",
-})
-if ab then
-return ab
-end
-end
-
-
-do
-local aa=Drawing.new"Square"
-if not aa then
-return{
-status=500,
-message="Square drawing object not found",
-}
-end
-
-local ab=checkProperties("Square",aa,{
-"Visible",
-"ZIndex",
-"Transparency",
-"Color",
-"__OBJECT_EXISTS",
-"Destroy",
-
-"Size",
-"Position",
-"Thickness",
-"Filled",
-})
-if ab then
-return ab
-end
-end
-
-
-do
-local aa=Drawing.new"Quad"
-if not aa then
-return{
-status=500,
-message="Quad drawing object not found",
-}
-end
-
-local ab=checkProperties("Quad",aa,{
-"Destroy",
-"Visible",
-"ZIndex",
-"Transparency",
-"Color",
-"__OBJECT_EXISTS",
-
-"PointA",
-"PointB",
-"PointC",
-"PointD",
-"Thickness",
-"Filled",
-})
-if ab then
-return ab
-end
-end
-
-
-do
-local aa=Drawing.new"Triangle"
-if not aa then
-return{
-status=500,
-message="Triangle drawing object not found",
-}
-end
-
-local ab=checkProperties("Triangle",aa,{
-"Destroy",
-"Visible",
-"ZIndex",
-"Transparency",
-"Color",
-"__OBJECT_EXISTS",
-
-"PointA",
-"PointB",
-"PointC",
-"Thickness",
-"Filled",
-})
-if ab then
-return ab
-end
-end
-
-
-local aa,ab,ac=math.random(1,255),math.random(1,255),math.random(1,255)
-local ad=gethui and gethui()or game:GetService"CoreGui"
-local ae=Drawing.new"Line"
-
-ae.Color=Color3.fromRGB(aa,ab,ac)
-ae.Transparency=1-aa/255
-
-if ad then
-for af,ag in pairs(ad:GetDescendants())do
-if ag:IsA"Frame"and ag.BackgroundColor3==ae.Color and ag.BackgroundTransparency==ae.Transparency then
-return{
-status=500,
-message="Drawing library almost certainly depends on ScreenGui"
-}
-end
-end
-end
-
-
-local af,ag=a.load'b'{}
-
-if not af then
-return{
-status=501,
-message=`Alias not found: {ag}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.L()
-
-
-
-
-return function()
-if not Drawing or not Drawing.Fonts then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-if not Drawing.Fonts.UI then
-return{
-status=500,
-message="UI font not found",
-}
-elseif not Drawing.Fonts.System then
-return{
-status=500,
-message="System font not found",
-}
-elseif not Drawing.Fonts.Plex then
-return{
-status=500,
-message="Plex font not found",
-}
-elseif not Drawing.Fonts.Monospace then
-return{
-status=500,
-message="Monospace font not found",
-}
-elseif Drawing.Fonts.UI~=0 then
-return{
-status=500,
-message="UI font isn't ID 0",
-}
-elseif Drawing.Fonts.System~=1 then
-return{
-status=500,
-message="System font isn't ID 1",
-}
-elseif Drawing.Fonts.Plex~=2 then
-return{
-status=500,
-message="Plex font isn't ID 2",
-}
-elseif Drawing.Fonts.Monospace~=3 then
-return{
-status=500,
-message="Monospace font isn't ID 3",
-}
-end
-
-
-local aa,ab=a.load'b'{}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.M()
-
-
-
-
-return function()
-if not getrenderproperty then
-return{
-status=400,
-message="Global not found",
-}
-elseif not Drawing or not Drawing.new then
-return{
-status=401,
-message="Drawing library needed to test this",
-}
-end
-
-local aa=Drawing.new"Line"
-aa.Thickness=2
-aa.Visible=false
-
-local ab=getrenderproperty(aa,"Thickness")
-local ac=getrenderproperty(aa,"Visible")
-
-if ab~=2 or ac~=false then
-return{
-status=500,
-message="Property not found or mismatch",
-}
-end
-
-
-local ad,ae=a.load'b'{}
-
-if not ad then
-return{
-status=501,
-message=`Alias not found: {ae}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.N()
-
-
-
-
-return function()
-if not setrenderproperty then
-return{
-status=400,
-message="Global not found",
-}
-elseif not Drawing or not Drawing.new then
-return{
-status=401,
-message="Drawing library needed to test this",
-}
-end
-
-local aa=Drawing.new"Line"
-setrenderproperty(aa,"Thickness",2)
-setrenderproperty(aa,"Visible",false)
-
-if aa.Thickness~=2 or aa.Visible~=false then
-return{
-status=500,
-message="Incorrect property value",
-}
-end
-
-
-local ab,ac=a.load'b'{}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {ac}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.O()
-
-
-
-
-return function()
-if not cleardrawcache then
-return{
-status=400,
-message="Global not found",
-}
-elseif not Drawing or not Drawing.new then
-return{
-status=401,
-message="Drawing library needed to test this",
-}
-end
-
-local aa=Drawing.new"Line"
-aa.Visible=false
-aa.Thickness=2
-
-task.defer(cleardrawcache)
-task.wait(0.1)
-if aa.__OBJECT_EXISTS then
-return{
-status=500,
-message="Drawing exists after draw clear",
-}
-end
-
-
-local ab,ac=a.load'b'{}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {ac}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.P()
-
-
-
-
-return function()
-if not isrenderobj then
-return{
-status=400,
-message="Global not found",
-}
-elseif not Drawing or not Drawing.new then
-return{
-status=401,
-message="Drawing library needed to test this",
-}
-end
-
-local aa=Drawing.new"Line"
-aa.Visible=false
-
-if not isrenderobj(aa)then
-return{
-status=500,
-message="Didn't return true for a render object",
-}
-elseif isrenderobj{}or isrenderobj(game:GetService"Workspace")then
-return{
-status=500,
-message="Returned true for a non-render object",
-}
-end
-
-
-local ab,ac=a.load'b'{}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {ac}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.Q()
-
-
-
-
-return function()
-if not getgenv then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-getfenv().MYRI="Hello, World!"
-getgenv().MYRI1="Hello, World!"
-getgenv().MYRI2=123456789
-
-if getgenv().MYRI=="Hello, World!"then
-return{
-status=500,
-message="getfenv affected getgenv",
-}
-end
-if getgenv().MYRI1~="Hello, World!"then
-return{
-status=500,
-message="MYRI1 not found or unexpected value",
-}
-elseif getgenv().MYRI2~=123456789 then
-return{
-status=500,
-message="MYRI2 not found or unexpected value",
-}
-end
-
-
-local aa,ab=a.load'b'{}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.R()
-
-
-
-
-return function()
-if not getrenv then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-getrenv().MYRIR1="Hello, World!"
-getrenv().MYRIR2=123456789
-
-if getrenv().MYRIR1~="Hello, World!"then
-return{
-status=500,
-message="MYRIR1 not found or unexpected value",
-}
-elseif getrenv().MYRIR2~=123456789 then
-return{
-status=500,
-message="MYRIR2 not found or unexpected value",
-}
-elseif getrenv().game~=game then
-return{
-status=500,
-message="game not found or unexpected value",
-}
-elseif getrenv().print~=print then
-return{
-status=500,
-message="print not found or unexpected value",
-}
-elseif getrenv()._G==_G then
-return{
-status=500,
-message="_G in roblox environment shouldn't match the executor's",
-}
-end
-
-
-local aa,ab=a.load'b'{}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.S()
-
-
-
-
-return function()
-if not getgc then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local aa={}
-local function originalFunction()end
-task.wait(0.1)
-
-local ab
-local ac
-for ad,ae in pairs(getgc(true))do
-if ae==originalFunction then
-ab=true
-elseif ae==aa then
-ac=true
-end
-end
-
-if not ab then
-return{
-status=500,
-message="Original function not found",
-}
-elseif not ac then
-return{
-status=500,
-message="Original table not found",
-}
-end
-
-
-local ad,ae=a.load'b'{}
-
-if not ad then
-return{
-status=501,
-message=`Alias not found: {ae}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.T()
-
-
-
-
-return function()
-if not filtergc then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local aa="MYRIAD"
-local function originalFunction()
-return"MYRIAD",aa
-end
-
-local ab=setmetatable({
-MYRIAD="MYRI",
-},{
-__index=function()end
-})local ac=
-
-ab.MYRIAD
-
-originalFunction()
-
-task.wait(0.1)
-
-local ad=filtergc("function",{
-Constants={"MYRIAD"},
-Upvalues={"MYRIAD"},
-IgnoreExecutor=false,
-},true)
-
-local ae=filtergc("table",{
-KeyValuePairs={MYRIAD="MYRI"},
-Metatable=getmetatable(ab),
-},true)
-
-if ad~=originalFunction then
-return{
-status=500,
-message="filtergc failed to retrieve the original function",
-}
-elseif ae~=ab then
-return{
-status=500,
-message="filtergc failed to retrieve the original table",
-}
-end
-
-
-local af,ag=a.load'b'{}
-
-if not af then
-return{
-status=501,
-message=`Alias not found: {ag}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.U()
-
-
-
-
-return function()
-if not getcustomasset then
-return{
-status=400,
-message="Global not found",
-}
-elseif not writefile then
-return{
-status=401,
-message="Dependency 'writefile' not found",
-}
-end
-
-
-local aa=game:GetService"HttpService":GenerateGUID(false):gsub("-","")
-
-writefile(aa,"31kr6ji222uvn7zvz6ue5yfyn7ky")
-
-task.wait(0.2)
-
-local ab=getcustomasset(aa)
-
-if not typeof(ab)=="string"then
-return{
-status=500,
-message="Asset is not of the expected type (string)"
-}
-elseif not ab:match"rbxasset://"then
-return{
-status=500,
-message="Asset string dosen't include a rbxasset prefix"
-}
-end
-
-delfile(aa)
-
-
-local ac,ad=a.load'b'{}
-
-if not ac then
-return{
-status=501,
-message=`Alias not found: {ad}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.V()
-
-
-
-
-return function()
-if not isfile then
-return{
-status=400,
-message="Global not found",
-}
-elseif not writefile then
-return{
-status=401,
-message="Dependency 'writefile' not found",
-}
-elseif not delfile then
-return{
-status=401,
-message="Dependency 'delfile' not found",
-}
-end
-
-
-local aa=game:GetService"HttpService":GenerateGUID(false):gsub("-","")
-local ab=game:GetService"HttpService":GenerateGUID(false):gsub("-","")
-local ac=false
-local ad=false
-
-writefile(aa,"")
-writefile(ab,"")
-
-task.wait(0.2)
-
-for ae,af in listfiles""do
-if af==aa then
-ac=true
-end
-if af==ab then
-ad=true
-end
-end
-
-if not ac and ad then
-return{
-status=500,
-message="Didn't find the expected files"
-}
-end
-
-delfile(aa)
-delfile(ab)
-
-
-local ae,af=a.load'b'{}
-
-if not ae then
-return{
-status=501,
-message=`Alias not found: {af}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.W()
-
-
-
-
-return function()
-if not loadfile then
-return{
-status=400,
-message="Global not found",
-}
-elseif not writefile then
-return{
-status=401,
-message="Dependency 'writefile' not found",
-}
-elseif not delfile then
-return{
-status=401,
-message="Dependency 'delfile' not found",
-}
-end
-
-
-local aa,ab=math.random(1,100),math.random(1,100)
-local ac=game:GetService"HttpService":GenerateGUID(false):gsub("-","")
-
-writefile(ac,"return function(...) return select(1, ...) + select(2, ...) end")
-
-task.wait(0.2)
-
-local ad=loadfile(ac)
-if not ad then
-return{
-status=500,
-message="Failed to load file",
-}
-end
-
-if ad()(aa,ab)~=aa+ab then
-return{
-status=500,
-message="File did not return the expected value",
-}
-end
-
-delfile(ac)
-
-
-local ae,af=a.load'b'{}
-
-if not ae then
-return{
-status=501,
-message=`Alias not found: {af}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.X()
-
-
-
-
-return function()
-if not appendfile then
-return{
-status=400,
-message="Global not found",
-}
-elseif not writefile then
-return{
-status=401,
-message="Dependency 'writefile' not found",
-}
-elseif not readfile then
-return{
-status=401,
-message="Dependency 'readfile' not found",
-}
-elseif not delfile then
-return{
-status=401,
-message="Dependency 'delfile' not found",
-}
-end
-
-
-local aa=game:GetService"HttpService":GenerateGUID(false):gsub("-","")
-
-writefile(aa,"Hello, ")
-
-task.wait(0.2)
-
-appendfile(aa,"World!")
-
-task.wait(0.2)
-
-if readfile(aa)~="Hello, World!"then
-return{
-status=500,
-message="File did not read the expected value",
-}
-end
-
-delfile(aa)
-
-
-local ab,ac=a.load'b'{}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {ac}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.Y()
-
-
-
-
-return function()
-if not delfile then
-return{
-status=400,
-message="Global not found",
-}
-elseif not writefile then
-return{
-status=401,
-message="Dependency 'writefile' not found",
-}
-elseif not isfile then
-return{
-status=401,
-message="Dependency 'isfile' not found",
-}
-end
-
-
-local aa,ab=pcall(writefile,"test1.txt","Content")
-local ac,ad=pcall(writefile,"./test2.txt","Content")
-
-local ae=pcall(writefile,"C:/test3.txt","Content")
-local af=pcall(writefile,"../test4.txt","Content")
-
-if not aa then
-return{
-status=0,
-message="Failed to write @ test1.txt: "..ab
-}
-elseif not ac then
-return{
-status=0,
-message="Failed to write @ ./test2.txt: "..ad
-}
-elseif ae then
-return{
-status=500,
-message="Didn't fail to write in illegal location: @ C:/test3.txt"
-}
-elseif af then
-return{
-status=500,
-message="Didn't fail to write in illegal location: @ ../test4.txt"
-}
-elseif not isfile"test1.txt"then
-return{
-status=500,
-message="Didn't find: test1.txt"
-}
-elseif not isfile"./test2.txt"then
-return{
-status=500,
-message="Didn't find: ./test2.txt"
-}
-end
-
-delfile"test1.txt"
-delfile"./test2.txt"
-
-task.wait(0.2)
-
-if isfile"test1.txt"then
-return{
-status=500,
-message="Found: test1.txt"
-}
-elseif isfile"./test2.txt"then
-return{
-status=500,
-message="Found: ./test2.txt"
-}
-end
-
-
-local ag,b=a.load'b'{}
-
-if not ag then
-return{
-status=501,
-message=`Alias not found: {b}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.Z()
-
-
-
-
-return function()
-if not delfolder then
-return{
-status=400,
-message="Global not found",
-}
-elseif not makefolder then
-return{
-status=401,
-message="Dependency 'makefolder' not found",
-}
-elseif not isfolder then
-return{
-status=401,
-message="Dependency 'isfolder' not found",
-}
-end
-
-
-local aa=game:GetService"HttpService":GenerateGUID(false):gsub("-","")
-
-if isfolder(aa)then
-return{
-status=500,
-message=`Nonexistent file returned true`,
-}
-end
-
-makefolder(aa)
-
-task.wait(0.2)
-
-if not isfolder(aa)then
-return{
-status=500,
-message=`Existing file returned false`,
-}
-end
-
-delfolder(aa)
-
-task.wait(0.2)
-
-if isfolder(aa)then
-return{
-status=500,
-message=`Nonexistent file returned true`,
-}
-end
-
-
-local ab,ac=a.load'b'{}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {ac}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a._()
-
-
-
-
-return function()
-if not isfile then
-return{
-status=400,
-message="Global not found",
-}
-elseif not writefile then
-return{
-status=401,
-message="Dependency 'writefile' not found",
-}
-elseif not delfile then
-return{
-status=401,
-message="Dependency 'delfile' not found",
-}
-end
-
-
-local aa=game:GetService"HttpService":GenerateGUID(false):gsub("-","")
-
-if isfile(aa)then
-return{
-status=500,
-message=`Nonexistent file returned true`,
-}
-end
-
-writefile(aa,"")
-
-task.wait(0.2)
-
-if not isfile(aa)then
-return{
-status=500,
-message=`Existing file returned false`,
-}
-end
-
-delfile(aa)
-
-
-local ab,ac=a.load'b'{}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {ac}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aa()
-
-
-
-
-return function()
-if not isfolder then
-return{
-status=400,
-message="Global not found",
-}
-elseif not makefolder then
-return{
-status=401,
-message="Dependency 'makefolder' not found",
-}
-elseif not delfolder then
-return{
-status=401,
-message="Dependency 'delfolder' not found",
-}
-end
-
-
-local aa=game:GetService"HttpService":GenerateGUID(false):gsub("-","")
-
-if isfolder(aa)then
-return{
-status=500,
-message=`Nonexistent folder returned true`,
-}
-end
-
-makefolder(aa)
-
-task.wait(0.2)
-
-if not isfolder(aa)then
-return{
-status=500,
-message=`Existing folder returned false`,
-}
-end
-
-delfolder(aa)
-
-
-local ab,ac=a.load'b'{}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {ac}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.ab()
-
-
-
-
-return function()
-if not writefile then
-return{
-status=400,
-message="Global not found",
-}
-elseif not delfile then
-return{
-status=401,
-message="Dependency 'delfile' not found",
-}
-elseif not readfile then
-return{
-status=401,
-message="Dependency 'readfile' not found",
-}
-end
-
-
-local aa,ab=pcall(writefile,"test1.txt","Content")
-local ac,ad=pcall(writefile,"./test2.txt","Content")
-
-local ae=pcall(writefile,"C:/test3.txt","Content")
-local af=pcall(writefile,"../test4.txt","Content")
-
-if not aa then
-return{
-status=0,
-message="Failed to write @ test1.txt: "..ab
-}
-elseif not ac then
-return{
-status=0,
-message="Failed to write @ ./test2.txt: "..ad
-}
-elseif ae then
-return{
-status=500,
-message="Didn't fail to write in illegal location: @ C:/test3.txt"
-}
-elseif af then
-return{
-status=500,
-message="Didn't fail to write in illegal location: @ ../test4.txt"
-}
-elseif readfile"test1.txt"~="Content"then
-return{
-status=500,
-message="File didn't give expected contnet"
-}
-elseif readfile"test2.txt"~="Content"then
-return{
-status=500,
-message="File didn't give expected contnet"
-}
-end
-
-delfile"test1.txt"
-delfile"./test2.txt"
-
-
-local ag,b=a.load'b'{}
-
-if not ag then
-return{
-status=501,
-message=`Alias not found: {b}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.ac()
-
-
-
-
-return function()
-if not readfile then
-return{
-status=400,
-message="Global not found",
-}
-elseif not delfile then
-return{
-status=401,
-message="Dependency 'delfile' not found",
-}
-elseif not writefile then
-return{
-status=401,
-message="Dependency 'writefile' not found",
-}
-end
-
-
-local aa,ab=pcall(writefile,"test1.txt","Content")
-
-if not aa then
-return{
-status=0,
-message="Failed to write @ test1.txt: "..ab
-}
-elseif readfile"test1.txt"~="Content"then
-return{
-status=500,
-message="File didn't return the expected content"
-}
-end
-
-delfile"test1.txt"
-
-
-local ac,ad=a.load'b'{}
-
-if not ac then
-return{
-status=501,
-message=`Alias not found: {ad}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.ad()
-
-
-
-
-return function()
-if not makefolder then
-return{
-status=400,
-message="Global not found",
-}
-elseif not delfolder then
-return{
-status=401,
-message="Dependency 'delfolder' not found",
-}
-end
-
-
-local aa,ab=pcall(makefolder,"test1")
-local ac,ad=pcall(makefolder,"./test2")
-
-local ae=pcall(makefolder,"C:/test3")
-local af=pcall(makefolder,"../test4")
-
-if not aa then
-return{
-status=0,
-message="Failed to make @ test1: "..ab
-}
-elseif not ac then
-return{
-status=0,
-message="Failed to make @ ./test2: "..ad
-}
-elseif ae then
-return{
-status=500,
-message="Didn't fail to make in illegal location: @ C:/test3"
-}
-elseif af then
-return{
-status=500,
-message="Didn't fail to make in illegal location: @ ../test4"
-}
-end
-
-delfolder"test1"
-delfolder"./test2"
-
-
-local ag,b=a.load'b'{}
-
-if not ag then
-return{
-status=501,
-message=`Alias not found: {b}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.ae()
-
-
-
-
-return function()
-if not isrbxactive then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=a.load'b'{
-"iswindowactive",
-"isgameactive",
-}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.af()
-
-
-
-
-return function()
-if not keypress then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=a.load'b'{}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.ag()
-
-
-
-
-return function()
-if not keyrelease then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=a.load'b'{}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.ah()
-
-
-
-
-return function()
-if not keytap then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=a.load'b'{}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.ai()
-
-
-
-
-return function()
-if not mouse1click then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=a.load'b'{}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aj()
-
-
-
-
-return function()
-if not mouse1press then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=a.load'b'{}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.ak()
-
-
-
-
-return function()
-if not mouse1release then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=a.load'b'{}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.al()
-
-
-
-
-return function()
-if not mouse2click then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=a.load'b'{}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.am()
-
-
-
-
-return function()
-if not mouse2press then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=a.load'b'{}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.an()
-
-
-
-
-return function()
-if not mouse2release then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=a.load'b'{}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.ao()
-
-
-
-
-return function()
-if not mousemoveabs then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=a.load'b'{}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.ap()
-
-
-
-
-return function()
-if not mousemoverel then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=a.load'b'{}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aq()
-
-
-
-
-return function()
-if not mousescroll then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=a.load'b'{}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.ar()
-
-
-
-
-return function()
-if not setclipboard then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=a.load'b'{
-"toclipboard"
-}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.as()
-
-
-
-
-return function()
-if not setrbxclipboard then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=a.load'b'{}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.at()
-
-
-
-
-return function()
-if not gethui then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local aa=gethui()
-if not(aa:IsA"ScreenGui"or aa:IsA"BasePlayerGui"or aa:IsA"Folder")then
-return{
-status=500,
-message="Container is not a ScreenGui, BasePlayerGui, or Folder",
-}
-end
-if aa==game:GetService"CoreGui"then
-return{
-status=500,
-message="Container cannot be an uncloned reference to CoreGui",
-}
-end
-
-
-local ab,ac=a.load'b'{
-"get_hidden_gui"
-}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {ac}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.au()
-
-
-
-
-return function()
-if not cloneref then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local aa=Instance.new"Part"
-local ab=game:GetService"CoreGui"
-
-if cloneref(aa)==aa then
-return{
-status=500,
-message=`Cloned part cannot be equal to original reference`,
-}
-elseif cloneref(ab)==ab then
-return{
-status=500,
-message=`Cloned service cannot be equal to original reference`,
-}
-end
-
-
-local ac,ad=a.load'b'{
-"clonereference",
-}
-
-if not ac then
-return{
-status=501,
-message=`Alias not found: {ad}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.av()
-
-
-
-
-return function()
-if not compareinstances then
-return{
-status=400,
-message="Global not found",
-}
-elseif not cloneref then
-return{
-status=401,
-message="'cloneref' needed to test this reliably",
-}
-end
-
-local aa=Instance.new"Part"
-local ab=game:GetService"CoreGui"
-
-if cloneref(aa)==aa then
-return{
-status=500,
-message=`(CR) Cloned part cannot be equal to original reference`,
-}
-elseif cloneref(ab)==ab then
-return{
-status=500,
-message=`(CR) Cloned service cannot be equal to original reference`,
-}
-
-elseif not compareinstances(game,game)then
-return{
-status=500,
-message=`Two equal instances (game, game) assumed unequal`,
-}
-elseif compareinstances(game,workspace)then
-return{
-status=500,
-message=`Two unequal instances (game, workspace) assumed equal`,
-}
-elseif not compareinstances(aa,cloneref(aa))then
-return{
-status=500,
-message=`Two equal instances (originalPart, clonedPart) assumed equal`,
-}
-elseif not compareinstances(ab,cloneref(ab))then
-return{
-status=500,
-message=`Two equal instances (originalService, clonedService) assumed equal`,
-}
-end
-
-
-local ac,ad=a.load'b'{}
-
-if not ac then
-return{
-status=501,
-message=`Alias not found: {ad}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aw()
-
-
-
-
-return function()
-if not getinstances then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=Instance.new"Part",false
-local ac,ad=Instance.new("Part",workspace),false
-
-ac.Anchored=true
-ac.Transparency=1
-ac.CanCollide=false
-ac.Position=Vector3.new(0,-100,0)
-
-for ae,af in pairs(getinstances())do
-if af==aa then
-ab=true
-elseif af==ac then
-ad=true
-elseif not af:IsA"Instance"then
-return{
-status=500,
-message="Found a part that isn't an instance"
-}
-end
-end
-
-if not ab then
-return{
-status=500,
-message="Didn't find a part w/ a nil parent"
-}
-elseif not ad then
-return{
-status=500,
-message="Didn't find a part w/ a parent"
-}
-end
-
-
-local ae,af=a.load'b'{}
-
-if not ae then
-return{
-status=501,
-message=`Alias not found: {af}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.ax()
-
-
-
-
-return function()
-if not getnilinstances then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=Instance.new"Part",false
-local ac,ad=Instance.new("Part",workspace),false
-local ae=false
-
-ac.Anchored=true
-ac.Transparency=1
-ac.CanCollide=false
-ac.Position=Vector3.new(0,-100,0)
-
-for af,ag in pairs(getnilinstances())do
-if ag==aa then
-ab=true
-elseif ag==ac then
-ad=true
-elseif ag:IsDescendantOf(game)then
-ae=true
-elseif not ag:IsA"Instance"then
-return{
-status=500,
-message="Found a part that isn't an instance"
-}
-end
-end
-
-if not ab then
-return{
-status=500,
-message="Didn't find a part w/ a nil parent"
-}
-elseif ad or ae then
-return{
-status=500,
-message="Found a part w/ a parent"
-}
-end
-
-
-local af,ag=a.load'b'{}
-
-if not af then
-return{
-status=501,
-message=`Alias not found: {ag}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.ay()
-
-
-
-
-return function()
-if not getinstances then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab,ac=math.random(1,10),math.random(1,10),math.random(1,10)
-local ad=Instance.new"BindableFunction"
-local ae=Instance.new"BindableFunction"
-local af=Instance.new"RemoteFunction"
-
-ad.OnInvoke=function(ag,b)
-return(ag+b)^ac
-end
-af.OnServerInvoke=function()
-return ac
-end
-
-local ag=getcallbackvalue(ad,"OnInvoke")
-local b=getcallbackvalue(ae,"OnInvoke")
-local c=getcallbackvalue(af,"OnServerInvoke")
-
-if not ag then
-return{
-status=500,
-message="Didn't return a callback value for a bindable",
-}
-elseif b then
-return{
-status=500,
-message="Returned a callback value for a bindable with none",
-}
-elseif not c then
-return{
-status=500,
-message="Returned a callback value for a remote with none",
-}
-elseif ag(aa,ab)~=(aa+ab)^ac then
-return{
-status=500,
-message="Bindable's callback value didn't return the expected value",
-}
-elseif c(game.Players.LocalPlayer)~=ac then
-return{
-status=500,
-message="Remote's callback value didn't return the expected value",
-}
-end
-
-
-local d,e=a.load'b'{
-"getcallbackmember"
-}
-
-if not d then
-return{
-status=501,
-message=`Alias not found: {e}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.az()
-
-
-
-
-return function()
-if not fireclickdetector then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa=Instance.new("Part",workspace)
-local ab=Instance.new("ClickDetector",aa)
-
-aa.Anchored=true
-aa.Transparency=1
-aa.CanCollide=false
-aa.Position=Vector3.new(0,-100,0)
-
-local function testEvent(ac)
-ab[ac]:Connect(function(ad)
-if ad~=game:GetService"Players".LocalPlayer then
-return{
-status=500,
-message="Player passed wasn't the LocalPlayer"
-}
-end
-end)
-
-local ad,ae=fireclickdetector(ab,0,ac)
-
-if not ad then
-return{
-status=0,
-message=`Failed w/ error: {ae}`
-}
-end
-
-return true
-end
-
-local ac=testEvent"MouseClick"
-local ad=testEvent"RightMouseClick"
-local ae=testEvent"MouseHoverEnter"
-local af=testEvent"MouseHoverLeave"
-
-game:GetService"RunService".PostSimulation:Wait()
-
-if not ac then
-return{
-status=500,
-message="MouseClick event was not fired."
-}
-end
-if not ad then
-return{
-status=500,
-message="RightMouseClick event was not fired."
-}
-end
-if not ae then
-return{
-status=500,
-message="MouseHoverEnter event was not fired."
-}
-end
-if not af then
-return{
-status=500,
-message="MouseHoverLeave event was not fired."
-}
-end
-
-
-local ag,b=a.load'b'{}
-
-if not ag then
-return{
-status=501,
-message=`Alias not found: {b}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aA()
-
-
-
-
-return function()
-if not fireproximityprompt then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa=false
-
-local ab=game:GetService"Players".LocalPlayer
-local ac=game:GetService"ProximityPromptService"
-local ad=Instance.new("Part",workspace)
-local ae=Instance.new("ProximityPrompt",ad)
-
-ad.Anchored=true
-ad.Transparency=1
-ad.CanCollide=false
-ad.Position=Vector3.new(0,-100,0)
-ae.HoldDuration=1
-
-ac.PromptButtonHoldBegan:Connect(function(af)
-return{
-status=500,
-message="Proximity prompt was manually fired"
-}
-end)
-
-ac.PromptButtonHoldEnded:Connect(function(af)
-return{
-status=500,
-message="Proximity prompt was manually fired"
-}
-end)
-
-ae:GetPropertyChangedSignal"HoldDuration":Connect(function()
-return{
-status=500,
-message="Modified HoldDuration"
-}
-end)
-
-ae.Triggered:Connect(function(af)
-if af~=ab then
-return{
-status=500,
-message="Player passed wasn't the LocalPlayer"
-}
-end
-
-aa=true
-end)
-
-local af,ag=pcall(fireproximityprompt,ae)
-
-game:GetService"RunService".PostSimulation:Wait()
-
-if not af then
-return{
-status=0,
-message=`Failed w/ error: {ag}`
-}
-elseif not aa then
-return{
-status=500,
-message=`Prompt was not triggered`
-}
-end
-
-
-local b,c=a.load'b'{}
-
-if not b then
-return{
-status=501,
-message=`Alias not found: {c}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aB()
-
-
-
-
-return function()
-if not firetouchinterest then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa=game.Players.LocalPlayer.Character.Head
-local ab=false
-local ac=false
-local ad=Instance.new"Part"
-
-ad.Anchored=true
-ad.Transparency=1
-ad.CanCollide=false
-ad.Position=Vector3.new(0,-100,0)
-ad.Parent=workspace
-
-ad.Touched:Connect(function(ae:BasePart)
-if ae~=aa then
-ad:Destroy()
-
-return{
-status=500,
-message="Touch part given wasn't the passed touch part",
-}
-end
-
-ab=true
-end)
-
-ad.TouchEnded:Connect(function(ae:BasePart)
-if ae~=aa then
-ad:Destroy()
-
-return{
-status=500,
-message="Touch part given wasn't the passed touch part",
-}
-end
-
-ac=true
-end)
-
-firetouchinterest(aa,ad,false)
-game:GetService"RunService".PostSimulation:Wait()
-
-if not ab then
-return{
-status=500,
-message="Touched event wasn't fired",
-}
-end
-
-firetouchinterest(aa,ad,true)
-game:GetService"RunService".PostSimulation:Wait()
-
-if not ac then
-return{
-status=500,
-message="Touched event wasn't fired",
-}
-end
-
-ad:Destroy()
-
-
-local ae,af=a.load'b'{}
-
-if not ae then
-return{
-status=501,
-message=`Alias not found: {af}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aC()
-
-
-
-
-return function()
-if not saveinstance then
-return{
-status=400,
-message="Global not found",
-}
-elseif not listfiles then
-return{
-status=501,
-message="Dependant global 'listfiles' not found",
-}
-elseif not delfile then
-return{
-status=501,
-message="Dependant global 'delfile' not found",
-}
-end
-
-
-local aa=game:GetService"HttpService":GenerateGUID(false):gsub("-","")
-local ab=Instance.new"Part"
-
-saveinstance(ab,{
-FileName=aa
-})
-
-task.wait(0.5)
-
-local ac=false
-
-for ad,ae in pairs(listfiles"")do
-if ae:find(aa)then
-ac=true
-delfile(ae)
-end
-end
-
-if not ac then
-return{
-status=500,
-message="Couldn't find saved part. Args passed: (Instance, { FileName = string })"
-}
-end
-
-
-local ad,ae=a.load'b'{}
-
-if not ad then
-return{
-status=501,
-message=`Alias not found: {ae}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aD()
-
-
-
-
-return function()
-if not getrawmetatable then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local aa=getrawmetatable(game)
-
-if typeof(aa)~="table"then
-return{
-status=500,
-message="Didn't return a table",
-}
-elseif aa.__index(game,"Workspace")~=game:GetService"Workspace"then
-return{
-status=500,
-message="Didn't give correct index for Workspace",
-}
-elseif aa.__index(game,"ReplicatedStorage")~=game:GetService"ReplicatedStorage"then
-return{
-status=500,
-message="Didn't give correct index for ReplicatedStorage",
-}
-elseif aa.__index(game,"Stats")~=game:GetService"Stats"then
-return{
-status=500,
-message="Didn't give correct index for Stats",
-}
-end
-
-local ab={
-__add="add",
-__sub="sub",
-__mul="mul",
-__div="div",
-__mod="mod",
-__pow="pow",
-__unm="unm",
-__idiv="idiv",
-__band="band",
-__bor="bor",
-__bxor="bxor",
-__bnot="bnot",
-__shl="shl",
-__shr="shr",
-__concat="concat",
-__len="len",
-__eq="eq",
-__lt="lt",
-__le="le",
-__call="call",
-}
-
-for ac,ad in pairs(ab)do
-if aa[ac]then
-return{
-status=500,
-message=`Found {ad} metamethod in the raw meta table`,
-}
-end
-end
-
-
-local ac,ad=a.load'b'{}
-
-if not ac then
-return{
-status=501,
-message=`Alias not found: {ad}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aE()
-
-
-
-
-return function()
-if not setrawmetatable then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local aa=setmetatable({},{
-__index=function()
-return false
-end,
-__metatable="Locked",
-})
-local ab=setrawmetatable(aa,{
-__index=function()
-return true
-end,
-})
-
-if not aa then
-return{
-status=500,
-message="Original object not given",
-}
-elseif aa.MYRI~=true then
-return{
-status=500,
-message="Return function gave true, MYRI not found",
-}
-elseif not ab then
-return{
-status=500,
-message="Returned object not given",
-}
-end
-
-
-local ac,ad=a.load'b'{}
-
-if not ac then
-return{
-status=501,
-message=`Alias not found: {ad}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.aF()
-
-
-
-
-return function()
-if not hookmetamethod then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local aa=false
-local ab
-
-ab=hookmetamethod(game,"__namecall",function(...)
-aa=true
-
-return ab(...)
-end)
-
-game:GetService"RunService".Heartbeat:Wait()
-
-if not aa then
-return{
-status=500,
-message="Failed to hook __namecall metamethod",
-}
-end
-
-
-local ac,ad=a.load'b'{}
-
-if not ac then
-return{
-status=501,
-message=`Alias not found: {ad}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.aG()
-
-
-
 
-return function()
-if not getnamecallmethod then
-return{
-status=400,
-message="Global not found",
-}
-elseif not hookmetamethod then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local aa=Instance.new"Part"
-local ab=false
-local ac
-
-ac=hookmetamethod(aa,"__namecall",function(...)
-if not ab then
-ab=getnamecallmethod()
-end
-
-return ac(...)
-end)
-
-aa:Destroy()
-task.wait()
-
-if ab~="Destroy"then
-return{
-status=500,
-message="Didn't return the correct method",
-}
-end
-
-
-local ad,ae=a.load'b'{}
-
-if not ad then
-return{
-status=501,
-message=`Alias not found: {ae}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.aH()
-
-
-
-
-return function()
-if not setreadonly then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local aa=table.freeze{
-MYRIAD="MYRI"
-}local
-
-ab, ac=pcall(function()
-aa.MYRIAD="MYRIAD"
-end)local
-ad, ae=pcall(function()
-setreadonly(aa,false)
-aa.MYRIAD="MYRIAD"
-end)
-local af,ag=pcall(function()
-setreadonly(aa,true)
-aa.MYRIAD="MYRIAD"
-end)
-
-if ab then
-return{
-status=500,
-message="Frozen table writable (???): "..ag
-}
-elseif not ad then
-return{
-status=500,
-message="Table unwritable after readonly was disabled: "..ag
-}
-elseif af then
-return{
-status=500,
-message="Table writable after readonly was enabled: "..ag
-}
-end
-
+type Streamer__DARKLUA_TYPE_a = {
+	Offset: number,
+	Source: string,
+	Length: number,
+	IsFinished: boolean,
+	LastUnreadBytes: number,
+
+	read: (Streamer__DARKLUA_TYPE_a, len: number?, shiftOffset: boolean?) -> string,
+	seek: (Streamer__DARKLUA_TYPE_a, len: number) -> (),
+	append: (Streamer__DARKLUA_TYPE_a, newData: string) -> (),
+	toEnd: (Streamer__DARKLUA_TYPE_a) -> ()
+}
+
+type BlockData__DARKLUA_TYPE_b = {
+	[number]: {
+		Literal: string,
+		LiteralLength: number,
+		MatchOffset: number?,
+		MatchLength: number?
+	}
+}
+type bytes__DARKLUA_TYPE_c = {number} -- Type instance of a valid bytes object
+local __DIST={cache={}::any}do do local function __modImpl()--!nocheck
+--!nolint
+
+
+local a a={cache={},load=function(b)if not a.cache[b]then a.cache[b]={c=a[b]()}
+end return a.cache[b].c end}do function a.a()local b,c,d='8.0',cloneref or
+function(b)return b end,{Theme={Syntax={Text=Color3.fromRGB(204,204,204),
+Background=Color3.fromRGB(20,20,20),Selection=Color3.fromRGB(255,255,255),
+SelectionBack=Color3.fromRGB(102,161,255),Operator=Color3.fromRGB(204,204,204),
+Number=Color3.fromRGB(255,198,0),String=Color3.fromRGB(172,240,148),Comment=
+Color3.fromRGB(102,102,102),Keyword=Color3.fromRGB(248,109,124),BuiltIn=Color3.
+fromRGB(132,214,247),LocalMethod=Color3.fromRGB(253,251,172),LocalProperty=
+Color3.fromRGB(97,161,241),Nil=Color3.fromRGB(255,198,0),Bool=Color3.fromRGB(255
+,198,0),Function=Color3.fromRGB(248,109,124),Local=Color3.fromRGB(248,109,124),
+Self=Color3.fromRGB(248,109,124),FunctionName=Color3.fromRGB(253,251,172),
+Bracket=Color3.fromRGB(204,204,204)}}}local e,f=setmetatable({},{__index=
+function(e,f)local g=game:GetService(f)return c(g)end}),{StartAndEnd={Enum.
+UserInputType.MouseButton1,Enum.UserInputType.Touch},Movement={Enum.
+UserInputType.MouseMovement,Enum.UserInputType.Touch}}local g,h,i,j=e.Players,e.
+UserInputService,e.RunService,e.TweenService local k=c(g.LocalPlayer)local l,m,n
+,o=c(k:GetMouse()),function(l,m)for n,o in next,m do l[n]=o end return l end,
+function(l,m)local n=l.UserInputType return table.find(f[m],n)end,function(...)
+return c(Instance.new(...))end local p,q,r=function(p,q)local r=o(p)for s,t in
+next,q do r[s]=t end return r end,{},o'Frame'q.CheckMouseInGui=function(s)if s==
+nil then return false end local t,u=s.AbsolutePosition,s.AbsoluteSize return l.X
+>=t.X and l.X<t.X+u.X and l.Y>=t.Y and l.Y<t.Y+u.Y end q.Signal=(function()local
+s,t={},function(s)local t=table.find(s.Signal.Connections,s)if t then table.
+remove(s.Signal.Connections,t)end end s.Connect=function(u,v)if type(v)~=
+'function'then error'Attempt to connect a non-function'end local w={Signal=u,
+Func=v,Disconnect=t}u.Connections[#u.Connections+1]=w return w end s.Fire=
+function(u,...)for v,w in next,u.Connections do xpcall(coroutine.wrap(w.Func),
+function(x)warn(x..'\n'..debug.traceback())end,...)end end local u={__index=s,
+__tostring=function(u)return'Signal: '..tostring(#u.Connections)..' Connections'
+end}local v=function()local v={}v.Connections={}return setmetatable(v,u)end
+return{new=v}end)()q.CreateArrow=function(s,t,u)local v,w=t,p('Frame',{
+BackgroundTransparency=1,Name='Arrow',Size=UDim2.new(0,s,0,s)})if u=='up'then
+for x=1,t do p('Frame',{BackgroundColor3=Color3.new(0.8627450980392157,
+0.8627450980392157,0.8627450980392157),BorderSizePixel=0,Position=UDim2.new(0,
+math.floor(s/2)-(x-1),0,math.floor(s/2)+x-math.floor(v/2)-1),Size=UDim2.new(0,x+
+(x-1),0,1),Parent=w})end return w elseif u=='down'then for x=1,t do p('Frame',{
+BackgroundColor3=Color3.new(0.8627450980392157,0.8627450980392157,
+0.8627450980392157),BorderSizePixel=0,Position=UDim2.new(0,math.floor(s/2)-(x-1)
+,0,math.floor(s/2)-x+math.floor(v/2)+1),Size=UDim2.new(0,x+(x-1),0,1),Parent=w})
+end return w elseif u=='left'then for x=1,t do p('Frame',{BackgroundColor3=
+Color3.new(0.8627450980392157,0.8627450980392157,0.8627450980392157),
+BorderSizePixel=0,Position=UDim2.new(0,math.floor(s/2)+x-math.floor(v/2)-1,0,
+math.floor(s/2)-(x-1)),Size=UDim2.new(0,1,0,x+(x-1)),Parent=w})end return w
+elseif u=='right'then for x=1,t do p('Frame',{BackgroundColor3=Color3.new(
+0.8627450980392157,0.8627450980392157,0.8627450980392157),BorderSizePixel=0,
+Position=UDim2.new(0,math.floor(s/2)-x+math.floor(v/2)+1,0,math.floor(s/2)-(x-1)
+),Size=UDim2.new(0,1,0,x+(x-1)),Parent=w})end return w end error''end q.FastWait
+=(function(s)task.wait(s)end)q.ScrollBar=(function()local s,t,u,v={},q.
+CheckMouseInGui,q.CreateArrow,function(s)local t,u,v,w=s.TotalSpace,s.
+VisibleSpace,s.GuiElems.ScrollThumb,s.GuiElems.ScrollThumbFrame if not(s:
+CanScrollUp()or s:CanScrollDown())then v.Visible=false else v.Visible=true end
+if s.Horizontal then v.Size=UDim2.new(u/t,0,1,0)if v.AbsoluteSize.X<10 then v.
+Size=UDim2.new(0,10,1,0)end local x,y=w.AbsoluteSize.X,v.AbsoluteSize.X v.
+Position=UDim2.new(s:GetScrollPercent()*(x-y)/x,0,0,0)else v.Size=UDim2.new(1,0,
+u/t,0)if v.AbsoluteSize.Y<10 then v.Size=UDim2.new(1,0,0,10)end local x,y=w.
+AbsoluteSize.Y,v.AbsoluteSize.Y v.Position=UDim2.new(0,0,s:GetScrollPercent()*(x
+-y)/x,0)end end local w=function(w)local x,y,z=(p('Frame',{Style=0,Active=true,
+AnchorPoint=Vector2.new(0,0),BackgroundColor3=Color3.new(0.35294118523598,
+0.35294118523598,0.35294118523598),BackgroundTransparency=0,BorderColor3=Color3.
+new(0.10588236153126,0.16470588743687,0.20784315466881),BorderSizePixel=0,
+ClipsDescendants=false,Draggable=false,Position=UDim2.new(1,-10,0,0),Rotation=0,
+Selectable=false,Size=UDim2.new(0,10,1,0),SizeConstraint=0,Visible=true,ZIndex=1
+,Name='ScrollBar'}))if w.Horizontal then x.Size=UDim2.new(1,0,0,10)y=p(
+'ImageButton',{Parent=x,Name='Left',Size=UDim2.new(0,10,0,10),
+BackgroundTransparency=1,BorderSizePixel=0,AutoButtonColor=false})u(10,4,'left')
+.Parent=y z=p('ImageButton',{Parent=x,Name='Right',Position=UDim2.new(1,-10,0,0)
+,Size=UDim2.new(0,10,0,10),BackgroundTransparency=1,BorderSizePixel=0,
+AutoButtonColor=false})u(10,4,'right').Parent=z else x.Size=UDim2.new(0,10,1,0)y
+=p('ImageButton',{Parent=x,Name='Up',Size=UDim2.new(0,10,0,10),
+BackgroundTransparency=1,BorderSizePixel=0,AutoButtonColor=false})u(10,4,'up').
+Parent=y z=p('ImageButton',{Parent=x,Name='Down',Position=UDim2.new(0,0,1,-10),
+Size=UDim2.new(0,10,0,10),BackgroundTransparency=1,BorderSizePixel=0,
+AutoButtonColor=false})u(10,4,'down').Parent=z end local A=p('Frame',{
+BackgroundTransparency=1,Parent=x})if w.Horizontal then A.Position=UDim2.new(0,
+10,0,0)A.Size=UDim2.new(1,-20,1,0)else A.Position=UDim2.new(0,0,0,10)A.Size=
+UDim2.new(1,0,1,-20)end local B,C,D,E,F=p('Frame',{BackgroundColor3=Color3.new(
+0.47058823529411764,0.47058823529411764,0.47058823529411764),BorderSizePixel=0,
+Parent=A}),p('Frame',{BackgroundTransparency=1,Name='Markers',Size=UDim2.new(1,0
+,1,0),Parent=A}),false,false,false y.InputBegan:Connect(function(G)if n(G,
+'Movement')and not D and w:CanScrollUp()then y.BackgroundTransparency=0.8 end if
+not n(G,'StartAndEnd')or not w:CanScrollUp()then return end D=true y.
+BackgroundTransparency=0.5 if w:CanScrollUp()then w:ScrollUp()w.Scrolled:Fire()
+end local H,I=(tick())I=h.InputEnded:Connect(function(J)if not n(J,'StartAndEnd'
+)then return end I:Disconnect()if t(y)and w:CanScrollUp()then y.
+BackgroundTransparency=0.8 else y.BackgroundTransparency=1 end D=false end)while
+D do if tick()-H>=0.3 and w:CanScrollUp()then w:ScrollUp()w.Scrolled:Fire()end
+wait()end end)y.InputEnded:Connect(function(G)if n(G,'Movement')and not D then y
+.BackgroundTransparency=1 end end)z.InputBegan:Connect(function(G)if n(G,
+'Movement')and not D and w:CanScrollDown()then z.BackgroundTransparency=0.8 end
+if not n(G,'StartAndEnd')or not w:CanScrollDown()then return end D=true z.
+BackgroundTransparency=0.5 if w:CanScrollDown()then w:ScrollDown()w.Scrolled:
+Fire()end local H,I=(tick())I=h.InputEnded:Connect(function(J)if not n(J,
+'StartAndEnd')then return end I:Disconnect()if t(z)and w:CanScrollDown()then z.
+BackgroundTransparency=0.8 else z.BackgroundTransparency=1 end D=false end)while
+D do if tick()-H>=0.3 and w:CanScrollDown()then w:ScrollDown()w.Scrolled:Fire()
+end wait()end end)z.InputEnded:Connect(function(G)if n(G,'Movement')and not D
+then z.BackgroundTransparency=1 end end)B.InputBegan:Connect(function(G)if n(G,
+'Movement')and not E then B.BackgroundTransparency=0.2 B.BackgroundColor3=w.
+ThumbSelectColor end if not n(G,'StartAndEnd')then return end local H,I=w.
+Horizontal and'X'or'Y'D=false F=false E=true B.BackgroundTransparency=0 local J,
+K,L=(l[H]-B.AbsolutePosition[H])K=h.InputEnded:Connect(function(M)if not n(M,
+'StartAndEnd')then return end K:Disconnect()if L then L:Disconnect()end if t(B)
+then B.BackgroundTransparency=0.2 else B.BackgroundTransparency=0 B.
+BackgroundColor3=w.ThumbColor end E=false end)w:Update()L=h.InputChanged:
+Connect(function(M)if n(M,'Movement')and E and K.Connected then local N,O=A.
+AbsoluteSize[H]-B.AbsoluteSize[H],l[H]-A.AbsolutePosition[H]-J if O>N then O=N
+elseif O<0 then O=0 end if I~=O then I=O w:ScrollTo(math.floor(0.5+O/N*(w.
+TotalSpace-w.VisibleSpace)))end wait()end end)end)B.InputEnded:Connect(function(
+G)if n(G,'Movement')and not E then B.BackgroundTransparency=0 B.BackgroundColor3
+=w.ThumbColor end end)A.InputBegan:Connect(function(G)if not n(G,'StartAndEnd')
+or t(B)then return end local H,I=w.Horizontal and'X'or'Y',0 if l[H]>=B.
+AbsolutePosition[H]+B.AbsoluteSize[H]then I=1 end local J=function()local J=w.
+VisibleSpace-1 if I==0 and l[H]<B.AbsolutePosition[H]then w:ScrollTo(w.Index-J)
+elseif I==1 and l[H]>=B.AbsolutePosition[H]+B.AbsoluteSize[H]then w:ScrollTo(w.
+Index+J)end end E=false F=true J()local K,L=(tick())L=h.InputEnded:Connect(
+function(M)if not n(M,'StartAndEnd')then return end L:Disconnect()F=false end)
+while F do if tick()-K>=0.3 and t(A)then J()end wait()end end)x.
+MouseWheelForward:Connect(function()w:ScrollTo(w.Index-w.WheelIncrement)end)x.
+MouseWheelBackward:Connect(function()w:ScrollTo(w.Index+w.WheelIncrement)end)w.
+GuiElems.ScrollThumb=B w.GuiElems.ScrollThumbFrame=A w.GuiElems.Button1=y w.
+GuiElems.Button2=z w.GuiElems.MarkerFrame=C return x end s.Update=function(x,y)
+local z,A,B,C=x.TotalSpace,x.VisibleSpace,x.GuiElems.Button1,x.GuiElems.Button2
+x.Index=math.clamp(x.Index,0,math.max(0,z-A))if x.LastTotalSpace~=x.TotalSpace
+then x.LastTotalSpace=x.TotalSpace x:UpdateMarkers()end if x:CanScrollUp()then
+for D,E in pairs(B.Arrow:GetChildren())do E.BackgroundTransparency=0 end else B.
+BackgroundTransparency=1 for D,E in pairs(B.Arrow:GetChildren())do E.
+BackgroundTransparency=0.5 end end if x:CanScrollDown()then for D,E in pairs(C.
+Arrow:GetChildren())do E.BackgroundTransparency=0 end else C.
+BackgroundTransparency=1 for D,E in pairs(C.Arrow:GetChildren())do E.
+BackgroundTransparency=0.5 end end v(x)end s.UpdateMarkers=function(x)local y=x.
+GuiElems.MarkerFrame y:ClearAllChildren()for z,A in pairs(x.Markers)do if z<x.
+TotalSpace then p('Frame',{BackgroundTransparency=0,BackgroundColor3=A,
+BorderSizePixel=0,Position=x.Horizontal and UDim2.new(z/x.TotalSpace,0,1,-6)or
+UDim2.new(1,-6,z/x.TotalSpace,0),Size=x.Horizontal and UDim2.new(0,1,0,6)or
+UDim2.new(0,6,0,1),Name='Marker'..tostring(z),Parent=y})end end end s.AddMarker=
+function(x,y,z)x.Markers[y]=z or Color3.new(0,0,0)end s.ScrollTo=function(x,y,z)
+x.Index=y x:Update()if not z then x.Scrolled:Fire()end end s.ScrollUp=function(x
+)x.Index=x.Index-x.Increment x:Update()end s.ScrollDown=function(x)x.Index=x.
+Index+x.Increment x:Update()end s.CanScrollUp=function(x)return x.Index>0 end s.
+CanScrollDown=function(x)return x.Index+x.VisibleSpace<x.TotalSpace end s.
+GetScrollPercent=function(x)return x.Index/(x.TotalSpace-x.VisibleSpace)end s.
+SetScrollPercent=function(x,y)x.Index=math.floor(y*(x.TotalSpace-x.VisibleSpace)
+)x:Update()end s.Texture=function(x,y)x.ThumbColor=y.ThumbColor or Color3.new(0,
+0,0)x.ThumbSelectColor=y.ThumbSelectColor or Color3.new(0,0,0)x.GuiElems.
+ScrollThumb.BackgroundColor3=y.ThumbColor or Color3.new(0,0,0)x.Gui.
+BackgroundColor3=y.FrameColor or Color3.new(0,0,0)x.GuiElems.Button1.
+BackgroundColor3=y.ButtonColor or Color3.new(0,0,0)x.GuiElems.Button2.
+BackgroundColor3=y.ButtonColor or Color3.new(0,0,0)for z,A in pairs(x.GuiElems.
+Button1.Arrow:GetChildren())do A.BackgroundColor3=y.ArrowColor or Color3.new(0,0
+,0)end for z,A in pairs(x.GuiElems.Button2.Arrow:GetChildren())do A.
+BackgroundColor3=y.ArrowColor or Color3.new(0,0,0)end end s.SetScrollFrame=
+function(x,y)if x.ScrollUpEvent then x.ScrollUpEvent:Disconnect()x.ScrollUpEvent
+=nil end if x.ScrollDownEvent then x.ScrollDownEvent:Disconnect()x.
+ScrollDownEvent=nil end x.ScrollUpEvent=y.MouseWheelForward:Connect(function()x:
+ScrollTo(x.Index-x.WheelIncrement)end)x.ScrollDownEvent=y.MouseWheelBackward:
+Connect(function()x:ScrollTo(x.Index+x.WheelIncrement)end)end local x={}x.
+__index=s local y=function(y)local z=setmetatable({Index=0,VisibleSpace=0,
+TotalSpace=0,Increment=1,WheelIncrement=1,Markers={},GuiElems={},Horizontal=y,
+LastTotalSpace=0,Scrolled=q.Signal.new()},x)z.Gui=w(z)z:Texture{ThumbColor=
+Color3.fromRGB(60,60,60),ThumbSelectColor=Color3.fromRGB(75,75,75),ArrowColor=
+Color3.new(1,1,1),FrameColor=Color3.fromRGB(40,40,40),ButtonColor=Color3.
+fromRGB(75,75,75)}return z end return{new=y}end)()q.CodeFrame=(function()local s
+,t,u,v,w,x,y,z={},{[1]='String',[2]='String',[3]='String',[4]='Comment',[5]=
+'Operator',[6]='Number',[7]='Keyword',[8]='BuiltIn',[9]='LocalMethod',[10]=
+'LocalProperty',[11]='Nil',[12]='Bool',[13]='Function',[14]='Local',[15]='Self',
+[16]='FunctionName',[17]='Bracket'},{['nil']=11,['true']=12,['false']=12,[
+'function']=13,['local']=14,self=15},{['and']=true,['break']=true,['do']=true,[
+'else']=true,['elseif']=true,['end']=true,['false']=true,['for']=true,[
+'function']=true,['if']=true,['in']=true,['local']=true,['nil']=true,['not']=
+true,['or']=true,['repeat']=true,['return']=true,['then']=true,['true']=true,[
+'until']=true,['while']=true,plugin=true},{delay=true,elapsedTime=true,require=
+true,spawn=true,tick=true,time=true,typeof=true,UserSettings=true,wait=true,warn
+=true,game=true,shared=true,script=true,workspace=true,assert=true,
+collectgarbage=true,error=true,getfenv=true,getmetatable=true,ipairs=true,
+loadstring=true,newproxy=true,next=true,pairs=true,pcall=true,print=true,
+rawequal=true,rawget=true,rawset=true,select=true,setfenv=true,setmetatable=true
+,tonumber=true,tostring=true,type=true,unpack=true,xpcall=true,_G=true,_VERSION=
+true,coroutine=true,debug=true,math=true,os=true,string=true,table=true,bit32=
+true,utf8=true,Axes=true,BrickColor=true,CFrame=true,Color3=true,ColorSequence=
+true,ColorSequenceKeypoint=true,DockWidgetPluginGuiInfo=true,Enum=true,Faces=
+true,Instance=true,NumberRange=true,NumberSequence=true,NumberSequenceKeypoint=
+true,PathWaypoint=true,PhysicalProperties=true,Random=true,Ray=true,Rect=true,
+Region3=true,Region3int16=true,TweenInfo=true,UDim=true,UDim2=true,Vector2=true,
+Vector2int16=true,Vector3=true,Vector3int16=true,Drawing=true,syn=true,crypt=
+true,cache=true,bit=true,readfile=true,writefile=true,isfile=true,appendfile=
+true,listfiles=true,loadfile=true,isfolder=true,makefolder=true,delfolder=true,
+delfile=true,setclipboard=true,setfflag=true,getnamecallmethod=true,isluau=true,
+setnonreplicatedproperty=true,getspecialinfo=true,saveinstance=true,
+rconsoleprint=true,rconsoleinfo=true,rconsolewarn=true,rconsoleerr=true,
+rconsoleclear=true,rconsolename=true,rconsoleinput=true,rconsoleinputasync=true,
+printconsole=true,checkcaller=true,islclosure=true,iscclosure=true,dumpstring=
+true,decompile=true,hookfunction=true,newcclosure=true,isrbxactive=true,keypress
+=true,keyrelease=true,mouse1click=true,mouse1press=true,mouse1release=true,
+mouse2click=true,mouse2press=true,mouse2release=true,mousescroll=true,
+mousemoveabs=true,mousemoverel=true,getrawmetatable=true,setrawmetatable=true,
+setreadonly=true,isreadonly=true,getsenv=true,getcallingscript=true,getgenv=true
+,getrenv=true,getreg=true,getgc=true,getinstances=true,getnilinstances=true,
+getscripts=true,getloadedmodules=true,getconnections=true,firesignal=true,
+fireclickdetector=true,firetouchinterest=true,fireproximityprompt=true},false,{[
+"'"]='&apos;',['"']='&quot;',['<']='&lt;',['>']='&gt;',['&']='&amp;'},'\u{cd}'
+local A,B,C,D,E,F=(' %s%s '):format(z,z),{[('[^%s] %s'):format(z,z)]=0,[(' %s%s'
+):format(z,z)]=-1,[('%s%s '):format(z,z)]=2,[('%s [^%s]'):format(z,z)]=1},{},
+function()local A,B,C=getfenv(),type,tostring for D,E in next,w do local F=A[D]
+if B(F)=='table'then local G={}for H,I in next,F do G[H]=true end w[D]=G end end
+local D,E={},Enum:GetEnums()for F=1,#E do D[C(E[F])]=true end w.Enum=D x=true
+end,function(A)local B=A.GuiElems.EditBox B.Focused:Connect(function()A:
+ConnectEditBoxEvent()A.Editing=true end)B.FocusLost:Connect(function()A:
+DisconnectEditBoxEvent()A.Editing=false end)B:GetPropertyChangedSignal'Text':
+Connect(function()local C=B.Text if#C==0 or A.EditBoxCopying then return end C=C
+:gsub('\t','    ')B.Text=''A:AppendText(C)end)end,function(A)local B,C=A.
+GuiElems.LinesFrame,A.Lines B.InputBegan:Connect(function(D)if n(D,'StartAndEnd'
+)then local E,F,G,H=math.ceil(A.FontSize/2),A.FontSize,l.X-B.AbsolutePosition.X,
+l.Y-B.AbsolutePosition.Y local I,J,K,L,M,N,O=math.round(G/E)+A.ViewX,math.floor(
+H/F)+A.ViewY,0,0 J=math.min(#C-1,J)local P=C[J+1]or''I=math.min(#P,I+A:
+TabAdjust(I,J))A.SelectionRange={{-1,-1},{-1,-1}}A:MoveCursor(I,J)A.FloatCursorX
+=I local Q=function()local Q,R=l.X-B.AbsolutePosition.X,l.Y-B.AbsolutePosition.Y
+local S,T=math.max(0,math.round(Q/E)+A.ViewX),math.max(0,math.floor(R/F)+A.ViewY
+)T=math.min(#C-1,T)local U=C[T+1]or''S=math.min(#U,S+A:TabAdjust(S,T))if T<J or(
+T==J and S<I)then A.SelectionRange={{S,T},{I,J}}else A.SelectionRange={{I,J},{S,
+T}}end A:MoveCursor(S,T)A.FloatCursorX=S A:Refresh()end M=h.InputEnded:Connect(
+function(R)if n(R,'StartAndEnd')then M:Disconnect()N:Disconnect()O:Disconnect()A
+:SetCopyableSelection()end end)N=h.InputChanged:Connect(function(R)if n(R,
+'Movement')then local S,T,U,V=l.Y-B.AbsolutePosition.Y,l.Y-B.AbsolutePosition.Y-
+B.AbsoluteSize.Y,l.X-B.AbsolutePosition.X,l.X-B.AbsolutePosition.X-B.
+AbsoluteSize.X K=0 L=0 if T>0 then K=math.floor(T*0.05)+1 elseif S<0 then K=math
+.ceil(S*0.05)-1 end if V>0 then L=math.floor(V*0.05)+1 elseif U<0 then L=math.
+ceil(U*0.05)-1 end Q()end end)O=i.RenderStepped:Connect(function()if K~=0 or L~=
+0 then A:ScrollDelta(L,K)Q()end end)A:Refresh()end end)end function s.
+MakeEditorFrame(G)local H=o'TextButton'H.BackgroundTransparency=1 H.
+TextTransparency=1 H.BackgroundColor3=Color3.fromRGB(40,40,40)H.BorderSizePixel=
+0 H.Size=UDim2.fromOffset(100,100)H.Visible=true local I,J={},o'Frame'J.Name=
+'Lines'J.BackgroundTransparency=1 J.Size=UDim2.new(1,0,1,0)J.ClipsDescendants=
+true J.Parent=H local K=o'TextLabel'K.Name='LineNumbers'K.BackgroundTransparency
+=1 K.FontFace=G.FontFace K.TextXAlignment=Enum.TextXAlignment.Right K.
+TextYAlignment=Enum.TextYAlignment.Top K.ClipsDescendants=true K.RichText=true K
+.Parent=H r.Name='Cursor'r.BackgroundColor3=Color3.fromRGB(220,220,220)r.
+BorderSizePixel=0 r.Parent=H local L=o'TextBox'L.Name='EditBox'L.MultiLine=true
+L.Visible=false L.Parent=H L.TextSize=G.FontSize L.FontFace=G.FontFace C.Invis=j
+:Create(r,TweenInfo.new(0,Enum.EasingStyle.Quart,Enum.EasingDirection.Out),{
+BackgroundTransparency=1})C.Vis=j:Create(r,TweenInfo.new(0,Enum.EasingStyle.
+Quart,Enum.EasingDirection.Out),{BackgroundTransparency=0})local M=o'Frame'M.
+BackgroundColor3=Color3.new(0.15686275064945,0.15686275064945,0.15686275064945)M
+.BorderSizePixel=0 M.Name='ScrollCorner'M.Position=UDim2.new(1,-10,1,-10)M.Size=
+UDim2.new(0,10,0,10)M.Visible=false I.ScrollCorner=M I.LinesFrame=J I.
+LineNumbersLabel=K I.Cursor=r I.EditBox=L I.ScrollCorner.Parent=H J.InputBegan:
+Connect(function(N)if n(N,'StartAndEnd')then G:SetEditing(true,N)end end)G.Frame
+=H G.Gui=H G.GuiElems=I E(G)F(G)return H end s.GetSelectionText=function(G)if
+not G:IsValidRange()then return''end local H=G.SelectionRange local I,J,K,L=H[1]
+[1],H[1][2],H[2][1],H[2][2]local M,N=L-J,G.Lines if not N[J+1]or not N[L+1]then
+return''end if M==0 then return G:ConvertText(N[J+1]:sub(I+1,K),false)end local
+O,P=N[J+1]:sub(I+1),N[L+1]:sub(1,K)local Q=O..'\n'for R=J+1,L-1 do Q=Q..N[R+1]..
+'\n'end Q=Q..P return G:ConvertText(Q,false)end s.SetCopyableSelection=function(
+G)local H,I=G:GetSelectionText(),G.GuiElems.EditBox G.EditBoxCopying=true I.Text
+=H I.SelectionStart=1 I.CursorPosition=#I.Text+1 G.EditBoxCopying=false end s.
+ConnectEditBoxEvent=function(G)if G.EditBoxEvent then G.EditBoxEvent:Disconnect(
+)end G.EditBoxEvent=h.InputBegan:Connect(function(H)if H.UserInputType~=Enum.
+UserInputType.Keyboard then return end local I,J,K=Enum.KeyCode,H.KeyCode,
+function(I,J)local K,L K=h.InputEnded:Connect(function(M)if M.KeyCode~=I then
+return end K:Disconnect()L=true end)J()q.FastWait(0.5)while not L do J()q.
+FastWait(0.03)end end if J==I.Down then K(I.Down,function()G.CursorX=G.
+FloatCursorX G.CursorY=G.CursorY+1 G:UpdateCursor()G:JumpToCursor()end)elseif J
+==I.Up then K(I.Up,function()G.CursorX=G.FloatCursorX G.CursorY=G.CursorY-1 G:
+UpdateCursor()G:JumpToCursor()end)elseif J==I.Left then K(I.Left,function()local
+L=G.Lines[G.CursorY+1]or''G.CursorX=G.CursorX-1-(L:sub(G.CursorX-3,G.CursorX)==A
+and 3 or 0)if G.CursorX<0 then G.CursorY=G.CursorY-1 local M=G.Lines[G.CursorY+1
+]or''G.CursorX=#M end G.FloatCursorX=G.CursorX G:UpdateCursor()G:JumpToCursor()
+end)elseif J==I.Right then K(I.Right,function()local L=G.Lines[G.CursorY+1]or''G
+.CursorX=G.CursorX+1+(L:sub(G.CursorX+1,G.CursorX+4)==A and 3 or 0)if G.CursorX>
+#L then G.CursorY=G.CursorY+1 G.CursorX=0 end G.FloatCursorX=G.CursorX G:
+UpdateCursor()G:JumpToCursor()end)elseif J==I.Backspace then K(I.Backspace,
+function()local L,M if G:IsValidRange()then L=G.SelectionRange[1]M=G.
+SelectionRange[2]else M={G.CursorX,G.CursorY}end if not L then local N=G.Lines[G
+.CursorY+1]or''G.CursorX=G.CursorX-1-(N:sub(G.CursorX-3,G.CursorX)==A and 3 or 0
+)if G.CursorX<0 then G.CursorY=G.CursorY-1 local O=G.Lines[G.CursorY+1]or''G.
+CursorX=#O end G.FloatCursorX=G.CursorX G:UpdateCursor()L=L or{G.CursorX,G.
+CursorY}end G:DeleteRange({L,M},false,true)G:ResetSelection(true)G:JumpToCursor(
+)end)elseif J==I.Delete then K(I.Delete,function()local L,M if G:IsValidRange()
+then L=G.SelectionRange[1]M=G.SelectionRange[2]else L={G.CursorX,G.CursorY}end
+if not M then local N=G.Lines[G.CursorY+1]or''local O,P=G.CursorX+1+(N:sub(G.
+CursorX+1,G.CursorX+4)==A and 3 or 0),G.CursorY if O>#N then P=P+1 O=0 end G:
+UpdateCursor()M=M or{O,P}end G:DeleteRange({L,M},false,true)G:ResetSelection(
+true)G:JumpToCursor()end)elseif h:IsKeyDown(Enum.KeyCode.LeftControl)then if J==
+I.A then G.SelectionRange={{0,5},{#G.Lines[#G.Lines],#G.Lines-1}}G:
+SetCopyableSelection()G:Refresh()end end end)end s.DisconnectEditBoxEvent=
+function(G)if G.EditBoxEvent then G.EditBoxEvent:Disconnect()r.
+BackgroundTransparency=1 s.CursorAnim(G,false)end end s.ResetSelection=function(
+G,H)G.SelectionRange={{-1,-1},{-1,-1}}if not H then G:Refresh()end end s.
+IsValidRange=function(G,H)local I=H or G.SelectionRange local J,K,L,M=I[1][1],I[
+1][2],I[2][1],I[2][2]if J==-1 or(J==L and K==M)then return false end return true
+end s.DeleteRange=function(G,H,I,J)H=H or G.SelectionRange if not G:
+IsValidRange(H)then return end local K,L,M,N,O=G.Lines,H[1][1],H[1][2],H[2][1],H
+[2][2]local P=O-M if not K[M+1]or not K[O+1]then return end local Q,R=K[M+1]:
+sub(1,L),K[O+1]:sub(N+1)K[M+1]=Q..R local S=table.remove for T=1,P do S(K,M+2)
+end if H==G.SelectionRange then G.SelectionRange={{-1,-1},{-1,-1}}end if J then
+G.CursorX=L G.CursorY=M G:UpdateCursor()end if not I then G:ProcessTextChange()
+end end s.AppendText=function(G,H)G:DeleteRange(nil,true,true)local I,J,K=G.
+Lines,G.CursorX,G.CursorY local L=I[K+1]local M,N=L:sub(1,J),L:sub(J+1)H=H:gsub(
+'\r\n','\n')H=G:ConvertText(H,true)local O,P=H:split'\n',table.insert for Q=1,#O
+do local R=K+Q if Q>1 then P(I,R,'')end local S,T,U=O[Q],(Q==1 and M or''),(Q==#
+O and N or'')I[R]=T..S..U end if#O>1 then J=0 end G:ProcessTextChange()G.CursorX
+=J+#O[#O]G.CursorY=K+#O-1 G:UpdateCursor()end s.ScrollDelta=function(G,H,I)G.
+ScrollV:ScrollTo(G.ScrollV.Index+I)G.ScrollH:ScrollTo(G.ScrollH.Index+H)end s.
+TabAdjust=function(G,H,I)local J=G.Lines local K=J[I+1]H=H+1 if K then local L,M
+,N=K:sub(H-1,H-1),K:sub(H,H),K:sub(H+1,H+1)local O=(#L>0 and L or' ')..(#M>0 and
+M or' ')..(#N>0 and N or' ')for P,Q in pairs(B)do if O:find(P)then return Q end
+end end return 0 end s.SetEditing=function(G,H,I)if I then G:UpdateCursor(I)end
+if H then if G.Editable then G.GuiElems.EditBox.Text=''G.GuiElems.EditBox:
+CaptureFocus()end else G.GuiElems.EditBox:ReleaseFocus()end end s.CursorAnim=
+function(G,H)local I,J=G.GuiElems.Cursor,tick()G.LastAnimTime=J if not H then
+return end C.Invis:Cancel()C.Vis:Cancel()I.BackgroundTransparency=0 coroutine.
+wrap(function()while G.Editable do q.FastWait(0.5)if G.LastAnimTime~=J then
+return end C.Invis:Play()q.FastWait(0.5)if G.LastAnimTime~=J then return end C.
+Vis:Play()end end)()end s.MoveCursor=function(G,H,I)G.CursorX=H G.CursorY=I G:
+UpdateCursor()G:JumpToCursor()end s.JumpToCursor=function(G)G:Refresh()end s.
+UpdateCursor=function(G,H)local I,J=G.GuiElems.LinesFrame,G.GuiElems.Cursor
+local K,L=math.max(0,I.AbsoluteSize.X),math.max(0,I.AbsoluteSize.Y)local M,N,O,P
+,Q,R=math.ceil(L/G.FontSize),math.ceil(K/math.ceil(G.FontSize/2)),G.ViewX,G.
+ViewY,tostring(#G.Lines),math.ceil(G.FontSize/2)local S=#Q*R+4*R if H then local
+T=G.GuiElems.LinesFrame local U,V,W,X,Y,Z=T.AbsolutePosition.X,T.
+AbsolutePosition.Y,H.Position.X,H.Position.Y,math.ceil(G.FontSize/2),G.FontSize
+G.CursorX=G.ViewX+math.round((W-U)/Y)G.CursorY=G.ViewY+math.floor((X-V)/Z)end
+local T,U=G.CursorX,G.CursorY local V=G.Lines[U+1]or''if T>#V then T=#V elseif T
+<0 then T=0 end if U>=#G.Lines then U=math.max(0,#G.Lines-1)elseif U<0 then U=0
+end T=T+G:TabAdjust(T,U)G.CursorX=T G.CursorY=U local W=(T>=O)and(U>=P)and(T<=O+
+N)and(U<=P+M)if W then local X,Y=(T-O),(U-P)J.Position=UDim2.new(0,S+X*math.
+ceil(G.FontSize/2)-1,0,Y*G.FontSize)J.Size=UDim2.new(0,1,0,G.FontSize+2)J.
+Visible=true G:CursorAnim(true)else J.Visible=false end end s.MapNewLines=
+function(G)local H,I,J,K,L={},1,G.Text,string.find,1 local M=K(J,'\n',L,true)
+while M do H[I]=M I=I+1 L=M+1 M=K(J,'\n',L,true)end G.NewLines=H end s.
+PreHighlight=function(G)local H=G.Text:gsub('\\\\','  ')local I,J,K,L,M,N=#H,{},
+{},{},string.find,string.sub G.ColoredLines={}local O=function(O,P,Q,R)local S,T
+=#J+1,1 local U,V,W=M(O,P,T,R)while U do J[S]=U K[U]=Q if W then L[U]=W end S=S+
+1 T=V+1 U,V,W=M(O,P,T,R)end end O(H,'"',1,true)O(H,"'",2,true)O(H,'%[(=*)%[',3)
+O(H,'--',4,true)table.sort(J)local P,Q,R,S,T=G.NewLines,0,0,0,{}for U=1,#J do
+local V=J[U]if V<=S then continue end local W,X=V,K[V]if X==1 then W=M(H,'"',V+1
+,true)while W and N(H,W-1,W-1)=='\\'do W=M(H,'"',W+1,true)end if not W then W=I
+end elseif X==2 then W=M(H,"'",V+1,true)while W and N(H,W-1,W-1)=='\\'do W=M(H,
+"'",W+1,true)end if not W then W=I end elseif X==3 then _,W=M(H,']'..L[V]..']',V
++1,true)if not W then W=I end elseif X==4 then local Y=K[V+2]if Y==3 then _,W=M(
+H,']'..L[V+2]..']',V+1,true)if not W then W=I end else W=M(H,'\n',V+1,true)or I
+end end while V>R do Q=Q+1 R=P[Q]or I+1 end while true do local Y=T[Q]if not Y
+then Y={}T[Q]=Y end Y[V]={X,W}if W>R then Q=Q+1 R=P[Q]or I+1 else break end end
+S=W end G.PreHighlights=T end s.HighlightLine=function(G,H)local I=G.
+ColoredLines[H]if I then return I end local J,K,L,M,N,O,P,Q,R,S,T,U,V=string.sub
+,string.find,string.match,{},G.PreHighlights[H]or{},G.Lines[H]or'',0,0,false,0,G
+.NewLines[H-1]or 0,{}for W,X in next,N do local Y=W-T if Y<1 then Q=X[1]P=X[2]-T
+else U[Y]={X[1],X[2]-T}end end for W=1,#O do if W<=P then M[W]=Q continue end
+local X=U[W]if X then Q=X[1]P=X[2]M[W]=Q R=false V=nil S=0 else local Y=J(O,W,W)
+if K(Y,'[%a_]')then local Z=L(O,'[%a%d_]+',W)local _=(v[Z]and 7)or(w[Z]and 8)P=W
++#Z-1 if _~=7 then if R then local aa=V and w[V]_=(aa and type(aa)=='table'and
+aa[Z]and 8)or 10 end if _~=8 then local aa,ab,ac=K(O,'^%s*([%({"\'])',P+1)if aa
+then _=(S>0 and ac=='('and 16)or 9 S=0 end end else _=u[Z]or _ S=(Z=='function'
+and 1 or 0)end V=Z R=false if S>0 then S=1 end if _ then Q=_ M[W]=Q else Q=nil
+end elseif K(Y,'%p')then local aa=(Y=='.')local ab=aa and K(J(O,W+1,W+1),'%d')M[
+W]=(ab and 6 or 5)if not ab then local ac=aa and L(O,'%.%.?%.?',W)if ac and#ac>1
+then Q=5 P=W+#ac-1 R=false V=nil S=0 else if aa then if R then V=nil else R=true
+end else R=false V=nil end S=((aa or Y==':')and S==1 and 2)or 0 end end elseif
+K(Y,'%d')then local aa,ab=K(O,'%x+',W)local ac=J(O,ab,ab+1)if(ac=='e+'or ac==
+'e-')and K(J(O,ab+2,ab+2),'%d')then ab=ab+1 end Q=6 P=ab M[W]=6 R=false V=nil S=
+0 else M[W]=Q local aa,ab=K(O,'%s+',W)if ab then P=ab end end end end G.
+ColoredLines[H]=M return M end s.Refresh=function(aa)local ab=aa.Frame.Lines
+local ac,G=math.max(0,ab.AbsoluteSize.X),math.max(0,ab.AbsoluteSize.Y)local H,I,
+J,K,L,M,N=math.ceil(G/aa.FontSize),math.ceil(ac/math.ceil(aa.FontSize/2)),string
+.gsub,string.sub,aa.ViewX,aa.ViewY,''for O=1,H do local P=aa.LineFrames[O]if not
+P then P=o'Frame'P.Name='Line'P.Position=UDim2.new(0,0,0,(O-1)*aa.FontSize)P.
+Size=UDim2.new(1,0,0,aa.FontSize)P.BorderSizePixel=0 P.BackgroundTransparency=1
+local Q=o'Frame'Q.Name='SelectionHighlight'Q.BorderSizePixel=0 Q.
+BackgroundColor3=d.Theme.Syntax.SelectionBack Q.Parent=P Q.
+BackgroundTransparency=0.7 local R=o'TextLabel'R.Name='Label'R.
+BackgroundTransparency=1 R.FontFace=aa.FontFace R.TextSize=aa.FontSize R.Size=
+UDim2.new(1,0,0,aa.FontSize)R.RichText=true R.TextXAlignment=Enum.TextXAlignment
+.Left R.TextColor3=aa.Colors.Text R.ZIndex=2 R.Parent=P P.Parent=ab aa.
+LineFrames[O]=P end local Q=M+O local R,S,T,U,V=aa.Lines[Q]or'','',aa:
+HighlightLine(Q),L+1,aa.RichTemplates local W,X,Y=V.Text,V.Selection,T[U]local Z
+,_=V[t[Y] ]or W,aa.SelectionRange local ad,ae,af=_[1],_[2],Q-1 if af>=ad[2]and
+af<=ae[2]then local ag,ah=math.ceil(aa.FontSize/2),(af==ad[2]and ad[1]or 0)-L
+local ai=(af==ae[2]and ae[1]-ah-L or I+L)P.SelectionHighlight.Position=UDim2.
+new(0,ah*ag,0,0)P.SelectionHighlight.Size=UDim2.new(0,ai*ag,1,0)P.
+SelectionHighlight.Visible=true else P.SelectionHighlight.Visible=false end for
+ag=2,I do local ah=L+ag local ai=T[ah]if ai~=Y then local aj=V[t[ai] ]or W if aj
+~=Z then local ak=J(K(R,U,ah-1),'[\'"<>&]',y)S=S..(Z~=W and(Z..ak..'</font>')or
+ak)U=ah Z=aj end Y=ai end end local ag=J(K(R,U,L+I),'[\'"<>&]',y)if#ag>0 then S=
+S..(Z~=W and(Z..ag..'</font>')or ag)end if aa.Lines[Q]then N=N..(Q-1==aa.CursorY
+and('<b>'..Q..'</b>\n')or Q..'\n')end P.Label.Text=S end for ad=H+1,#aa.
+LineFrames do aa.LineFrames[ad]:Destroy()aa.LineFrames[ad]=nil end aa.Frame.
+LineNumbers.Text=N aa:UpdateCursor()end s.UpdateView=function(aa)local ab,ac=
+tostring(#aa.Lines),math.ceil(aa.FontSize/2)local ad,ae=#ab*ac+4*ac,aa.Frame.
+Lines local af,ag=ae.AbsoluteSize.X,ae.AbsoluteSize.Y local ah,ai,aj,ak=math.
+ceil(ag/aa.FontSize),aa.MaxTextCols*ac,aa.ScrollV,aa.ScrollH aj.VisibleSpace=ah
+aj.TotalSpace=#aa.Lines+1 ak.VisibleSpace=math.ceil(af/ac)ak.TotalSpace=aa.
+MaxTextCols+1 aj.Gui.Visible=#aa.Lines+1>ah ak.Gui.Visible=ai>af local G=aa.
+FrameOffsets aa.FrameOffsets=Vector2.new(aj.Gui.Visible and-10 or 0,ak.Gui.
+Visible and-10 or 0)if G~=aa.FrameOffsets then aa:UpdateView()else aj:ScrollTo(
+aa.ViewY,true)ak:ScrollTo(aa.ViewX,true)if aj.Gui.Visible and ak.Gui.Visible
+then aj.Gui.Size=UDim2.new(0,10,1,-10)ak.Gui.Size=UDim2.new(1,-10,0,10)aa.
+GuiElems.ScrollCorner.Visible=true else aj.Gui.Size=UDim2.new(0,10,1,0)ak.Gui.
+Size=UDim2.new(1,0,0,10)aa.GuiElems.ScrollCorner.Visible=false end aa.ViewY=aj.
+Index aa.ViewX=ak.Index aa.Frame.Lines.Position=UDim2.new(0,ad,0,0)aa.Frame.
+Lines.Size=UDim2.new(1,-ad+G.X,1,G.Y)aa.Frame.LineNumbers.Position=UDim2.new(0,
+ac,0,0)aa.Frame.LineNumbers.Size=UDim2.new(0,#ab*ac,1,G.Y)aa.Frame.LineNumbers.
+TextSize=aa.FontSize end end s.ProcessTextChange=function(aa)local ab,ac=0,aa.
+Lines for ad=1,#ac do local ae=#ac[ad]if ae>ab then ab=ae end end aa.MaxTextCols
+=ab aa:UpdateView()aa.Text=table.concat(aa.Lines,'\n')aa:MapNewLines()aa:
+PreHighlight()aa:Refresh()end s.ConvertText=function(aa,ab,ac)if ac then local
+ad=ab:gsub('\t','    ')return ad:gsub('\t',(' %s%s '):format(z,z))else return ab
+:gsub((' %s%s '):format(z,z),'\t')end end s.GetText=function(aa)local ab=table.
+concat(aa.Lines,'\n')return aa:ConvertText(ab,false)end s.SetText=function(aa,ab
+)ab=aa:ConvertText(ab,true)local ac=aa.Lines table.clear(ac)local ad=1 for ae in
+ab:gmatch'([^\n\r]*)[\n\r]?'do ac[ad]=ae ad=ad+1 end aa:ProcessTextChange()end s
+.ClearText=function(aa)local ab,ac=aa:ConvertText('',true),aa.Lines table.clear(
+ac)local ad=1 for ae in ab:gmatch'([^\n\r]*)[\n\r]?'do ac[ad]=ae ad=ad+1 end aa:
+ProcessTextChange()end s.CompileText=function(aa)local ab=pcall(function()local
+ab=table.concat(aa.Lines,'\n')local ac=aa:ConvertText(ab,false)loadstring(ac)()
+end)return ab end s.ReturnErrors=function(aa)local ab,ac=pcall(function()local
+ab=table.concat(aa.Lines,'\n')local ac=aa:ConvertText(ab,false)loadstring(ac)()
+end)return not ab and ac or nil end s.GetVersion=function(aa)return b end s.
+MakeRichTemplates=function(aa)local ab,ac=math.floor,{}for ad,ae in pairs(aa.
+Colors)do ac[ad]=('<font color="rgb(%s,%s,%s)">'):format(ab(ae.r*255),ab(ae.g*
+255),ab(ae.b*255))end aa.RichTemplates=ac end s.ApplyTheme=function(aa)local ab=
+d.Theme.Syntax aa.Colors=ab aa.Frame.LineNumbers.TextColor3=ab.Text aa.Frame.
+BackgroundColor3=ab.Background end local aa={__index=s}local ab=function(ab)ab=
+ab or{}if not x then D()end local ac,ad=q.ScrollBar.new(),q.ScrollBar.new(true)
+ad.Gui.Position=UDim2.new(0,0,1,-10)local ae={FontFace=Font.fromEnum(Enum.Font.
+Code),FontSize=14,ViewX=0,ViewY=0,Colors=d.Theme.Syntax,ColoredLines={},Lines={
+''},LineFrames={},Editable=true,Editing=false,CursorX=0,CursorY=0,FloatCursorX=0
+,Text='',PreHighlights={},SelectionRange={{-1,-1},{-1,-1}},NewLines={},
+FrameOffsets=Vector2.new(0,0),MaxTextCols=0,ScrollV=ac,ScrollH=ad}local af=m(ae,
+ab)local ag=setmetatable(af,aa)s.SetTextMultiplier=(function(ah)ag.FontSize=ah
+end)s.GetTextMultiplier=(function()return ag.FontSize end)ac.WheelIncrement=3 ad
+.Increment=2 ad.WheelIncrement=7 ac.Scrolled:Connect(function()ag.ViewY=ac.Index
+ag:Refresh()end)ad.Scrolled:Connect(function()ag.ViewX=ad.Index ag:Refresh()end)
+ag:MakeEditorFrame(ag)ag:MakeRichTemplates()ag:ApplyTheme()ac:SetScrollFrame(ag.
+Frame.Lines)ac.Gui.Parent=ag.Frame ad.Gui.Parent=ag.Frame ag:UpdateView()ag:
+SetText(af.Text)ag.Frame:GetPropertyChangedSignal'AbsoluteSize':Connect(function
+()ag:UpdateView()ag:Refresh()end)return ag end return{new=ab}end)()return q end
+function a.b()local aa,ab,ac={Services={},OnInitConnections={}},get_hidden_gui
+or gethui,cloneref or function(...)return...end local ad=aa.Services
+setmetatable(ad,{__index=function(ae,af)local ag=game:GetService(af)return ac(ag
+)end})local ae,af=(ad.CoreGui)function aa:AddOnInit(ag)local ah=self.
+OnInitConnections table.insert(ah,ag)end function aa:NewReference(ag)return ac(
+ag)end function aa:CallOnInitConnections(ag,...)local ah=self.OnInitConnections
+af=ag for ai,aj in next,ah do aj(af,...)end end function aa:SetProperties(ag,ah)
+for ai,aj in next,ah do pcall(function()ag[ai]=aj end)end end function aa:
+NewClass(ag,ah)ah=ah or{}ag.__index=ag return setmetatable(ah,ag)end function aa
+:CheckConfig(ag,ah,ai,aj)if not ag then return end for ak,b in next,ah do if ag[
+ak]~=nil then continue end if aj then if table.find(aj,ak)then continue end end
+if ai then b=b()end ag[ak]=b end return ag end function aa:ResolveUIParent()
+local ag,ah=af.PlayerGui,af.Debug local ai,aj={[1]=function()local ai=ab()if ai.
+Parent==ae then return end return ai end,[2]=function()return ae end,[3]=
+function()return ag end},af:CreateInstance'ScreenGui'for ak,b in next,ai do
+local c,d=pcall(b)if not c or not d then continue end local e=pcall(function()aj
+.Parent=d end)if not e then continue end if ah then af:Warn(`Step: {ak} was chosen as the parent!: {
+d}`)end return d end af:Warn'The ReGui container does not have a parent defined'
+return nil end function aa:GetChildOfClass(ag,ah)local ai=ag:
+FindFirstChildOfClass(ah)if not ai then ai=af:CreateInstance(ah,ag)end return ai
+end function aa:CheckAssetUrl(ag)if tonumber(ag)then return`rbxassetid://{ag}`
+end return ag end function aa:SetPadding(ag,ah)if not ag then return end self:
+SetProperties(ag,{PaddingBottom=ah,PaddingLeft=ah,PaddingRight=ah,PaddingTop=ah}
+)end return aa end function a.c()local aa,ab=a.load'b',{DefaultTweenInfo=
+TweenInfo.new(0.08)}local ac=aa.Services local ad=ac.TweenService function ab:
+Tween(ae)local af,ag,ah=self.DefaultTweenInfo,ae.Object,ae.NoAnimation local ai,
+aj,ak,b=ae.Tweeninfo or af,ae.EndProperties,ae.StartProperties,ae.Completed if
+ak then aa:SetProperties(ag,ak)end if ah then aa:SetProperties(ag,aj)if b then
+b()end return end local c for d,e in next,aj do local f={[d]=e}local g,h=pcall(
+function()return ad:Create(ag,ai,f)end)if not g then aa:SetProperties(ag,f)
+continue end if not c then c=h end h:Play()end if b then if c then c.Completed:
+Connect(b)else b()end end return c end function ab:Animate(ae)local af,ag,ah,ai,
+aj=ae.NoAnimation,ae.Objects,ae.Tweeninfo,(ae.Completed)for ak,b in next,ag do
+local c=self:Tween{NoAnimation=af,Object=ak,Tweeninfo=ah,EndProperties=b}if not
+aj then aj=c end end if ai then aj.Completed:Connect(ai)end return aj end
+function ab:HeaderCollapseToggle(ae)aa:CheckConfig(ae,{Rotations={Open=90,Closed
+=0}})local af,ag,ah,ai,aj=ae.Toggle,ae.NoAnimation,ae.Rotations,ae.Collapsed,ae.
+Tweeninfo local ak=ai and ah.Closed or ah.Open self:Tween{Tweeninfo=aj,
+NoAnimation=ag,Object=af,EndProperties={Rotation=ak}}end function ab:
+HeaderCollapse(ae)local af,ag,ah,ai,aj,ak,b,c,d,e,f=ae.Tweeninfo,ae.Collapsed,ae
+.ClosedSize,ae.OpenSize,ae.Toggle,ae.Resize,ae.Hide,ae.NoAnimation,ae.
+NoAutomaticSize,ae.IconRotations,ae.Completed if not d then ak.AutomaticSize=
+Enum.AutomaticSize.None end if not ag then b.Visible=true end self:
+HeaderCollapseToggle{Tweeninfo=af,Collapsed=ag,NoAnimation=c,Toggle=aj,Rotations
+=e}local g=self:Tween{Tweeninfo=af,NoAnimation=c,Object=ak,StartProperties={Size
+=ag and ai or ah},EndProperties={Size=ag and ah or ai},Completed=function()b.
+Visible=not ag if f then f()end if ag then return end if d then return end ak.
+Size=UDim2.fromScale(1,0)ak.AutomaticSize=Enum.AutomaticSize.Y end}return g end
+return ab end function a.d()local aa={}aa.__index=aa local ab=a.load'b'function
+aa:Fire(...)local ac=self:GetConnections()if#ac<=0 then return end for ad,ae in
+next,ac do ae(...)end end function aa:GetConnections()local ac=self.Connections
+return ac end function aa:Connect(ac)local ad=self:GetConnections()table.insert(
+ad,ac)end function aa:DisconnectConnections()local ac=self:GetConnections()table
+.clear(ac)end function aa:NewSignal()return ab:NewClass(aa,{Connections={}})end
+return aa end function a.e()return function(aa)local ab=aa:Window{Title=
+'Configuration saving',Size=UDim2.fromOffset(300,200)}local ac,ad=(ab:Row())ac:
+Button{Text='Dump Ini',Callback=function()print(aa:DumpIni(true))end}ac:Button{
+Text='Save Ini',Callback=function()ad=aa:DumpIni(true)end}ac:Button{Text=
+'Load Ini',Callback=function()if not ad then warn'No save data!'return end aa:
+LoadIni(ad,true)end}ab:Separator()ab:SliderInt{IniFlag='MySlider',Value=5,
+Minimum=1,Maximum=32}ab:Checkbox{IniFlag='MyCheckbox',Value=true}ab:InputText{
+IniFlag='MyInput',Value='Hello world!'}ab:Keybind{IniFlag='MyKeybind',Label=
+'Keybind (w/ Q & Left-Click blacklist)',KeyBlacklist={Enum.UserInputType.
+MouseButton1,Enum.KeyCode.Q}}local ae=aa:TabsWindow{Title='Tabs window!',Visible
+=false,Size=UDim2.fromOffset(300,200)}for af,ag in{'Avocado','Broccoli',
+'Cucumber'}do local ah=ae:CreateTab{Name=ag}ah:Label{Text=`This is the {ag} tab!`
+}end local af=aa.Elements:Label{Parent=aa.Container.Windows,Visible=false,
+UiPadding=UDim.new(0,8),CornerRadius=UDim.new(0,2),Position=UDim2.fromOffset(10,
+10),Size=UDim2.fromOffset(250,50),Border=true,BorderThickness=1,BorderColor=aa.
+Accent.Gray,BackgroundTransparency=0.4,BackgroundColor3=aa.Accent.Black}game:
+GetService'RunService'.RenderStepped:Connect(function(ag)local ah,ai,aj=math.
+round(1/ag),DateTime.now():FormatLocalTime('dddd h:mm:ss A','en-us'),`ReGui {aa:
+GetVersion()}\n`aj..=`FPS: {ah}\n`aj..=`The time is {ai}`af.Text=aj end)local ag
+=aa:Window{Title='Dear ReGui Demo',Size=UDim2.new(0,400,0,300),NoScroll=true}:
+Center()local ah=ag:MenuBar()local ai=ah:MenuItem{Text='Menu'}ai:Selectable{Text
+='New'}ai:Selectable{Text='Open'}ai:Selectable{Text='Save'}ai:Selectable{Text=
+'Save as'}ai:Selectable{Text='Exit',Callback=function()ag:Close()end}local aj=ah
+:MenuItem{Text='Examples'}aj:Selectable{Text='Print hello world',Callback=
+function()print'Hello world!'end}aj:Selectable{Text='Tabs window',Callback=
+function()ae:ToggleVisibility()end}aj:Selectable{Text='Configuration saving',
+Callback=function()ab:ToggleVisibility()end}aj:Selectable{Text='Watermark',
+Callback=function()af.Visible=not af.Visible end}ag:Label{Text=`Dear ReGui says hello! ({
+aa:GetVersion()})`}local ak=ag:ScrollingCanvas{Fill=true,UiPadding=UDim.new(0,0)
+}local b=ak:CollapsingHeader{Title='Help'}b:Separator{Text='ABOUT THIS DEMO:'}b:
+BulletText{Rows={
+[[Sections below are demonstrating many aspects of the library.]]}}b:Separator{
+Text='PROGRAMMER GUIDE:'}b:BulletText{Rows={
+[[See example FAQ, examples, and documentation at https://depso.gitbook.io/regui]]
+}}b:Indent():BulletText{Rows={'See example applications in the /demo folder.'}}
+local c=ak:CollapsingHeader{Title='Configuration'}local d=c:TreeNode{Title=
+'Backend Flags'}d:Checkbox{Label='ReGui:IsMobileDevice',Disabled=true,Value=aa:
+IsMobileDevice()}d:Checkbox{Label='ReGui:IsConsoleDevice',Disabled=true,Value=aa
+:IsConsoleDevice()}local e=c:TreeNode{Title='Style'}e:Combo{Selected='DarkTheme'
+,Label='Colors',Items=aa.ThemeConfigs,Callback=function(f,g)ag:SetTheme(g)end}
+local f,g=ak:CollapsingHeader{Title='Window options'}:Table{MaxColumns=3}:
+NextRow(),{NoResize=false,NoTitleBar=false,NoClose=false,NoCollapse=false,
+OpenOnDoubleClick=true,NoBringToFrontOnFocus=false,NoMove=false,NoSelect=false,
+NoScrollBar=false,NoBackground=false}for h,i in pairs(g)do local j=f:NextColumn(
+)j:Checkbox{Value=i,Label=h,Callback=function(k,l)ag:UpdateConfig{[h]=l}end}end
+local h,i,m=ak:CollapsingHeader{Title='Widgets'},{'Basic','Tooltips',
+'Tree Nodes','Collapsing Headers','Bullets','Text','Images','Videos','Combo',
+'Tabs','Plot widgets','Multi-component Widgets','Progress Bars','Picker Widgets'
+,'Code editor','Console','List layout','Indent','Viewport','Keybinds','Input',
+'Text Input'},{Basic=function(h)h:Separator{Text='General'}local i=h:Row()local
+j=i:Label{Text='Thanks for clicking me!',Visible=false,LayoutOrder=2}i:Button{
+Callback=function()j.Visible=not j.Visible end}h:Checkbox()local k=h:Row()k:
+Radiobox{Label='radio a'}k:Radiobox{Label='radio b'}k:Radiobox{Label='radio c'}
+local l=h:Row()for m=1,7 do local n=m/7 l:Button{Text='Click',BackgroundColor3=
+Color3.fromHSV(n,0.6,0.6)}end local m=h:Button{Text='Tooltip'}aa:SetItemTooltip(
+m,function(n)n:Label{Text='I am a tooltip'}end)h:Separator{Text='Inputs'}h:
+InputText{Value='Hello world!'}h:InputText{Placeholder='Enter text here',Label=
+'Input text (w/ hint)',Value=''}h:InputInt{Value=50}h:InputInt{Label=
+'Input Int (w/ limit)',Value=5,Maximum=10,Minimum=1}h:Separator{Text='Drags'}h:
+DragInt()h:DragInt{Maximum=100,Minimum=0,Label='Drag Int 0..100',Format='%d%%'}h
+:DragFloat{Maximum=1,Minimum=0,Value=0.5}h:Separator{Text='Sliders'}h:SliderInt{
+Format='%.d/%s',Value=5,Minimum=1,Maximum=32,ReadOnly=false}:SetValue(8)h:
+SliderInt{Label='Slider Int (w/ snap)',Value=1,Minimum=1,Maximum=8,Type='Snap'}h
+:SliderFloat{Label='Slider Float',Minimum=0,Maximum=1,Format='Ratio = %.3f'}h:
+SliderFloat{Label='Slider Angle',Minimum=-360,Maximum=360,Format='%.f deg'}h:
+SliderEnum{Items={'Fire','Earth','Air','Water'},Value=2}h:SliderEnum{Items={
+'Fire','Earth','Air','Water'},Value=2,Disabled=true,Label='Disabled Enum'}h:
+SliderProgress{Label='Progress Slider',Value=8,Minimum=1,Maximum=32}h:Separator{
+Text='Selectors/Pickers'}h:InputColor3{Value=aa.Accent.Light,Label='Color 1'}h:
+SliderColor3{Value=aa.Accent.Light,Label='Color 2'}h:InputCFrame{Value=CFrame.
+new(1,1,1),Minimum=CFrame.new(0,0,0),Maximum=CFrame.new(200,100,50),Label=
+'CFrame 1'}h:SliderCFrame{Value=CFrame.new(1,1,1),Minimum=CFrame.new(0,0,0),
+Maximum=CFrame.new(200,100,50),Label='CFrame 2'}h:Combo{Selected=1,Items={'AAAA'
+,'BBBB','CCCC','DDDD','EEEE','FFFF','GGGG','HHHH','IIIIIII','JJJJ','KKKKKKK'}}
+end,Tooltips=function(h)h:Separator{Text='General'}local i=h:Button{Text='Basic'
+,Size=UDim2.fromScale(1,0)}aa:SetItemTooltip(i,function(j)j:Label{Text=
+'I am a tooltip'}end)local j=h:Button{Text='Fancy',Size=UDim2.fromScale(1,0)}aa:
+SetItemTooltip(j,function(k)k:Label{Text='I am a fancy tooltip'}k:Image{Image=
+18395893036}local l=k:Label()while wait()do l.Text=`Sin(time) = {math.sin(tick()
+)}`end end)local k=h:Button{Text='Double tooltip',Size=UDim2.fromScale(1,0)}for
+l=1,3 do aa:SetItemTooltip(k,function(m)m:Label{Text=`I am tooltip {l}`}end)end
+end,Videos=function(h)local i=h:VideoPlayer{Video=5608327482,Looped=true,Ratio=
+1.7777777777777777,RatioAspectType=Enum.AspectType.FitWithinMaxSize,RatioAxis=
+Enum.DominantAxis.Width,Size=UDim2.fromScale(1,1)}i:Play()local k=h:Row{Expanded
+=true}k:Button{Text='Pause',Callback=function()i:Pause()end}k:Button{Text='Play'
+,Callback=function()i:Play()end}if not i.IsLoaded then i.Loaded:Wait()end local
+l=k:SliderInt{Format='%.f',Value=0,Minimum=0,Maximum=i.TimeLength,Callback=
+function(l,m)i.TimePosition=m end}game:GetService'RunService'.RenderStepped:
+Connect(function(m)l:SetValue(i.TimePosition)end)end,['Tree Nodes']=function(h)
+for i=1,5 do local k=h:TreeNode{Title=`Child {i}`,Collapsed=i~=1}local l=k:Row()
+l:Label{Text='Blah blah'}l:SmallButton{Text='Button'}end h:TreeNode{Title=`With icon & NoArrow`
+,NoArrow=true,Icon=aa.Icons.Image}end,['Collapsing Headers']=function(h)local i
+h:Checkbox{Value=true,Label='Show 2nd header',Callback=function(k,l)if i then i:
+SetVisible(l)end end}h:Checkbox{Value=true,Label='2nd has arrow',Callback=
+function(k,l)if i then i:SetArrowVisible(l)end end}local k=h:CollapsingHeader{
+Title='Header'}for l=1,5 do k:Label{Text=`Some content {l}`}end i=h:
+CollapsingHeader{Title='Second Header'}for l=1,5 do i:Label{Text=`More content {
+l}`}end end,Bullets=function(h)h:BulletText{Rows={'Bullet point 1',
+'Bullet point 2\nOn multiple lines'}}h:TreeNode():BulletText{Rows={
+'Another bullet point'}}h:Bullet():Label{Text='Bullet point 3 (two calls)'}h:
+Bullet():SmallButton()end,Text=function(h)local i=h:TreeNode{Title=
+'Colorful Text'}i:Label{TextColor3=Color3.fromRGB(255,0,255),Text='Pink',NoTheme
+=true}i:Label{TextColor3=Color3.fromRGB(255,255,0),Text='Yellow',NoTheme=true}i:
+Label{TextColor3=Color3.fromRGB(59,59,59),Text='Disabled',NoTheme=true}local k=h
+:TreeNode{Title='Word Wrapping'}k:Label{Text=
+[[This text should automatically wrap on the edge of the window. The current implementation for text wrapping follows simple rules suitable for English and possibly other languages.]]
+,TextWrapped=true}local l k:SliderInt{Label='Wrap width',Value=400,Minimum=20,
+Maximum=600,Callback=function(m,n)if not l then return end l.Size=UDim2.
+fromOffset(n,0)end}k:Label{Text='Test paragraph:'}l=k:Label{Text=
+[[The lazy dog is a good dog. This paragraph should fit. Testing a 1 character word. The quick brown fox jumps over the lazy dog.]]
+,TextWrapped=true,Border=true,BorderColor=Color3.fromRGB(255,255,0),
+AutomaticSize=Enum.AutomaticSize.Y,Size=UDim2.fromOffset(400,0)}end,Images=
+function(h)h:Label{TextWrapped=true,Text=
+[[Below we are displaying the icons (which are the ones builtin to ReGui in this demo). Hover the texture for a zoomed view!]]
+}h:Label{TextWrapped=true,Text=`There is a total of {aa:GetDictSize(aa.Icons)} icons in this demo!`
+}local i,k,l=(h:List{Border=true})aa:SetItemTooltip(i,function(m)k=m:Label()l=m:
+Image{Size=UDim2.fromOffset(50,50)}end)for m,n in aa.Icons do local o=i:Image{
+Image=n,Size=UDim2.fromOffset(30,30)}aa:DetectHover(o,{MouseEnter=true,OnInput=
+function()k.Text=m l.Image=n end})end end,Tabs=function(h)local i=h:TreeNode{
+Title='Basic'}local k,l=i:TabSelector(),{'Avocado','Broccoli','Cucumber'}for m,n
+in next,l do k:CreateTab{Name=n}:Label{Text=`This is the {n} tab!\nblah blah blah blah blah`
+}end local m=h:TreeNode{Title='Advanced & Close Button'}local n,o=m:TabSelector(
+),{'Artichoke','Beetroot','Celery','Daikon'}for p,q in next,o do local r=n:
+CreateTab{Name=q,Closeable=true}r:Label{Text=`This is the {q} tab!\nblah blah blah blah blah`
+}end m:Button{Text='Add tab',Callback=function()n:CreateTab{Closeable=true}:
+Label{Text='I am an odd tab.'}end}end,['Plot widgets']=function(h)local i=h:
+PlotHistogram{Points={0.6,0.1,1,0.5,0.92,0.1,0.2}}h:Button{Text=
+'Generate new graph',Callback=function()local m={}for n=1,math.random(5,10)do
+table.insert(m,math.random(1,10))end i:PlotGraph(m)end}end,[
+'Multi-component Widgets']=function(h)h:Separator{Text='2-wide'}h:InputInt2{
+Value={10,50},Minimum={0,0},Maximum={20,100},Callback=function(i,m)print('1:',m[
+1],'2:',m[2])end}h:SliderInt2()h:SliderFloat2()h:DragInt2()h:DragFloat2()h:
+Separator{Text='3-wide'}h:InputInt3()h:SliderInt3()h:SliderFloat3()h:DragInt3()h
+:DragFloat3()h:Separator{Text='4-wide'}h:InputInt4()h:SliderInt4()h:
+SliderFloat4()h:DragInt4()h:DragFloat4()end,['Progress Bars']=function(h)local i
+=h:ProgressBar{Label='Loading...',Value=80}spawn(function()local m=0 while wait(
+0.02)do m+=1 i:SetPercentage(m%100)end end)end,['Picker Widgets']=function(h)h:
+Separator{Text='Color pickers'}h:DragColor3{Value=aa.Accent.Light}h:SliderColor3
+{Value=aa.Accent.Red}h:InputColor3{Value=aa.Accent.Green}h:Separator{Text=
+'CFrame pickers'}h:DragCFrame{Value=CFrame.new(1,1,1),Minimum=CFrame.new(0,0,0),
+Maximum=CFrame.new(200,100,50)}h:SliderCFrame()h:InputCFrame()end,['Code editor'
+]=function(h)h:CodeEditor{Text='print("Hello from ReGui\'s editor!")',Editable=
+true}end,Console=function(h)local i=h:TreeNode{Title='Basic'}local m,n=i:Console
+{ReadOnly=true,AutoScroll=true,MaxLines=50},h:TreeNode{Title=
+'Advanced & RichText'}local o,p=n:Console{ReadOnly=true,AutoScroll=true,RichText
+=true,MaxLines=50},h:TreeNode{Title='Editor'}p:Console{Value=
+"print('Hello world!')",LineNumbers=true}coroutine.wrap(function()while wait()do
+local q=DateTime.now():FormatLocalTime('h:mm:ss A','en-us')o:AppendText(`<font color="rgb(240, 40, 10)">[Random]</font>`
+,math.random())m:AppendText(`[{q}] Hello world!`)end end)()end,Combo=function(h)
+h:Combo{WidthFitPreview=true,Label='WidthFitPreview',Selected=1,Items={
+'AAAAAAAAAAAA','BBBBBBBB','CCCCC','DDD'}}h:Separator{Text='One-liner variants'}h
+:Combo{Label='Combo 1 (array)',Selected=1,Items={'AAAA','BBBB','CCCC','DDDD',
+'EEEE','FFFF','GGGG','HHHH','IIIIIII','JJJJ','KKKKKKK'}}h:Combo{Label=
+'Combo 1 (dict)',Selected='AAA',Items={AAA='Apple',BBB='Banana',CCC='Orange'},
+Callback=print}h:Combo{Label='Combo 2 (function)',Selected=1,GetItems=function()
+return{'aaa','bbb','ccc'}end}end,Indent=function(h)h:Label{Text=
+'This is not indented'}local i=h:Indent{Offset=30}i:Label{Text=
+'This is indented by 30 pixels'}local m=i:Indent{Offset=30}m:Label{Text=
+'This is indented by 30 more pixels'}end,Viewport=function(h)local i=aa:
+InsertPrefab'R15 Rig'local m=h:Viewport{Size=UDim2.new(1,0,0,200),Clone=true,
+Model=i}local n=m.Model n:PivotTo(CFrame.new(0,-2.5,-5))local o=game:GetService
+'RunService'o.RenderStepped:Connect(function(p)local q=CFrame.Angles(0,math.rad(
+30*p),0)local r=n:GetPivot()*q n:PivotTo(r)end)end,['List layout']=function(h)
+local i=h:List()for m=1,10 do i:Button{Text=`Resize the window! {m}`}end end,
+Keybinds=function(h)local i=h:Checkbox{Value=true}h:Keybind{Label=
+'Toggle checkbox',IgnoreGameProcessed=false,OnKeybindSet=function(m,n)warn(
+'[OnKeybindSet] .Value ->',n)end,Callback=function(m,n)print(n)i:Toggle()end}h:
+Keybind{Label='Keybind (w/ Q & Left-Click blacklist)',KeyBlacklist={Enum.
+UserInputType.MouseButton1,Enum.KeyCode.Q}}h:Keybind{Label=
+'Toggle UI visibility',Value=Enum.KeyCode.E,Callback=function()ag:
+ToggleVisibility()end}end,Input=function(h)h:InputText{Label='One Line Text'}h:
+InputTextMultiline{Label='Multiline Text'}h:InputInt{Label='Input int'}end,[
+'Text Input']=function(h)local i=h:TreeNode{Title='Multiline'}i:
+InputTextMultiline{Size=UDim2.new(1,0,0,117),Value=
+'/*The Pentium FOOF bug, shorthand for FO OF C7 C8,\r\n    the hexadecimal encoding of one offending instruction,\r\n    more formally, the invalid operand with locked CMPXCHG8B\r\n    instruction bug, is a design flaw in the majority of\r\n    Intel Pentium, Pentium MMX, and Pentium OverDrive\r\n    processors (all in the P5 microarchitecture).#\r\n    */'
+}end}for n,o in i do local p,q=h:TreeNode{Title=o},m[o]if q then task.spawn(q,p)
+end end local n=ak:CollapsingHeader{Title='Popups & child windows'}local o=n:
+TreeNode{Title='Popups'}local p=o:Row()local q=p:Label{Text='<None>',LayoutOrder
+=2}p:Button{Text='Select..',Callback=function(r)local s,t={'Bream','Haddock',
+'Mackerel','Pollock','Tilefish'},o:PopupCanvas{RelativeTo=r,MaxSizeX=200}t:
+Separator{Text='Aquarium'}for u,v in s do t:Selectable{Text=v,Callback=function(
+w)q.Text=v t:ClosePopup()end}end end}local r=n:TreeNode{Title='Child windows'}
+local s=r:Window{Size=UDim2.fromOffset(300,200),NoMove=true,NoClose=true,
+NoCollapse=true,NoResize=true}s:Label{Text='Hello, world!'}s:Button{Text='Save'}
+s:InputText{Label='string'}s:SliderFloat{Label='float',Minimum=0,Maximum=1}local
+t=n:TreeNode{Title='Modals'}t:Label{Text=
+[[Modal windows are like popups but the user cannot close them by clicking outside.]]
+,TextWrapped=true}t:Button{Text='Delete..',Callback=function()local u=t:
+PopupModal{Title='Delete?'}u:Label{Text=
+[[All those beautiful files will be deleted.
+This operation cannot be undone!]],
+TextWrapped=true}u:Separator()u:Checkbox{Value=false,Label=
+"Don't ask me next time"}local v=u:Row{Expanded=true}v:Button{Text='Okay',
+Callback=function()u:ClosePopup()end}v:Button{Text='Cancel',Callback=function()u
+:ClosePopup()end}end}t:Button{Text='Stacked modals..',Callback=function()local u
+=t:PopupModal{Title='Stacked 1'}u:Label{Text=`Hello from Stacked The First\nUsing Theme["ModalWindowDimBg"] behind it.`
+,TextWrapped=true}u:Combo{Items={'aaaa','bbbb','cccc','dddd','eeee'}}u:
+DragColor3{Value=Color3.fromRGB(102,178,0)}u:Button{Text='Add another modal..',
+Callback=function()local v=t:PopupModal{Title='Stacked 2'}v:Label{Text=
+'Hello from Stacked The Second!',TextWrapped=true}v:DragColor3{Value=Color3.
+fromRGB(102,178,0)}v:Button{Text='Close',Callback=function()v:ClosePopup()end}
+end}u:Button{Text='Close',Callback=function()u:ClosePopup()end}end}local u=ak:
+CollapsingHeader{Title='Tables & Columns'}local v=u:TreeNode{Title='Basic'}local
+w=v:Table()for x=1,3 do local y=w:Row()for z=1,3 do local A=y:Column()for B=1,4
+do A:Label{Text=`Row {B} Column {z}`}end end end local x=u:TreeNode{Title=
+'Borders, background'}local y=x:Table{RowBackground=true,Border=true,MaxColumns=
+3}for z=1,5 do local A=y:NextRow()for B=1,3 do local C=A:NextColumn()C:Label{
+Text=`Hello {B},{z}`}end end local z=u:TreeNode{Title='With headers'}local A,B=z
+:Table{Border=true,RowBackground=true,MaxColumns=3},{'One','Two','Three'}for C=1
+,7 do if C==1 then p=A:HeaderRow()else p=A:Row()end for D,E in B do if C==1 then
+local F=p:Column()F:Label{Text=E}continue end local F=p:NextColumn()F:Label{Text
+=`Hello {D},{C}`}end end end end function a.f()return{Dot=
+'rbxasset://textures/whiteCircle.png',Arrow=
+'rbxasset://textures/ui/AvatarContextMenu_Arrow.png',Close=
+'rbxasset://textures/loading/cancelButton.png',Checkmark=
+'rbxasset://textures/ui/Lobby/Buttons/nine_slice_button.png',Cat=
+'rbxassetid://16211812161',Script='rbxassetid://11570895459',Settings=
+'rbxassetid://9743465390',Info='rbxassetid://18754976792',Move=
+'rbxassetid://6710235139',Roblox='rbxassetid://7414445494',Warning=
+'rbxassetid://11745872910',Audio='rbxassetid://302250236',Shop=
+'rbxassetid://6473525198',CharacterDance='rbxassetid://11932783331',Pants=
+'rbxassetid://10098755331',Home='rbxassetid://4034483344',Robux=
+'rbxassetid://5986143282',Badge='rbxassetid://16170504068',SpawnLocation=
+'rbxassetid://6400507398',Sword='rbxassetid://7485051715',Clover=
+'rbxassetid://11999300014',Star='rbxassetid://3057073083',Code=
+'rbxassetid://11348555035',Paw='rbxassetid://13001190533',Shield=
+'rbxassetid://7461510428',Shield2='rbxassetid://7169354142',File=
+'rbxassetid://7276823330',Book='rbxassetid://16061686835',Location=
+'rbxassetid://13549782519',Puzzle='rbxassetid://8898417863',Discord=
+'rbxassetid://84828491431270',Premium='rbxassetid://6487178625',Friend=
+'rbxassetid://10885655986',User='rbxassetid://18854794412',Duplicate=
+'rbxassetid://11833749507',ChatBox='rbxassetid://15839118471',ChatBox2=
+'rbxassetid://15839116089',Devices='rbxassetid://4458812712',Weight=
+'rbxassetid://9855685269',Image='rbxassetid://123311808092347',Profile=
+'rbxassetid://13585614795',Admin='rbxassetid://11656483170',PaintBrush=
+'rbxassetid://12111879608',Speed='rbxassetid://12641434961',NoConnection=
+'rbxassetid://9795340967',Connection='rbxassetid://119759670842477',Globe=
+'rbxassetid://18870359747',Box='rbxassetid://140217940575618',Crown=
+'rbxassetid://18826490498',Control='rbxassetid://18979524646',Send=
+'rbxassetid://18940312887',FastForward='rbxassetid://112963221295680',Pause=
+'rbxassetid://109949100737970',Reload='rbxassetid://11570018242',Joystick=
+'rbxassetid://18749336354',Controller='rbxassetid://11894535915',Lock=
+'rbxassetid://17783082088',Calculator='rbxassetid://85861816563977',Sun=
+'rbxassetid://13492317832',Moon='rbxassetid://8498174594',Prohibited=
+'rbxassetid://5248916036',Flag='rbxassetid://251346532',Website=
+'rbxassetid://98455290625865',Telegram='rbxassetid://115860270107061',MusicNote=
+'rbxassetid://18187351229',Music='rbxassetid://253830398',Headphones=
+'rbxassetid://1311321471',Phone='rbxassetid://8411963035',Smartphone=
+'rbxassetid://14040313879',Desktop='rbxassetid://3120635703',Desktop2=
+'rbxassetid://4728059490',Laptop='rbxassetid://4728059725',Server=
+'rbxassetid://9692125126',Wedge='rbxassetid://9086583059',Drill=
+'rbxassetid://11959189471',Character='rbxassetid://13285102351'}end function a.g
+()return{Light=Color3.fromRGB(50,150,250),Dark=Color3.fromRGB(30,66,115),
+ExtraDark=Color3.fromRGB(28,39,53),White=Color3.fromRGB(240,240,240),Gray=Color3
+.fromRGB(172,171,175),Black=Color3.fromRGB(15,19,24),Yellow=Color3.fromRGB(230,
+180,0),Orange=Color3.fromRGB(230,150,0),Green=Color3.fromRGB(130,188,91),Red=
+Color3.fromRGB(255,69,69),ImGui={Light=Color3.fromRGB(66,150,250),Dark=Color3.
+fromRGB(41,74,122),Black=Color3.fromRGB(15,15,15),Gray=Color3.fromRGB(36,36,36)}
+}end function a.h()local aa,ab=a.load'g',{}ab.DarkTheme={Values={
+AnimationTweenInfo=TweenInfo.new(0.08),TextFont=Font.fromEnum(Enum.Font.
+RobotoMono),TextSize=14,Text=aa.White,TextDisabled=aa.Gray,ErrorText=aa.Red,
+FrameBg=aa.Dark,FrameBgTransparency=0.4,FrameBgActive=aa.Light,
+FrameBgTransparencyActive=0.4,FrameRounding=UDim.new(0,0),SliderGrab=aa.Light,
+ButtonsBg=aa.Light,CollapsingHeaderBg=aa.Light,CollapsingHeaderText=aa.White,
+CheckMark=aa.Light,ResizeGrab=aa.Light,HeaderBg=aa.Gray,HeaderBgTransparency=0.7
+,HistogramBar=aa.Yellow,ProgressBar=aa.Yellow,RegionBg=aa.Dark,
+RegionBgTransparency=0.1,Separator=aa.Gray,SeparatorTransparency=0.5,
+ConsoleLineNumbers=aa.White,LabelPaddingTop=UDim.new(0,0),LabelPaddingBottom=
+UDim.new(0,0),MenuBar=aa.ExtraDark,MenuBarTransparency=0.1,PopupCanvas=aa.Black,
+TabTextPaddingTop=UDim.new(0,3),TabTextPaddingBottom=UDim.new(0,8),TabText=aa.
+Gray,TabBg=aa.Dark,TabTextActive=aa.White,TabBgActive=aa.Light,TabsBarBg=Color3.
+fromRGB(36,36,36),TabsBarBgTransparency=1,TabPagePadding=UDim.new(0,8),
+ModalWindowDimBg=Color3.fromRGB(230,230,230),ModalWindowDimTweenInfo=TweenInfo.
+new(0.2),WindowBg=aa.Black,WindowBgTransparency=0.05,Border=aa.Gray,
+BorderTransparency=0.8,BorderTransparencyActive=0.5,Title=aa.White,TitleAlign=
+Enum.TextXAlignment.Left,TitleBarBg=aa.Black,TitleBarTransparency=0,TitleActive=
+aa.White,TitleBarBgActive=aa.Dark,TitleBarTransparencyActive=0.05,
+TitleBarBgCollapsed=Color3.fromRGB(0,0,0),TitleBarTransparencyCollapsed=0.6}}ab.
+LightTheme={BaseTheme=ab.DarkTheme,Values={Text=aa.Black,TextFont=Font.fromEnum(
+Enum.Font.Ubuntu),TextSize=14,FrameBg=aa.Gray,FrameBgTransparency=0.4,
+FrameBgActive=aa.Light,FrameBgTransparencyActive=0.6,SliderGrab=aa.Light,
+ButtonsBg=aa.Light,CollapsingHeaderText=aa.Black,Separator=aa.Black,
+ConsoleLineNumbers=aa.Yellow,MenuBar=Color3.fromRGB(219,219,219),PopupCanvas=aa.
+White,TabText=aa.Black,TabTextActive=aa.Black,WindowBg=aa.White,Border=aa.Gray,
+ResizeGrab=aa.Gray,Title=aa.Black,TitleAlign=Enum.TextXAlignment.Center,
+TitleBarBg=aa.Gray,TitleActive=aa.Black,TitleBarBgActive=Color3.fromRGB(186,186,
+186),TitleBarBgCollapsed=aa.Gray}}ab.ImGui={BaseTheme=ab.DarkTheme,Values={
+AnimationTweenInfo=TweenInfo.new(0),Text=Color3.fromRGB(255,255,255),FrameBg=aa.
+ImGui.Dark,FrameBgTransparency=0.4,FrameBgActive=aa.ImGui.Light,
+FrameBgTransparencyActive=0.5,FrameRounding=UDim.new(0,0),ButtonsBg=aa.ImGui.
+Light,CollapsingHeaderBg=aa.ImGui.Light,CollapsingHeaderText=aa.White,CheckMark=
+aa.ImGui.Light,ResizeGrab=aa.ImGui.Light,MenuBar=aa.ImGui.Gray,
+MenuBarTransparency=0,PopupCanvas=aa.ImGui.Black,TabText=aa.Gray,TabBg=aa.ImGui.
+Dark,TabTextActive=aa.White,TabBgActive=aa.ImGui.Light,WindowBg=aa.ImGui.Black,
+WindowBgTransparency=0.05,Border=aa.Gray,BorderTransparency=0.7,
+BorderTransparencyActive=0.4,Title=aa.White,TitleBarBg=aa.ImGui.Black,
+TitleBarTransparency=0,TitleBarBgActive=aa.ImGui.Dark,TitleBarTransparencyActive
+=0}}return ab end function a.i()local aa,ab=(a.load'b')aa:AddOnInit(function(ad)
+ab=ad end)return{{Properties={'Center'},Callback=function(ad,ae,af)local ag=ae.
+Position aa:SetProperties(ae,{Position=UDim2.new(af:find'X'and 0.5 or ag.X.Scale
+,ag.X.Offset,af:find'Y'and 0.5 or ag.Y.Scale,ag.Y.Offset),AnchorPoint=Vector2.
+new(af:find'X'and 0.5 or 0,af:find'Y'and 0.5 or 0)})end},{Properties={
+'ElementStyle'},Callback=function(ad,ae,af)ab:ApplyStyle(ae,af)end},{Properties=
+{'ColorTag'},Callback=function(ad,ae,af)local ag,ah=ad.Class,ad.WindowClass
+local aj=ag.NoAutoTheme if not ah then return end if aj then return end ab:
+UpdateColors{Object=ae,Tag=af,NoAnimation=true,Theme=ah.Theme}end},{Properties={
+'Animation'},Callback=function(ad,ae,af)local ag=ad.Class.NoAnimation if ag then
+return end ab:SetAnimation(ae,af)end},{Properties={'Image'},Callback=function(ad
+,ae,af)local ag=ad.WindowClass ae.Image=aa:CheckAssetUrl(af)ab:DynamicImageTag(
+ae,af,ag)end},{Properties={'Icon','IconSize','IconRotation','IconPadding'},
+Callback=function(ad,ae,af)local ag=ae:FindFirstChild('Icon',true)if not ag then
+ab:Warn('No icon for',ae)return end local ah=ad.Class aa:CheckConfig(ah,{Icon=''
+,IconSize=UDim2.fromScale(1,1),IconRotation=0,IconPadding=UDim2.new(0,2)})local
+aj=ag.Parent:FindFirstChild'UIPadding'aa:SetPadding(aj,ah.IconPadding)local ak=
+ah.Icon ak=aa:CheckAssetUrl(ak)local b=ad.WindowClass ab:DynamicImageTag(ag,ak,b
+)aa:SetProperties(ag,{Visible=ag~='',Image=aa:CheckAssetUrl(ak),Size=ah.IconSize
+,Rotation=ah.IconRotation})end},{Properties={'BorderThickness','Border',
+'BorderColor'},Callback=function(ad,ae,af)local ag=ad.Class local ah=ag.Border==
+true aa:CheckConfig(ag,{BorderTransparency=ad:GetThemeKey
+'BorderTransparencyActive',BorderColor=ad:GetThemeKey'Border',BorderThickness=1,
+BorderStrokeMode=Enum.ApplyStrokeMode.Border})local aj=aa:GetChildOfClass(ae,
+'UIStroke')aa:SetProperties(aj,{Transparency=ag.BorderTransparency,Thickness=ag.
+BorderThickness,Color=ag.BorderColor,ApplyStrokeMode=ag.BorderStrokeMode,Enabled
+=ah})end},{Properties={'Ratio'},Callback=function(ad,ae,af)local ag=ad.Class aa:
+CheckConfig(ag,{Ratio=1.3333333333333333,RatioAxis=Enum.DominantAxis.Height,
+RatioAspectType=Enum.AspectType.ScaleWithParentSize})local ah,aj,ak,b=ag.Ratio,
+ag.RatioAxis,ag.RatioAspectType,aa:GetChildOfClass(ae,'UIAspectRatioConstraint')
+aa:SetProperties(b,{DominantAxis=aj,AspectType=ak,AspectRatio=ah})end},{
+Properties={'FlexMode'},Callback=function(ad,ae,af)local ag=aa:GetChildOfClass(
+ae,'UIFlexItem')ag.FlexMode=af end},{Properties={'CornerRadius'},Callback=
+function(ad,ae,af)local ag=aa:GetChildOfClass(ae,'UICorner')ag.CornerRadius=af
+end},{Properties={'Fill'},Callback=function(ad,ae,af)if af~=true then return end
+local ag=ad.Class aa:CheckConfig(ag,{Size=UDim2.fromScale(1,1),UIFlexMode=Enum.
+UIFlexMode.Fill,AutomaticSize=Enum.AutomaticSize.None})local ah=aa:
+GetChildOfClass(ae,'UIFlexItem')ah.FlexMode=ag.UIFlexMode ae.Size=ag.Size ae.
+AutomaticSize=ag.AutomaticSize end},{Properties={'Label'},Callback=function(ad,
+ae,af)local ag,ah=ad.Class,ae:FindFirstChild'Label'if not ah then return end ah.
+Text=tostring(af)function ag:SetLabel(aj)ah.Text=aj return self end end},{
+Properties={'NoGradient'},WindowProperties={'NoGradients'},Callback=function(ad,
+ae,af)local ag=ae:FindFirstChildOfClass'UIGradient'if not ag then return end ag.
+Enabled=af end},{Properties={'UiPadding','PaddingBottom','PaddingTop',
+'PaddingRight','PaddingTop'},Callback=function(ad,ae,af)af=af or 0 if typeof(af)
+=='number'then af=UDim.new(0,af)end local ag=ad.Class local ah=ag.UiPadding if
+ah then aa:CheckConfig(ag,{PaddingBottom=af,PaddingLeft=af,PaddingRight=af,
+PaddingTop=af})end local aj=aa:GetChildOfClass(ae,'UIPadding')aa:SetProperties(
+aj,{PaddingBottom=ag.PaddingBottom,PaddingLeft=ag.PaddingLeft,PaddingRight=ag.
+PaddingRight,PaddingTop=ag.PaddingTop})end},{Properties={'Callback'},Callback=
+function(ad,ae)local af=ad.Class function af:SetCallback(ag)self.Callback=ag
+return self end function af:FireCallback(ag)self.Callback(ae)return self end end
+},{Properties={'Value'},Callback=function(ad,ae)local af=ad.Class aa:
+CheckConfig(af,{GetValue=function(ag)return af.Value end})end}}end function a.j(
+)local aa={}aa.Coloring={MenuBar={BackgroundColor3='MenuBar',
+BackgroundTransparency='MenuBarTransparency'},FrameRounding={CornerRadius=
+'FrameRounding'},PopupCanvas={BackgroundColor3='PopupCanvas'},ModalWindowDim={
+BackgroundColor3='ModalWindowDimBg'},Selectable='Button',MenuButton='Button',
+Separator={BackgroundColor3='Separator',BackgroundTransparency=
+'SeparatorTransparency'},Region={BackgroundColor3='RegionBg',
+BackgroundTransparency='RegionBgTransparency'},Label={TextColor3='Text',FontFace
+='TextFont',TextSize='TextSize'},ImageFollowsText={ImageColor3='Text'},
+ConsoleLineNumbers={TextColor3='ConsoleLineNumbers',FontFace='TextFont',TextSize
+='TextSize'},ConsoleText='Label',LabelDisabled={TextColor3='TextDisabled',
+FontFace='TextFont',TextSize='TextSize'},Plot={BackgroundColor3='HistogramBar'},
+Header={BackgroundColor3='HeaderBg',BackgroundTransparency=
+'HeaderBgTransparency'},WindowTitle={TextXAlignment='TitleAlign',FontFace=
+'TextFont',TextSize='TextSize'},TitleBar={BackgroundColor3='TitleBarBgActive'},
+Window={BackgroundColor3='WindowBg',BackgroundTransparency=
+'WindowBgTransparency'},TitleBarBgCollapsed={BackgroundColor3=
+'TitleBarBgCollapsed',BackgroundTransparency='TitleBarTransparencyCollapsed'},
+TitleBarBgActive={BackgroundColor3='TitleBarBgActive',BackgroundTransparency=
+'TitleBarTransparencyActive'},TitleBarBg={BackgroundColor3='TitleBarBg',
+BackgroundTransparency='TitleBarTransparency'},TabsBar={BackgroundColor3=
+'TabsBarBg',BackgroundTransparency='TabsBarBgTransparency'},Border={Color=
+'Border',Transparency='BorderTransparency'},ResizeGrab={TextColor3='ResizeGrab'}
+,BorderActive={Transparency='BorderTransparencyActive'},Frame={BackgroundColor3=
+'FrameBg',BackgroundTransparency='FrameBgTransparency',TextColor3='Text',
+FontFace='TextFont',TextSize='TextSize'},FrameActive={BackgroundColor3=
+'FrameBgActive',BackgroundTransparency='FrameBgTransparencyActive'},SliderGrab={
+BackgroundColor3='SliderGrab'},Button={BackgroundColor3='ButtonsBg',TextColor3=
+'Text',FontFace='TextFont',TextSize='TextSize'},CollapsingHeader={FontFace=
+'TextFont',TextSize='TextSize',TextColor3='CollapsingHeaderText',
+BackgroundColor3='CollapsingHeaderBg'},Checkbox={BackgroundColor3='FrameBg'},
+CheckMark={ImageColor3='CheckMark',BackgroundColor3='CheckMark'},RadioButton={
+BackgroundColor3='ButtonsBg',TextColor3='Text',FontFace='TextFont',TextSize=
+'TextSize'}}aa.Styles={RadioButton={Animation='RadioButtons',CornerRadius=UDim.
+new(1,0)},Button={Animation='Buttons'},CollapsingHeader={Animation='Buttons'},
+TreeNode={Animation='TransparentButtons'},TransparentButton={Animation=
+'TransparentButtons'}}aa.Animations={Invisible={Connections={MouseEnter={Visible
+=true},MouseLeave={Visible=false}},Init='MouseLeave'},Buttons={Connections={
+MouseEnter={BackgroundTransparency=0.3},MouseLeave={BackgroundTransparency=0.7}}
+,Init='MouseLeave'},TextButtons={Connections={MouseEnter={TextTransparency=0.3},
+MouseLeave={TextTransparency=0.7}},Init='MouseLeave'},TransparentButtons={
+Connections={MouseEnter={BackgroundTransparency=0.3},MouseLeave={
+BackgroundTransparency=1}},Init='MouseLeave'},RadioButtons={Connections={
+MouseEnter={BackgroundTransparency=0.5},MouseLeave={BackgroundTransparency=1}},
+Init='MouseLeave'},Inputs={Connections={MouseEnter={BackgroundTransparency=0},
+MouseLeave={BackgroundTransparency=0.5}},Init='MouseLeave'},Plots={Connections={
+MouseEnter={BackgroundTransparency=0.3},MouseLeave={BackgroundTransparency=0}},
+Init='MouseLeave'},Border={Connections={Selected={Transparency=0,Thickness=1},
+Deselected={Transparency=0.7,Thickness=1}},Init='Selected'}}return aa end end
+local aa,ab,ad,ae,af={Version='1.4.7',Author='Depso',License='MIT',Repository=
+'https://github.com/depthso/Dear-ReGui/',Debug=false,PrefabsId=71968920594655,
+DefaultTitle='ReGui',ContainerName='ReGui',DoubleClickThreshold=0.3,
+TooltipOffset=15,IniToSave={'Value'},ClassIgnored={'Visible','Text'},Container=
+nil,Prefabs=nil,FocusedWindow=nil,HasTouchScreen=false,Services=nil,Elements={},
+_FlagCache={},_ErrorCache={},Windows={},ActiveTooltips={},IniSettings={},
+AnimationConnections={}},a.load'a',a.load'b',a.load'c',a.load'd'aa.DemoWindow=a.
+load'e'aa.Services=ad.Services aa.Animation=ae aa.Icons=a.load'f'aa.Accent=a.
+load'g'aa.ThemeConfigs=a.load'h'aa.ElementFlags=a.load'i'local ag=a.load'j'aa.
+ElementColors=ag.Coloring aa.Animations=ag.Animations aa.Styles=ag.Styles ad:
+CallOnInitConnections(aa)aa.DynamicImages={[aa.Icons.Arrow]='ImageFollowsText',[
+aa.Icons.Close]='ImageFollowsText',[aa.Icons.Dot]='ImageFollowsText'}local ah=aa
+.Services local aj,ak,b,c,d=ah.HttpService,ah.Players,ah.UserInputService,ah.
+RunService,ah.InsertService local e=ad:NewReference(ak.LocalPlayer)aa.PlayerGui=
+ad:NewReference(e.PlayerGui)aa.Mouse=ad:NewReference(e:GetMouse())local f=
+function()end function GetAndRemove(g,h)local i=h[g]if i then h[g]=nil end
+return i end function MoveTableItem(g,h,i)local m=table.find(g,h)if not m then
+return end local n=table.remove(g,m)table.insert(g,i,n)end function Merge(g,h)
+for i,m in next,h do g[i]=m end end function Copy(g,h)local i=table.clone(g)if h
+then Merge(i,h)end return i end function aa:Warn(...)warn('[ReGui]::',...)end
+function aa:Error(...)local g=aa:Concat({...},' ')local h=`\n[ReGui]:: {g}`
+coroutine.wrap(error)(h)end function aa:IsDoubleClick(g)local h=self.
+DoubleClickThreshold return g<h end function aa:StyleContainers()local g=self.
+Container local h,i=g.Overlays,g.Windows self:SetProperties(i,{OnTopOfCoreBlur=
+true})self:SetProperties(h,{OnTopOfCoreBlur=true})end function aa:Init(g)g=g or{
+}if self.Initialised then return end Merge(self,g)Merge(self,{Initialised=true,
+HasGamepad=self:IsConsoleDevice(),HasTouchScreen=self:IsMobileDevice()})self:
+CheckConfig(self,{ContainerParent=function()return ad:ResolveUIParent()end,
+Prefabs=function()return self:LoadPrefabs()end},true)self:CheckConfig(self,{
+Container=function()return self:InsertPrefab('Container',{Parent=self.
+ContainerParent,Name=self.ContainerName})end},true)local h,i,m=self.Container,
+self.TooltipOffset,self.ActiveTooltips local n,o=h.Overlays,0 self:
+StyleContainers()self.TooltipsContainer=self.Elements:Overlay{Parent=n}b.
+InputBegan:Connect(function(p)if not self:IsMouseEvent(p,true)then return end
+local q=tick()local r=q-o local s=self:IsDoubleClick(r)o=s and 0 or q self:
+UpdateWindowFocuses()end)local p=function()local p,q=self.TooltipsContainer,#m>0
+p.Visible=q if not q then return end local r,s=aa:GetMouseLocation()local t=n.
+AbsolutePosition p.Position=UDim2.fromOffset(r-t.X+i,s-t.Y+i)end c.RenderStepped
+:Connect(p)end function aa:CheckImportState()if self.Initialised then return end
+local g=self.PrefabsId local h=ad:CheckAssetUrl(g)local i,m=pcall(function()
+return ad:NewReference(d:LoadLocalAsset(h))end)self:Init{Prefabs=i and m or nil}
+end function aa:GetVersion()return self.Version end function aa:IsMobileDevice()
+return b.TouchEnabled end function aa:IsConsoleDevice()return b.GamepadEnabled
+end function aa:GetScreenSize()return workspace.CurrentCamera.ViewportSize end
+function aa:LoadPrefabs()local g,h=self.PlayerGui,'ReGui-Prefabs'local i=script:
+WaitForChild(h,2)if i then return i end local m=g:WaitForChild(h,2)if m then
+return m end return nil end function aa:CheckConfig(g,h,i,m)return ad:
+CheckConfig(g,h,i,m)end function aa:CreateInstance(g,h,i)local m=Instance.new(g,
+h)if i then local n=i.UsePropertiesList if not n then self:SetProperties(m,i)
+else self:ApplyFlags{Object=m,Class=i}end end return m end function aa:
+ConnectMouseEvent(g,h)local i,m,n,o,p=h.Callback,h.DoubleClick,h.
+OnlyMouseHovering,0 if n then p=self:DetectHover(n)end g.Activated:Connect(
+function(...)local q=tick()local r=q-o if p and not p.Hovering then return end
+if m then if not aa:IsDoubleClick(r)then o=q return end o=0 end i(...)end)end
+function aa:GetAnimation(g)return g and self.Animation or TweenInfo.new(0)end
+function aa:DynamicImageTag(g,h,i)local m=self.DynamicImages local n=m[h]if not
+n then return end if not i then return end i:TagElements{[g]=n}end function aa:
+GetDictSize(g)local h=0 for i,m in g do h+=1 end return h end function aa:
+RemoveAnimations(g)local h=self:GetAnimationData(g)local i=h.Connections for m,n
+in next,i do n:Disconnect()end end function aa:GetAnimationData(g)local h=self.
+AnimationConnections local i=h[g]if i then return i end local m={Connections={}}
+h[g]=m return m end function aa:AddAnimationSignal(g,h)local i=self:
+GetAnimationData(g)local m=i.Connections table.insert(m,h)end function aa:
+SetAnimationsEnabled(g)self.NoAnimations=not g end function aa:SetAnimation(g,h,
+i)i=i or g local m,n,o=self.Animations,self.HasTouchScreen,h if typeof(h)~=
+'table'then o=m[h]end assert(o,`No animation data for Class {h}!`)self:
+RemoveAnimations(i)local p,q,r,s,t=o.Init,o.Connections,o.Tweeninfo,o.
+NoAnimation,self:GetAnimationData(g)local u,v,x,y,z,A=t.State,true,{},{}function
+y:Reset(B)if not z then return end z(B)end function y:FireSignal(B,C)x[B](C)end
+function y:Refresh(B)if not A then return end x[A](B)end function y:SetEnabled(B
+)v=B end for B,C in next,q do local D,E=function(D)D=D==true A=B local E=self.
+NoAnimations if E then return end if not v then return end t.State=B ae:Tween{
+NoAnimation=D or s,Object=g,Tweeninfo=r,EndProperties=C}end,i[B]if not n then
+local F=E:Connect(D)self:AddAnimationSignal(i,F)end x[B]=D if B==p then z=D end
+end if u then y:FireSignal(u)else y:Reset(true)end return y end function aa:
+ConnectDrag(g,h)self:CheckConfig(h,{DragStart=f,DragEnd=f,DragMovement=f,
+OnDragStateChange=f})local i,m,n,o,p,q=h.DragStart,h.DragEnd,h.DragMovement,h.
+OnDragStateChange,{StartAndEnd={Enum.UserInputType.MouseButton1,Enum.
+UserInputType.Touch},Movement={Enum.UserInputType.MouseMovement,Enum.
+UserInputType.Touch}},false local r,s,t=function(r,s)local t=r.UserInputType
+return table.find(p[s],t)end,function(r)local s=r.Position return Vector2.new(s.
+X,s.Y)end,function(r)self._DraggingDisabled=r q=r o(r)end local u=function(u)
+local v,x,y=u.IsDragging,u.InputType,u.Callback return function(z)if u.
+DraggingRequired~=q then return end if u.CheckDraggingDisabled and self.
+_DraggingDisabled then return end if not r(z,x)then return end if u.UpdateState
+then t(v)end local A=s(z)y(A)end end g.InputBegan:Connect(u{
+CheckDraggingDisabled=true,DraggingRequired=false,UpdateState=true,IsDragging=
+true,InputType='StartAndEnd',Callback=i})b.InputEnded:Connect(u{DraggingRequired
+=true,UpdateState=true,IsDragging=false,InputType='StartAndEnd',Callback=m})b.
+InputChanged:Connect(u{DraggingRequired=true,InputType='Movement',Callback=n})
+end function aa:MakeDraggable(g)local h,i,m,n,o,p=g.Move,g.Grab,g.
+OnDragStateChange,{}function n:SetEnabled(q)local r=g.StateChanged self.Enabled=
+q if r then r(self)end end function n:CanDrag(q)return self.Enabled end local q,
+r,s,t,u=function(q)if not n:CanDrag()then return end local r=g.DragBegin p=q r(p
+)end,function(q)if not n:CanDrag()then return end local r,s=q-p,g.OnUpdate s(r)
+end,function(q)o=h.Position end,function(q)local r=UDim2.new(o.X.Scale,o.X.
+Offset+q.X,o.Y.Scale,o.Y.Offset+q.Y)g:SetPosition(r)end,function(q,r)ae:Tween{
+Object=h,EndProperties={Position=r}}end self:CheckConfig(g,{Enabled=true,
+OnUpdate=t,SetPosition=u,DragBegin=s})self:ConnectDrag(i,{DragStart=q,
+DragMovement=r,OnDragStateChange=m})local v=g.Enabled n:SetEnabled(v)return n
+end function aa:MakeResizable(g)aa:CheckConfig(g,{MinimumSize=Vector2.new(160,90
+),MaximumSize=Vector2.new(math.huge,math.huge)})local h,i,m,n,o=g.MaximumSize,g.
+MinimumSize,g.Resize,(g.OnUpdate)local p=aa:InsertPrefab('ResizeGrab',{Parent=m}
+)local q,r,s=function(q)p.Visible=q.Enabled end,function(q)local r=o+q local s=
+UDim2.fromOffset(math.clamp(r.X,i.X,h.X),math.clamp(r.Y,i.Y,h.Y))if n then n(s)
+return end ae:Tween{Object=m,EndProperties={Size=s}}end,function(q)o=m.
+AbsoluteSize end local t=self:MakeDraggable{Grab=p,OnUpdate=r,DragBegin=s,
+StateChanged=q}t.Grab=p return t end function aa:IsMouseEvent(g,h)local i=g.
+UserInputType.Name if h and i:find'Movement'then return end return i:find'Touch'
+or i:find'Mouse'end function aa:DetectHover(g,h)local i=h or{}i.Hovering=false
+local m,n,o,p,q,r=i.OnInput,i.OnHoverChange,i.Anykey,i.MouseMove,i.MouseEnter,i.
+MouseOnly local s=function(s,t,u)if s and r then if not aa:IsMouseEvent(s,true)
+then return end end if t~=nil then local v=i.Hovering i.Hovering=t if t~=v and n
+then n(t)end end if not q and u then return end if m then local v=i.Hovering m(v
+,s)return end end local t={g.MouseEnter:Connect(function()s(nil,true,true)end),g
+.MouseLeave:Connect(function()s(nil,false,true)end)}if o or r then table.insert(
+t,b.InputBegan:Connect(function(u)s(u)end))end if p then local u=g.MouseMoved:
+Connect(function()s()end)table.insert(t,u)end function i:Disconnect()for u,v in
+next,t do v:Disconnect()end end return i end function aa:StackWindows()local g,h
+=self.Windows,20 for i,m in next,g do local n,o=m.WindowFrame,UDim2.fromOffset(h
+*i,h*i)m:Center()n.Position+=o end end function aa:GetElementFlags(g)local h=
+self._FlagCache return h[g]end function aa:UpdateColors(g)local h,i,m,n,o,p,q=g.
+Object,g.Tag,g.NoAnimation,g.TagsList,g.Theme,g.Tweeninfo,self.ElementColors
+local r,s,t=self:GetElementFlags(h),self.Debug,q[i]if typeof(t)=='string'then t=
+q[t]end if typeof(i)=='table'then t=i elseif n then n[h]=i end if not t then
+return end local u={}for v,x in next,t do local y=self:GetThemeKey(o,x)if r and
+r[v]then continue end if not y then if s then self:Warn(`Color: '{x}' does not exist!`
+)end continue end u[v]=y end ae:Tween{Tweeninfo=p,Object=h,NoAnimation=m,
+EndProperties=u}end function aa:MultiUpdateColors(g)local h=g.Objects for i,m in
+next,h do self:UpdateColors{TagsList=g.TagsList,Theme=g.Theme,NoAnimation=not g.
+Animate,Tweeninfo=g.Tweeninfo,Object=i,Tag=m}end end function aa:ApplyStyle(g,h)
+local i=self.Styles local m=i[h]if not m then return end self:ApplyFlags{Object=
+g,Class=m}end function aa:ClassIgnores(g)local h=self.ClassIgnored local i=table
+.find(h,g)return i and true or false end function aa:MergeMetatables(g,h)local i
+,m=self.Debug,{}m.__index=function(n,o)local p,q=self:ClassIgnores(o),g[o]if q~=
+nil and not p then return q end local r,s=pcall(function()local r=h[o]return
+self:PatchSelf(h,r)end)return r and s or nil end m.__newindex=function(n,o,p)
+local q,r=self:ClassIgnores(o),typeof(p)=='function'local s=g[o]~=nil or r if s
+and not q then g[o]=p return end xpcall(function()h[o]=p end,function(t)if i
+then self:Warn(`Newindex Error: {h}.{o} = {p}\n{t}`)end g[o]=p end)end return
+setmetatable({},m)end function aa:Concat(g,h)local i=''for m,n in next,g do i..=
+tostring(n)..(m~=#g and h or'')end return i end function aa:GetValueFromAliases(
+g,h)for i,m in g do local n=h[m]if n~=nil then return n end end return nil end
+function aa:RecursiveCall(g,h)for i,m in next,g:GetDescendants()do h(m)end end
+function aa:ApplyFlags(g)local h,i,m,n=self.ElementFlags,g.Object,g.Class,g.
+WindowClass function g:GetThemeKey(o)if n then return n:GetThemeKey(o)else
+return aa:GetThemeKey(nil,o)end end self:SetProperties(i,m)for o,p in next,h do
+local q,r,s,t=p.Properties,p.Callback,p.Recursive,p.WindowProperties local u=
+self:GetValueFromAliases(q,m)if n and t and u==nil then u=self:
+GetValueFromAliases(t,n)end if u==nil then continue end r(g,i,u)if s then self:
+RecursiveCall(i,function(v)r(g,v,u)end)end end end function aa:SetProperties(g,h
+)return ad:SetProperties(g,h)end function aa:InsertPrefab(g,h)local i=self.
+Prefabs local m=i.Prefabs local n=ad:NewReference(m:WaitForChild(g):Clone())if h
+then local o=h.UsePropertiesList if not o then self:SetProperties(n,h)else self:
+ApplyFlags{Object=n,Class=h}end end return n end function aa:GetContentSize(g,h)
+local i,m,n,o=g:FindFirstChildOfClass'UIListLayout',g:FindFirstChildOfClass
+'UIPadding',(g:FindFirstChildOfClass'UIStroke')if i and not h then o=i.
+AbsoluteContentSize else o=g.AbsoluteSize end if m then local p,q,r,s=m.
+PaddingTop.Offset,m.PaddingBottom.Offset,m.PaddingLeft.Offset,m.PaddingRight.
+Offset o+=Vector2.new(r+s,p+q)end if n then local p=n.Thickness o+=Vector2.new(p
+/2,p/2)end return o end function aa:PatchSelf(g,h,...)if typeof(h)~='function'
+then return h,...end return function(i,...)return h(g,...)end end function aa:
+MakeCanvas(g)local h,i,m,n,o,p,q=self.Elements,self.Debug,g.Element,g.
+WindowClass,g.Class,g.OnChildChange,af:NewSignal()if p then q:Connect(p)end if
+not n and i then self:Warn(`No WindowClass for {m}`)self:Warn(g)end local r=ad:
+NewClass(h,{Class=o,RawObject=m,WindowClass=n or false,OnChildChange=q,Elements=
+{}})local s={__index=function(s,t)local u=r[t]if u~=nil then return self:
+PatchSelf(r,u)end local v=o[t]if v~=nil then return self:PatchSelf(o,v)end local
+x=m[t]return self:PatchSelf(m,x)end,__newindex=function(s,t,u)local v=o[t]~=nil
+if v then o[t]=u else m[t]=u end end}return setmetatable({},s)end function aa:
+GetIniData(g)local h,i=self.IniToSave,{}for m,n in next,h do i[n]=g[n]end return
+i end function aa:DumpIni(g)local h,i=self.IniSettings,{}for m,n in next,h do i[
+m]=self:GetIniData(n)end if g then return aj:JSONEncode(i)end return i end
+function aa:LoadIniIntoElement(g,h)local i={Value=function(i)g:SetValue(i)end}
+for m,n in next,h do local o=i[m]if o then o(n)continue end g[m]=n end end
+function aa:LoadIni(g,h)local i=self.IniSettings assert(g,
+'No Ini configuration was passed')if h then g=aj:JSONDecode(g)end for m,n in
+next,g do local o=i[m]self:LoadIniIntoElement(o,n)end end function aa:AddIniFlag
+(g,h)local i=self.IniSettings i[g]=h end function aa:OnElementCreate(g)local h,i
+,m,n,o=self._FlagCache,g.Flags,g.Object,g.Canvas,g.Class local p,q,r,s,t,u=n.
+WindowClass,i.NoAutoTag,i.NoAutoFlags,i.ColorTag,i.NoStyle,i.IniFlag h[m]=i if u
+then self:AddIniFlag(u,o)end if t then return end if not q and p then p:
+TagElements{[m]=s}end if p then p:LoadStylesIntoElement(g)end if not r then self
+:ApplyFlags{Object=m,Class=i,WindowClass=p}end end function aa:VisualError(g,h,i
+)local m=self.Initialised and g.Error if not m then self:Error('Class:',i)return
+end g:Error{Parent=h,Text=i}end function aa:WrapGeneration(g,h)local i,m,n=self.
+_ErrorCache,h.Base,h.IgnoreDefaults return function(o,p,...)p=p or{}self:
+CheckConfig(p,m)local q=p.CloneTable if q then p=table.clone(p)end local r,s,t=o
+.RawObject,o.Elements,o.OnChildChange self:CheckConfig(p,{Parent=r,Name=p.
+ColorTag},nil,n)if o==self then o=self.Elements end local u,v,x=pcall(g,o,p,...)
+if u==false then if r then if i[r]then return end i[r]=v end self:VisualError(o,
+r,v)self:Error('Class:',v)self:Error(debug.traceback())end if x==nil then x=v
+end if t then t:Fire(v)end if x then if s then table.insert(s,x)end self:
+OnElementCreate{Object=x,Flags=p,Class=v,Canvas=o}end return v,x end end
+function aa:DefineElement(g,h)local i,m,n=self.Elements,self.ThemeConfigs,self.
+ElementColors local o,p,q,r,s,t=m.DarkTheme,h.Base,h.Create,h.Export,h.ThemeTags
+,h.ColorData self:CheckConfig(p,{ColorTag=g,ElementStyle=g})if s then Merge(o,s)
+end if t then Merge(n,t)end local u=self:WrapGeneration(q,h)if r then self[g]=u
+end i[g]=u return u end function aa:DefineGlobalFlag(g)local h=self.ElementFlags
+table.insert(h,g)end function aa:DefineTheme(g,h)local i=self.ThemeConfigs self:
+CheckConfig(h,{BaseTheme=i.DarkTheme})local m=GetAndRemove('BaseTheme',h)local n
+={BaseTheme=m,Values=h}i[g]=n return n end function aa:GetMouseLocation()local g
+=self.Mouse return g.X,g.Y end function aa:SetWindowFocusesEnabled(g)self.
+WindowFocusesEnabled=g end function aa:UpdateWindowFocuses()local g,h=self.
+Windows,self.WindowFocusesEnabled if not h then return end for i,m in g do local
+n=m.HoverConnection if not n then continue end local o=n.Hovering if o then self
+:SetFocusedWindow(m)return end end self:SetFocusedWindow(nil)end function aa:
+WindowCanFocus(g)if g.NoSelect then return false end if g.Collapsed then return
+false end if g._SelectDisabled then return false end return true end function aa
+:GetFocusedWindow()return self.FocusedWindow end function aa:BringWindowToFront(
+g)local h,i=self.Windows,g.NoBringToFrontOnFocus if i then return end
+MoveTableItem(h,g,1)end function aa:SetFocusedWindow(g)local h,i=self:
+GetFocusedWindow(),self.Windows if h==g then return end self.FocusedWindow=g if
+g then local m=self:WindowCanFocus(g)if not m then return end self:
+BringWindowToFront(g)end local m=#i for n,o in i do local p,q=self:
+WindowCanFocus(o),o.WindowFrame if not p then continue end m-=1 if m then q.
+ZIndex=m end local r=o==g o:SetFocused(r,m)end end function aa:SetItemTooltip(g,
+h)local i,m,n=self.Elements,self.TooltipsContainer,self.ActiveTooltips local o,p
+=m:Canvas{Visible=false,UiPadding=UDim.new()}task.spawn(h,o)aa:DetectHover(g,{
+MouseMove=true,MouseEnter=true,OnHoverChange=function(q)if q then table.insert(n
+,o)return end local r=table.find(n,o)table.remove(n,r)end,OnInput=function(q,r)p
+.Visible=q end})end function aa:CheckFlags(g,h)for i,m in next,g do local n=h[i]
+if not n then continue end m(n)end end function aa:GetThemeKey(g,h)local i=self.
+ThemeConfigs if typeof(g)=='string'then g=i[g]end local m=i.DarkTheme g=g or m
+local n,o=g.BaseTheme,g.Values local p=o[h]if p then return p end if n then
+return self:GetThemeKey(n,h)end return end function aa:SelectionGroup(g)local h,
+i,m=false,function(h,i)for m,n in next,g do if typeof(n)=='Instance'then
+continue end if n==i then continue end h(n)end end local n=function(n)if h then
+return end h=true local o=m m=n:GetValue()if not o then o=m end i(function(p)p:
+SetValue(o)end,n)h=false end i(function(o)o.Callback=n end)end local g=aa.
+Elements g.__index=g function g:GetObject()return self.RawObject end function g:
+ApplyFlags(h,i)local m=self.WindowClass aa:ApplyFlags{WindowClass=m,Object=h,
+Class=i}end function g:Remove()local h,i,m=self.OnChildChange,self:GetObject(),
+self.Class local n=m.Remove if n then return n(m)end if h then h:Fire(m or self)
+end if m then table.clear(m)end i:Destroy()table.clear(self)end function g:
+GetChildElements()local h=self.Elements return h end function g:
+ClearChildElements()local h=self:GetChildElements()for i,m in next,h do m:
+Destroy()end end function g:TagElements(h)local i,m=self.WindowClass,aa.Debug if
+not i then if m then aa:Warn('No WindowClass for TagElements:',h)end return end
+i:TagElements(h)end function g:GetThemeKey(h)local i=self.WindowClass if i then
+return i:GetThemeKey(h)end return aa:GetThemeKey(nil,h)end function g:
+SetColorTags(h,i)local m=self.WindowClass if not m then return end local n,o=m.
+TagsList,m.Theme aa:MultiUpdateColors{Animate=i,Theme=o,TagsList=n,Objects=h}end
+function g:SetElementFocused(h,i)local m,n,o,p=self.WindowClass,aa.
+HasTouchScreen,i.Focused,i.Animation aa:SetAnimationsEnabled(not o)if not o and
+p then p:Refresh()end if not m then return end if not n then return end local q=
+m.ContentCanvas q.Interactable=not o end aa:DefineElement('Dropdown',{Base={
+ColorTag='PopupCanvas',Disabled=false,AutoClose=true,OnSelected=f},Create=
+function(h,i)i.Parent=aa.Container.Overlays local m,n,o,p,q=i.Selected,i.Items,i
+.OnSelected,h:PopupCanvas(i)local r,s,t=aa:MergeMetatables(i,p),{},function(r)o(
+r)end function i:ClearEntries()for u,v in s do v:Remove()end end function i:
+SetItems(u,v)local x=u[1]self:ClearEntries()for y,z in u do local A,B=x and z or
+y,y==v or z==v local C=p:Selectable{Text=tostring(A),Selected=B,ZIndex=6,
+Callback=function()return t(A)end}table.insert(s,C)end end if n then i:SetItems(
+n,m)end return r,q end})aa:DefineElement('OverlayScroll',{Base={ElementClass=
+'OverlayScroll',Spacing=UDim.new(0,4)},Create=function(h,i)local m,n,o=h.
+WindowClass,i.ElementClass,i.Spacing local p=aa:InsertPrefab(n,i)local q,r=p:
+FindFirstChild'ContentFrame'or p,p:FindFirstChild('UIListLayout',true)r.Padding=
+o local s=aa:MergeMetatables(h,i)local t=aa:MakeCanvas{Element=q,WindowClass=m,
+Class=s}function i:GetCanvasSize()return q.AbsoluteCanvasSize end return t,p end
+})aa:DefineElement('Overlay',{Base={ElementClass='Overlay'},Create=g.
+OverlayScroll})aa:DefineElement('Image',{Base={Image='',Callback=f},Create=
+function(h,i)local m=aa:InsertPrefab('Image',i)m.Activated:Connect(function(...)
+local n=i.Callback return n(m,...)end)return m end})aa:DefineElement(
+'VideoPlayer',{Base={Video='',Callback=f},Create=function(h,i)local m=i.Video i.
+Video=ad:CheckAssetUrl(m)local n=aa:InsertPrefab('VideoPlayer',i)return n end})
+aa:DefineElement('Button',{Base={Text='Button',DoubleClick=false,Callback=f},
+Create=function(h,i)local m=aa:InsertPrefab('Button',i)local n,o=aa:
+MergeMetatables(i,m),i.DoubleClick function i:SetDisabled(p)self.Disabled=p end
+aa:ConnectMouseEvent(m,{DoubleClick=o,Callback=function(...)if i.Disabled then
+return end local p=i.Callback return p(n,...)end})return n,m end})aa:
+DefineElement('Selectable',{Base={Text='Selectable',Callback=f,Selected=false,
+Disabled=false,Size=UDim2.fromScale(1,0),AutomaticSize=Enum.AutomaticSize.Y,
+TextXAlignment=Enum.TextXAlignment.Left,AnimationTags={Selected='Buttons',
+Unselected='TransparentButtons'}},Create=function(h,i)local m,n,o,p=h.Class.
+AfterClick,i.Selected,i.Disabled,aa:InsertPrefab('Button',i)local q=aa:
+MergeMetatables(i,p)p.Activated:Connect(function(...)local r=i.Callback r(p,...)
+if m then m(p,...)end end)function i:SetSelected(r)local s=self.AnimationTags
+local t=r and s.Selected or s.Unselected self.Selected=r aa:SetAnimation(p,t)
+return self end function i:SetDisabled(r)self.Disabled=r p.Interactable=not r
+return self end i:SetSelected(n)i:SetDisabled(o)return q,p end})aa:
+DefineElement('ImageButton',{Base={ElementStyle='Button',Callback=f},Create=g.
+Image})aa:DefineElement('SmallButton',{Base={Text='Button',PaddingTop=UDim.new()
+,PaddingBottom=UDim.new(),PaddingLeft=UDim.new(0,2),PaddingRight=UDim.new(0,2),
+ColorTag='Button',ElementStyle='Button',Callback=f},Create=g.Button})aa:
+DefineElement('Keybind',{Base={Label='Keybind',ColorTag='Frame',Value=nil,
+DeleteKey=Enum.KeyCode.Backspace,IgnoreGameProcessed=true,Enabled=true,Disabled=
+false,Callback=f,OnKeybindSet=f,OnBlacklistedKeybindSet=f,KeyBlacklist={},
+UiPadding=UDim.new(),AutomaticSize=Enum.AutomaticSize.None,Size=UDim2.new(0.3,0,
+0,19)},Create=function(h,i)local m,n,o,p,q=i.Value,i.Label,i.Disabled,i.
+KeyBlacklist,aa:InsertPrefab('Button',i)local r,s,t,u=aa:MergeMetatables(i,q),h:
+Label{Parent=q,Text=n,Position=UDim2.new(1,4,0.5),AnchorPoint=Vector2.new(0,0.5)
+},function(r,...)return r(q,...)end,function(r)return table.find(p,r)end
+function i:SetDisabled(v)self.Disabled=v q.Interactable=not v h:SetColorTags({[s
+]=v and'LabelDisabled'or'Label'},true)return self end function i:SetValue(v)
+local x,y=self.OnKeybindSet,self.DeleteKey if v==y then v=nil end self.Value=v q
+.Text=v and v.Name or'Not set't(x,v)return self end function i:WaitForNewKey()
+self._WaitingForNewKey=true q.Text='...'q.Interactable=false end local v=
+function(v)local x,y=v.KeyCode,v.UserInputType if y~=Enum.UserInputType.Keyboard
+then return y end return x end local x=function(x)local y,z,A=i.
+OnBlacklistedKeybindSet,i.Value,v(x)if not b.WindowFocused then return end if u(
+A)then t(y,A)return end q.Interactable=true i._WaitingForNewKey=false if A.Name
+=='Unknown'then return i:SetValue(z)end i:SetValue(A)return end local y=function
+(y,z)local A,B,C,D,E,F=i.IgnoreGameProcessed,i.DeleteKey,i.Enabled,i.Value,i.
+Callback,v(y)if i._WaitingForNewKey then x(y)return end if not C and q.
+Interactable then return end if not A and z then return end if not D then return
+end if F==B then return end if F.Name~=D.Name then return end t(E,F)end i:
+SetValue(m)i:SetDisabled(o)i.Connection=b.InputBegan:Connect(y)q.Activated:
+Connect(function()i:WaitForNewKey()end)aa:SetAnimation(q,'Inputs')return r,q end
+})aa:DefineElement('ArrowButton',{Base={Direction='Left',ColorTag='Button',Icon=
+aa.Icons.Arrow,Size=UDim2.fromOffset(21,21),IconSize=UDim2.fromScale(1,1),
+IconPadding=UDim.new(0,4),Rotations={Left=180,Right=0}},Create=function(h,i)
+local m,n=i.Direction,i.Rotations local o=n[m]i.IconRotation=o local p=aa:
+InsertPrefab('ArrowButton',i)p.Activated:Connect(function(...)local q=i.Callback
+return q(p,...)end)return p end})aa:DefineElement('Label',{Base={Font=
+'Inconsolata'},ColorData={LabelPadding={PaddingTop='LabelPaddingTop',
+PaddingBottom='LabelPaddingBottom'}},Create=function(h,i)local m,n,o,p,q,r,s,t=i
+.Bold,i.Italic,i.Font,i.FontFace,Enum.FontWeight.Medium,Enum.FontWeight.Bold,
+Enum.FontStyle.Normal,Enum.FontStyle.Italic local u,v,x=m and r or q,n and t or
+s,m or n if not p and x then i.FontFace=Font.fromName(o,u,v)end local y=aa:
+InsertPrefab('Label',i)local z=y:FindFirstChildOfClass'UIPadding'h:TagElements{[
+z]='LabelPadding'}return y end})aa:DefineElement('Error',{Base={RichText=true,
+TextWrapped=true},ColorData={Error={TextColor3='ErrorText',FontFace='TextFont'}}
+,Create=function(h,i)local m=i.Text i.Text=`<b>\u{26d4} Error:</b> {m}`return h:
+Label(i)end})aa:DefineElement('CodeEditor',{Base={Editable=true,Fill=true,Text=
+''},Create=function(h,i)local m,n=h.WindowClass,ab.CodeFrame.new(i)local o=n.Gui
+i.Parent=h:GetObject()aa:ApplyFlags{Object=o,WindowClass=m,Class=i}return n,o
+end})local h={Engaged=false}h.__index=h function h:SetEngaged(i)local m=self.
+WindowClass self.Engaged=i if m then m:SetCanvasInteractable(not i)end end
+function h:IsHovering()local i=false self:Foreach(function(m)i=m.Popup:
+IsMouseHovering()return i end)return i end function h:Foreach(i)local m=self.
+Menus for n,o in next,m do local p=i(o)if p then break end end end function h:
+SetFocusedMenu(i)self:Foreach(function(m)local n=m==i m:SetActiveState(n)end)end
+function h:Close()self:SetEngaged(false)self:SetFocusedMenu(nil)end function h:
+MenuItem(i)local m,n=self.Canvas,self.Menus local o=m:MenuButton(i)local p=m:
+PopupCanvas{RelativeTo=o,MaxSizeX=210,Visible=false,AutoClose=false,AfterClick=
+function()self:Close()end}local q={Popup=p,Button=o}aa:DetectHover(o,{MouseEnter
+=true,OnInput=function()if not self.Engaged then return end self:SetFocusedMenu(
+q)end})function q:SetActiveState(r)p:SetPopupVisible(r)o:SetSelected(r)end o.
+Activated:Connect(function()self:SetFocusedMenu(q)self:SetEngaged(true)end)table
+.insert(n,q)return p,q end aa:DefineElement('MenuBar',{Base={},Create=function(i
+,m)local n,o=i.WindowClass,aa:InsertPrefab('MenuBar',m)local p=aa:MakeCanvas{
+Element=o,WindowClass=n,Class=m}local q=ad:NewClass(h,{WindowClass=n,Canvas=p,
+Object=o,Menus={}})Merge(q,m)aa:DetectHover(o,{MouseOnly=true,OnInput=function()
+if not q.Engaged then return end if q:IsHovering()then return end q:Close()end})
+local r=aa:MergeMetatables(q,p)return r,o end})aa:DefineElement('MenuButton',{
+Base={Text='MenuButton',PaddingLeft=UDim.new(0,8),PaddingRight=UDim.new(0,8),
+Size=UDim2.fromOffset(0,19),AutomaticSize=Enum.AutomaticSize.XY},Create=g.
+Selectable})local i={ColorTags={BGSelected={[true]='SelectedTab',[false]=
+'DeselectedTab'},LabelSelected={[true]='SelectedTabLabel',[false]=
+'DeselectedTabLabel'}}}function i:SetButtonSelected(m,n)if m.IsSelected==n then
+return end m.IsSelected=n local o,p,q=self.NoAnimation,self.WindowClass,self.
+ColorTags local r,s,t,u,v=p.Theme,p.TagsList,q.BGSelected,q.LabelSelected,m.
+TabButton local x=v.Button local y=x.Label aa:MultiUpdateColors{Animate=not o,
+Theme=r,TagsList=s,Objects={[x]=t[n],[y]=u[n]}}end function i:CompareTabs(m,n)if
+not m then return false end return m.MatchBy==n or m==n end function i:
+ForEachTab(m,n)local o,p=typeof(m)=='string',self.Tabs for q,r in p do local s,t
+=r.Name,false if o then t=s==m else t=self:CompareTabs(r,m)end n(r,t,q)end end
+function i:RemoveTab(m)local n,o=self.OnTabRemove,self.Tabs self:ForEachTab(m,
+function(p,q,r)if not q then return end local s,t=p.TabButton,p.OnClosure table.
+remove(o,r)s:Destroy()n(self,p)t(p)end)return self end function i:CreateTab(m)m=
+m or{}aa:CheckConfig(m,{Name='Tab',AutoSize='Y',Focused=false,OnClosure=f})local
+n,o,p,q,r,s,t,u,v=self.AutoSelectNewTabs,self.WindowClass,self.ParentCanvas,self
+.Tabs,self.TabsFrame,self.OnTabCreate,m.Focused,m.Name,m.Icon local x,y=t or#q<=
+0 and n,aa:InsertPrefab('TabButton',m)y.Parent=r local z=y.Button local A,B=z:
+FindFirstChildOfClass'UIPadding',z.Label B.Text=tostring(u)Merge(m,{TabButton=y}
+)local C,D=function()self:SetActiveTab(m)end,{Closeable=function()local C=p:
+RadioButton{Parent=z,Visible=not self.NoClose,Icon=aa.Icons.Close,IconSize=UDim2
+.fromOffset(11,11),LayoutOrder=3,ZIndex=2,UsePropertiesList=true,Callback=
+function()self:RemoveTab(m)end}local D=C.Icon aa:SetAnimation(D,{Connections={
+MouseEnter={ImageTransparency=0},MouseLeave={ImageTransparency=1}},Init=
+'MouseLeave'},y)end}z.Activated:Connect(C)aa:CheckFlags(D,m)table.insert(q,m)if
+o then o:TagElements{[A]='TabPadding'}end aa:SetAnimation(z,'Buttons')self:
+SetButtonSelected(m,x)p:ApplyFlags(y,m)local E=s(self,m)if x then self:
+SetActiveTab(m)end return E or m end function i:SetActiveTab(m)local n,o,p,q,r=
+self.Tabs,self.NoAnimation,self.ActiveTab,self.OnActiveTabChange,typeof(m)==
+'string'self:ForEachTab(m,function(s,t,u)if t then MatchedTab=s end self:
+SetButtonSelected(s,t)end)if not MatchedTab then return self end if self:
+CompareTabs(MatchedTab,p)then return self end self.ActiveTab=MatchedTab q(self,
+MatchedTab,p)return self end aa:DefineElement('TabBar',{Base={AutoSelectNewTabs=
+true,OnActiveTabChange=f,OnTabCreate=f,OnTabRemove=f},ColorData={DeselectedTab={
+BackgroundColor3='TabBg'},SelectedTab={BackgroundColor3='TabBgActive'},
+DeselectedTabLabel={FontFace='TextFont',TextColor3='TabText'},SelectedTabLabel={
+FontFace='TextFont',TextColor3='TabTextActive'},TabsBarSeparator={
+BackgroundColor3='TabBgActive'},TabPadding={PaddingTop='TabTextPaddingTop',
+PaddingBottom='TabTextPaddingBottom'},TabPagePadding={PaddingBottom=
+'TabPagePadding',PaddingLeft='TabPagePadding',PaddingRight='TabPagePadding',
+PaddingTop='TabPagePadding'}},Create=function(m,n)local o,p,q=m.WindowClass,aa:
+InsertPrefab('TabsBar',n),ad:NewClass(i)local r,s=p.Separator,p.TabsFrame local
+t=aa:MakeCanvas{Element=s,WindowClass=o,Class=q}Merge(q,n)Merge(q,{ParentCanvas=
+m,Object=p,TabsFrame=s,WindowClass=o,Tabs={}})m:TagElements{[p]='TabsBar',[r]=
+'TabsBarSeparator'}local u=aa:MergeMetatables(t,p)return u,p end})aa:
+DefineElement('TabSelector',{Base={NoTabsBar=false,OnActiveTabChange=f,
+OnTabCreate=f,OnTabRemove=f},Create=function(m,n)local o,p,q,r=m.WindowClass,n.
+NoTabsBar,n.NoAnimation,aa:InsertPrefab('TabSelector',n)local s=r.Body local t=s
+.PageTemplate t.Visible=false local u,v=function(u,v,...)local x,y,z=v.AutoSize,
+v.Name,t:Clone()local A=ad:GetChildOfClass(z,'UIPadding')aa:SetProperties(z,{
+Parent=s,Name=y,AutomaticSize=Enum.AutomaticSize[x],Size=UDim2.fromScale(x=='Y'
+and 1 or 0,x=='X'and 1 or 0)})m:TagElements{[A]='TabPagePadding'}local B=aa:
+MakeCanvas{Element=z,WindowClass=o,Class=v}n.OnTabCreate(u,v,...)Merge(v,{Page=z
+,MatchBy=B})return B end,function(u,v,...)u:ForEachTab(v,function(x,y,z)local A=
+x.Page A.Visible=y if not y then return end local B=m:GetThemeKey
+'AnimationTweenInfo'ae:Tween{Object=A,Tweeninfo=B,NoAnimation=q,StartProperties=
+{Position=UDim2.fromOffset(0,4)},EndProperties={Position=UDim2.fromOffset(0,0)}}
+end)n.OnActiveTabChange(u,v,...)end local x=m:TabBar{Parent=r,Visible=not p,
+OnTabCreate=u,OnActiveTabChange=v,OnTabRemove=function(x,y,...)y.Page:Remove()n.
+OnTabRemove(...)end}local y=aa:MergeMetatables(x,r)return y,r end})aa:
+DefineElement('RadioButton',{Base={Callback=f},Create=function(m,n)local o=aa:
+InsertPrefab('RadioButton',n)o.Activated:Connect(function(...)local p=n.Callback
+return p(o,...)end)return o end})aa:DefineElement('Checkbox',{Base={Label=
+'Checkbox',IsRadio=false,Value=false,NoAutoTag=true,TickedImageSize=UDim2.
+fromScale(1,1),UntickedImageSize=UDim2.fromScale(0,0),Callback=f,Disabled=false}
+,Create=function(m,n)local o,p,q,r,s,t,u=n.IsRadio,n.Value,n.Label,n.
+TickedImageSize,n.UntickedImageSize,n.Disabled,aa:InsertPrefab('CheckBox',n)
+local v,x=aa:MergeMetatables(n,u),u.Tickbox local y=x.Tick y.Image=aa.Icons.
+Checkmark local z,A,B,C=x:FindFirstChildOfClass'UIPadding',ad:GetChildOfClass(x,
+'UICorner'),m:Label{Text=q,Parent=u,LayoutOrder=2},UDim.new(0,3)if o then y.
+ImageTransparency=1 y.BackgroundTransparency=0 A.CornerRadius=UDim.new(1,0)else
+C=UDim.new(0,2)end aa:SetProperties(z,{PaddingBottom=C,PaddingLeft=C,
+PaddingRight=C,PaddingTop=C})local D,E=function(...)local D=n.Callback return D(
+v,...)end,function(D,E)local F,G=m:GetThemeKey'AnimationTweenInfo',D and r or s
+ae:Tween{Object=y,Tweeninfo=F,NoAnimation=E,EndProperties={Size=G}}end function
+n:SetDisabled(F)self.Disabled=F u.Interactable=not F m:SetColorTags({[B]=F and
+'LabelDisabled'or'Label'},true)return self end function n:SetValue(F,G)self.
+Value=F E(F,G)D(F)return self end function n:SetTicked(...)aa:Warn
+'Checkbox:SetTicked is deprecated, please use :SetValue'return self:SetValue(...
+)end function n:Toggle()local F=not self.Value self.Value=F self:SetValue(F)
+return self end local F=function()n:Toggle()end u.Activated:Connect(F)x.
+Activated:Connect(F)n:SetValue(p,true)n:SetDisabled(t)aa:SetAnimation(x,
+'Buttons',u)m:TagElements{[y]='CheckMark',[x]='Checkbox'}return v,u end})aa:
+DefineElement('Radiobox',{Base={IsRadio=true,CornerRadius=UDim.new(1,0)},Create=
+g.Checkbox})aa:DefineElement('PlotHistogram',{Base={ColorTag='Frame',Label=
+'Histogram'},Create=function(m,n)local o,p,q=n.Label,n.Points,aa:InsertPrefab(
+'Histogram',n)local r,s=aa:MergeMetatables(n,q),q.Canvas local t=s.PointTemplate
+t.Visible=false m:Label{Text=o,Parent=q,Position=UDim2.new(1,4)}local u aa:
+SetItemTooltip(q,function(v)u=v:Label()end)Merge(n,{_Plots={},_Cache={}})
+function n:GetBaseValues()local v,x=self.Minimum,self.Maximum if v and x then
+return v,x end local y=self._Plots for z,A in y do local B=A.Value if not v or B
+<v then v=B end if not x or B>x then x=B end end return v,x end function n:
+UpdateGraph()local v,x,y=self._Plots,self:GetBaseValues()if not x or not y then
+return end local z=y-x for A,B in v do local C,D=B.Point,B.Value local E=(D-x)/z
+E=math.clamp(E,0.05,1)C.Size=UDim2.fromScale(1,E)end return self end function n:
+Plot(v)local x,y,z=self._Plots,{},t:Clone()local A=z.Bar aa:SetProperties(z,{
+Parent=s,Visible=true})local B,C=aa:DetectHover(z,{MouseEnter=true,OnInput=
+function()y:UpdateTooltip()end}),{Object=z,Point=A,Value=v}function y:
+UpdateTooltip()local D=y:GetPointIndex()u.Text=`{D}:\t{C.Value}`end function y:
+SetValue(D)C.Value=D n:UpdateGraph()if B.Hovering then self:UpdateTooltip()end
+end function y:GetPointIndex()return table.find(x,C)end function y:Remove(D)
+table.remove(x,self:GetPointIndex())z:Remove()n:UpdateGraph()end table.insert(x,
+C)self:UpdateGraph()aa:SetAnimation(A,'Plots',z)m:TagElements{[A]='Plot'}return
+y end function n:PlotGraph(v)local x=self._Cache local y=#x-#v if y>=1 then for
+z=1,y do local A=table.remove(x,z)if A then A:Remove()end end end for z,A in v
+do local B=x[z]if B then B:SetValue(A)continue end x[z]=self:Plot(A)end return
+self end if p then n:PlotGraph(p)end return r,q end})aa:DefineElement('Viewport'
+,{Base={IsRadio=true},Create=function(m,n)local o,p,q=n.Model,n.Camera,aa:
+InsertPrefab('Viewport',n)local r,s=aa:MergeMetatables(n,q),q.Viewport local t=s
+.WorldModel if not p then p=aa:CreateInstance('Camera',s)p.CFrame=CFrame.new(0,0
+,0)end Merge(n,{Camera=p,WorldModel=t,Viewport=s})function n:SetCamera(u)self.
+Camera=u s.CurrentCamera=u return self end function n:SetModel(u,v)local x=self.
+Clone t:ClearAllChildren()if x then u=u:Clone()end if v then u:PivotTo(v)end u.
+Parent=t self.Model=u return u end if o then n:SetModel(o)end n:SetCamera(p)
+return r,q end})aa:DefineElement('InputText',{Base={Value='',Placeholder='',
+Label='Input text',Callback=f,MultiLine=false,NoAutoTag=true,Disabled=false},
+Create=function(m,n)local o,p,q,r,s,t=n.MultiLine,n.Placeholder,n.Label,n.
+Disabled,n.Value,aa:InsertPrefab('InputBox',n)local u=t.Frame local v,x=u.Input,
+aa:MergeMetatables(n,t)m:Label{Parent=t,Text=q,AutomaticSize=Enum.AutomaticSize.
+X,Size=UDim2.fromOffset(0,19),Position=UDim2.new(1,4),LayoutOrder=2}aa:
+SetProperties(v,{PlaceholderText=p,MultiLine=o})local y=function(...)local y=n.
+Callback y(x,...)end function n:SetValue(z)v.Text=tostring(z)self.Value=z return
+self end function n:SetDisabled(z)self.Disabled=z t.Interactable=not z m:
+SetColorTags({[q]=z and'LabelDisabled'or'Label'},true)return self end function n
+:Clear()v.Text=''return self end local z=function()local z=v.Text n.Value=z y(z)
+end v:GetPropertyChangedSignal'Text':Connect(z)n:SetDisabled(r)n:SetValue(s)m:
+TagElements{[v]='Frame'}return x,t end})aa:DefineElement('InputInt',{Base={Value
+=0,Increment=1,Placeholder='',Label='Input Int',Callback=f},Create=function(m,n)
+local o,p,q,r,s,t=n.Value,n.Placeholder,n.Label,n.Disabled,n.NoButtons,aa:
+InsertPrefab('InputBox',n)local u,v=aa:MergeMetatables(n,t),t.Frame local x=v.
+Input x.PlaceholderText=p local y,z,A,B=m:Button{Text='-',Parent=v,LayoutOrder=2
+,Ratio=1,AutomaticSize=Enum.AutomaticSize.None,FlexMode=Enum.UIFlexMode.None,
+Size=UDim2.fromScale(1,1),Visible=not s,Callback=function()n:Decrease()end},m:
+Button{Text='+',Parent=v,LayoutOrder=3,Ratio=1,AutomaticSize=Enum.AutomaticSize.
+None,FlexMode=Enum.UIFlexMode.None,Size=UDim2.fromScale(1,1),Visible=not s,
+Callback=function()n:Increase()end},m:Label{Parent=t,Text=q,AutomaticSize=Enum.
+AutomaticSize.X,Size=UDim2.fromOffset(0,19),Position=UDim2.new(1,4),LayoutOrder=
+4},function(...)local y=n.Callback y(u,...)end function n:Increase()local C,D=
+self.Value,self.Increment n:SetValue(C+D)end function n:Decrease()local C,D=self
+.Value,self.Increment n:SetValue(C-D)end function n:SetDisabled(C)self.Disabled=
+C t.Interactable=not C m:SetColorTags({[A]=C and'LabelDisabled'or'Label'},true)
+return self end function n:SetValue(C)local D,E,F=self.Value,self.Minimum,self.
+Maximum C=tonumber(C)if not C then C=D end if E and F then C=math.clamp(C,E,F)
+end x.Text=C n.Value=C B(C)return self end local C=function()local C=x.Text n:
+SetValue(C)end n:SetValue(o)n:SetDisabled(r)x.FocusLost:Connect(C)m:TagElements{
+[z]='Button',[y]='Button',[x]='Frame'}return u,t end})aa:DefineElement(
+'InputTextMultiline',{Base={Label='',Size=UDim2.new(1,0,0,39),Border=false,
+ColorTag='Frame'},Create=function(m,n)return m:Console(n)end})aa:DefineElement(
+'Console',{Base={Enabled=true,Value='',TextWrapped=false,Border=true,MaxLines=
+300,LinesFormat='%s',Callback=f},Create=function(m,n)local o,p,q,r,s=n.ReadOnly,
+n.LineNumbers,n.Value,n.Placeholder,aa:InsertPrefab('Console',n)local t,u,v=aa:
+MergeMetatables(n,s),s.Source,s.Lines v.Visible=p function n:CountLines(x)local
+y=u.Text:split'\n'local z=#y if z==1 and y[1]==''then return 0 end return z end
+function n:UpdateLineNumbers()local x,y=self.LineNumbers,self.LinesFormat if not
+x then return end local z=self:CountLines()v.Text=''for A=1,z do local B,C=y:
+format(A),A~=z and'\n'or''v.Text..=`{B}{C}`end local A=v.AbsoluteSize.X u.Size=
+UDim2.new(1,-A,0,0)return self end function n:CheckLineCount()local x=n.MaxLines
+if not x then return end local y=u.Text local z=y:split'\n'if#z>x then local A=`{
+z[1]}\\n`local B=y:sub(#A)self:SetValue(B)end return self end function n:
+UpdateScroll()local x=s.AbsoluteCanvasSize s.CanvasPosition=Vector2.new(0,x.Y)
+return self end function n:SetValue(x)if not self.Enabled then return end u.Text
+=tostring(x)self:Update()return self end function n:GetValue()return u.Text end
+function n:Clear()u.Text=''self:Update()return self end function n:AppendText(
+...)local x,y=self:CountLines(true),aa:Concat({...},' ')if x==0 then return self
+:SetValue(y)end local z=self:GetValue()local A=`{z}\n{y}`self:SetValue(A)return
+self end function n:Update()local x=self.AutoScroll self:CheckLineCount()self:
+UpdateLineNumbers()if x then self:UpdateScroll()end end local x=function()local
+x=n:GetValue()n:Update()n:Callback(x)end n:SetValue(q)aa:SetProperties(u,n)aa:
+SetProperties(u,{TextEditable=not o,Parent=s,PlaceholderText=r})m:TagElements{[u
+]='ConsoleText',[v]='ConsoleLineNumbers'}u:GetPropertyChangedSignal'Text':
+Connect(x)return t,s end})aa:DefineElement('Table',{Base={VerticalAlignment=Enum
+.VerticalAlignment.Top,RowBackground=false,RowBgTransparency=0.87,Border=false,
+Spacing=UDim.new(0,4)},Create=function(m,n)local o,p,q,r,s,t,u,v=m.WindowClass,n
+.RowBgTransparency,n.RowBackground,n.Border,n.VerticalAlignment,n.MaxColumns,n.
+Spacing,aa:InsertPrefab('Table',n)local x,y,z,A,B=aa:MergeMetatables(n,v),v.
+RowTemp,0,{},r and q function n:Row(C)C=C or{}local D,E,F,G=C.IsHeader,0,{},y:
+Clone()aa:SetProperties(G,{Name='Row',Visible=true,Parent=v})local H=G:
+FindFirstChildOfClass'UIListLayout'aa:SetProperties(H,{VerticalAlignment=s,
+Padding=not B and u or UDim.new(0,1)})if D then m:TagElements{[G]='Header'}else
+z+=1 end if q and not D then local I=z%2~=1 and p or 1 G.BackgroundTransparency=
+I end local I={}local J=aa:MergeMetatables(I,G)function I:Column(K)K=K or{}aa:
+CheckConfig(K,{HorizontalAlign=Enum.HorizontalAlignment.Left,VerticalAlignment=
+Enum.VerticalAlignment.Top})local L=G.ColumnTemp:Clone()local M=L:
+FindFirstChildOfClass'UIListLayout'aa:SetProperties(M,K)local N=L:
+FindFirstChildOfClass'UIStroke'N.Enabled=r local O=L:FindFirstChildOfClass
+'UIPadding'if not B then O:Destroy()end aa:SetProperties(L,{Parent=G,Visible=
+true,Name='Column'})return aa:MakeCanvas{Element=L,WindowClass=o,Class=J}end
+function I:NextColumn()E+=1 local K=E%t+1 local L=F[K]if not L then L=self:
+Column()F[K]=L end return L end table.insert(A,I)return J end function n:NextRow
+()return self:Row()end function n:HeaderRow()return self:Row{IsHeader=true}end
+function n:ClearRows()z=0 for C,D in next,v:GetChildren()do if not D:IsA'Frame'
+then continue end if D==y then continue end D:Destroy()end return n end return x
+,v end})aa:DefineElement('List',{Base={Spacing=4,HorizontalFlex=Enum.
+UIFlexAlignment.None,VerticalFlex=Enum.UIFlexAlignment.None,HorizontalAlignment=
+Enum.HorizontalAlignment.Left,VerticalAlignment=Enum.VerticalAlignment.Top,
+FillDirection=Enum.FillDirection.Horizontal},Create=function(m,n)local o,p,q,r,s
+,t,u,v=m.WindowClass,n.Spacing,n.HorizontalFlex,n.VerticalFlex,n.
+HorizontalAlignment,n.VerticalAlignment,n.FillDirection,aa:InsertPrefab('List',n
+)local x,y=aa:MergeMetatables(n,v),v.UIListLayout aa:SetProperties(y,{Padding=
+UDim.new(0,p),HorizontalFlex=q,VerticalFlex=r,HorizontalAlignment=s,
+VerticalAlignment=t,FillDirection=u})local z=aa:MakeCanvas{Element=v,WindowClass
+=o,Class=x}return z,v end})aa:DefineElement('CollapsingHeader',{Base={Title=
+'Collapsing Header',CollapseIcon=aa.Icons.Arrow,Collapsed=true,Offset=0,
+NoAutoTag=true,NoAutoFlags=true,IconPadding=UDim.new(0,4),Activated=f},Create=
+function(m,n)local o,p,q,r,s,t,u,v,x,y,z,A=n.Title,n.Collapsed,n.ElementStyle,n.
+Offset,n.TitleBarProperties,n.OpenOnDoubleClick,n.OpenOnArrow,n.CollapseIcon,n.
+IconPadding,n.Icon,n.NoArrow,aa:InsertPrefab('CollapsingHeader',n)local B=A.
+TitleBar local C,D=B.Collapse,B.Icon m:ApplyFlags(D,{Image=y})local E,F=C.
+CollapseIcon,C.UIPadding ad:SetPadding(F,x)m:ApplyFlags(E,{Image=v})local G,H,I=
+m:Label{ColorTag='CollapsingHeader',Parent=B,LayoutOrder=2},m:Indent{Class=n,
+Parent=A,Offset=r,LayoutOrder=2,Size=UDim2.fromScale(1,0),AutomaticSize=Enum.
+AutomaticSize.None,PaddingTop=UDim.new(0,4),PaddingBottom=UDim.new(0,1)}local J=
+function()local J=n.Activated J(H)end function n:Remove()A:Destroy()table.clear(
+self)end function n:SetArrowVisible(K)E.Visible=K end function n:SetTitle(K)G.
+Text=K end function n:SetVisible(K)A.Visible=K end function n:SetIcon(K)local L=
+K and K~=''D.Visible=L if L then D.Image=ad:CheckAssetUrl(K)end end function n:
+SetCollapsed(K)self.Collapsed=K local L,M,N=aa:GetContentSize(I),H:GetThemeKey
+'AnimationTweenInfo',UDim2.fromScale(1,0)local O=N+UDim2.fromOffset(0,L.Y)ae:
+HeaderCollapse{Tweeninfo=M,Collapsed=K,Toggle=E,Resize=I,Hide=I,ClosedSize=N,
+OpenSize=O}return self end local K=function()n:SetCollapsed(not n.Collapsed)end
+if s then H:ApplyFlags(B,s)end if not u then aa:ConnectMouseEvent(B,{DoubleClick
+=t,Callback=K})end E.Activated:Connect(K)B.Activated:Connect(J)n:SetCollapsed(p)
+n:SetTitle(o)n:SetArrowVisible(not z)aa:ApplyStyle(B,q)H:TagElements{[B]=
+'CollapsingHeader'}return H,A end})aa:DefineElement('TreeNode',{Base={Offset=21,
+IconPadding=UDim.new(0,2),TitleBarProperties={Size=UDim2.new(1,0,0,13)}},Create=
+g.CollapsingHeader})aa:DefineElement('Separator',{Base={NoAutoTag=true,
+NoAutoTheme=true},Create=function(m,n)local o,p=n.Text,aa:InsertPrefab(
+'SeparatorText',n)m:Label{Text=tostring(o),Visible=o~=nil,Parent=p,LayoutOrder=2
+,Size=UDim2.new(),PaddingLeft=UDim.new(0,4),PaddingRight=UDim.new(0,4)}m:
+TagElements{[p.Left]='Separator',[p.Right]='Separator'}return p end})aa:
+DefineElement('Canvas',{Base={},Create=function(m,n)local o,p,q=m.WindowClass,n.
+Scroll,n.Class or n local r=p and'ScrollingCanvas'or'Canvas'local s=aa:
+InsertPrefab(r,n)local t=aa:MakeCanvas{Element=s,WindowClass=o,Class=q}return t,
+s end})aa:DefineElement('ScrollingCanvas',{Base={Scroll=true},Create=g.Canvas})
+aa:DefineElement('Region',{Base={Scroll=false,AutomaticSize=Enum.AutomaticSize.Y
+},Create=function(m,n)local o,p=m.WindowClass,n.Scroll local q=p and
+'ScrollingCanvas'or'Canvas'local r=aa:InsertPrefab(q,n)local s=aa:MakeCanvas{
+Element=r,WindowClass=o,Class=n}return s,r end})aa:DefineElement('Group',{Base={
+Scroll=false,AutomaticSize=Enum.AutomaticSize.Y},Create=function(m,n)local o,p=m
+.WindowClass,aa:InsertPrefab('Group',n)local q=aa:MakeCanvas{Element=p,
+WindowClass=o,Class=n}return q,p end})aa:DefineElement('Indent',{Base={Offset=15
+,PaddingTop=UDim.new(),PaddingBottom=UDim.new(),PaddingRight=UDim.new()},Create=
+function(m,n)local o=n.Offset n.PaddingLeft=UDim.new(0,o)return m:Canvas(n)end})
+aa:DefineElement('BulletText',{Base={},Create=function(m,n)local o=n.Rows for p,
+q in next,o do local r=m:Bullet(n)r:Label{Text=tostring(q),LayoutOrder=2,Size=
+UDim2.fromOffset(0,14)}end end})aa:DefineElement('Bullet',{Base={Padding=3,Icon=
+aa.Icons.Dot,IconSize=UDim2.fromOffset(5,5)},Create=function(m,n)local o,p,q=m.
+WindowClass,n.Padding,aa:InsertPrefab('Bullet',n)local r,s=aa:MakeCanvas{Element
+=q,WindowClass=o,Class=m},q.UIListLayout s.Padding=UDim.new(0,p)return r,q end})
+aa:DefineElement('Row',{Base={Spacing=4,Expanded=false,HorizontalFlex=Enum.
+UIFlexAlignment.None,VerticalFlex=Enum.UIFlexAlignment.None},Create=function(m,n
+)local o,p,q,r,s,t=m.WindowClass,n.Spacing,n.Expanded,n.HorizontalFlex,n.
+VerticalFlex,aa:InsertPrefab('Row',n)local u,v=aa:MergeMetatables(n,t),t:
+FindFirstChildOfClass'UIListLayout'v.Padding=UDim.new(0,p)v.HorizontalFlex=r v.
+VerticalFlex=s local x=aa:MakeCanvas{Element=t,WindowClass=o,Class=u}function n:
+Expand()v.HorizontalFlex=Enum.UIFlexAlignment.Fill return self end if q then n:
+Expand()end return x,t end})aa:DefineElement('SliderBase',{Base={Format='%.f',
+Label='',Type='Slider',Callback=f,NoGrab=false,NoClick=false,Minimum=0,Maximum=
+100,ColorTag='Frame',Disabled=false},Create=function(m,n)local o,p,q,r,s,t,u,v,x
+=n.Value or n.Minimum,n.Format,n.Label,n.NoAnimation,n.NoGrab,n.NoClick,n.Type,n
+.Disabled,aa:InsertPrefab'Slider'local y=x.Track local z,A,B=y.Grab,y.ValueText,
+aa:MergeMetatables(n,x)local C,D,E=z.AbsoluteSize,aa:SetAnimation(x,'Inputs'),m:
+Label{Parent=x,Text=q,Position=UDim2.new(1,4),Size=UDim2.fromScale(0,1)}Merge(n,
+{Grab=z,Name=q})if u=='Slider'then y.Position=UDim2.fromOffset(C.X/2,0)y.Size=
+UDim2.new(1,-C.X,1,0)end local F,G={Slider=function(F)return{AnchorPoint=Vector2
+.new(0.5,0.5),Position=UDim2.fromScale(F,0.5)}end,Progress=function(F)return{
+Size=UDim2.fromScale(F,1)}end,Snap=function(F,G,H,I)local J=(math.round(G)-H)/I
+return{Size=UDim2.fromScale(1/I,1),Position=UDim2.fromScale(J,0.5)}end},function
+(...)local F=n.Callback return F(B,...)end function n:SetDisabled(H)self.
+Disabled=H x.Interactable=not H m:SetColorTags({[E]=H and'LabelDisabled'or
+'Label'},true)return self end function n:SetValueText(H)A.Text=tostring(H)end
+function n:SetValue(H,I)local J,K,L,M=m:GetThemeKey'AnimationTweenInfo',n.
+Minimum,n.Maximum,H local N=L-K if not I then M=(H-K)/N else H=K+(N*M)end M=math
+.clamp(M,0,1)local O=F[u](M,H,K,L)ae:Tween{Object=z,Tweeninfo=J,NoAnimation=r,
+EndProperties=O}self.Value=H self:SetValueText(p:format(H,L))G(H)return self end
+local H,I=function(H)m:SetColorTags({[x]=H and'FrameActive'or'Frame'},true)m:
+SetElementFocused(x,{Focused=H,Animation=D})end,function()if n.Disabled then
+return end if n.ReadOnly then return end return true end local J=function(J)if
+not I()then return end local K,L,M=y.AbsolutePosition.X,y.AbsoluteSize.X,J.X
+local N=M-K local O=math.clamp(N/L,0,1)n:SetValue(O,true)end local K,L=function(
+...)if not I()then return end H(true)if not t then J(...)end end,function()H(
+false)end z.Visible=not s n:SetValue(o)n:SetDisabled(v)m:TagElements{[A]='Label'
+,[z]='SliderGrab'}aa:ConnectDrag(y,{DragStart=K,DragMovement=J,DragEnd=L})return
+B,x end})aa:DefineElement('SliderEnum',{Base={Items={},Label='Slider Enum',Type=
+'Snap',Minimum=1,Maximum=10,Value=1,Callback=f,ColorTag='Frame'},Create=function
+(m,n)local o,p=n.Callback,n.Value local q=function(q,r)r=math.round(r)local s=q.
+Items q.Maximum=#s return s[r]end n.Callback=function(r,s)local t=q(r,s)r:
+SetValueText(t)n.Value=t return o(r,t)end q(n,p)return m:SliderBase(n)end})aa:
+DefineElement('SliderInt',{Base={Label='Slider Int',ColorTag='Frame'},Create=g.
+SliderBase})aa:DefineElement('SliderFloat',{Base={Label='Slider Float',Format=
+'%.3f',ColorTag='Frame'},Create=g.SliderBase})aa:DefineElement('DragInt',{Base={
+Format='%.f',Label='Drag Int',Callback=f,Minimum=0,Maximum=100,ColorTag='Frame',
+Disabled=false},Create=function(m,n)local o,p,q,r,s=n.Value or n.Minimum,n.
+Format,n.Label,n.Disabled,aa:InsertPrefab'Slider'local t,u=aa:MergeMetatables(n,
+s),s.Track local v,x=u.ValueText,u.Grab x.Visible=false local y,z,A,B,C,D=m:
+Label{Parent=s,Text=q,Position=UDim2.new(1,7),Size=UDim2.fromScale(0,1)},0,0,aa:
+SetAnimation(s,'Inputs'),function(...)local y=n.Callback return y(t,...)end
+function n:SetValue(E,F)local G,H=self.Minimum,self.Maximum local I=H-G if not F
+then z=((E-G)/I)*100 else E=G+(I*(z/100))end E=math.clamp(E,G,H)self.Value=E v.
+Text=p:format(E,H)C(E)return self end function n:SetDisabled(E)self.Disabled=E m
+:SetColorTags({[y]=E and'LabelDisabled'or'Label'},true)return self end local E,F
+=function(E)m:SetColorTags({[s]=E and'FrameActive'or'Frame'},true)m:
+SetElementFocused(s,{Focused=E,Animation=B})end,function()if n.Disabled then
+return end if n.ReadOnly then return end return true end local G,H,I=function(G)
+if not F()then return end E(true)D=G A=z end,function(G)if not F()then return
+end local H=G.X-D.X local I=A+(H/2)z=math.clamp(I,0,100)n:SetValue(z,true)end,
+function()E(false)end n:SetValue(o)n:SetDisabled(r)aa:ConnectDrag(u,{DragStart=G
+,DragEnd=I,DragMovement=H})m:TagElements{[v]='Label'}return t,s end})aa:
+DefineElement('DragFloat',{Base={Format='%.3f',Label='Drag Float',ColorTag=
+'Frame'},Create=g.DragInt})aa:DefineElement('MultiElement',{Base={Callback=f,
+Label='',Disabled=false,BaseInputConfig={},InputConfigs={},Value={},Minimum={},
+Maximum={},MultiCallback=f},Create=function(m,n)local o,p,q,r,s,t,u,v=n.Label,n.
+BaseInputConfig,n.InputConfigs,n.InputType,n.Disabled,n.Value,n.Minimum,n.
+Maximum assert(r,'No input type provided for MultiElement')local x,y=m:Row{
+Spacing=4}local z,A,B,C,D=x:Row{Size=UDim2.fromScale(0.65,0),Expanded=true},x:
+Label{Size=UDim2.fromScale(0.35,0),LayoutOrder=2,Text=o},aa:MergeMetatables(n,x)
+,{},false local E=function()local E={}for F,G in C do E[F]=G:GetValue()end n.
+Value=E return E end local function F(...)local G=n.MultiCallback G(B,...)end
+local G=function()if#C~=#q then return end if not D then return end local G=E()
+F(G)end function n:SetDisabled(H)self.Disabled=H m:SetColorTags({[A]=H and
+'LabelDisabled'or'Label'},true)for I,J in C do J:SetDisabled(H)end end function
+n:SetValue(H)D=false for I,J in H do local K=C[I]assert(K,`No input object for index: {
+I}`)K:SetValue(J)end D=true F(H)end p=Copy(p,{Size=UDim2.new(1,0,0,19),Label='',
+Callback=G})for H,I in q do local J=Copy(p,I)aa:CheckConfig(J,{Minimum=u[H],
+Maximum=v[H]})local K=z[r](z,J)table.insert(C,K)end Merge(n,{Row=z,Inputs=C})D=
+true n:SetDisabled(s)n:SetValue(t)return B,y end})local m=function(m,n,o,p)aa:
+DefineElement(m,{Base={Label=m,Callback=f,InputType=n,InputConfigs=table.create(
+o,{}),BaseInputConfig={}},Create=function(q,r)local s=(r.BaseInputConfig)if p
+then Merge(s,p)end aa:CheckConfig(s,{ReadOnly=r.ReadOnly,Format=r.Format})r.
+MultiCallback=function(...)local t=r.Callback t(...)end return q:MultiElement(r)
+end})end local n=function(n,o)aa:DefineElement(n,{Base={Label=n,Callback=f,Value
+=aa.Accent.Light,Disabled=false,Minimum={0,0,0},Maximum={255,255,255,100},
+BaseInputConfig={},InputConfigs={[1]={Format='R: %.f'},[2]={Format='G: %.f'},[3]
+={Format='B: %.f'}}},Create=function(p,q)local r,s=q.Value,Copy(q,{Value={1,1,1}
+,Callback=function(r,...)if q.ValueChanged then q:ValueChanged(...)end end})
+local t,u=p[o](p,s)local v,x=aa:MergeMetatables(q,t),t.Row local y,z=x:Button{
+BackgroundTransparency=0,Size=UDim2.fromOffset(19,19),UiPadding=0,Text='',Ratio=
+1,ColorTag='',ElementStyle=''},function(...)local y=q.Callback return y(v,...)
+end local A=function(A)y.BackgroundColor3=A z(A)end function q:ValueChanged(B)
+local C,D,E=B[1],B[2],B[3]local F=Color3.fromRGB(C,D,E)self.Value=F A(F)end
+function q:SetValue(B)self.Value=B A(B)t:SetValue{math.round(B.R*255),math.
+round(B.G*255),math.round(B.B*255)}end q:SetValue(r)return v,u end})end local o=
+function(o,p)aa:DefineElement(o,{Base={Label=o,Callback=f,Disabled=false,Value=
+CFrame.new(10,10,10),Minimum=CFrame.new(0,0,0),Maximum=CFrame.new(100,100,100),
+BaseInputConfig={},InputConfigs={[1]={Format='X: %.f'},[2]={Format='Y: %.f'},[3]
+={Format='Z: %.f'}}},Create=function(q,r)local s,t,u=r.Value,r.Maximum,r.Minimum
+local v=Copy(r,{Maximum={t.X,t.Y,t.Z},Minimum={u.X,u.Y,u.Z},Value={s.X,s.Y,s.Z},
+Callback=function(v,...)if r.ValueChanged then r:ValueChanged(...)end end})local
+x,y=q[p](q,v)local z=aa:MergeMetatables(r,x)local A=function(...)local A=r.
+Callback return A(z,...)end function r:ValueChanged(B)local C,D,E=B[1],B[2],B[3]
+local F=CFrame.new(C,D,E)self.Value=F A(F)end function r:SetValue(B)self.Value=B
+x:SetValue{math.round(B.X),math.round(B.Y),math.round(B.Z)}end r:SetValue(s)
+return z,y end})end aa:DefineElement('SliderProgress',{Base={Label=
+'Slider Progress',Type='Progress',ColorTag='Frame'},Create=g.SliderBase})aa:
+DefineElement('ProgressBar',{Base={Label='Progress Bar',Type='Progress',ReadOnly
+=true,MinValue=0,MaxValue=100,Format='% i%%',Interactable=false,ColorTag='Frame'
+},Create=function(p,q)function q:SetPercentage(r)q:SetValue(r)end local r,s=p:
+SliderBase(q)local t=r.Grab p:TagElements{[t]={BackgroundColor3='ProgressBar'}}
+return r,s end})aa:DefineElement('Combo',{Base={Value='',Placeholder='',Callback
+=f,Items={},Disabled=false,WidthFitPreview=false,Label='Combo'},Create=function(
+p,q)local r,s,t,u,v,x,y=q.Placeholder,q.NoAnimation,q.Selected,q.Label,q.
+Disabled,q.WidthFitPreview,aa:InsertPrefab('Combo',q)local z,A,B=aa:
+MergeMetatables(q,y),(y.Combo)local C,D,E=p:Label{Text=tostring(r),Parent=A,Name
+='ValueText'},p:ArrowButton{Parent=A,Interactable=false,Size=UDim2.fromOffset(19
+,19),LayoutOrder=2},p:Label{Text=u,Parent=y,LayoutOrder=2}if x then aa:
+SetProperties(y,{AutomaticSize=Enum.AutomaticSize.XY,Size=UDim2.new(0,0,0,0)})aa
+:SetProperties(A,{AutomaticSize=Enum.AutomaticSize.XY,Size=UDim2.fromScale(0,1)}
+)end local F,G=function(F,...)q:SetOpen(false)return q.Callback(z,F,...)end,
+function(F,G)local H=p:GetThemeKey'AnimationTweenInfo'y.Interactable=not F ae:
+HeaderCollapseToggle{Tweeninfo=H,NoAnimation=G,Collapsed=not F,Toggle=D.Icon}end
+local function H()local I,J=q.GetItems,q.Items if I then return I()end return J
+end function q:SetValueText(I)C.Text=tostring(I)end function q:ClosePopup()if
+not B then return end B:ClosePopup(true)end function q:SetDisabled(I)self.
+Disabled=I y.Interactable=not I p:SetColorTags({[E]=I and'LabelDisabled'or
+'Label'},true)return self end function q:SetValue(I)local J=H()local K=J[I]local
+L=K or I self.Selected=I self.Value=L self:ClosePopup()if typeof(I)=='number'
+then self:SetValueText(L)else self:SetValueText(I)end F(I,L)return self end
+function q:SetOpen(I)local J=self.Selected self.Open=I G(I,s)if not I then self:
+ClosePopup()return end B=p:Dropdown{RelativeTo=A,Items=H(),Selected=J,OnSelected
+=function(...)q:SetValue(...)end,OnClosed=function()self:SetOpen(false)end}
+return self end local I=function()local I=q.Open q:SetOpen(not I)end A.Activated
+:Connect(I)G(false,true)q:SetDisabled(v)if t then q:SetValue(t)end aa:
+SetAnimation(A,'Inputs')p:TagElements{[A]='Frame'}return z,y end})local p={
+TileBarConfig={Close={Image=aa.Icons.Close,IconPadding=UDim.new(0,3)},Collapse={
+Image=aa.Icons.Arrow,IconPadding=UDim.new(0,3)}},CloseCallback=f,Collapsible=
+true,Open=true,Focused=false}function p:Tween(q)aa:CheckConfig(q,{Tweeninfo=self
+:GetThemeKey'AnimationTweenInfo'})return ae:Tween(q)end function p:TagElements(q
+)local r,s=self.TagsList,self.Theme aa:MultiUpdateColors{Theme=s,TagsList=r,
+Objects=q}end function p:MakeTitleBarCanvas()local q=self.TitleBar local r=aa:
+MakeCanvas{WindowClass=self,Element=q}self.TitleBarCanvas=r return r end
+function p:AddDefaultTitleButtons()local q=self.TileBarConfig local r,s,t=q.
+Collapse,q.Close,self.TitleBarCanvas if not t then t=self:MakeTitleBarCanvas()
+end aa:CheckConfig(self,{Toggle=t:RadioButton{Icon=r.Image,IconPadding=r.
+IconPadding,LayoutOrder=1,Ratio=1,Size=UDim2.new(0,0),Callback=function()self:
+ToggleCollapsed()end},CloseButton=t:RadioButton{Icon=s.Image,IconPadding=s.
+IconPadding,LayoutOrder=3,Ratio=1,Size=UDim2.new(0,0),Callback=function()self:
+SetVisible(false)end},TitleLabel=t:Label{ColorTag='Title',LayoutOrder=2,Size=
+UDim2.new(1,0),Active=false,Fill=true,ClipsDescendants=true,AutomaticSize=Enum.
+AutomaticSize.XY}})self:TagElements{[self.TitleLabel]='WindowTitle'}end function
+p:Close()local q=self.CloseCallback if q then local r=q(self)if r==false then
+return end end self:Remove()end function p:SetVisible(q)local r,s=self.
+WindowFrame,self.NoFocusOnAppearing self.Visible=q r.Visible=q if q and not s
+then aa:SetFocusedWindow(self)end return self end function p:ToggleVisibility(q)
+local r=self.Visible self:SetVisible(not r)end function p:GetWindowSize()return
+self.WindowFrame.AbsoluteSize end function p:GetTitleBarSizeY()local q=self.
+TitleBar return q.Visible and q.AbsoluteSize.Y or 0 end function p:SetTitle(q)
+self.TitleLabel.Text=tostring(q)return self end function p:SetPosition(q)self.
+WindowFrame.Position=q return self end function p:SetSize(q,r)local s=self.
+WindowFrame if typeof(q)=='Vector2'then q=UDim2.fromOffset(q.X,q.Y)end s.Size=q
+self.Size=q return self end function p:SetCanvasInteractable(q)local r=self.Body
+r.Interactable=q end function p:Center()local q=self:GetWindowSize()/2 local r=
+UDim2.new(0.5,-q.X,0.5,-q.Y)self:SetPosition(r)return self end function p:
+LoadStylesIntoElement(q)local r,s,t=q.Flags,q.Object,q.Canvas local u={
+FrameRounding=function()if r.CornerRadius then return end if not t then return
+end local u=s:FindFirstChild('FrameRounding',true)if not u then return end t:
+TagElements{[u]='FrameRounding'}end}for v,x in u do local y=self:GetThemeKey(v)
+if y==nil then continue end task.spawn(x,y)end end function p:SetTheme(q)local r
+,s,t=aa.ThemeConfigs,self.TagsList,self.WindowState q=q or self.Theme assert(r[q
+],`{q} is not a valid theme!`)self.Theme=q aa:MultiUpdateColors{Animate=false,
+Theme=q,Objects=s}self:SetFocusedColors(t)return self end function p:
+SetFocusedColors(q)local r,s,t,u,v=self.WindowFrame,self.TitleBar,self.Theme,
+self.TitleLabel,self:GetThemeKey'AnimationTweenInfo'local x=r:
+FindFirstChildOfClass'UIStroke'local y={Focused={[x]='BorderActive',[s]=
+'TitleBarBgActive',[u]={TextColor3='TitleActive'}},UnFocused={[x]='Border',[s]=
+'TitleBarBg',[u]={TextColor3='Title'}},Collapsed={[x]='Border',[s]=
+'TitleBarBgCollapsed',[u]={TextColor3='Title'}}}aa:MultiUpdateColors{Tweeninfo=v
+,Animate=true,Objects=y[q],Theme=t}end function p:SetFocused(q)q=q==nil and true
+or q local r,s=self.Collapsed,self.WindowState if q then aa:SetFocusedWindow(
+self)end local t=r and'Collapsed'or q and'Focused'or'UnFocused'if t==s then
+return end self.Focused=q self.WindowState=t self:SetFocusedColors(t)end
+function p:GetThemeKey(q)return aa:GetThemeKey(self.Theme,q)end function p:
+SetCollapsible(q)self.Collapsible=q return self end function p:ToggleCollapsed(q
+)local r,s=self.Collapsed,self.Collapsible if not q and not s then return self
+end self:SetCollapsed(not r)return self end function p:SetCollapsed(q,r)local s,
+t,u,v,x,y,z,A,B=self.WindowFrame,self.Body,self.Toggle,self.ResizeGrab,self.Size
+,self.AutoSize,self:GetThemeKey'AnimationTweenInfo',self:GetWindowSize(),self:
+GetTitleBarSizeY()local C,D=u.Icon,UDim2.fromOffset(A.X,B)self.Collapsed=q self:
+SetCollapsible(false)self:SetFocused(not q)ae:HeaderCollapse{Tweeninfo=z,
+NoAnimation=r,Collapsed=q,Toggle=C,Resize=s,NoAutomaticSize=not y,Hide=t,
+ClosedSize=D,OpenSize=x,Completed=function()self:SetCollapsible(true)end}self:
+Tween{Object=v,NoAnimation=r,EndProperties={TextTransparency=q and 1 or 0.6,
+Interactable=not q}}return self end function p:UpdateConfig(q)local r={
+NoTitleBar=function(r)local s=self.TitleBar s.Visible=not r end,NoClose=function
+(r)local s=self.CloseButton s.Visible=not r end,NoCollapse=function(r)local s=
+self.Toggle s.Visible=not r end,NoTabsBar=function(r)local s=self.
+WindowTabSelector if not s then return end local t=s.TabsBar t.Visible=not r end
+,NoScrollBar=function(r)local s,t,u,v=r and 0 or 9,self.NoScroll,self.
+WindowTabSelector,self.ContentCanvas if u then u.Body.ScrollBarThickness=s end
+if not t then v.ScrollBarThickness=s end end,NoScrolling=function(r)local s,t,u=
+self.NoScroll,self.WindowTabSelector,self.ContentCanvas if t then t.Body.
+ScrollingEnabled=not r end if not s then u.ScrollingEnabled=not r end end,NoMove
+=function(r)local s=self.DragConnection s:SetEnabled(not r)end,NoResize=function
+(r)local s=self.ResizeConnection s:SetEnabled(not r)end,NoBackground=function(r)
+local s,t=self:GetThemeKey'WindowBgTransparency',self.CanvasFrame t.
+BackgroundTransparency=r and 1 or s end}Merge(self,q)for s,t in q do local u=r[s
+]if u then u(t)end end return self end function p:Remove()local q,r,s=self.
+WindowFrame,self.WindowClass,aa.Windows local t=table.find(s,r)if t then table.
+remove(s,t)end q:Destroy()end function p:MenuBar(q,...)local r,s=self.
+ContentCanvas,self.ContentFrame q=q or{}Merge(q,{Parent=s,Layout=-1})return r:
+MenuBar(q,...)end aa:DefineElement('Window',{Export=true,Base={Theme='DarkTheme'
+,NoSelect=false,NoTabs=true,NoScroll=false,Collapsed=false,Visible=true,AutoSize
+=false,MinimumSize=Vector2.new(160,90),OpenOnDoubleClick=true,NoAutoTheme=true,
+NoWindowRegistor=false,NoBringToFrontOnFocus=false,IsDragging=false},Create=
+function(q,r)aa:CheckImportState()local s,t=aa.Windows,aa.Container.Windows aa:
+CheckConfig(r,{Parent=t,Title=aa.DefaultTitle})local u,v,x,y,z,A,B,C,D,E,F=r.
+NoDefaultTitleBarButtons,r.Collapsed,r.MinimumSize,r.Title,r.NoTabs,r.NoScroll,r
+.Theme,r.AutomaticSize,r.NoWindowRegistor,r.AutoSelectNewTabs,r.Parent~=t local
+G={Scroll=not A,Fill=not C and true or nil,UiPadding=UDim.new(0,z and 8 or 0),
+AutoSelectNewTabs=E}if C then Merge(G,{AutomaticSize=C,Size=UDim2.new(1,0)})end
+local H=aa:InsertPrefab('Window',r)local I=H.Content local J,K=I.TitleBar,ad:
+NewClass(p)local L,M,N,O=(aa:MakeCanvas{Element=I,WindowClass=K,Class=K})local P
+,Q=L:Canvas(Copy(G,{Parent=I,CornerRadius=UDim.new(0,0)}))local R=aa:
+MakeResizable{MinimumSize=x,Resize=H,OnUpdate=function(R)K:SetSize(R,true)end}
+Merge(K,r)Merge(K,{WindowFrame=H,ContentFrame=I,CanvasFrame=Q,ResizeGrab=R.Grab,
+TitleBar=J,Elements=g,TagsList={},_SelectDisabled=F,ResizeConnection=R,
+HoverConnection=aa:DetectHover(I),DragConnection=aa:MakeDraggable{Grab=I,Move=H,
+SetPosition=function(S,T)local U=M:GetThemeKey'AnimationTweenInfo'ae:Tween{
+Tweeninfo=U,Object=S.Move,EndProperties={Position=T}}end,OnDragStateChange=
+function(S)K.IsDragging=S Q.Interactable=not S if S then aa:SetFocusedWindow(O)
+end aa:SetWindowFocusesEnabled(not S)end}})if z then M,N=P,Q else M,N=P:
+TabSelector(G)K.WindowTabSelector=M end O=aa:MergeMetatables(K,M)Merge(K,{
+ContentCanvas=M,WindowClass=O,Body=N})aa:ConnectMouseEvent(I,{DoubleClick=true,
+OnlyMouseHovering=J,Callback=function(...)if not K.OpenOnDoubleClick then return
+end if K.NoCollapse then return end K:ToggleCollapsed()end})if not u then K:
+AddDefaultTitleButtons()end K:SetTitle(y)K:SetCollapsed(v,true)K:SetTheme(B)K:
+UpdateConfig(r)K:SetFocused()if not D then table.insert(s,O)end local S=R.Grab
+aa:SetAnimation(S,'TextButtons')aa:SetFocusedWindow(O)O:TagElements{[S]=
+'ResizeGrab',[J]='TitleBar',[Q]='Window'}return O,H end})aa:DefineElement(
+'TabsWindow',{Export=true,Base={NoTabs=false,AutoSelectNewTabs=true},Create=
+function(q,r)return q:Window(r)end})aa:DefineElement('PopupCanvas',{Base={
+AutoClose=false,Scroll=false,Visible=true,Spacing=UDim.new(0,1),AutomaticSize=
+Enum.AutomaticSize.XY,MaxSizeY=150,MinSizeX=100,MaxSizeX=math.huge,OnClosed=f},
+Create=function(q,r)local s,t,u,v,x,y,z=r.RelativeTo,r.MaxSizeY,r.MinSizeX,r.
+MaxSizeX,r.Visible,r.AutoClose,r.NoAnimation r.Parent=aa.Container.Overlays
+local A,B=q:OverlayScroll(r)local C=B.UIStroke local D,E,F,G,H,I,J=C.Thickness,B
+.Parent.AbsolutePosition,(aa:DetectHover(B,{MouseOnly=true,OnInput=function(D,E)
+if D then return end if not B.Visible then return end r:OnFocusLost()end}))
+function r:FetchScales()local K=A:GetCanvasSize()G=s.AbsolutePosition H=s.
+AbsoluteSize I=math.clamp(K.Y,H.Y,t)J=math.clamp(H.X,u,v)end function r:
+UpdatePosition()B.Position=UDim2.fromOffset(G.X-E.X+D,G.Y-E.Y+H.Y)end function r
+:GetScale(K)local L,M=UDim2.fromOffset(J,I),UDim2.fromOffset(J,0)return K and L
+or M end function r:IsMouseHovering()return F.Hovering end function r:
+OnFocusLost()local K=self.OnClosed self:SetPopupVisible(false)K(self)if y then
+self:ClosePopup()end end function r:ClosePopup(K)self:SetPopupVisible(false,z,K)
+F:Disconnect()B:Remove()end function r:SetPopupVisible(K,L)if B.Visible==K then
+return end s.Interactable=not K self:UpdateScales(K,z,L)self.Visible=K end
+function r:UpdateScales(K,L,M)local N=A:GetThemeKey'AnimationTweenInfo'K=K==nil
+and B.Visible or K r:FetchScales()r:UpdatePosition()local O=ae:Tween{Tweeninfo=N
+,Object=B,NoAnimation=L,EndProperties={Size=r:GetScale(K),Visible=K}}if O and M
+then O.Completed:Wait()end end r:UpdateScales(false,true)r:SetPopupVisible(x)A.
+OnChildChange:Connect(r.UpdateScales)return A,B end})aa:DefineElement(
+'PopupModal',{Export=true,Base={NoAnimation=false,NoCollapse=true,NoClose=true,
+NoResize=true,NoSelect=true,NoAutoFlags=true,NoWindowRegistor=true,NoScroll=true
+},Create=function(q,r)local s,t,u=q.WindowClass,(r.NoAnimation)r.Parent=aa.
+Container.Overlays if s then u=s:GetThemeKey'ModalWindowDimTweenInfo'r.Theme=s.
+Theme end local v=aa:InsertPrefab('ModalEffect',r)local x=q:Window(Copy(r,{
+NoAutoFlags=false,Parent=v,AnchorPoint=Vector2.new(0.5,0.5),Position=UDim2.
+fromScale(0.5,0.5),Size=UDim2.fromOffset(372,38),AutomaticSize=Enum.
+AutomaticSize.Y}))function r:ClosePopup()ae:Tween{Object=v,Tweeninfo=u,
+NoAnimation=t,EndProperties={BackgroundTransparency=1},Completed=function()v:
+Destroy()end}x:Close()end ae:Tween{Object=v,Tweeninfo=u,NoAnimation=t,
+StartProperties={BackgroundTransparency=1},EndProperties={BackgroundTransparency
+=0.8}}q:TagElements{[v]='ModalWindowDim'}local y=aa:MergeMetatables(r,x)return y
+,v end})m('InputInt2','InputInt',2,{NoButtons=true})m('InputInt3','InputInt',3,{
+NoButtons=true})m('InputInt4','InputInt',4,{NoButtons=true})m('SliderInt2',
+'SliderInt',2)m('SliderInt3','SliderInt',3)m('SliderInt4','SliderInt',4)m(
+'SliderFloat2','SliderFloat',2)m('SliderFloat3','SliderFloat',3)m('SliderFloat4'
+,'SliderFloat',4)m('DragInt2','DragInt',2)m('DragInt3','DragInt',3)m('DragInt4',
+'DragInt',4)m('DragFloat2','DragFloat',2)m('DragFloat3','DragFloat',3)m(
+'DragFloat4','DragFloat',4)n('InputColor3','InputInt3')n('SliderColor3',
+'SliderInt3')n('DragColor3','DragInt3')o('InputCFrame','InputInt3')o(
+'SliderCFrame','SliderInt3')o('DragCFrame','DragInt3')return aa end function __DIST.a():typeof(__modImpl())local v=__DIST.cache.a if not v then v={c=__modImpl()}__DIST.cache.a=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
+
+
+return function(aliases)
+    for _, alias in ipairs(aliases) do
+        local index = getfenv(0)
+    
+        for segment in string.gmatch(alias, "[^%.]+") do
+            index = index and index[segment]
+            if index == nil then break end
+        end
+    
+        if not index then
+            return false, alias 
+        end
+    end
+
+    return true
+end end function __DIST.b():typeof(__modImpl())local v=__DIST.cache.b if not v then v={c=__modImpl()}__DIST.cache.b=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-local b,c=a.load'b'{}
 
-if not b then
-return{
-status=501,
-message=`Alias not found: {c}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aI()
-
-
-
-
-return function()
-if not makereadonly then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local aa=table.freeze{
-MYRIAD="MYRI"
-}local
-
-ab, ad=pcall(function()
-aa.MYRIAD="MYRIAD"
-end)
-local af,ag=pcall(function()
-makereadonly(aa)
-aa.MYRIAD="MYRIAD"
-end)
-
-if ab then
-return{
-status=500,
-message="Frozen table writable (???): "..ag
-}
-elseif af then
-return{
-status=500,
-message="Table unwritable after readonly was disabled: "..ag
-}
-end
-
-
-local b,c=a.load'b'{}
-
-if not b then
-return{
-status=501,
-message=`Alias not found: {c}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aJ()
-
-
-
-
 return function()
-if not isreadonly then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa={}
-
-if isreadonly(aa)then
-return{
-status=500,
-message="Writable table is assumed read-only"
-}
-end
-
-table.freeze(aa)
-
-if not isreadonly(aa)then
-return{
-status=500,
-message="Table assumed writable after being set as read-only"
-}
-end
-
-
-local ab,af=a.load'b'{}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {af}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aK()
+	if not cache or not cache.invalidate  then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+    local badgeService = game:GetService("BadgeService")
+
+    if badgeService ~= game:GetService("BadgeService") then
+        return {
+            status = 500,
+            message = "Did a cosmic ray just hit your computer? This should never evaluate"
+        }
+    end
+
+    cache.invalidate(badgeService)
+
+    if badgeService == game:GetService("BadgeService") then
+        return {
+            status = 500,
+            message = "Reference to service object retained"
+        }
+    elseif typeof(badgeService) ~= "Instance" then
+        return {
+            status = 500,
+            message = "Reference type wasn't retained"
+        }
+    end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.c():typeof(__modImpl())local v=__DIST.cache.c if not v then v={c=__modImpl()}__DIST.cache.c=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-
-
 return function()
-if not identifyexecutor then
-return{
-status=400,
-message="Global not found",
-}
-end
+	if not cache or not cache.iscached then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not cache.invalidate then
+		return {
+			status = 401,
+			message = "Dependency 'cache.invalidate' missing",
+		}
+	end
+
+	--// Functionality test
+	local part = Instance.new("Part")
+
+	if not cache.iscached(part) then
+		return {
+			status = 500,
+			message = "Cached part assumed uncached"
+		}
+	end
+
+	cache.invalidate(part)
+
+	if cache.iscached(part) then
+		return {
+			status = 500,
+			message = "Uncached part assumed cached"
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.d():typeof(__modImpl())local v=__DIST.cache.d if not v then v={c=__modImpl()}__DIST.cache.d=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa,ab=identifyexecutor()
-if not aa or not ab then
-return{
-status=500,
-message=`Did not return expected data (executor, version)`,
-}
-elseif type(aa)~="string"or type(ab)~="string"then
-return{
-status=500,
-message=`Expected [string, string] got [{aa}, {ab}]`,
-}
-end
-
-
-local af,ag=a.load'b'{
-"getexecutorname"
-}
-
-if not af then
-return{
-status=501,
-message=`Alias not found: {ag}`,
-}
-end
-
-return{
-status=200,
-message=`Passed ({aa}, {ab})`,
-}
-end end function a.aL()
-
-
-
-
 return function()
-if not setfpscap then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa=game:GetService"RunService".RenderStepped
-
-local function step()
-aa:Wait()
-local ab=0
-for af=1,10 do
-ab+=1/aa:Wait()
-end
-return math.round(ab/10)
-end
-
-setfpscap(60)
-local ab=step()
-setfpscap(0)
-local af=step()
-
-
-local ag,b=a.load'b'{}
-
-if not ag then
-return{
-status=501,
-message=`Alias not found: {b}`,
-}
-end
-
-return{
-status=200,
-message=`Passed (60: {ab}, 0: {af})`,
-}
-end end function a.aM()
-
-
+	if not cache or not cache.replace then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local inst1 = game:GetService("BadgeService")
+	local inst2 = game:GetService("Stats")
+
+	if inst1 == inst2 then
+		return {
+			status = 500,
+			message = "Did a cosmic ray just hit your computer? This should never evaluate"
+		}
+	end
+
+	cache.replace(inst1, inst2)
+
+	if inst1 == inst2 then
+		return {
+			status = 500,
+			message = "Reference is old reference"
+		}
+	elseif inst1 == game:GetService("Stats") then
+		return {
+			status = 500,
+			message = "Reference is old references object"
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.e():typeof(__modImpl())local v=__DIST.cache.e if not v then v={c=__modImpl()}__DIST.cache.e=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not getfpscap then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-if typeof(getfpscap())~="number"then
-return{
-status=500,
-message=`Did not return a number`,
-}
-end
-
-
-local aa,ab=a.load'b'{}
+	if not islclosure then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local function luaClosure()
+		return 1
+	end
+	local cClosure = print
+
+	if not islclosure(luaClosure) then
+		return {
+			status = 500,
+			message = "Failed to identify lua closure",
+		}
+	elseif islclosure(cClosure) then
+		return {
+			status = 500,
+			message = "Identified C closure as lua closure",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.f():typeof(__modImpl())local v=__DIST.cache.f if not v then v={c=__modImpl()}__DIST.cache.f=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aN()
 
-
-
-
 return function()
-if not request then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa=request{
-Url="https://httpbin.org/user-agent",
-Method="GET",
-}
-
-if typeof(aa)~="table"then
-return{
-status=500,
-message="Reponse wasn't a table"
-}
-elseif aa.StatusCode~=200 then
-return{
-status=500,
-message="Didn't give status 200 (is httpbin.org down?)"
-}
-end
-
-local ab=game:GetService"HttpService":JSONDecode(aa.Body)
-if type(ab)~="table"and type(ab["user-agent"])~="string"then
-return{
-status=500,
-message="Didn't give a table w/ user-agent string"
-}
-end
-
-
-local af,ag=a.load'b'{
-"http.request",
-"http_request"
-}
-
-if not af then
-return{
-status=501,
-message=`Alias not found: {ag}`,
-}
-end
-
-return{
-status=200,
-message=`Passed ({ab["user-agent"]})`,
-}
-end end function a.aO()
-
+	if not iscclosure then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local function luaClosure()
+		return 1
+	end
+	local cClosure1 = print
+	local cClosure2 = newcclosure(function()
+		return 1
+	end)
+
+	if iscclosure(luaClosure) then
+		return {
+			status = 500,
+			message = "Lua closure identified as C closure",
+		}
+	elseif not iscclosure(cClosure1) then
+		return {
+			status = 500,
+			message = "C closure not identified as C closure",
+		}
+	elseif not iscclosure(cClosure2) then
+		return {
+			status = 500,
+			message = "C closure not identified as C closure",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.g():typeof(__modImpl())local v=__DIST.cache.g if not v then v={c=__modImpl()}__DIST.cache.g=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-
 return function()
-local aa=a.load'r'
-
-if not lz4compress then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local ab="MYRIAD"
-local af=aa.base64decode"YE1ZUklBRA=="
-local ag=lz4compress(ab)
-
-if typeof(ag)~="string"then
-return{
-status=500,
-message="Did not return the expected type",
-}
-elseif ag~=af then
-return{
-status=500,
-message="Compressed data doesn't match reference data",
-}
-end
-
-
-local b,c=a.load'b'{
-"crypt.lz4compress"
-}
-
-if not b then
-return{
-status=501,
-message=`Alias not found: {c}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.aP()
+	if not isexecutorclosure then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local function luaClosure()
+		return 1
+	end
+
+	if not isexecutorclosure(isexecutorclosure)	then
+		return {
+			status = 500,
+			message = "Failed to identify an executor closure",
+		}
+	elseif not isexecutorclosure(luaClosure) then
+		return {
+			status = 500,
+			message = "Did not identify an lua closure as an executor closure",
+		}
+	elseif isexecutorclosure(print) then
+		return {
+			status = 500,
+			message = "Identified a lua standard closure as an executor closure",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"checkclosure",
+		"isourclosure"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.h():typeof(__modImpl())local v=__DIST.cache.h if not v then v={c=__modImpl()}__DIST.cache.h=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-
-
 return function()
-local aa=a.load'r'
-
-if not lz4decompress then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-local ab="MYRIAD"
-local af=aa.base64decode"YE1ZUklBRA=="
-local ag=lz4decompress(af,#ab)
-
-if typeof(ag)~="string"then
-return{
-status=500,
-message="Did not return the expected type",
-}
-elseif ag~=ab then
-return{
-status=500,
-message="Compressed data doesn't match reference data",
-}
-end
-
-
-local b,c=a.load'b'{
-"crypt.lz4decompress"
-}
+    if not newcclosure then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+    elseif not iscclosure then
+        return {
+            status = 500,
+            message = "iscclosure required to test newcclosure",
+        }
+	end
+        
+    local originalFunction = function(...)
+        return ...
+    end
+    local cFunction = newcclosure(originalFunction)
+
+    if iscclosure(originalFunction) then
+        return {
+            status = 500,
+            message = "iscclosure returned true a lua closure",
+        }
+    elseif not iscclosure(cFunction) then
+        return {
+            status = 500,
+            message = "Returned false for a C closure",
+        }
+    elseif cFunction(1) ~= 1 then
+        return {
+            status = 500,
+            message = "C closure did not return the expected value",
+        }
+    end
+
+    --// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end end function __DIST.i():typeof(__modImpl())local v=__DIST.cache.i if not v then v={c=__modImpl()}__DIST.cache.i=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not b then
-return{
-status=501,
-message=`Alias not found: {c}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.aQ()
 
-
-
-
 return function()
-if not getfpscap then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa,ab=a.load'b'{
-"queueonteleport"
-}
-
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aR()
+	if not clonefunction then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+
+	local function originalFunction()
+		return 1
+	end
+	local clonedFunction = clonefunction(originalFunction)
+
+	if clonedFunction == originalFunction then
+		return {
+			status = 500,
+			message = "Cloned function is the same as the original",
+		}
+	elseif clonedFunction() ~= 1 then
+		return {
+			status = 500,
+			message = "Cloned function behavior mismatch",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end
+end function __DIST.j():typeof(__modImpl())local v=__DIST.cache.j if not v then v={c=__modImpl()}__DIST.cache.j=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	if not hookfunction then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local function originalFunc1()
+		return 1
+	end
+
+	local function1 = originalFunc1
+
+	local function function2()
+		return 2
+	end
+
+	if function1() ~= 1 then
+		return {
+			status = 500,
+			message = "This should never evaluate. Did a cosmic ray hit your computer and flip a bit?",
+		}
+	end
+	
+	local original = hookfunction(function1, function2)
+
+	if function1() ~= 2 then
+		return {
+			status = 500,
+			message = "Hooked function did not return the expected value",
+		}
+	elseif original() ~= 1 then
+		return {
+			status = 500,
+			message = "Old function did not return the expected value",
+		}
+	end
+
+	hookfunction(function1, original)
+
+	if function1() ~= 1 then
+		return {
+			status = 500,
+			message = "Restored function did not return the expected value",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"hookfunc",
+		"replaceclosure",
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end
+end function __DIST.k():typeof(__modImpl())local v=__DIST.cache.k if not v then v={c=__modImpl()}__DIST.cache.k=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not messagebox then
-return{
-status=400,
-message="Global not found",
-}
-end
+	if not restorefunction then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not hookfunction then
+		return {
+			status = 401,
+			message = "'hookfunction' needed to test this",
+		}
+	end
+
+	local function originalFunc1()
+		return 1
+	end
+
+	local function1 = originalFunc1
+
+	local function function2()
+		return 2
+	end
+
+	if function1() ~= 1 then
+		return {
+			status = 500,
+			message = "This should never evaluate. Did a cosmic ray hit your computer and flip a bit?",
+		}
+	end
+	
+	local original = hookfunction(function1, function2)
+
+	if function1() ~= 2 then
+		return {
+			status = 500,
+			message = "Hooked function did not return the expected value",
+		}
+	elseif original() ~= 1 then
+		return {
+			status = 500,
+			message = "Old function did not return the expected value",
+		}
+	end
+
+	restorefunction(function1)
+
+	if function1() ~= 1 then
+		hookfunction(function1, original)
+		return {
+			status = 500,
+			message = "Restored function did not return the expected value",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"restorefunc",
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end
+end function __DIST.l():typeof(__modImpl())local v=__DIST.cache.l if not v then v={c=__modImpl()}__DIST.cache.l=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa,ab=a.load'b'{}
+return function()
+	if not getfunctionhash then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local function hexEncoded(hash)
+		return #hash == 96 and hash:match("^[0-9a-fA-F]+$") ~= nil
+	end
+	
+	local function1 = function() end
+	local function2 = function(...) end
+	local function3 = function() end
+	local function4 = function() return 1 end
+	local function5 = function() return 2 end
+	local cHashSuccess = pcall(function()
+		getfunctionhash(print)
+	end)
+
+	if not hexEncoded(getfunctionhash(function1)) then
+		return {
+			status = 500,
+			message = "Hash is not hex encoded",
+		}
+	elseif getfunctionhash(function1) == getfunctionhash(function2) then
+		return {
+			status = 500,
+			message = "Unequal functions returned equal hashes",
+		}
+	elseif getfunctionhash(function1) ~= getfunctionhash(function3) then
+		return {
+			status = 500,
+			message = "Equal functions returned unequal hashes",
+		}
+	elseif getfunctionhash(function4) == getfunctionhash(function5) then
+		return {
+			status = 500,
+			message = "Unequal returns gave equal returns",
+		}
+	elseif cHashSuccess then
+		return {
+			status = 500,
+			message = "Passed when given a lua standard C closure",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.m():typeof(__modImpl())local v=__DIST.cache.m if not v then v={c=__modImpl()}__DIST.cache.m=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aS()
+return function()
+	if not checkcaller then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not hookmetamethod then
+		return {
+			status = 401,
+			message = "Dependency 'hookmetamethod' missing",
+		}
+	end
+
+	local callerFromThread = checkcaller()
+
+	local fromHook
+	local original
+	original = hookmetamethod(game, "__namecall", function(...)
+		if fromHook == nil then
+			fromHook = checkcaller()
+		end
+		return original(...)
+	end)
+
+	tostring(game)
+
+	task.wait(0.1)
+
+	hookmetamethod(game, "__namecall", original)
+
+	if callerFromThread ~= true then
+		return {
+			status = 500,
+			message = "Returned false in executor thread",
+		}
+	elseif fromHook ~= false then
+		return {
+			status = 500,
+			message = "Did not return false in a hook",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end end function __DIST.n():typeof(__modImpl())local v=__DIST.cache.n if not v then v={c=__modImpl()}__DIST.cache.n=v end return v.c end end do local function __modImpl()-- @original: https://gist.github.com/Reselim/40d62b17d138cc74335a1b0709e19ce2
+
+local Alphabet = {}
+local Indexes = {}
+-- A-Z
+for Index = 65, 90 do
+	table.insert(Alphabet, Index)
+end
+-- a-z
+for Index = 97, 122 do
+	table.insert(Alphabet, Index)
+end
+-- 0-9
+for Index = 48, 57 do
+	table.insert(Alphabet, Index)
+end
+table.insert(Alphabet, 43) -- +
+table.insert(Alphabet, 47) -- /
+for Index, Character in ipairs(Alphabet) do
+	Indexes[Character] = Index
+end
+local Base64 = {}
+local bit32_rshift = bit32.rshift
+local bit32_lshift = bit32.lshift
+local bit32_band = bit32.band
+--[[**
+	Encodes a string in Base64.
+	@param [t:string] Input The input string to encode.
+	@returns [t:string] The string encoded in Base64.
+**--]]
+function Base64.Encode(Input)
+	local Output = {}
+	local Length = 0
+	for Index = 1, #Input, 3 do
+		local C1, C2, C3 = string.byte(Input, Index, Index + 2)
+		local A = bit32_rshift(C1, 2)
+		local B = bit32_lshift(bit32_band(C1, 3), 4) + bit32_rshift(C2 or 0, 4)
+		local C = bit32_lshift(bit32_band(C2 or 0, 15), 2) + bit32_rshift(C3 or 0, 6)
+		local D = bit32_band(C3 or 0, 63)
+		Length = Length + 1
+		Output[Length] = Alphabet[A + 1]
+		Length = Length + 1
+		Output[Length] = Alphabet[B + 1]
+		Length = Length + 1
+		Output[Length] = C2 and Alphabet[C + 1] or 61
+		Length = Length + 1
+		Output[Length] = C3 and Alphabet[D + 1] or 61
+	end
+	local NewOutput = {}
+	local NewLength = 0
+	local IndexAdd4096Sub1
+	for Index = 1, Length, 4096 do
+		NewLength = NewLength + 1
+		IndexAdd4096Sub1 = Index + 4096 - 1
+		NewOutput[NewLength] = string.char(table.unpack(
+			Output,
+			Index,
+			IndexAdd4096Sub1 > Length and Length or IndexAdd4096Sub1
+		))
+	end
+	return table.concat(NewOutput)
+end
+--[[**
+	Decodes a string from Base64.
+	@param [t:string] Input The input string to decode.
+	@returns [t:string] The newly decoded string.
+**--]]
+function Base64.Decode(Input)
+	local Output = {}
+	local Length = 0
+	for Index = 1, #Input, 4 do
+		local C1, C2, C3, C4 = string.byte(Input, Index, Index + 3)
+		local I1 = Indexes[C1] - 1
+		local I2 = Indexes[C2] - 1
+		local I3 = (Indexes[C3] or 1) - 1
+		local I4 = (Indexes[C4] or 1) - 1
+		local A = bit32_lshift(I1, 2) + bit32_rshift(I2, 4)
+		local B = bit32_lshift(bit32_band(I2, 15), 4) + bit32_rshift(I3, 2)
+		local C = bit32_lshift(bit32_band(I3, 3), 6) + I4
+		Length = Length + 1
+		Output[Length] = A
+		if C3 ~= 61 then
+			Length = Length + 1
+			Output[Length] = B
+		end
+		if C4 ~= 61 then
+			Length = Length + 1
+			Output[Length] = C
+		end
+	end
+	local NewOutput = {}
+	local NewLength = 0
+	local IndexAdd4096Sub1
+	for Index = 1, Length, 4096 do
+		NewLength = NewLength + 1
+		IndexAdd4096Sub1 = Index + 4096 - 1
+		NewOutput[NewLength] = string.char(table.unpack(
+			Output,
+			Index,
+			IndexAdd4096Sub1 > Length and Length or IndexAdd4096Sub1
+		))
+	end
+	return table.concat(NewOutput)
+end
+return Base64 end function __DIST.o():typeof(__modImpl())local v=__DIST.cache.o if not v then v={c=__modImpl()}__DIST.cache.o=v end return v.c end end do local function __modImpl()--!strict
+--!nolint
+-- metatablecat 2022
+
+
+local lz4 = {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local function plainFind(str, pat)
+	return string.find(str, pat, 0, true)
+end
+
+local function streamer(str): Streamer__DARKLUA_TYPE_a
+	local Stream = {}
+	Stream.Offset = 0
+	Stream.Source = str
+	Stream.Length = string.len(str)
+	Stream.IsFinished = false	
+	Stream.LastUnreadBytes = 0
+
+	function Stream.read(self: Streamer__DARKLUA_TYPE_a, len: number?, shift: boolean?): string
+		local len = len or 1
+		local shift = if shift ~= nil then shift else true
+		local dat = string.sub(self.Source, self.Offset + 1, self.Offset + len)
+
+		local dataLength = string.len(dat)
+		local unreadBytes = len - dataLength
+
+		if shift then
+			self:seek(len)
+		end
+
+		self.LastUnreadBytes = unreadBytes
+		return dat
+	end
+
+	function Stream.seek(self: Streamer__DARKLUA_TYPE_a, len: number)
+		local len = len or 1
+
+		self.Offset = math.clamp(self.Offset + len, 0, self.Length)
+		self.IsFinished = self.Offset >= self.Length
+	end
+
+	function Stream.append(self: Streamer__DARKLUA_TYPE_a, newData: string)
+		-- adds new data to the end of a stream
+		self.Source ..= newData
+		self.Length = string.len(self.Source)
+		self:seek(0) --hacky but forces a recalculation of the isFinished flag
+	end
+
+	function Stream.toEnd(self: Streamer__DARKLUA_TYPE_a)
+		self:seek(self.Length)
+	end
+
+	return Stream
+end
+
+function lz4.compress(str: string): string
+	local blocks: BlockData__DARKLUA_TYPE_b = {}
+	local iostream = streamer(str)
+
+	if iostream.Length > 12 then
+		local firstFour = iostream:read(4)
+
+		local processed = firstFour
+		local lit = firstFour
+		local match = ""
+		local LiteralPushValue = ""
+		local pushToLiteral = true
+
+		repeat
+			pushToLiteral = true
+			local nextByte = iostream:read()
+
+			if plainFind(processed, nextByte) then
+				local next3 = iostream:read(3, false)
+
+				if string.len(next3) < 3 then
+					--push bytes to literal block then break
+					LiteralPushValue = nextByte .. next3
+					iostream:seek(3)
+				else
+					match = nextByte .. next3
+
+					local matchPos = plainFind(processed, match)
+					if matchPos then
+						iostream:seek(3)
+						repeat
+							local nextMatchByte = iostream:read(1, false)
+							local newResult = match .. nextMatchByte
+
+							local repos = plainFind(processed, newResult) 
+							if repos then
+								match = newResult
+								matchPos = repos
+								iostream:seek(1)
+							end
+						until not plainFind(processed, newResult) or iostream.IsFinished
+
+						local matchLen = string.len(match)
+						local pushMatch = true
+
+						if iostream.Length - iostream.Offset <= 5 then
+							LiteralPushValue = match
+							pushMatch = false
+							--better safe here, dont bother pushing to match ever
+						end
+
+						if pushMatch then
+							pushToLiteral = false
+
+							-- gets the position from the end of processed, then slaps it onto processed
+							local realPosition = string.len(processed) - matchPos
+							processed = processed .. match
+
+							table.insert(blocks, {
+								Literal = lit,
+								LiteralLength = string.len(lit),
+								MatchOffset = realPosition + 1,
+								MatchLength = matchLen,
+							})
+							lit = ""
+						end
+					else
+						LiteralPushValue = nextByte
+					end
+				end
+			else
+				LiteralPushValue = nextByte
+			end
+
+			if pushToLiteral then
+				lit = lit .. LiteralPushValue
+				processed = processed .. nextByte
+			end
+		until iostream.IsFinished
+		table.insert(blocks, {
+			Literal = lit,
+			LiteralLength = string.len(lit)
+		})
+	else
+		local str = iostream.Source
+		blocks[1] = {
+			Literal = str,
+			LiteralLength = string.len(str)
+		}
+	end
+
+	-- generate the output chunk
+	-- %s is for adding header
+	local output = string.rep("\x00", 4)
+	local function write(char)
+		output = output .. char
+	end
+	-- begin working through chunks
+	for chunkNum, chunk in blocks do
+		local litLen = chunk.LiteralLength
+		local matLen = (chunk.MatchLength or 4) - 4
+
+		-- create token
+		local tokenLit = math.clamp(litLen, 0, 15)
+		local tokenMat = math.clamp(matLen, 0, 15)
+
+		local token = bit32.lshift(tokenLit, 4) + tokenMat
+		write(string.pack("<I1", token))
+
+		if litLen >= 15 then
+			litLen = litLen - 15
+			--begin packing extra bytes
+			repeat
+				local nextToken = math.clamp(litLen, 0, 0xFF)
+				write(string.pack("<I1", nextToken))
+				if nextToken == 0xFF then
+					litLen = litLen - 255
+				end
+			until nextToken < 0xFF
+		end
+
+		-- push raw lit data
+		write(chunk.Literal)
+
+		if chunkNum ~= #blocks then
+			-- push offset as u16
+			write(string.pack("<I2", chunk.MatchOffset))
+
+			-- pack extra match bytes
+			if matLen >= 15 then
+				matLen = matLen - 15
+
+				repeat
+					local nextToken = math.clamp(matLen, 0, 0xFF)
+					write(string.pack("<I1", nextToken))
+					if nextToken == 0xFF then
+						matLen = matLen - 255
+					end
+				until nextToken < 0xFF
+			end
+		end
+	end
+	--append chunks
+	local compLen = string.len(output) - 4
+	local decompLen = iostream.Length
+
+	return string.pack("<I4", compLen) .. string.pack("<I4", decompLen) .. output
+end
+
+function lz4.decompress(lz4data: string): string
+	local inputStream = streamer(lz4data)
+
+	local compressedLen = string.unpack("<I4", inputStream:read(4))
+	local decompressedLen = string.unpack("<I4", inputStream:read(4))
+
+	if compressedLen == 0 then
+		return inputStream:read(decompressedLen)
+	end
+
+	local outputStream = streamer("")
+
+	repeat
+		local token = string.byte(inputStream:read())
+		local litLen = bit32.rshift(token, 4)
+		local matLen = bit32.band(token, 15) + 4
+
+		if litLen >= 15 then
+			repeat
+				local nextByte = string.byte(inputStream:read())
+				litLen += nextByte
+			until nextByte ~= 0xFF
+		end
+
+		local literal = inputStream:read(litLen)
+		outputStream:append(literal)
+		outputStream:toEnd()
+		if outputStream.Length < decompressedLen then
+			--match
+			local offset = string.unpack("<I2", inputStream:read(2))
+			if matLen >= 19 then
+				repeat
+					local nextByte = string.byte(inputStream:read())
+					matLen += nextByte
+				until nextByte ~= 0xFF
+			end
+
+			outputStream:seek(-offset)
+			local pos = outputStream.Offset
+			local match = outputStream:read(matLen)
+			local unreadBytes = outputStream.LastUnreadBytes
+			local extra
+			if unreadBytes then
+				repeat
+					outputStream.Offset = pos
+					extra = outputStream:read(unreadBytes)
+					unreadBytes = outputStream.LastUnreadBytes
+					match ..= extra
+				until unreadBytes <= 0
+			end
+
+			outputStream:append(match)
+			outputStream:toEnd()
+		end
+
+	until outputStream.Length >= decompressedLen
+
+	return outputStream.Source
+end
+
+return lz4 end function __DIST.p():typeof(__modImpl())local v=__DIST.cache.p if not v then v={c=__modImpl()}__DIST.cache.p=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
+
+--[[
+ADVANCED ENCRYPTION STANDARD (AES)
+
+Implementation of secure symmetric-key encryption specifically in Luau
+Includes ECB, CBC, PCBC, CFB, OFB and CTR modes without padding.
+Made by @RobloxGamerPro200007 (verify the original asset)
+
+MORE INFORMATION: https://devforum.roblox.com/t/advanced-encryption-standard-in-luau/2009120
+]]
+
+-- SUBSTITUTION BOXES
+
+local s_box 	= { 99, 124, 119, 123, 242, 107, 111, 197,  48,   1, 103,  43, 254, 215, 171, 118, 202,
+	130, 201, 125, 250,  89,  71, 240, 173, 212, 162, 175, 156, 164, 114, 192, 183, 253, 147,  38,  54,
+	 63, 247, 204,  52, 165, 229, 241, 113, 216,  49,  21,   4, 199,  35, 195,  24, 150,   5, 154,   7,
+	 18, 128, 226, 235,  39, 178, 117,   9, 131,  44,  26,  27, 110,  90, 160,  82,  59, 214, 179,  41,
+	227,  47, 132,  83, 209,   0, 237,  32, 252, 177,  91, 106, 203, 190,  57,  74,  76,  88, 207, 208,
+	239, 170, 251,  67,  77,  51, 133,  69, 249,   2, 127,  80,  60, 159, 168,  81, 163,  64, 143, 146,
+	157,  56, 245, 188, 182, 218,  33,  16, 255, 243, 210, 205,  12,  19, 236,  95, 151,  68,  23, 196,
+	167, 126,  61, 100,  93,  25, 115,  96, 129,  79, 220,  34,  42, 144, 136,  70, 238, 184,  20, 222,
+	 94,  11, 219, 224,  50,  58,  10,  73,   6,  36,  92, 194, 211, 172,  98, 145, 149, 228, 121, 231,
+	200,  55, 109, 141, 213,  78, 169, 108,  86, 244, 234, 101, 122, 174,   8, 186, 120,  37,  46,  28,
+	166, 180, 198, 232, 221, 116,  31,  75, 189, 139, 138, 112,  62, 181, 102,  72,   3, 246,  14,  97,
+	 53,  87, 185, 134, 193,  29, 158, 225, 248, 152,  17, 105, 217, 142, 148, 155,  30, 135, 233, 206,
+	 85,  40, 223, 140, 161, 137,  13, 191, 230,  66, 104,  65, 153,  45,  15, 176,  84, 187,  22}
+local inv_s_box	= { 82,   9, 106, 213,  48,  54, 165,  56, 191,  64, 163, 158, 129, 243, 215, 251, 124,
+	227,  57, 130, 155,  47, 255, 135,  52, 142,  67,  68, 196, 222, 233, 203,  84, 123, 148,  50, 166,
+	194,  35,  61, 238,  76, 149,  11,  66, 250, 195,  78,   8,  46, 161, 102,  40, 217,  36, 178, 118,
+	 91, 162,  73, 109, 139, 209,  37, 114, 248, 246, 100, 134, 104, 152,  22, 212, 164,  92, 204,  93,
+	101, 182, 146, 108, 112,  72,  80, 253, 237, 185, 218,  94,  21,  70,  87, 167, 141, 157, 132, 144,
+	216, 171,   0, 140, 188, 211,  10, 247, 228,  88,   5, 184, 179,  69,   6, 208,  44,  30, 143, 202,
+	 63,  15,   2, 193, 175, 189,   3,   1,  19, 138, 107,  58, 145,  17,  65,  79, 103, 220, 234, 151,
+	242, 207, 206, 240, 180, 230, 115, 150, 172, 116,  34, 231, 173,  53, 133, 226, 249,  55, 232,  28,
+	117, 223, 110,  71, 241,  26, 113,  29,  41, 197, 137, 111, 183,  98,  14, 170,  24, 190,  27, 252,
+	 86,  62,  75, 198, 210, 121,  32, 154, 219, 192, 254, 120, 205,  90, 244,  31, 221, 168,  51, 136,
+	  7, 199,  49, 177,  18,  16,  89,  39, 128, 236,  95,  96,  81, 127, 169,  25, 181,  74,  13,  45,
+	229, 122, 159, 147, 201, 156, 239, 160, 224,  59,  77, 174,  42, 245, 176, 200, 235, 187,  60, 131,
+	 83, 153,  97,  23,  43,   4, 126, 186, 119, 214,  38, 225, 105,  20,  99,  85,  33,  12, 125}
+
+-- ROUND CONSTANTS ARRAY
+local rcon = {  0,   1,   2,   4,   8,  16,  32,  64, 128,  27,  54, 108, 216, 171,  77, 154,  47,  94,
+	188,  99, 198, 151,  53, 106, 212, 179, 125, 250, 239, 197, 145,  57}
+-- MULTIPLICATION OF BINARY POLYNOMIAL
+local function xtime(x)
+	local i = bit32.lshift(x, 1)
+	return if bit32.band(x, 128) == 0 then i else bit32.bxor(i, 27) % 256
+end
+
+-- TRANSFORMATION FUNCTIONS
+local function subBytes		(s, inv) 		-- Processes State using the S-box
+	inv = if inv then inv_s_box else s_box
+	for i = 1, 4 do
+		for j = 1, 4 do
+			s[i][j] = inv[s[i][j] + 1]
+		end
+	end
+end
+local function shiftRows		(s, inv) 	-- Processes State by circularly shifting rows
+	s[1][3], s[2][3], s[3][3], s[4][3] = s[3][3], s[4][3], s[1][3], s[2][3]
+	if inv then
+		s[1][2], s[2][2], s[3][2], s[4][2] = s[4][2], s[1][2], s[2][2], s[3][2]
+		s[1][4], s[2][4], s[3][4], s[4][4] = s[2][4], s[3][4], s[4][4], s[1][4]
+	else
+		s[1][2], s[2][2], s[3][2], s[4][2] = s[2][2], s[3][2], s[4][2], s[1][2]
+		s[1][4], s[2][4], s[3][4], s[4][4] = s[4][4], s[1][4], s[2][4], s[3][4]
+	end
+end
+local function addRoundKey	(s, k) 			-- Processes Cipher by adding a round key to the State
+	for i = 1, 4 do
+		for j = 1, 4 do
+			s[i][j] = bit32.bxor(s[i][j], k[i][j])
+		end
+	end
+end
+local function mixColumns	(s, inv) 		-- Processes Cipher by taking and mixing State columns
+	local t, u
+	if inv then
+		for i = 1, 4 do
+			t = xtime(xtime(bit32.bxor(s[i][1], s[i][3])))
+			u = xtime(xtime(bit32.bxor(s[i][2], s[i][4])))
+			s[i][1], s[i][2] = bit32.bxor(s[i][1], t), bit32.bxor(s[i][2], u)
+			s[i][3], s[i][4] = bit32.bxor(s[i][3], t), bit32.bxor(s[i][4], u)
+		end
+	end
+
+	local i
+	for j = 1, 4 do
+		i = s[j]
+		t, u = bit32.bxor		(i[1], i[2], i[3], i[4]), i[1]
+		for k = 1, 4 do
+			i[k] = bit32.bxor	(i[k], t, xtime(bit32.bxor(i[k], i[k + 1] or u)))
+		end
+	end
+end
+
+-- BYTE ARRAY UTILITIES
+local function bytesToMatrix	(t, c, inv) -- Converts a byte array to a 4x4 matrix
+	if inv then
+		table.move		(c[1], 1, 4, 1, t)
+		table.move		(c[2], 1, 4, 5, t)
+		table.move		(c[3], 1, 4, 9, t)
+		table.move		(c[4], 1, 4, 13, t)
+	else
+		for i = 1, #c / 4 do
+			table.clear	(t[i])
+			table.move	(c, i * 4 - 3, i * 4, 1, t[i])
+		end
+	end
+	
+	return t
+end
+local function xorBytes		(t, a, b) 		-- Returns bitwise XOR of all their bytes
+	table.clear		(t)
+	
+	for i = 1, math.min(#a, #b) do
+		table.insert(t, bit32.bxor(a[i], b[i]))
+	end
+	return t
+end
+local function incBytes		(a, inv)		-- Increment byte array by one
+	local o = true
+	for i = if inv then 1 else #a, if inv then #a else 1, if inv then 1 else - 1 do
+		if a[i] == 255 then
+			a[i] = 0
+		else
+			a[i] += 1
+			o = false
+			break
+		end
+	end
+	
+	return o, a
+end
+
+-- MAIN ALGORITHM
+local function expandKey	(key) 				-- Key expansion
+	local kc = bytesToMatrix(if #key == 16 then {{}, {}, {}, {}} elseif #key == 24 then {{}, {}, {}, {}
+		, {}, {}} else {{}, {}, {}, {}, {}, {}, {}, {}}, key)
+	local is = #key / 4
+	local i, t, w = 2, {}, nil
+	
+	while #kc < (#key / 4 + 7) * 4 do
+		w = table.clone	(kc[#kc])
+		if #kc % is == 0 then
+			table.insert(w, table.remove(w, 1))
+			for j = 1, 4 do
+				w[j] = s_box[w[j] + 1]
+			end
+			w[1]	 = bit32.bxor(w[1], rcon[i])
+			i 	+= 1
+		elseif #key == 32 and #kc % is == 4 then
+			for j = 1, 4 do
+				w[j] = s_box[w[j] + 1]
+			end
+		end
+		
+		table.clear	(t)
+		xorBytes	(w, table.move(w, 1, 4, 1, t), kc[#kc - is + 1])
+		table.insert(kc, w)
+	end
+	
+	table.clear		(t)
+	for i = 1, #kc / 4 do
+		table.insert(t, {})
+		table.move	(kc, i * 4 - 3, i * 4, 1, t[#t])
+	end
+	return t
+end
+local function encrypt	(key, km, pt, ps, r) 	-- Block cipher encryption
+	bytesToMatrix	(ps, pt)
+	addRoundKey		(ps, km[1])
+	
+	for i = 2, #key / 4 + 6 do
+		subBytes	(ps)
+		shiftRows	(ps)
+		mixColumns	(ps)
+		addRoundKey	(ps, km[i])
+	end
+	subBytes		(ps)
+	shiftRows		(ps)
+	addRoundKey		(ps, km[#km])
+	
+	return bytesToMatrix(r, ps, true)
+end
+local function decrypt	(key, km, ct, cs, r) 	-- Block cipher decryption
+	bytesToMatrix	(cs, ct)
+	
+	addRoundKey		(cs, km[#km])
+	shiftRows		(cs, true)
+	subBytes		(cs, true)
+	for i = #key / 4 + 6, 2, - 1 do
+		addRoundKey	(cs, km[i])
+		mixColumns	(cs, true)
+		shiftRows	(cs, true)
+		subBytes	(cs, true)
+	end
+	
+	addRoundKey		(cs, km[1])
+	return bytesToMatrix(r, cs, true)
+end
+
+-- INITIALIZATION FUNCTIONS
+local function convertType	(a) 					-- Converts data to bytes if possible
+	if type(a) == "string" then
+		local r = {}
+
+		for i = 1, string.len(a), 7997 do
+			table.move({string.byte(a, i, i + 7996)}, 1, 7997, i, r)
+		end
+		return r
+	elseif type(a) == "table" then
+		for _, i in ipairs(a) do
+			assert(type(i) == "number" and math.floor(i) == i and 0 <= i and i < 256,
+				"Unable to cast value to bytes")
+		end
+		return a
+	else
+		error("Unable to cast value to bytes")
+	end
+end
+local function init			(key, txt, m, iv, s) 	-- Initializes functions if possible
+	key = convertType(key)
+	assert(#key == 16 or #key == 24 or #key == 32, "Key must be either 16, 24 or 32 bytes long")
+	txt = convertType(txt)
+	assert(#txt % (s or 16) == 0, "Input must be a multiple of " .. (if s then "segment size " .. s
+		else "16") .. " bytes in length")
+	if m then
+		if type(iv) == "table" then
+			iv = table.clone(iv)
+			local l, e 		= iv.Length, iv.LittleEndian
+			assert(type(l) == "number" and 0 < l and l <= 16,
+				"Counter value length must be between 1 and 16 bytes")
+			iv.Prefix 		= convertType(iv.Prefix or {})
+			iv.Suffix 		= convertType(iv.Suffix or {})
+			assert(#iv.Prefix + #iv.Suffix + l == 16, "Counter must be 16 bytes long")
+			iv.InitValue 	= if iv.InitValue == nil then {1} else table.clone(convertType(iv.InitValue
+			))
+			assert(#iv.InitValue <= l, "Initial value length must be of the counter value")
+			iv.InitOverflow = if iv.InitOverflow == nil then table.create(l, 0) else table.clone(
+				convertType(iv.InitOverflow))
+			assert(#iv.InitOverflow <= l,
+				"Initial overflow value length must be of the counter value")
+			for _ = 1, l - #iv.InitValue do
+				table.insert(iv.InitValue, 1 + if e then #iv.InitValue else 0, 0)
+			end
+			for _ = 1, l - #iv.InitOverflow do
+				table.insert(iv.InitOverflow, 1 + if e then #iv.InitOverflow else 0, 0)
+			end
+		elseif type(iv) ~= "function" then
+			local i, t = if iv then convertType(iv) else table.create(16, 0), {}
+			assert(#i == 16, "Counter must be 16 bytes long")
+			iv = {Length = 16, Prefix = t, Suffix = t, InitValue = i,
+				InitOverflow = table.create(16, 0)}
+		end
+	elseif m == false then
+		iv 	= if iv == nil then  table.create(16, 0) else convertType(iv)
+		assert(#iv == 16, "Initialization vector must be 16 bytes long")
+	end
+	if s then
+		s = math.floor(tonumber(s) or 1)
+		assert(type(s) == "number" and 0 < s and s <= 16, "Segment size must be between 1 and 16 bytes"
+		)
+	end
+	
+	return key, txt, expandKey(key), iv, s
+end
+
+-- CIPHER MODES OF OPERATION
+
+return {
+	-- Electronic codebook (ECB)
+	encrypt_ECB = function(key : bytes__DARKLUA_TYPE_c, plainText : bytes__DARKLUA_TYPE_c) 									: bytes__DARKLUA_TYPE_c
+		local km
+		key, plainText, km = init(key, plainText)
+		
+		local b, k, s, t = {}, {}, {{}, {}, {}, {}}, {}
+		for i = 1, #plainText, 16 do
+			table.move(plainText, i, i + 15, 1, k)
+			table.move(encrypt(key, km, k, s, t), 1, 16, i, b)
+		end
+		
+		return b
+	end,
+	decrypt_ECB = function(key : bytes__DARKLUA_TYPE_c, cipherText : bytes__DARKLUA_TYPE_c) 								: bytes__DARKLUA_TYPE_c
+		local km
+		key, cipherText, km = init(key, cipherText)
+		
+		local b, k, s, t = {}, {}, {{}, {}, {}, {}}, {}
+		for i = 1, #cipherText, 16 do
+			table.move(cipherText, i, i + 15, 1, k)
+			table.move(decrypt(key, km, k, s, t), 1, 16, i, b)
+		end
+		
+		return b
+	end,
+	-- Cipher block chaining (CBC)
+	encrypt_CBC = function(key : bytes__DARKLUA_TYPE_c, plainText : bytes__DARKLUA_TYPE_c, initVector : bytes__DARKLUA_TYPE_c?) 			: bytes__DARKLUA_TYPE_c
+		local km
+		key, plainText, km, initVector = init(key, plainText, false, initVector)
+		
+		local b, k, p, s, t = {}, {}, initVector, {{}, {}, {}, {}}, {}
+		for i = 1, #plainText, 16 do
+			table.move(plainText, i, i + 15, 1, k)
+			table.move(encrypt(key, km, xorBytes(t, k, p), s, p), 1, 16, i, b)
+		end
+		
+		return b
+	end,
+	decrypt_CBC = function(key : bytes__DARKLUA_TYPE_c, cipherText : bytes__DARKLUA_TYPE_c, initVector : bytes__DARKLUA_TYPE_c?) 			: bytes__DARKLUA_TYPE_c
+		local km
+		key, cipherText, km, initVector = init(key, cipherText, false, initVector)
+		
+		local b, k, p, s, t = {}, {}, initVector, {{}, {}, {}, {}}, {}
+		for i = 1, #cipherText, 16 do
+			table.move(cipherText, i, i + 15, 1, k)
+			table.move(xorBytes(k, decrypt(key, km, k, s, t), p), 1, 16, i, b)
+			table.move(cipherText, i, i + 15, 1, p)
+		end
+		
+		return b
+	end,
+	-- Propagating cipher block chaining (PCBC)
+	encrypt_PCBC = function(key : bytes__DARKLUA_TYPE_c, plainText : bytes__DARKLUA_TYPE_c, initVector : bytes__DARKLUA_TYPE_c?) 			: bytes__DARKLUA_TYPE_c
+		local km
+		key, plainText, km, initVector = init(key, plainText, false, initVector)
+		
+		local b, k, c, p, s, t = {}, {}, initVector, table.create(16, 0), {{}, {}, {}, {}}, {}
+		for i = 1, #plainText, 16 do
+			table.move(plainText, i, i + 15, 1, k)
+			table.move(encrypt(key, km, xorBytes(k, xorBytes(t, c, k), p), s, c), 1, 16, i, b)
+			table.move(plainText, i, i + 15, 1, p)
+		end
+		
+		return b
+	end,
+	decrypt_PCBC = function(key : bytes__DARKLUA_TYPE_c, cipherText : bytes__DARKLUA_TYPE_c, initVector : bytes__DARKLUA_TYPE_c?) 			: bytes__DARKLUA_TYPE_c
+		local km
+		key, cipherText, km, initVector = init(key, cipherText, false, initVector)
+		
+		local b, k, c, p, s, t = {}, {}, initVector, table.create(16, 0), {{}, {}, {}, {}}, {}
+		for i = 1, #cipherText, 16 do
+			table.move(cipherText, i, i + 15, 1, k)
+			table.move(xorBytes(p, decrypt(key, km, k, s, t), xorBytes(k, c, p)), 1, 16, i, b)
+			table.move(cipherText, i, i + 15, 1, c)
+		end
+		
+		return b
+	end,
+	-- Cipher feedback (CFB)
+	encrypt_CFB = function(key : bytes__DARKLUA_TYPE_c, plainText : bytes__DARKLUA_TYPE_c, initVector : bytes__DARKLUA_TYPE_c?, segmentSize : number?)
+		: bytes__DARKLUA_TYPE_c
+		local km
+		key, plainText, km, initVector, segmentSize = init(key, plainText, false, initVector,
+			if segmentSize == nil then 1 else segmentSize)
+		
+		local b, k, p, q, s, t = {}, {}, initVector, {}, {{}, {}, {}, {}}, {}
+		for i = 1, #plainText, segmentSize do
+			table.move(plainText, i, i + segmentSize - 1, 1, k)
+			table.move(xorBytes(q, encrypt(key, km, p, s, t), k), 1, segmentSize, i, b)
+			for j = 16, segmentSize + 1, - 1 do
+				table.insert(q, 1, p[j])
+			end
+			table.move(q, 1, 16, 1, p)
+		end
+		
+		return b
+	end,
+	decrypt_CFB = function(key : bytes__DARKLUA_TYPE_c, cipherText : bytes__DARKLUA_TYPE_c, initVector : bytes__DARKLUA_TYPE_c, segmentSize : number?)
+		: bytes__DARKLUA_TYPE_c
+		local km
+		key, cipherText, km, initVector, segmentSize = init(key, cipherText, false, initVector,
+			if segmentSize == nil then 1 else segmentSize)
+		
+		local b, k, p, q, s, t = {}, {}, initVector, {}, {{}, {}, {}, {}}, {}
+		for i = 1, #cipherText, segmentSize do
+			table.move(cipherText, i, i + segmentSize - 1, 1, k)
+			table.move(xorBytes(q, encrypt(key, km, p, s, t), k), 1, segmentSize, i, b)
+			for j = 16, segmentSize + 1, - 1 do
+				table.insert(k, 1, p[j])
+			end
+			table.move(k, 1, 16, 1, p)
+		end
+		
+		return b
+	end,
+	-- Output feedback (OFB)
+	encrypt_OFB = function(key : bytes__DARKLUA_TYPE_c, plainText : bytes__DARKLUA_TYPE_c, initVector : bytes__DARKLUA_TYPE_c?) 			: bytes__DARKLUA_TYPE_c
+		local km
+		key, plainText, km, initVector = init(key, plainText, false, initVector)
+		
+		local b, k, p, s, t = {}, {}, initVector, {{}, {}, {}, {}}, {}
+		for i = 1, #plainText, 16 do
+			table.move(plainText, i, i + 15, 1, k)
+			table.move(encrypt(key, km, p, s, t), 1, 16, 1, p)
+			table.move(xorBytes(t, k, p), 1, 16, i, b)
+		end
+		
+		return b
+	end,
+	-- Counter (CTR)
+	encrypt_CTR = function(key : bytes__DARKLUA_TYPE_c, plainText : bytes__DARKLUA_TYPE_c, counter : ((bytes__DARKLUA_TYPE_c) -> bytes__DARKLUA_TYPE_c) | bytes__DARKLUA_TYPE_c | { [
+		string]: any }?) : bytes__DARKLUA_TYPE_c
+		local km
+		key, plainText, km, counter = init(key, plainText, true, counter)
+		
+		local b, k, c, s, t, r, n = {}, {}, {}, {{}, {}, {}, {}}, {}, type(counter) == "table", nil
+		for i = 1, #plainText, 16 do
+			if r then
+				if i > 1 and incBytes(counter.InitValue, counter.LittleEndian) then
+					table.move(counter.InitOverflow, 1, 16, 1, counter.InitValue)
+				end
+				table.clear	(c)
+				table.move	(counter.Prefix, 1, #counter.Prefix, 1, c)
+				table.move	(counter.InitValue, 1, counter.Length, #c + 1, c)
+				table.move	(counter.Suffix, 1, #counter.Suffix, #c + 1, c)
+			else
+				n = convertType(counter(c, (i + 15) / 16))
+				assert		(#n == 16, "Counter must be 16 bytes long")
+				table.move	(n, 1, 16, 1, c)
+			end
+			table.move(plainText, i, i + 15, 1, k)
+			table.move(xorBytes(c, encrypt(key, km, c, s, t), k), 1, 16, i, b)
+		end
+		
+		return b
+	end
+} -- Returns the library
+end function __DIST.q():typeof(__modImpl())local v=__DIST.cache.q if not v then v={c=__modImpl()}__DIST.cache.q=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
+
+local Base64 = __DIST.o()
+local lz4 = __DIST.p()
+-- local sha = require("./sha.luau")
+local AES = __DIST.q()
+
+local bf_ts = buffer.tostring
+-- local hash = sha.sha256
+
+local kb = bit32.lshift(1,10)
+
+local crypt = {}
+
+function crypt.encrypt(data: string, key: string, initVector: string) : string
+	return AES.encrypt_CBC(key, data, initVector)
+end
+
+function crypt.decrypt(data: string, key: string, initVector: string) : string
+	return AES.decrypt_CBC(key, data, initVector)
+end
+
+function crypt.base64encode(data: string) : string
+	return Base64.Encode(data)
+end
+
+function crypt.base64decode(data: string) : string
+	return Base64.Decode(data)
+end
+
+function crypt.lz4compress(data: string) : string
+	return lz4.compress(data)
+end
+
+function crypt.lz4decompress(data: string) : string
+	return lz4.decompress(data)
+end
+
+--[[ function crypt.hash(data: string) : string
+	return hash(data)
+end ]]
+
+function crypt.random(size : number) : number
+	if size > kb or size < 0 then
+		error("Expected number within range (0, 1024), got: "..tostring(size),0)
+	else
+		local charset = {}
+		
+		for ascii = 33, 57 do
+			table.insert(charset, string.char(ascii))
+		end
+
+		for ascii = 65, 90 do
+			table.insert(charset, string.char(ascii))
+		end
+
+		for ascii = 97, 122 do
+			table.insert(charset, string.char(ascii))
+		end
+
+		--[[local specials = "!@#$%^&*()-_=+[{]}\\|;:'\",<.>/?"
+		for char in specials:gmatch(".") do
+			table.insert(charset, char)
+		end]]
+
+		local randomString = {}
+		for _ = 1, size do
+			local randomIndex = math.random(1, #charset)
+			table.insert(randomString, charset[randomIndex])
+		end
+
+		return table.concat(randomString)
+	end
+end
+
+return crypt end function __DIST.r():typeof(__modImpl())local v=__DIST.cache.r if not v then v={c=__modImpl()}__DIST.cache.r=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	local referenceCrypt = __DIST.r()
+
+	if not crypt or not crypt.encrypt then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local plaintext = "1234567890abcdef"
+	local key = "GMVIsgHnxm0YDYwUGkBhtRWSrSsfRMjY"
+	local iv = "1234567890abcdef"
+	local mode = "CBC"
+
+	local cryptSuccess, cryptEncrypted = pcall(function()
+		return crypt.encrypt(plaintext, key, iv, mode)
+	end)
+
+	if not cryptSuccess then
+		return {
+			status = 0,
+			message = "Encrypt failed: " .. tostring(cryptEncrypted),
+		}
+    end
+
+	local reference = "G3H9Fk0PSWKs46qqlbA3VKnzfz7wRRTh"
+	local assumed = referenceCrypt.base64encode(cryptEncrypted)
+	
+	if assumed ~= reference then
+		return {
+			status = 500,
+			message = "Encrypted data doesn't match reference data",
+		}
+    end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end
+end function __DIST.s():typeof(__modImpl())local v=__DIST.cache.s if not v then v={c=__modImpl()}__DIST.cache.s=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not rconsoleprint then
-return{
-status=400,
-message="Global not found",
-}
-end
+	local referenceCrypt = __DIST.r()
+
+	if not crypt or not crypt.decrypt then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local data = referenceCrypt.base64decode("G3H9Fk0PSWKs46qqlbA3VKnzfz7wRRTh")
+	local key = "GMVIsgHnxm0YDYwUGkBhtRWSrSsfRMjY"
+	local iv = "1234567890abcdef"
+	local mode = "CBC"
+
+	local decryptSuccess, cryptDecrypted = pcall(function()
+		return crypt.decrypt(data, key, iv, mode)
+	end)
+
+	if not decryptSuccess then
+		return {
+			status = 0,
+			message = "Decrypt failed: " .. tostring(cryptDecrypted),
+		}
+	elseif not cryptDecrypted then
+		return {
+			status = 500,
+			message = "Decrypt returned nothing",
+		}
+	elseif cryptDecrypted ~= "1234567890abcdef" then
+		return {
+			status = 500,
+			message = "Decrypted data doesn't match reference data",
+		}
+    end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end
+end function __DIST.t():typeof(__modImpl())local v=__DIST.cache.t if not v then v={c=__modImpl()}__DIST.cache.t=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa,ab=a.load'b'{}
+return function()
+	local referenceCrypt = __DIST.r()
+
+	if not crypt or not crypt.generatekey then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local decoded = referenceCrypt.base64decode(crypt.generatekey())
+	if type(decoded) ~= "string" then
+		return {
+			status = 500,
+			message = "Generated key doesn't form a string",
+		}
+	elseif #decoded ~= 32 then
+		return {
+			status = 500,
+			message = "Key dosen't match the expected length",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end
+end function __DIST.u():typeof(__modImpl())local v=__DIST.cache.u if not v then v={c=__modImpl()}__DIST.cache.u=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aT()
+return function()
+	local referenceCrypt = __DIST.r()
+
+	if not crypt or not crypt.generatebytes then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+    local size = math.random(1, 512)
+    local bytes = crypt.generatebytes(size)
+	local decodedBytes = referenceCrypt.base64decode(bytes)
+	if type(decodedBytes) ~= "string" then
+		return {
+			status = 500,
+			message = "Generated bytes do not form a string",
+		}
+	elseif #decodedBytes ~= size then
+		return {
+			status = 500,
+			message = "Bytes length mismatch: "..tostring(#decodedBytes).." != "..tostring(size),
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"base64_decode",
+		"crypt.base64.decode",
+		"base64.decode",
+		"crypt.base64_decode",
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end
+end function __DIST.v():typeof(__modImpl())local v=__DIST.cache.v if not v then v={c=__modImpl()}__DIST.cache.v=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	local referenceCrypt = __DIST.r()
+
+	if not crypt or not crypt.base64encode then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local plaintext = "MYRIAD"
+	local encoded = crypt.base64encode(plaintext)
+
+	if not encoded or typeof(encoded) ~= "string" then
+		return {
+			status = 500,
+			message = "Did not return the expected type",
+		}
+	elseif encoded ~= referenceCrypt.base64encode(plaintext) then
+		return {
+			status = 500,
+			message = "Encoded data doesn't match reference data",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"base64_encode",
+		"crypt.base64.encode",
+		"base64.encode",
+		"crypt.base64_encode",
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end
+end function __DIST.w():typeof(__modImpl())local v=__DIST.cache.w if not v then v={c=__modImpl()}__DIST.cache.w=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not rconsoleinfo then
-return{
-status=400,
-message="Global not found",
-}
-end
+	local referenceCrypt = __DIST.r()
+
+	if not crypt or not crypt.base64decode then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local plaintext = "MYRIAD"
+	local reference = referenceCrypt.base64encode(plaintext)
+	local decoded = crypt.base64decode(reference)
+
+	if not reference or typeof(reference) ~= "string" then
+		return {
+			status = 500,
+			message = "Reference crypt failed",
+		}
+	elseif not decoded or typeof(decoded) ~= "string" then
+		return {
+			status = 500,
+			message = "Did not return the expected type",
+		}
+	elseif decoded ~= plaintext then
+		return {
+			status = 500,
+			message = "Decoded data doesn't match reference data",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"base64_decode",
+		"crypt.base64.decode",
+		"base64.decode",
+		"crypt.base64_decode",
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end
+end function __DIST.x():typeof(__modImpl())local v=__DIST.cache.x if not v then v={c=__modImpl()}__DIST.cache.x=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa,ab=a.load'b'{}
+return function()
+	if not crypt or not crypt.hash then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local input = "MYRIAD"
+
+	local algoMap = {
+		md5 = "4f4c0116fe2faa1318448c548b35db329d04b95d6a564c9952674be7470292a8",
+
+		sha1 = "fc7f43037330bdab9a8a3b19a7cbcde1ca35f0f3413e8109f2378d448e09d746",
+
+		sha224 = "c289f37be9147ea83aea5178831674ac35512679c9ac728b0af58d1354aa9586",
+		sha256 = "c9d5cae0702443d77159a3da3993a31e21fe71347946e8088e29c329b2fad67d",
+		sha384 = "75805da0851cdb609be9cce35c7cf9b8c560fe1d015370d9ffdc7dc974cec3d2",
+		sha512 = "9e5a7723b2776d0a26cfc7a1ee141ee7e23ab9be07a7bbe9a83ad9a44d6c932c",
+
+		["sha3-256"] = "508c76d7f914e8f434b11c84fa5c55a086f86b8b0b38ce0dffa861fdfbdc77b3",
+		["sha3-384"] = "1fb780f81b5a6013af2bfe6677a34439970c63b8447a00e0c23c0e5ff1a4bbd2",
+		["sha3-512"] = "bc49e307d6fd0fc8f9ab5c9236ea93194dfa99dd89fea20e75aed6530bd6820b",
+	}
+
+	for algo, expected in pairs(algoMap) do
+		local success, cryptOutput = pcall(crypt.hash, input, algo)
+
+		if not success then
+			return {
+				status = 0,
+				message = `Hashing failed with {algo}: {cryptOutput}`,
+			}
+
+		elseif not cryptOutput then
+			return {
+				status = 500,
+				message = `Hashing failed, expected a hash. Algorithm: {algo}`,
+			}
+
+		elseif cryptOutput ~= expected then
+			return {
+				status = 500,
+				message = `Hash mismatch. Algorithm: {algo}`,
+			}
+		end
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end end function __DIST.y():typeof(__modImpl())local v=__DIST.cache.y if not v then v={c=__modImpl()}__DIST.cache.y=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aU()
+return function()
+	if not crypt or not crypt.random then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local maxLimSuccess, maxLimMessage = pcall(function()
+		return crypt.random(512)
+	end)
+	local minLimSuccess, minLimMessage = pcall(function()
+		return crypt.random(-1)
+	end)
+	local baseSuccess, baseMessage = pcall(function()
+		return crypt.random(64)
+	end)
+
+	if not baseSuccess then
+		return {
+			status = 0,
+			message = "Failed: " .. tostring(baseMessage),
+		}
+	elseif minLimSuccess then
+		return {
+			status = 500,
+			message = "Arg[1] passed -1, should have failed.",
+		}
+	elseif not maxLimSuccess then
+		return {
+			status = 500,
+			message = "Arg[1] passed 512, should have passed.",
+		}
+	elseif #baseMessage ~= 64 then
+		return {
+			status = 500,
+			message = "Len mismatch. Expected 64, got: " .. tostring(#baseMessage),
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end
+end function __DIST.z():typeof(__modImpl())local v=__DIST.cache.z if not v then v={c=__modImpl()}__DIST.cache.z=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	local referenceCrypt = __DIST.r()
+
+	if not crypt or not crypt.hmac then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local plaintext = "MYRIAD"
+	local key = "secret_key"
+	local algorithm = "sha256"
+
+	local reference = "FaDPiTSLlbxRP5rKvomt0dzwl7zhszc46/QFPsZRGWY="
+	local assumed = crypt.hmac(key, plaintext, algorithm)
+
+	if not assumed then
+		return {
+			status = 500,
+			message = "Did not return the expected type",
+		}
+	elseif assumed ~= reference then
+		return {
+			status = 500,
+			message = "Data doesn't match reference data",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end
+end function __DIST.A():typeof(__modImpl())local v=__DIST.cache.A if not v then v={c=__modImpl()}__DIST.cache.A=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not rconsolewarn then
-return{
-status=400,
-message="Global not found",
-}
-end
+	if not debug or not debug.getconstant then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local function originalFunction()
+		local _1 = 2
+		local _2 = "A"
+
+		print(_1)
+		tostring(_2)
+
+		Date.now()
+	end
+
+	local constOrder = {
+		[1] = "print",
+
+		[3] = "A",
+		[4] = "tostring",
+
+		[6] = "Date",
+		[7] = "now"
+	}
+
+	for i, v in ipairs(constOrder) do
+		local const = debug.getconstant(originalFunction, i)
+		if const ~= v then
+			return {
+				status = 500,
+				message = `Constant at {i} should be: {v}. Got: {const}`,
+			}
+		end
+	end
+
+	local invalidIndexSuccess, returnedMsg = pcall(debug.getconstant, originalFunction, 9)
+
+	if not invalidIndexSuccess then
+		return {
+			status = 500,
+			message = "Should pass nil instead of errroing for invalid indexes",
+		}
+	elseif returnedMsg then
+		return {
+			status = 500,
+			message = "Constant 9 shouldn't exist",
+		}
+	elseif pcall(debug.getconstant, print, 1) then
+		return {
+			status = 500,
+			message = "Should error with C closures",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"getconstant",
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.B():typeof(__modImpl())local v=__DIST.cache.B if not v then v={c=__modImpl()}__DIST.cache.B=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa,ab=a.load'b'{}
+return function()
+	if not debug or not debug.getconstants then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local function originalFunction()
+		local _1 = 2
+		local _2 = "A"
+
+		print(_1)
+		tostring(_2)
+
+		Date.now()
+	end
+
+	local constOrder = {
+		[1] = "print",
+
+		[3] = "A",
+		[4] = "tostring",
+
+		[6] = "Date",
+		[7] = "now"
+	}
+
+	for i, v in pairs(debug.getconstants(originalFunction)) do
+		if not constOrder[i] then
+			return {
+				status = 500,
+				message = `{i} dosen't exist in expected constant order`
+			}
+		elseif constOrder[i] ~= v then
+			return {
+				status = 500,
+				message = `Constant at {i} should be: {constOrder[i]}. Got: {v}`
+			}
+		end
+	end
+
+	if pcall(debug.getconstants, print) then
+		return {
+			status = 500,
+			message = "Should error with C closures"
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"getconstants"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.C():typeof(__modImpl())local v=__DIST.cache.C if not v then v={c=__modImpl()}__DIST.cache.C=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aV()
+return function()
+	if not debug or not debug.getproto then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local function originalFunction()
+		return function()
+			return "MYRI"
+		end
+	end
+	
+	local assumedProto = debug.getproto(originalFunction, 1, true)[1]
+
+	if originalFunction() ~= assumedProto then
+		return {
+			status = 500,
+			message = "Actual prototype dosen't match assumed prototype"
+		}
+	elseif assumedProto() ~= "MYRI" then
+		return {
+			status = 500,
+			message = "Unexpected value of assumed prototype"
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"getproto"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.D():typeof(__modImpl())local v=__DIST.cache.D if not v then v={c=__modImpl()}__DIST.cache.D=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	if not debug or not debug.getprotos then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local function originalFunction()
+		return function()
+			return "MYRI1"
+		end, function()
+			return "MYRI2"
+		end
+	end
+
+	local count = 0
+	for index, prototype in ipairs(debug.getprotos(originalFunction)) do
+		count += prototype() == (index == 1 and "MYRI1" or "MYRI2") and 1 or 0
+	end
+
+	if count ~= 2 then
+		return {
+			status = 500,
+			message = "Didn't recieve correct prototypes, or prototypes didn't return expected values.",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"getprotos",
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.E():typeof(__modImpl())local v=__DIST.cache.E if not v then v={c=__modImpl()}__DIST.cache.E=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not rconsoleerr then
-return{
-status=400,
-message="Global not found",
-}
-end
+	if not debug or not debug.getupvalue then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"getupvalue"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.F():typeof(__modImpl())local v=__DIST.cache.F if not v then v={c=__modImpl()}__DIST.cache.F=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa,ab=a.load'b'{}
+return function()
+	if not debug or not debug.getupvalues then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"getupvalues"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.G():typeof(__modImpl())local v=__DIST.cache.G if not v then v={c=__modImpl()}__DIST.cache.G=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aW()
+return function()
+	if not debug or not debug.getstack then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"getstack"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.H():typeof(__modImpl())local v=__DIST.cache.H if not v then v={c=__modImpl()}__DIST.cache.H=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	if not debug or not debug.setconstant then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"setconstant"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.I():typeof(__modImpl())local v=__DIST.cache.I if not v then v={c=__modImpl()}__DIST.cache.I=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not rconsoleinput then
-return{
-status=400,
-message="Global not found",
-}
-end
+	if not debug or not debug.setupvalue then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"setupvalue"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.J():typeof(__modImpl())local v=__DIST.cache.J if not v then v={c=__modImpl()}__DIST.cache.J=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa,ab=a.load'b'{}
+return function()
+	if not Drawing or not Drawing.new then
+		return {
+			status = 400,
+			message = "Global Drawing API not found",
+		}
+	end
+
+	local function checkProperties(objectName, instance, properties)
+		for _, property in ipairs(properties) do
+			local success, value = pcall(function()
+				return instance[property]
+			end)
+			if not success or value == nil then
+				return {
+					status = 500,
+					message = `{objectName} is missing property: {property} (Did you give it a default value?)`,
+				}
+			end
+			instance:Destroy()
+		end
+	end
+
+	-- Line
+	do
+		local Line = Drawing.new("Line")
+		if not Line then
+			return {
+				status = 500,
+				message = "Line drawing object not found",
+			}
+		end
+
+		local result = checkProperties("Line", Line, {
+			"Visible",
+			"ZIndex",
+			"Transparency",
+			"Color",
+			"__OBJECT_EXISTS",
+			"Destroy",
+
+			"Thickness",
+			"From",
+			"To",
+		})
+		if result then
+			return result
+		end
+	end
+
+	-- Text
+	do
+		local Text = Drawing.new("Text")
+		if not Text then
+			return {
+				status = 500,
+				message = "Text drawing object not found",
+			}
+		end
+
+		local result = checkProperties("Text", Text, {
+			"Visible",
+			"ZIndex",
+			"Transparency",
+			"Color",
+			"__OBJECT_EXISTS",
+			"Destroy",
+
+			"Text",
+			"TextBounds",
+			"Center",
+			"Size",
+			"Font",
+			"Outline",
+			"OutlineColor",
+			"Position",
+		})
+		if result then
+			return result
+		end
+	end
+
+	-- Image
+	do
+		local Image = Drawing.new("Image")
+		if not Image then
+			return {
+				status = 500,
+				message = "Image drawing object not found",
+			}
+		end
+
+		local result = checkProperties("Image", Image, {
+			"Visible",
+			"ZIndex",
+			"Transparency",
+			"Color",
+			"__OBJECT_EXISTS",
+			"Destroy",
+
+			"Data",
+			"Size",
+			"Position",
+		})
+		if result then
+			return result
+		end
+	end
+
+	-- Circle
+	do
+		local Circle = Drawing.new("Circle")
+		if not Circle then
+			return {
+				status = 500,
+				message = "Circle drawing object not found",
+			}
+		end
+
+		local result = checkProperties("Circle", Circle, {
+			"Visible",
+			"ZIndex",
+			"Transparency",
+			"Color",
+			"__OBJECT_EXISTS",
+			"Destroy",
+
+			"NumSides",
+			"Radius",
+			"Position",
+			"Thickness",
+			"Filled",
+		})
+		if result then
+			return result
+		end
+	end
+
+	-- Square
+	do
+		local Square = Drawing.new("Square")
+		if not Square then
+			return {
+				status = 500,
+				message = "Square drawing object not found",
+			}
+		end
+
+		local result = checkProperties("Square", Square, {
+			"Visible",
+			"ZIndex",
+			"Transparency",
+			"Color",
+			"__OBJECT_EXISTS",
+			"Destroy",
+
+			"Size",
+			"Position",
+			"Thickness",
+			"Filled",
+		})
+		if result then
+			return result
+		end
+	end
+
+	-- Quad
+	do
+		local Quad = Drawing.new("Quad")
+		if not Quad then
+			return {
+				status = 500,
+				message = "Quad drawing object not found",
+			}
+		end
+
+		local result = checkProperties("Quad", Quad, {
+			"Destroy",
+			"Visible",
+			"ZIndex",
+			"Transparency",
+			"Color",
+			"__OBJECT_EXISTS",
+
+			"PointA",
+			"PointB",
+			"PointC",
+			"PointD",
+			"Thickness",
+			"Filled",
+		})
+		if result then
+			return result
+		end
+	end
+
+	-- Triangle
+	do
+		local Triangle = Drawing.new("Triangle")
+		if not Triangle then
+			return {
+				status = 500,
+				message = "Triangle drawing object not found",
+			}
+		end
+
+		local result = checkProperties("Triangle", Triangle, {
+			"Destroy",
+			"Visible",
+			"ZIndex",
+			"Transparency",
+			"Color",
+			"__OBJECT_EXISTS",
+
+			"PointA",
+			"PointB",
+			"PointC",
+			"Thickness",
+			"Filled",
+		})
+		if result then
+			return result
+		end
+	end
+
+	-- Lua drawing lib
+	local x1, y1, z1 = math.random(1, 255), math.random(1, 255), math.random(1, 255)
+	local parent = gethui and gethui() or game:GetService("CoreGui")
+	local refObj = Drawing.new("Line")
+
+	refObj.Color = Color3.fromRGB(x1, y1, z1)
+	refObj.Transparency = 1 - x1 / 255
+
+	if parent then
+		for i, v in pairs(parent:GetDescendants()) do
+			if v:IsA("Frame") and v.BackgroundColor3 == refObj.Color and v.BackgroundTransparency == refObj.Transparency then
+				return {
+					status = 500,
+					message = "Drawing library almost certainly depends on ScreenGui"
+				}
+			end
+		end
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end
+end function __DIST.K():typeof(__modImpl())local v=__DIST.cache.K if not v then v={c=__modImpl()}__DIST.cache.K=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aX()
+return function()
+	if not Drawing or not Drawing.Fonts then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	if not Drawing.Fonts["UI"] then
+		return {
+			status = 500,
+			message = "UI font not found",
+		}
+	elseif not Drawing.Fonts["System"] then
+		return {
+			status = 500,
+			message = "System font not found",
+		}
+	elseif not Drawing.Fonts["Plex"] then
+		return {
+			status = 500,
+			message = "Plex font not found",
+		}
+	elseif not Drawing.Fonts["Monospace"] then
+		return {
+			status = 500,
+			message = "Monospace font not found",
+		}
+	elseif Drawing.Fonts["UI"] ~= 0 then
+		return {
+			status = 500,
+			message = "UI font isn't ID 0",
+		}
+	elseif Drawing.Fonts["System"] ~= 1 then
+		return {
+			status = 500,
+			message = "System font isn't ID 1",
+		}
+	elseif Drawing.Fonts["Plex"] ~= 2 then
+		return {
+			status = 500,
+			message = "Plex font isn't ID 2",
+		}
+	elseif Drawing.Fonts["Monospace"] ~= 3 then
+		return {
+			status = 500,
+			message = "Monospace font isn't ID 3",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.L():typeof(__modImpl())local v=__DIST.cache.L if not v then v={c=__modImpl()}__DIST.cache.L=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	if not getrenderproperty then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+		elseif not Drawing or not Drawing.new then
+		return {
+			status = 401,
+			message = "Drawing library needed to test this",
+		}
+	end
+
+	local drawing = Drawing.new("Line")
+	drawing.Thickness = 2
+	drawing.Visible = false
+
+	local thickness = getrenderproperty(drawing, "Thickness")
+	local visible = getrenderproperty(drawing, "Visible")
+
+	if thickness ~= 2 or visible ~= false then
+		return {
+			status = 500,
+			message = "Property not found or mismatch",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.M():typeof(__modImpl())local v=__DIST.cache.M if not v then v={c=__modImpl()}__DIST.cache.M=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not rconsoleclear then
-return{
-status=400,
-message="Global not found",
-}
-end
+	if not setrenderproperty then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+		elseif not Drawing or not Drawing.new then
+		return {
+			status = 401,
+			message = "Drawing library needed to test this",
+		}
+	end
+
+	local drawing = Drawing.new("Line")
+	setrenderproperty(drawing, "Thickness", 2)
+	setrenderproperty(drawing, "Visible", false)
+
+	if drawing.Thickness ~= 2 or drawing.Visible ~= false then
+		return {
+			status = 500,
+			message = "Incorrect property value",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.N():typeof(__modImpl())local v=__DIST.cache.N if not v then v={c=__modImpl()}__DIST.cache.N=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa,ab=a.load'b'{}
+return function()
+	if not cleardrawcache then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not Drawing or not Drawing.new then
+		return {
+			status = 401,
+			message = "Drawing library needed to test this",
+		}
+	end
+
+	local drawing = Drawing.new("Line")
+	drawing.Visible = false
+	drawing.Thickness = 2
+
+	task.defer(cleardrawcache)
+	task.wait(0.1)
+	if drawing.__OBJECT_EXISTS then
+		return {
+			status = 500,
+			message = "Drawing exists after draw clear",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.O():typeof(__modImpl())local v=__DIST.cache.O if not v then v={c=__modImpl()}__DIST.cache.O=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aY()
+return function()
+	if not isrenderobj then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+		elseif not Drawing or not Drawing.new then
+		return {
+			status = 401,
+			message = "Drawing library needed to test this",
+		}
+	end
+
+	local drawing = Drawing.new("Line")
+	drawing.Visible = false
+
+	if not isrenderobj(drawing) then
+		return {
+			status = 500,
+			message = "Didn't return true for a render object",
+		}
+	elseif isrenderobj({}) or isrenderobj(game:GetService("Workspace")) then
+		return {
+			status = 500,
+			message = "Returned true for a non-render object",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.P():typeof(__modImpl())local v=__DIST.cache.P if not v then v={c=__modImpl()}__DIST.cache.P=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	if not getgenv then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+    getfenv().MYRI = "Hello, World!"
+    getgenv().MYRI1 = "Hello, World!"
+    getgenv().MYRI2 = 123456789
+
+    if getgenv().MYRI == "Hello, World!" then
+        return {
+            status = 500,
+            message = "getfenv affected getgenv",
+        }
+    end
+    if getgenv().MYRI1 ~= "Hello, World!" then
+        return {
+            status = 500,
+            message = "MYRI1 not found or unexpected value",
+        }
+    elseif getgenv().MYRI2 ~= 123456789 then
+        return {
+            status = 500,
+            message = "MYRI2 not found or unexpected value",
+        }
+    end
+
+    --// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.Q():typeof(__modImpl())local v=__DIST.cache.Q if not v then v={c=__modImpl()}__DIST.cache.Q=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not rconsolename then
-return{
-status=400,
-message="Global not found",
-}
-end
+	if not getrenv then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+    getrenv().MYRIR1 = "Hello, World!"
+    getrenv().MYRIR2 = 123456789
+
+    if getrenv().MYRIR1 ~= "Hello, World!" then
+        return {
+            status = 500,
+            message = "MYRIR1 not found or unexpected value",
+        }
+    elseif getrenv().MYRIR2 ~= 123456789 then
+        return {
+            status = 500,
+            message = "MYRIR2 not found or unexpected value",
+        }
+    elseif getrenv().game ~= game then
+        return {
+            status = 500,
+            message = "game not found or unexpected value",
+        }
+    elseif getrenv().print ~= print then
+        return {
+            status = 500,
+            message = "print not found or unexpected value",
+        }
+    elseif getrenv()._G == _G then
+        return {
+            status = 500,
+            message = "_G in roblox environment shouldn't match the executor's",
+        }
+    end
+
+    --// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.R():typeof(__modImpl())local v=__DIST.cache.R if not v then v={c=__modImpl()}__DIST.cache.R=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa,ab=a.load'b'{}
+return function()
+	if not getgc then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+    local originalTable = {}
+    local function originalFunction() end
+    task.wait(0.1)
+
+    local check1
+    local check2
+    for _, value in pairs(getgc(true)) do
+        if value == originalFunction then
+            check1 = true
+        elseif value == originalTable then
+            check2 = true
+        end
+    end
+
+    if not check1 then
+        return {
+            status = 500,
+            message = "Original function not found",
+        }
+    elseif not check2 then
+        return {
+            status = 500,
+            message = "Original table not found",
+        }
+    end
+
+    --// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.S():typeof(__modImpl())local v=__DIST.cache.S if not v then v={c=__modImpl()}__DIST.cache.S=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.aZ()
+return function()
+	if not filtergc then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local upvalue = "MYRIAD"
+	local function originalFunction()
+		return "MYRIAD", upvalue
+	end
+
+	local originalTable = setmetatable({
+		MYRIAD = "MYRI",
+	}, {
+		__index = function() end
+	})
+
+	local _ = originalTable.MYRIAD -- Localize
+	local _ = upvalue
+	local _ = originalFunction()
+
+	task.wait(0.1)
+
+	local foundFunc = filtergc("function", {
+		Constants = { "MYRIAD" },
+		Upvalues = { "MYRIAD" },
+		IgnoreExecutor = false,
+	}, true)
+
+	local foundTable = filtergc("table", {
+		KeyValuePairs = { MYRIAD = "MYRI" },
+		Metatable = getmetatable(originalTable),
+	}, true)
+
+	if foundFunc ~= originalFunction then
+		return {
+			status = 500,
+			message = "filtergc failed to retrieve the original function",
+		}
+	elseif foundTable ~= originalTable then
+		return {
+			status = 500,
+			message = "filtergc failed to retrieve the original table",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end
+end function __DIST.T():typeof(__modImpl())local v=__DIST.cache.T if not v then v={c=__modImpl()}__DIST.cache.T=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	if not getcustomasset then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not writefile then
+		return {
+			status = 401,
+			message = "Dependency 'writefile' not found",
+		}
+	end
+
+	--// Functionality test
+	local guid = game:GetService("HttpService"):GenerateGUID(false):gsub("-", "")
+	
+	writefile(guid, "31kr6ji222uvn7zvz6ue5yfyn7ky")
+
+	task.wait(0.2)
+
+	local asset = getcustomasset(guid)
+
+	if not typeof(asset) == "string" then
+		return {
+			status = 500,
+			message = "Asset is not of the expected type (string)"
+		}
+	elseif not asset:match("rbxasset://") then
+		return {
+			status = 500,
+			message = "Asset string dosen't include a rbxasset prefix"
+		}
+	end
+
+	delfile(guid)
+	
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.U():typeof(__modImpl())local v=__DIST.cache.U if not v then v={c=__modImpl()}__DIST.cache.U=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not rconsolehide then
-return{
-status=400,
-message="Global not found",
-}
-end
+	if not isfile then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not writefile then
+		return {
+			status = 401,
+			message = "Dependency 'writefile' not found",
+		}
+	elseif not delfile then
+		return {
+			status = 401,
+			message = "Dependency 'delfile' not found",
+		}
+	end
+
+	--// Functionality test
+	local guid = game:GetService("HttpService"):GenerateGUID(false):gsub("-", "")
+	local guid2 = game:GetService("HttpService"):GenerateGUID(false):gsub("-", "")
+	local found1 = false
+	local found2 = false
+	
+	writefile(guid, "")
+	writefile(guid2, "")
+
+	task.wait(0.2)
+
+	for _, file in listfiles("") do
+		if file == guid then
+			found1 = true
+		end
+		if file == guid2 then
+			found2 = true
+		end
+	end
+
+	if not found1 and found2 then
+		return {
+			status = 500,
+			message = "Didn't find the expected files"
+		}
+	end
+
+	delfile(guid)
+	delfile(guid2)
+	
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.V():typeof(__modImpl())local v=__DIST.cache.V if not v then v={c=__modImpl()}__DIST.cache.V=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa,ab=a.load'b'{}
+return function()
+	if not loadfile then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not writefile then
+		return {
+			status = 401,
+			message = "Dependency 'writefile' not found",
+		}
+	elseif not delfile then
+		return {
+			status = 401,
+			message = "Dependency 'delfile' not found",
+		}
+	end
+
+	--// Functionality test
+	local a, b = math.random(1, 100), math.random(1, 100)
+	local guid = game:GetService("HttpService"):GenerateGUID(false):gsub("-", "")
+	
+	writefile(guid, "return function(...) return select(1, ...) + select(2, ...) end")
+	
+	task.wait(0.2)
+	
+	local f = loadfile(guid)
+	if not f then
+		return {
+			status = 500,
+			message = "Failed to load file",
+		}
+	end
+	
+	if f()(a, b) ~= a + b then
+		return {
+			status = 500,
+			message = "File did not return the expected value",
+		}
+	end
+	
+	delfile(guid)	
+	
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.W():typeof(__modImpl())local v=__DIST.cache.W if not v then v={c=__modImpl()}__DIST.cache.W=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.a_()
+return function()
+	if not appendfile then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not writefile then
+		return {
+			status = 401,
+			message = "Dependency 'writefile' not found",
+		}
+	elseif not readfile then
+		return {
+			status = 401,
+			message = "Dependency 'readfile' not found",
+		}
+	elseif not delfile then
+		return {
+			status = 401,
+			message = "Dependency 'delfile' not found",
+		}
+	end
+
+	--// Functionality test
+	local guid = game:GetService("HttpService"):GenerateGUID(false):gsub("-", "")
+	
+	writefile(guid, "Hello, ")
+
+	task.wait(0.2)
+
+	appendfile(guid, "World!")
+
+	task.wait(0.2)
+
+	if readfile(guid) ~= "Hello, World!" then
+		return {
+			status = 500,
+			message = "File did not read the expected value",
+		} 
+	end
+
+	delfile(guid)
+	
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.X():typeof(__modImpl())local v=__DIST.cache.X if not v then v={c=__modImpl()}__DIST.cache.X=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	if not delfile then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not writefile then
+		return {
+			status = 401,
+			message = "Dependency 'writefile' not found",
+		}
+	elseif not isfile then
+		return {
+			status = 401,
+			message = "Dependency 'isfile' not found",
+		}
+	end
+
+	--// Functionality test
+	local legal1Suc, legal1Msg = pcall(writefile, "test1.txt", "Content")
+	local legal2Suc, legal2Msg = pcall(writefile, "./test2.txt", "Content")
+	
+	local illegal1Suc = pcall(writefile, "C:/test3.txt", "Content")
+	local illegal2Suc = pcall(writefile, "../test4.txt", "Content")	
+
+	if not legal1Suc then
+		return {
+			status = 0,
+			message = "Failed to write @ test1.txt: " .. legal1Msg
+		}
+	elseif not legal2Suc then
+		return {
+			status = 0,
+			message = "Failed to write @ ./test2.txt: " .. legal2Msg
+		}
+	elseif illegal1Suc then
+		return {
+			status = 500,
+			message = "Didn't fail to write in illegal location: @ C:/test3.txt"
+		}
+	elseif illegal2Suc then
+		return {
+			status = 500,
+			message = "Didn't fail to write in illegal location: @ ../test4.txt"
+		}
+	elseif not isfile("test1.txt") then
+		return {
+			status = 500,
+			message = "Didn't find: test1.txt"
+		}
+	elseif not isfile("./test2.txt") then
+		return {
+			status = 500,
+			message = "Didn't find: ./test2.txt"
+		}
+	end
+
+	delfile("test1.txt")
+	delfile("./test2.txt")
+
+	task.wait(0.2)
+
+	if isfile("test1.txt") then
+		return {
+			status = 500,
+			message = "Found: test1.txt"
+		}
+	elseif isfile("./test2.txt") then
+		return {
+			status = 500,
+			message = "Found: ./test2.txt"
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.Y():typeof(__modImpl())local v=__DIST.cache.Y if not v then v={c=__modImpl()}__DIST.cache.Y=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not rconsoleshow then
-return{
-status=400,
-message="Global not found",
-}
-end
+	if not delfolder then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not makefolder then
+		return {
+			status = 401,
+			message = "Dependency 'makefolder' not found",
+		}
+	elseif not isfolder then
+		return {
+			status = 401,
+			message = "Dependency 'isfolder' not found",
+		}
+	end
+
+	--// Functionality test
+	local guid = game:GetService("HttpService"):GenerateGUID(false):gsub("-", "")
+
+	if isfolder(guid) then
+		return {
+			status = 500,
+			message = `Nonexistent file returned true`,
+		}
+	end
+	
+	makefolder(guid)
+
+	task.wait(0.2)
+
+	if not isfolder(guid) then
+		return {
+			status = 500,
+			message = `Existing file returned false`,
+		}
+	end
+
+	delfolder(guid)
+
+	task.wait(0.2)
+
+	if isfolder(guid) then
+		return {
+			status = 500,
+			message = `Nonexistent file returned true`,
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.Z():typeof(__modImpl())local v=__DIST.cache.Z if not v then v={c=__modImpl()}__DIST.cache.Z=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa,ab=a.load'b'{}
+return function()
+	if not isfile then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not writefile then
+		return {
+			status = 401,
+			message = "Dependency 'writefile' not found",
+		}
+	elseif not delfile then
+		return {
+			status = 401,
+			message = "Dependency 'delfile' not found",
+		}
+	end
+
+	--// Functionality test
+	local guid = game:GetService("HttpService"):GenerateGUID(false):gsub("-", "")
+
+	if isfile(guid) then
+		return {
+			status = 500,
+			message = `Nonexistent file returned true`,
+		}
+	end
+	
+	writefile(guid, "")
+
+	task.wait(0.2)
+
+	if not isfile(guid) then
+		return {
+			status = 500,
+			message = `Existing file returned false`,
+		}
+	end
+
+	delfile(guid)
+	
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST._():typeof(__modImpl())local v=__DIST.cache._ if not v then v={c=__modImpl()}__DIST.cache._=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.a0()
+return function()
+	if not isfolder then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not makefolder then
+		return {
+			status = 401,
+			message = "Dependency 'makefolder' not found",
+		}
+	elseif not delfolder then
+		return {
+			status = 401,
+			message = "Dependency 'delfolder' not found",
+		}
+	end
+
+	--// Functionality test
+	local guid = game:GetService("HttpService"):GenerateGUID(false):gsub("-", "")
+
+	if isfolder(guid) --[[ isfolder("lebron james") -- always true ]] then
+		return {
+			status = 500,
+			message = `Nonexistent folder returned true`,
+		}
+	end
+	
+	makefolder(guid)
+
+	task.wait(0.2)
+
+	if not isfolder(guid) then
+		return {
+			status = 500,
+			message = `Existing folder returned false`,
+		}
+	end
+
+	delfolder(guid)
+	
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aa():typeof(__modImpl())local v=__DIST.cache.aa if not v then v={c=__modImpl()}__DIST.cache.aa=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	if not writefile then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not delfile then
+		return {
+			status = 401,
+			message = "Dependency 'delfile' not found",
+		}
+	elseif not readfile then
+		return {
+			status = 401,
+			message = "Dependency 'readfile' not found",
+		}
+	end
+
+	--// Functionality test
+	local legal1Suc, legal1Msg = pcall(writefile, "test1.txt", "Content")
+	local legal2Suc, legal2Msg = pcall(writefile, "./test2.txt", "Content")
+	
+	local illegal1Suc = pcall(writefile, "C:/test3.txt", "Content")
+	local illegal2Suc = pcall(writefile, "../test4.txt", "Content")	
+
+	if not legal1Suc then
+		return {
+			status = 0,
+			message = "Failed to write @ test1.txt: " .. legal1Msg
+		}
+	elseif not legal2Suc then
+		return {
+			status = 0,
+			message = "Failed to write @ ./test2.txt: " .. legal2Msg
+		}
+	elseif illegal1Suc then
+		return {
+			status = 500,
+			message = "Didn't fail to write in illegal location: @ C:/test3.txt"
+		}
+	elseif illegal2Suc then
+		return {
+			status = 500,
+			message = "Didn't fail to write in illegal location: @ ../test4.txt"
+		}
+	elseif readfile("test1.txt") ~= "Content" then
+		return {
+			status = 500,
+			message = "File didn't give expected contnet"
+		}
+	elseif readfile("test2.txt") ~= "Content" then
+		return {
+			status = 500,
+			message = "File didn't give expected contnet"
+		}
+	end
+
+	delfile("test1.txt")
+	delfile("./test2.txt")
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.ab():typeof(__modImpl())local v=__DIST.cache.ab if not v then v={c=__modImpl()}__DIST.cache.ab=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not sethiddenproperty then
-return{
-status=400,
-message="Global not found",
-}
-elseif not gethiddenproperty then
-return{
-status=400,
-message="Global not found",
-}
-end
+	if not readfile then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not delfile then
+		return {
+			status = 401,
+			message = "Dependency 'delfile' not found",
+		}
+	elseif not writefile then
+		return {
+			status = 401,
+			message = "Dependency 'writefile' not found",
+		}
+	end
+
+	--// Functionality test
+	local writeSuc, writeMsg = pcall(writefile, "test1.txt", "Content")
+
+	if not writeSuc then
+		return {
+			status = 0,
+			message = "Failed to write @ test1.txt: " .. writeMsg
+		}
+	elseif readfile("test1.txt") ~= "Content" then
+		return {
+			status = 500,
+			message = "File didn't return the expected content"
+		}
+	end
+
+	delfile("test1.txt")
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.ac():typeof(__modImpl())local v=__DIST.cache.ac if not v then v={c=__modImpl()}__DIST.cache.ac=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa=Instance.new"Part"
+return function()
+	if not makefolder then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not delfolder then
+		return {
+			status = 401,
+			message = "Dependency 'delfolder' not found",
+		}
+	end
+
+	--// Functionality test
+	local legal1Suc, legal1Msg = pcall(makefolder, "test1")
+	local legal2Suc, legal2Msg = pcall(makefolder, "./test2")
+	
+	local illegal1Suc = pcall(makefolder, "C:/test3")
+	local illegal2Suc = pcall(makefolder, "../test4")	
+
+	if not legal1Suc then
+		return {
+			status = 0,
+			message = "Failed to make @ test1: " .. legal1Msg
+		}
+	elseif not legal2Suc then
+		return {
+			status = 0,
+			message = "Failed to make @ ./test2: " .. legal2Msg
+		}
+	elseif illegal1Suc then
+		return {
+			status = 500,
+			message = "Didn't fail to make in illegal location: @ C:/test3"
+		}
+	elseif illegal2Suc then
+		return {
+			status = 500,
+			message = "Didn't fail to make in illegal location: @ ../test4"
+		}
+	end
+
+	delfolder("test1")
+	delfolder("./test2")
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.ad():typeof(__modImpl())local v=__DIST.cache.ad if not v then v={c=__modImpl()}__DIST.cache.ad=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-local ab,af=gethiddenproperty(aa,"Name")
-local ag,b=gethiddenproperty(aa,"siz")
 
-if af then
-return{
-status=500,
-message="Non-hidden property assumed hidden",
-}
-elseif ab~="Part"then
-return{
-status=500,
-message="Non-hidden property value incorrect",
-}
-elseif not b then
-return{
-status=500,
-message="Hidden property assumed non-hidden",
-}
-elseif ag~="can't get value"then
-return{
-status=500,
-message="Hidden property value incorrect",
-}
-end
+return function()
+	if not isrbxactive then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"iswindowactive",
+		"isgameactive",
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.ae():typeof(__modImpl())local v=__DIST.cache.ae if not v then v={c=__modImpl()}__DIST.cache.ae=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-sethiddenproperty(aa,"siz","can get value")
 
-if not gethiddenproperty(aa,"siz")=="can get value"then
-return{
-status=500,
-message="Hidden property's value was incorrectly set"
-}
-end
+return function()
+	if not keypress then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.af():typeof(__modImpl())local v=__DIST.cache.af if not v then v={c=__modImpl()}__DIST.cache.af=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local c,d=a.load'b'{}
+return function()
+	if not keyrelease then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.ag():typeof(__modImpl())local v=__DIST.cache.ag if not v then v={c=__modImpl()}__DIST.cache.ag=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not c then
-return{
-status=501,
-message=`Alias not found: {d}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.a1()
+return function()
+	if not keytap then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.ah():typeof(__modImpl())local v=__DIST.cache.ah if not v then v={c=__modImpl()}__DIST.cache.ah=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	if not mouse1click then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.ai():typeof(__modImpl())local v=__DIST.cache.ai if not v then v={c=__modImpl()}__DIST.cache.ai=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not gethiddenproperty then
-return{
-status=400,
-message="Global not found",
-}
-end
+	if not mouse1press then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aj():typeof(__modImpl())local v=__DIST.cache.aj if not v then v={c=__modImpl()}__DIST.cache.aj=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa=Instance.new"Part"
+return function()
+	if not mouse1release then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.ak():typeof(__modImpl())local v=__DIST.cache.ak if not v then v={c=__modImpl()}__DIST.cache.ak=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-local ab,af=gethiddenproperty(aa,"Name")
-local ag,b=gethiddenproperty(aa,"siz")
 
-if af then
-return{
-status=500,
-message="Non-hidden property assumed hidden",
-}
-elseif ab~="Part"then
-return{
-status=500,
-message="Non-hidden property value incorrect",
-}
-elseif not b then
-return{
-status=500,
-message="Hidden property assumed non-hidden",
-}
-elseif ag~="can't get value"then
-return{
-status=500,
-message="Hidden property value incorrect",
-}
-end
+return function()
+	if not mouse2click then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.al():typeof(__modImpl())local v=__DIST.cache.al if not v then v={c=__modImpl()}__DIST.cache.al=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local c,d=a.load'b'{}
+return function()
+	if not mouse2press then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.am():typeof(__modImpl())local v=__DIST.cache.am if not v then v={c=__modImpl()}__DIST.cache.am=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not c then
-return{
-status=501,
-message=`Alias not found: {d}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.a2()
+return function()
+	if not mouse2release then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.an():typeof(__modImpl())local v=__DIST.cache.an if not v then v={c=__modImpl()}__DIST.cache.an=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	if not mousemoveabs then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.ao():typeof(__modImpl())local v=__DIST.cache.ao if not v then v={c=__modImpl()}__DIST.cache.ao=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not setthreadidentity then
-return{
-status=400,
-message="Global not found",
-}
-end
+	if not mousemoverel then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.ap():typeof(__modImpl())local v=__DIST.cache.ap if not v then v={c=__modImpl()}__DIST.cache.ap=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa,ab=a.load'b'{
-"setidentity",
-"setthreadcontext"
-}
+return function()
+	if not mousescroll then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aq():typeof(__modImpl())local v=__DIST.cache.aq if not v then v={c=__modImpl()}__DIST.cache.aq=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.a3()
+return function()
+	if not setclipboard then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"toclipboard"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.ar():typeof(__modImpl())local v=__DIST.cache.ar if not v then v={c=__modImpl()}__DIST.cache.ar=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	if not setrbxclipboard then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.as():typeof(__modImpl())local v=__DIST.cache.as if not v then v={c=__modImpl()}__DIST.cache.as=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not getthreadidentity then
-return{
-status=400,
-message="Global not found",
-}
-end
+	if not gethui then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local container = gethui()
+	if not (container:IsA("ScreenGui") or container:IsA("BasePlayerGui") or container:IsA("Folder")) then
+		return {
+			status = 500,
+			message = "Container is not a ScreenGui, BasePlayerGui, or Folder",
+		}
+	end
+	if container == game:GetService("CoreGui") then
+		return {
+			status = 500,
+			message = "Container cannot be an uncloned reference to CoreGui",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"get_hidden_gui"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.at():typeof(__modImpl())local v=__DIST.cache.at if not v then v={c=__modImpl()}__DIST.cache.at=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-if typeof(getthreadidentity())~="number"then
-return{
-status=500,
-message="Did not return a number",
-}
-end
+return function()
+	if not cloneref then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local originalPart = Instance.new("Part")
+	local originalService = game:GetService("CoreGui")
+
+	if cloneref(originalPart) == originalPart then
+		return {
+			status = 500,
+			message = `Cloned part cannot be equal to original reference`,
+		}
+	elseif cloneref(originalService) == originalService then
+		return {
+			status = 500,
+			message = `Cloned service cannot be equal to original reference`,
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"clonereference",
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.au():typeof(__modImpl())local v=__DIST.cache.au if not v then v={c=__modImpl()}__DIST.cache.au=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa,ab=a.load'b'{
-"getidentity",
-"getthreadcontext"
-}
+return function()
+	if not compareinstances then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not cloneref then
+		return {
+			status = 401,
+			message = "'cloneref' needed to test this reliably",
+		}
+	end
+
+	local originalPart = Instance.new("Part")
+	local originalService = game:GetService("CoreGui")
+
+	if cloneref(originalPart) == originalPart then
+		return {
+			status = 500,
+			message = `(CR) Cloned part cannot be equal to original reference`,
+		}
+	elseif cloneref(originalService) == originalService then
+		return {
+			status = 500,
+			message = `(CR) Cloned service cannot be equal to original reference`,
+		}
+
+	elseif not compareinstances(game, game) then
+		return {
+			status = 500,
+			message = `Two equal instances (game, game) assumed unequal`,
+		}
+	elseif compareinstances(game, workspace) then
+		return {
+			status = 500,
+			message = `Two unequal instances (game, workspace) assumed equal`,
+		}
+	elseif not compareinstances(originalPart, cloneref(originalPart)) then
+		return {
+			status = 500,
+			message = `Two equal instances (originalPart, clonedPart) assumed equal`,
+		}
+	elseif not compareinstances(originalService, cloneref(originalService)) then
+		return {
+			status = 500,
+			message = `Two equal instances (originalService, clonedService) assumed equal`,
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.av():typeof(__modImpl())local v=__DIST.cache.av if not v then v={c=__modImpl()}__DIST.cache.av=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not aa then
-return{
-status=501,
-message=`Alias not found: {ab}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.a4()
+return function()
+	if not getinstances then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local originalPart1, found1 = Instance.new("Part"), false
+	local originalPart2, found2 = Instance.new("Part", workspace), false
+	
+	originalPart2.Anchored = true
+	originalPart2.Transparency = 1
+	originalPart2.CanCollide = false
+	originalPart2.Position = Vector3.new(0,-100,0)
+
+	for _, v in pairs(getinstances()) do
+		if v == originalPart1 then
+			found1 = true
+		elseif v == originalPart2 then
+			found2 = true
+		elseif not v:IsA("Instance") then
+			return {
+				status = 500,
+				message = "Found a part that isn't an instance"
+			}
+		end
+	end
+
+	if not found1 then
+		return {
+			status = 500,
+			message = "Didn't find a part w/ a nil parent"
+		}
+	elseif not found2 then
+		return {
+			status = 500,
+			message = "Didn't find a part w/ a parent"
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aw():typeof(__modImpl())local v=__DIST.cache.aw if not v then v={c=__modImpl()}__DIST.cache.aw=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	if not getnilinstances then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local originalPart1, found1 = Instance.new("Part"), false
+	local originalPart2, found2 = Instance.new("Part", workspace), false
+	local found3 = false
+
+	originalPart2.Anchored = true
+	originalPart2.Transparency = 1
+	originalPart2.CanCollide = false
+	originalPart2.Position = Vector3.new(0,-100,0)
+
+	for _, v in pairs(getnilinstances()) do
+		if v == originalPart1 then
+			found1 = true
+		elseif v == originalPart2 then
+			found2 = true
+		elseif v:IsDescendantOf(game) then
+			found3 = true
+		elseif not v:IsA("Instance") then
+			return {
+				status = 500,
+				message = "Found a part that isn't an instance"
+			}
+		end
+	end
+
+	if not found1 then
+		return {
+			status = 500,
+			message = "Didn't find a part w/ a nil parent"
+		}
+	elseif found2 or found3 then
+		return {
+			status = 500,
+			message = "Found a part w/ a parent"
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.ax():typeof(__modImpl())local v=__DIST.cache.ax if not v then v={c=__modImpl()}__DIST.cache.ax=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not setscriptable then
-return{
-status=400,
-message="Global not found",
-}
-end
+	if not getinstances then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local r1, r2, r3 = math.random(1, 10), math.random(1, 10), math.random(1, 10)
+	local originalBindable1 = Instance.new("BindableFunction")
+	local originalBindable2 = Instance.new("BindableFunction")
+	local originalRemote = Instance.new("RemoteFunction")
+
+	originalBindable1.OnInvoke = function(a, b)
+		return (a + b) ^ r3
+	end
+	originalRemote.OnServerInvoke = function()
+		return r3
+	end
+
+	local bindableCb1 = getcallbackvalue(originalBindable1, "OnInvoke")
+	local bindableCb2 = getcallbackvalue(originalBindable2, "OnInvoke")
+	local remoteCb = getcallbackvalue(originalRemote, "OnServerInvoke")
+
+	if not bindableCb1 then
+		return {
+			status = 500,
+			message = "Didn't return a callback value for a bindable",
+		}
+	elseif bindableCb2 then
+		return {
+			status = 500,
+			message = "Returned a callback value for a bindable with none",
+		}
+	elseif not remoteCb then
+		return {
+			status = 500,
+			message = "Returned a callback value for a remote with none",
+		}
+	elseif bindableCb1(r1, r2) ~= (r1 + r2) ^ r3 then
+		return {
+			status = 500,
+			message = "Bindable's callback value didn't return the expected value",
+		}
+	elseif remoteCb(game.Players.LocalPlayer) ~= r3 then
+		return {
+			status = 500,
+			message = "Remote's callback value didn't return the expected value",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"getcallbackmember"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.ay():typeof(__modImpl())local v=__DIST.cache.ay if not v then v={c=__modImpl()}__DIST.cache.ay=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-local aa=Instance.new"Part"
 
-if pcall(function()local ab=aa.MaterialVariantSerialized end)then
-return{
-status=500,
-message="Unaccessible property accessible",
-}
-end
+return function()
+	if not fireclickdetector then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local originalPart = Instance.new("Part", workspace)
+	local originalClickDetector = Instance.new("ClickDetector", originalPart)
+
+	originalPart.Anchored = true
+	originalPart.Transparency = 1
+	originalPart.CanCollide = false
+	originalPart.Position = Vector3.new(0,-100,0)
+
+	local function testEvent(event)
+		originalClickDetector[event]:Connect(function(player)
+			if player ~= game:GetService("Players").LocalPlayer then
+				return {
+					status = 500,
+					message = "Player passed wasn't the LocalPlayer"
+				}
+			end
+		end)
+
+		local success, returned = fireclickdetector(originalClickDetector, 0, event)
+
+		if not success then
+			return {
+				status = 0,
+				message = `Failed w/ error: {returned}`
+			}
+		end
+
+		return true
+	end
+
+	local mouseClick = testEvent("MouseClick")
+	local rightMouseClick = testEvent("RightMouseClick")
+	local mouseHoverEnter = testEvent("MouseHoverEnter")
+	local mouseHoverLeave = testEvent("MouseHoverLeave")
+
+	game:GetService("RunService").PostSimulation:Wait()
+	
+	if not mouseClick then
+		return {
+			status = 500,
+			message = "MouseClick event was not fired."
+		}
+	end
+	if not rightMouseClick then
+		return {
+			status = 500,
+			message = "RightMouseClick event was not fired."
+		}
+	end
+	if not mouseHoverEnter then
+		return {
+			status = 500,
+			message = "MouseHoverEnter event was not fired."
+		}
+	end
+	if not mouseHoverLeave then
+		return {
+			status = 500,
+			message = "MouseHoverLeave event was not fired."
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.az():typeof(__modImpl())local v=__DIST.cache.az if not v then v={c=__modImpl()}__DIST.cache.az=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-setscriptable(aa,"MaterialVariantSerialized",true)
-if not pcall(function()local ab=aa.MaterialVariantSerialized end)then
-return{
-status=500,
-message="MaterialVariantSerialized inaccessible after being set as scriptable",
-}
-end
 
-setscriptable(aa,"MaterialVariantSerialized",false)
-if pcall(function()local ab=aa.MaterialVariantSerialized end)then
-return{
-status=500,
-message="MaterialVariantSerialized accessible after being set as unscriptable",
-}
-end
+return function()
+	if not fireproximityprompt then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local fired = false
+	
+	local localPlayer = game:GetService("Players").LocalPlayer
+	local proximityPromptService = game:GetService("ProximityPromptService")
+	local originalPart = Instance.new("Part", workspace)
+	local originalProximityPrompt = Instance.new("ProximityPrompt", originalPart)
+
+	originalPart.Anchored = true
+	originalPart.Transparency = 1
+	originalPart.CanCollide = false
+	originalPart.Position = Vector3.new(0,-100,0)
+	originalProximityPrompt.HoldDuration = 1
+
+	proximityPromptService.PromptButtonHoldBegan:Connect(function(prompt) 
+		return {
+			status = 500,
+			message = "Proximity prompt was manually fired"
+		}
+	end)
+
+	proximityPromptService.PromptButtonHoldEnded:Connect(function(prompt) 
+		return {
+			status = 500,
+			message = "Proximity prompt was manually fired"
+		}
+	end)
+
+	originalProximityPrompt:GetPropertyChangedSignal("HoldDuration"):Connect(function()
+		return {
+			status = 500,
+			message = "Modified HoldDuration"
+		}
+	end)
+
+	originalProximityPrompt.Triggered:Connect(function(player)
+		if player ~= localPlayer then
+			return {
+				status = 500,
+				message = "Player passed wasn't the LocalPlayer"
+			}
+		end
+
+		fired = true
+	end)
+
+	local success, returned = pcall(fireproximityprompt, originalProximityPrompt)
+
+	game:GetService("RunService").PostSimulation:Wait()
+
+	if not success then
+		return {
+			status = 0,
+			message = `Failed w/ error: {returned}`
+		}
+	elseif not fired then
+		return {
+			status = 500,
+			message = `Prompt was not triggered`
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aA():typeof(__modImpl())local v=__DIST.cache.aA if not v then v={c=__modImpl()}__DIST.cache.aA=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local ab,af=a.load'b'{}
+return function()
+	if not firetouchinterest then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local touchPart = game.Players.LocalPlayer.Character.Head
+	local touched = false
+	local touchEnded = false
+	local originalPart = Instance.new("Part")
+
+	originalPart.Anchored = true
+	originalPart.Transparency = 1
+	originalPart.CanCollide = false
+	originalPart.Position = Vector3.new(0,-100,0)
+	originalPart.Parent = workspace
+
+	originalPart.Touched:Connect(function(part: BasePart)
+		if part ~= touchPart then
+			originalPart:Destroy()
+
+			return {
+				status = 500,
+				message = "Touch part given wasn't the passed touch part",
+			}
+		end
+
+		touched = true
+	end)
+
+	originalPart.TouchEnded:Connect(function(part: BasePart)
+		if part ~= touchPart then
+			originalPart:Destroy()
+
+			return {
+				status = 500,
+				message = "Touch part given wasn't the passed touch part",
+			}
+		end
+
+		touchEnded = true
+	end)
+
+	firetouchinterest(touchPart, originalPart, false)
+	game:GetService("RunService").PostSimulation:Wait()
+
+	if not touched then
+		return {
+			status = 500,
+			message = "Touched event wasn't fired",
+		}
+	end
+
+	firetouchinterest(touchPart, originalPart, true)
+	game:GetService("RunService").PostSimulation:Wait()
+
+	if not touchEnded then
+		return {
+			status = 500,
+			message = "Touched event wasn't fired",
+		}
+	end
+
+	originalPart:Destroy()
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aB():typeof(__modImpl())local v=__DIST.cache.aB if not v then v={c=__modImpl()}__DIST.cache.aB=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not ab then
-return{
-status=501,
-message=`Alias not found: {af}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.a5()
+return function()
+	if not saveinstance then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not listfiles then
+		return {
+			status = 501,
+			message = "Dependant global 'listfiles' not found",
+		}
+	elseif not delfile then
+		return {
+			status = 501,
+			message = "Dependant global 'delfile' not found",
+		}
+	end
+
+	--// Functionality test
+	local guid = game:GetService("HttpService"):GenerateGUID(false):gsub("-", "")
+	local part = Instance.new("Part")
+
+	saveinstance(part, {
+		FileName = guid
+	})
+
+	task.wait(0.5)
+
+	local found = false
+
+	for _, file in pairs(listfiles("")) do
+		if file:find(guid) then
+			found = true
+			delfile(file)
+		end
+	end
+	
+	if not found then
+		return {
+			status = 500,
+			message = "Couldn't find saved part. Args passed: (Instance, { FileName = string })"
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aC():typeof(__modImpl())local v=__DIST.cache.aC if not v then v={c=__modImpl()}__DIST.cache.aC=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	if not getrawmetatable then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local rawMt = getrawmetatable(game)
+
+	if typeof(rawMt) ~= "table" then
+		return {
+			status = 500,
+			message = "Didn't return a table",
+		}
+	elseif rawMt.__index(game, "Workspace") ~= game:GetService("Workspace") then
+		return {
+			status = 500,
+			message = "Didn't give correct index for Workspace",
+		}
+	elseif rawMt.__index(game, "ReplicatedStorage") ~= game:GetService("ReplicatedStorage") then
+		return {
+			status = 500,
+			message = "Didn't give correct index for ReplicatedStorage",
+		}
+	elseif rawMt.__index(game, "Stats") ~= game:GetService("Stats") then
+		return {
+			status = 500,
+			message = "Didn't give correct index for Stats",
+		}
+	end
+
+	local methods = {
+		__add = "add",
+		__sub = "sub",
+		__mul = "mul",
+		__div = "div",
+		__mod = "mod",
+		__pow = "pow",
+		__unm = "unm",
+		__idiv = "idiv",
+		__band = "band",
+		__bor = "bor",
+		__bxor = "bxor",
+		__bnot = "bnot",
+		__shl = "shl",
+		__shr = "shr",
+		__concat = "concat",
+		__len = "len",
+		__eq = "eq",
+		__lt = "lt",
+		__le = "le",
+		__call = "call",
+	}
+	
+	for method, name in pairs(methods) do
+		if rawMt[method] then
+			return {
+				status = 500,
+				message = `Found {name} metamethod in the raw meta table`,
+			}
+		end
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aD():typeof(__modImpl())local v=__DIST.cache.aD if not v then v={c=__modImpl()}__DIST.cache.aD=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not isscriptable then
-return{
-status=400,
-message="Global not found",
-}
-end
+	if not setrawmetatable then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local originalObject = setmetatable({}, {
+		__index = function()
+			return false
+		end,
+		__metatable = "Locked",
+	})
+	local returnedObject = setrawmetatable(originalObject, {
+		__index = function()
+			return true
+		end,
+	})
+
+	if not originalObject then
+		return {
+			status = 500,
+			message = "Original object not given",
+		}
+	elseif originalObject.MYRI ~= true then
+		return {
+			status = 500,
+			message = "Return function gave true, MYRI not found",
+		}
+	elseif not returnedObject then
+		return {
+			status = 500,
+			message = "Returned object not given",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end
+end function __DIST.aE():typeof(__modImpl())local v=__DIST.cache.aE if not v then v={c=__modImpl()}__DIST.cache.aE=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-local aa=Instance.new"Part"
 
-if not isscriptable(aa,"Name")then
-return{
-status=500,
-message="Accessible property 'Name' assumed inaccessible",
-}
-elseif isscriptable(aa,"MaterialVariantSerialized")then
-return{
-status=500,
-message="Inaccessible property 'MaterialVariantSerialized' assumed accessible",
-}
-end
+return function()
+	if not hookmetamethod then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
 
+	local hooked = false
+	local originalCall
 
-local ab,af=a.load'b'{}
+	originalCall = hookmetamethod(game, "__namecall", function( ...)
+		hooked = true
 
-if not ab then
-return{
-status=501,
-message=`Alias not found: {af}`,
-}
-end
+		return originalCall(...)
+	end)
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.a6()
+	game:GetService("RunService").Heartbeat:Wait()
 
+	if not hooked then
+		return {
+			status = 500,
+			message = "Failed to hook __namecall metamethod",
+		}
+	end
 
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
 
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
 
-return function()
-if not getscripts then
-return{
-status=400,
-message="Global not found",
-}
+	return {
+		status = 200,
+		message = "Passed",
+	}
 end
-
+end function __DIST.aF():typeof(__modImpl())local v=__DIST.cache.aF if not v then v={c=__modImpl()}__DIST.cache.aF=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-local aa=Instance.new"LocalScript"
-local ab=Instance.new"ModuleScript"
-local af=Instance.new"Script"
-local ag=Instance.new"Script"
-ag.RunContext=Enum.RunContext.Client
-local b=getscripts()
 
-if not table.find(b,aa)then
-return{
-status=500,
-message="LocalScript not found in returned table",
-}
-elseif not table.find(b,ab)then
-return{
-status=500,
-message="ModuleScript not found in returned table",
-}
-elseif not table.find(b,ag)then
-return{
-status=500,
-message="ServerScript w/ client runcontext not found in returned table",
-}
-elseif table.find(b,af)then
-return{
-status=500,
-message="ServerScript found in returned table",
-}
-end
+return function()
+	if not getnamecallmethod then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not hookmetamethod then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local originalPart = Instance.new("Part")
+	local method = false
+	local originalCall
+
+	originalCall = hookmetamethod(originalPart, "__namecall", function(...)
+		if not method then
+			method = getnamecallmethod()
+		end
+
+		return originalCall(...)
+	end)
+
+	originalPart:Destroy()
+	task.wait()
+
+	if method ~= "Destroy" then
+		return {
+			status = 500,
+			message = "Didn't return the correct method",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end
+end function __DIST.aG():typeof(__modImpl())local v=__DIST.cache.aG if not v then v={c=__modImpl()}__DIST.cache.aG=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local c,d=a.load'b'{}
+return function()
+	if not setreadonly then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local originalTable = table.freeze{
+		MYRIAD = "MYRI"
+	}
+
+	local freezeSuccess, message = pcall(function()
+		originalTable.MYRIAD = "MYRIAD"
+	end)
+	local writeSuccess, message = pcall(function()
+		setreadonly(originalTable, false)
+		originalTable.MYRIAD = "MYRIAD"
+	end)
+	local reFreezeSuccess, message = pcall(function()
+		setreadonly(originalTable, true)
+		originalTable.MYRIAD = "MYRIAD"
+	end)
+
+	if freezeSuccess then
+		return {
+			status = 500,
+			message = "Frozen table writable (???): " .. message
+		}
+	elseif not writeSuccess then
+		return {
+			status = 500,
+			message = "Table unwritable after readonly was disabled: " .. message
+		}
+	elseif reFreezeSuccess then
+		return {
+			status = 500,
+			message = "Table writable after readonly was enabled: " .. message
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aH():typeof(__modImpl())local v=__DIST.cache.aH if not v then v={c=__modImpl()}__DIST.cache.aH=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not c then
-return{
-status=501,
-message=`Alias not found: {d}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.a7()
+return function()
+	if not makereadonly then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local originalTable = table.freeze{
+		MYRIAD = "MYRI"
+	}
+
+	local freezeSuccess, message = pcall(function()
+		originalTable.MYRIAD = "MYRIAD"
+	end)
+	local writeSuccess, message = pcall(function()
+		makereadonly(originalTable)
+		originalTable.MYRIAD = "MYRIAD"
+	end)
+
+	if freezeSuccess then
+		return {
+			status = 500,
+			message = "Frozen table writable (???): " .. message
+		}
+	elseif writeSuccess then
+		return {
+			status = 500,
+			message = "Table unwritable after readonly was disabled: " .. message
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aI():typeof(__modImpl())local v=__DIST.cache.aI if not v then v={c=__modImpl()}__DIST.cache.aI=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	if not isreadonly then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local originalTable = {}
+
+	if isreadonly(originalTable) then
+		return {
+			status = 500,
+			message = "Writable table is assumed read-only"
+		}
+	end
+
+	table.freeze(originalTable)
+
+	if not isreadonly(originalTable) then
+		return {
+			status = 500,
+			message = "Table assumed writable after being set as read-only"
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aJ():typeof(__modImpl())local v=__DIST.cache.aJ if not v then v={c=__modImpl()}__DIST.cache.aJ=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not getrunningscripts then
-return{
-status=400,
-message="Global not found",
-}
-end
+	if not identifyexecutor then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality Test
+	local executor, vers = identifyexecutor()
+    if not executor or not vers then
+        return {
+			status = 500,
+			message = `Did not return expected data (executor, version)`,
+		}
+	elseif type(executor) ~= "string" or type(vers) ~= "string" then
+		return {
+			status = 500,
+			message = `Expected [string, string] got [{executor}, {vers}]`,
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"getexecutorname"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed ({executor}, {vers})`,
+	}
+end
+end function __DIST.aK():typeof(__modImpl())local v=__DIST.cache.aK if not v then v={c=__modImpl()}__DIST.cache.aK=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa=game.Players.LocalPlayer.Character:FindFirstChild"Animate"
-local ab=game.Players.LocalPlayer.Character:FindFirstChild"whysoud"
-local af=game.Players.LocalPlayer.Character:FindFirstChild"whysodtc"
-local ag=game.Players.LocalPlayer.Character:FindFirstChild"maybeisdtc"
+return function()
+	if not setfpscap then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality Test
+	local renderStepped = game:GetService("RunService").RenderStepped
+
+	local function step()
+		renderStepped:Wait()
+		local average = 0
+		for _ = 1, 10 do
+			average += 1 / renderStepped:Wait()
+		end
+		return math.round(average / 10)
+	end
+
+	setfpscap(60)
+	local step60 = step()
+	setfpscap(0)
+	local step0 = step()
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed (60: {step60}, 0: {step0})`,
+	}
+end
+end function __DIST.aL():typeof(__modImpl())local v=__DIST.cache.aL if not v then v={c=__modImpl()}__DIST.cache.aL=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-local b=Instance.new"LocalScript"
-local c=Instance.new"ModuleScript"
-local d=Instance.new"Script"
-local e=Instance.new"Script"
-e.RunContext=Enum.RunContext.Client
-local f=getrunningscripts()
 
-if table.find(f,b)then
-return{
-status=500,
-message="LocalScript found in returned table",
-}
-elseif table.find(f,c)then
-return{
-status=500,
-message="ModuleScript found in returned table",
-}
-elseif table.find(f,e)then
-return{
-status=500,
-message="ServerScript w/ client runcontext found in returned table",
-}
-elseif table.find(f,d)then
-return{
-status=500,
-message="ServerScript found in returned table",
-}
-elseif table.find(f,af)then
-return{
-status=500,
-message="Disabled script found in returned table",
-}
-elseif table.find(f,ag)then
-return{
-status=500,
-message="Non-running script found in returned table",
-}
-elseif not table.find(f,aa)or not table.find(f,ab)then
-return{
-status=500,
-message="Didn't find a running script in the returned table"
-}
-end
+return function()
+	if not getfpscap then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality Test
+	if typeof(getfpscap()) ~= "number" then
+		return {
+			status = 500,
+			message = `Did not return a number`,
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aM():typeof(__modImpl())local v=__DIST.cache.aM if not v then v={c=__modImpl()}__DIST.cache.aM=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local g,h=a.load'b'{}
+return function()
+	if not request then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality Test
+	local response = request({
+		Url = "https://httpbin.org/user-agent",
+		Method = "GET",
+	})
+
+	if typeof(response) ~= "table" then
+		return {
+			status = 500,
+			message = "Reponse wasn't a table"
+		}
+	elseif response.StatusCode ~= 200 then
+		return {
+			status = 500,
+			message = "Didn't give status 200 (is httpbin.org down?)"
+		}
+	end
+
+	local data = game:GetService("HttpService"):JSONDecode(response.Body)
+	if type(data) ~= "table" and type(data["user-agent"]) ~= "string" then
+		return {
+			status = 500,
+			message = "Didn't give a table w/ user-agent string"
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"http.request",
+		"http_request"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed ({data["user-agent"]})`,
+	}
+end
+end function __DIST.aN():typeof(__modImpl())local v=__DIST.cache.aN if not v then v={c=__modImpl()}__DIST.cache.aN=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not g then
-return{
-status=501,
-message=`Alias not found: {h}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.a8()
+return function()
+	local referenceCrypt = __DIST.r()
+
+	if not lz4compress then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local plaintext = "MYRIAD"
+	local referenceCompressed = referenceCrypt.base64decode("YE1ZUklBRA==")
+	local compressed = lz4compress(plaintext)
+
+	if typeof(compressed) ~= "string" then
+		return {
+			status = 500,
+			message = "Did not return the expected type",
+		}
+	elseif compressed ~= referenceCompressed then
+		return {
+			status = 500,
+			message = "Compressed data doesn't match reference data",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"crypt.lz4compress"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end
+end function __DIST.aO():typeof(__modImpl())local v=__DIST.cache.aO if not v then v={c=__modImpl()}__DIST.cache.aO=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	local referenceCrypt = __DIST.r()
+
+	if not lz4decompress then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local plaintext = "MYRIAD"
+	local referenceCompressed = referenceCrypt.base64decode("YE1ZUklBRA==")
+	local decompressed = lz4decompress(referenceCompressed, #plaintext)
+
+	if typeof(decompressed) ~= "string" then
+		return {
+			status = 500,
+			message = "Did not return the expected type",
+		}
+	elseif decompressed ~= plaintext then
+		return {
+			status = 500,
+			message = "Compressed data doesn't match reference data",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"crypt.lz4decompress"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
+end
+end function __DIST.aP():typeof(__modImpl())local v=__DIST.cache.aP if not v then v={c=__modImpl()}__DIST.cache.aP=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not getcallingscript then
-return{
-status=400,
-message="Global not found",
-}
-elseif not checkcaller then
-return{
-status=401,
-message="Dependency 'checkcaller' not found"
-}
-elseif not hookmetamethod then
-return{
-status=401,
-message="Dependency 'hookmetamethod' not found"
-}
-end
+	if not getfpscap then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"queueonteleport"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aQ():typeof(__modImpl())local v=__DIST.cache.aQ if not v then v={c=__modImpl()}__DIST.cache.aQ=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa;
-aa=hookmetamethod(game,"__index",function(ab,af)
-if not checkcaller()then
-getcallingscript()
-
-hookmetamethod(game,"__index",aa)
-end
+return function()
+	if not messagebox then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aR():typeof(__modImpl())local v=__DIST.cache.aR if not v then v={c=__modImpl()}__DIST.cache.aR=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-return aa(ab,af)
-end)
 
-if getcallingscript()then
-return{
-status=500,
-message="Executor call assumed to be a game call"
-}
-end
+return function()
+	if not rconsoleprint then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aS():typeof(__modImpl())local v=__DIST.cache.aS if not v then v={c=__modImpl()}__DIST.cache.aS=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local ab,af=a.load'b'{}
+return function()
+	if not rconsoleinfo then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aT():typeof(__modImpl())local v=__DIST.cache.aT if not v then v={c=__modImpl()}__DIST.cache.aT=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not ab then
-return{
-status=501,
-message=`Alias not found: {af}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.a9()
+return function()
+	if not rconsolewarn then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aU():typeof(__modImpl())local v=__DIST.cache.aU if not v then v={c=__modImpl()}__DIST.cache.aU=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	if not rconsoleerr then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+	
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aV():typeof(__modImpl())local v=__DIST.cache.aV if not v then v={c=__modImpl()}__DIST.cache.aV=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-local aa,ab=pcall(function()return game:GetService"StarterPlayer".StarterPlayerScripts.PlayerModule end)
-if not getloadedmodules then
-return{
-status=400,
-message="Global not found",
-}
-elseif not aa then
-return{
-status=401,
-message="Testing dependency 'PlayerModule' not found.",
-}
-end
-
+	if not rconsoleinput then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aW():typeof(__modImpl())local v=__DIST.cache.aW if not v then v={c=__modImpl()}__DIST.cache.aW=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-require(ab)
-local af=Instance.new"ModuleScript"
 
-local ag=getloadedmodules()
-if not table.find(ag,ab)then
-return{
-status=500,
-message="Loaded module not found in returned table",
-}
-elseif table.find(ag,af)then
-return{
-status=500,
-message="Unloaded module found in returned table",
-}
-end
+return function()
+	if not rconsoleclear then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aX():typeof(__modImpl())local v=__DIST.cache.aX if not v then v={c=__modImpl()}__DIST.cache.aX=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local b,c=a.load'b'{}
+return function()
+	if not rconsolename then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aY():typeof(__modImpl())local v=__DIST.cache.aY if not v then v={c=__modImpl()}__DIST.cache.aY=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not b then
-return{
-status=501,
-message=`Alias not found: {c}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.ba()
+return function()
+	if not rconsolehide then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.aZ():typeof(__modImpl())local v=__DIST.cache.aZ if not v then v={c=__modImpl()}__DIST.cache.aZ=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	if not rconsoleshow then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.a_():typeof(__modImpl())local v=__DIST.cache.a_ if not v then v={c=__modImpl()}__DIST.cache.a_=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-local aa,ab=pcall(function()
-return game.Players.LocalPlayer.Character.Animate
-end)
-if not getloadedmodules then
-return{
-status=400,
-message="Global not found",
-}
-elseif not aa then
-return{
-status=401,
-message="Testing dependency 'Animate' not found.",
-}
-end
+	if not sethiddenproperty then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not gethiddenproperty then
+		return {
+			status = 401,
+			message = "Dependant global 'gethiddenproperty' not found",
+		}
+	end
+
+	--// Functionality test
+	local originalPart = Instance.new("Part")
+
+	local prop1Value, prop1Hidden = gethiddenproperty(originalPart, "Name")
+	local prop2Value, prop2Hidden = gethiddenproperty(originalPart, "siz")
+	
+	if prop1Hidden then
+		return {
+			status = 500,
+			message = "Non-hidden property assumed hidden",
+		}
+	elseif prop1Value ~= "Part" then
+		return {
+			status = 500,
+			message = "Non-hidden property value incorrect",
+		}
+	elseif not prop2Hidden then
+		return {
+			status = 500,
+			message = "Hidden property assumed non-hidden",
+		}
+	elseif prop2Value ~= "can't get value" then
+		return {
+			status = 500,
+			message = "Hidden property value incorrect",
+		}
+	end
+
+	sethiddenproperty(originalPart, "siz", "can get value")
+
+	if not gethiddenproperty(originalPart, "siz") == "can get value" then
+		return {
+			status = 500,
+			message = "Hidden property's value was incorrectly set"
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.a0():typeof(__modImpl())local v=__DIST.cache.a0 if not v then v={c=__modImpl()}__DIST.cache.a0=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local af=getsenv(ab)
-if not af.onSwimming or not typeof(af.onSwimming)=="function"then
-return{
-status=500,
-message="Global in test script wasn't found, or didn't return the right type",
-}
-end
+return function()
+	if not gethiddenproperty then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local originalPart = Instance.new("Part")
+
+	local prop1Value, prop1Hidden = gethiddenproperty(originalPart, "Name")
+	local prop2Value, prop2Hidden = gethiddenproperty(originalPart, "siz")
+	
+	if prop1Hidden then
+		return {
+			status = 500,
+			message = "Non-hidden property assumed hidden",
+		}
+	elseif prop1Value ~= "Part" then
+		return {
+			status = 500,
+			message = "Non-hidden property value incorrect",
+		}
+	elseif not prop2Hidden then
+		return {
+			status = 500,
+			message = "Hidden property assumed non-hidden",
+		}
+	elseif prop2Value ~= "can't get value" then
+		return {
+			status = 500,
+			message = "Hidden property value incorrect",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.a1():typeof(__modImpl())local v=__DIST.cache.a1 if not v then v={c=__modImpl()}__DIST.cache.a1=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local ag,b=a.load'b'{}
+return function()
+	if not setthreadidentity then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"setidentity",
+		"setthreadcontext"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.a2():typeof(__modImpl())local v=__DIST.cache.a2 if not v then v={c=__modImpl()}__DIST.cache.a2=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not ag then
-return{
-status=501,
-message=`Alias not found: {b}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.bb()
+return function()
+	if not getthreadidentity then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	if typeof(getthreadidentity()) ~= "number" then
+		return {
+			status = 500,
+			message = "Did not return a number",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"getidentity",
+		"getthreadcontext"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.a3():typeof(__modImpl())local v=__DIST.cache.a3 if not v then v={c=__modImpl()}__DIST.cache.a3=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	if not setscriptable then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local originalPart = Instance.new("Part")
+
+	if pcall(function() local _ = originalPart.MaterialVariantSerialized end) then
+		return {
+			status = 500,
+			message = "Unaccessible property accessible",
+		}
+	end
+
+	setscriptable(originalPart, "MaterialVariantSerialized", true)
+	if not pcall(function() local _ = originalPart.MaterialVariantSerialized end) then
+		return {
+			status = 500,
+			message = "MaterialVariantSerialized inaccessible after being set as scriptable",
+		}
+	end
+
+	setscriptable(originalPart, "MaterialVariantSerialized", false)
+	if pcall(function() local _ = originalPart.MaterialVariantSerialized end) then
+		return {
+			status = 500,
+			message = "MaterialVariantSerialized accessible after being set as unscriptable",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.a4():typeof(__modImpl())local v=__DIST.cache.a4 if not v then v={c=__modImpl()}__DIST.cache.a4=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-local aa,ab=pcall(function()return game.Players.LocalPlayer.Character.Animate end)
-if not getscripthash then
-return{
-status=400,
-message="Global not found",
-}
-elseif not aa then
-return{
-status=401,
-message="Testing dependency 'Animate' not found.",
-}
-end
+	if not isscriptable then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local originalPart = Instance.new("Part")
+
+	if not isscriptable(originalPart, "Name") then
+		return {
+			status = 500,
+			message = "Accessible property 'Name' assumed inaccessible",
+		}
+	elseif isscriptable(originalPart, "MaterialVariantSerialized") then
+		return {
+			status = 500,
+			message = "Inaccessible property 'MaterialVariantSerialized' assumed accessible",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.a5():typeof(__modImpl())local v=__DIST.cache.a5 if not v then v={c=__modImpl()}__DIST.cache.a5=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-local af=Instance.new"LocalScript"
-local ag,b=pcall(function()
-return getscripthash(ab)
-end)local
-c, d=pcall(function()
-return getscripthash(af)
-end)
-
-if not ag then
-return{
-status=500,
-message="Failed to get bytecode of 'Animate': "..b,
-}
-elseif not c then
-return{
-status=500,
-message="Failed to get script w/ no bytecode. Errored instead of returning nil.",
-}
-elseif typeof(b)~="string"then
-return{
-status=500,
-message="Did not return a hash string",
-}
-elseif hashNoBytecode~=nil then
-return{
-status=500,
-message="A script with no bytecode returned non-nil data",
-}
-end
 
-ab:Clone()
-local e=ab.Source
-ab.Source="return 1"
-local f=getscripthash(ab)
+return function()
+	if not getscripts then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local localScript = Instance.new("LocalScript")
+	local moduleScript = Instance.new("ModuleScript")
+	local serverScript = Instance.new("Script")
+	local clientRunContextScript = Instance.new("Script")
+	clientRunContextScript.RunContext = Enum.RunContext.Client
+	local scripts = getscripts()
+
+	if not table.find(scripts, localScript) then
+		return {
+			status = 500,
+			message = "LocalScript not found in returned table",
+		}
+	elseif not table.find(scripts, moduleScript) then
+		return {
+			status = 500,
+			message = "ModuleScript not found in returned table",
+		}
+	elseif not table.find(scripts, clientRunContextScript) then
+		return {
+			status = 500,
+			message = "ServerScript w/ client runcontext not found in returned table",
+		}
+	elseif table.find(scripts, serverScript) then
+		return {
+			status = 500,
+			message = "ServerScript found in returned table",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.a6():typeof(__modImpl())local v=__DIST.cache.a6 if not v then v={c=__modImpl()}__DIST.cache.a6=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if b==f then
-return{
-status=500,
-message="Gave the same hash for a modified script",
-}
-end
 
-ab.Source=e
+return function()
+	if not getrunningscripts then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local animate = game.Players.LocalPlayer.Character:FindFirstChild("Animate")
+	local runningScript = game.Players.LocalPlayer.Character:FindFirstChild("whysoud")
+	local disabledScript = game.Players.LocalPlayer.Character:FindFirstChild("whysodtc")
+	local nonrunningScript = game.Players.LocalPlayer.Character:FindFirstChild("maybeisdtc")
+	-- Having all of these are not neccessary, but might as well keep them (This was cloned from ./getscripts.luau)
+	local localScript = Instance.new("LocalScript")
+	local moduleScript = Instance.new("ModuleScript")
+	local serverScript = Instance.new("Script")
+	local clientRunContextScript = Instance.new("Script")
+	clientRunContextScript.RunContext = Enum.RunContext.Client
+	local runningScripts = getrunningscripts()
+
+	if table.find(runningScripts, localScript) then
+		return {
+			status = 500,
+			message = "LocalScript found in returned table",
+		}
+	elseif table.find(runningScripts, moduleScript) then
+		return {
+			status = 500,
+			message = "ModuleScript found in returned table",
+		}
+	elseif table.find(runningScripts, clientRunContextScript) then
+		return {
+			status = 500,
+			message = "ServerScript w/ client runcontext found in returned table",
+		}
+	elseif table.find(runningScripts, serverScript) then
+		return {
+			status = 500,
+			message = "ServerScript found in returned table",
+		}
+	elseif table.find(runningScripts, disabledScript) then
+		return {
+			status = 500,
+			message = "Disabled script found in returned table",
+		}
+	elseif table.find(runningScripts, nonrunningScript) then
+		return {
+			status = 500,
+			message = "Non-running script found in returned table",
+		}
+	elseif not table.find(runningScripts, animate) or not table.find(runningScripts, runningScript) then
+		return {
+			status = 500,
+			message = "Didn't find a running script in the returned table"
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.a7():typeof(__modImpl())local v=__DIST.cache.a7 if not v then v={c=__modImpl()}__DIST.cache.a7=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local g,h=a.load'b'{}
+return function()
+	if not getcallingscript then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not checkcaller then
+		return {
+			status = 401,
+			message = "Dependency 'checkcaller' not found"
+		}
+	elseif not hookmetamethod then
+		return {
+			status = 401,
+			message = "Dependency 'hookmetamethod' not found"
+		}
+	end
+
+	--// Functionality test
+	local original;
+	original = hookmetamethod(game, "__index", function(self, index)
+		if not checkcaller() then
+			local caller = getcallingscript()
+
+			hookmetamethod(game, "__index", original)
+		end
+
+		return original(self, index)
+	end) -- https://docs.sunc.su/Scripts/getcallingscript/#example
+
+	if getcallingscript() then
+		return {
+			status = 500,
+			message = "Executor call assumed to be a game call"
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.a8():typeof(__modImpl())local v=__DIST.cache.a8 if not v then v={c=__modImpl()}__DIST.cache.a8=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-if not g then
-return{
-status=501,
-message=`Alias not found: {h}`,
-}
-end
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.bc()
+return function()
+	local indexedModule, module = pcall(function() return game:GetService("StarterPlayer").StarterPlayerScripts.PlayerModule end)
+	if not getloadedmodules then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not indexedModule then
+		return {
+			status = 401,
+			message = "Testing dependency 'PlayerModule' not found.",
+		}
+	end
+
+	--// Functionality test
+	local loadedModule = require(module)
+	local unloadedModule = Instance.new("ModuleScript")
+
+	local loadedModules = getloadedmodules()
+	if not table.find(loadedModules, module) then
+		return {
+			status = 500,
+			message = "Loaded module not found in returned table",
+		}
+	elseif table.find(loadedModules, unloadedModule) then
+		return {
+			status = 500,
+			message = "Unloaded module found in returned table",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.a9():typeof(__modImpl())local v=__DIST.cache.a9 if not v then v={c=__modImpl()}__DIST.cache.a9=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
+return function()
+	local indexedAnimate, Animate = pcall(function()
+		return game.Players.LocalPlayer.Character.Animate
+	end)
+	if not getloadedmodules then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not indexedAnimate then
+		return {
+			status = 401,
+			message = "Testing dependency 'Animate' not found.",
+		}
+	end
+
+	--// Functionality test
+	local enironment = getsenv(Animate)
+	if not enironment.onSwimming or not typeof(enironment.onSwimming) == "function" then
+		return {
+			status = 500,
+			message = "Global in test script wasn't found, or didn't return the right type",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.ba():typeof(__modImpl())local v=__DIST.cache.ba if not v then v={c=__modImpl()}__DIST.cache.ba=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not loadstring then
-return{
-status=400,
-message="Global not found",
-}
-end
+	local indexedAnimate, Animate = pcall(function() return game.Players.LocalPlayer.Character.Animate end)
+	if not getscripthash then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not indexedAnimate then
+		return {
+			status = 401,
+			message = "Testing dependency 'Animate' not found.",
+		}
+	end
+
+	local noBytecodeScript = Instance.new("LocalScript")
+	local animateSuccess, animateReturned = pcall(function()
+		return getscripthash(Animate)
+	end)
+	local noBytecodeSuccess, noBytecodeReturned = pcall(function()
+		return getscripthash(noBytecodeScript)
+	end)
+
+	if not animateSuccess then
+		return {
+			status = 500,
+			message = "Failed to get bytecode of 'Animate': " .. animateReturned,
+		}
+	elseif not noBytecodeSuccess then
+		return {
+			status = 500,
+			message = "Failed to get script w/ no bytecode. Errored instead of returning nil.",
+		}
+	elseif typeof(animateReturned) ~= "string" then
+		return {
+			status = 500,
+			message = "Did not return a hash string",
+		}
+	elseif hashNoBytecode ~= nil then
+		return {
+			status = 500,
+			message = "A script with no bytecode returned non-nil data",
+		}
+	end
+
+	local newAnimate = Animate:Clone()
+	local oldSource = Animate.Source
+	Animate.Source = "return 1"
+	local newHash = getscripthash(Animate)
+
+	if animateReturned == newHash then
+		return {
+			status = 500,
+			message = "Gave the same hash for a modified script",
+		}
+	end
+
+	Animate.Source = oldSource
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.bb():typeof(__modImpl())local v=__DIST.cache.bb if not v then v={c=__modImpl()}__DIST.cache.bb=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-local aa=loadstring("MYRIAD","MYRIAD")
 
-loadstring[[
+return function()
+	if not loadstring then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	local func = loadstring("MYRIAD", "MYRIAD")
+
+	loadstring([[
 		globalVar = {"Hello", "World"}
-	]]()
+	]])()
+	
+	if not globalVar or not (globalVar[1] == "Hello" and globalVar[2] == "World") then
+		return {
+			status = 500,
+			message = "Global variable insert from loadstring not found",
+		}
+	elseif func ~= nil then
+		return {
+			status = 500,
+			message = "Didn't error on incomplete expression",
+		}
+	end
 
-if not globalVar or not(globalVar[1]=="Hello"and globalVar[2]=="World")then
-return{
-status=500,
-message="Global variable insert from loadstring not found",
-}
-elseif aa~=nil then
-return{
-status=500,
-message="Didn't error on incomplete expression",
-}
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
 end
-
-
-local ab,af=a.load'b'{}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {af}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.bd()
-
-
-
-
-return function()a.load'r'
-
-if not getrunningscripts then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa=game.Players.LocalPlayer.Character:FindFirstChild"whysoud"
-local ab=getscriptbytecode(aa)
-local af={
-"sigma",
-"task",
-"wait",
-"GOT A DROP ON THIS FLEXING FELLA<MYRIAD_UD_MAX_UD_NEVER_SPEAK_TO_ME_AGAIN_KING_VON_IS_A_SAINT",
-"tostring"
-}
-
-for ag,b in pairs(af)do
-if not ab:find(b)then
-return{
-status=500,
-message="Didn't find an expected segment in the bytecode"
-}
-end
-end
-
-
-local ag,b=a.load'b'{
-"dumpstring"
-}
-
-if not ag then
-return{
-status=501,
-message=`Alias not found: {b}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.be()
-
-
-
-
-return function()a.load'r'
-
-if not getscriptclosure then
-return{
-status=400,
-message="Global not found",
-}
-end
-
-
-local aa=game.Players.LocalPlayer.Character:FindFirstChild"maybeisdtc"
-local ab=getscriptclosure(aa)
-
-if typeof(ab)~="function"then
-return{
-status=500,
-message="Expected a closure"
-}
-elseif ab()~="GOT A DROP ON THIS FLEXING FELLA"then
-return{
-status=500,
-message="Closure did not return the expected value"
-}
-end
-
-
-local af,ag=a.load'b'{
-"getscriptfunction"
-}
-
-if not af then
-return{
-status=501,
-message=`Alias not found: {ag}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.bf()
-
-
+end function __DIST.bc():typeof(__modImpl())local v=__DIST.cache.bc if not v then v={c=__modImpl()}__DIST.cache.bc=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-local aa,ab=pcall(function()
-return game.ReplicatedFirst.decompmeplssss
-end)
+	local cryptReference = __DIST.r()
+	if not getrunningscripts then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
 
-if not decompile then
-return{
-status=400,
-message="Global not found",
-}
-elseif not aa then
-return{
-status=401,
-message="Testing dependency 'ReplicatedFirst.decompmeplssss' not found.",
-}
+	--// Functionality test
+	local originalScript = game.Players.LocalPlayer.Character:FindFirstChild("whysoud")
+	local bytecode = getscriptbytecode(originalScript)
+	local expectedSegments = {
+		"sigma",
+		"task",
+		"wait",
+		"GOT A DROP ON THIS FLEXING FELLA<MYRIAD_UD_MAX_UD_NEVER_SPEAK_TO_ME_AGAIN_KING_VON_IS_A_SAINT",
+		"tostring"
+	}
+
+	for _, v in pairs(expectedSegments) do
+		if not bytecode:find(v) then
+			return {
+				status = 500,
+				message = "Didn't find an expected segment in the bytecode"
+			}
+		end
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"dumpstring"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
 end
-
-
-local function checkPatterns(af,ag)
-local b={}
-for c,d in ipairs(ag)do
-if not af:find(d,1,true)then
-table.insert(b,d)
-end
-end
-
-if#b>0 then
-return false,b
-end
-
-return true
-end
-
-local af=decompile(ab)
-
-if typeof(af)~="string"then
-return{
-status=500,
-message="Decompiled script isn't a string",
-}
-elseif#af<=0 then
-return{
-status=500,
-message="Decompiled script didn't return anything",
-}
-end
-
-local ag,b=checkPatterns(af,{
-"truthy",
-"falsey",
-"123",
-"456",
-"TableWeirdness",
-"func",
-"inline-fn",
-"loopFn",
-"nil-check",
-"true-check",
-"fallback",
-"setmetatable",
-"__index",
-"secret",
-"found",
-"MethodStyle",
-})
-
-if not ag then
-return{
-status=500,
-message="Decompiled script missing expected strings: "..table.concat(b,", "),
-}
-end
-
-
-local c,d=a.load'b'{}
-if not c then
-return{
-status=501,
-message=`Alias not found: {d}`,
-}
-end
-
-return{
-status=200,
-message="Passed",
-}
-end end function a.bg()
-
-
+end function __DIST.bd():typeof(__modImpl())local v=__DIST.cache.bd if not v then v={c=__modImpl()}__DIST.cache.bd=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not isparallel then
-return{
-status=400,
-message="Global not found",
-}
-elseif not run_on_actor then
-return{
-status=401,
-message="Dependency 'run_on_actor' not found",
-}
+	local cryptReference = __DIST.r()
+	if not getscriptclosure then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local originalScript = game.Players.LocalPlayer.Character:FindFirstChild("maybeisdtc")
+	local closure = getscriptclosure(originalScript)
+
+	if typeof(closure) ~= "function" then
+		return {
+			status = 500,
+			message = "Expected a closure"
+		}
+	elseif closure() ~= "GOT A DROP ON THIS FLEXING FELLA" then
+		return {
+			status = 500,
+			message = "Closure did not return the expected value"
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"getscriptfunction"
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
 end
+end function __DIST.be():typeof(__modImpl())local v=__DIST.cache.be if not v then v={c=__modImpl()}__DIST.cache.be=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-local aa=game.Players.LocalPlayer.Character:FindFirstChild"PMOVON"
+return function()
+	local indexedDcmpScript, dcmp = pcall(function()
+		return game.ReplicatedFirst.decompmeplssss
+	end)
 
-if isparallel()then
-return{
-status=500,
-message="Non-parallel thread assumed to be in a parallel state"
-}
+	if not decompile then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not indexedDcmpScript then
+		return {
+			status = 401,
+			message = "Testing dependency 'ReplicatedFirst.decompmeplssss' not found.",
+		}
+	end
+
+	--// Functionality test
+	local function checkPatterns(source, patterns)
+		local missing = {}
+		for _, pattern in ipairs(patterns) do
+			if not source:find(pattern, 1, true) then
+				table.insert(missing, pattern)
+			end
+		end
+
+		if #missing > 0 then
+			return false, missing
+		end
+
+		return true
+	end
+
+	local dcmpDecompiled = decompile(dcmp)
+
+	if typeof(dcmpDecompiled) ~= "string" then
+		return {
+			status = 500,
+			message = "Decompiled script isn't a string",
+		}
+	elseif #dcmpDecompiled <= 0 then
+		return {
+			status = 500,
+			message = "Decompiled script didn't return anything",
+		}
+	end
+
+	local passed, missing = checkPatterns(dcmpDecompiled, {
+		"truthy",
+		"falsey",
+		"123",
+		"456",
+		"TableWeirdness",
+		"func",
+		"inline-fn",
+		"loopFn",
+		"nil-check",
+		"true-check",
+		"fallback",
+		"setmetatable",
+		"__index",
+		"secret",
+		"found",
+		"MethodStyle",
+	})
+
+	if not passed then
+		return {
+			status = 500,
+			message = "Decompiled script missing expected strings: " .. table.concat(missing, ", "),
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = "Passed",
+	}
 end
+end function __DIST.bf():typeof(__modImpl())local v=__DIST.cache.bf if not v then v={c=__modImpl()}__DIST.cache.bf=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
-run_on_actor(aa,[[
+return function()
+	if not isparallel then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not run_on_actor then
+		return {
+			status = 401,
+			message = "Dependency 'run_on_actor' not found",
+		}
+	end
+
+	--// Functionality test
+	local actor = game.Players.LocalPlayer.Character:FindFirstChild("PMOVON")
+
+	if isparallel() then
+		return {
+			status = 500,
+			message = "Non-parallel thread assumed to be in a parallel state"
+		}
+	end
+
+	-- Technically we should be able to set synchronization directly in this thread, but some executors might break doing so.
+	run_on_actor(actor, [[
 		print("MYRIAD: Ignore start -----------")
 		task.desynchronize()
 		if isparallel() then
@@ -15263,1377 +8719,1379 @@ run_on_actor(aa,[[
 		end
 	]])
 
-task.wait(0.1)
+	task.wait(0.1)
 
-if not game.ReplicatedStorage:FindFirstChild(os.date"%H".."(1)")then
-return{
-status=500,
-message="Parallel thread assumed to be in a non-parallel state"
-}
+	if not game.ReplicatedStorage:FindFirstChild(os.date("%H") .. "(1)") then
+		return {
+			status = 500,
+			message = "Parallel thread assumed to be in a non-parallel state"
+		}
+	end
+
+	task.wait()
+
+	if isparallel() then
+		return {
+			status = 500,
+			message = "Non-parallel thread assumed to be in a parallel state"
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
 end
 
-task.wait()
 
-if isparallel()then
-return{
-status=500,
-message="Non-parallel thread assumed to be in a parallel state"
-}
+--// Old check
+-- This may just be an AWP problem and this test is actually correct, but I don't feel like checking
+
+--[[ --!nocheck
+--!nolint
+
+return function()
+	if not create_comm_channel then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local passed = false
+	local r1 = math.random(1, 255)
+	local actor = game.Players.LocalPlayer.Character:FindFirstChild("PMOVON")
+
+	if not actor then
+		return {
+			status = 500,
+			message = "Failed to actor",
+		}
+	end
+
+	local function isBindable(obj)
+		if typeof(obj) == "Instance" and obj:IsA("BindableEvent") then
+			return true
+		end
+	
+		if typeof(obj) ~= "table" then
+			return false, "object is not a table"
+		end
+	
+		if typeof(obj.Event) ~= "RBXScriptSignal" and typeof(obj.Event) ~= "table" then
+			return false, "missing or invalid 'Event'"
+		end
+	
+		if typeof(obj.Event.Connect) ~= "function" then
+			return false, "missing or invalid 'Event.Connect'"
+		end
+	
+		if typeof(obj.Fire) ~= "function" then
+			return false, "missing or invalid 'Fire'"
+		end
+	
+		return true
+	end
+	
+	local comm_id, eventObject = create_comm_channel()
+	local success, prop = isBindable(eventObject)
+	
+	if not success then
+		return {
+			status = 500,
+			message = `EventObject isn't Bindable: {prop}`,
+		}
+	elseif typeof(comm_id) ~= "number" then
+		return {
+			status = 500,
+			message = "Communication ID isn't a number",
+		}
+	end	
+
+	eventObject.Event:Connect(function(num)
+		if num ~= r1 ^ 2 then
+			return {
+				status = 500,
+				message = "Passed argument[1] wasn't the expected value",
+			}
+		end
+
+		passed = true
+	end)
+
+	eventObject:Fire(r1 ^ 2)
+
+	task.wait()
+
+	if not passed then
+		return {
+			status = 500,
+			message = "Did not fire the event",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
 end
-
-
-local ab,af=a.load'b'{}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {af}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.bh()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ ]]end function __DIST.bg():typeof(__modImpl())local v=__DIST.cache.bg if not v then v={c=__modImpl()}__DIST.cache.bg=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not run_on_actor then
-return{
-status=400,
-message="Global not found",
-}
-end
+	if not run_on_actor then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
 
+	--// Functionality test
+	local actor = game.Players.LocalPlayer.Character:FindFirstChild("PMOVON")
 
-local aa=game.Players.LocalPlayer.Character:FindFirstChild"PMOVON"
+	if not actor then
+		return {
+			status = 500,
+			message = "Failed find to actor"
+		}
+	end
 
-if not aa then
-return{
-status=500,
-message="Failed find to actor"
-}
-end
-
-run_on_actor(aa,[[local originalPart = Instance.new("Part")
+	run_on_actor(actor, [[local originalPart = Instance.new("Part")
 		originalPart.Name = os.date("%H")
 		originalPart.Parent = game.ReplicatedStorage
 	]])
 
 task.wait(0.1)
 
-if not game.ReplicatedStorage:FindFirstChild(os.date"%H")then
-return{
-status=500,
-message="Failed to find a part created by the actor"
-}
+	if not game.ReplicatedStorage:FindFirstChild(os.date("%H")) then
+		return {
+			status = 500,
+			message = "Failed to find a part created by the actor"
+		}
+	end
+
+	game.ReplicatedStorage:FindFirstChild(os.date("%H")):Destroy()
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
 end
-
-game.ReplicatedStorage:FindFirstChild(os.date"%H"):Destroy()
-
-
-local ab,af=a.load'b'{}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {af}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.bi()
-
-
+end function __DIST.bh():typeof(__modImpl())local v=__DIST.cache.bh if not v then v={c=__modImpl()}__DIST.cache.bh=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not create_comm_channel then
-return{
-status=400,
-message="Global not found",
-}
-elseif not run_on_actor then
-return{
-status=401,
-message="Dependency 'run_on_actor' not found",
-}
-elseif not get_comm_channel then
-return{
-status=401,
-message="Dependency 'get_comm_channel' not found",
-}
-end
+	if not create_comm_channel then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not run_on_actor then
+		return {
+			status = 401,
+			message = "Dependency 'run_on_actor' not found",
+		}
+	elseif not get_comm_channel then
+		return {
+			status = 401,
+			message = "Dependency 'get_comm_channel' not found",
+		}
+	end
 
+	--// Functionality test
+	local passed = 0
+	local actor = game.Players.LocalPlayer.Character:FindFirstChild("PMOVON")
 
-local aa=0
-local ab=game.Players.LocalPlayer.Character:FindFirstChild"PMOVON"
+	if not actor then
+		return {
+			status = 500,
+			message = "Failed to find actor",
+		}
+	end
+	
+	local comm_id, eventObject = create_comm_channel()
 
-if not ab then
-return{
-status=500,
-message="Failed to find actor",
-}
-end
+	if not eventObject then
+		return {
+			status = 500,
+			message = `EventObject dosen't exist`,
+		}
+	elseif typeof(comm_id) ~= "number" then
+		return {
+			status = 500,
+			message = "Communication ID isn't a number",
+		}
+	end	
 
-local af,ag=create_comm_channel()
+	eventObject.Event:Connect(function(arg)
+		if arg ~= "abs" then
+			passed = -1
+		end
 
-if not ag then
-return{
-status=500,
-message=`EventObject dosen't exist`,
-}
-elseif typeof(af)~="number"then
-return{
-status=500,
-message="Communication ID isn't a number",
-}
-end
+		passed = 1
+	end)
 
-ag.Event:Connect(function(b)
-if b~="abs"then
-aa=-1
-end
-
-aa=1
-end)
-
-run_on_actor(ab,[[
+	run_on_actor(actor, [[
 		local channel = get_comm_channel(...)
 		channel:Fire('abs')
-	]],af)
+	]], comm_id)
 
-task.wait(0.1)
+	task.wait(0.1)
 
-if aa==0 then
-return{
-status=500,
-message="Did not fire the event",
-}
-elseif not aa==-1 then
-return{
-status=500,
-message="Passed argument[1] wasn't the expected value",
-}
+	if passed == 0 then
+		return {
+			status = 500,
+			message = "Did not fire the event",
+		}
+	elseif not passed == -1 then
+		return {
+			status = 500,
+			message = "Passed argument[1] wasn't the expected value",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
 end
 
 
-local b,c=a.load'b'{}
+--// Old check
+-- This may just be an AWP problem and this test is actually correct, but I don't feel like checking
 
-if not b then
-return{
-status=501,
-message=`Alias not found: {c}`,
-}
+--[[ --!nocheck
+--!nolint
+
+return function()
+	if not create_comm_channel then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local passed = false
+	local r1 = math.random(1, 255)
+	local actor = game.Players.LocalPlayer.Character:FindFirstChild("PMOVON")
+
+	if not actor then
+		return {
+			status = 500,
+			message = "Failed to actor",
+		}
+	end
+
+	local function isBindable(obj)
+		if typeof(obj) == "Instance" and obj:IsA("BindableEvent") then
+			return true
+		end
+	
+		if typeof(obj) ~= "table" then
+			return false, "object is not a table"
+		end
+	
+		if typeof(obj.Event) ~= "RBXScriptSignal" and typeof(obj.Event) ~= "table" then
+			return false, "missing or invalid 'Event'"
+		end
+	
+		if typeof(obj.Event.Connect) ~= "function" then
+			return false, "missing or invalid 'Event.Connect'"
+		end
+	
+		if typeof(obj.Fire) ~= "function" then
+			return false, "missing or invalid 'Fire'"
+		end
+	
+		return true
+	end
+	
+	local comm_id, eventObject = create_comm_channel()
+	local success, prop = isBindable(eventObject)
+	
+	if not success then
+		return {
+			status = 500,
+			message = `EventObject isn't Bindable: {prop}`,
+		}
+	elseif typeof(comm_id) ~= "number" then
+		return {
+			status = 500,
+			message = "Communication ID isn't a number",
+		}
+	end	
+
+	eventObject.Event:Connect(function(num)
+		if num ~= r1 ^ 2 then
+			return {
+				status = 500,
+				message = "Passed argument[1] wasn't the expected value",
+			}
+		end
+
+		passed = true
+	end)
+
+	eventObject:Fire(r1 ^ 2)
+
+	task.wait()
+
+	if not passed then
+		return {
+			status = 500,
+			message = "Did not fire the event",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
 end
+ ]]end function __DIST.bi():typeof(__modImpl())local v=__DIST.cache.bi if not v then v={c=__modImpl()}__DIST.cache.bi=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.bj()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+--// Is literally just create_comm_channel 🤔
 
 
 return function()
-if not get_comm_channel then
-return{
-status=400,
-message="Global not found",
-}
-elseif not run_on_actor then
-return{
-status=401,
-message="Dependency 'run_on_actor' not found",
-}
-elseif not create_comm_channel then
-return{
-status=401,
-message="Dependency 'create_comm_channel' not found",
-}
-end
+	if not get_comm_channel then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	elseif not run_on_actor then
+		return {
+			status = 401,
+			message = "Dependency 'run_on_actor' not found",
+		}
+	elseif not create_comm_channel then
+		return {
+			status = 401,
+			message = "Dependency 'create_comm_channel' not found",
+		}
+	end
 
+	--// Functionality test
+	local passed = 0
+	local actor = game.Players.LocalPlayer.Character:FindFirstChild("PMOVON")
 
-local aa=0
-local ab=game.Players.LocalPlayer.Character:FindFirstChild"PMOVON"
+	if not actor then
+		return {
+			status = 500,
+			message = "Failed to find actor",
+		}
+	end
+	
+	local comm_id, eventObject = create_comm_channel()
 
-if not ab then
-return{
-status=500,
-message="Failed to find actor",
-}
-end
+	if not eventObject then
+		return {
+			status = 500,
+			message = `EventObject dosen't exist`,
+		}
+	elseif typeof(comm_id) ~= "number" then
+		return {
+			status = 500,
+			message = "Communication ID isn't a number",
+		}
+	end	
 
-local af,ag=create_comm_channel()
+	eventObject.Event:Connect(function(arg)
+		if arg ~= "abs" then
+			passed = -1
+		end
 
-if not ag then
-return{
-status=500,
-message=`EventObject dosen't exist`,
-}
-elseif typeof(af)~="number"then
-return{
-status=500,
-message="Communication ID isn't a number",
-}
-end
+		passed = 1
+	end)
 
-ag.Event:Connect(function(b)
-if b~="abs"then
-aa=-1
-end
-
-aa=1
-end)
-
-run_on_actor(ab,[[
+	run_on_actor(actor, [[
 		local channel = get_comm_channel(...)
 		channel:Fire('abs')
-	]],af)
+	]], comm_id)
 
-task.wait(0.1)
+	task.wait(0.1)
 
-if aa==0 then
-return{
-status=500,
-message="Did not fire the event",
-}
-elseif not aa==-1 then
-return{
-status=500,
-message="Passed argument[1] wasn't the expected value",
-}
+	if passed == 0 then
+		return {
+			status = 500,
+			message = "Did not fire the event",
+		}
+	elseif not passed == -1 then
+		return {
+			status = 500,
+			message = "Passed argument[1] wasn't the expected value",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
 end
 
 
-local b,c=a.load'b'{}
+--// Old check
+-- This may just be an AWP problem and this test is actually correct, but I don't feel like checking
 
-if not b then
-return{
-status=501,
-message=`Alias not found: {c}`,
-}
+--[[ --!nocheck
+--!nolint
+
+return function()
+	if not create_comm_channel then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local passed = false
+	local r1 = math.random(1, 255)
+	local actor = game.Players.LocalPlayer.Character:FindFirstChild("PMOVON")
+
+	if not actor then
+		return {
+			status = 500,
+			message = "Failed to actor",
+		}
+	end
+
+	local function isBindable(obj)
+		if typeof(obj) == "Instance" and obj:IsA("BindableEvent") then
+			return true
+		end
+	
+		if typeof(obj) ~= "table" then
+			return false, "object is not a table"
+		end
+	
+		if typeof(obj.Event) ~= "RBXScriptSignal" and typeof(obj.Event) ~= "table" then
+			return false, "missing or invalid 'Event'"
+		end
+	
+		if typeof(obj.Event.Connect) ~= "function" then
+			return false, "missing or invalid 'Event.Connect'"
+		end
+	
+		if typeof(obj.Fire) ~= "function" then
+			return false, "missing or invalid 'Fire'"
+		end
+	
+		return true
+	end
+	
+	local comm_id, eventObject = create_comm_channel()
+	local success, prop = isBindable(eventObject)
+	
+	if not success then
+		return {
+			status = 500,
+			message = `EventObject isn't Bindable: {prop}`,
+		}
+	elseif typeof(comm_id) ~= "number" then
+		return {
+			status = 500,
+			message = "Communication ID isn't a number",
+		}
+	end	
+
+	eventObject.Event:Connect(function(num)
+		if num ~= r1 ^ 2 then
+			return {
+				status = 500,
+				message = "Passed argument[1] wasn't the expected value",
+			}
+		end
+
+		passed = true
+	end)
+
+	eventObject:Fire(r1 ^ 2)
+
+	task.wait()
+
+	if not passed then
+		return {
+			status = 500,
+			message = "Did not fire the event",
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
 end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.bk()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ ]]end function __DIST.bj():typeof(__modImpl())local v=__DIST.cache.bj if not v then v={c=__modImpl()}__DIST.cache.bj=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not getactors then
-return{
-status=400,
-message="Global not found",
-}
+	if not getactors then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local found = false
+	local actor = game.Players.LocalPlayer.Character:FindFirstChild("PMOVON")
+
+	for i, v in pairs(getactors()) do
+		if v == actor then
+			found = true
+		end
+	end
+
+	if not found then
+		return {
+			status = 500,
+			message = "Didn't find a game actor"
+		}
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
 end
-
-
-local aa=false
-local ab=game.Players.LocalPlayer.Character:FindFirstChild"PMOVON"
-
-for af,ag in pairs(getactors())do
-if ag==ab then
-aa=true
-end
-end
-
-if not aa then
-return{
-status=500,
-message="Didn't find a game actor"
-}
-end
-
-
-local af,ag=a.load'b'{}
-
-if not af then
-return{
-status=501,
-message=`Alias not found: {ag}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.bl()
-
-
+end function __DIST.bk():typeof(__modImpl())local v=__DIST.cache.bk if not v then v={c=__modImpl()}__DIST.cache.bk=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint
 
 
 return function()
-if not WebSocket or not WebSocket.connect then
-return{
-status=400,
-message="Global not found",
+	if not WebSocket or not WebSocket.connect then
+		return {
+			status = 400,
+			message = "Global not found",
+		}
+	end
+
+	--// Functionality test
+	local socket = WebSocket.connect("wss://echo.websocket.org/")
+	if not (type(socket) == "table" or type(socket) == "userdata") then
+		return {
+			status = 500,
+			message = "Didn't give a table | userdata",
+		}
+	end
+
+	for property, expected in pairs({
+		-- prop name, type(s)[subtype(s), tableProp]
+		["OnClose"] = {"RBXScriptSignal", {["table"] = {"Connect", "Once", "Wait"}}},
+		["OnMessage"] = {"RBXScriptSignal", {["table"] = {"Connect", "Once", "Wait"}}},
+		["Send"] = "function",
+		["Close"] = "function",
+	}) do
+		local success, value = pcall(function()
+			return socket[property]
+		end)
+	
+		if not success or value == nil then
+			return {
+				status = 500,
+				message = `WebSocketObject is missing: {property}`,
+			}
+		end
+	
+		local expectedType = typeof(expected) == "table" and expected[1] or expected
+		if typeof(value) ~= expectedType then
+			return {
+				status = 500,
+				message = `WebSocketObject.{property} is not a {expectedType} (got {typeof(value)})`,
+			}
+		end
+	
+		if typeof(expected) == "table" and expected[2] and typeof(expected[2]) == "table" then
+			for containerType, subProps in pairs(expected[2]) do
+				if containerType == "table" and typeof(value) == "table" then
+					for _, subProp in ipairs(subProps) do
+						if typeof(value[subProp]) ~= "function" then
+							return {
+								status = 500,
+								message = `WebSocketObject.{property}.{subProp} is not a function`,
+							}
+						end
+					end
+				end
+			end
+		end
+	end
+	
+	if result then
+		return result
+	end
+
+	--// Alias test
+	local envIndex, failedIndex = __DIST.b()({
+		"websocket.connect",
+	})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	return {
+		status = 200,
+		message = `Passed`,
+	}
+end
+end function __DIST.bl():typeof(__modImpl())local v=__DIST.cache.bl if not v then v={c=__modImpl()}__DIST.cache.bl=v end return v.c end end do local function __modImpl()
+return {
+		cache = {
+			["cache.invalidate"] = __DIST.c(),
+			["cache.iscached"] = __DIST.d(),
+			["cache.replace"] = __DIST.e(),
+		},
+
+		Closures = {
+			["islclosure"] = __DIST.f(),
+			["iscclosure"] = __DIST.g(),
+			["isexecutorclosure"] = __DIST.h(),
+			["newcclosure"] = __DIST.i(),
+			["clonefunction"] = __DIST.j(),
+			["hookfunction"] = __DIST.k(),
+			["restorefunction"] = __DIST.l(),
+			["getfunctionhash"] = __DIST.m(),
+			["checkcaller"] = __DIST.n(),
+		},
+
+		crypt = {
+			["crypt.encrypt"] = __DIST.s(),
+			["crypt.decrypt"] = __DIST.t(),
+			["crypt.generatekey"] = __DIST.u(),
+			["crypt.generatebytes"] = __DIST.v(),
+			["crypt.base64encode"] = __DIST.w(),
+			["crypt.base64decode"] = __DIST.x(),
+			["crypt.hash"] = __DIST.y(),
+			["crypt.random"] = __DIST.z(),
+			["crypt.hmac"] = __DIST.A(),
+		},
+
+		debug = {
+			["debug.getconstant"] = __DIST.B(),
+			["debug.getconstants"] = __DIST.C(),
+			["debug.getproto"] = __DIST.D(),
+			["debug.getprotos"] = __DIST.E(),
+			["debug.getupvalue"] = __DIST.F(),
+			["debug.getupvalues"] = __DIST.G(),
+			["debug.getstack"] = __DIST.H(),
+			["debug.setconstant"] = __DIST.I(),
+			["debug.setupvalue"] = __DIST.J(),
+		},
+
+		Drawing = {
+			["Drawing.new"] = __DIST.K(),
+			["Drawing.Fonts"] = __DIST.L(),
+			["getrenderproperty"] = __DIST.M(),
+			["setrenderproperty"] = __DIST.N(),
+			["cleardrawcache"] = __DIST.O(),
+			["isrenderobj"] = __DIST.P(),
+		},
+
+		Environment = {
+			["getgenv"] = __DIST.Q(),
+			["getrenv"] = __DIST.R(),
+			["getgc"] = __DIST.S(),
+			["filtergc"] = __DIST.T(),
+		},
+
+		Filesystem = {
+			["getcustomasset"] = __DIST.U(),
+			["listfiles"] = __DIST.V(),
+			["loadfile"] = __DIST.W(),
+			["appendfile"] = __DIST.X(),
+			["delfile"] = __DIST.Y(),
+			["delfolder"] = __DIST.Z(),
+			["isfile"] = __DIST._(),
+			["isfolder"] = __DIST.aa(),
+			["writefile"] = __DIST.ab(),
+			["readfile"] = __DIST.ac(),
+			["makefolder"] = __DIST.ad(),
+		},
+
+		Input = {
+			["isrbxactive"] = __DIST.ae(),
+			["keypress"] = __DIST.af(),
+			["keyrelease"] = __DIST.ag(),
+			["keytap"] = __DIST.ah(),
+			["mouse1click"] = __DIST.ai(),
+			["mouse1press"] = __DIST.aj(),
+			["mouse1release"] = __DIST.ak(),
+			["mouse2click"] = __DIST.al(),
+			["mouse2press"] = __DIST.am(),
+			["mouse2release"] = __DIST.an(),
+			["mousemoveabs"] = __DIST.ao(),
+			["mousemoverel"] = __DIST.ap(),
+			["mousescroll"] = __DIST.aq(),
+			["setclipboard"] = __DIST.ar(),
+			["setrbxclipboard"] = __DIST.as(),
+		},
+
+		Instances = {
+			["gethui"] = __DIST.at(),
+			["cloneref"] = __DIST.au(),
+			["compareinstances"] = __DIST.av(),
+			["getinstances"] = __DIST.aw(),
+			["getnilinstances"] = __DIST.ax(),
+			["getcallbackvalue"] = __DIST.ay(),
+			["fireclickdetector"] = __DIST.az(),
+			["fireproximityprompt"] = __DIST.aA(),
+			["firetouchinterest"] = __DIST.aB(),
+			["saveinstance"] = __DIST.aC(),
+		},
+
+		Metatable = {
+			["getrawmetatable"] = __DIST.aD(),
+			["setrawmetatable"] = __DIST.aE(),
+			["hookmetamethod"] = __DIST.aF(),
+			["getnamecallmethod"] = __DIST.aG(),
+			["setreadonly"] = __DIST.aH(),
+			["makereadonly"] = __DIST.aI(),
+			["isreadonly"] = __DIST.aJ(),
+		},
+
+		Miscellaneous = {
+			["identifyexecutor"] = __DIST.aK(),
+			["setfpscap"] = __DIST.aL(),
+			["getfpscap"] = __DIST.aM(),
+			["request"] = __DIST.aN(),
+			["lz4compress"] = __DIST.aO(),
+			["lz4decompress"] = __DIST.aP(),
+			["queue_on_teleport"] = __DIST.aQ(),
+		},
+
+		External = {
+			["messagebox"] = __DIST.aR(),
+			["rconsoleprint"] = __DIST.aS(),
+			["rconsoleinfo"] = __DIST.aT(),
+			["rconsolewarn"] = __DIST.aU(),
+			["rconsoleerr"] = __DIST.aV(),
+			["rconsoleinput"] = __DIST.aW(),
+			["rconsoleclear"] = __DIST.aX(),
+			["rconsolename"] = __DIST.aY(),
+			["rconsolehide"] = __DIST.aZ(),
+			["rconsoleshow"] = __DIST.a_(),
+		},
+
+		Reflection = {
+			["sethiddenproperty"] = __DIST.a0(),
+			["gethiddenproperty"] = __DIST.a1(),
+			["setthreadidentity"] = __DIST.a2(),
+			["getthreadidentity"] = __DIST.a3(),
+			["setscriptable"] = __DIST.a4(),
+			["isscriptable"] = __DIST.a5(),
+		},
+
+		Scripts = {
+			["getscripts"] = __DIST.a6(),
+			["getrunningscripts"] = __DIST.a7(),
+			["getcallingscript"] = __DIST.a8(),
+			["getloadedmodules"] = __DIST.a9(),
+			["getsenv"] = __DIST.ba(),
+			["getscripthash"] = __DIST.bb(),
+			["loadstring"] = __DIST.bc(),
+			["getscriptbytecode"] = __DIST.bd(),
+			["getscriptclosure"] = __DIST.be(),
+			["decompile"] = __DIST.bf(),
+		},
+
+		Signals = {
+			
+		},
+
+		Actors = {
+			["isparallel"] = __DIST.bg(),
+			["run_on_actor"] = __DIST.bh(),
+			["create_comm_channel"] = __DIST.bi(),
+			["get_comm_channel"] = __DIST.bj(),
+			["getactors"] = __DIST.bk(),
+		},
+
+		WebSocket = {
+			["connect"] = __DIST.bl(),
+		},
+	}end function __DIST.bm():typeof(__modImpl())local v=__DIST.cache.bm if not v then v={c=__modImpl()}__DIST.cache.bm=v end return v.c end end do local function __modImpl()--!nocheck
+
+
+return function(name, tab)
+	--// Imports
+	local checks = __DIST.bm()
+
+	--// Variables
+	local currentTask = nil
+	local output = nil
+	local lastEntreePerGroup = {}
+	local results = {}
+
+	local testConfig = {
+		checkpointDelay = 0,
+		statusFilter = false,
+		stripRichtext = false,
+		formatDiff = false,
+		includeMetadata = false,
+	}
+
+	local uni = {
+		bullet = "•",
+	}
+
+	local statusCodes = {
+		[0] = "❓", -- Call errored/failed
+		[200] = "✅", -- Passed
+		[400] = "🔎", -- Global not found
+		[401] = "📦", -- Dependency not found
+		[500] = "🛠️", -- Failed functionality test
+		[501] = "🏷️", -- Missing alias
+	}
+
+	--// Functions
+	local printc = function(...)
+		local message = table.concat({ ... }, " ")
+		output:AppendText(message)
+	end
+
+	local warnc = function(...)
+		local message = table.concat({ ... }, " ")
+		output:AppendText(`<font color="#FFA500">{message}</font>`)
+	end
+
+	local function test()
+		if currentTask then
+			task.cancel(currentTask)
+		end
+
+		currentTask = task.spawn(function()
+			local startTime = time()
+			local passed = 0
+			local failed = 0
+			local numStandards = 0
+
+			for groupName, group in checks do
+				lastEntreePerGroup[groupName] = nil
+				results[groupName] = {}
+
+				for name in group do
+					numStandards += 1
+					lastEntreePerGroup[groupName] = name
+				end
+			end
+
+			local flattened = {}
+			for groupName, group in checks do
+				for name, test in group do
+					table.insert(flattened, {
+						groupName = groupName,
+						name = name,
+						test = test,
+					})
+				end
+			end
+
+			for i, entry in ipairs(flattened) do
+				local groupName = entry.groupName
+				local name = entry.name
+				local test = entry.test
+
+				local nextEntry = flattened[i + 1]
+
+				local success, result = pcall(test)
+				local status, message
+
+				if not success then
+					status = 0
+					message = result
+					failed += 1
+					output:SetValue(`<font color="#FFA500">{name} failed</font>`)
+				elseif result.status == 200 then
+					status = result.status
+					message = result.message
+					passed += 1
+					output:SetValue(`<font color="#84FF00">{name} passed</font>`)
+				else
+					status = result.status
+					message = result.message
+					failed += 1
+					output:SetValue(`<font color="#FFA500">{name} failed</font>`)
+				end
+
+				if nextEntry then
+					printc(`Next test: {nextEntry.name}`)
+				end
+
+				table.insert(results[groupName], {
+					name = name,
+					status = status,
+					message = message,
+				})
+
+				if testConfig.checkpointDelay ~= 0 then
+					task.wait(testConfig.checkpointDelay)
+				end
+			end
+
+			output:Clear()
+
+			for groupName, groupResults in results do
+				local includesFilter = false
+				local groupProcessed = false
+
+				for _, result in groupResults do
+					if not testConfig.statusFilter or statusCodes[result.status] == testConfig.statusFilter then
+						if not groupProcessed then
+							printc(groupName .. ":")
+							groupProcessed = true
+						end
+						local displayFunc = (result.status == 200) and printc or warnc
+						displayFunc(`{uni.bullet} {statusCodes[result.status]} {result.name}: {result.message}`)
+						includesFilter = true
+					end
+				end
+
+				if includesFilter then
+					printc("")
+				end
+			end
+
+			if testConfig.stripRichtext then
+				output:SetValue(output:GetValue():gsub("<br%s*/>", "\n"):gsub("<[^<>]->", ""))
+			end
+			if testConfig.formatDiff then -- Why is GPT so goated
+				output:SetValue(output:GetValue():gsub("<br%s*/>", "\n"):gsub("<[^<>]->", ""))
+				local input = output:GetValue()
+				local lines = {}
+
+				for i, line in ipairs(string.split(input, "\n")) do
+					local cleaned = line:gsub("^•%s*", ""):gsub("^%s*(.-)%s*$", "%1")
+
+					if cleaned ~= "" then
+						if cleaned:find("✅") then
+							lines[i] = "+ " .. cleaned
+						elseif
+							cleaned:find("🔎")
+							or cleaned:find("❓")
+							or cleaned:find("🛠️")
+							or cleaned:find("📦")
+							or cleaned:find("🏷️")
+						then
+							lines[i] = "- " .. cleaned
+						else
+							lines[i] = cleaned
+						end
+					else
+						lines[i] = ""
+					end
+				end
+
+				output:SetValue(table.concat(lines, "\n"))
+			end
+
+			local endTime = math.floor((time() - startTime) * 10 ^ 2 + 0.5) / 10 ^ 2
+			local executor, executorVers = identifyexecutor()
+
+			printc(`Summary:`)
+			printc(`{uni.bullet} Took: {endTime}s`)
+			printc(`{uni.bullet} Executor: {executor or "Unknown"}`)
+			printc(`{uni.bullet} Tested: {numStandards}`)
+			printc(`{uni.bullet} Passed: {passed}`)
+			printc(`{uni.bullet} Failed: {failed}`)
+			printc(`{uni.bullet} Pass Rate: {math.round(passed / numStandards * 100)}%`)
+
+			if testConfig.includeMetadata then
+				local input = output:GetValue()
+
+				local metadata = string.format(
+					'@metadata {\n  "generated": "%s",\n  "executor": "%s",\n  "version": "%s",\n} \n\n',
+					DateTime.now():ToIsoDate(),
+					executor,
+					executorVers
+				)
+
+				output:SetValue(metadata .. input)
+			end
+
+			game.ReplicatedStorage.res:FireServer(results, {
+				["testBuildMetadata"] = _P,
+				["executor"] = executor,
+				["executorVersion"] = executorVers,
+				["tested"] = numStandards,
+				["passed"] = passed,
+				["failed"] = failed,
+				["testTime"] = endTime,
+				["generated"] = DateTime.now():ToIsoDate(),
+			})
+		end)
+	end
+
+	--// Initialize
+	tab:Button({
+		Text = "Run test",
+		Callback = function()
+			coroutine.wrap(test)()
+		end,
+	})
+
+	do -- Test Options
+		local testOptions = tab:TreeNode({ Title = "Test options" })
+
+		testOptions:Combo({
+			Label = "Status filter",
+			Selected = "All",
+			Items = {
+				"All",
+				"✅ Pass",
+				"❓ Ambiguous",
+				"🔎 Missing",
+				"📦 Dependency",
+				"🛠️ Functionality",
+				"🏷️ Alias",
+			},
+			Callback = function(self, value)
+				local lookup = { -- It won't be in order if I don't do it this way
+					["All"] = false,
+					["✅ Pass"] = statusCodes[200],
+					["❓ Ambiguous"] = statusCodes[0],
+					["🔎 Missing"] = statusCodes[400],
+					["📦 Dependency"] = statusCodes[401],
+					["🛠️ Functionality"] = statusCodes[500],
+					["🏷️ Alias"] = statusCodes[501],
+				}
+
+				testConfig.statusFilter = lookup[value]
+			end,
+		})
+
+		testOptions:SliderFloat({
+			Label = "Checkpoint delay",
+			Default = 0.0,
+			Minimum = 0.0,
+			Maximum = 1.0,
+			Format = "Delay = %.2f",
+			Callback = function(self, value)
+				testConfig.checkpointDelay = value
+			end,
+		})
+
+		testOptions:Checkbox({
+			Value = false,
+			Label = "Include Metadata",
+			Callback = function(self, value)
+				testConfig.includeMetadata = value
+			end,
+		})
+
+		testOptions:Checkbox({
+			Value = false,
+			Label = "Strip Rich-text",
+			Callback = function(self, value)
+				testConfig.stripRichtext = value
+			end,
+		})
+
+		testOptions:Checkbox({
+			Value = false,
+			Label = "Format in diff",
+			Callback = function(self, value)
+				testConfig.formatDiff = value
+			end,
+		})
+	end
+
+	do -- Info
+		local info = tab:TreeNode({ Title = "Info" })
+		info:Label({
+			Text = "Test checks are in this order:\n- Global check\n- Dependency check \n- Functionality check \n- Alias Test\nThis means that if you are missing an alias, you still passed the functionality test. Aliases are important, it helps preserve old scripts, and conventions for programmers who use one over the other.",
+			TextWrapped = true,
+		})
+	end
+
+	output = tab:Console({
+		ReadOnly = true,
+		RichText = true,
+		LineHeight = 1.3,
+		Fill = true,
+	}):Clear()
+
+	return results
+end
+end function __DIST.bn():typeof(__modImpl())local v=__DIST.cache.bn if not v then v={c=__modImpl()}__DIST.cache.bn=v end return v.c end end do local function __modImpl()--!nocheck
+--!nolint LocalUnused
+
+
+return function(name, tab)
+	--// Variables
+	local output = nil
+
+	local lastEntreePerGroup = {}
+	local numStandards = 0
+	local passed = 0
+	local failed = 0
+
+	local uni = {
+		bullet = "•",
+	}
+	local statusCodes = {
+		[0] = "❓", -- Call errored/failed
+		[200] = "✅", -- Passed
+		[400] = "🚫", -- Not mitigated
+		[401] = "📦", -- Dependency not found
+	}
+
+	--// Functions
+	local printc = function(...)
+		local message = table.concat({ ... }, " ")
+		output:AppendText(message)
+	end
+	
+	local warnc = function(...)
+		local message = table.concat({ ... }, " ")
+		output:AppendText(`<font color="#FFA500">{message}</font>`)
+	end	
+
+	--// Initialize
+	output = tab:Console({
+		ReadOnly = true,
+		RichText = true,
+		LineHeight = 1.3,
+		Fill = true,
+	}):Clear()
+
+	printc("Not implemented.")
+
+	return {
+		passed = passed,
+		failed = failed,
+	}
+end
+end function __DIST.bo():typeof(__modImpl())local v=__DIST.cache.bo if not v then v={c=__modImpl()}__DIST.cache.bo=v end return v.c end end end--!nocheck
+
+--// Imports
+
+local interface = __DIST.a()
+
+--// Services
+local players: Players = game:GetService("Players")
+local replicatedStorage: ReplicatedStorage = game:GetService("ReplicatedStorage")
+local teleportService: TeleportService = game:GetService("TeleportService")
+
+--// References
+local localPlayer: Player = players.LocalPlayer
+
+--// Variables
+local gameId = 80776325854596
+local tests = {
+	["Standards"] = __DIST.bn(),
+	["Vulnerability"] = __DIST.bo(),
 }
-end
 
+--// Initialize
+if game.PlaceId ~= gameId then
+	local gameModal = interface:PopupModal({
+		Title = "Teleporting you to the test game...",
+	})
 
-local aa=WebSocket.connect"ws://echo.websocket.events"
-if not(type(aa)=="table"or type(aa)=="userdata")then
-return{
-status=500,
-message="Didn't give a table | userdata",
-}
-end
+	gameModal:Label({
+		Text = "If teleporting dosen't work, press 'Copy' to copy the game link",
+		TextWrapped = true
+	})
 
-for ab,af in pairs{OnClose=
+	gameModal:Separator()
 
-{"RBXScriptSignal",{table={"Connect","Once","Wait"}}},OnMessage=
-{"RBXScriptSignal",{table={"Connect","Once","Wait"}}},Send=
-"function",Close=
-"function",
-}do
-local ag,b=pcall(function()
-return aa[ab]
-end)
+	local Row = gameModal:Row({
+		Expanded = true
+	})
 
-if not ag or b==nil then
-return{
-status=500,
-message=`WebSocketObject is missing: {ab}`,
-}
-end
+	Row:Button({
+		Text = "Copy",
+		Callback = function()
+			if setclipboard or toclipboard then
+				(setclipboard or toclipboard)("https://www.roblox.com/games/80776325854596")
+			else
+				print("Failed to copy link: " .. "https://www.roblox.com/games/80776325854596")
+			end
+			gameModal:ClosePopup()
+		end,
+	})
+	Row:Button({
+		Text = "Cancel",
+		Callback = function()
+			gameModal:ClosePopup()
+		end,
+	})
 
-local c=typeof(af)=="table"and af[1]or af
-if typeof(b)~=c then
-return{
-status=500,
-message=`WebSocketObject.{ab} is not a {c} (got {typeof(b)})`,
-}
-end
-
-if typeof(af)=="table"and af[2]and typeof(af[2])=="table"then
-for d,e in pairs(af[2])do
-if d=="table"and typeof(b)=="table"then
-for f,g in ipairs(e)do
-if typeof(b[g])~="function"then
-return{
-status=500,
-message=`WebSocketObject.{ab}.{g} is not a function`,
-}
-end
-end
-end
-end
-end
-end
-
-if result then
-return result
-end
-
-
-local ab,af=a.load'b'{
-"websocket.connect",
-}
-
-if not ab then
-return{
-status=501,
-message=`Alias not found: {af}`,
-}
-end
-
-return{
-status=200,
-message=`Passed`,
-}
-end end function a.bm()
-
-
-
-return function(aa,ab)
-
-local af
-local ag
-local b={}
-local c={}
-
-local d={
-checkpointDelay=0,
-statusFilter=false,
-stripRichtext=false,
-formatDiff=false,
-includeMetadata=false,
-}
-
-local e={
-bullet="•",
-}
-
-local f={
-[0]="❓",
-[200]="✅",
-[400]="🔎",
-[401]="📦",
-[500]="🛠️",
-[501]="🏷️",
-}
-
-local g={
-cache={
-["cache.invalidate"]=a.load'c',
-["cache.iscached"]=a.load'd',
-["cache.replace"]=a.load'e',
-},
-
-Closures={islclosure=a.load'f'
-,iscclosure=a.load'g'
-,isexecutorclosure=a.load'h'
-,newcclosure=a.load'i'
-,clonefunction=a.load'j'
-,hookfunction=a.load'k'
-,restorefunction=a.load'l'
-,getfunctionhash=a.load'm'
-,checkcaller=a.load'n'
-,
-},
-
-crypt={
-["crypt.encrypt"]=a.load's',
-["crypt.decrypt"]=a.load't',
-["crypt.generatekey"]=a.load'u',
-["crypt.generatebytes"]=a.load'v',
-["crypt.base64encode"]=a.load'w',
-["crypt.base64decode"]=a.load'x',
-["crypt.hash"]=a.load'y',
-["crypt.random"]=a.load'z',
-["crypt.hmac"]=a.load'A',
-},
-
-debug={
-["debug.getconstant"]=a.load'B',
-["debug.getconstants"]=a.load'C',
-["debug.getproto"]=a.load'D',
-["debug.getprotos"]=a.load'E',
-["debug.getupvalue"]=a.load'F',
-["debug.getupvalues"]=a.load'G',
-["debug.getstack"]=a.load'H',
-["debug.setconstant"]=a.load'I',
-["debug.setupvalue"]=a.load'J',
-},
-
-Drawing={
-["Drawing.new"]=a.load'K',
-["Drawing.Fonts"]=a.load'L',getrenderproperty=a.load'M'
-,setrenderproperty=a.load'N'
-,cleardrawcache=a.load'O'
-,isrenderobj=a.load'P'
-,
-},
-
-Environment={getgenv=a.load'Q'
-,getrenv=a.load'R'
-,getgc=a.load'S'
-,filtergc=a.load'T'
-,
-},
-
-Filesystem={getcustomasset=a.load'U'
-,listfiles=a.load'V'
-,loadfile=a.load'W'
-,appendfile=a.load'X'
-,delfile=a.load'Y'
-,delfolder=a.load'Z'
-,isfile=a.load'_'
-,isfolder=a.load'aa'
-,writefile=a.load'ab'
-,readfile=a.load'ac'
-,makefolder=a.load'ad'
-,
-},
-
-Input={isrbxactive=a.load'ae'
-,keypress=a.load'af'
-,keyrelease=a.load'ag'
-,keytap=a.load'ah'
-,mouse1click=a.load'ai'
-,mouse1press=a.load'aj'
-,mouse1release=a.load'ak'
-,mouse2click=a.load'al'
-,mouse2press=a.load'am'
-,mouse2release=a.load'an'
-,mousemoveabs=a.load'ao'
-,mousemoverel=a.load'ap'
-,mousescroll=a.load'aq'
-,setclipboard=a.load'ar'
-,setrbxclipboard=a.load'as'
-,
-},
-
-Instances={gethui=a.load'at'
-,cloneref=a.load'au'
-,compareinstances=a.load'av'
-,getinstances=a.load'aw'
-,getnilinstances=a.load'ax'
-,getcallbackvalue=a.load'ay'
-,fireclickdetector=a.load'az'
-,fireproximityprompt=a.load'aA'
-,firetouchinterest=a.load'aB'
-,saveinstance=a.load'aC'
-,
-},
-
-Metatable={getrawmetatable=a.load'aD'
-,setrawmetatable=a.load'aE'
-,hookmetamethod=a.load'aF'
-,getnamecallmethod=a.load'aG'
-,setreadonly=a.load'aH'
-,makereadonly=a.load'aI'
-,isreadonly=a.load'aJ'
-,
-},
-
-Miscellaneous={identifyexecutor=a.load'aK'
-,setfpscap=a.load'aL'
-,getfpscap=a.load'aM'
-,request=a.load'aN'
-,lz4compress=a.load'aO'
-,lz4decompress=a.load'aP'
-,queue_on_teleport=a.load'aQ'
-,
-},
-
-External={messagebox=a.load'aR'
-,rconsoleprint=a.load'aS'
-,rconsoleinfo=a.load'aT'
-,rconsolewarn=a.load'aU'
-,rconsoleerr=a.load'aV'
-,rconsoleinput=a.load'aW'
-,rconsoleclear=a.load'aX'
-,rconsolename=a.load'aY'
-,rconsolehide=a.load'aZ'
-,rconsoleshow=a.load'a_'
-,
-},
-
-Reflection={sethiddenproperty=a.load'a0'
-,gethiddenproperty=a.load'a1'
-,setthreadidentity=a.load'a2'
-,getthreadidentity=a.load'a3'
-,setscriptable=a.load'a4'
-,isscriptable=a.load'a5'
-,
-},
-
-Scripts={getscripts=a.load'a6'
-,getrunningscripts=a.load'a7'
-,getcallingscript=a.load'a8'
-,getloadedmodules=a.load'a9'
-,getsenv=a.load'ba'
-,getscripthash=a.load'bb'
-,loadstring=a.load'bc'
-,getscriptbytecode=a.load'bd'
-,getscriptclosure=a.load'be'
-,decompile=a.load'bf'
-,
-},
-
-Signals={
-
-},
-
-Actors={isparallel=a.load'bg'
-,run_on_actor=a.load'bh'
-,create_comm_channel=a.load'bi'
-,get_comm_channel=a.load'bj'
-,getactors=a.load'bk'
-,
-},
-
-WebSocket={connect=a.load'bl'
-,
-},
-}
-
-
-local h=function(...)
-local h=table.concat({...}," ")
-ag:AppendText(h)
-end
-
-local i=function(...)
-local i=table.concat({...}," ")
-ag:AppendText(`<font color="#FFA500">{i}</font>`)
-end
-
-local function test()
-if af then
-task.cancel(af)
-end
-
-af=task.spawn(function()
-local j=time()
-local k=0
-local l=0
-local m=0
-
-for n,o in g do
-b[n]=nil
-c[n]={}
-
-for p in o do
-m+=1
-b[n]=p
-end
-end
-
-local n={}
-for o,p in g do
-for q,r in p do
-table.insert(n,{
-groupName=o,
-name=q,
-test=r,
-})
-end
-end
-
-for o,p in ipairs(n)do
-local q=p.groupName
-local r=p.name
-local s=p.test
-
-local t=n[o+1]
-
-local u,w=pcall(s)
-local A,B
-
-if not u then
-A=0
-B=w
-l+=1
-ag:SetValue(`<font color="#FFA500">{r} failed</font>`)
-elseif w.status==200 then
-A=w.status
-B=w.message
-k+=1
-ag:SetValue(`<font color="#84FF00">{r} passed</font>`)
+	teleportService:Teleport(gameId, localPlayer)
 else
-A=w.status
-B=w.message
-l+=1
-ag:SetValue(`<font color="#FFA500">{r} failed</font>`)
-end
-
-if t then
-h(`Next test: {t.name}`)
-end
-
-table.insert(c[q],{
-name=r,
-status=A,
-message=B,
-})
-
-if d.checkpointDelay~=0 then
-task.wait(d.checkpointDelay)
-end
-end
-
-ag:Clear()
-
-for o,p in c do
-local q=false
-local r=false
-
-for s,t in p do
-if not d.statusFilter or f[t.status]==d.statusFilter then
-if not r then
-h(o..":")
-r=true
-end
-local u=(t.status==200)and h or i
-u(`{e.bullet} {f[t.status]} {t.name}: {t.message}`)
-q=true
-end
-end
-
-if q then
-h""
-end
-end
-
-if d.stripRichtext then
-ag:SetValue(ag:GetValue():gsub("<br%s*/>","\n"):gsub("<[^<>]->",""))
-end
-if d.formatDiff then
-ag:SetValue(ag:GetValue():gsub("<br%s*/>","\n"):gsub("<[^<>]->",""))
-local o=ag:GetValue()
-local p={}
-
-for q,r in ipairs(string.split(o,"\n"))do
-local s=r:gsub("^•%s*",""):gsub("^%s*(.-)%s*$","%1")
-
-if s~=""then
-if s:find"✅"then
-p[q]="+ "..s
-elseif
-s:find"🔎"
-or s:find"❓"
-or s:find"🛠️"
-or s:find"📦"
-or s:find"🏷️"
-then
-p[q]="- "..s
-else
-p[q]=s
-end
-else
-p[q]=""
-end
-end
-
-ag:SetValue(table.concat(p,"\n"))
-end
-
-local o=math.floor((time()-j)*100+0.5)/100
-local p,q=identifyexecutor()
-
-h(`Summary:`)
-h(`{e.bullet} Took: {o}s`)
-h(`{e.bullet} Executor: {p or"Unknown"}`)
-h(`{e.bullet} Tested: {m}`)
-h(`{e.bullet} Passed: {k}`)
-h(`{e.bullet} Failed: {l}`)
-h(`{e.bullet} Pass Rate: {math.round(k/m*100)}%`)
-
-if d.includeMetadata then
-local r=ag:GetValue()
-
-local s=string.format(
-'@metadata {\n  "generated": "%s",\n  "executor": "%s",\n  "version": "%s",\n} \n\n',
-DateTime.now():ToIsoDate(),
-p,
-q
-)
-
-ag:SetValue(s..r)
-end
-
-game.ReplicatedStorage.res:FireServer(c,{testBuildMetadata=
-_P,executor=
-p,executorVersion=
-q,tested=
-m,passed=
-k,failed=
-l,testTime=
-o,generated=
-DateTime.now():ToIsoDate(),
-})
-end)
-end
-
-
-ab:Button{
-Text="Run test",
-Callback=function()
-coroutine.wrap(test)()
-end,
-}
-
-do
-local j=ab:TreeNode{Title="Test options"}
-
-j:Combo{
-Label="Status filter",
-Selected="All",
-Items={
-"All",
-"✅ Pass",
-"❓ Ambiguous",
-"🔎 Missing",
-"📦 Dependency",
-"🛠️ Functionality",
-"🏷️ Alias",
-},
-Callback=function(k,l)
-local m={All=
-false,
-["✅ Pass"]=f[200],
-["❓ Ambiguous"]=f[0],
-["🔎 Missing"]=f[400],
-["📦 Dependency"]=f[401],
-["🛠️ Functionality"]=f[500],
-["🏷️ Alias"]=f[501],
-}
-
-d.statusFilter=m[l]
-end,
-}
-
-j:SliderFloat{
-Label="Checkpoint delay",
-Default=0.0,
-Minimum=0.0,
-Maximum=1.0,
-Format="Delay = %.2f",
-Callback=function(k,l)
-d.checkpointDelay=l
-end,
-}
-
-j:Checkbox{
-Value=false,
-Label="Include Metadata",
-Callback=function(k,l)
-d.includeMetadata=l
-end,
-}
-
-j:Checkbox{
-Value=false,
-Label="Strip Rich-text",
-Callback=function(k,l)
-d.stripRichtext=l
-end,
-}
-
-j:Checkbox{
-Value=false,
-Label="Format in diff",
-Callback=function(k,l)
-d.formatDiff=l
-end,
-}
-end
-
-do
-local j=ab:TreeNode{Title="Info"}
-j:Label{
-Text="Test checks are in this order:\n- Global check\n- Dependency check \n- Functionality check \n- Alias Test\nThis means that if you are missing an alias, you still passed the functionality test. Aliases are important, it helps preserve old scripts, and conventions for programmers who use one over the other.",
-TextWrapped=true,
-}
-end
-
-ag=ab:Console{
-ReadOnly=true,
-RichText=true,
-LineHeight=1.3,
-Fill=true,
-}:Clear()
-
-return c
-end end function a.bn()
-
-
-
-
-return function(aa,ab)
-
-local af
-
-
-
-local ag=0
-local b=0
-
-
-
-
-
-
-
-
-
-
-
-
-local c=function(...)
-local c=table.concat({...}," ")
-af:AppendText(c)
-end
-
-
-
-
-
-
-
-af=ab:Console{
-ReadOnly=true,
-RichText=true,
-LineHeight=1.3,
-Fill=true,
-}:Clear()
-
-c"Not implemented."
-
-return{
-passed=ag,
-failed=b,
-}
-end end end
-
-
-
-
-local aa=a.load'a'
-
-
-local ab:Players=game:GetService"Players"
-local af:ReplicatedStorage=game:GetService"ReplicatedStorage"
-local ag:TeleportService=game:GetService"TeleportService"
-
-
-local b:Player=ab.LocalPlayer
-
-
-local c=80776325854596
-local d={Standards=a.load'bm'
-,Vulnerability=a.load'bn'
-,
-}
-
-
-if game.PlaceId~=c then
-local e=aa:PopupModal{
-Title="Teleporting you to the test game...",
-}
-
-e:Label{
-Text="If teleporting dosen't work, press 'Copy' to copy the game link",
-TextWrapped=true
-}
-
-e:Separator()
-
-local f=e:Row{
-Expanded=true
-}
-
-f:Button{
-Text="Copy",
-Callback=function()
-if setclipboard or toclipboard then
-(setclipboard or toclipboard)"https://www.roblox.com/games/80776325854596"
-else
-print[[Failed to copy link: https://www.roblox.com/games/80776325854596]]
-end
-e:ClosePopup()
-end,
-}
-f:Button{
-Text="Cancel",
-Callback=function()
-e:ClosePopup()
-end,
-}
-
-ag:Teleport(c,b)
-else
-af:FindFirstChild"connected":FireServer()
-
-
-local e=aa:TabsWindow{
-Title="Myriad General Validity Test",
-Size=UDim2.fromOffset(400,500),
-Theme="ImGui"
-}
-
-local f=e:PopupModal{
-Title="Would you like to copy our discord link?",
-}
-
-f:Label{
-Text="Get commit logs when we push changes, interact with the community, and get support for problems",
-TextWrapped=true
-}
-
-f:Separator()
-
-local g=f:Row{
-Expanded=true
-}
-
-g:Button{
-Text="Yes",
-Callback=function()
-if setclipboard or toclipboard then
-(setclipboard or toclipboard)"https://discord.gg/nn4NxHU3Pu"
-else
-print'Failed to copy link: https://discord.gg/nn4NxHU3Pu'
-end
-f:ClosePopup()
-end,
-}
-g:Button{
-Text="No",
-Callback=function()
-f:ClosePopup()
-end,
-}
-
-
-do
-local h=e:CreateTab{
-Name="Home",
-}
-
-h:Label{
-RichText=true,
-Text="<b>Myriad General Validity Test (2025)</b>",
-}
-h:Label{
-RichText=true,
-Text=`Build: <b>{_P.cfg}</b>`,
-}
-h:Label{
-RichText=true,
-Text=`Build Version: <b>{_P.vers}</b>`,
-}
-h:Label{
-RichText=true,
-Text=`Executor: <b>{(identifyexecutor and identifyexecutor()or"Unknown")}</b>`,
-}
-
-h:Label{
-RichText=true,
-Text="\nContributors:",
-}
-h:BulletText{
-RichText=true,
-Rows={
-"biggaboy212",
-},
-}
-end
-
-for h,i in d do
-local j=e:CreateTab{Name=h}
-
-coroutine.wrap(function()
-d[h](h,j)
-end)()
-end
+	replicatedStorage:FindFirstChild("connected"):FireServer()
+
+	--// UI Begin
+	local window = interface:TabsWindow({
+		Title = "Myriad General Validity Test",
+		Size = UDim2.fromOffset(400, 500),
+		Theme = "ImGui"
+	})
+
+	local discModal = window:PopupModal({
+		Title = "Would you like to copy our discord link?",
+	})
+
+	discModal:Label({
+		Text = "Get commit logs when we push changes, interact with the community, and get support for problems",
+		TextWrapped = true
+		})
+
+	discModal:Separator()
+
+	local Row = discModal:Row({
+		Expanded = true
+	})
+
+	Row:Button({
+		Text = "Yes",
+		Callback = function()
+			if setclipboard or toclipboard then
+				(setclipboard or toclipboard)("https://discord.gg/nn4NxHU3Pu")
+			else
+				print("Failed to copy link: " .. "https://discord.gg/nn4NxHU3Pu")
+			end
+			discModal:ClosePopup()
+		end,
+	})
+	Row:Button({
+		Text = "No",
+		Callback = function()
+			discModal:ClosePopup()
+		end,
+	})
+
+	-- Home
+	do
+		local home = window:CreateTab({
+			Name = "Home",
+		})
+
+		home:Label({
+			RichText = true,
+			Text = "<b>Myriad General Validity Test (2025)</b>",
+		})
+		home:Label({
+			RichText = true,
+			Text = `Build: <b>{_P.cfg}</b>`,
+		})
+		home:Label({
+			RichText = true,
+			Text = `Build Version: <b>{_P.vers}</b>`,
+		})
+		home:Label({
+			RichText = true,
+			Text = `Executor: <b>{(identifyexecutor and identifyexecutor() or "Unknown")}</b>`,
+		})
+
+		home:Label({
+			RichText = true,
+			Text = "\nContributors:",
+		})
+		home:BulletText({
+			RichText = true,
+			Rows = {
+				"biggaboy212",
+			},
+		})
+	end
+
+	for name, test in tests do
+		local tab = window:CreateTab({ Name = name })
+
+		coroutine.wrap(function()
+			tests[name](name, tab)
+		end)()
+	end
 end
