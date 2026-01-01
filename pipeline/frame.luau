@@ -7,7 +7,7 @@
     @author Proton-Utilities
     @name Myriad
 
-    This file was automatically generated with darklua, it is not intended for manual editing.
+    This file was automatically @generated with darklua, it is not intended for manual editing.
 --]]
 
 _P = {

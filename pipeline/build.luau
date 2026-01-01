@@ -42,6 +42,23 @@ local function getBaseName(path)
 	return path:match("^.+[\\/](.+)$") or path
 end
 
+local function getGhKey()
+	local envPath = ".env"
+	if not fs.isFile(envPath) then
+		return nil
+	end
+
+	for line in fs.readFile(envPath):gmatch("[^\r\n]+") do
+		local key, val = line:match("^%s*([%w_]+)%s*=%s*(.-)%s*$")
+		if key == "GITHUB_API_KEY" and val then
+			val = val:gsub('^"(.*)"$', "%1")
+			val = val:gsub("^'(.*)'$", "%1")
+			return val
+		end
+	end
+	return nil
+end
+
 --// Compose
 local parsedConfigs = {}
 
@@ -114,7 +131,7 @@ if configOptions.promptDeploy and config.deployment.enabled then
 					url = string.format("https://api.github.com/repos/%s/%s/releases", ghCfg.owner, ghCfg.repo),
 					method = "POST",
 					headers = {
-						["Authorization"] = "Bearer " .. ghCfg.apiKey,
+						["Authorization"] = "Bearer " .. (getGhKey() or ghCfg.apiKey),
 						["Content-Type"] = "application/json",
 					},
 					body = serde.encode("json", {
@@ -144,7 +161,7 @@ if configOptions.promptDeploy and config.deployment.enabled then
 							url = uploadUrl,
 							method = "POST",
 							headers = {
-								["Authorization"] = "Bearer " .. ghCfg.apiKey,
+								["Authorization"] = "Bearer " .. (getGhKey() or ghCfg.apiKey),
 								["Content-Type"] = "application/octet-stream",
 							},
 							body = fileContent,
@@ -162,7 +179,7 @@ if configOptions.promptDeploy and config.deployment.enabled then
 					print("Deployment failed: " .. response.statusMessage)
 					print(response.body)
 					if response.body:find("Bad credentials") then
-						warn("❓ Did you set up github deployment in the pcmp configuration file?")
+						warn("❓ Did you set up github deployment in the pcmp configuration file or .env?")
 					end
 				end
 			end

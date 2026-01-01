@@ -1,0 +1,51 @@
+{
+    "openComposedOutput": true,
+
+    "deployment": {
+        "enabled": true,
+        "github": {
+            "enabled": true,
+            "owner": "Proton-Utilities",
+            "repo": "Myriad"
+        }
+    },
+
+    "buildConfigs": [
+        {
+            "name": "Debug",
+
+            "promptVersion": false,
+            "promptDeploy": false,
+
+            "frame": "pipeline/frame.luau",
+            "darkluaConfig": "pipeline/.darklua_debug.json",
+            "input": "src/main.luau",
+            "output": "generated/debug.luau"
+        },
+
+        {
+            "name": "Beta",
+
+            "promptVersion": true,
+            "promptDeploy": true,
+            "prerelease": true,
+
+            "frame": "pipeline/frame.luau",
+            "darkluaConfig": "pipeline/.darklua.json",
+            "input": "src/main.luau",
+            "output": "generated/pre.luau"
+        },
+
+        {
+            "name": "Release",
+            
+            "promptVersion": true,
+            "promptDeploy": true,
+
+            "frame": "pipeline/frame.luau",
+            "darkluaConfig": "pipeline/.darklua.json",
+            "input": "src/main.luau",
+            "output": "generated/release.luau"
+        }
+    ]
+}

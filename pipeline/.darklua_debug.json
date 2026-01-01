@@ -6,5 +6,7 @@
 			"name": "path",
 			"use_luau_configuration": true
 		}
-    }
+    },
+    "rules": [
+    ]
 }
