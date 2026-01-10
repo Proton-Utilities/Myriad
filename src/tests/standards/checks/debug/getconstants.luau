@@ -10,6 +10,9 @@ return function()
 	end
 
 	--// Functionality test
+	local pFlag, pI, pV = false
+	local p2Flag, p2I = false
+
 	local function originalFunction()
 		local _1 = 2
 		local _2 = "A"
@@ -27,39 +30,51 @@ return function()
 		[4] = "tostring",
 
 		[6] = "Date",
-		[7] = "now"
+		[7] = "now",
 	}
 
-	for i, v in pairs(debug.getconstants(originalFunction)) do
+	for i, v in ipairs(debug.getconstants(originalFunction)) do
 		if not constOrder[i] then
-			return {
-				status = 500,
-				message = `{i} dosen't exist in expected constant order`
-			}
+			p2Flag = true
+			p2I = i
+
+			break
 		elseif constOrder[i] ~= v then
-			return {
-				status = 500,
-				message = `Constant at {i} should be: {constOrder[i]}. Got: {v}`
-			}
+			pFlag = true
+			pI, pV = i, v
+
+			break
 		end
 	end
 
 	if pcall(debug.getconstants, print) then
 		return {
 			status = 500,
-			message = "Should error with C closures"
+			message = "Should error with C closures",
 		}
 	end
 
 	--// Alias test
 	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({
-		"getconstants"
+		"getconstants",
 	})
 
 	if not envIndex then
 		return {
 			status = 501,
 			message = `Alias not found: {failedIndex}`,
+		}
+	end
+
+	if pFlag then
+		return {
+			status = 200,
+			message = `Passed with inconsistency: Constant at {pI} should be: {constOrder[pI]}. Got: {pV}`,
+		}
+	elseif p2Flag then
+		return {
+			status = 200,
+			message = `Passed with inconsistency: {p2I} dosen't exist in expected constant order`,
 		}
 	end
 

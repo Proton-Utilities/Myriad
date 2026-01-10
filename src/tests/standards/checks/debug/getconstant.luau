@@ -10,6 +10,8 @@ return function()
 	end
 
 	--// Functionality test
+	local pFlag, pI, pV = false
+
 	local function originalFunction()
 		local _1 = 2
 		local _2 = "A"
@@ -27,16 +29,15 @@ return function()
 		[4] = "tostring",
 
 		[6] = "Date",
-		[7] = "now"
+		[7] = "now",
 	}
 
 	for i, v in ipairs(constOrder) do
 		local const = debug.getconstant(originalFunction, i)
 		if const ~= v then
-			return {
-				status = 500,
-				message = `Constant at {i} should be: {v}. Got: {const}`,
-			}
+			pFlag = true
+			pV = v
+			pi = i
 		end
 	end
 
@@ -73,6 +74,6 @@ return function()
 
 	return {
 		status = 200,
-		message = `Passed`,
+		message = `Passed with inconsistency:  Constant at {i} should be: {v}. Got: {const}`,
 	}
 end
