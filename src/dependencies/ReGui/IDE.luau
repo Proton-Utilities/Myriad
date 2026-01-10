@@ -9,7 +9,7 @@
 local IDEVersion = "8.0"
 
 --// Compatibility 
-local NewReference = cloneref or function(Ins): Instance 
+local NewReference = function(Ins): Instance 
 	return Ins 
 end
 
