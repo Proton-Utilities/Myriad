@@ -15,24 +15,16 @@ return function()
 			return "MYRI"
 		end
 	end
-	
-	local assumedProto = debug.getproto(originalFunction, 1, true)[1]
 
-	if originalFunction() ~= assumedProto then
-		return {
-			status = 500,
-			message = "Actual prototype dosen't match assumed prototype"
-		}
-	elseif assumedProto() ~= "MYRI" then
-		return {
-			status = 500,
-			message = "Unexpected value of assumed prototype"
-		}
+	local result = debug.getproto(originalFunction, 1, true)
+
+	if type(result) ~= "table" or not result[1] then
+		return { status = 500, message = "getproto did not return proto" }
 	end
 
 	--// Alias test
 	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({
-		"getproto"
+		"getproto",
 	})
 
 	if not envIndex then

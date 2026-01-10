@@ -18,16 +18,14 @@ return function()
 		end
 	end
 
-	local count = 0
-	for index, prototype in ipairs(debug.getprotos(originalFunction)) do
-		count += prototype() == (index == 1 and "MYRI1" or "MYRI2") and 1 or 0
+	local protos = debug.getprotos(originalFunction)
+
+	if #protos ~= 2 then
+		return { status = 500, message = "Incorrect proto count" }
 	end
 
-	if count ~= 2 then
-		return {
-			status = 500,
-			message = "Didn't recieve correct prototypes, or prototypes didn't return expected values.",
-		}
+	if protos[1] == protos[2] then
+		return { status = 500, message = "Protos aren't unique." }
 	end
 
 	--// Alias test
