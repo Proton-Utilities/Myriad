@@ -13,6 +13,7 @@ return function()
 
 	local plaintext = "MYRIAD"
 	local encoded = crypt.base64encode(plaintext)
+	local emptyEncoded = crypt.base64encode("")
 
 	if not encoded or typeof(encoded) ~= "string" then
 		return {
@@ -23,6 +24,21 @@ return function()
 		return {
 			status = 500,
 			message = "Encoded data doesn't match reference data",
+		}
+	elseif not emptyEncoded or typeof(emptyEncoded) ~= "string" then
+		return {
+			status = 500,
+			message = "Empty string encoding failed to return string",
+		}
+	elseif emptyEncoded ~= "" then
+		return {
+			status = 500,
+			message = "Empty string encoding mismatch",
+		}
+	elseif #encoded % 4 ~= 0 then
+		return {
+			status = 500,
+			message = "Encoded data length not multiple of 4, padding issue",
 		}
 	end
 

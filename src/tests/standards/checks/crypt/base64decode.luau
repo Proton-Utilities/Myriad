@@ -14,6 +14,7 @@ return function()
 	local plaintext = "MYRIAD"
 	local reference = referenceCrypt.base64encode(plaintext)
 	local decoded = crypt.base64decode(reference)
+	local emptyDecoded = crypt.base64decode("")
 
 	if not reference or typeof(reference) ~= "string" then
 		return {
@@ -29,6 +30,16 @@ return function()
 		return {
 			status = 500,
 			message = "Decoded data doesn't match reference data",
+		}
+	elseif not emptyDecoded or typeof(emptyDecoded) ~= "string" then
+		return {
+			status = 500,
+			message = "Empty string decode failed to return string",
+		}
+	elseif emptyDecoded ~= "" then
+		return {
+			status = 500,
+			message = "Empty string decode mismatch",
 		}
 	end
 
