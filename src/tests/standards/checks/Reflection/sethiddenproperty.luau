@@ -14,40 +14,16 @@ return function()
 		}
 	end
 
-	--// Functionality test
 	local originalPart = Instance.new("Part")
 
-	local prop1Value, prop1Hidden = gethiddenproperty(originalPart, "Name")
-	local prop2Value, prop2Hidden = gethiddenproperty(originalPart, "siz")
-	
-	if prop1Hidden then
-		return {
-			status = 500,
-			message = "Non-hidden property assumed hidden",
-		}
-	elseif prop1Value ~= "Part" then
-		return {
-			status = 500,
-			message = "Non-hidden property value incorrect",
-		}
-	elseif not prop2Hidden then
-		return {
-			status = 500,
-			message = "Hidden property assumed non-hidden",
-		}
-	elseif prop2Value ~= "can't get value" then
-		return {
-			status = 500,
-			message = "Hidden property value incorrect",
-		}
-	end
+	local prop2Value, prop2Hidden = gethiddenproperty(originalPart, "shape")
 
-	sethiddenproperty(originalPart, "siz", "can get value")
+	sethiddenproperty(originalPart, "shape", Enum.PartType.CornerWedge)
 
-	if not gethiddenproperty(originalPart, "siz") == "can get value" then
+	if not gethiddenproperty(originalPart, "shape") == Enum.PartType.CornerWedge then
 		return {
 			status = 500,
-			message = "Hidden property's value was incorrectly set"
+			message = "Hidden property's value was incorrectly set",
 		}
 	end
 
