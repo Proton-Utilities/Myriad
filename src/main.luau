@@ -136,7 +136,7 @@ else
 		local tab = window:CreateTab({ Name = name })
 
 		coroutine.wrap(function()
-			tests[name](name, tab)
+			tests[name](name, tab, window)
 		end)()
 	end
 end
