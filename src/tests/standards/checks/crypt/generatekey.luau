@@ -11,16 +11,23 @@ return function()
 		}
 	end
 
-	local decoded = referenceCrypt.base64decode(crypt.generatekey())
-	if type(decoded) ~= "string" then
+	local key1 = referenceCrypt.base64decode(crypt.generatekey())
+	local key2 = referenceCrypt.base64decode(crypt.generatekey())
+
+	if type(key1) ~= "string" then
 		return {
 			status = 500,
 			message = "Generated key doesn't form a string",
 		}
-	elseif #decoded ~= 32 then
+	elseif #key1 ~= 32 then
 		return {
 			status = 500,
 			message = "Key dosen't match the expected length",
+		}
+	elseif key1 == key2 then
+		return {
+			status = 500,
+			message = "Keys aren't unique",
 		}
 	end
 
