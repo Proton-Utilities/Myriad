@@ -1,6 +1,6 @@
 --!nocheck
 
-return function(name, tab)
+return function(name, tab, window)
 	--// Imports
 	local checks = require("@checks/init")
 
@@ -213,6 +213,30 @@ return function(name, tab)
 	tab:Button({
 		Text = "Run test",
 		Callback = function()
+			if require("@dependencies/dexDetector")() and _P.cfg ~= "Debug" then
+				local discModal = window:PopupModal({
+					Title = "Error attempting to run test",
+				})
+
+				discModal:Label({
+					Text = "Dex detected in GC. This can tamper with 'decompile' test results in certain builds.",
+					TextWrapped = true,
+				})
+				discModal:Separator()
+				discModal
+					:Row({
+						Expanded = true,
+					})
+					:Button({
+						Text = "Ok",
+						Callback = function()
+							discModal:ClosePopup()
+						end,
+					})
+
+				return
+			end
+
 			coroutine.wrap(test)()
 		end,
 	})
