@@ -37,7 +37,7 @@
             "variants": [
                 {
                     "name": "Legacy-Support",
-                    "darkluaConfig": "pipeline/darklua/unminified.json",
+                    "darkluaConfig": "pipeline/darklua/stable.json",
                     "output": "generated/beta/pre.luau"
                 },
                 {
@@ -61,7 +61,7 @@
             "variants": [
                 {
                     "name": "Legacy-Support",
-                    "darkluaConfig": "pipeline/darklua/unminified.json",
+                    "darkluaConfig": "pipeline/darklua/stable.json",
                     "output": "generated/release/release.luau",
                     "frame": "pipeline/frames/frame_legacy.luau"
                 },
