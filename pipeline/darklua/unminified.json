@@ -3,10 +3,9 @@
     "bundle": {
         "modules_identifier": "__DIST",
         "require_mode": {
-			"name": "path",
+			"name": "luau",
 			"use_luau_configuration": true
 		}
     },
-    "rules": [
-    ]
+    "rules": []
 }

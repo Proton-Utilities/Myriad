@@ -2,12 +2,12 @@
 --!nocheck
 
 --[[
-    @repository https://github.com/Proton-Utilities/Myriad
-
+    @link https://github.com/Proton-Utilities/Myriad
+	
     @author Proton-Utilities
-    @name Myriad
+    @repository Myriad
 
-    This file was automatically @generated with darklua, it is not intended for manual editing.
+    This file was automatically @generated with ProCMP, it is not intended for manual editing.
 --]]
 
 _P = {

@@ -25,10 +25,10 @@ After the discontinuation of [UNC](https://github.com/unified-naming-convention/
 You can use our official loadstring:
 
 ```luau
-loadstring(game:HttpGetAsync("https://github.com/Proton-Utilities/Myriad/releases/latest/download/release.luau"))()
+loadstring(game:HttpGetAsync("https://github.com/Proton-Utilities/Myriad/releases/latest/download/myriad.luau"))()
 ```
 
-Or load the [raw file](https://github.com/Proton-Utilities/Myriad/releases/latest/download/release.luau)
+Or load the [raw file](https://github.com/Proton-Utilities/Myriad/releases/latest/download/myriad.luau)
 
 ## How do I contribute?
 

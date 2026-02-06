@@ -1,17 +1,11 @@
 {
-    "luau-lsp.types.definitionFiles": [
-        ".globals\\customEnv.d.luau",
-        ".globals\\pcmp.d.luau"
-    ],
-    "luau-lsp.sourcemap.sourcemapFile": "",
-    "luau-lsp.sourcemap.rojoProjectFile": "",
-    "luau-lsp.sourcemap.enabled": false,
-    "luau-lsp.sourcemap.autogenerate": false,
-    "luau-lsp.completion.autocompleteEnd": true,
-    "luau-lsp.completion.enableFragmentAutocomplete": true,
-    "[luau]": {
-        "editor.defaultFormatter": "JohnnyMorganz.stylua"
-    },
-    "stylua.targetReleaseVersion": "latest",
-    "liveServer.settings.port": 5501,
+  "luau-lsp.types.definitionFiles": {
+    "pcmp": "./.globals/pcmp.d.luau",
+    "environment": "./.globals/environment.d.luau",
+    "marionette": "./.globals/marionette.d.luau"
+  },
+  "luau-lsp.sourcemap.enabled": false,
+  "luau-lsp.completion.autocompleteEnd": true,
+  "luau-lsp.fflags.enableNewSolver": true,
+  "luau-lsp.types.robloxSecurityLevel": "RobloxScriptSecurity"
 }

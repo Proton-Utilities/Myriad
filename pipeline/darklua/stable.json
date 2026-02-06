@@ -3,7 +3,7 @@
     "bundle": {
         "modules_identifier": "__DIST",
         "require_mode": {
-			"name": "path",
+			"name": "luau",
 			"use_luau_configuration": true
 		}
     },
@@ -21,6 +21,7 @@
 		"remove_spaces",
 		"remove_types",
 		"remove_unused_if_branch",
+		"remove_if_expression",
 		"remove_unused_variable",
 		"remove_unused_while",
 		{

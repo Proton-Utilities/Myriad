@@ -5,7 +5,7 @@
         "enabled": true,
         "github": {
             "enabled": true,
-            "owner": "Proton-Utilities",
+            "owner": "biggaboy212",
             "repo": "Myriad"
         }
     },
@@ -17,10 +17,10 @@
             "promptVersion": false,
             "promptDeploy": false,
 
-            "frame": "pipeline/frame.luau",
-            "darkluaConfig": "pipeline/.darklua_debug.json",
+            "frame": "pipeline/frames/frame.luau",
+            "darkluaConfig": "pipeline/darklua/unminified.json",
             "input": "src/main.luau",
-            "output": "generated/debug.luau"
+            "output": "generated/debug/myriad.luau"
         },
 
         {
@@ -30,10 +30,22 @@
             "promptDeploy": true,
             "prerelease": true,
 
-            "frame": "pipeline/frame.luau",
-            "darkluaConfig": "pipeline/.darklua.json",
+            "frame": "pipeline/frames/frame.luau",
+            "darkluaConfig": "pipeline/darklua/stable.json",
             "input": "src/main.luau",
-            "output": "generated/pre.luau"
+            "output": "generated/beta/myriad.luau",
+            "variants": [
+                {
+                    "name": "Legacy-Support",
+                    "darkluaConfig": "pipeline/darklua/unminified.json",
+                    "output": "generated/beta/pre.luau"
+                },
+                {
+                    "name": "Unminified",
+                    "darkluaConfig": "pipeline/darklua/unminified.json",
+                    "output": "generated/beta/myriad-unminified.luau"
+                }
+            ]
         },
 
         {
@@ -42,10 +54,23 @@
             "promptVersion": true,
             "promptDeploy": true,
 
-            "frame": "pipeline/frame.luau",
-            "darkluaConfig": "pipeline/.darklua.json",
+            "frame": "pipeline/frames/frame.luau",
+            "darkluaConfig": "pipeline/darklua/stable.json",
             "input": "src/main.luau",
-            "output": "generated/release.luau"
+            "output": "generated/release/myriad.luau",
+            "variants": [
+                {
+                    "name": "Legacy-Support",
+                    "darkluaConfig": "pipeline/darklua/unminified.json",
+                    "output": "generated/release/release.luau",
+                    "frame": "pipeline/frames/frame_legacy.luau"
+                },
+                {
+                    "name": "Unminified",
+                    "darkluaConfig": "pipeline/darklua/unminified.json",
+                    "output": "generated/release/myriad-unminified.luau"
+                }
+            ]
         }
-    ]
+  ]
 }

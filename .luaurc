@@ -1,5 +1,6 @@
 {
     "aliases": {
+        "packages": "./packages",
         "dependencies": "./src/dependencies",
         "tests": "./src/tests",
         "checks": "./src/tests/standards/checks",

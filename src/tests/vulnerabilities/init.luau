@@ -32,14 +32,14 @@ return function(name, tab)
 	end	
 
 	--// Initialize
-	output = tab:Console({
+	--[[ output = tab:Console({
 		ReadOnly = true,
 		RichText = true,
 		LineHeight = 1.3,
 		Fill = true,
-	}):Clear()
+	}):Clear() ]]
 
-	printc("Not implemented.")
+	tab:Label({ Text = "Not implemented"})
 
 	return {
 		passed = passed,

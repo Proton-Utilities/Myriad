@@ -1,0 +1,10 @@
+{
+    "server": {
+        "port": 3000
+    },
+
+    "input": "generated/debug/myriad.luau",
+    "enableDebugClient": false,
+    "hotReloads": true,
+    "watchList": []
+}
