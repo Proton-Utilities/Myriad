@@ -1,5 +1,11 @@
 # Changelog
 
+## `STABLE` v1.2.1
+
+```diff
++ Added vulnerability test
+```
+
 ## `STABLE` v1.2.0
 
 ```diff
