@@ -10,6 +10,14 @@
         }
     },
 
+    "testing": {
+        "enabled": true,
+        "inputDir": "tests",
+        "outputDir": "generated/tests",
+        "frame": "pipeline/frames/stable.luau",
+        "darkluaConfig": "pipeline/darklua/unminified.json"
+    },
+
     "buildConfigs": [
         {
             "name": "Debug",
@@ -17,7 +25,7 @@
             "promptVersion": false,
             "promptDeploy": false,
 
-            "frame": "pipeline/frames/frame.luau",
+            "frame": "pipeline/frames/stable.luau",
             "darkluaConfig": "pipeline/darklua/unminified.json",
             "input": "src/main.luau",
             "output": "generated/debug/myriad.luau"
@@ -30,7 +38,7 @@
             "promptDeploy": true,
             "prerelease": true,
 
-            "frame": "pipeline/frames/frame.luau",
+            "frame": "pipeline/frames/stable.luau",
             "darkluaConfig": "pipeline/darklua/stable.json",
             "input": "src/main.luau",
             "output": "generated/beta/myriad.luau",
@@ -54,7 +62,7 @@
             "promptVersion": true,
             "promptDeploy": true,
 
-            "frame": "pipeline/frames/frame.luau",
+            "frame": "pipeline/frames/stable.luau",
             "darkluaConfig": "pipeline/darklua/stable.json",
             "input": "src/main.luau",
             "output": "generated/release/myriad.luau",
@@ -63,7 +71,7 @@
                     "name": "Legacy-Support",
                     "darkluaConfig": "pipeline/darklua/stable.json",
                     "output": "generated/release/release.luau",
-                    "frame": "pipeline/frames/frame_legacy.luau"
+                    "frame": "pipeline/frames/legacy.luau"
                 },
                 {
                     "name": "Unminified",
