@@ -4,17 +4,17 @@
 return function()
 	local referenceCrypt = require("@dependencies/crypt/crypt.luau")
 
-	if not crypt or not crypt.decrypt then
+	if not crypt or not crypt.decrypt or not crypt.encrypt then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
 	end
 
-	local data = referenceCrypt.base64decode("G3H9Fk0PSWKs46qqlbA3VKnzfz7wRRTh")
-	local key = "GMVIsgHnxm0YDYwUGkBhtRWSrSsfRMjY"
-	local iv = "1234567890abcdef"
+	local key = "123456789abcdefg"
+	local iv = referenceCrypt.base64encode("1234567890abcdef")
 	local mode = "CBC"
+	local data = crypt.encrypt("1234567890abcdef", key, iv, mode)
 
 	local decryptSuccess, cryptDecrypted = pcall(function()
 		return crypt.decrypt(data, key, iv, mode)
