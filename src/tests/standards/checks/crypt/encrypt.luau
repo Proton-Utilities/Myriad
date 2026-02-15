@@ -27,7 +27,7 @@ return function()
 		}
     end
 
-	local reference = "G3H9Fk0PSWKs46qqlbA3VKnzfz7wRRTh"
+	local reference = "vnsF08Dj1We+2MfZIRUWtyNnK6mvN9LjewP5C732YKk="
 	local assumed = referenceCrypt.base64encode(cryptEncrypted)
 	
 	if assumed ~= reference then
