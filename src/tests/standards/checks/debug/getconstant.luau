@@ -43,10 +43,10 @@ return function()
 
 	local invalidIndexSuccess, returnedMsg = pcall(debug.getconstant, originalFunction, 9)
 
-	if not invalidIndexSuccess then
+	if invalidIndexSuccess then
 		return {
 			status = 500,
-			message = "Should pass nil instead of errroing for invalid indexes",
+			message = "Should error for invalid indexes",
 		}
 	elseif returnedMsg then
 		return {
