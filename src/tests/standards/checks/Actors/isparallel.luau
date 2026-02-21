@@ -137,12 +137,15 @@ return function()
 		}
 	end	
 
+	local failure = nil
+
 	eventObject.Event:Connect(function(num)
 		if num ~= r1 ^ 2 then
-			return {
+			failure = {
 				status = 500,
 				message = "Passed argument[1] wasn't the expected value",
 			}
+			return
 		end
 
 		passed = true
@@ -151,6 +154,8 @@ return function()
 	eventObject:Fire(r1 ^ 2)
 
 	task.wait()
+
+	if failure then return failure end
 
 	if not passed then
 		return {

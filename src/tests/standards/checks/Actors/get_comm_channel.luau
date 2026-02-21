@@ -49,9 +49,9 @@ return function()
 	eventObject.Event:Connect(function(arg)
 		if arg ~= "abs" then
 			passed = -1
+		else
+			passed = 1
 		end
-
-		passed = 1
 	end)
 
 	run_on_actor(actor, [[
@@ -66,7 +66,7 @@ return function()
 			status = 500,
 			message = "Did not fire the event",
 		}
-	elseif not passed == -1 then
+	elseif passed == -1 then
 		return {
 			status = 500,
 			message = "Passed argument[1] wasn't the expected value",
@@ -155,12 +155,15 @@ return function()
 		}
 	end	
 
+	local failure = nil
+
 	eventObject.Event:Connect(function(num)
 		if num ~= r1 ^ 2 then
-			return {
+			failure = {
 				status = 500,
 				message = "Passed argument[1] wasn't the expected value",
 			}
+			return
 		end
 
 		passed = true
@@ -169,6 +172,8 @@ return function()
 	eventObject:Fire(r1 ^ 2)
 
 	task.wait()
+
+	if failure then return failure end
 
 	if not passed then
 		return {
