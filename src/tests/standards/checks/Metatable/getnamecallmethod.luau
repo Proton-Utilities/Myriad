@@ -7,32 +7,38 @@ return function()
 			status = 400,
 			message = "Global not found",
 		}
-	elseif not hookmetamethod then
-		return {
-			status = 400,
-			message = "Global not found",
-		}
 	end
 
-	local originalPart = Instance.new("Part")
-	local method = false
-	local originalCall
+	local method1, method2
+	local simpleTable = Color3.new()
 
-	originalCall = hookmetamethod(originalPart, "__namecall", function(...)
-		if not method then
-			method = getnamecallmethod()
-		end
-
-		return originalCall(...)
+	pcall(function()
+		simpleTable:MYRIAD1()
 	end)
 
-	originalPart:Destroy()
+	task.spawn(function()
+		method2 = getnamecallmethod()
+
+		pcall(function()
+			simpleTable.MYRIAD1(simpleTable)
+		end)
+
+		method2 = method2 or getnamecallmethod()
+	end)
+	
 	task.wait()
 
-	if method ~= "Destroy" then
+	method1 = getnamecallmethod()
+	
+	if method1 ~= "MYRIAD1" then
 		return {
 			status = 500,
 			message = "Didn't return the correct method",
+		}
+	elseif method2 ~= nil then
+		return {
+			status = 500,
+			message = "Namecall method leaked into a new thread",
 		}
 	end
 
