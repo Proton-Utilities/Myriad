@@ -298,6 +298,7 @@ declare function identifyexecutor(): (string, string)
 declare function request(options: Request): Response
 
 declare function setclipboard(text: string): ()
+declare function toclipboard(text: string): ()
 declare function setfpscap(fps: number): ()
 declare function getfpscap(): number
 declare game: typeof(game) & ExtraDataModel
