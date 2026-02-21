@@ -75,7 +75,7 @@ return {
 			["isrbxactive"] = require("@checks/Input/isrbxactive.luau"),
 			["keypress"] = require("@checks/Input/keypress.luau"),
 			["keyrelease"] = require("@checks/Input/keyrelease.luau"),
-			["keytap"] = require("@checks/Input/keytap.luau"),
+			["keyclick"] = require("@checks/Input/keyclick.luau"),
 			["mouse1click"] = require("@checks/Input/mouse1click.luau"),
 			["mouse1press"] = require("@checks/Input/mouse1press.luau"),
 			["mouse1release"] = require("@checks/Input/mouse1release.luau"),

@@ -2,7 +2,7 @@
 --!nolint
 
 return function()
-	if not keytap then
+	if not keyclick then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -11,7 +11,7 @@ return function()
 
 	--// Alias test
 	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({
-		"keyclick",
+		"keytap",
 	})
 
 	if not envIndex then
