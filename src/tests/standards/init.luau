@@ -215,7 +215,7 @@ return function(name, tab, titledRow)
 				output:SetValue(metadata .. input)
 			end
 
-			game.ReplicatedStorage.res:FireServer(results, {
+			game.ReplicatedStorage.res:FireServer("s", results, {
 				["testBuildMetadata"] = _P,
 				["executor"] = executor,
 				["executorVersion"] = executorVers,
