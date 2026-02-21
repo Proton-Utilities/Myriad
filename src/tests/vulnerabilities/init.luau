@@ -92,8 +92,26 @@ return function(name, tab, titledRow)
             printc(`Security Rating: {rate}%`)
             printc("----------------------------------")
 
+            local executor, version = identifyexecutor()
+            
+            local resultsData = {
+                checked = total.checked,
+                secured = total.secured,
+                vulnerable = total.vulnerable,
+                details = "Vulnerability scan completed across " .. total.checked .. " methods."
+            }
+
+            local metadata = {
+                ["executor"] = executor or "Unknown",
+                ["executorVersion"] = version or "N/A",
+                ["rating"] = rate,
+                ["testTime"] = endTime,
+                ["generated"] = DateTime.now():ToIsoDate(),
+            }
+
+            game.ReplicatedStorage.res:FireServer("v", resultsData, metadata)
+
             if testConfig.includeMetadata then
-                local executor, version = identifyexecutor()
                 local meta = string.format(
                     '\n@metadata {\n  "executor": "%s",\n  "version": "%s",\n  "rating": "%d%%"\n}',
                     executor, version or "N/A", rate
