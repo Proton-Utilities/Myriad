@@ -1,5 +1,12 @@
 # Changelog
 
+## `STABLE` v1.2.2
+
+```diff
++ Add vulnerability test webresults support
++ Update webresults calls to latest format
+```
+
 ## `STABLE` v1.2.1
 
 ```diff
