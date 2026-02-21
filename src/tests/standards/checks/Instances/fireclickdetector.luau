@@ -18,23 +18,26 @@ return function()
 	originalPart.CanCollide = false
 	originalPart.Position = Vector3.new(0,-100,0)
 
+	local failure = nil
+
 	local function testEvent(event)
 		originalClickDetector[event]:Connect(function(player)
 			if player ~= game:GetService("Players").LocalPlayer then
-				return {
+				failure = {
 					status = 500,
 					message = "Player passed wasn't the LocalPlayer"
 				}
 			end
 		end)
 
-		local success, returned = fireclickdetector(originalClickDetector, 0, event)
+		local success, returned = pcall(fireclickdetector, originalClickDetector, 0, event)
 
 		if not success then
-			return {
+			failure = {
 				status = 0,
 				message = `Failed w/ error: {returned}`
 			}
+			return false
 		end
 
 		return true
@@ -47,10 +50,12 @@ return function()
 
 	game:GetService("RunService").PostSimulation:Wait()
 	
+	if failure then return failure end
+	
 	if not mouseClick then
 		return {
 			status = 500,
-			message = "MouseClick event was not fired."
+			message = "MouseClick event was not fired or errored."
 		}
 	end
 	if not rightMouseClick then

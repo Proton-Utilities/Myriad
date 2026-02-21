@@ -13,6 +13,7 @@ return function()
 	local touchPart = game.Players.LocalPlayer.Character.Head
 	local touched = false
 	local touchEnded = false
+	local failure = nil
 	local originalPart = Instance.new("Part")
 
 	originalPart.Anchored = true
@@ -25,10 +26,11 @@ return function()
 		if part ~= touchPart then
 			originalPart:Destroy()
 
-			return {
+			failure = {
 				status = 500,
 				message = "Touch part given wasn't the passed touch part",
 			}
+			return
 		end
 
 		touched = true
@@ -38,10 +40,11 @@ return function()
 		if part ~= touchPart then
 			originalPart:Destroy()
 
-			return {
+			failure = {
 				status = 500,
 				message = "Touch part given wasn't the passed touch part",
 			}
+			return
 		end
 
 		touchEnded = true
@@ -49,6 +52,8 @@ return function()
 
 	firetouchinterest(touchPart, originalPart, false)
 	game:GetService("RunService").PostSimulation:Wait()
+	
+	if failure then return failure end
 
 	if not touched then
 		return {
@@ -59,6 +64,8 @@ return function()
 
 	firetouchinterest(touchPart, originalPart, true)
 	game:GetService("RunService").PostSimulation:Wait()
+	
+	if failure then return failure end
 
 	if not touchEnded then
 		return {

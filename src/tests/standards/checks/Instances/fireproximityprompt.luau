@@ -11,6 +11,7 @@ return function()
 
 	--// Functionality test
 	local fired = false
+	local failure = nil
 	
 	local localPlayer = game:GetService("Players").LocalPlayer
 	local proximityPromptService = game:GetService("ProximityPromptService")
@@ -24,21 +25,21 @@ return function()
 	originalProximityPrompt.HoldDuration = 1
 
 	proximityPromptService.PromptButtonHoldBegan:Connect(function(prompt) 
-		return {
+		failure = {
 			status = 500,
 			message = "Proximity prompt was manually fired"
 		}
 	end)
 
 	proximityPromptService.PromptButtonHoldEnded:Connect(function(prompt) 
-		return {
+		failure = {
 			status = 500,
 			message = "Proximity prompt was manually fired"
 		}
 	end)
 
 	originalProximityPrompt:GetPropertyChangedSignal("HoldDuration"):Connect(function()
-		return {
+		failure = {
 			status = 500,
 			message = "Modified HoldDuration"
 		}
@@ -46,10 +47,11 @@ return function()
 
 	originalProximityPrompt.Triggered:Connect(function(player)
 		if player ~= localPlayer then
-			return {
+			failure = {
 				status = 500,
 				message = "Player passed wasn't the LocalPlayer"
 			}
+			return
 		end
 
 		fired = true
@@ -58,6 +60,10 @@ return function()
 	local success, returned = pcall(fireproximityprompt, originalProximityPrompt)
 
 	game:GetService("RunService").PostSimulation:Wait()
+
+	if failure then
+		return failure
+	end
 
 	if not success then
 		return {
