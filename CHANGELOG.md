@@ -1,5 +1,20 @@
 # Changelog
 
+## `STABLE` v1.2.3
+
+```diff
++ [PR] #5 - Loadstring source chunk semantics
++ [PR] #6 - run_on_actor extra semantics
++ [PR] #7 - More rigorous clonefunction checking
+
++ Introduce new checks for actor communication channel creation, retrieval, and parallel execution.
+
+! Fix `debug.getconstant` always passing with inconsistency. Incomplete check.
+! `Websocket.connect` test to validate signals based on methods rather than type. This accounts for custom signal implementations.
+! Make keytap main alias `keyclick` instead of `keytap`
+! Fix `fireclickdetector`, `fireproximityprompt` and `firetouchinterest` returning a result in connections.
+```
+
 ## `STABLE` v1.2.2
 
 ```diff
