@@ -22,7 +22,7 @@ return function()
 		Date.now()
 	end
 
-	local constOrder = {
+	local constOrder = { -- Optimization levels make this essentially useless. So we instead pass with inconsistency warnings
 		[1] = "print",
 
 		[3] = "A",
@@ -37,21 +37,23 @@ return function()
 		if const ~= v then
 			pFlag = true
 			pV = v
-			pi = i
+			pI = i
 		end
+
+		constOrder[i] = const
 	end
 
-	local invalidIndexSuccess, returnedMsg = pcall(debug.getconstant, originalFunction, 9)
+	local invalidIndexSuccess, returnedMsg = pcall(debug.getconstant, originalFunction, 20)
 
 	if not invalidIndexSuccess then
 		return {
 			status = 500,
-			message = "Should pass nil instead of errroing for invalid indexes",
+			message = "Should not error when retrieving Out-of-bounds indexes. Pass nil or return nothing instead.",
 		}
 	elseif returnedMsg then
 		return {
 			status = 500,
-			message = "Constant 9 shouldn't exist",
+			message = "Something was somehow returned when attempting to retrieve an out-of-bounds index (20).",
 		}
 	elseif pcall(debug.getconstant, print, 1) then
 		return {
@@ -72,8 +74,15 @@ return function()
 		}
 	end
 
+	if pFlag then
+		return {
+			status = 200,
+			message = `Passed with inconsistency:  Constant at {pI} should be: {pV}. Got: {constOrder[pI]} (Check your optimization level)`,
+		}
+	end
+
 	return {
 		status = 200,
-		message = `Passed with inconsistency:  Constant at {i} should be: {v}. Got: {const}`,
+		message = `Passed`,
 	}
 end
