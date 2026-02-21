@@ -9,22 +9,32 @@ return function()
 		}
 	end
 
-	local func = loadstring("MYRIAD", "MYRIAD")
+	local funcOrNil, errorMessage = loadstring("MYRIAD", "=MYRIAD")
 
-	loadstring([[
+	local func = loadstring([[
 		globalVar = {"Hello", "World"}
-	]])()
+	]], "=MYRIAD")
 	
+	func()
+
 	if not globalVar or not (globalVar[1] == "Hello" and globalVar[2] == "World") then
 		return {
 			status = 500,
 			message = "Global variable insert from loadstring not found",
 		}
-	elseif func ~= nil then
+	elseif funcOrNil ~= nil then
 		return {
 			status = 500,
 			message = "Didn't error on incomplete expression",
 		}
+	else
+		local funcSource = debug.info(func, "s")
+		if funcSource ~= "MYRIAD" then
+			return {
+				status = 500,
+				message = `The source is "{funcSource}" instead of "MYRIAD".`,
+			}
+		end
 	end
 
 	--// Alias test
