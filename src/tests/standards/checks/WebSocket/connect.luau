@@ -20,46 +20,46 @@ return function()
 
 	for property, expected in pairs({
 		-- prop name, type(s)[subtype(s), tableProp]
-		["OnClose"] = {"RBXScriptSignal", {["table"] = {"Connect", "Once", "Wait"}}},
-		["OnMessage"] = {"RBXScriptSignal", {["table"] = {"Connect", "Once", "Wait"}}},
+		["OnClose"] = { methods = { "Connect", "Once", "Wait" } },
+		["OnMessage"] = { methods = { "Connect", "Once", "Wait" } },
 		["Send"] = "function",
 		["Close"] = "function",
 	}) do
 		local success, value = pcall(function()
 			return socket[property]
 		end)
-	
+
 		if not success or value == nil then
 			return {
 				status = 500,
 				message = `WebSocketObject is missing: {property}`,
 			}
 		end
-	
-		local expectedType = typeof(expected) == "table" and expected[1] or expected
-		if typeof(value) ~= expectedType then
-			return {
-				status = 500,
-				message = `WebSocketObject.{property} is not a {expectedType} (got {typeof(value)})`,
-			}
-		end
-	
-		if typeof(expected) == "table" and expected[2] and typeof(expected[2]) == "table" then
-			for containerType, subProps in pairs(expected[2]) do
-				if containerType == "table" and typeof(value) == "table" then
-					for _, subProp in ipairs(subProps) do
-						if typeof(value[subProp]) ~= "function" then
-							return {
-								status = 500,
-								message = `WebSocketObject.{property}.{subProp} is not a function`,
-							}
-						end
-					end
+
+		if type(expected) == "table" and expected.methods then
+			for _, methodName in ipairs(expected.methods) do
+				local ok, method = pcall(function()
+					return value[methodName]
+				end)
+
+				if not ok or type(method) ~= "function" then
+					return {
+						status = 500,
+						message = `WebSocketObject.{property}.{methodName} is not callable`,
+					}
 				end
+			end
+		else
+			local expectedType = typeof(expected) == "table" and expected[1] or expected
+			if typeof(value) ~= expectedType then
+				return {
+					status = 500,
+					message = `WebSocketObject.{property} is not a {expectedType} (got {typeof(value)})`,
+				}
 			end
 		end
 	end
-	
+
 	if result then
 		return result
 	end
