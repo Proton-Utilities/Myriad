@@ -224,6 +224,7 @@ return function(name, tab, titledRow)
 				["failed"] = failed,
 				["testTime"] = endTime,
 				["generated"] = DateTime.now():ToIsoDate(),
+				["excludedCount"] = excludedCount,
 			})
 		end)
 	end
