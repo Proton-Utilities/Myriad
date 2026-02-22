@@ -22,15 +22,32 @@ return function()
 	local tempFolder = Instance.new("Folder", game)
 	tempFolder.Name = os.date("%H")
 
+	local detectXref = {}
+	local sendData = {
+		["GAME"] = game,
+		["TABLE"] = detectXref,
+		["TABLE_STR"] = tostring(detectXref)
+	}
+	
+	local success, errorMessage = pcall(run_on_actor, actor, "A = ...", {})
+	if not success then
+		return {
+			status = 500,
+			message = "Does not support tables as argument"
+		}
+	end
+
 	run_on_actor(actor, [[
-        local OriginalGame = ({...})[1]
+        local externaldData = ({...})[1]
         
         local originalPart = Instance.new("TrussPart")
-		
-		if not OriginalGame then
-			originalPart.Name = "ONE_ARG"
-        elseif OriginalGame == game then
-            originalPart.Name = "INVALID_REFERENCE"
+        
+        if not externaldData or type(externaldData) ~= "table" then
+            originalPart.Name = "ONE_ARG"
+        elseif tostring(externaldData["TABLE"]) == externaldData["TABLE_STR"] then
+            originalPart.Name = "SAME_XREF"
+        elseif externaldData["GAME"] == game then
+            originalPart.Name = "XREF_CONVERT"
         elseif select("#", ...) ~= 5 then
             originalPart.Name = "MULTI_ARGS"
         else
@@ -42,7 +59,7 @@ return function()
         end)
 
         originalPart.Parent = game[os.date("%H")]
-    ]], game, 1, 2, 3, 4)
+    ]], sendData, 1, 2, 3, 4)
 
 	task.wait(0.1)
 
@@ -60,10 +77,15 @@ return function()
 	local statusResult = TrussPart.Name
 	TrussPart:Destroy()
 
-	if statusResult == "INVALID_REFERENCE" then
+	if statusResult == "SAME_XREF" then
 		return {
 			status = 500,
-			message = "The xrefs of the original VM are the same as those of the actor"
+			message = "The tables have the same xrefs as in the main VM"
+		}
+	elseif statusResult == "XREF_CONVERT" then
+		return {
+			status = 500,
+			message = "Xrefs are converted automatically; like Actor:SendMessage and Actor:BindToMessage"
 		}
 	elseif statusResult == "ONE_ARG" then
 		return {
@@ -79,16 +101,6 @@ return function()
 		return {
 			status = 500,
 			message = "Unknown error, check console"
-		}
-	end
-
-	--// Alias test
-	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
-
-	if not envIndex then
-		return {
-			status = 501,
-			message = `Alias not found: {failedIndex}`,
 		}
 	end
 
