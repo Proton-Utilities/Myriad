@@ -1,9 +1,17 @@
 # Changelog
 
-## !! UNMARKED !!
+## `STABLE` v1.2.4
 
 ```diff
++ getcustomasset
++ isfunctionhooked
++ get/setfflag
++ setsimulationradius
++ clearqueueonteleport
+
 ! Enforcing run_on_actor same reference to a global object
+! getscripthash overwriting source, which: autofails next run, dosen't logically work since scripts are compiled.
+! make main qot alias queueonteleport
 ```
 
 ## `STABLE` v1.2.3
