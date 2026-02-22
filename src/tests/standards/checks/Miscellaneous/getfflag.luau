@@ -19,5 +19,8 @@ return function()
 		}
 	end
 
-	return {}
+	return {
+		status = 200,
+		message = `Passed`,
+	}
 end
