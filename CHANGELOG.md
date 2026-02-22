@@ -1,5 +1,24 @@
 # Changelog
 
+## !! UNMARKED
+
+```diff
++ Added native signal library test (Signal.new)
++ Added cansignalreplicate
++ Added firesignal
++ Added getconnections
++ Added getsignalarguments
++ Added getsignalargumentsinfo
++ Added getsignalwhitelist
++ Added replicatesignal
+
+! Fixed run_on_actor xrefs check
+```
+
+## `STABLE` `HOTFIX` v1.2.5
+
+- Fixed Set/Get fflag tests don't return any status
+
 ## `STABLE` v1.2.4
 
 ```diff
