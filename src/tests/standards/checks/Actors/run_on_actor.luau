@@ -29,8 +29,8 @@ return function()
 		
 		if not OriginalGame then
 			originalPart.Name = "ONE_ARG"
-        elseif OriginalGame == game then
-            originalPart.Name = "SAME_GAME"
+        elseif OriginalGame ~= game then
+            originalPart.Name = "INVALID_REFERENCE"
         elseif select("#", ...) ~= 5 then
             originalPart.Name = "MULTI_ARGS"
         else
@@ -60,10 +60,10 @@ return function()
 	local statusResult = TrussPart.Name
 	TrussPart:Destroy()
 
-	if statusResult == "SAME_GAME" then
+	if statusResult == "INVALID_REFERENCE" then
 		return {
 			status = 500,
-			message = "The xrefs of the original VM are the same as those of the actor"
+			message = "The game reference passed to the actor does not match the original DataModel"
 		}
 	elseif statusResult == "ONE_ARG" then
 		return {
