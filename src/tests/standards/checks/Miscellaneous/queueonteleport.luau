@@ -2,7 +2,7 @@
 --!nolint
 
 return function()
-	if not getfpscap then
+	if not queueonteleport then
 		return {
 			status = 400,
 			message = "Global not found",
@@ -11,7 +11,7 @@ return function()
 
 	--// Alias test
 	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({
-		"queueonteleport"
+		"queue_on_teleport"
 	})
 
 	if not envIndex then
