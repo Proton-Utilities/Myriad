@@ -161,8 +161,18 @@ return {
 			["decompile"] = require("@checks/Scripts/decompile.luau"),
 		},
 
+		Signal = {
+			["Signal.new"] = require("@checks/Signal/new.luau"),
+		},
+
 		Signals = {
-			
+			["cansignalreplicate"] = require("@checks/Signals/cansignalreplicate.luau"),
+			["firesignal"] = require("@checks/Signals/firesignal.luau"),
+			["getconnections"] = require("@checks/Signals/getconnections.luau"),
+			["getsignalarguments"] = require("@checks/Signals/getsignalarguments.luau"),
+			["getsignalargumentsinfo"] = require("@checks/Signals/getsignalargumentsinfo.luau"),
+			["getsignalwhitelist"] = require("@checks/Signals/getsignalwhitelist.luau"),
+			["replicatesignal"] = require("@checks/Signals/replicatesignal.luau"),
 		},
 
 		Actors = {
