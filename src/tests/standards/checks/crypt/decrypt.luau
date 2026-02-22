@@ -11,9 +11,9 @@ return function()
 		}
 	end
 
-	local data = referenceCrypt.base64decode("G3H9Fk0PSWKs46qqlbA3VKnzfz7wRRTh")
-	local key = "GMVIsgHnxm0YDYwUGkBhtRWSrSsfRMjY"
-	local iv = "1234567890abcdef"
+	local data = "jxF03fu7V3WKm7b2oRMo9HYz+KVDymqKU29qmsiTP4E="
+	local key = referenceCrypt.base64encode("GMVIsgHnxm0YDYwUGkBhtRWSrSsfRMjY")
+	local iv = referenceCrypt.base64encode("1234567890abcdef")
 	local mode = "CBC"
 
 	local decryptSuccess, cryptDecrypted = pcall(function()

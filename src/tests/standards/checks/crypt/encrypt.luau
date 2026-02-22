@@ -12,8 +12,8 @@ return function()
 	end
 
 	local plaintext = "1234567890abcdef"
-	local key = "GMVIsgHnxm0YDYwUGkBhtRWSrSsfRMjY"
-	local iv = "1234567890abcdef"
+	local key = referenceCrypt.base64encode("GMVIsgHnxm0YDYwUGkBhtRWSrSsfRMjY")
+	local iv = referenceCrypt.base64encode("1234567890abcdef")
 	local mode = "CBC"
 
 	local cryptSuccess, cryptEncrypted = pcall(function()
@@ -27,8 +27,8 @@ return function()
 		}
     end
 
-	local reference = "G3H9Fk0PSWKs46qqlbA3VKnzfz7wRRTh"
-	local assumed = referenceCrypt.base64encode(cryptEncrypted)
+	local reference = "jxF03fu7V3WKm7b2oRMo9HYz+KVDymqKU29qmsiTP4E="
+	local assumed = cryptEncrypted
 	
 	if assumed ~= reference then
 		return {
