@@ -1,6 +1,6 @@
 # Changelog
 
-## !! UNMARKED
+## `STABLE` v1.3.0
 
 ```diff
 + Added native signal library test (Signal.new)
