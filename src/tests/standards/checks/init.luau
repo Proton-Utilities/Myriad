@@ -15,6 +15,7 @@ return {
 			["restorefunction"] = require("@checks/Closures/restorefunction.luau"),
 			["getfunctionhash"] = require("@checks/Closures/getfunctionhash.luau"),
 			["checkcaller"] = require("@checks/Closures/checkcaller.luau"),
+			["isfunctionhooked"] = require("@checks/Closures/isfunctionhooked.luau"),
 		},
 
 		crypt = {
@@ -58,7 +59,7 @@ return {
 		},
 
 		Filesystem = {
-			["getcustomasset"] = require("@checks/Filesystem/getcustomasset.luau"),
+			["getcustomasset"] = require("@checks/Filesystem/getcustomasset"),
 			["listfiles"] = require("@checks/Filesystem/listfiles.luau"),
 			["loadfile"] = require("@checks/Filesystem/loadfile.luau"),
 			["appendfile"] = require("@checks/Filesystem/appendfile.luau"),
@@ -119,7 +120,10 @@ return {
 			["request"] = require("@checks/Miscellaneous/request.luau"),
 			["lz4compress"] = require("@checks/Miscellaneous/lz4compress.luau"),
 			["lz4decompress"] = require("@checks/Miscellaneous/lz4decompress.luau"),
-			["queue_on_teleport"] = require("@checks/Miscellaneous/queue_on_teleport.luau"),
+			["queueonteleport"] = require("@checks/Miscellaneous/queueonteleport.luau"),
+			["clearqueueonteleport"] = require("@checks/Miscellaneous/clearqueueonteleport.luau"),
+			["getfflag"] = require("@checks/Miscellaneous/getfflag.luau"),
+			["setfflag"] = require("@checks/Miscellaneous/setfflag.luau"),
 		},
 
 		External = {
