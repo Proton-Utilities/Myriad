@@ -1,4 +1,5 @@
 --// Dex tampers with decompile function in some builds
+-- AGAIN, we only use this to prevent users from accidentally having dex open. Which tampers with the decompile function.
 
 return function()
 	for _, v in pairs(getgc(true)) do
