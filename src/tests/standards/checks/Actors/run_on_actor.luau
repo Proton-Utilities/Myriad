@@ -29,8 +29,15 @@ return function()
 		["TABLE_STR"] = tostring(detectXref)
 	}
 	
-	local success, errorMessage = pcall(run_on_actor, actor, "A = ...", {})
-	if not success then
+	local success, errorMessage = pcall(run_on_actor, actor, [[local Table = ...
+    workspace:SetAttribute("MYRIAD_ROA_TABLETEST", type(Table) == "table")]], {})
+	
+	task.wait(0.1)
+	
+	local receivedTable = workspace:GetAttribute("MYRIAD_ROA_TABLETEST")
+	workspace:SetAttribute("MYRIAD_ROA_TABLETEST", nil)
+	
+	if not success or not receivedTable then
 		return {
 			status = 500,
 			message = "Does not support tables as argument"
