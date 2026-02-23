@@ -65,7 +65,7 @@ return function()
 	else
 		return {
 			status = 500,
-			message = "The garbage collector is not functioning properly",
+			message = "The garbage collector is not working properly. It should have cleaned up in 2 seconds, but it took more",
 		}
 	end
 
