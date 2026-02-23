@@ -13,6 +13,23 @@ return function()
 	local BindableEv = Instance.new("BindableEvent")
 	BindableEv.Name = "MYRIAD_FIRESIGNAL"
 
+	--[[
+	
+		> As you can see, we believe that firesignal should also influence Actors. THE REASON? 
+		Traditional RBXScriptSignals affect the entire game, so executing them only in the 
+		normal State could cause the game to not perform the action or, worse still, BE DETECTED 
+		by a comparison within the Actors.
+		
+		ERROR_O3 EXPLANATION:
+			> Unlike run_on_actor, this is not directed towards an exploit function, so 
+			it is mandatory that all tables are cloned and that the instances 
+			provide their usable xrefs in the different state.
+		
+			> Only in this case should you use SendMessage and BindToMessage (Or create 
+			something that does the same thing).
+			
+	]]
+
 	local detectedOnceStacks = false
 
 	local randomObject = Instance.new("TrussPart", BindableEv)
@@ -24,10 +41,10 @@ return function()
 
 	randomObject.Name = randomString
 
-	local onceRecibedArgs, waitRecibedArgs
+	local onceReceivedArgs, waitReceivedArgs
 	
 	task.spawn(function()
-		waitRecibedArgs = table.pack(BindableEv.Event:Wait())
+		waitReceivedArgs = table.pack(BindableEv.Event:Wait())
 	end)
 
 	BindableEv.Event:Once(function(...)
@@ -42,7 +59,7 @@ return function()
 			detectedOnceStacks = true
 		end
 
-		onceRecibedArgs = table.pack(...)
+		onceReceivedArgs = table.pack(...)
 	end)
 
 	BindableEv.Parent = NoChildsService
@@ -68,32 +85,32 @@ return function()
 			status = 0,
 			message = `Ambiguous error: {e}`,
 		}
-	elseif type(onceRecibedArgs) ~= "table" then
+	elseif type(onceReceivedArgs) ~= "table" then
 		return {
 			status = 500,
 			message = "Signal handler did not run an :Once",
 		}
-	elseif type(waitRecibedArgs) ~= "table" then
+	elseif type(waitReceivedArgs) ~= "table" then
 		return {
 			status = 500,
 			message = "Signal handler did not run an :Wait",
 		}
 	end
 
-	if onceRecibedArgs[1] ~= randomString or
-		onceRecibedArgs[2] ~= randomObject or
-		onceRecibedArgs[3] ~= nil or
-		onceRecibedArgs.n ~= 3 then
+	if onceReceivedArgs[1] ~= randomString or
+		onceReceivedArgs[2] ~= randomObject or
+		onceReceivedArgs[3] ~= nil or
+		onceReceivedArgs.n ~= 3 then
 
 		return {
 			status = 500,
 			message = "Arguments passed to firesignal with Once were not received by the handler",
 		}
 
-	elseif waitRecibedArgs[1] ~= randomString or
-		waitRecibedArgs[2] ~= randomObject or
-		waitRecibedArgs[3] ~= nil or
-		waitRecibedArgs.n ~= 3 then
+	elseif waitReceivedArgs[1] ~= randomString or
+		waitReceivedArgs[2] ~= randomObject or
+		waitReceivedArgs[3] ~= nil or
+		waitReceivedArgs.n ~= 3 then
 
 		return {
 			status = 500,
@@ -120,16 +137,6 @@ return function()
 	end
 	
 	task.spawn(destroyEvent)
-
-	--[[ ERROR_O3 EXPLANATION:
-		
-		> Unlike run_on_actor, this is not directed towards an exploit function, so 
-		it is mandatory that all tables are cloned and that the instances 
-		provide their usable xrefs in the different state.
-		
-		> Only in this case should you use SendMessage and BindToMessage (Or create 
-		something that does the same thing).
-	]]
 
 	if not actorResponse then
 		return {
@@ -160,7 +167,7 @@ return function()
 		elseif actorResponse == `ERROR_{Prefix}3` then
 			return {
 				status = 500,
-				message = `Signal handler does convert the {Function} xrefs in the arguments of and Actor`,
+				message = `The Signal handler does not create new xrefs for the {Function} arguments of an Actor`,
 			}
 		elseif actorResponse == `ERROR_{Prefix}4` then
 			return {
