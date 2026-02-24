@@ -122,8 +122,10 @@ return {
 			["lz4decompress"] = require("@checks/Miscellaneous/lz4decompress.luau"),
 			["queueonteleport"] = require("@checks/Miscellaneous/queueonteleport.luau"),
 			["clearqueueonteleport"] = require("@checks/Miscellaneous/clearqueueonteleport.luau"),
-			["getfflag"] = require("@checks/Miscellaneous/getfflag.luau"),
-			["setfflag"] = require("@checks/Miscellaneous/setfflag.luau"),
+
+			-- Deprecated, unsafe.
+			--[[ ["getfflag"] = require("@checks/Miscellaneous/getfflag.luau"),
+			["setfflag"] = require("@checks/Miscellaneous/setfflag.luau"), ]]
 		},
 
 		External = {

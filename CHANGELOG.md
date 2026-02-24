@@ -5,6 +5,7 @@
 ```diff
 ! New `run_on_actor` checks
 ! Removed IsLoaded check for `getcustomasset`
+! DEPRECATED: `setfflag`, `getfflag`
 ```
 
 ## `STABLE` v1.3.0
