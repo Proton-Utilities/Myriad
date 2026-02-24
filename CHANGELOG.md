@@ -1,5 +1,12 @@
 # Changelog
 
+## `STABLE` `HOTFIX` v1.3.1
+
+```diff
+! New `run_on_actor` checks
+! Removed IsLoaded check for `getcustomasset`
+```
+
 ## `STABLE` v1.3.0
 
 ```diff
