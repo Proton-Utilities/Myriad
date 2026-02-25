@@ -23,7 +23,7 @@ return function()
 			found1 = true
 		elseif v == originalPart2 then
 			found2 = true
-		elseif not v:IsA("Instance") then
+		elseif typeof(v) ~= "Instance" then
 			return {
 				status = 500,
 				message = "Found a part that isn't an instance"

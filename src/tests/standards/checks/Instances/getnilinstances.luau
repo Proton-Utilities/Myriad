@@ -17,32 +17,32 @@ return function()
 	originalPart2.Anchored = true
 	originalPart2.Transparency = 1
 	originalPart2.CanCollide = false
-	originalPart2.Position = Vector3.new(0,-100,0)
+	originalPart2.Position = Vector3.new(0, -100, 0)
 
 	for _, v in pairs(getnilinstances()) do
 		if v == originalPart1 then
 			found1 = true
 		elseif v == originalPart2 then
 			found2 = true
-		elseif v:IsDescendantOf(game) then
-			found3 = true
-		elseif not v:IsA("Instance") then
+		elseif typeof(v) ~= "Instance" then
 			return {
 				status = 500,
-				message = "Found a part that isn't an instance"
+				message = "Found a part that isn't an instance",
 			}
+		elseif not v.IsDescendantOf or v:IsDescendantOf(game) then
+			found3 = true
 		end
 	end
 
 	if not found1 then
 		return {
 			status = 500,
-			message = "Didn't find a part w/ a nil parent"
+			message = "Didn't find a part w/ a nil parent",
 		}
 	elseif found2 or found3 then
 		return {
 			status = 500,
-			message = "Found a part w/ a parent"
+			message = "Found a part w/ a parent",
 		}
 	end
 
