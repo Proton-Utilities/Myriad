@@ -21,10 +21,11 @@ return function()
 	
 	-- An "error" is only possible if setrawmetatable exists and was previously modified
 	if setrawmetatable then
+		local sameTable = {}
 		setrawmetatable(originalPart, {
 			__type = "Instance",
 			__index = function()
-				return {}
+				return sameTable
 			end
 		})
 	end
