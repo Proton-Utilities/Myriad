@@ -1,5 +1,22 @@
 # Changelog
 
+## !! Unmarked !!
+
+```diff
++ New `debug.getproto` checks
+
+! Fix getnilinstances not checking for IsDescendantOf
+! Fix getproto problems caused by internal lua setfenv behavior
+
+- Remove .IsLoaded check for `getcustomasset`
+```
+
+## `STABLE` `HOTFIX` v1.3.2
+
+``` diff
+! Fix cloneref making a new table per __index invocation
+```
+
 ## `STABLE` `HOTFIX` v1.3.1
 
 ```diff
