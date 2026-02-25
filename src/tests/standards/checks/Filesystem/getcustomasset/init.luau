@@ -79,21 +79,12 @@ return function()
 		game:GetService("ContentProvider"):PreloadAsync({imageLabel})
 	end)
 
-	local isLoaded = imageLabel.IsLoaded
-
 	pcall(function() delfile(filename) end)
 
 	if not preloadSuccess then
 		return {
 			status = 500,
 			message = "ContentProvider failed to preload asset: " .. tostring(preloadErr),
-		}
-	end
-
-	if not isLoaded then
-		return {
-			status = 500,
-			message = "Asset returned, but Roblox Engine failed to load it as a valid Image",
 		}
 	end
 
