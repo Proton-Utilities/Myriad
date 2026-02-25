@@ -1,6 +1,6 @@
 # Changelog
 
-## !! Unmarked !!
+## `STABLE` v1.3.3
 
 ```diff
 + New `debug.getproto` checks
