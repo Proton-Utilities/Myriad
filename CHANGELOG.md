@@ -1,5 +1,11 @@
 # Changelog
 
+## `UNMARKED`
+
+```diff
+! Fix getconstant out of bounds index check
+```
+
 ## `STABLE` v1.3.3
 
 ```diff
