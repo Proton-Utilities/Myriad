@@ -45,7 +45,12 @@ return function()
 		pcall(setmetatable, tempUsedata, usedataMETA.__metatable)
 	end
 	
-	if getrawmetatable(tempTable) ~= newTableMETA then
+	if calledTableNamecall or calledUserdataNamecall then
+		return {
+			status = 500,
+			message = "The method is called so that it will surely return an error and the function will be obtained",
+		}
+	elseif getrawmetatable(tempTable) ~= newTableMETA then
 		return {
 			status = 500,
 			message = "Returned a different metatable for table",
