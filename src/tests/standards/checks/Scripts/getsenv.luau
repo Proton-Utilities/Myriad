@@ -33,7 +33,7 @@ return function()
 	end
 	
 	local success, errorMessage = pcall(getsenv, nonRunningScript)
-	if success or errorMessage ~= nil then
+	if success and errorMessage ~= nil then
 		return {
 			status = 500,
 			message = "Should not be able to obtain the ENV from a script that is not running",
