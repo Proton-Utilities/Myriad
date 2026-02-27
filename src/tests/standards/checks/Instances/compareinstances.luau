@@ -16,6 +16,7 @@ return function()
 
 	local originalPart = Instance.new("Part")
 	local originalService = game:GetService("CoreGui")
+	local originalServiceAgain = game:GetService("CoreGui")
 
 	if cloneref(originalPart) == originalPart then
 		return {
@@ -27,11 +28,17 @@ return function()
 			status = 500,
 			message = `(CR) Cloned service cannot be equal to original reference`,
 		}
+	end
 
-	elseif not compareinstances(game, game) then
+	if not compareinstances(game, game) then
 		return {
 			status = 500,
 			message = `Two equal instances (game, game) assumed unequal`,
+		}
+	elseif not compareinstances(originalService, originalServiceAgain) then
+		return {
+			status = 500,
+			message = `Two equal instances (CoreGui, CoreGui) assumed unequal`,
 		}
 	elseif compareinstances(game, workspace) then
 		return {
@@ -47,6 +54,15 @@ return function()
 		return {
 			status = 500,
 			message = `Two equal instances (originalService, clonedService) assumed equal`,
+		}
+	end
+	
+	local tempTable = {}
+	if pcall(compareinstances, tempTable, tempTable) then
+		-- The function is called compareINSTANCES", not "compareOBJETS" or anything similar
+		return {
+			status = 500,
+			message = "No error occurred when comparing tables",
 		}
 	end
 
