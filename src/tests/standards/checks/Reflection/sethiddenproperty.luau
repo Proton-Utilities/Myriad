@@ -15,15 +15,21 @@ return function()
 	end
 
 	local originalPart = Instance.new("Part")
+	
+	local shapeOpcions = {"CornerWedge", "Wedge", "Ball", "Cylinder"}
+	local shapeOpcion = shapeOpcions[math.random(1, #shapeOpcions)]
+	
+	sethiddenproperty(originalPart, "shape", Enum.PartType[shapeOpcion])
 
-	local prop2Value, prop2Hidden = gethiddenproperty(originalPart, "shape")
-
-	sethiddenproperty(originalPart, "shape", Enum.PartType.CornerWedge)
-
-	if not gethiddenproperty(originalPart, "shape") == Enum.PartType.CornerWedge then
+	if gethiddenproperty(originalPart, "shape") ~= Enum.PartType[shapeOpcion] then
 		return {
 			status = 500,
 			message = "Hidden property's value was incorrectly set",
+		}
+	elseif originalPart.Shape ~= Enum.PartType[shapeOpcion] then
+		return {
+			status = 500,
+			message = "It changed .shape but not .Shape, it should change accordingly, weird",
 		}
 	end
 
