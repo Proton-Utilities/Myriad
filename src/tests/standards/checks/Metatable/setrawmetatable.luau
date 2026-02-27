@@ -7,35 +7,67 @@ return function()
 			status = 400,
 			message = "Global not found",
 		}
+	elseif not getrawmetatable then
+		return {
+			status = 401,
+			message = "Dependency 'getrawmetatable' not found",
+		}
 	end
 
-	local originalObject = setmetatable({}, {
-		__index = function()
-			return false
-		end,
-		__metatable = "Locked",
-	})
-	local returnedObject = setrawmetatable(originalObject, {
-		__index = function()
-			return true
-		end,
-	})
-
-	if not originalObject then
+	local sillyString = "Netflix CE on top!"
+	local randomString = ""
+	
+	for _ = 1, 32 do
+		randomString ..= string.char(math.random(1, 255))
+	end
+	
+	local originalStringMETA = getrawmetatable(randomString)
+	local toSetMETA = table.clone(originalStringMETA)
+	
+	toSetMETA.__type = "MYRIAD"
+	toSetMETA.__call = function(self)
+		if self == randomString then
+			return sillyString
+		end
+	end
+	
+	local success, returnedObject = pcall(setrawmetatable, randomString, toSetMETA)
+	
+	if not success then
 		return {
 			status = 500,
-			message = "Original object not given",
+			message = `Unable to change the metatable of a string: {returnedObject}`,
 		}
-	elseif originalObject.MYRI ~= true then
+		
+	elseif getrawmetatable(randomString) ~= toSetMETA then
 		return {
 			status = 500,
-			message = "Return function gave true, MYRI not found",
+			message = "The meta table did not change to the new one",
 		}
-	elseif not returnedObject then
+		
+	elseif typeof(randomString) ~= "MYRIAD" then
+		-- It is important to change this because it is impossible for setmetatable
+		pcall(setrawmetatable, randomString, originalStringMETA)
 		return {
 			status = 500,
-			message = "Returned object not given",
+			message = "The __type parameter could not be set in the string",
 		}
+		
+	else
+		local success, result = pcall(randomString)
+		pcall(setrawmetatable, randomString, originalStringMETA)
+		
+		if not success then
+			return {
+				status = 500,
+				message = "failed to set __call",
+			}
+		elseif result ~= sillyString then
+			return {
+				status = 500,
+				message = `failed to set __call: {result} ~= {sillyString}`,
+			}
+		end
 	end
 
 	--// Alias test
