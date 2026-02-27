@@ -3,6 +3,18 @@
 ## `UNMARKED`
 
 ```diff
++ New `setsenv` checks. Now the ENV of a dead script and an ENV whose `.script` property is nil are tested
++ New `sethiddenproperty` checks. It checks whether the property actually changed or was just a memory edit with no effect on the game
++ New `gethiddenproperty` check. A property that dynamically changes with another value has been added 
++ New `setrawmetatable` checks. Strings are used to make the test more difficult to fake, and a property is added that setmetatable normal cannot set
++ New `hookmetamethod` checks. It checks in a table and verifies whether it makes a hook or just tries to replace the function
++ New `getrawmetatable` checks. It checks whether an error occurs when attempting to obtain the functions, whether the tables change, and whether the __index matches
++ New `compareinstances` checks. It checks if the same object is equal and returns an error if it does not pass 2 instances
++ New `newcclosure` checks. It checks whether it supports putting a name as the second argument, yielding, wrapping it 198 times, seeing if it cuts arguments or returns, and whether it can be executed 5 times and give the correct arguments
++ New `get_comm_channel` checks. It checks whether there is an error with a comm_id number that does not exist
++ New `create_comm_channel` checks. It checks whether they have all the necessary methods, whether comm_id has decimals, and whether get_comm_channel returns the same eventObject
+
+! Fix `run_on_actor` not conversion of xrefs
 ! Fix getconstant out of bounds index check
 ```
 
