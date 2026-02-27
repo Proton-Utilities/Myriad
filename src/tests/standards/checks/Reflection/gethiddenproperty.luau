@@ -14,7 +14,8 @@ return function()
 
 	local prop1Value, prop1Hidden = gethiddenproperty(originalPart, "Name")
 	local prop2Value, prop2Hidden = gethiddenproperty(originalPart, "PropertyStatusStudio")
-	local invalidPropSuccess, invalidPropMessage = task.spawn(pcall, gethiddenproperty, originalPart, "siz")
+	local prop3Value, prop3Hidden = gethiddenproperty(workspace, "DataModelPlaceVersion")
+	local invalidPropSuccess, invalidPropMessage = pcall(gethiddenproperty, originalPart, "siz")
 
 	-- Name
 	if prop1Hidden then
@@ -28,7 +29,7 @@ return function()
 			message = "Non-hidden property value incorrect, ensure you still return values for non-hidden properties.",
 		}
 
-	-- PropertyStatusStudio
+		-- PropertyStatusStudio
 	elseif not prop2Hidden then
 		return {
 			status = 500,
@@ -39,8 +40,17 @@ return function()
 			status = 500,
 			message = "Hidden property value incorrect",
 		}
-
-	-- siz
+	elseif not prop3Hidden then
+		return {
+			status = 500,
+			message = "Hidden property assumed non-hidden in workspace",
+		}
+	elseif prop3Value ~= game.PlaceVersion then
+		-- Some exploits just wait for the values to be the defaults
+		return {
+			status = 500,
+			message = "Hidden property value incorrect in workspace",
+		}
 	elseif not invalidPropSuccess then
 		return {
 			status = 500,
