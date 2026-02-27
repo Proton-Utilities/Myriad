@@ -1,8 +1,6 @@
 --!nocheck
 --!nolint
 
---// Is literally just create_comm_channel 🤔
-
 return function()
 	if not get_comm_channel then
 		return {
@@ -31,7 +29,7 @@ return function()
 			message = "Failed to find actor",
 		}
 	end
-	
+
 	local comm_id, eventObject = create_comm_channel()
 
 	if not eventObject then
@@ -39,37 +37,111 @@ return function()
 			status = 500,
 			message = `EventObject dosen't exist`,
 		}
-	elseif typeof(comm_id) ~= "number" then
+	elseif type(comm_id) ~= "number" then
 		return {
 			status = 500,
 			message = "Communication ID isn't a number",
 		}
-	end	
+	elseif not eventObject.Event then
+		return {
+			status = 500,
+			message = "EventObject has no .Event property",
+		}
+	elseif type(eventObject.Fire) ~= "function" then
+		return {
+			status = 500,
+			message = "EventObject has no .Fire Function",
+		}
+	elseif get_comm_channel(comm_id) ~= eventObject then
+		return {
+			status = 500,
+			message = "Does not return the same EventObject",
+		}
+	end
+	
+	local success, err = pcall(get_comm_channel, math.random())
+	if not success or err ~= nil then
+		return {
+			status = 500,
+			message = "Returned an error or a value instead of nil",
+		}
+	end
 
-	eventObject.Event:Connect(function(arg)
-		if arg ~= "abs" then
-			passed = -1
-		else
-			passed = 1
+	local signalMethods = {"Connect", "Once", "Wait"}
+
+	for _, method in signalMethods do
+		if not eventObject.Event[method] then
+			return {
+				status = 500,
+				message = `.Event does not contain the {method} method`,
+			}
 		end
+	end
+
+	local randomString = ""
+	for _ = 1, 8 do
+		randomString ..= string.char(math.random(48, 90))
+	end
+
+	local onceReceivedArgs, waitReceivedArgs
+	task.spawn(function()
+		waitReceivedArgs = table.pack(eventObject.Event:Wait())
+	end)
+
+	eventObject.Event:Once(function(...)
+		onceReceivedArgs = table.pack(...)
 	end)
 
 	run_on_actor(actor, [[
-		local channel = get_comm_channel(...)
-		channel:Fire('abs')
-	]], comm_id)
+		local channel = get_comm_channel(]] .. comm_id .. [[)
+		channel:Fire("]] .. randomString .. [[", game, nil)
+	]])
 
 	task.wait(0.1)
 
-	if passed == 0 then
+	if type(onceReceivedArgs) ~= "table" then
 		return {
 			status = 500,
-			message = "Did not fire the event",
+			message = "EventObject did not run an :Once",
 		}
-	elseif passed == -1 then
+	elseif type(waitReceivedArgs) ~= "table" then
 		return {
 			status = 500,
-			message = "Passed argument[1] wasn't the expected value",
+			message = "EventObject did not run an :Wait",
+		}
+	end
+
+	if onceReceivedArgs[1] ~= randomString or not onceReceivedArgs[2] then
+		return {
+			status = 500,
+			message = "The :Once was executed but returned unexpected values",
+		}
+	elseif onceReceivedArgs[2] ~= game then
+		return {
+			status = 500,
+			message = "The :Once was executed, but the xrefs wasn't transformed to their value in the Original State",
+		}
+	elseif onceReceivedArgs[3] ~= nil or onceReceivedArgs.n ~= 3 then
+		return {
+			status = 500,
+			message = `Does not provide all args in an :Once`,
+		}
+	end
+
+	if waitReceivedArgs[1] ~= randomString or not waitReceivedArgs[2] then
+		return {
+			status = 500,
+			message = "The :Wait was executed but returned unexpected values",
+		}
+	elseif waitReceivedArgs[2] ~= game then
+		return {
+			status = 500,
+			message = "The :Wait was executed, but the xrefs wasn't transformed to their value in the Original State",
+		}
+	elseif waitReceivedArgs[3] ~= nil or waitReceivedArgs.n ~= 3 then
+		return {
+			status = 500,
+			message = `Does not provide all args in an :Wait`,
 		}
 	end
 
@@ -88,113 +160,3 @@ return function()
 		message = `Passed`,
 	}
 end
-
-
---// Old check
--- This may just be an AWP problem and this test is actually correct, but I don't feel like checking
-
---[[ --!nocheck
---!nolint
-
-return function()
-	if not create_comm_channel then
-		return {
-			status = 400,
-			message = "Global not found",
-		}
-	end
-
-	--// Functionality test
-	local passed = false
-	local r1 = math.random(1, 255)
-	local actor = game.Players.LocalPlayer.Character:FindFirstChild("PMOVON")
-
-	if not actor then
-		return {
-			status = 500,
-			message = "Failed to actor",
-		}
-	end
-
-	local function isBindable(obj)
-		if typeof(obj) == "Instance" and obj:IsA("BindableEvent") then
-			return true
-		end
-	
-		if typeof(obj) ~= "table" then
-			return false, "object is not a table"
-		end
-	
-		if typeof(obj.Event) ~= "RBXScriptSignal" and typeof(obj.Event) ~= "table" then
-			return false, "missing or invalid 'Event'"
-		end
-	
-		if typeof(obj.Event.Connect) ~= "function" then
-			return false, "missing or invalid 'Event.Connect'"
-		end
-	
-		if typeof(obj.Fire) ~= "function" then
-			return false, "missing or invalid 'Fire'"
-		end
-	
-		return true
-	end
-	
-	local comm_id, eventObject = create_comm_channel()
-	local success, prop = isBindable(eventObject)
-	
-	if not success then
-		return {
-			status = 500,
-			message = `EventObject isn't Bindable: {prop}`,
-		}
-	elseif typeof(comm_id) ~= "number" then
-		return {
-			status = 500,
-			message = "Communication ID isn't a number",
-		}
-	end	
-
-	local failure = nil
-
-	eventObject.Event:Connect(function(num)
-		if num ~= r1 ^ 2 then
-			failure = {
-				status = 500,
-				message = "Passed argument[1] wasn't the expected value",
-			}
-			return
-		end
-
-		passed = true
-	end)
-
-	eventObject:Fire(r1 ^ 2)
-
-	task.wait()
-
-	if failure then return failure end
-
-	if not passed then
-		return {
-			status = 500,
-			message = "Did not fire the event",
-		}
-	end
-
-	--// Alias test
-	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
-
-	if not envIndex then
-		return {
-			status = 501,
-			message = `Alias not found: {failedIndex}`,
-		}
-	end
-
-	return {
-		status = 200,
-		message = `Passed`,
-	}
-end
- ]]
