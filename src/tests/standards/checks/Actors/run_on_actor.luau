@@ -28,15 +28,15 @@ return function()
 		["TABLE"] = detectXref,
 		["TABLE_STR"] = tostring(detectXref)
 	}
-	
+
 	local success, errorMessage = pcall(run_on_actor, actor, [[local Table = ...
     workspace:SetAttribute("MYRIAD_ROA_TABLETEST", type(Table) == "table")]], {})
-	
+
 	task.wait(0.1)
-	
+
 	local receivedTable = workspace:GetAttribute("MYRIAD_ROA_TABLETEST")
 	workspace:SetAttribute("MYRIAD_ROA_TABLETEST", nil)
-	
+
 	if not success or not receivedTable then
 		return {
 			status = 500,
@@ -53,8 +53,8 @@ return function()
             originalPart.Name = "ONE_ARG"
         elseif tostring(externaldData["TABLE"]) == externaldData["TABLE_STR"] then
             originalPart.Name = "SAME_XREF"
-        elseif externaldData["GAME"] == game then
-            originalPart.Name = "XREF_CONVERT"
+        elseif externaldData["GAME"] ~= game then
+            originalPart.Name = "GAME_XREF"
         elseif select("#", ...) ~= 5 then
             originalPart.Name = "MULTI_ARGS"
         else
@@ -89,10 +89,10 @@ return function()
 			status = 500,
 			message = "The tables have the same xrefs as in the main VM"
 		}
-	elseif statusResult == "XREF_CONVERT" then
+	elseif statusResult == "GAME_XREF" then
 		return {
 			status = 500,
-			message = "Xrefs are converted automatically; like Actor:SendMessage and Actor:BindToMessage"
+			message = "Xrefs are not converted automatically, which could cause problems in functions and table Keys"
 		}
 	elseif statusResult == "ONE_ARG" then
 		return {
@@ -108,6 +108,16 @@ return function()
 		return {
 			status = 500,
 			message = "Unknown error, check console"
+		}
+	end
+	
+	--// Alias test
+	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
+
+	if not envIndex then
+		return {
+			status = 501,
+			message = `Alias not found: {failedIndex}`,
 		}
 	end
 
