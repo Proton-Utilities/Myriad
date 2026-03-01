@@ -1,43 +1,33 @@
 {
-    "openComposedOutput": true,
-
     "deployment": {
-        "enabled": true,
         "github": {
-            "enabled": true,
             "owner": "biggaboy212",
             "repo": "Myriad"
         }
     },
-
-    "testing": {
-        "enabled": true,
-        "inputDir": "tests",
-        "outputDir": "generated/tests",
-        "frame": "pipeline/frames/stable.luau",
-        "darkluaConfig": "pipeline/darklua/unminified.json"
-    },
-
+    
     "buildConfigs": [
         {
+            "name": "Tests",
+            "inputDir": "tests",
+            "outputDir": "generated/tests",
+            "frame": "pipeline/frames/stable.luau",
+            "darkluaConfig": "pipeline/darklua/unminified.json"
+        },
+        {
             "name": "Debug",
-
             "promptVersion": false,
             "promptDeploy": false,
-
             "frame": "pipeline/frames/stable.luau",
             "darkluaConfig": "pipeline/darklua/unminified.json",
             "input": "src/main.luau",
             "output": "generated/debug/myriad.luau"
         },
-
         {
             "name": "Beta",
-
             "promptVersion": true,
             "promptDeploy": true,
             "prerelease": true,
-
             "frame": "pipeline/frames/stable.luau",
             "darkluaConfig": "pipeline/darklua/stable.json",
             "input": "src/main.luau",
@@ -55,13 +45,10 @@
                 }
             ]
         },
-
         {
             "name": "Release",
-            
             "promptVersion": true,
             "promptDeploy": true,
-
             "frame": "pipeline/frames/stable.luau",
             "darkluaConfig": "pipeline/darklua/stable.json",
             "input": "src/main.luau",
@@ -80,5 +67,5 @@
                 }
             ]
         }
-  ]
+    ]
 }

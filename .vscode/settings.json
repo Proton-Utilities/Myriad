@@ -7,5 +7,6 @@
   "luau-lsp.sourcemap.enabled": false,
   "luau-lsp.completion.autocompleteEnd": true,
   "luau-lsp.fflags.enableNewSolver": true,
-  "luau-lsp.types.robloxSecurityLevel": "RobloxScriptSecurity"
+  "luau-lsp.types.robloxSecurityLevel": "RobloxScriptSecurity",
+  "discord.enabled": true
 }

@@ -1,2 +1,4 @@
 .env
 generated/
+
+pipeline/.pcmp.local.json
