@@ -1,5 +1,11 @@
 # Changelog
 
+## `STABLE` `HOTFIX` v1.4.1
+
+```diff
++ Fix 
+```
+
 ## `STABLE` v1.4.0
 
 ```diff

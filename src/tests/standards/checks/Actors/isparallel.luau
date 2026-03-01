@@ -15,7 +15,7 @@ return function()
 	end
 
 	--// Functionality test
-	local actor = game.Players.LocalPlayer:FindFirstChild("PMOVON")
+	local actor = game.Players.LocalPlayer.PlayerScripts:FindFirstChild("PMOVON")
 
 	if isparallel() then
 		return {
@@ -91,7 +91,7 @@ return function()
 	--// Functionality test
 	local passed = false
 	local r1 = math.random(1, 255)
-	local actor = game.Players.LocalPlayer:FindFirstChild("PMOVON")
+	local actor = game.Players.LocalPlayer.PlayerScripts:FindFirstChild("PMOVON")
 
 	if not actor then
 		return {

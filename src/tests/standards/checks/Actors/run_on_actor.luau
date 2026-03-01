@@ -10,7 +10,7 @@ return function()
 	end
 
 	--// Functionality test
-	local actor = game.Players.LocalPlayer:FindFirstChild("PMOVON")
+	local actor = game.Players.LocalPlayer.PlayerScripts:FindFirstChild("PMOVON")
 
 	if not actor then
 		return {
