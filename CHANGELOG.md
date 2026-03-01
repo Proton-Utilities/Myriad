@@ -3,7 +3,7 @@
 ## `STABLE` `HOTFIX` v1.4.1
 
 ```diff
-+ Fix 
++ Fix actor location
 ```
 
 ## `STABLE` v1.4.0
