@@ -236,11 +236,16 @@ return function()
 
 	if parent then
 		for i, v in pairs(parent:GetDescendants()) do
-			if v:IsA("Frame") and v.BackgroundColor3 == refObj.Color and v.BackgroundTransparency == refObj.Transparency then
-				return {
-					status = 500,
-					message = "Drawing library almost certainly depends on ScreenGui"
-				}
+			if v:IsA("Frame") and v.BackgroundColor3 == refObj.Color then
+				local raw = math.abs(v.BackgroundTransparency - refObj.Transparency) < 0.01
+				local alpha = math.abs(v.BackgroundTransparency - (1 - refObj.Transparency)) < 0.01
+
+				if raw or alpha then
+					return {
+						status = 500,
+						message = "Drawing library almost certainly depends on ScreenGui",
+					}
+				end
 			end
 		end
 	end
