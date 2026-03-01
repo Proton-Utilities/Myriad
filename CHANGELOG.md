@@ -1,9 +1,9 @@
 # Changelog
 
-## `UNMARKED`
+## `PRE-RELEASE` v1.4.0
 
 ```diff
-+ New `setsenv` checks. Now the ENV of a dead script and an ENV whose `.script` property is nil are tested
++ New `getsenv` checks. Now the ENV of a dead script and an ENV whose `.script` property is nil are tested
 + New `sethiddenproperty` checks. It checks whether the property actually changed or was just a memory edit with no effect on the game
 + New `gethiddenproperty` check. A property that dynamically changes with another value has been added 
 + New `setrawmetatable` checks. Strings are used to make the test more difficult to fake, and a property is added that setmetatable normal cannot set
@@ -13,9 +13,18 @@
 + New `newcclosure` checks. It checks whether it supports putting a name as the second argument, yielding, wrapping it 198 times, seeing if it cuts arguments or returns, and whether it can be executed 5 times and give the correct arguments
 + New `get_comm_channel` checks. It checks whether there is an error with a comm_id number that does not exist
 + New `create_comm_channel` checks. It checks whether they have all the necessary methods, whether comm_id has decimals, and whether get_comm_channel returns the same eventObject
++ Added `require` to the standard.
++ Added `getreg` to the standard.
++ Added new executor vulnerabilities module.
++ Added file access vulnerability (`file://` protocol bypass) check to `request`, `http_request`, `http.request`, `HttpGet`, `HttpGetAsync`, and `game` methods.
++ Added `OmniRecommendationsService` and `HttpRbxApiService` to the Services blocklist tests.
++ Refactored vulnerabilities testing suite to match the standard suite's logging format.
++ Extracted Auth Leak testing to a dedicated `leaks` module in the vulnerability testing suite.
++ Created an `escapes` vulnerabilities module and added an Environment/Context Escape test using `clonefunction` and `hookmetamethod`.
 
 ! Fix `run_on_actor` not conversion of xrefs
 ! Fix getconstant out of bounds index check
+! Fix Drawing library not checking alpha conversion properly in the ScreenGui based lib check.
 ```
 
 ## `STABLE` v1.3.3
