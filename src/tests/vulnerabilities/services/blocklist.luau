@@ -98,15 +98,6 @@ return {
 			"PostAsync",
 		},
 
-		HttpRbxApiService = {
-			"GetAsync",
-			"GetAsyncFullUrl",
-			"PostAsync",
-			"PostAsyncFullUrl",
-			"RequestAsync",
-			"RequestLimitedAsync",
-		},
-
 		OpenCloudService = {
 			"HttpRequestAsync",
 			"GetApiV1",
@@ -206,6 +197,18 @@ return {
 			-- "DisableDUAR"
 			-- "DisableDUARAndOpenSurvey"
 			"PerformManagedUpdate",
+		},
+
+		HttpRbxApiService = {
+			"PostAsync",
+			"PostAsyncFullUrl",
+			"GetAsync",
+			"GetAsyncFullUrl",
+			"RequestAsync",
+		},
+
+		OmniRecommendationsService = {
+			"MakeRequest",
 		},
 	},
 }

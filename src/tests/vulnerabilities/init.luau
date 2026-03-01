@@ -1,170 +1,185 @@
 return function(name, tab, titledRow)
-    --// Imports
-    local console = require("@dependencies/ui/console")
-    local modules = {
-        Services = require("@self/services"), 
-    }
+	--// Imports
+	local console = require("@dependencies/ui/console")
+	local modules = {
+		Services = require("@self/services"),
+		Executor = require("@self/executor"),
+		Leaks = require("@self/leaks"),
+		Escapes = require("@self/escapes"),
+	}
 
-    --// Variables
-    local output = nil
-    local currentTask = nil
+	--// Variables
+	local output = nil
+	local currentTask = nil
 
-    local testConfig = {
-        checkpointDelay = 0,
-        showSafe = true,
-        includeMetadata = false,
-    }
+	local testConfig = {
+		checkpointDelay = 0,
+		showSafe = true,
+		includeMetadata = false,
+	}
 
-    local uni = { bullet = "•" }
-    local statusCodes = {
-        [200] = "🛡️",
-        [400] = "💀",
-        [404] = "❓",
-    }
+	local uni = { bullet = "•" }
+	local statusCodes = {
+		[200] = "🛡️",
+		[400] = "💀",
+		[404] = "❓",
+	}
 
-    --// Private Methods
-    local printc = function(...)
-        output:AppendText(table.concat({ ... }, " "))
-    end
+	--// Private Methods
+	local printc = function(...)
+		output:AppendText(table.concat({ ... }, " "))
+	end
 
-    local function isVulnerable(func, host)
-        local success, result = pcall(function()
-            return func(host)
-        end)
+	local warnc = function(...)
+		output:AppendText(`<font color="#FFA500">{table.concat({ ... }, " ")}</font>`)
+	end
 
-        if success then
-            return true, "Requested method ran successfully"
-        end
+	local function isVulnerable(func, host)
+		local success, result = pcall(function()
+			return func(host)
+		end)
 
-        local err = tostring(result):lower()
+		if success then
+			return true, "Requested method ran successfully"
+		end
 
-        if err:find("lacking capability") 
-           or err:find("current thread cannot") 
-           or err:find("security context") 
-           or err:find("protected function")
-           or err:find("blacklisted") then
-            return false, "Blocked by Security"
-        end
+		local err = tostring(result):lower()
 
-        if err:find("argument") or err:find("missing or nil") or err:find("expected") or err:find("value") then
-            return true, "Argument requested (Logic Accessible)"
-        end
+		if
+			err:find("lacking capability")
+			or err:find("current thread cannot")
+			or err:find("security context")
+			or err:find("protected function")
+			or err:find("blacklisted")
+		then
+			return false, "Blocked by Security"
+		end
 
-        return false, "Errored: " .. err
-    end
+		if err:find("argument") or err:find("missing or nil") or err:find("expected") or err:find("value") then
+			return true, "Argument requested (Logic Accessible)"
+		end
 
-    local function runTests()
-        if currentTask then task.cancel(currentTask) end
+		return false, "Errored: " .. err
+	end
 
-        currentTask = task.spawn(function()
-            local startTime = time()
-            local total = { checked = 0, secured = 0, vulnerable = 0 }
+	local function runTests()
+		if currentTask then
+			task.cancel(currentTask)
+		end
 
-            output:Clear()
-            printc(`<font color="#55AAFF">Starting Vulnerability Scan...</font><br />`)
+		currentTask = task.spawn(function()
+			local startTime = time()
+			local total = { checked = 0, secured = 0, vulnerable = 0 }
 
-            local utils = {
-                printc = printc,
-                uni = uni,
-                statusCodes = statusCodes
-            }
+			output:Clear()
+			printc(`<font color="#55AAFF">Starting Vulnerability Scan...</font><br />`)
 
-            for modName, moduleFunc in pairs(modules) do
-                local stats = moduleFunc(output, testConfig, isVulnerable, utils)
-                
-                total.checked += stats.checked
-                total.secured += stats.secured
-                total.vulnerable += stats.vulnerable
-            end
+			local utils = {
+				printc = printc,
+				warnc = warnc,
+				uni = uni,
+				statusCodes = statusCodes,
+			}
 
-            --// Summary
-            local endTime = math.floor((time() - startTime) * 100) / 100
-            local rate = total.checked > 0 
-                and math.floor((total.secured / total.checked) * 100) 
-                or 0
+			for modName, moduleFunc in pairs(modules) do
+				local stats = moduleFunc(output, testConfig, isVulnerable, utils)
 
-            printc("")
-            printc("----------------------------------")
-            printc(`<b>Scan Complete in {endTime}s</b>`)
-            printc(`Total Checked: {total.checked}`)
-            printc(`Secured: <font color="#55FF55">{total.secured}</font>`)
-            printc(`Vulnerable: <font color="#FF5555">{total.vulnerable}</font>`)
-            printc(`Security Rating: {rate}%`)
-            printc("----------------------------------")
+				total.checked += stats.checked
+				total.secured += stats.secured
+				total.vulnerable += stats.vulnerable
+			end
 
-            local executor, version = identifyexecutor()
-            
-            local resultsData = {
-                checked = total.checked,
-                secured = total.secured,
-                vulnerable = total.vulnerable,
-                details = "Vulnerability scan completed across " .. total.checked .. " methods."
-            }
+			--// Summary
+			local endTime = math.floor((time() - startTime) * 100) / 100
+			local rate = total.checked > 0 and math.floor((total.secured / total.checked) * 100) or 0
 
-            local metadata = {
-                ["executor"] = executor or "Unknown",
-                ["executorVersion"] = version or "N/A",
-                ["rating"] = rate,
-                ["testTime"] = endTime,
-                ["generated"] = DateTime.now():ToIsoDate(),
-            }
+			printc("")
+			printc("----------------------------------")
+			printc(`Summary: `)
+			printc(`{uni.bullet} Took: {endTime}s`)
+			printc(`{uni.bullet} Total Checked: {total.checked}`)
+			printc(`{uni.bullet} Secured: <font color="#55FF55">{total.secured}</font>`)
+			printc(`{uni.bullet} Vulnerable: <font color="#FF5555">{total.vulnerable}</font>`)
+			printc(`{uni.bullet} Security Rating: {rate}%`)
+			printc("----------------------------------")
 
-            game.ReplicatedStorage.res:FireServer("v", resultsData, metadata)
+			local executor, version = identifyexecutor()
 
-            if testConfig.includeMetadata then
-                local meta = string.format(
-                    '\n@metadata {\n  "executor": "%s",\n  "version": "%s",\n  "rating": "%d%%"\n}',
-                    executor, version or "N/A", rate
-                )
-                output:AppendText(meta)
-            end
-        end)
-    end
+			local resultsData = {
+				checked = total.checked,
+				secured = total.secured,
+				vulnerable = total.vulnerable,
+				details = "Vulnerability scan completed across " .. total.checked .. " methods.",
+			}
 
-    --// UI
-    do
-        local form = tab:Form()
+			local metadata = {
+				["executor"] = executor or "Unknown",
+				["executorVersion"] = version or "N/A",
+				["rating"] = rate,
+				["testTime"] = endTime,
+				["generated"] = DateTime.now():ToIsoDate(),
+			}
 
-        titledRow(form, "Show Safe Results", "Shows functions that are safe. Disable to only show vulnerabilities.")
-            :Right()
-            :Toggle({
-                Value = true,
-                ValueChanged = function(self, value) testConfig.showSafe = value end,
-            })
+			game.ReplicatedStorage.res:FireServer("v", resultsData, metadata)
 
-        titledRow(form, "Checkpoint Delay", "Adds delay per test. Useful to check for crashes")
-            :Right()
-            :Stepper({
-                Fielded = true,
-                Value = 0,
-                Minimum = 0,
-                Maximum = 0.5,
-                Step = 0.01,
-                ValueChanged = function(self, value) testConfig.checkpointDelay = value end,
-            })
+			if testConfig.includeMetadata then
+				local meta = string.format(
+					'\n@metadata {\n  "executor": "%s",\n  "version": "%s",\n  "rating": "%d%%"\n}',
+					executor,
+					version or "N/A",
+					rate
+				)
+				output:AppendText(meta)
+			end
+		end)
+	end
 
-        titledRow(form, "Include Metadata", "Shows executor metadata at the end")
-            :Right()
-            :Toggle({
-                Value = false,
-                ValueChanged = function(self, value) testConfig.includeMetadata = value end,
-            })
+	--// UI
+	do
+		local form = tab:Form()
 
-        titledRow(form, "Run Vulnerability Test"):Right():Button({
-            Label = "Start Scan",
-            Pushed = runTests,
-        })
+		titledRow(form, "Show Safe Results", "Shows functions that are safe. Disable to only show vulnerabilities.")
+			:Right()
+			:Toggle({
+				Value = true,
+				ValueChanged = function(self, value)
+					testConfig.showSafe = value
+				end,
+			})
 
-        output = console.new(tab.__container, {
-            ReadOnly = true,
-            RichText = true,
-            LineHeight = 1.3,
-            Fill = true,
-        })
+		titledRow(form, "Checkpoint Delay", "Adds delay per test. Useful to check for crashes"):Right():Stepper({
+			Fielded = true,
+			Value = 0,
+			Minimum = 0,
+			Maximum = 0.5,
+			Step = 0.01,
+			ValueChanged = function(self, value)
+				testConfig.checkpointDelay = value
+			end,
+		})
 
-        output:Clear()
-        output:AppendText("Ready to scan.")
-    end
+		titledRow(form, "Include Metadata", "Shows executor metadata at the end"):Right():Toggle({
+			Value = false,
+			ValueChanged = function(self, value)
+				testConfig.includeMetadata = value
+			end,
+		})
 
-    return { passed = 0, failed = 0 }
+		titledRow(form, "Run Vulnerability Test"):Right():Button({
+			Label = "Start Scan",
+			Pushed = runTests,
+		})
+
+		output = console.new(tab.__container, {
+			ReadOnly = true,
+			RichText = true,
+			LineHeight = 1.3,
+			Fill = true,
+		})
+
+		output:Clear()
+		output:AppendText("Ready to scan.")
+	end
+
+	return { passed = 0, failed = 0 }
 end
