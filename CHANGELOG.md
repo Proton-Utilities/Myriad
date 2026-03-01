@@ -1,6 +1,6 @@
 # Changelog
 
-## `PRE-RELEASE` v1.4.0
+## `STABLE` v1.4.0
 
 ```diff
 + New `getsenv` checks. Now the ENV of a dead script and an ENV whose `.script` property is nil are tested
