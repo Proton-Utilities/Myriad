@@ -11,7 +11,7 @@ return function()
 
 	--// Functionality test
 	local found = false
-	local actor = game.Players.LocalPlayer.Character:FindFirstChild("PMOVON")
+	local actor = game.Players.LocalPlayer:FindFirstChild("PMOVON")
 
 	for i, v in pairs(getactors()) do
 		if v == actor then
@@ -22,7 +22,7 @@ return function()
 	if not found then
 		return {
 			status = 500,
-			message = "Didn't find a game actor"
+			message = "Didn't find a game actor",
 		}
 	end
 

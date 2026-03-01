@@ -15,17 +15,19 @@ return function()
 	end
 
 	--// Functionality test
-	local actor = game.Players.LocalPlayer.Character:FindFirstChild("PMOVON")
+	local actor = game.Players.LocalPlayer:FindFirstChild("PMOVON")
 
 	if isparallel() then
 		return {
 			status = 500,
-			message = "Non-parallel thread assumed to be in a parallel state"
+			message = "Non-parallel thread assumed to be in a parallel state",
 		}
 	end
 
 	-- Technically we should be able to set synchronization directly in this thread, but some executors might break doing so.
-	run_on_actor(actor, [[
+	run_on_actor(
+		actor,
+		[[
 		print("MYRIAD: Ignore start -----------")
 		task.desynchronize()
 		if isparallel() then
@@ -35,14 +37,15 @@ return function()
 			originalPart.Name = os.date("%H") .. "(1)"
 			originalPart.Parent = game.ReplicatedStorage
 		end
-	]])
+	]]
+	)
 
 	task.wait(0.1)
 
 	if not game.ReplicatedStorage:FindFirstChild(os.date("%H") .. "(1)") then
 		return {
 			status = 500,
-			message = "Parallel thread assumed to be in a non-parallel state"
+			message = "Parallel thread assumed to be in a non-parallel state",
 		}
 	end
 
@@ -51,7 +54,7 @@ return function()
 	if isparallel() then
 		return {
 			status = 500,
-			message = "Non-parallel thread assumed to be in a parallel state"
+			message = "Non-parallel thread assumed to be in a parallel state",
 		}
 	end
 
@@ -71,7 +74,6 @@ return function()
 	}
 end
 
-
 --// Old check
 -- This may just be an AWP problem and this test is actually correct, but I don't feel like checking
 
@@ -89,7 +91,7 @@ return function()
 	--// Functionality test
 	local passed = false
 	local r1 = math.random(1, 255)
-	local actor = game.Players.LocalPlayer.Character:FindFirstChild("PMOVON")
+	local actor = game.Players.LocalPlayer:FindFirstChild("PMOVON")
 
 	if not actor then
 		return {

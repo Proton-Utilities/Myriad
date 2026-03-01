@@ -21,7 +21,7 @@ return function()
 
 	--// Functionality test
 	local passed = 0
-	local actor = game.Players.LocalPlayer.Character:FindFirstChild("PMOVON")
+	local actor = game.Players.LocalPlayer:FindFirstChild("PMOVON")
 
 	if not actor then
 		return {
@@ -58,7 +58,7 @@ return function()
 			message = "Does not return the same EventObject",
 		}
 	end
-	
+
 	local success, err = pcall(get_comm_channel, math.random())
 	if not success or err ~= nil then
 		return {
@@ -67,7 +67,7 @@ return function()
 		}
 	end
 
-	local signalMethods = {"Connect", "Once", "Wait"}
+	local signalMethods = { "Connect", "Once", "Wait" }
 
 	for _, method in signalMethods do
 		if not eventObject.Event[method] then

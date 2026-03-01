@@ -21,7 +21,7 @@ return function()
 
 	--// Functionality test
 	local passed = 0
-	local actor = game.Players.LocalPlayer.Character:FindFirstChild("PMOVON")
+	local actor = game.Players.LocalPlayer:FindFirstChild("PMOVON")
 
 	if not actor then
 		return {
