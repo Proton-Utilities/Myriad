@@ -2,6 +2,8 @@
 --!nolint
 
 return function()
+	local gameRefs = require("@gameRefs")
+
 	if type(cansignalreplicate) ~= "function" then
 		return {
 			status = 400,
@@ -9,7 +11,7 @@ return function()
 		}
 	end
 
-	local valid = workspace:FindFirstChild("Baseplate").Touched
+	local valid = gameRefs.Baseplate.Touched
 	local isReplicating = cansignalreplicate(valid)
 	if type(isReplicating) ~= "boolean" then
 		return {
@@ -27,7 +29,7 @@ return function()
 
 	--// Alias test
 	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({})
-    
+
 	if not envIndex then
 		return {
 			status = 501,

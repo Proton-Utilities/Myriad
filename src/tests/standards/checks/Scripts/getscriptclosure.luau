@@ -11,7 +11,7 @@ return function()
 	end
 
 	--// Functionality test
-	local originalScript = game.Players.LocalPlayer.Character:FindFirstChild("maybeisdtc")
+	local originalScript = game.Players.LocalPlayer.Character.Character:FindFirstChild("maybeisdtc")
 	local closure = getscriptclosure(originalScript)
 
 	if typeof(closure) ~= "function" then

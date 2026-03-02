@@ -4,6 +4,8 @@ return function(name, tab, titledRow)
 	--// Imports
 	local checks = require("@checks/init")
 	local console = require("@dependencies/ui/console")
+	local gameRefs = require("@gameRefs")
+	local crypt = require("@dependencies/crypt/crypt")
 
 	--// Variables
 	local currentTask = nil
@@ -215,7 +217,32 @@ return function(name, tab, titledRow)
 				output:SetValue(metadata .. input)
 			end
 
-			game.ReplicatedStorage.res:FireServer("s", results, {
+			local signatureId = ""
+			local challenge = ""
+			local headers = ""
+			local resultHash = ""
+
+			pcall(function()
+				local ReqFunc = request or http_request or (http and http.request)
+				if ReqFunc then
+					local response = ReqFunc({
+						Url = "https://myriad.tools/api/gensignature",
+						Method = "GET",
+					})
+
+					if response and response.StatusCode == 200 then
+						local HttpService = game:GetService("HttpService")
+						local data = HttpService:JSONDecode(response.Body)
+						signatureId = data.signatureId
+						challenge = data.challenge
+						headers = data.obfuscatedHeaders
+
+						resultHash = crypt.hash(HttpService:JSONEncode(results) .. challenge)
+					end
+				end
+			end)
+
+			gameRefs.res:FireServer("s", results, {
 				["testBuildMetadata"] = _P,
 				["executor"] = executor,
 				["executorVersion"] = executorVers,
@@ -225,7 +252,7 @@ return function(name, tab, titledRow)
 				["testTime"] = endTime,
 				["generated"] = DateTime.now():ToIsoDate(),
 				["excludedCount"] = excludedCount,
-			})
+			}, signatureId, headers, resultHash)
 		end)
 	end
 
@@ -259,13 +286,15 @@ return function(name, tab, titledRow)
 			end,
 		})
 
-		titledRow(form, "Excluded Tests", "Exclude libs or globals from testing (delimited by commas)"):Right():TextField({
-            Placeholder = "crypt, debug.info",
-            Value = "",
-            ValueChanged = function(self, value)
-                testConfig.excludedTests = value
-            end,
-        })
+		titledRow(form, "Excluded Tests", "Exclude libs or globals from testing (delimited by commas)")
+			:Right()
+			:TextField({
+				Placeholder = "crypt, debug.info",
+				Value = "",
+				ValueChanged = function(self, value)
+					testConfig.excludedTests = value
+				end,
+			})
 
 		titledRow(form, "Checkpoint Delay", "Add delay per-checkpoint to analyze easily."):Right():Stepper({
 			Fielded = true,

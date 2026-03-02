@@ -21,7 +21,8 @@ return function()
 
 	--// Functionality test
 	local passed = 0
-	local actor = game.Players.LocalPlayer.PlayerScripts:FindFirstChild("PMOVON")
+	local gameRefs = require("@gameRefs")
+	local actor = gameRefs.PMOVON
 
 	if not actor then
 		return {

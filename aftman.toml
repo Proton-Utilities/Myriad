@@ -6,3 +6,4 @@
 darklua = "Stefanuk12/darklua@0.17.4"
 lune = "lune-org/lune@0.9.3"
 pcmp = "Proton-Utilities/ProCMP@3.0.1"
+rojo = "rojo-rbx/rojo@7.6.1"

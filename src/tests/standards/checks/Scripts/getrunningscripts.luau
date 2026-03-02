@@ -11,9 +11,9 @@ return function()
 
 	--// Functionality test
 	local animate = game.Players.LocalPlayer.Character:FindFirstChild("Animate")
-	local runningScript = game.Players.LocalPlayer.Character:FindFirstChild("whysoud")
-	local disabledScript = game.Players.LocalPlayer.Character:FindFirstChild("whysodtc")
-	local nonrunningScript = game.Players.LocalPlayer.Character:FindFirstChild("maybeisdtc")
+	local runningScript = game.Players.LocalPlayer.Character.Character:FindFirstChild("whysoud")
+	local disabledScript = game.Players.LocalPlayer.Character.Character:FindFirstChild("whysodtc")
+	local nonrunningScript = game.Players.LocalPlayer.Character.Character:FindFirstChild("maybeisdtc")
 	-- Having all of these are not neccessary, but might as well keep them (This was cloned from ./getscripts.luau)
 	local localScript = Instance.new("LocalScript")
 	local moduleScript = Instance.new("ModuleScript")

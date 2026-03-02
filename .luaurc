@@ -6,6 +6,8 @@
         "checks": "./src/tests/standards/checks",
 
         "standards": "./src/tests/standards",
-        "vulnerabilities": "./src/tests/vulnerabilities"
+        "vulnerabilities": "./src/tests/vulnerabilities",
+
+        "gameRefs": "./src/gameRefs"
     }
 }

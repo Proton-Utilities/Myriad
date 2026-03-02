@@ -11,7 +11,8 @@ return function()
 
 	--// Functionality test
 	local found = false
-	local actor = game.Players.LocalPlayer.PlayerScripts:FindFirstChild("PMOVON")
+	local gameRefs = require("@gameRefs")
+	local actor = gameRefs.PMOVON
 
 	for i, v in pairs(getactors()) do
 		if v == actor then

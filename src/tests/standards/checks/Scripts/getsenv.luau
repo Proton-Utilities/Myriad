@@ -17,8 +17,8 @@ return function()
 		}
 	end
 	
-	local nonRunningScript = game.Players.LocalPlayer.Character:FindFirstChild("whysodtc")
-	local customENVScript = game.Players.LocalPlayer.Character:FindFirstChild("Miku!")
+	local nonRunningScript = game.Players.LocalPlayer.Character.Character:FindFirstChild("whysodtc")
+	local customENVScript = game.Players.LocalPlayer.Character.Character:FindFirstChild("Miku!")
 	
 	if not nonRunningScript then
 		return {

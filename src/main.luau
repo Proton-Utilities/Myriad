@@ -3,9 +3,7 @@
 --// Imports
 local cascade = require("@packages/cascade")
 local tests = require("@tests")
-
---// Services
-local replicatedStorage: ReplicatedStorage = game:GetService("ReplicatedStorage")
+local gameRefs = require("@gameRefs")
 
 --// Variables
 local app = cascade.New({
@@ -29,14 +27,12 @@ end
 
 --// Initialize
 if game.PlaceId == gameId then
-	local connected = replicatedStorage:FindFirstChild("connected")
-
-	if not connected then
+	if not gameRefs.connected then
 		warn("Can't find dependency `connected`")
 		return
 	end
 
-	connected:FireServer()
+	gameRefs.connected:FireServer()
 
 	--// UI Begin
 	local section = app:Window({

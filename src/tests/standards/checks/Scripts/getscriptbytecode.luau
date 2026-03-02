@@ -11,7 +11,7 @@ return function()
 	end
 
 	--// Functionality test
-	local originalScript = game.Players.LocalPlayer.Character:FindFirstChild("whysoud")
+	local originalScript = game.Players.LocalPlayer.Character.Character:FindFirstChild("whysoud")
 	local bytecode = getscriptbytecode(originalScript)
 	local expectedSegments = {
 		"sigma",

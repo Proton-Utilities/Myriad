@@ -3,7 +3,7 @@
 
 return function()
 	local indexed1, script1 = pcall(function() return game.Players.LocalPlayer.Character.Animate end)
-	local indexed2, script2 = pcall(function() return game.Players.LocalPlayer.Character.whysodtc end)
+	local indexed2, script2 = pcall(function() return game.Players.LocalPlayer.Character.Character.whysodtc end)
 	
 	if not getscripthash then
 		return {

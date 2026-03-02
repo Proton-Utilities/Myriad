@@ -2,8 +2,8 @@
 --!nolint
 
 return function()
-	local ReplicatedStorage = game:GetService("ReplicatedStorage")
-	local testModule = ReplicatedStorage:FindFirstChild("req")
+	local gameRefs = require("@gameRefs")
+	local testModule = gameRefs.mutable
 
 	if not testModule then
 		return {

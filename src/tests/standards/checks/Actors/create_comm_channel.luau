@@ -21,7 +21,8 @@ return function()
 
 	--// Functionality test
 	local passed = 0
-	local actor = game.Players.LocalPlayer.PlayerScripts:FindFirstChild("PMOVON")
+	local gameRefs = require("@gameRefs")
+	local actor = gameRefs.PMOVON
 
 	if not actor then
 		return {
@@ -58,9 +59,9 @@ return function()
 			message = "It was possible to create it, but get_comm_channel does not return the same EventObject",
 		}
 	end
-	
-	local signalMethods = {"Connect", "Once", "Wait"}
-	
+
+	local signalMethods = { "Connect", "Once", "Wait" }
+
 	for _, method in signalMethods do
 		if not eventObject.Event[method] then
 			return {
@@ -69,12 +70,12 @@ return function()
 			}
 		end
 	end
-	
+
 	local randomString = ""
 	for _ = 1, 8 do
 		randomString ..= string.char(math.random(48, 90))
 	end
-	
+
 	local onceReceivedArgs, waitReceivedArgs
 	task.spawn(function()
 		waitReceivedArgs = table.pack(eventObject.Event:Wait())
@@ -90,7 +91,7 @@ return function()
 	]])
 
 	task.wait(0.1)
-	
+
 	if type(onceReceivedArgs) ~= "table" then
 		return {
 			status = 500,

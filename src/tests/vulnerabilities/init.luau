@@ -1,6 +1,8 @@
 return function(name, tab, titledRow)
 	--// Imports
 	local console = require("@dependencies/ui/console")
+	local gameRefs = require("@gameRefs")
+	local crypt = require("@dependencies/crypt/crypt")
 	local modules = {
 		Services = require("@self/services"),
 		Executor = require("@self/executor"),
@@ -120,7 +122,30 @@ return function(name, tab, titledRow)
 				["generated"] = DateTime.now():ToIsoDate(),
 			}
 
-			game.ReplicatedStorage.res:FireServer("v", resultsData, metadata)
+			local signatureId = ""
+			local headers = ""
+			local resultHash = ""
+
+			pcall(function()
+				local ReqFunc = request or http_request or (http and http.request)
+				if ReqFunc then
+					local response = ReqFunc({
+						Url = "https://myriad.tools/api/gensignature",
+						Method = "GET",
+					})
+
+					if response and response.StatusCode == 200 then
+						local HttpService = game:GetService("HttpService")
+						local data = HttpService:JSONDecode(response.Body)
+						signatureId = data.signatureId
+						headers = data.obfuscatedHeaders
+
+						resultHash = crypt.hash(HttpService:JSONEncode(resultsData) .. data.challenge)
+					end
+				end
+			end)
+
+			gameRefs.res:FireServer("v", resultsData, metadata, signatureId, headers, resultHash)
 
 			if testConfig.includeMetadata then
 				local meta = string.format(

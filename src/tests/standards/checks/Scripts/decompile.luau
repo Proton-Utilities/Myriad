@@ -2,8 +2,9 @@
 --!nolint
 
 return function()
+	local gameRefs = require("@gameRefs")
 	local indexedDcmpScript, dcmp = pcall(function()
-		return game.ReplicatedFirst.decompmeplssss
+		return gameRefs.decompTarget
 	end)
 
 	if not decompile then
@@ -14,7 +15,7 @@ return function()
 	elseif not indexedDcmpScript then
 		return {
 			status = 401,
-			message = "Testing dependency 'ReplicatedFirst.decompmeplssss' not found.",
+			message = "Testing dependency 'ReplicatedFirst.decompTarget' not found.",
 		}
 	end
 
