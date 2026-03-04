@@ -98,6 +98,7 @@ return function(name, tab, titledRow)
 
 				local nextEntry = flattened[i + 1]
 
+				local startTestTime = os.clock()
 				local success, result = pcall(test)
 				local status, message
 
@@ -122,15 +123,16 @@ return function(name, tab, titledRow)
 					printc(`Next test: {nextEntry.name}`)
 				end
 
+				if testConfig.checkpointDelay ~= 0 then
+					task.wait(testConfig.checkpointDelay)
+				end
+
 				table.insert(results[groupName], {
 					name = name,
 					status = status,
 					message = message,
+					elapsedTestTime = (os.clock() - startTestTime),
 				})
-
-				if testConfig.checkpointDelay ~= 0 then
-					task.wait(testConfig.checkpointDelay)
-				end
 			end
 
 			output:Clear()
