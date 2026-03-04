@@ -1,5 +1,11 @@
 # Changelog
 
+## `STABLE` `HOTFIX` v1.4.3
+
+```diff
++ Fixed not being able to publish results due to per-test time not being included.
+```
+
 ## `STABLE` v1.4.2
 
 ```diff
