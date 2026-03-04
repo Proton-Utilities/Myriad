@@ -1,5 +1,11 @@
 # Changelog
 
+## `STABLE` v1.4.2
+
+```diff
++ Rework backend
+```
+
 ## `STABLE` `HOTFIX` v1.4.1
 
 ```diff
