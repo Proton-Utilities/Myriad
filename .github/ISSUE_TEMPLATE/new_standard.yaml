@@ -1,0 +1,117 @@
+name: "New Standard"
+description: "Add a new standard to the Myriad project."
+title: "[New standard]"
+labels:
+  - Standards Test
+  - New Standard
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form is used to propose an addition to the Myriad Standards test.
+
+        Please describe the standard clearly and include a typed Luau signature.  
+        Your proposal should define **behavior, types, and expected usage** so implementations can remain consistent among implementations.
+
+  - type: input
+    id: standard_name
+    attributes:
+      label: Standard Name
+      description: Name of the Standard/Function/Library to add.
+      placeholder: getrendersteppedlist
+    validations:
+      required: true
+
+  - type: textarea
+    id: overview
+    attributes:
+      label: Overview
+      description: Brief description of the proposed Standard.
+      placeholder: |
+        Returns a list of functions currently bound using RunService:BindToRenderStep.
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: |
+        Describe the limitation or problem this API solves.
+        Explain why existing APIs or native Luau functionality are insufficient.
+      placeholder: |
+        Developers currently have no standardized way to inspect render step bindings...
+    validations:
+      required: true
+
+  - type: textarea
+    id: signature
+    attributes:
+      label: Proposed Signature
+      description: Provide the Luau function signature with types.
+      placeholder: |
+        ```luau
+        function getrendersteppedlist(): {RenderStepConnection}
+        ```
+    validations:
+      required: true
+
+  - type: textarea
+    id: type_defs
+    attributes:
+      label: Type Definitions
+      description: Include any additional Luau types used by the Standard.
+      placeholder: |
+        ```luau
+        type RenderStepConnection = {
+            Function: (...any) -> (),
+            Thread: thread,
+            Name: string,
+            Priority: number
+        }
+        ```
+
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Behavior Specification
+      description: |
+        Describe the expected runtime behavior of the Standard.
+        Include ordering, filtering rules, error behavior, and thread guarantees.
+      placeholder: |
+        The returned array contains all currently active BindToRenderStep callbacks...
+
+    validations:
+      required: true
+
+  - type: textarea
+    id: example
+    attributes:
+      label: Example Usage
+      description: Provide Luau code demonstrating the API.
+      placeholder: |
+        ```luau
+        local steps = getrendersteppedlist()
+
+        for _, step in ipairs(steps) do
+            print(step.Name, step.Priority)
+        end
+        ```
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation_notes
+    attributes:
+      label: Implementation Notes
+      description: Optional notes for implementers (performance, limitations, etc.)
+
+  - type: checkboxes
+    attributes:
+      label: Submission Checklist
+      options:
+        - label: The API signature uses explicit Luau types.
+        - label: The proposal describes expected runtime behavior.
+        - label: Example usage is included.
+        - label: You have verified it's behavior with other implementations, if possible.
