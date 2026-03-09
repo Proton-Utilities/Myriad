@@ -1,21 +1,27 @@
 # Changelog
 
+## `STABLE` `HOTFIX` v1.4.4
+
+```diff
+! Updated the testing gameid to our new one.
+```
+
 ## `STABLE` `HOTFIX` v1.4.3
 
 ```diff
-+ Fixed not being able to publish results due to per-test time not being included.
+! Fixed not being able to publish results due to per-test time not being included.
 ```
 
 ## `STABLE` v1.4.2
 
 ```diff
-+ Rework backend
+! Rework backend
 ```
 
 ## `STABLE` `HOTFIX` v1.4.1
 
 ```diff
-+ Fix actor location
+! Fix actor location
 ```
 
 ## `STABLE` v1.4.0
