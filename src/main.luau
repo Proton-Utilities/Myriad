@@ -9,7 +9,7 @@ local gameRefs = require("@gameRefs")
 local app = cascade.New({
 	Theme = cascade.Themes.Dark,
 })
-local gameId = 80776325854596
+local gameId = 79035306837882
 
 --// Private Methods
 local function titledRow(parent: any, title: string, subtitle: string?)
