@@ -8,8 +8,9 @@ return function()
 			message = "Global not found",
 		}
 	end
-
-	local upvalue = "MYRIAD"
+	
+	local tempTable = {}
+	local upvalue, tempTable = `MYRIAD_{tempTable}`, nil
 	local function originalFunction()
 		return "MYRIAD", upvalue
 	end
@@ -20,15 +21,15 @@ return function()
 		__index = function() end
 	})
 
-	local _ = originalTable.MYRIAD -- Localize
-	local _ = upvalue
-	local _ = originalFunction()
-
+	local _1 = originalTable.MYRIAD -- Localize
+	local _2 = upvalue
+	local _3 = originalFunction()
+	
 	task.wait(0.1)
 
 	local foundFunc = filtergc("function", {
 		Constants = { "MYRIAD" },
-		Upvalues = { "MYRIAD" },
+		Upvalues = { upvalue },
 		IgnoreExecutor = false,
 	}, true)
 
