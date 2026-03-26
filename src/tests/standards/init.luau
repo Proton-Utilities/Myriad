@@ -2,7 +2,9 @@
 
 return function(name, tab, titledRow)
 	--// Imports
+	local cascade = require("@packages/cascade")
 	local checks = require("@checks/init")
+	local views = require("@self/views")
 	local console = require("@dependencies/ui/console")
 	local gameRefs = require("@gameRefs")
 	local crypt = require("@dependencies/crypt/crypt")
@@ -364,6 +366,18 @@ return function(name, tab, titledRow)
 		})
 
 		output:Clear()
+	end
+
+	-- Manual Tests
+	do
+		for viewName, viewFn in views do
+			local viewTab = tab:Tab({
+				Title = viewName,
+				Icon = cascade.Symbols.pencilLine,
+			})
+
+			viewFn(name, viewTab, titledRow)
+		end
 	end
 
 	return results

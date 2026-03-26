@@ -73,6 +73,13 @@ return {
 		["makefolder"] = require("@checks/Filesystem/makefolder.luau"),
 	},
 
+	FileDialog = {
+		["openfiledialog"] = require("@checks/FileDialog/openfiledialog.luau"),
+		["openfilesdialog"] = require("@checks/FileDialog/openfilesdialog.luau"),
+		["openfolderdialog"] = require("@checks/FileDialog/openfolderdialog.luau"),
+		["savefiledialog"] = require("@checks/FileDialog/savefiledialog.luau"),
+	},
+
 	Input = {
 		["isrbxactive"] = require("@checks/Input/isrbxactive.luau"),
 		["keypress"] = require("@checks/Input/keypress.luau"),
