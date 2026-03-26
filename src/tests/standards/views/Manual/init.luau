@@ -1,10 +1,12 @@
 --!nocheck
 
+local cascade = require("@packages/cascade")
+
 local groups = {
 	FileDialog = require("@self/FileDialog"),
 }
 
-return function(name, tab, titledRow)
+return function(name, tab, titledRow, app)
 	--// Pages
 	local landing = tab:Page()
 
@@ -14,6 +16,31 @@ return function(name, tab, titledRow)
 			Title = group.title,
 			Subtitle = group.subtitle,
 		})
+
+		if group.docsUrl then
+			local docsUrl = group.docsUrl
+			titledRow(section:Form(), "Docs"):Right():Button({
+				Label = "Copy Link",
+				Pushed = function()
+					if setclipboard or toclipboard then
+						(setclipboard or toclipboard)(docsUrl)
+						app:Notification({
+							App = "MYRIAD",
+							Title = "Copied link",
+							Subtitle = "Docs link copied to clipboard.",
+							Icon = cascade.Symbols.link,
+						})
+					else
+						app:Notification({
+							App = "MYRIAD",
+							Title = "Failed to copy link",
+							Subtitle = docsUrl,
+							Icon = cascade.Symbols.exclamationmarkTriangle,
+						})
+					end
+				end,
+			})
+		end
 
 		local form = section:Form()
 
@@ -36,8 +63,7 @@ return function(name, tab, titledRow)
 			local testForm = testSection:Form()
 
 			if testData.instructions then
-				titledRow(testForm, "Instructions", testData.instructions)
-					:Right()
+				titledRow(testForm, "Instructions", testData.instructions):Right()
 			end
 
 			local resultStack = testForm:Row():Left():TitleStack({

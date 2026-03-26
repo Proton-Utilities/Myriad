@@ -1,6 +1,6 @@
 --!nocheck
 
-return function(name, tab, titledRow)
+return function(name, tab, titledRow, app)
 	--// Imports
 	local cascade = require("@packages/cascade")
 	local checks = require("@checks/init")
@@ -376,7 +376,7 @@ return function(name, tab, titledRow)
 				Icon = cascade.Symbols.pencilLine,
 			})
 
-			viewFn(name, viewTab, titledRow)
+			viewFn(name, viewTab, titledRow, app)
 		end
 	end
 

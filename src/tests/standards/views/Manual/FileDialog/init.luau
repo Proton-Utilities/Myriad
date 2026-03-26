@@ -3,6 +3,7 @@
 return {
 	title = "File Dialog",
 	subtitle = "File-dialog related functions",
+	docsUrl = "https://github.com/Proton-Utilities/Myriad/issues/18",
 	tests = {
 		openfiledialog = {
 			subtitle = "Opens a dialog to select a single file. Returns a file object.",

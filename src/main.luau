@@ -53,7 +53,7 @@ if game.PlaceId == gameId then
 		})
 
 		coroutine.wrap(function()
-			test.path(name, tab, titledRow)
+			test.path(name, tab, titledRow, app)
 		end)()
 	end
 else
