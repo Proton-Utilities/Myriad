@@ -2,17 +2,17 @@
 
 --// Imports
 local cascade = require("@packages/cascade")
+local types = require("@packages/cascade/types")
 local tests = require("@tests")
-local gameRefs = require("@gameRefs")
 
 --// Variables
 local app = cascade.New({
 	Theme = cascade.Themes.Dark,
-})
+}) :: types.App
 local gameId = 79035306837882
 
 --// Private Methods
-local function titledRow(parent: any, title: string, subtitle: string?)
+local function titledRow(parent: types.BaseComponent?, title: string, subtitle: string?) : types.Row
 	local row = parent:Row({
 		SearchIndex = title,
 	})
@@ -27,6 +27,8 @@ end
 
 --// Initialize
 if game.PlaceId == gameId then
+	local gameRefs = require("@gameRefs")
+
 	if not gameRefs.connected then
 		warn("Can't find dependency `connected`")
 		return
@@ -55,13 +57,25 @@ if game.PlaceId == gameId then
 		end)()
 	end
 else
-	local game = "https://www.roblox.com/games/80776325854596"
+	local gameLink = "https://www.roblox.com/games/80776325854596"
 
-	warn(`Please join the testing game to use myriad: {game}`)
+	warn(`Please join the testing game to use myriad: {gameLink}`)
 
 	if setclipboard or toclipboard then
-		(setclipboard or toclipboard)(game)
+		(setclipboard or toclipboard)(gameLink)
+
+		app:Notification({
+			App = "MYRIAD",
+			Title = "Copied link",
+			Subtitle = "We've copied the link to the testing game, join it to use myriad.",
+			Icon = cascade.Symbols.link,
+		})
 	else
-		print("Failed to copy link: " .. game)
+		app:Notification({
+			App = "MYRIAD",
+			Title = "Failed to copy link",
+			Subtitle = "Please join the testing game to use myriad: " .. gameLink,
+			Icon = cascade.Symbols.exclamationmarkTriangle,
+		})
 	end
 end
