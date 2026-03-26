@@ -206,7 +206,12 @@ export type ValueState = {
 	Connect: (...any) -> any,
 }
 
-export type Theme = { [any]: any } -- TODO
+export type Theme = { [any]: any }
+
+export type Accent = {
+	Light: { [any]: any },
+	Dark: { [any]: any },
+}
 
 --// Components
 export type BaseComponent = {
@@ -219,9 +224,19 @@ export type BaseComponent = {
 export type AppProperties = ScreenGui & {
 	WindowPill: boolean?,
 	Theme: Theme?,
+	Accent: Accent?,
 }
 
 export type App = AppProperties & Components
+
+-- Standalone Component
+export type ComponentProperties = {
+	Theme: Theme?,
+	Accent: Accent?,
+	Parent: Instance?,
+}
+
+export type ComponentContext = ComponentProperties & Components
 
 -- Window
 export type WindowProperties = Frame & {
@@ -254,9 +269,12 @@ export type TabProperties = Frame & {
 	Icon: string?,
 	Indentation: number?,
 	Selected: boolean?,
+	Page: Page?,
 }
 
-export type Tab = BaseComponent & Components & TabProperties
+export type Tab = BaseComponent & Components & TabProperties & {
+	Navigate: (self: Tab, page: Page) -> nil,
+}
 
 -- Form
 export type FormProperties = Frame
@@ -296,6 +314,10 @@ export type PageSectionProperties = Frame & {
 }
 
 export type PageSection = BaseComponent & Components & PageSectionProperties
+
+-- Page
+export type PageProperties = Frame
+export type Page = BaseComponent & Components & PageProperties
 
 -- Label
 export type LabelProperties = TextLabel
@@ -414,11 +436,27 @@ export type PullDownButton = BaseComponent & Components & PullDownButtonProperti
 	Remove: (Index: number?) -> nil,
 }
 
+-- Notification
+export type NotificationProperties = Frame & {
+	Title: string,
+	Subtitle: string,
+	App: string?,
+	AppIcon: string?,
+	Icon: string?,
+	Duration: number?,
+	Closed: ((self: Notification) -> unknown)?,
+}
+
+export type Notification = BaseComponent & Components & NotificationProperties & {
+	Close: (self: Notification) -> nil,
+}
+
 -- Export
 export type Components = {
 	Window: (self: any, properties: WindowProperties?) -> Window,
 	Section: (self: any, properties: SectionProperties?) -> Section,
 	Tab: (self: any, properties: TabProperties?) -> Tab,
+	Page: (self: any, properties: PageProperties?) -> Page,
 	Form: (self: any, properties: FormProperties?) -> Form,
 	Row: (self: any, properties: RowProperties?) -> Row,
 	VStack: (self: any, properties: StackProperties?) -> Stack,
@@ -436,6 +474,7 @@ export type Components = {
 	RadioButtonGroup: (self: any, properties: RadioButtonGroupProperties) -> RadioButtonGroup,
 	PopUpButton: (self: any, properties: PopUpButtonProperties) -> PopUpButton,
 	PullDownButton: (self: any, properties: PullDownButtonProperties) -> PullDownButton,
+	Notification: (self: any, properties: NotificationProperties) -> Notification,
 }
 
 return 1
