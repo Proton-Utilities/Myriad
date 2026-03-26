@@ -1,5 +1,17 @@
 # Changelog
 
+## UNMARKED
+
+- Use proper type checking
+- Notify user that the link was copied to their clipboard if their not in the main testing game
+- Link the docs for file dialog functions
+
+## `PRE-RELEASE` v1.5.0-beta.1
+
+- New `Manual` framework for the `Standards` tests. (#19)
+- Add FileDialog Tests (#18)
+- Updated package `Cascade` v1.0.1-beta -> v1.2.0
+
 ## `STABLE` `HOTFIX` v1.4.4
 
 ```diff
