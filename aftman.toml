@@ -3,7 +3,7 @@
 
 # To add a new tool, add an entry to this table.
 [tools]
-darklua = "Stefanuk12/darklua@0.17.4"
+darklua = "seaofvoices/darklua@0.18.0"
 lune = "lune-org/lune@0.9.3"
 pcmp = "Proton-Utilities/ProCMP@3.0.1"
 rojo = "rojo-rbx/rojo@7.6.1"
