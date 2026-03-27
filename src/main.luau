@@ -12,7 +12,7 @@ local app = cascade.New({
 local gameId = 79035306837882
 
 --// Private Methods
-local function titledRow(parent: types.BaseComponent?, title: string, subtitle: string?) : types.Row
+local function titledRow(parent: types.BaseComponent?, title: string, subtitle: string?): types.Row
 	local row = parent:Row({
 		SearchIndex = title,
 	})
