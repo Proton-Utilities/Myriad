@@ -1,5 +1,11 @@
 # Changelog
 
+## `STABLE` `HOTFIX` v1.5.1
+
+- Removed the nested check for `appendfile`. Mirror `fopen` instead and don't make the path since its not a create related function, only writes to existing files.
+- Fixed `cloneref` test contaminating `getnilinstances`
+- Added some dependency checks for said functions.
+
 ## `STABLE` v1.5.0
 
 - New `Manual` framework for the `Standards` tests. (#19)

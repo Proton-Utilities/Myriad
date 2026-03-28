@@ -1,24 +1,32 @@
 --!nocheck
 --!nolint
-
 return function()
 	if not cloneref then
 		return {
 			status = 400,
 			message = "Global not found",
 		}
+	elseif not require("@checks/Metatable/setrawmetatable")() then
+		return {
+			status = 401,
+			message = "Dependency 'setrawmetatable' dosen't work properly.",
+		}
 	end
 
 	local originalPart = Instance.new("Part")
 	local originalService = game:GetService("CoreGui")
-	
+
 	if cloneref(originalService) == originalService then
+		originalPart:Destroy()
 		return {
 			status = 500,
 			message = "Cloned service cannot be equal to original reference",
 		}
 	end
-	
+
+	-- We do this so that getnilinstances doesn't find it.
+	originalPart.Parent = workspace
+
 	-- An "error" is only possible if setrawmetatable exists and was previously modified
 	if setrawmetatable then
 		local sameTable = {}
@@ -26,41 +34,50 @@ return function()
 			__type = "Instance",
 			__index = function()
 				return sameTable
-			end
+			end,
 		})
 	end
 
 	local originalPartNewRef = cloneref(originalPart)
-	local collectGarbageDetecor = setmetatable({{}, originalPart}, {__mode = "v"})
-	
+	local collectGarbageDetecor = setmetatable({ {}, originalPart }, { __mode = "v" })
+
 	pcall(function()
 		originalPartNewRef.Name = math.random()
 	end)
-	
+
 	if originalPart == originalPartNewRef then
+		pcall(function()
+			originalPart:Destroy()
+		end)
 		return {
 			status = 500,
 			message = "Cloned part cannot be equal to original reference",
 		}
 	elseif originalPart.Name ~= originalPartNewRef.Name then
+		pcall(function()
+			originalPart:Destroy()
+		end)
 		return {
 			status = 500,
 			message = "The new xref does not contain the same metadata as the original",
 		}
 	end
 
+	pcall(function()
+		originalPart:Destroy()
+	end)
 	originalPart = nil
-	
+
 	local timeout = false
 	local cancelThread = task.delay(5, function()
 		timeout = true
 		collectGarbageDetecor[1] = nil
 	end)
-	
+
 	while collectGarbageDetecor[1] do
 		task.wait()
 	end
-	
+
 	if not timeout then
 		task.cancel(cancelThread)
 	else
@@ -81,7 +98,6 @@ return function()
 	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({
 		"clonereference",
 	})
-
 	if not envIndex then
 		return {
 			status = 501,

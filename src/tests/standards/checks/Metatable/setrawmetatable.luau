@@ -7,10 +7,10 @@ return function()
 			status = 400,
 			message = "Global not found",
 		}
-	elseif not getrawmetatable then
+	elseif not require("@checks/Metatable/getrawmetatable")() then
 		return {
 			status = 401,
-			message = "Dependency 'getrawmetatable' not found",
+			message = "Dependency 'getrawmetatable' dosen't work properly.",
 		}
 	end
 
