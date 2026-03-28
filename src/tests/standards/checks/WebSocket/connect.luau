@@ -60,8 +60,77 @@ return function()
 		end
 	end
 
-	if result then
-		return result
+	local receivedTextEcho = false
+	local receivedBinaryEcho = false
+	local closedFired = false
+	
+	socket.OnMessage:Connect(function(msg)
+		if msg == "myriad_text_test" then
+			receivedTextEcho = true
+		elseif msg == "\xFF\xFF" then
+			receivedBinaryEcho = true
+		end
+	end)
+
+	socket.OnClose:Connect(function()
+		closedFired = true
+	end)
+
+	local sendTextSuccess, sendTextErr = pcall(function()
+		socket:Send("myriad_text_test")
+	end)
+
+	if not sendTextSuccess then
+		pcall(function() socket:Close() end)
+		return {
+			status = 500,
+			message = `WebSocket:Send failed with plaintext: {sendTextErr}`,
+		}
+	end
+
+	local sendBinSuccess, sendBinErr = pcall(function()
+		socket:Send("\xFF\xFF", true)
+	end)
+
+	if not sendBinSuccess then
+		pcall(function() socket:Close() end)
+		return {
+			status = 500,
+			message = `WebSocket:Send failed with is_binary enabled: {sendBinErr}`,
+		}
+	end
+
+	local timeout = os.clock() + 3
+	while (not receivedTextEcho or not receivedBinaryEcho) and os.clock() < timeout do
+		task.wait(0.1)
+	end
+
+	pcall(function() socket:Close() end)
+
+	if not receivedTextEcho then
+		return {
+			status = 500,
+			message = "Did not receive standard text echo. Plaintext support might be broken.",
+		}
+	end
+
+	if not receivedBinaryEcho then
+		return {
+			status = 500,
+			message = "Did not receive binary echo. Executor likely sent data as plaintext, which fails UTF-8 validation and drops.",
+		}
+	end
+
+	timeout = os.clock() + 2
+	while not closedFired and os.clock() < timeout do
+		task.wait(0.1)
+	end
+
+	if not closedFired then
+		return {
+			status = 500,
+			message = "OnClose event did not fire after calling socket:Close().",
+		}
 	end
 
 	--// Alias test
