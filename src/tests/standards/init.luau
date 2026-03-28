@@ -346,14 +346,6 @@ return function(name, tab, titledRow, app)
 		titledRow(form, "Run Test"):Right():Button({
 			Label = "Run",
 			Pushed = function()
-				if require("@dependencies/dexDetector")() and _P.cfg ~= "Debug" then
-					warn(
-						"Cant run test: Dex detected in GC. This can tamper with 'decompile' test results in certain builds."
-					)
-
-					return
-				end
-
 				coroutine.wrap(test)()
 			end,
 		})

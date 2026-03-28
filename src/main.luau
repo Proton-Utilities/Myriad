@@ -36,7 +36,7 @@ if game.PlaceId == gameId then
 
 	gameRefs.connected:FireServer()
 
-	--// UI Begin
+	--// UI
 	local section = app:Window({
 		Title = "Myriad",
 		Subtitle = `{_P.cfg} {_P.vers}`,
