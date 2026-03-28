@@ -1,6 +1,6 @@
 # Changelog
 
-## `STABLE` `HOTFIX` v1.5.0
+## `STABLE` v1.5.0
 
 - New `Manual` framework for the `Standards` tests. (#19)
 - Add FileDialog Tests (#18)
