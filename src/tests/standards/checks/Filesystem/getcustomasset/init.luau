@@ -7,17 +7,17 @@ return function()
 			status = 400,
 			message = "Global not found",
 		}
-	elseif require("@self/../writefile")().status ~= 200 then
+	elseif require("@checks/Filesystem/writefile")().status ~= 200 then
 		return {
 			status = 401,
 			message = "Dependency 'writefile' didn't pass",
 		}
-	elseif require("@self/../isfile")().status ~= 200 then
+	elseif require("@checks/Filesystem/isfile")().status ~= 200 then
 		return {
 			status = 401,
 			message = "Dependency 'isfile' didn't pass",
 		}
-	elseif require("@self/../delfile")().status ~= 200 then
+	elseif require("@checks/Filesystem/delfile")().status ~= 200 then
 		return {
 			status = 401,
 			message = "Dependency 'delfile' didn't pass",
