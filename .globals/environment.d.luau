@@ -10522,21 +10522,21 @@ declare function isfunctionhooked(function_to_check: (...any) -> ...any): boolea
 declare function setstackhidden(function_to_hide: ((...any) -> ...any) | number, hidden: boolean): ()
 
 
--- VoltSignal Library
-declare class VoltConnection
+-- Signal Library
+declare class Connection
 	Connected: boolean
 	function Disconnect(self): ()
 end
 
-export type VoltSignal<T... = ...any> = {
-	Connect: (self: VoltSignal<T...>, callback: (T...) -> ()) -> VoltConnection,
-	Once: (self: VoltSignal<T...>, callback: (T...) -> ()) -> VoltConnection,
-	Wait: (self: VoltSignal<T...>) -> T...,
-	Fire: (self: VoltSignal<T...>, T...) -> ()
+export type Signal<T... = ...any> = {
+	Connect: (self: Signal<T...>, callback: (T...) -> ()) -> Connection,
+	Once: (self: Signal<T...>, callback: (T...) -> ()) -> Connection,
+	Wait: (self: Signal<T...>) -> T...,
+	Fire: (self: Signal<T...>, T...) -> ()
 }
 
-declare VoltSignal: {
-	new: (<T...>() -> VoltSignal<T...>),
+declare Signal: {
+	new: (<T...>() -> Signal<T...>),
 }
 
 
@@ -10548,7 +10548,7 @@ declare function get_comm_channel(comm_channel_id: number): BindableEvent
 declare function create_comm_channel(): (number, BindableEvent)
 declare function get_current_actor(): Actor?
 
-declare on_actor_state_created: VoltSignal<Actor>
+declare on_actor_state_created: Signal<Actor>
 
 -- Cache Library
 declare cache: {
@@ -10805,7 +10805,7 @@ declare get_hidden_gui: typeof(gethui)
 
 
 -- Http Library
-export type VoltRequestOptions = {
+export type RequestOptions = {
     Url: string,
     Method: "GET" | "POST" | "PUT" | "DELETE" | "HEAD" | "OPTIONS",
     Headers: {
@@ -10814,7 +10814,7 @@ export type VoltRequestOptions = {
     Body: string?,
 }
 
-export type VoltRequestResponse = {
+export type RequestResponse = {
     StatusCode: number,
     StatusMessage: string,
     Headers: { 
@@ -10824,7 +10824,7 @@ export type VoltRequestResponse = {
     Success: boolean,
 }
 
-declare function request(request_options: VoltRequestOptions): VoltRequestResponse
+declare function request(request_options: RequestOptions): RequestResponse
 declare http_request: typeof(request)
 
 declare http: {
@@ -10881,7 +10881,7 @@ declare function getrendersteppedlist(): { { Function: ((...any) -> ...any)?, Th
 
 
 --
-export type VoltSaveInstanceOptions = {
+export type SaveInstanceOptions = {
     FileName: string,
     CopyToClipboard: boolean?,
     NilInstances: boolean?,
@@ -10892,8 +10892,8 @@ export type VoltSaveInstanceOptions = {
     IgnoreList: { Instance }?,
 }
 
-declare function saveinstance(instance: Instance?, options: VoltSaveInstanceOptions?): boolean
-declare function saveplace(options: VoltSaveInstanceOptions): boolean
+declare function saveinstance(instance: Instance?, options: SaveInstanceOptions?): boolean
+declare function saveplace(options: SaveInstanceOptions): boolean
 
 
 -- Script Library
@@ -10920,18 +10920,18 @@ declare function checkcaller(): boolean
 
 -- WebSocket Library
 
--- WebSocketClient (VoltWebSocketClient due to existing WebSocketClient class)
-declare class VoltWebSocketClient
+-- WebSocketClient (WebSocketClient due to existing WebSocketClient class)
+declare class WebSocketClient
     IsClosed: boolean
-    OnMessage: VoltSignal<string>
-    OnClose: VoltSignal<()>
+    OnMessage: Signal<string>
+    OnClose: Signal<()>
 
     function Send(self, data: string, is_binary: boolean?): ()
     function Close(self): ()
 end
 
 declare WebSocket: {
-    connect: ((url: string) -> VoltWebSocketClient),
+    connect: ((url: string) -> WebSocketClient),
 }
 
 declare websocket: typeof(WebSocket)
@@ -10956,7 +10956,7 @@ declare oth: {
 declare class LuaStateProxy
 	Id: number
 	IsActorState: boolean
-	Event: VoltSignal<>
+	Event: Signal<>
 	function GetActors(self): { Actor }
 	Execute: (<A...>(self: LuaStateProxy, source: string, A...) -> ())
 end
@@ -10981,7 +10981,7 @@ declare DrawingImmediate: {
 	FilledQuad: (p1: Vector2, p2: Vector2, p3: Vector2, p4: Vector2, color: Color3, opacity: number) -> (),
 	Text: (position: Vector2, font: DrawFont | number, font_size: number, color: Color3, opacity: number, text: string, center: boolean) -> (),
 	OutlinedText: (position: Vector2, font: DrawFont | number, font_size: number, color: Color3, opacity: number, outline_color: Color3, outline_opacity: number, text: string, center: boolean) -> (),
-	GetPaint: (z_index: number?) -> VoltSignal<>,
+	GetPaint: (z_index: number?) -> Signal<>,
 	Fonts: DrawingFonts
 }
 
