@@ -5,6 +5,11 @@
 - Use proper type checking
 - Notify user that the link was copied to their clipboard if their not in the main testing game
 - Link the docs for file dialog functions
+- Reduce executor dependance
+- Check the actual test results for filesystem dependency in the `getcustomasset` test instead of just doing a global check
+- `Filesystem` related tests now check for file nesting compatability.
+- `getcustomasset` now checks for: PNG, JPG, MP3, OGG, WEBM, MP4, OBJ, and TTF files.
+- `WebSocket.connect` now checks the `is_binary` parameter, and checks if sent data in general is recieved.
 
 ## `PRE-RELEASE` v1.5.0-beta.1
 
