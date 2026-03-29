@@ -274,6 +274,7 @@ export type TabProperties = Frame & {
 
 export type Tab = BaseComponent & Components & TabProperties & {
 	Navigate: (self: Tab, page: Page) -> nil,
+	Structures: { [string]: Instance | { any }, Page: Page},
 }
 
 -- Form
@@ -444,7 +445,7 @@ export type NotificationProperties = Frame & {
 	AppIcon: string?,
 	Icon: string?,
 	Duration: number?,
-	Closed: ((self: Notification) -> unknown)?,
+	Closed: ((self: Notification, fromUserInput: boolean?) -> unknown)?,
 }
 
 export type Notification = BaseComponent & Components & NotificationProperties & {
