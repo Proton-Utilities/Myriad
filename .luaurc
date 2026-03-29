@@ -2,6 +2,7 @@
     "aliases": {
         "packages": "./packages",
         "dependencies": "./src/dependencies",
+        "modules": "./src/modules",
         "tests": "./src/tests",
         "checks": "./src/tests/standards/checks",
 
@@ -9,6 +10,8 @@
         "vulnerabilities": "./src/tests/vulnerabilities",
 
         "gameRefs": "./src/gameRefs",
-        "views": "./src/views"
+        "views": "./src/views",
+
+        "config": "./src/config"
     }
-}
+}   

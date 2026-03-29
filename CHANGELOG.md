@@ -3,6 +3,8 @@
 ## UNMARKED | Target: v1.5.2
 
 - Added `Window` settings tab
+- Added keybinds to each test
+- Made the test scroll to the console to focus the output whenever a test is ran. (Also focuses the tab if it wasn't already.)
 
 ## `STABLE` `HOTFIX` v1.5.1
 

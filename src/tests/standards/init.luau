@@ -1,6 +1,8 @@
 --!nocheck
 
-return function(name, tab, titledRow, app)
+local types = require("@packages/cascade/types")
+
+return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.App)
 	--// Imports
 	local cascade = require("@packages/cascade")
 	local checks = require("@checks/init")
@@ -8,6 +10,8 @@ return function(name, tab, titledRow, app)
 	local console = require("@dependencies/ui/console")
 	local gameRefs = require("@gameRefs")
 	local crypt = require("@dependencies/crypt/crypt")
+	local config = require("@config")
+	local keybind = require("@modules/keybind")
 
 	--// Variables
 	local currentTask = nil
@@ -54,6 +58,27 @@ return function(name, tab, titledRow, app)
 		end
 
 		currentTask = task.spawn(function()
+			do -- Some bullshit cause cascade Selected property dosent unselect other tabs
+				for _, tab: types.Tab in pairs(tab.__window.Tabs) do
+					tab.Selected = false
+				end
+
+				tab.Selected = true
+
+				tab.__window.addToHistory(tab.__container)
+			end
+
+			game:GetService("TweenService")
+				:Create(tab.Structures.Page.__instance, TweenInfo.new(1, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+					CanvasPosition = Vector2.new(
+						0,
+						output.__instance.AbsolutePosition.Y
+							- tab.Structures.Page.__instance.AbsolutePosition.Y
+							+ tab.Structures.Page.__instance.CanvasPosition.Y
+					),
+				})
+				:Play()
+
 			local startTime = time()
 			local passed = 0
 			local failed = 0
@@ -343,12 +368,34 @@ return function(name, tab, titledRow, app)
 	do
 		local form = tab:Form()
 
-		titledRow(form, "Run Test"):Right():Button({
-			Label = "Run",
-			Pushed = function()
-				coroutine.wrap(test)()
-			end,
-		})
+		do
+			local row = titledRow(form, "Run Test")
+
+			-- Show keybind
+			do
+				local stack = form:Row():Right():HStack({
+					Padding = UDim.new(0, 0),
+				})
+
+				stack:Symbol({ Image = cascade.Symbols.command, Style = "Secondary" })
+				stack:Label({ Text = table.concat(config.keybinds.runStandardsTest, " + ") })
+
+				keybind.new(config.keybinds.runStandardsTest, { sink = true }):Connect(function(inputComplete: boolean)
+					if not inputComplete then
+						return
+					end
+
+					coroutine.wrap(test)()
+				end)
+			end
+
+			row:Right():Button({
+				Label = "Run",
+				Pushed = function()
+					coroutine.wrap(test)()
+				end,
+			})
+		end
 
 		output = console.new(tab.__container, {
 			ReadOnly = true,

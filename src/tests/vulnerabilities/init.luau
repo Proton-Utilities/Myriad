@@ -1,8 +1,13 @@
-return function(name, tab, titledRow)
+local types = require("@packages/cascade/types")
+
+return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.App)
 	--// Imports
+	local cascade = require("@packages/cascade")
 	local console = require("@dependencies/ui/console")
 	local gameRefs = require("@gameRefs")
 	local crypt = require("@dependencies/crypt/crypt")
+	local config = require("@config")
+	local keybind = require("@modules/keybind")
 	local modules = {
 		Services = require("@self/services"),
 		Executor = require("@self/executor"),
@@ -70,6 +75,31 @@ return function(name, tab, titledRow)
 		end
 
 		currentTask = task.spawn(function()
+			do -- Some bullshit cause cascade Selected property dosent unselect other tabs
+				for _, tab: types.Tab in pairs(tab.__window.Tabs) do
+					tab.Selected = false
+				end
+
+				tab.Selected = true
+
+				tab.__window.addToHistory(tab.__container)
+			end
+
+			game:GetService("TweenService")
+				:Create(
+					tab.Structures.Page.__instance,
+					TweenInfo.new(1, Enum.EasingStyle.Quart, Enum.EasingDirection.Out),
+					{
+						CanvasPosition = Vector2.new(
+							0,
+							output.__instance.AbsolutePosition.Y
+								- tab.Structures.Page.__instance.AbsolutePosition.Y
+								+ tab.Structures.Page.__instance.CanvasPosition.Y
+						),
+					}
+				)
+				:Play()
+
 			local startTime = time()
 			local total = { checked = 0, secured = 0, vulnerable = 0 }
 
@@ -194,6 +224,24 @@ return function(name, tab, titledRow)
 			Label = "Start Scan",
 			Pushed = runTests,
 		})
+
+		-- Show keybind
+		do
+			local stack = form:Row():Right():HStack({
+				Padding = UDim.new(0, 0),
+			})
+
+			stack:Symbol({ Image = cascade.Symbols.command, Style = "Secondary" })
+			stack:Label({ Text = table.concat(config.keybinds.runVulnerabilityTest, " + ") })
+
+			keybind.new(config.keybinds.runVulnerabilityTest, { sink = true }):Connect(function(inputComplete: boolean)
+				if not inputComplete then
+					return
+				end
+
+				coroutine.wrap(runTests)()
+			end)
+		end
 
 		output = console.new(tab.__container, {
 			ReadOnly = true,

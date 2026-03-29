@@ -1,9 +1,7 @@
 return function(cascade, app, window, root)
-	--// References
-	local userInputService = game:GetService("UserInputService")
-
-	--// Variables
-	local minimizeKeybind = Enum.KeyCode.RightControl
+	--// Imports
+	local config = require("@config")
+	local keybind = require("@modules/keybind")
 
 	--// Privates
 	local function titledRow(parent: any, title: string, subtitle: string?)
@@ -20,10 +18,12 @@ return function(cascade, app, window, root)
 	end
 
 	--// UI
-	userInputService.InputEnded:Connect(function(input, gameProcessedEvent)
-		if input.KeyCode == minimizeKeybind and not gameProcessedEvent then
-			window.Minimized = not window.Minimized
+	keybind.new(config.keybinds.toggleMenu, { sink = true }):Connect(function(inputComplete: boolean)
+		if not inputComplete then
+			return
 		end
+
+		window.Minimized = not window.Minimized
 	end)
 
 	do -- Appearance
@@ -73,9 +73,9 @@ return function(cascade, app, window, root)
 			local row = titledRow(form, "Minimize shortcut")
 
 			row:Right():KeybindField({
-				Value = minimizeKeybind,
+				Value = config.keybinds.toggleMenu,
 				ValueChanged = function(self, value: Enum.KeyCode)
-					minimizeKeybind = value
+					config.keybinds.toggleMenu = { value }
 				end,
 			})
 		end

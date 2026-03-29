@@ -316,7 +316,7 @@ export type PageSectionProperties = Frame & {
 export type PageSection = BaseComponent & Components & PageSectionProperties
 
 -- Page
-export type PageProperties = Frame
+export type PageProperties = ScrollingFrame
 export type Page = BaseComponent & Components & PageProperties
 
 -- Label
