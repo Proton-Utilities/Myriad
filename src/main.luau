@@ -3,6 +3,8 @@
 --// Imports
 local cascade = require("@packages/cascade")
 local types = require("@packages/cascade/types")
+
+local views = require("@views")
 local tests = require("@tests")
 
 --// Variables
@@ -37,24 +39,44 @@ if game.PlaceId == gameId then
 	gameRefs.connected:FireServer()
 
 	--// UI
-	local section = app:Window({
+	local window = app:Window({
 		Title = "Myriad",
 		Subtitle = `{_P.cfg} {_P.vers}`,
-	}):Section({
-		Disclosure = false,
-		Title = "Tests",
 	})
 
-	for name, test in tests do
-		local tab = section:Tab({
-			Title = name,
-			Icon = cascade.Symbols[test.icon],
-			Selected = test.selected,
+	do -- Tests
+		local section = window:Section({
+			Disclosure = false,
+			Title = "Tests",
 		})
 
-		coroutine.wrap(function()
-			test.path(name, tab, titledRow, app)
-		end)()
+		for name, test in tests do
+			local tab = section:Tab({
+				Title = name,
+				Icon = cascade.Symbols[test.icon],
+				Selected = test.selected,
+			})
+
+			coroutine.wrap(function()
+				test.path(name, tab, titledRow, app)
+			end)()
+		end
+	end
+
+	do -- Settings
+		local section = window:Section({
+			Disclosure = false,
+			Title = "Settings",
+		})
+
+		do -- Window
+			local tab = section:Tab({
+				Title = "Window",
+				Icon = cascade.Symbols.sidebarLeft,
+			})
+
+			views.windowSettings(cascade, app, window, tab)
+		end
 	end
 else
 	local gameLink = "https://www.roblox.com/games/80776325854596"

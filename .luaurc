@@ -8,6 +8,7 @@
         "standards": "./src/tests/standards",
         "vulnerabilities": "./src/tests/vulnerabilities",
 
-        "gameRefs": "./src/gameRefs"
+        "gameRefs": "./src/gameRefs",
+        "views": "./src/views"
     }
 }
