@@ -1,7 +1,7 @@
 return {
 	keybinds = {
 		toggleMenu = { Enum.KeyCode.RightControl },
-		runStandardsTest = { "Control", "S" },
-		runVulnerabilityTest = { "Control", "V" },
+		runStandardsTest = { "Control", "Shift", "S" },
+		runVulnerabilityTest = { "Control", "Shift", "V" },
 	},
 }
