@@ -1,6 +1,6 @@
 # Changelog
 
-## UNMARKED | Target: v1.5.2
+## `STABLE` v1.5.2
 
 - Added `Window` settings tab
 - Added keybinds to each test
