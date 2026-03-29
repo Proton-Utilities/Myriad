@@ -1,5 +1,9 @@
 # Changelog
 
+## UNMARKED | Target: v1.5.2
+
+- Added `Window` settings tab
+
 ## `STABLE` `HOTFIX` v1.5.1
 
 - Removed the nested check for `appendfile`. Mirror `fopen` instead and don't make the path since its not a create related function, only writes to existing files.
