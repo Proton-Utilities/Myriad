@@ -58,25 +58,21 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 		end
 
 		currentTask = task.spawn(function()
-			do -- Some bullshit cause cascade Selected property dosent unselect other tabs
-				for _, tab: types.Tab in pairs(tab.__window.Tabs) do
-					tab.Selected = false
-				end
-
-				tab.Selected = true
-
-				tab.__window.addToHistory(tab.__container)
-			end
+			tab.Selected = true
 
 			game:GetService("TweenService")
-				:Create(tab.Structures.Page.__instance, TweenInfo.new(1, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
-					CanvasPosition = Vector2.new(
-						0,
-						output.__instance.AbsolutePosition.Y
-							- tab.Structures.Page.__instance.AbsolutePosition.Y
-							+ tab.Structures.Page.__instance.CanvasPosition.Y
-					),
-				})
+				:Create(
+					tab.Structures.Page.__instance,
+					TweenInfo.new(1, Enum.EasingStyle.Quart, Enum.EasingDirection.Out),
+					{
+						CanvasPosition = Vector2.new(
+							0,
+							output.__instance.AbsolutePosition.Y
+								- tab.Structures.Page.__instance.AbsolutePosition.Y
+								+ tab.Structures.Page.__instance.CanvasPosition.Y
+						),
+					}
+				)
 				:Play()
 
 			local startTime = time()
