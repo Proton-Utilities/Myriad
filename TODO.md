@@ -1,8 +1,18 @@
 # TODO
 
-## Sub-tests (Non-automated)
-
-Pick a better name than "sub-tests"
+## Manual tests
 
 - Drawing
-- rconsole (ANSII)
+- rconsole (ANSII, utf8)
+
+## Missing Functionality Tests
+
+- `debug.getstack`
+- `debug.getupvalue`
+- `debug.getupvalues`
+- `debug.setconstant`
+- `debug.setupvalue`
+
+## Functionality test needs more checks
+
+- `hookfunction`
