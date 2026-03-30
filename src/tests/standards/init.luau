@@ -369,12 +369,9 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 
 			-- Show keybind
 			do
-				local stack = form:Row():Right():HStack({
-					Padding = UDim.new(0, 0),
+				form:Row():Right():KeybindLabel({
+					keys = config.keybinds.runStandardsTest,
 				})
-
-				stack:Symbol({ Image = cascade.Symbols.command, Style = "Secondary" })
-				stack:Label({ Text = table.concat(config.keybinds.runStandardsTest, " + ") })
 
 				keybind.new(config.keybinds.runStandardsTest, { sink = true }):Connect(function(inputComplete: boolean)
 					if not inputComplete then

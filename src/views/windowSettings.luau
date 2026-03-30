@@ -72,11 +72,8 @@ return function(cascade, app, window, root)
 		do -- Minimize shortcut
 			local row = titledRow(form, "Minimize shortcut")
 
-			row:Right():KeybindField({
-				Value = config.keybinds.toggleMenu,
-				ValueChanged = function(self, value: Enum.KeyCode)
-					config.keybinds.toggleMenu = { value }
-				end,
+			row:Right():KeybindLabel({
+				keys = config.keybinds.toggleMenu,
 			})
 		end
 
