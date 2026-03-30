@@ -94,13 +94,9 @@ function Keybind.new(keys: { string | Enum.KeyCode }, options: Options?): Signal
 	local sig = signal() :: Signal<boolean, boolean>
 	local resolvedSets = keyResolve(keys)
 	local sink = options ~= nil and options.sink == true
+	local entry = { signal = sig, _resolvedSets = resolvedSets, _sink = sink, _activated = false }
 
-	table.insert(registry, { signal = sig, _resolvedSets = resolvedSets, _sink = sink })
-
-	-- Assertion logic here, assertions let you pass inline logic thats similar to `assert` functions
-	-- if an assertion fails, the bind will not fire
-	-- Assertion can be a boolean, functions or table of multiple of either.
-
+	table.insert(registry, entry)
 
 	-- sing logic
 	if sink then
@@ -119,15 +115,15 @@ function Keybind.new(keys: { string | Enum.KeyCode }, options: Options?): Signal
 				table.insert(pressOrder, key)
 
 				if matchesBind(resolvedSets, key) then
+					entry._activated = true
 					sig:Fire(false, false)
-					
 					return Enum.ContextActionResult.Sink
 				end
 
 				for i = #pressOrder, 1, -1 do
 					if pressOrder[i] == key then
 						table.remove(pressOrder, i)
-						
+
 						break
 					end
 				end
@@ -174,6 +170,7 @@ UserInputService.InputBegan:Connect(function(input: InputObject, gameProcessed: 
 		end
 
 		if matchesBind(bind._resolvedSets :: { { Enum.KeyCode } }, key) then
+			bind._activated = true
 			bind.signal:Fire(false, gameProcessed)
 		end
 	end
@@ -192,7 +189,8 @@ UserInputService.InputEnded:Connect(function(input: InputObject)
 
 	for _, bind in ipairs(registry) do
 		local triggerSet = bind._resolvedSets[#bind._resolvedSets] :: { Enum.KeyCode }
-		if keyExist(key, triggerSet) then
+		if keyExist(key, triggerSet) and bind._activated then
+			bind._activated = false
 			bind.signal:Fire(true, false)
 		end
 	end
