@@ -1,6 +1,6 @@
 # Changelog
 
-## Unmarked (Target: v1.5.3)
+## `STABLE` v1.5.3
 
 - Fixed an issue with keybinds related to multi-stroke binds.
 - `KeybindLabel` component is used instead of crafting them primitively
