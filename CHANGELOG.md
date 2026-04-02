@@ -1,6 +1,6 @@
 # Changelog
 
-## Unmarked
+## `STABLE` v1.5.4
 
 - Test settings now use a seperate view and sub-tab
 - Added an `Includes` option to the `Standards` test
