@@ -12,6 +12,7 @@
         "gameRefs": "./src/gameRefs",
         "views": "./src/views",
 
-        "config": "./src/config"
+        "config": "./src/config",
+        "ui": "./src/ui"
     }
 }   

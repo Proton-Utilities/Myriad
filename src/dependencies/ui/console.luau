@@ -27,7 +27,7 @@ function Console.new(parent, props)
 		Name = "ConsoleComponent",
 		BackgroundColor3 = Color3.fromRGB(20, 20, 20),
 		BorderSizePixel = 0,
-		Size = UDim2.new(1, 0, 0, 300),
+		Size = UDim2.new(1, 0, 0, 500),
 		Parent = parent,
 		ClipsDescendants = true,
 	})

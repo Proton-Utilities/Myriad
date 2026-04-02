@@ -2,7 +2,6 @@ local types = require("@packages/cascade/types")
 
 return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.App)
 	--// Imports
-	local cascade = require("@packages/cascade")
 	local console = require("@dependencies/ui/console")
 	local gameRefs = require("@gameRefs")
 	local crypt = require("@dependencies/crypt/crypt")
@@ -18,11 +17,13 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 	--// Variables
 	local output = nil
 	local currentTask = nil
+	local testingState = nil
 
 	local testConfig = {
 		checkpointDelay = 0,
 		showSafe = true,
 		includeMetadata = false,
+		testTimeout = 5,
 	}
 
 	local uni = { bullet = "•" }
@@ -77,6 +78,27 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 		currentTask = task.spawn(function()
 			tab.Selected = true
 
+			if testingState then
+				testingState.Visible = true
+				testingState.Passed = 0
+				testingState.Failed = 0
+				testingState.CurrentTest = "Initializing..."
+				testingState.NextTest = "None"
+				testingState.TotalElapsed = 0
+				testingState.CheckElapsed = 0
+			end
+
+			if output then
+				output.__instance.Visible = false
+			end
+
+			local targetY = 0
+			if testingState and testingState.__container then
+				targetY = testingState.__container.AbsolutePosition.Y
+			elseif output and output.__instance then
+				targetY = output.__instance.AbsolutePosition.Y
+			end
+
 			game:GetService("TweenService")
 				:Create(
 					tab.Structures.Page.__instance,
@@ -84,7 +106,7 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 					{
 						CanvasPosition = Vector2.new(
 							0,
-							output.__instance.AbsolutePosition.Y
+							targetY
 								- tab.Structures.Page.__instance.AbsolutePosition.Y
 								+ tab.Structures.Page.__instance.CanvasPosition.Y
 						),
@@ -96,8 +118,6 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 			local total = { checked = 0, secured = 0, vulnerable = 0 }
 
 			output:Clear()
-			printc(`<font color="#55AAFF">Starting Vulnerability Scan...</font><br />`)
-
 			local utils = {
 				printc = printc,
 				warnc = warnc,
@@ -106,28 +126,63 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 			}
 
 			for modName, moduleFunc in pairs(modules) do
+				if testingState then
+					testingState.CurrentTest = `Module: {modName}`
+				end
+
+				local modStart = os.clock()
 				local stats = moduleFunc(output, testConfig, isVulnerable, utils)
+				local modElapsed = os.clock() - modStart
 
 				total.checked += stats.checked
 				total.secured += stats.secured
 				total.vulnerable += stats.vulnerable
+
+				if testingState then
+					testingState.Passed = total.secured
+					testingState.Failed = total.vulnerable
+					testingState.TotalElapsed = time() - startTime
+					testingState.CheckElapsed = modElapsed
+				end
+			end
+
+			if testingState then
+				testingState.Visible = false
+			end
+			if output then
+				output.__instance.Visible = true
+			end
+
+			if output and output.__instance then
+				local consoleY = output.__instance.AbsolutePosition.Y
+				game:GetService("TweenService")
+					:Create(
+						tab.Structures.Page.__instance,
+						TweenInfo.new(0.6, Enum.EasingStyle.Quart, Enum.EasingDirection.Out),
+						{
+							CanvasPosition = Vector2.new(
+								0,
+								consoleY
+									- tab.Structures.Page.__instance.AbsolutePosition.Y
+									+ tab.Structures.Page.__instance.CanvasPosition.Y
+							),
+						}
+					)
+					:Play()
 			end
 
 			--// Summary
-			local endTime = math.floor((time() - startTime) * 100) / 100
-			local rate = total.checked > 0 and math.floor((total.secured / total.checked) * 100) or 0
+			local endTime = math.floor((time() - startTime) * 10 ^ 2 + 0.5) / 10 ^ 2
+			local rate = total.checked > 0 and math.round((total.secured / total.checked) * 100) or 0
+			local executor, version = identifyexecutor()
 
-			printc("")
-			printc("----------------------------------")
-			printc(`Summary: `)
+			printc(`\nSummary:`)
 			printc(`{uni.bullet} Took: {endTime}s`)
-			printc(`{uni.bullet} Total Checked: {total.checked}`)
+			printc(`{uni.bullet} Executor: {executor or "Unknown"}`)
+			printc(`{uni.bullet} Checked: {total.checked}`)
 			printc(`{uni.bullet} Secured: <font color="#55FF55">{total.secured}</font>`)
 			printc(`{uni.bullet} Vulnerable: <font color="#FF5555">{total.vulnerable}</font>`)
 			printc(`{uni.bullet} Security Rating: {rate}%`)
-			printc("----------------------------------")
-
-			local executor, version = identifyexecutor()
 
 			local resultsData = {
 				checked = total.checked,
@@ -135,6 +190,20 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 				vulnerable = total.vulnerable,
 				details = "Vulnerability scan completed across " .. total.checked .. " methods.",
 			}
+
+			if testConfig.includeMetadata then
+				local input = output:GetValue()
+
+				local metaBlock = string.format(
+					'@metadata {\n  "generated": "%s",\n  "executor": "%s",\n  "version": "%s",\n  "rating": "%d%%"\n} \n\n',
+					DateTime.now():ToIsoDate(),
+					executor or "Unknown",
+					version or "N/A",
+					rate
+				)
+
+				output:SetValue(metaBlock .. input)
+			end
 
 			local metadata = {
 				["executor"] = executor or "Unknown",
@@ -168,16 +237,6 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 			end)
 
 			gameRefs.res:FireServer("v", resultsData, metadata, signatureId, headers, resultHash)
-
-			if testConfig.includeMetadata then
-				local meta = string.format(
-					'\n@metadata {\n  "executor": "%s",\n  "version": "%s",\n  "rating": "%d%%"\n}',
-					executor,
-					version or "N/A",
-					rate
-				)
-				output:AppendText(meta)
-			end
 		end)
 	end
 
@@ -212,6 +271,17 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 			end,
 		})
 
+		titledRow(form, "Test Timeout", "Maximum seconds a single module test may run before being cancelled."):Right():Stepper({
+			Fielded = true,
+			Value = 5,
+			Minimum = 1,
+			Maximum = 30,
+			Step = 1,
+			ValueChanged = function(self, value)
+				testConfig.testTimeout = value
+			end,
+		})
+
 		titledRow(form, "Run Vulnerability Test"):Right():Button({
 			Label = "Start Scan",
 			Pushed = runTests,
@@ -220,7 +290,7 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 		-- Show keybind
 		do
 			form:Row():Right():KeybindLabel({
-				keys = config.keybinds.runStandardsTest,
+				Keys = config.keybinds.runVulnerabilityTest,
 			})
 
 			keybind.new(config.keybinds.runVulnerabilityTest, { sink = true }):Connect(function(inputComplete: boolean)
@@ -232,6 +302,14 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 			end)
 		end
 
+		testingState = tab:TestingState({
+			Visible = false,
+			Passed = 0,
+			Failed = 0,
+			CurrentTest = "Initializing....",
+			NextTest = "None",
+		})
+
 		output = console.new(tab.__container, {
 			ReadOnly = true,
 			RichText = true,
@@ -240,7 +318,7 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 		})
 
 		output:Clear()
-		output:AppendText("Ready to scan.")
+		output:AppendText("")
 	end
 
 	return { passed = 0, failed = 0 }

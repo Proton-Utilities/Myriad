@@ -1,5 +1,13 @@
 # Changelog
 
+## Unmarked
+
+- Fixed an issue with keybinds related to multi-stroke binds.
+- `KeybindLabel` component is used instead of crafting them primitively
+- We now use a custom `TestingState` component instead of using the console.
+- Fixed some inconsistency between the standards and vulnerabilities test.
+- Added a `testTimeout` setting to the tests.
+
 ## `STABLE` v1.5.2
 
 - Added `Window` settings tab

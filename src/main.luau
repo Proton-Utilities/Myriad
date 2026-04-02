@@ -6,6 +6,7 @@ local types = require("@packages/cascade/types")
 
 local views = require("@views")
 local tests = require("@tests")
+local ui = require("@ui")
 
 --// Variables
 local app = cascade.New({
@@ -37,38 +38,13 @@ if game.PlaceId == gameId then
 	end
 
 	gameRefs.connected:FireServer()
+	ui.Components()
 
 	--// UI
 	local window = app:Window({
 		Title = "Myriad",
 		Subtitle = `{_P.cfg} {_P.vers}`,
 	})
-
-	cascade.RegisterComponent("KeybindLabel", function(self, properties)
-		local stack = self:HStack({
-			Padding = UDim.new(0, 3),
-		})
-
-		local keys = {}
-		if typeof(properties.keys) == "table" then
-			for _, key in properties.keys do
-				if typeof(key) == "EnumItem" then
-					table.insert(keys, key.Name)
-				else
-					table.insert(keys, tostring(key))
-				end
-			end
-
-			keys = table.concat(keys, " + ")
-		end
-
-		stack:Symbol({ Image = cascade.Symbols.command, Style = "Secondary" })
-		stack:Label({
-			Text = keys,
-		})
-
-		return stack
-	end)
 
 	do -- Tests
 		local section = window:Section({

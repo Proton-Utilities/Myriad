@@ -73,7 +73,7 @@ return function(cascade, app, window, root)
 			local row = titledRow(form, "Minimize shortcut")
 
 			row:Right():KeybindLabel({
-				keys = config.keybinds.toggleMenu,
+				Keys = config.keybinds.toggleMenu,
 			})
 		end
 

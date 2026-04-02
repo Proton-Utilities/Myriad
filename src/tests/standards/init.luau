@@ -16,6 +16,7 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 	--// Variables
 	local currentTask = nil
 	local output = nil
+	local testingState = nil
 	local lastEntreePerGroup = {}
 	local results = {}
 
@@ -26,6 +27,7 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 		formatDiff = false,
 		includeMetadata = false,
 		excludedTests = "",
+		testTimeout = 8,
 	}
 
 	local uni = {
@@ -60,6 +62,27 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 		currentTask = task.spawn(function()
 			tab.Selected = true
 
+			if testingState then
+				testingState.Visible = true
+				testingState.Passed = 0
+				testingState.Failed = 0
+				testingState.CurrentTest = "Initializing..."
+				testingState.NextTest = "None"
+				testingState.TotalElapsed = 0
+				testingState.CheckElapsed = 0
+			end
+
+			if output then
+				output.__instance.Visible = false
+			end
+
+			local targetY = 0
+			if testingState and testingState.__container then
+				targetY = testingState.__container.AbsolutePosition.Y
+			elseif output and output.__instance then
+				targetY = output.__instance.AbsolutePosition.Y
+			end
+
 			game:GetService("TweenService")
 				:Create(
 					tab.Structures.Page.__instance,
@@ -67,7 +90,7 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 					{
 						CanvasPosition = Vector2.new(
 							0,
-							output.__instance.AbsolutePosition.Y
+							targetY
 								- tab.Structures.Page.__instance.AbsolutePosition.Y
 								+ tab.Structures.Page.__instance.CanvasPosition.Y
 						),
@@ -121,29 +144,56 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 
 				local nextEntry = flattened[i + 1]
 
+				if testingState then
+					testingState.CurrentTest = name
+					testingState.NextTest = nextEntry and nextEntry.name or "None"
+				end
+
 				local startTestTime = os.clock()
-				local success, result = pcall(test)
+				local success, result
+
+				do
+					local done = false
+					local thread = task.spawn(function()
+						success, result = pcall(test)
+						done = true
+					end)
+
+					local elapsed = 0
+					while not done and elapsed < testConfig.testTimeout do
+						task.wait(0.05)
+						elapsed = os.clock() - startTestTime
+					end
+
+					if not done then
+						task.cancel(thread)
+						success = false
+						result = `Timed out after {testConfig.testTimeout}s`
+					end
+				end
+
+				local checkElapsed = os.clock() - startTestTime
 				local status, message
 
 				if not success then
 					status = 0
 					message = result
 					failed += 1
-					output:SetValue(`<font color="#FFA500">{name} failed</font>`)
 				elseif result.status == 200 then
 					status = result.status
 					message = result.message
 					passed += 1
-					output:SetValue(`<font color="#84FF00">{name} passed</font>`)
 				else
 					status = result.status
 					message = result.message
 					failed += 1
-					output:SetValue(`<font color="#FFA500">{name} failed</font>`)
 				end
 
-				if nextEntry then
-					printc(`Next test: {nextEntry.name}`)
+				if testingState then
+					testingState.Passed = passed
+					testingState.Failed = failed
+					testingState.TotalElapsed = time() - startTime
+					testingState.CheckElapsed = checkElapsed
 				end
 
 				if testConfig.checkpointDelay ~= 0 then
@@ -154,11 +204,35 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 					name = name,
 					status = status,
 					message = message,
-					elapsedTestTime = (os.clock() - startTestTime),
+					elapsedTestTime = checkElapsed,
 				})
 			end
 
-			output:Clear()
+			if testingState then
+				testingState.Visible = false
+			end
+			if output then
+				output.__instance.Visible = true
+				output:Clear()
+			end
+
+			if output and output.__instance then
+				local consoleY = output.__instance.AbsolutePosition.Y
+				game:GetService("TweenService")
+					:Create(
+						tab.Structures.Page.__instance,
+						TweenInfo.new(0.6, Enum.EasingStyle.Quart, Enum.EasingDirection.Out),
+						{
+							CanvasPosition = Vector2.new(
+								0,
+								consoleY
+									- tab.Structures.Page.__instance.AbsolutePosition.Y
+									+ tab.Structures.Page.__instance.CanvasPosition.Y
+							),
+						}
+					)
+					:Play()
+			end
 
 			for groupName, groupResults in results do
 				local includesFilter = false
@@ -358,6 +432,17 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 					testConfig.formatDiff = value
 				end,
 			})
+
+		titledRow(form, "Test Timeout", "Maximum seconds a single test may run before being cancelled."):Right():Stepper({
+			Fielded = true,
+			Value = testConfig.testTimeout,
+			Minimum = 1,
+			Maximum = 30,
+			Step = 1,
+			ValueChanged = function(self, value)
+				testConfig.testTimeout = value
+			end,
+		})
 	end
 
 	-- Output
@@ -370,7 +455,7 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 			-- Show keybind
 			do
 				form:Row():Right():KeybindLabel({
-					keys = config.keybinds.runStandardsTest,
+					Keys = config.keybinds.runStandardsTest,
 				})
 
 				keybind.new(config.keybinds.runStandardsTest, { sink = true }):Connect(function(inputComplete: boolean)
@@ -389,6 +474,14 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 				end,
 			})
 		end
+
+		testingState = tab:TestingState({
+			Visible = false,
+			Passed = 0,
+			Failed = 0,
+			CurrentTest = "Initializing...",
+			NextTest = "None",
+		})
 
 		output = console.new(tab.__container, {
 			ReadOnly = true,
