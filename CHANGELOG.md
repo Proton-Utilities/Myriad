@@ -1,5 +1,14 @@
 # Changelog
 
+## Unmarked
+
+- Test settings now use a seperate view and sub-tab
+- Added an `Includes` option to the `Standards` test
+- Added parent traversal tests to the `Vulnerabilities` test
+- Added a `restorefunction` check for upvalue preservation
+- The counters for the Test status now count in real time instead of only updating on each check's completion.
+- The console in each test is hidden until the test is completed, it looked like a big black box with no output in it.
+
 ## `STABLE` v1.5.3
 
 - Fixed an issue with keybinds related to multi-stroke binds.
