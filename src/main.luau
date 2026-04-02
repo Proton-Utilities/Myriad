@@ -43,7 +43,7 @@ if game.PlaceId == gameId then
 	--// UI
 	local window = app:Window({
 		Title = "Myriad",
-		Subtitle = `{_P.cfg} {_P.vers}`,
+		Subtitle = `The General Validity Test | {_P.cfg} {_P.vers}`,
 	})
 
 	do -- Tests
