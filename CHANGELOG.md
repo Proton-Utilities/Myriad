@@ -1,5 +1,9 @@
 # Changelog
 
+## Unmarked
+
+- Added a small declaration to the main window subtitle
+
 ## `STABLE` v1.5.4
 
 - Test settings now use a seperate view and sub-tab
