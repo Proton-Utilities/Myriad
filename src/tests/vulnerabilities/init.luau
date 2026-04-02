@@ -3,6 +3,7 @@ local types = require("@packages/cascade/types")
 return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.App)
 	--// Imports
 	local console = require("@dependencies/ui/console")
+	local views = require("@self/views")
 	local gameRefs = require("@gameRefs")
 	local crypt = require("@dependencies/crypt/crypt")
 	local config = require("@config")
@@ -18,6 +19,7 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 	local output = nil
 	local currentTask = nil
 	local testingState = nil
+	local builtViews = {}
 
 	local testConfig = {
 		checkpointDelay = 0,
@@ -241,53 +243,25 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 	end
 
 	--// UI
-	do
-		local form = tab:Form()
+	do -- Test Options
+		local form = tab:PageSection({ Title = "Test Options", Subtitle = "Configure the tests" }):Form()
 
-		titledRow(form, "Show Safe Results", "Shows functions that are safe. Disable to only show vulnerabilities.")
-			:Right()
-			:Toggle({
-				Value = true,
-				ValueChanged = function(self, value)
-					testConfig.showSafe = value
-				end,
-			})
-
-		titledRow(form, "Checkpoint Delay", "Adds delay per test. Useful to check for crashes"):Right():Stepper({
-			Fielded = true,
-			Value = 0,
-			Minimum = 0,
-			Maximum = 0.5,
-			Step = 0.01,
-			ValueChanged = function(self, value)
-				testConfig.checkpointDelay = value
+		titledRow(form, "Options"):Right():Button({
+			Label = "Configure",
+			Pushed = function()
+				builtViews.Settings.Selected = true
 			end,
 		})
+	end
 
-		titledRow(form, "Include Metadata", "Shows executor metadata at the end"):Right():Toggle({
-			Value = false,
-			ValueChanged = function(self, value)
-				testConfig.includeMetadata = value
-			end,
-		})
+	do -- Output
+		local form = tab:PageSection({ Title = "Output", Subtitle = "View the results of the tests" }):Form()
 
-		titledRow(form, "Test Timeout", "Maximum seconds a single module test may run before being cancelled."):Right():Stepper({
-			Fielded = true,
-			Value = 5,
-			Minimum = 1,
-			Maximum = 30,
-			Step = 1,
-			ValueChanged = function(self, value)
-				testConfig.testTimeout = value
-			end,
-		})
-
-		titledRow(form, "Run Vulnerability Test"):Right():Button({
-			Label = "Start Scan",
+		titledRow(form, "Run Test"):Right():Button({
+			Label = "Run",
 			Pushed = runTests,
 		})
 
-		-- Show keybind
 		do
 			form:Row():Right():KeybindLabel({
 				Keys = config.keybinds.runVulnerabilityTest,
@@ -317,8 +291,22 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 			Fill = true,
 		})
 
+		output.__instance.Visible = false
+
 		output:Clear()
 		output:AppendText("")
+	end
+
+	do -- Subtabs
+		for viewName, viewSettings in views do
+			local viewTab = tab:Tab({
+				Title = viewName,
+				Icon = viewSettings.Icon,
+			})
+
+			builtViews[viewName] = viewTab
+			viewSettings.Init(name, viewTab, titledRow, app, testConfig)
+		end
 	end
 
 	return { passed = 0, failed = 0 }

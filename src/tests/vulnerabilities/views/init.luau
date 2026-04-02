@@ -9,8 +9,4 @@ return {
 		Icon = cascade.Symbols.gearshape,
 		Init = require("@self/Settings"),
 	},
-	Manual = {
-		Icon = cascade.Symbols.pencilLine,
-		Init = require("@self/Manual"),
-	},
 }

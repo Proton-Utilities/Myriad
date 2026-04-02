@@ -4,7 +4,6 @@ local types = require("@packages/cascade/types")
 
 return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.App)
 	--// Imports
-	local cascade = require("@packages/cascade")
 	local checks = require("@checks/init")
 	local views = require("@self/views")
 	local console = require("@dependencies/ui/console")
@@ -19,6 +18,7 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 	local testingState = nil
 	local lastEntreePerGroup = {}
 	local results = {}
+	local builtViews = {}
 
 	local testConfig = {
 		checkpointDelay = 0,
@@ -27,6 +27,7 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 		formatDiff = false,
 		includeMetadata = false,
 		excludedTests = "",
+		includedTests = "",
 		testTimeout = 8,
 	}
 
@@ -111,6 +112,15 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 				end
 			end
 
+			local inclusions = {}
+			local hasInclusions = false
+			if testConfig.includedTests and testConfig.includedTests ~= "" then
+				hasInclusions = true
+				for _, inc in ipairs(string.split(testConfig.includedTests, ",")) do
+					inclusions[inc:gsub("^%s*(.-)%s*$", "%1")] = true
+				end
+			end
+
 			for groupName, group in checks do
 				lastEntreePerGroup[groupName] = nil
 				results[groupName] = {}
@@ -142,6 +152,13 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 					continue
 				end
 
+				if hasInclusions then
+					if not (inclusions[groupName] or inclusions[name] or inclusions[groupName .. "." .. name]) then
+						excludedCount += 1
+						continue
+					end
+				end
+
 				local nextEntry = flattened[i + 1]
 
 				if testingState then
@@ -161,8 +178,12 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 
 					local elapsed = 0
 					while not done and elapsed < testConfig.testTimeout do
-						task.wait(0.05)
+						task.wait(0.061)
 						elapsed = os.clock() - startTestTime
+						if testingState then
+							testingState.TotalElapsed = time() - startTime
+							testingState.CheckElapsed = elapsed
+						end
 					end
 
 					if not done then
@@ -357,97 +378,19 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 
 	--// Initialize
 	do -- Test Options
-		local form = tab:Form()
+		local form = tab:PageSection({Title = "Test Options", Subtitle = "Configure the tests"}):Form()
 
-		titledRow(form, "Status Filter", "Filter by status codes"):Right():PopUpButton({
-			Options = {
-				"All",
-				"✅ Pass",
-				"❓ Ambiguous",
-				"🔎 Missing",
-				"📦 Dependency",
-				"🛠️ Functionality",
-				"🏷️ Alias",
-			},
-			Value = 1,
-			ValueChanged = function(self, value: number)
-				local reference = {
-					[1] = false,
-					[2] = 200,
-					[3] = 0,
-					[4] = 400,
-					[5] = 401,
-					[6] = 500,
-					[7] = 501,
-				}
-
-				testConfig.statusFilter = reference[value]
-			end,
-		})
-
-		titledRow(form, "Excluded Tests", "Exclude libs or globals from testing (delimited by commas)")
-			:Right()
-			:TextField({
-				Placeholder = "crypt, debug.info",
-				Value = "",
-				ValueChanged = function(self, value)
-					testConfig.excludedTests = value
-				end,
-			})
-
-		titledRow(form, "Checkpoint Delay", "Add delay per-checkpoint to analyze easily."):Right():Stepper({
-			Fielded = true,
-			Value = 0,
-			Minimum = 0,
-			Maximum = 1,
-			Step = 0.01,
-			ValueChanged = function(self, value)
-				testConfig.checkpointDelay = value
-			end,
-		})
-
-		titledRow(form, "Include Metadata", "Includes metadata in the output. Useful for sharing formatted results.")
-			:Right()
-			:Toggle({
-				Value = false,
-				ValueChanged = function(self, value)
-					testConfig.includeMetadata = value
-				end,
-			})
-
-		titledRow(form, "Strip richtext", "Strips the richtext from output. Useful for sharing formatted results.")
-			:Right()
-			:Toggle({
-				Value = false,
-				ValueChanged = function(self, value)
-					testConfig.stripRichtext = value
-				end,
-			})
-
-		titledRow(form, "Diff output", "Formats the output in diff. Useful for sharing formatted results.")
-			:Right()
-			:Toggle({
-				Value = false,
-				ValueChanged = function(self, value)
-					testConfig.formatDiff = value
-				end,
-			})
-
-		titledRow(form, "Test Timeout", "Maximum seconds a single test may run before being cancelled."):Right():Stepper({
-			Fielded = true,
-			Value = testConfig.testTimeout,
-			Minimum = 1,
-			Maximum = 30,
-			Step = 1,
-			ValueChanged = function(self, value)
-				testConfig.testTimeout = value
+		titledRow(form, "Options"):Right():Button({
+			Label = "Configure",
+			Pushed = function()
+				builtViews.Settings.Selected = true
 			end,
 		})
 	end
 
 	-- Output
 	do
-		local form = tab:Form()
+		local form = tab:PageSection({Title = "Output", Subtitle = "View the results of the tests"}):Form()
 
 		do
 			local row = titledRow(form, "Run Test")
@@ -490,18 +433,20 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 			Fill = true,
 		})
 
+		output.__instance.Visible = false
+
 		output:Clear()
 	end
 
-	-- Manual Tests
 	do
-		for viewName, viewFn in views do
+		for viewName, viewSettings in views do
 			local viewTab = tab:Tab({
 				Title = viewName,
-				Icon = cascade.Symbols.pencilLine,
+				Icon = viewSettings.Icon,
 			})
 
-			viewFn(name, viewTab, titledRow, app)
+			builtViews[viewName] = viewTab
+			viewSettings.Init(name, viewTab, titledRow, app, testConfig)
 		end
 	end
 
