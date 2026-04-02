@@ -30,7 +30,7 @@ return function()
 			message = "This should never evaluate. Did a cosmic ray hit your computer and flip a bit?",
 		}
 	end
-	
+
 	local original = hookfunction(function1, function2)
 
 	if function1() ~= 2 then
@@ -55,7 +55,27 @@ return function()
 		}
 	end
 
-	--// Alias test
+	do
+		local up1, up2 = {}, {}
+		local function upvals()
+			return up1
+		end
+
+		local function extraUpvals()
+			return up1, up2
+		end
+
+		hookfunction(upvals, extraUpvals)
+		restorefunction(upvals)
+
+		if upvals() ~= up1 then
+			return {
+				status = 500,
+				message = "Restored function did not restore upvalues",
+			}
+		end
+	end
+
 	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({
 		"restorefunc",
 	})
