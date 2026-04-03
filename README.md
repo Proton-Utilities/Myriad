@@ -35,7 +35,7 @@ Or load the [raw file](https://github.com/Proton-Utilities/Myriad/releases/lates
 You can use our API to easily run tests individually without the UI.
 This is helpful if our UI is specifically giving you issues, or if you want to check a user's executor implementation of a certain function.
 
-See our [API Documentation](https://proton-utilities.github.io/myriad/api/)
+See our [API Documentation](https://proton-utilities.github.io/Myriad/api/)
 
 Example:
 
