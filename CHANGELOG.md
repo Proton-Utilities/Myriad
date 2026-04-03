@@ -7,6 +7,8 @@
 - Keybinds are editable now
 - Added a window setting to disable `WindowPill`
 - Myriad will clean up previous instances of itself, if `getgenv` is supported
+- Added a Myriad API
+- Added Myriad docs
 
 ## `STABLE` v1.5.4
 
