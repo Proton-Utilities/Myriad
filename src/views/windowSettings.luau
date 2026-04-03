@@ -1,4 +1,6 @@
-return function(cascade, app, window, root)
+local cascade, _types = require("@packages/cascade"), require("@packages/cascade/types")
+
+return function(_, app: _types.App, window: _types.Window, root: _types.BaseComponent)
 	--// Imports
 	local config = require("@config")
 	local keybind = require("@modules/keybind")
@@ -72,8 +74,30 @@ return function(cascade, app, window, root)
 		do -- Minimize shortcut
 			local row = titledRow(form, "Minimize shortcut")
 
-			row:Right():KeybindLabel({
-				Keys = config.keybinds.toggleMenu,
+			local keybindField = row:Right():KeystrokeField({
+				Keys = config.keybinds.toggleMenu.Value,
+				ValueChanged = function(_self, newKeys)
+					config.keybinds.toggleMenu.Value = newKeys
+				end,
+			})
+
+			config.keybinds.toggleMenu.Changed:Connect(function(newKeys)
+				keybindField.Keys = newKeys
+			end)
+		end
+
+		do -- Searching
+			local row = titledRow(
+				form,
+				"Window Pill",
+				"Adds a window pill to the top of your screen which lets you minimize and open the window."
+			)
+
+			row:Right():Toggle({
+				Value = true,
+				ValueChanged = function(self, value: boolean)
+					app.WindowPill = value
+				end,
 			})
 		end
 
@@ -133,11 +157,7 @@ return function(cascade, app, window, root)
 		end
 
 		do -- UI Blur
-			local row = titledRow(
-				form,
-				"Background blur",
-				"Enables a UI background blur effect on the window."
-			)
+			local row = titledRow(form, "Background blur", "Enables a UI background blur effect on the window.")
 
 			row:Right():Toggle({
 				Value = window.UIBlur,

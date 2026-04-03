@@ -5,6 +5,7 @@ local cascade = require("@packages/cascade")
 local components = {
     ["TestingState"] = require("@self/Testing State"),
     ["KeybindLabel"] = require("@self/Keybind Label"),
+    ["KeystrokeField"] = require("@self/Keystroke Field"),
 }
 
 --// Publish

@@ -2,10 +2,13 @@
 
 --// Imports
 local signal = require("@packages/signal")
+local valueStateModule = require("@modules/valueState")
 
 --// Types
 type Signal<T...> = signal.Signal<T...>
+type ValueState<T> = valueStateModule.ValueState<T>
 type Options = { sink: boolean?, assert: (boolean | () -> boolean | { boolean | () -> boolean })? }
+type Keys = { string | Enum.KeyCode }
 
 --// References
 local UserInputService = game:GetService("UserInputService")
@@ -18,6 +21,13 @@ local ALIASES: { [string]: { Enum.KeyCode } } = {
 	Shift = { Enum.KeyCode.LeftShift, Enum.KeyCode.RightShift },
 	Alt = { Enum.KeyCode.LeftAlt, Enum.KeyCode.RightAlt },
 }
+
+local REVERSE_ALIASES: { [Enum.KeyCode]: string } = {}
+for alias, codes in ALIASES do
+	for _, code in codes do
+		REVERSE_ALIASES[code] = alias
+	end
+end
 
 local MODIFIER_KEYS: { [Enum.KeyCode]: boolean } = {
 	[Enum.KeyCode.LeftControl] = true,
@@ -33,7 +43,7 @@ local SINK_PRIORITY = Enum.ContextActionPriority.High.Value
 --// State
 local pressOrder: { Enum.KeyCode } = {}
 local registry: { any } = {}
-local bindCount = 0
+local _bindCount = 0
 
 --// Private Functions
 local function keyResolve(keys: { string | Enum.KeyCode }): { { Enum.KeyCode } }
@@ -87,25 +97,21 @@ local function matchesBind(resolvedSets: { { Enum.KeyCode } }, triggerKey: Enum.
 	return true
 end
 
---// Public Methods
-local Keybind = {}
-
-function Keybind.new(keys: { string | Enum.KeyCode }, options: Options?): Signal<boolean, boolean>
-	local sig = signal() :: Signal<boolean, boolean>
+local function registerEntry(entry: any, keys: Keys, sink: boolean)
 	local resolvedSets = keyResolve(keys)
-	local sink = options ~= nil and options.sink == true
-	local entry = { signal = sig, _resolvedSets = resolvedSets, _sink = sink, _activated = false }
+	entry._resolvedSets = resolvedSets
 
-	table.insert(registry, entry)
-
-	-- sing logic
 	if sink then
-		bindCount += 1
-
+		local actionName = HttpService:GenerateGUID(false):gsub("-", "")
 		local triggerSet: { Enum.KeyCode } = resolvedSets[#resolvedSets]
 
+		if entry._actionName then
+			ContextActionService:UnbindAction(entry._actionName)
+		end
+		entry._actionName = actionName
+
 		ContextActionService:BindActionAtPriority(
-			HttpService:GenerateGUID(false):gsub("-", ""),
+			actionName,
 			function(_: string, state: Enum.UserInputState, input: InputObject): Enum.ContextActionResult
 				if state ~= Enum.UserInputState.Begin then
 					return Enum.ContextActionResult.Pass
@@ -116,14 +122,13 @@ function Keybind.new(keys: { string | Enum.KeyCode }, options: Options?): Signal
 
 				if matchesBind(resolvedSets, key) then
 					entry._activated = true
-					sig:Fire(false, false)
+					entry.signal:Fire(false, false)
 					return Enum.ContextActionResult.Sink
 				end
 
 				for i = #pressOrder, 1, -1 do
 					if pressOrder[i] == key then
 						table.remove(pressOrder, i)
-
 						break
 					end
 				end
@@ -134,6 +139,70 @@ function Keybind.new(keys: { string | Enum.KeyCode }, options: Options?): Signal
 			SINK_PRIORITY,
 			table.unpack(triggerSet :: { any })
 		)
+	end
+end
+
+--// Public Methods
+local Keybind = {}
+
+function Keybind.captureStroke(callback: (keys: { string }) -> ()): () -> ()
+	local conn: RBXScriptConnection
+	local cancelled = false
+
+	conn = UserInputService.InputEnded:Connect(function(input: InputObject)
+		if input.UserInputType ~= Enum.UserInputType.Keyboard then
+			return
+		end
+
+		if input.KeyCode == Enum.KeyCode.Unknown then
+			return
+		end
+
+		if MODIFIER_KEYS[input.KeyCode] then
+			return
+		end
+
+		conn:Disconnect()
+
+		if not cancelled then
+			local keys = {}
+			local addedAliases = {}
+
+			for _, heldInput in UserInputService:GetKeysPressed() do
+				local alias = REVERSE_ALIASES[heldInput.KeyCode]
+				if alias and not addedAliases[alias] then
+					addedAliases[alias] = true
+					table.insert(keys, alias)
+				end
+			end
+
+			table.insert(keys, input.KeyCode.Name)
+
+			task.spawn(callback, keys)
+		end
+	end)
+
+	return function()
+		cancelled = true
+		conn:Disconnect()
+	end
+end
+
+function Keybind.new(keys: any, options: Options?): Signal<boolean, boolean>
+	local sig = signal() :: Signal<boolean, boolean>
+	local sink = options ~= nil and options.sink == true
+	local entry = { signal = sig, _resolvedSets = {}, _sink = sink, _activated = false, _actionName = nil :: string? }
+
+	table.insert(registry, entry)
+
+	if type(keys) == "table" and keys.Changed ~= nil then
+		registerEntry(entry, keys.Value, sink)
+
+		keys.Changed:Connect(function(newKeys: Keys)
+			registerEntry(entry, newKeys, sink)
+		end)
+	else
+		registerEntry(entry, keys :: Keys, sink)
 	end
 
 	return sig

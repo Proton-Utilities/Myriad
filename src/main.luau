@@ -37,6 +37,19 @@ if game.PlaceId == gameId then
 		return
 	end
 
+	if getgenv then
+		local env = getgenv()
+
+		if typeof(env.__myriadCleanup) == "function" then
+			pcall(env.__myriadCleanup)
+		end
+
+		env.__myriadCleanup = function()
+			app:Destroy()
+			env.__myriadCleanup = nil
+		end
+	end
+
 	gameRefs.connected:FireServer()
 	ui.Components()
 
@@ -45,6 +58,12 @@ if game.PlaceId == gameId then
 		Title = "Myriad",
 		Subtitle = `The General Validity Test | {_P.cfg} {_P.vers}`,
 	})
+
+	window.Destroying:Connect(function()
+		if getgenv and getgenv().__myriadCleanup then
+			getgenv().__myriadCleanup()
+		end
+	end)
 
 	do -- Tests
 		local section = window:Section({

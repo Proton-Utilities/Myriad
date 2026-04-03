@@ -248,6 +248,7 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 
 		titledRow(form, "Options"):Right():Button({
 			Label = "Configure",
+			State = "Secondary",
 			Pushed = function()
 				builtViews.Settings.Selected = true
 			end,
@@ -263,9 +264,18 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 		})
 
 		do
-			form:Row():Right():KeybindLabel({
-				Keys = config.keybinds.runVulnerabilityTest,
+			local keybindRow = form:Row()
+
+			local keybindField = keybindRow:Right():KeystrokeField({
+				Keys = config.keybinds.runVulnerabilityTest.Value,
+				ValueChanged = function(_self, newKeys)
+					config.keybinds.runVulnerabilityTest.Value = newKeys
+				end,
 			})
+
+			config.keybinds.runVulnerabilityTest.Changed:Connect(function(newKeys)
+				keybindField.Keys = newKeys
+			end)
 
 			keybind.new(config.keybinds.runVulnerabilityTest, { sink = true }):Connect(function(inputComplete: boolean)
 				if not inputComplete then

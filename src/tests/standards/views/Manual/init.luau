@@ -124,6 +124,7 @@ return function(name, tab, titledRow, app)
 
 			titledRow(form, testName):Right():Button({
 				Label = "Test",
+				State = "Secondary",
 				Pushed = function()
 					tab:Navigate(testPage)
 				end,

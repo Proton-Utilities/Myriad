@@ -1,18 +1,15 @@
 {
-    "aliases": {
-        "packages": "./packages",
-        "dependencies": "./src/dependencies",
-        "modules": "./src/modules",
-        "tests": "./src/tests",
-        "checks": "./src/tests/standards/checks",
-
-        "standards": "./src/tests/standards",
-        "vulnerabilities": "./src/tests/vulnerabilities",
-
-        "gameRefs": "./src/gameRefs",
-        "views": "./src/views",
-
-        "config": "./src/config",
-        "ui": "./src/ui"
-    }
-}   
+  "aliases": {
+    "packages": "./packages",
+    "dependencies": "./src/dependencies",
+    "modules": "./src/modules",
+    "tests": "./src/tests",
+    "checks": "./src/tests/standards/checks",
+    "standards": "./src/tests/standards",
+    "vulnerabilities": "./src/tests/vulnerabilities",
+    "gameRefs": "./src/gameRefs",
+    "views": "./src/views",
+    "config": "./src/config",
+    "ui": "./src/ui"
+  }
+}

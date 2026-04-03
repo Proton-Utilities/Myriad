@@ -382,6 +382,7 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 
 		titledRow(form, "Options"):Right():Button({
 			Label = "Configure",
+			State = "Secondary",
 			Pushed = function()
 				builtViews.Settings.Selected = true
 			end,
@@ -397,9 +398,18 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 
 			-- Show keybind
 			do
-				form:Row():Right():KeybindLabel({
-					Keys = config.keybinds.runStandardsTest,
+				local keybindRow = form:Row()
+
+				local keybindField = keybindRow:Right():KeystrokeField({
+					Keys = config.keybinds.runStandardsTest.Value,
+					ValueChanged = function(_self, newKeys)
+						config.keybinds.runStandardsTest.Value = newKeys
+					end,
 				})
+
+				config.keybinds.runStandardsTest.Changed:Connect(function(newKeys)
+					keybindField.Keys = newKeys
+				end)
 
 				keybind.new(config.keybinds.runStandardsTest, { sink = true }):Connect(function(inputComplete: boolean)
 					if not inputComplete then

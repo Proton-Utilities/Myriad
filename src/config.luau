@@ -1,7 +1,9 @@
+local valueState = require("@modules/valueState")
+
 return {
 	keybinds = {
-		toggleMenu = { Enum.KeyCode.RightControl },
-		runStandardsTest = { "Control", "Shift", "S" },
-		runVulnerabilityTest = { "Control", "Shift", "V" },
+		toggleMenu = valueState.new({ Enum.KeyCode.RightControl }),
+		runStandardsTest = valueState.new({ "Control", "Shift", "S" }),
+		runVulnerabilityTest = valueState.new({ "Control", "Shift", "V" }),
 	},
 }
