@@ -29,11 +29,7 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 	}
 
 	local uni = { bullet = "•" }
-	local statusCodes = {
-		[200] = "🛡️",
-		[400] = "💀",
-		[404] = "❓",
-	}
+	local statusCodes = require("@modules/statusCodes").Vulnerabilities
 
 	--// Private Methods
 	local printc = function(...)
