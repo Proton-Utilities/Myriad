@@ -1,6 +1,6 @@
 # Changelog
 
-## Unmarked (Target: v1.6.0)
+## `STABLE` v1.6.0
 
 - Added a small declaration to the main window subtitle
 - Corrected some button states, since almost everything used `Primary`, fighting for visual attention.
