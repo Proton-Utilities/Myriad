@@ -1,5 +1,9 @@
 # Changelog
 
+## `STABLE` `HOTFIX` v1.6.1
+
+- Fixed an issue where Myriad's cleanup function would instead toggle between each execution, meaning you had to execute twice to re-execute.
+
 ## `STABLE` v1.6.0
 
 - Added a small declaration to the main window subtitle

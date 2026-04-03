@@ -37,6 +37,7 @@ if game.PlaceId == gameId then
 		return
 	end
 
+	local cleanup
 	if getgenv then
 		local env = getgenv()
 
@@ -44,10 +45,18 @@ if game.PlaceId == gameId then
 			pcall(env.__myriadCleanup)
 		end
 
-		env.__myriadCleanup = function()
+		local cleaned = false
+		cleanup = function()
+			if cleaned then return end
+			cleaned = true
+			
+			if env.__myriadCleanup == cleanup then
+				env.__myriadCleanup = nil
+			end
 			app:Destroy()
-			env.__myriadCleanup = nil
 		end
+		
+		env.__myriadCleanup = cleanup
 	end
 
 	gameRefs.connected:FireServer()
@@ -60,8 +69,10 @@ if game.PlaceId == gameId then
 	})
 
 	window.Destroying:Connect(function()
-		if getgenv and getgenv().__myriadCleanup then
-			getgenv().__myriadCleanup()
+		if cleanup then
+			cleanup()
+		else
+			app:Destroy()
 		end
 	end)
 
