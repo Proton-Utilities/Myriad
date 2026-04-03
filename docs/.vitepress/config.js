@@ -1,0 +1,34 @@
+import { defineConfig } from "vitepress";
+import { withSidebar } from "vitepress-sidebar";
+
+export default withSidebar(
+  defineConfig({
+    title: "Myriad",
+    description: "The Myriad General Validity Test",
+    base: "/myriad/",
+    themeConfig: {
+      logo: "/logo.svg",
+      nav: [
+        { text: "Getting Started", link: "/getting-started/" },
+        { text: "API", link: "/api/" },
+      ],
+      search: { provider: "local" },
+      socialLinks: [
+        { icon: "github", link: "https://github.com/Proton-Utilities/Myriad" },
+      ],
+    },
+    head: [["link", { rel: "icon", href: "/myriad/favicon.ico" }]],
+  }),
+  {
+    // ============ [ SIDEBAR OPTIONS ] ============
+    useFolderLinkFromIndexFile: true,
+    useFolderTitleFromIndexFile: true,
+    useTitleFromFileHeading: true,
+    useTitleFromFrontmatter: true,
+    hyphenToSpace: true,
+    sortMenusByFrontmatterOrder: true,
+    frontmatterOrderDefaultValue: 100,
+    excludeByGlobPattern: ["**/test/**"],
+    collapsed: true,
+  },
+);
