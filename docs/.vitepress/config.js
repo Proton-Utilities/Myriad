@@ -5,7 +5,7 @@ export default withSidebar(
   defineConfig({
     title: "Myriad",
     description: "The Myriad General Validity Test",
-    base: "/myriad/",
+    base: "/Myriad/",
     themeConfig: {
       logo: "/logo.svg",
       nav: [
@@ -17,7 +17,7 @@ export default withSidebar(
         { icon: "github", link: "https://github.com/Proton-Utilities/Myriad" },
       ],
     },
-    head: [["link", { rel: "icon", href: "/myriad/favicon.ico" }]],
+    head: [["link", { rel: "icon", href: "/Myriad/favicon.ico" }]],
   }),
   {
     // ============ [ SIDEBAR OPTIONS ] ============
