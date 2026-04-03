@@ -1,8 +1,12 @@
 # Changelog
 
-## Unmarked
+## Unmarked (Target: v1.6.0)
 
 - Added a small declaration to the main window subtitle
+- Corrected some button states, since almost everything used `Primary`, fighting for visual attention.
+- Keybinds are editable now
+- Added a window setting to disable `WindowPill`
+- Myriad will clean up previous instances of itself, if `getgenv` is supported
 
 ## `STABLE` v1.5.4
 
