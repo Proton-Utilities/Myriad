@@ -30,6 +30,24 @@ loadstring(game:HttpGetAsync("https://github.com/Proton-Utilities/Myriad/release
 
 Or load the [raw file](https://github.com/Proton-Utilities/Myriad/releases/latest/download/myriad.luau)
 
+## API
+
+You can use our API to easily run tests individually without the UI.
+This is helpful if our UI is specifically giving you issues, or if you want to check a user's executor implementation of a certain function.
+
+See our [API Documentation](https://proton-utilities.github.io/myriad/api/)
+
+Example:
+
+```luau
+local API = loadstring(game:HttpGetAsync("https://github.com/Proton-Utilities/Myriad/releases/latest/download/api.luau"))()
+
+local result = API.Standards.Checks.Closures.hookfunction()
+if result.status ~= 200 then
+    warn(`Your executor does not support hookfunction properly: {result.message}`)
+end
+```
+
 ## How do I contribute?
 
 You need [darklua](https://github.com/seaofvoices/darklua) & [Lune](https://github.com/lune-org/lune) to use edit and build this project as it uses [ProCmp](https://github.com/Proton-Utilities/procmp)
