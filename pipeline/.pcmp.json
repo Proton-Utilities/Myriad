@@ -42,6 +42,12 @@
                     "name": "Unminified",
                     "darkluaConfig": "pipeline/darklua/unminified.json",
                     "output": "generated/beta/myriad-unminified.luau"
+                },
+                {
+                    "name": "API",
+                    "input": "src/api/init.luau",
+                    "darkluaConfig": "pipeline/darklua/stable.json",
+                    "output": "generated/beta/api.luau"
                 }
             ]
         },
@@ -64,6 +70,12 @@
                     "name": "Unminified",
                     "darkluaConfig": "pipeline/darklua/unminified.json",
                     "output": "generated/release/myriad-unminified.luau"
+                },
+                {
+                    "name": "API",
+                    "input": "src/api/init.luau",
+                    "darkluaConfig": "pipeline/darklua/stable.json",
+                    "output": "generated/release/api.luau"
                 }
             ]
         }
