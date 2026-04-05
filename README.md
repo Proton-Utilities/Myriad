@@ -54,6 +54,16 @@ You need [darklua](https://github.com/seaofvoices/darklua) & [Lune](https://gith
 
 > If you need help setting it up DM me on discord: @biggaboy_212
 
+## Star History
+
+<a href="https://www.star-history.com/?repos=Proton-Utilities%2Fmyriad&type=date&legend=bottom-right">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=Proton-Utilities/myriad&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=Proton-Utilities/myriad&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=Proton-Utilities/myriad&type=date&legend=top-left" />
+ </picture>
+</a>
+
 ## Supporting the project
 
 If you'd like to support the project, consider donating via any of these:
