@@ -7,7 +7,6 @@ local types = require("@packages/cascade/types")
 local views = require("@views")
 local tests = require("@tests")
 local ui = require("@ui")
-local changelog = require("@packages/CHANGELOG.json")
 
 --// Variables
 local app = cascade.New({
@@ -88,11 +87,11 @@ if game.PlaceId == gameId then
 		do -- Window
 			local tab = section:Tab({
 				Title = "Changelog",
-				Icon = cascade.Symbols.house,
+				Icon = cascade.Symbols.sparkles,
 				Selected = true,
 			})
 
-			views.home(cascade, app, window, tab)
+			views.changelog(cascade, app, window, tab)
 		end
 	end
 
