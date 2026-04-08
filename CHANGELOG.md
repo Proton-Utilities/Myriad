@@ -1,273 +1,424 @@
+<!-- markdownlint-disable MD024 -->
 # Changelog
 
-## Unmarked
+[1.6.1]: https://github.com/Proton-Utilities/Myriad/compare/v1.6.0...v1.6.1
+[1.6.0]: https://github.com/Proton-Utilities/Myriad/compare/v1.5.4...v1.6.0
+[1.5.4]: https://github.com/Proton-Utilities/Myriad/compare/v1.5.3...v1.5.4
+[1.5.3]: https://github.com/Proton-Utilities/Myriad/compare/v1.5.2...v1.5.3
+[1.5.2]: https://github.com/Proton-Utilities/Myriad/compare/v1.5.1...v1.5.2
+[1.5.1]: https://github.com/Proton-Utilities/Myriad/compare/v1.5.0...v1.5.1
+[1.5.0]: https://github.com/Proton-Utilities/Myriad/compare/v1.5.0-beta.1...v1.5.0
+[1.5.0-beta.1]: https://github.com/Proton-Utilities/Myriad/compare/v1.4.4...v1.5.0-beta.1
+[1.4.4]: https://github.com/Proton-Utilities/Myriad/compare/v1.4.3...v1.4.4
+[1.4.3]: https://github.com/Proton-Utilities/Myriad/compare/v1.4.2...v1.4.3
+[1.4.2]: https://github.com/Proton-Utilities/Myriad/compare/v1.4.1...v1.4.2
+[1.4.1]: https://github.com/Proton-Utilities/Myriad/compare/v1.4.0...v1.4.1
+[1.4.0]: https://github.com/Proton-Utilities/Myriad/compare/v1.3.3...v1.4.0
+[1.3.3]: https://github.com/Proton-Utilities/Myriad/compare/v1.3.2...v1.3.3
+[1.3.2]: https://github.com/Proton-Utilities/Myriad/compare/v1.3.1...v1.3.2
+[1.3.1]: https://github.com/Proton-Utilities/Myriad/compare/v1.3.0...v1.3.1
+[1.3.0]: https://github.com/Proton-Utilities/Myriad/compare/v1.2.5...v1.3.0
+[1.2.5]: https://github.com/Proton-Utilities/Myriad/compare/v1.2.4...v1.2.5
+[1.2.4]: https://github.com/Proton-Utilities/Myriad/compare/v1.2.3...v1.2.4
+[1.2.3]: https://github.com/Proton-Utilities/Myriad/compare/v1.2.2...v1.2.3
+[1.2.2]: https://github.com/Proton-Utilities/Myriad/compare/v1.2.1...v1.2.2
+[1.2.1]: https://github.com/Proton-Utilities/Myriad/compare/v1.2.0...v1.2.1
+[1.2.0]: https://github.com/Proton-Utilities/Myriad/compare/v1.1.0...v1.2.0
+[1.1.0]: https://github.com/Proton-Utilities/Myriad/compare/v1.0.3...v1.1.0
+[1.0.3]: https://github.com/Proton-Utilities/Myriad/compare/v1.0.2...v1.0.3
+[1.0.2]: https://github.com/Proton-Utilities/Myriad/compare/v1.0.1...v1.0.2
+[1.0.1]: https://github.com/Proton-Utilities/Myriad/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/Proton-Utilities/Myriad/compare/v1.0.0-beta.3...v1.0.0
+[1.0.0-beta.3]: https://github.com/Proton-Utilities/Myriad/compare/v1.0.0-beta.2...v1.0.0-beta.3
+[1.0.0-beta.2]: https://github.com/Proton-Utilities/Myriad/releases/tag/v1.0.0-beta.2
 
-- Add a home section with a changelog tab
+## [Unreleased]
 
-## `STABLE` `HOTFIX` v1.6.1
+> Current Target: `v1.6.2`
 
-- Fixed an issue where Myriad's cleanup function would instead toggle between each execution, meaning you had to execute twice to re-execute.
+### Added
 
-## `STABLE` v1.6.0
+- Home section with a changelog tab
 
-- Added a small declaration to the main window subtitle
-- Corrected some button states, since almost everything used `Primary`, fighting for visual attention.
-- Keybinds are editable now
-- Added a window setting to disable `WindowPill`
-- Myriad will clean up previous instances of itself, if `getgenv` is supported
-- Added a Myriad API
-- Added Myriad docs
+## [1.6.1] - `STABLE` `HOTFIX`
 
-## `STABLE` v1.5.4
+### Fixed
 
-- Test settings now use a seperate view and sub-tab
-- Added an `Includes` option to the `Standards` test
-- Added parent traversal tests to the `Vulnerabilities` test
-- Added a `restorefunction` check for upvalue preservation
-- The counters for the Test status now count in real time instead of only updating on each check's completion.
-- The console in each test is hidden until the test is completed, it looked like a big black box with no output in it.
+- Fixed an issue where Myriad's cleanup function would toggle between each execution, requiring double execution to re-execute
 
-## `STABLE` v1.5.3
+## [1.6.0] - `STABLE`
 
-- Fixed an issue with keybinds related to multi-stroke binds.
-- `KeybindLabel` component is used instead of crafting them primitively
-- We now use a custom `TestingState` component instead of using the console.
-- Fixed some inconsistency between the standards and vulnerabilities test.
-- Added a `testTimeout` setting to the tests.
+### Added
 
-## `STABLE` v1.5.2
+- Small declaration to the main window subtitle
+- Editable keybinds
+- Window setting to disable `WindowPill`
+- Myriad cleanup of previous instances (if `getgenv` is supported)
+- Myriad API
+- Myriad docs
 
-- Added `Window` settings tab
-- Added keybinds to each test
-- Made the test scroll to the console to focus the output whenever a test is ran. (Also focuses the tab if it wasn't already.)
+### Changed
 
-## `STABLE` `HOTFIX` v1.5.1
+- Corrected button states to reduce visual conflict (reduced `Primary` usage)
 
-- Removed the nested check for `appendfile`. Mirror `fopen` instead and don't make the path since its not a create related function, only writes to existing files.
+## [1.5.4] - `STABLE`
+
+### Added
+
+- `Includes` option to the `Standards` test
+- Parent traversal tests to the `Vulnerabilities` test
+- `restorefunction` check for upvalue preservation
+- Separate view and sub-tab for test settings
+
+### Changed
+
+- Test counters now count in real time instead of only updating on check completion
+- Console in each test is now hidden until test completion
+
+## [1.5.3] - `STABLE`
+
+### Added
+
+- Custom `TestingState` component for test output
+
+### Changed
+
+- Use `KeybindLabel` component instead of primitive construction
+- `keydown` handling improved for multi-stroke binds
+
+### Fixed
+
+- Fixed an issue with keybinds related to multi-stroke binds
+- Fixed inconsistency between the standards and vulnerabilities test
+
+### Added
+
+- `testTimeout` setting to the tests
+
+## [1.5.2] - `STABLE`
+
+### Added
+
+- `Window` settings tab
+- Keybinds to each test
+
+### Changed
+
+- Test scroll now focuses console when test is run, also focuses tab if not already active
+
+## [1.5.1] - `STABLE` `HOTFIX`
+
+### Changed
+
+- Removed nested check for `appendfile`; mirror `fopen` instead without path creation
+
+### Fixed
+
 - Fixed `cloneref` test contaminating `getnilinstances`
-- Added some dependency checks for said functions.
+- Fixed dependency checks for related functions
 
-## `STABLE` v1.5.0
+## [1.5.0] - `STABLE`
 
-- New `Manual` framework for the `Standards` tests. (#19)
-- Add FileDialog Tests (#18)
-- Updated package `Cascade` v1.0.1-beta -> v1.2.0
-- Use proper type checking
-- Notify user that the link was copied to their clipboard if their not in the main testing game
-- Link the docs for file dialog functions
-- Reduce executor dependance
-- Check the actual test results for filesystem dependency in the `getcustomasset` test instead of just doing a global check
-- `Filesystem` related tests now check for file nesting compatability.
-- `getcustomasset` now checks for: PNG, JPG, MP3, OGG, WEBM, MP4, OBJ, and TTF files.
-- `WebSocket.connect` now checks the `is_binary` parameter, and checks if sent data in general is recieved.
+### Added
 
-## `PRE-RELEASE` v1.5.0-beta.1
+- New `Manual` framework for the `Standards` tests (#19)
+- FileDialog Tests (#18)
+- Proper type checking
+- Clipboard notification when link is copied (outside main testing game)
+- Docs links for file dialog functions
+- Filesystem compatibility nesting checks
+- Support for PNG, JPG, MP3, OGG, WEBM, MP4, OBJ, and TTF file checks in `getcustomasset`
+- `WebSocket.connect` check for `is_binary` parameter and data reception
 
-- New `Manual` framework for the `Standards` tests. (#19)
-- Add FileDialog Tests (#18)
-- Updated package `Cascade` v1.0.1-beta -> v1.2.0
+### Changed
 
-## `STABLE` `HOTFIX` v1.4.4
+- Updated package `Cascade` v1.0.1-beta → v1.2.0
+- Reduced executor dependence
+- Check actual test results for filesystem dependency in `getcustomasset` instead of global check
+- `Filesystem` related tests now check for file nesting compatibility
 
-```diff
-! Updated the testing gameid to our new one.
-```
+## [1.5.0-beta.1] - `PRE-RELEASE`
 
-## `STABLE` `HOTFIX` v1.4.3
+### Added
 
-```diff
-! Fixed not being able to publish results due to per-test time not being included.
-```
+- New `Manual` framework for the `Standards` tests (#19)
+- FileDialog Tests (#18)
 
-## `STABLE` v1.4.2
+### Changed
 
-```diff
-! Rework backend
-```
+- Updated package `Cascade` v1.0.1-beta → v1.2.0
 
-## `STABLE` `HOTFIX` v1.4.1
+## [1.4.4] - `STABLE` `HOTFIX`
 
-```diff
-! Fix actor location
-```
+### Changed
 
-## `STABLE` v1.4.0
+- Updated the testing gameid to the new one
 
-```diff
-+ New `getsenv` checks. Now the ENV of a dead script and an ENV whose `.script` property is nil are tested
-+ New `sethiddenproperty` checks. It checks whether the property actually changed or was just a memory edit with no effect on the game
-+ New `gethiddenproperty` check. A property that dynamically changes with another value has been added 
-+ New `setrawmetatable` checks. Strings are used to make the test more difficult to fake, and a property is added that setmetatable normal cannot set
-+ New `hookmetamethod` checks. It checks in a table and verifies whether it makes a hook or just tries to replace the function
-+ New `getrawmetatable` checks. It checks whether an error occurs when attempting to obtain the functions, whether the tables change, and whether the __index matches
-+ New `compareinstances` checks. It checks if the same object is equal and returns an error if it does not pass 2 instances
-+ New `newcclosure` checks. It checks whether it supports putting a name as the second argument, yielding, wrapping it 198 times, seeing if it cuts arguments or returns, and whether it can be executed 5 times and give the correct arguments
-+ New `get_comm_channel` checks. It checks whether there is an error with a comm_id number that does not exist
-+ New `create_comm_channel` checks. It checks whether they have all the necessary methods, whether comm_id has decimals, and whether get_comm_channel returns the same eventObject
-+ Added `require` to the standard.
-+ Added `getreg` to the standard.
-+ Added new executor vulnerabilities module.
-+ Added file access vulnerability (`file://` protocol bypass) check to `request`, `http_request`, `http.request`, `HttpGet`, `HttpGetAsync`, and `game` methods.
-+ Added `OmniRecommendationsService` and `HttpRbxApiService` to the Services blocklist tests.
-+ Refactored vulnerabilities testing suite to match the standard suite's logging format.
-+ Extracted Auth Leak testing to a dedicated `leaks` module in the vulnerability testing suite.
-+ Created an `escapes` vulnerabilities module and added an Environment/Context Escape test using `clonefunction` and `hookmetamethod`.
+## [1.4.3] - `STABLE` `HOTFIX`
 
-! Fix `run_on_actor` not conversion of xrefs
-! Fix getconstant out of bounds index check
-! Fix Drawing library not checking alpha conversion properly in the ScreenGui based lib check.
-```
+### Fixed
 
-## `STABLE` v1.3.3
+- Fixed inability to publish results due to missing per-test time inclusion
 
-```diff
-+ New `debug.getproto` checks
+## [1.4.2] - `STABLE`
 
-! Fix getnilinstances not checking for IsDescendantOf
-! Fix getproto problems caused by internal lua setfenv behavior
+### Changed
 
-- Remove .IsLoaded check for `getcustomasset`
-```
+- Backend rework
 
-## `STABLE` `HOTFIX` v1.3.2
+## [1.4.1] - `STABLE` `HOTFIX`
 
-``` diff
-! Fix cloneref making a new table per __index invocation
-```
+### Fixed
 
-## `STABLE` `HOTFIX` v1.3.1
+- Fixed actor location
 
-```diff
-! New `run_on_actor` checks
-! Removed IsLoaded check for `getcustomasset`
-! DEPRECATED: `setfflag`, `getfflag`
-```
+## [1.4.0] - `STABLE`
 
-## `STABLE` v1.3.0
+### Added
 
-```diff
-+ Added native signal library test (Signal.new)
-+ Added cansignalreplicate
-+ Added firesignal
-+ Added getconnections
-+ Added getsignalarguments
-+ Added getsignalargumentsinfo
-+ Added getsignalwhitelist
-+ Added replicatesignal
+- `getsenv` checks for dead scripts and scripts with nil `.script` property
+- `sethiddenproperty` checks to verify property changes vs. memory-only edits
+- `gethiddenproperty` check for dynamically changing properties
+- `setrawmetatable` checks using strings and property additions
+- `hookmetamethod` checks for hook creation vs. function replacement
+- `getrawmetatable` checks for error handling, table changes, and `__index` matching
+- `compareinstances` checks for object equality and error handling
+- `newcclosure` checks for naming support, yielding, wrapping, argument cutting, and multiple executions
+- `get_comm_channel` checks for non-existent comm_id errors
+- `create_comm_channel` checks for required methods, decimal comm_ids, and return value consistency
+- `require` to the standard
+- `getreg` to the standard
+- New executor vulnerabilities module
+- File access vulnerability (`file://` protocol bypass) checks for `request`, `http_request`, `http.request`, `HttpGet`, `HttpGetAsync`, and `game` methods
+- `OmniRecommendationsService` and `HttpRbxApiService` to Services blocklist tests
+- `escapes` vulnerabilities module with Environment/Context Escape test using `clonefunction` and `hookmetamethod`
+- Auth Leak testing as dedicated `leaks` module in vulnerability testing suite
 
-! Fixed run_on_actor xrefs check
-```
+### Changed
 
-## `STABLE` `HOTFIX` v1.2.5
+- Refactored vulnerabilities testing suite to match standard suite's logging format
+- Extracted Auth Leak testing from main vulnerabilities module
 
-- Fixed Set/Get fflag tests don't return any status
+### Fixed
 
-## `STABLE` v1.2.4
+- Fixed `run_on_actor` xrefs conversion
+- Fixed `getconstant` out of bounds index check
+- Fixed Drawing library alpha conversion check in ScreenGui-based lib check
 
-```diff
-+ getcustomasset
-+ isfunctionhooked
-+ get/setfflag
-+ setsimulationradius
-+ clearqueueonteleport
+## [1.3.3] - `STABLE`
 
-! Enforcing run_on_actor same reference to a global object
-! getscripthash overwriting source, which: autofails next run, dosen't logically work since scripts are compiled.
-! make main qot alias queueonteleport
-```
+### Added
 
-## `STABLE` v1.2.3
+- New `debug.getproto` checks
 
-```diff
-+ [PR] #5 - Loadstring source chunk semantics
-+ [PR] #6 - run_on_actor extra semantics
-+ [PR] #7 - More rigorous clonefunction checking
+### Changed
 
-+ Introduce new checks for actor communication channel creation, retrieval, and parallel execution.
+- Removed `.IsLoaded` check for `getcustomasset`
 
-! Fix `debug.getconstant` always passing with inconsistency. Incomplete check.
-! `Websocket.connect` test to validate signals based on methods rather than type. This accounts for custom signal implementations.
-! Make keytap main alias `keyclick` instead of `keytap`
-! Fix `fireclickdetector`, `fireproximityprompt` and `firetouchinterest` returning a result in connections.
-```
+### Fixed
 
-## `STABLE` v1.2.2
+- Fixed `getnilinstances` not checking for `IsDescendantOf`
+- Fixed `getproto` problems caused by internal Lua `setfenv` behavior
 
-```diff
-+ Add vulnerability test webresults support
-+ Update webresults calls to latest format
-```
+## [1.3.2] - `STABLE` `HOTFIX`
 
-## `STABLE` v1.2.1
+### Fixed
 
-```diff
-+ Added vulnerability test
-```
+- Fixed `cloneref` making a new table per `__index` invocation
 
-## `STABLE` v1.2.0
+## [1.3.1] - `STABLE` `HOTFIX`
 
-```diff
-! MAJOR: Fixed crashes related to UI package "ReGui"
-! Updated internal framework
+### Added
 
-+ Change UI Library to Cascade
-+ Added global exclusions to standards test
-```
+- New `run_on_actor` checks
 
-## `STABLE` v1.1.0
+### Changed
 
-```diff
-+ Add `crypt.generatekey` unique-ness check
-+ Added dex check to fix overwriting `decompile`
-+ Add `base64encode` and `base64decode` empty string encoding and padding check
+- Removed `IsLoaded` check for `getcustomasset`
 
-! Fixed incorrect hash to algorithm map in `crypt.hash`
-! Made Regui less executor-dependant
-! Let `debug.getproto` and `debug.getprotos` given protos be non-callable
-! Unenforced `getconstant` and `getconstants` constant order
-! Fixed `gethiddenproperty` and `sethiddenproperty` checking for a returned lua state on writeonly properties instead of returning `nil`
-```
+### Deprecated
 
-## `STABLE` v1.0.3
+- `setfflag`
+- `getfflag`
 
-```diff
-! Update outdated webscoket reference (i#3774060932)
-! Fix UI library icon issues
-! Move gh key to dotenv, releasing the .pcmp config
-! Move standard definitions out of the lua entrypoint
+## [1.3.0] - `STABLE`
 
-+ Add keytap alias "keyclick"
-```
+### Added
 
-## `STABLE` v1.0.2
+- Native signal library test (`Signal.new`)
+- `cansignalreplicate` checks
+- `firesignal` checks
+- `getconnections` checks
+- `getsignalarguments` checks
+- `getsignalargumentsinfo` checks
+- `getsignalwhitelist` checks
+- `replicatesignal` checks
 
-```diff
-! Backend changes
-! Fixed the status message returned by sethiddenproperty when `gethiddenproperty` is missing
-```
+### Fixed
 
-> [!NOTE]
-> There might be other changes I missed because it's been a while since I worked on this, and this release is based on uncommitted changes
+- Fixed `run_on_actor` xrefs check
 
-## `STABLE` v1.0.1
+## [1.2.5] - `STABLE` `HOTFIX`
 
-- Added touch/ended order checking for firetouchinterest
-- Added more build info to home page of UI
+### Fixed
 
-## `STABLE` v1.0.0
+- Fixed `set`/`get` fflag tests not returning any status
 
-- Moved to github releases (old dist.luau loadstring redirects to the latest release)
-- debug getconstants fix (not completely validated, dont take this for certain)
-- setrawmetatable originalobject check removed
-- fix build metadata
+## [1.2.4] - `STABLE`
 
-## `PRE-RELEASE` v1.0.0-beta.3
+### Added
 
-- debug getconstants fix
+- `getcustomasset` checks
+- `isfunctionhooked` checks
+- `get`/`setfflag` checks
+- `setsimulationradius` checks
+- `clearqueueonteleport` checks
 
-## `PRE-RELEASE` v1.0.0-beta.2
+### Changed
 
-- new build system (ProCMP)
-- fix set raw mt shit
-- updated regui: 1.4.2 - > 1.4.3
-- setfpscap format
+- Enforced `run_on_actor` same reference to a global object
+- Changed main alias for `keydown` from `keytap` to `keyclick`
+
+### Fixed
+
+- Fixed `getscripthash` overwriting source (autofails next run, logically inconsistent)
+
+## [1.2.3] - `STABLE`
+
+### Added
+
+- Loadstring source chunk semantics (#5)
+- `run_on_actor` extra semantics (#6)
+- More rigorous clonefunction checking (#7)
+- Checks for actor communication channel creation, retrieval, and parallel execution
+
+### Fixed
+
+- Fixed `debug.getconstant` always passing with inconsistency
+- Fixed `Websocket.connect` test to validate signals based on methods rather than type
+- Fixed `fireclickdetector`, `fireproximityprompt`, and `firetouchinterest` returning results in connections
+
+### Changed
+
+- Changed main alias for `keydown` from `keytap` to `keyclick`
+
+## [1.2.2] - `STABLE`
+
+### Added
+
+- Vulnerability test webresults support
+
+### Changed
+
+- Updated webresults calls to latest format
+
+## [1.2.1] - `STABLE`
+
+### Added
+
+- Vulnerability test
+
+## [1.2.0] - `STABLE`
+
+### Added
+
+- Global exclusions to standards test
+
+### Changed
+
+- UI Library changed from ReGui to Cascade
+- Updated internal framework
+
+### Fixed
+
+- Fixed crashes related to UI package "ReGui"
+
+## [1.1.0] - `STABLE`
+
+### Added
+
+- `crypt.generatekey` uniqueness check
+- Dex check to prevent overwriting `decompile`
+- `base64encode` and `base64decode` empty string encoding and padding check
+
+### Fixed
+
+- Fixed incorrect hash to algorithm map in `crypt.hash`
+- Fixed `debug.getproto` and `debug.getprotos` given protos being non-callable
+- Fixed `gethiddenproperty` and `sethiddenproperty` checking for returned Lua state on writeonly properties instead of `nil`
+
+### Changed
+
+- Made ReGui less executor-dependent
+- Unenforced `getconstant` and `getconstants` constant order
+
+## [1.0.3] - `STABLE`
+
+### Added
+
+- Keytap alias "keyclick"
+
+### Changed
+
+- Moved GitHub key to dotenv, releasing the .pcmp config
+- Moved standard definitions out of the Lua entrypoint
+
+### Fixed
+
+- Updated outdated WebSocket reference (i#3774060932)
+- Fixed UI library icon issues
+
+## [1.0.2] - `STABLE`
+
+### Changed
+
+- Backend changes
+
+### Fixed
+
+- Fixed status message returned by `sethiddenproperty` when `gethiddenproperty` is missing
+
+## [1.0.1] - `STABLE`
+
+### Added
+
+- Touch/ended order checking for `firetouchinterest`
+- More build info to home page of UI
+
+## [1.0.0] - `STABLE`
+
+### Added
+
+- Moved to GitHub releases (old dist.luau loadstring redirects to the latest release)
+
+### Changed
+
+- Build metadata updated
+
+### Fixed
+
+- Fixed `debug.getconstants` (not completely validated)
+
+### Removed
+
+- `setrawmetatable` originalobject check
+
+## [1.0.0-beta.3] - `PRE-RELEASE`
+
+### Fixed
+
+- Fixed `debug.getconstants`
+
+## [1.0.0-beta.2] - `PRE-RELEASE`
+
+### Added
+
+- New build system (ProCMP)
+
+### Changed
+
+- Updated ReGui: 1.4.2 → 1.4.3
+
+### Fixed
+
+- Fixed setrawmetatable

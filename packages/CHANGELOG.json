@@ -1,314 +1,546 @@
-[
-  {
-    "version": "v1.6.1",
-    "tags": [ "STABLE", "HOTFIX" ],
-    "changes": [
-      "Fixed an issue where Myriad's cleanup function would instead toggle between each execution, meaning you had to execute twice to re-execute."
+{
+  "title": "Changelog",
+  "unreleased": {
+    "added": [
+      "Home section with a changelog tab"
     ]
   },
-  {
-    "version": "v1.6.0",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "Added a small declaration to the main window subtitle",
-      "Corrected some button states, since almost everything used `Primary`, fighting for visual attention.",
-      "Keybinds are editable now",
-      "Added a window setting to disable `WindowPill`",
-      "Myriad will clean up previous instances of itself, if `getgenv` is supported",
-      "Added a Myriad API",
-      "Added Myriad docs"
-    ]
-  },
-  {
-    "version": "v1.5.4",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "Test settings now use a seperate view and sub-tab",
-      "Added an `Includes` option to the `Standards` test",
-      "Added parent traversal tests to the `Vulnerabilities` test",
-      "Added a `restorefunction` check for upvalue preservation",
-      "The counters for the Test status now count in real time instead of only updating on each check's completion.",
-      "The console in each test is hidden until the test is completed, it looked like a big black box with no output in it."
-    ]
-  },
-  {
-    "version": "v1.5.3",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "Fixed an issue with keybinds related to multi-stroke binds.",
-      "`KeybindLabel` component is used instead of crafting them primitively",
-      "We now use a custom `TestingState` component instead of using the console.",
-      "Fixed some inconsistency between the standards and vulnerabilities test.",
-      "Added a `testTimeout` setting to the tests."
-    ]
-  },
-  {
-    "version": "v1.5.2",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "Added `Window` settings tab",
-      "Added keybinds to each test",
-      "Made the test scroll to the console to focus the output whenever a test is ran. (Also focuses the tab if it wasn't already.)"
-    ]
-  },
-  {
-    "version": "v1.5.1",
-    "tags": [ "STABLE", "HOTFIX" ],
-    "changes": [
-      "Removed the nested check for `appendfile`. Mirror `fopen` instead and don't make the path since its not a create related function, only writes to existing files.",
-      "Fixed `cloneref` test contaminating `getnilinstances`",
-      "Added some dependency checks for said functions."
-    ]
-  },
-  {
-    "version": "v1.5.0",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "New `Manual` framework for the `Standards` tests. (#19)",
-      "Add FileDialog Tests (#18)",
-      "Updated package `Cascade` v1.0.1-beta -> v1.2.0",
-      "Use proper type checking",
-      "Notify user that the link was copied to their clipboard if their not in the main testing game",
-      "Link the docs for file dialog functions",
-      "Reduce executor dependance",
-      "Check the actual test results for filesystem dependency in the `getcustomasset` test instead of just doing a global check",
-      "`Filesystem` related tests now check for file nesting compatability.",
-      "`getcustomasset` now checks for: PNG, JPG, MP3, OGG, WEBM, MP4, OBJ, and TTF files.",
-      "`WebSocket.connect` now checks the `is_binary` parameter, and checks if sent data in general is recieved."
-    ]
-  },
-  {
-    "version": "v1.5.0-beta.1",
-    "tags": [ "PRE-RELEASE" ],
-    "changes": [
-      "New `Manual` framework for the `Standards` tests. (#19)",
-      "Add FileDialog Tests (#18)",
-      "Updated package `Cascade` v1.0.1-beta -> v1.2.0"
-    ]
-  },
-  {
-    "version": "v1.4.4",
-    "tags": [ "STABLE", "HOTFIX" ],
-    "changes": [
-      "Updated the testing gameid to our new one."
-    ]
-  },
-  {
-    "version": "v1.4.3",
-    "tags": [ "STABLE", "HOTFIX" ],
-    "changes": [
-      "Fixed not being able to publish results due to per-test time not being included."
-    ]
-  },
-  {
-    "version": "v1.4.2",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "Rework backend"
-    ]
-  },
-  {
-    "version": "v1.4.1",
-    "tags": [ "STABLE", "HOTFIX" ],
-    "changes": [
-      "Fix actor location"
-    ]
-  },
-  {
-    "version": "v1.4.0",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "New `getsenv` checks. Now the ENV of a dead script and an ENV whose `.script` property is nil are tested",
-      "New `sethiddenproperty` checks. It checks whether the property actually changed or was just a memory edit with no effect on the game",
-      "New `gethiddenproperty` check. A property that dynamically changes with another value has been added",
-      "New `setrawmetatable` checks. Strings are used to make the test more difficult to fake, and a property is added that setmetatable normal cannot set",
-      "New `hookmetamethod` checks. It checks in a table and verifies whether it makes a hook or just tries to replace the function",
-      "New `getrawmetatable` checks. It checks whether an error occurs when attempting to obtain the functions, whether the tables change, and whether the __index matches",
-      "New `compareinstances` checks. It checks if the same object is equal and returns an error if it does not pass 2 instances",
-      "New `newcclosure` checks. It checks whether it supports putting a name as the second argument, yielding, wrapping it 198 times, seeing if it cuts arguments or returns, and whether it can be executed 5 times and give the correct arguments",
-      "New `get_comm_channel` checks. It checks whether there is an error with a comm_id number that does not exist",
-      "New `create_comm_channel` checks. It checks whether they have all the necessary methods, whether comm_id has decimals, and whether get_comm_channel returns the same eventObject",
-      "Added `require` to the standard.",
-      "Added `getreg` to the standard.",
-      "Added new executor vulnerabilities module.",
-      "Added file access vulnerability (`file://` protocol bypass) check to `request`, `http_request`, `http.request`, `HttpGet`, `HttpGetAsync`, and `game` methods.",
-      "Added `OmniRecommendationsService` and `HttpRbxApiService` to the Services blocklist tests.",
-      "Refactored vulnerabilities testing suite to match the standard suite's logging format.",
-      "Extracted Auth Leak testing to a dedicated `leaks` module in the vulnerability testing suite.",
-      "Created an `escapes` vulnerabilities module and added an Environment/Context Escape test using `clonefunction` and `hookmetamethod`.",
-      "Fix `run_on_actor` not conversion of xrefs",
-      "Fix getconstant out of bounds index check",
-      "Fix Drawing library not checking alpha conversion properly in the ScreenGui based lib check."
-    ]
-  },
-  {
-    "version": "v1.3.3",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "New `debug.getproto` checks",
-      "Fix getnilinstances not checking for IsDescendantOf",
-      "Fix getproto problems caused by internal lua setfenv behavior",
-      "Remove .IsLoaded check for `getcustomasset`"
-    ]
-  },
-  {
-    "version": "v1.3.2",
-    "tags": [ "STABLE", "HOTFIX" ],
-    "changes": [
-      "Fix cloneref making a new table per __index invocation"
-    ]
-  },
-  {
-    "version": "v1.3.1",
-    "tags": [ "STABLE", "HOTFIX" ],
-    "changes": [
-      "New `run_on_actor` checks",
-      "Removed IsLoaded check for `getcustomasset`",
-      "DEPRECATED: `setfflag`, `getfflag`"
-    ]
-  },
-  {
-    "version": "v1.3.0",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "Added native signal library test (Signal.new)",
-      "Added cansignalreplicate",
-      "Added firesignal",
-      "Added getconnections",
-      "Added getsignalarguments",
-      "Added getsignalargumentsinfo",
-      "Added getsignalwhitelist",
-      "Added replicatesignal",
-      "Fixed run_on_actor xrefs check"
-    ]
-  },
-  {
-    "version": "v1.2.5",
-    "tags": [ "STABLE", "HOTFIX" ],
-    "changes": [
-      "Fixed Set/Get fflag tests don't return any status"
-    ]
-  },
-  {
-    "version": "v1.2.4",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "getcustomasset",
-      "isfunctionhooked",
-      "get/setfflag",
-      "setsimulationradius",
-      "clearqueueonteleport",
-      "Enforcing run_on_actor same reference to a global object",
-      "getscripthash overwriting source, which: autofails next run, dosen't logically work since scripts are compiled.",
-      "make main qot alias queueonteleport"
-    ]
-  },
-  {
-    "version": "v1.2.3",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "[PR] #5 - Loadstring source chunk semantics",
-      "[PR] #6 - run_on_actor extra semantics",
-      "[PR] #7 - More rigorous clonefunction checking",
-      "Introduce new checks for actor communication channel creation, retrieval, and parallel execution.",
-      "Fix `debug.getconstant` always passing with inconsistency. Incomplete check.",
-      "`Websocket.connect` test to validate signals based on methods rather than type. This accounts for custom signal implementations.",
-      "Make keytap main alias `keyclick` instead of `keytap`",
-      "Fix `fireclickdetector`, `fireproximityprompt` and `firetouchinterest` returning a result in connections."
-    ]
-  },
-  {
-    "version": "v1.2.2",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "Add vulnerability test webresults support",
-      "Update webresults calls to latest format"
-    ]
-  },
-  {
-    "version": "v1.2.1",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "Added vulnerability test"
-    ]
-  },
-  {
-    "version": "v1.2.0",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "MAJOR: Fixed crashes related to UI package \"ReGui\"",
-      "Updated internal framework",
-      "Change UI Library to Cascade",
-      "Added global exclusions to standards test"
-    ]
-  },
-  {
-    "version": "v1.1.0",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "Add `crypt.generatekey` unique-ness check",
-      "Added dex check to fix overwriting `decompile`",
-      "Add `base64encode` and `base64decode` empty string encoding and padding check",
-      "Fixed incorrect hash to algorithm map in `crypt.hash`",
-      "Made Regui less executor-dependant",
-      "Let `debug.getproto` and `debug.getprotos` given protos be non-callable",
-      "Unenforced `getconstant` and `getconstants` constant order",
-      "Fixed `gethiddenproperty` and `sethiddenproperty` checking for a returned lua state on writeonly properties instead of returning `nil`"
-    ]
-  },
-  {
-    "version": "v1.0.3",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "Update outdated webscoket reference (i#3774060932)",
-      "Fix UI library icon issues",
-      "Move gh key to dotenv, releasing the .pcmp config",
-      "Move standard definitions out of the lua entrypoint",
-      "Add keytap alias \"keyclick\""
-    ]
-  },
-  {
-    "version": "v1.0.2",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "Backend changes",
-      "Fixed the status message returned by sethiddenproperty when `gethiddenproperty` is missing"
-    ],
-    "notes": "There might be other changes I missed because it's been a while since I worked on this, and this release is based on uncommitted changes"
-  },
-  {
-    "version": "v1.0.1",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "Added touch/ended order checking for firetouchinterest",
-      "Added more build info to home page of UI"
-    ]
-  },
-  {
-    "version": "v1.0.0",
-    "tags": [ "STABLE" ],
-    "changes": [
-      "Moved to github releases (old dist.luau loadstring redirects to the latest release)",
-      "debug getconstants fix (not completely validated, dont take this for certain)",
-      "setrawmetatable originalobject check removed",
-      "fix build metadata"
-    ]
-  },
-  {
-    "version": "v1.0.0-beta.3",
-    "tags": [ "PRE-RELEASE" ],
-    "changes": [
-      "debug getconstants fix"
-    ]
-  },
-  {
-    "version": "v1.0.0-beta.2",
-    "tags": [ "PRE-RELEASE" ],
-    "changes": [
-      "new build system (ProCMP)",
-      "fix set raw mt shit",
-      "updated regui: 1.4.2 - > 1.4.3",
-      "setfpscap format"
-    ]
-  }
-]
+  "releases": [
+    {
+      "version": "1.6.1",
+      "date": null,
+      "tags": [
+        "STABLE",
+        "HOTFIX"
+      ],
+      "changes": {
+        "fixed": [
+          "Fixed an issue where Myriad's cleanup function would toggle between each execution, requiring double execution to re-execute"
+        ]
+      }
+    },
+    {
+      "version": "1.6.0",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "Small declaration to the main window subtitle",
+          "Editable keybinds",
+          "Window setting to disable `WindowPill`",
+          "Myriad cleanup of previous instances (if `getgenv` is supported)",
+          "Myriad API",
+          "Myriad docs"
+        ],
+        "changed": [
+          "Corrected button states to reduce visual conflict (reduced `Primary` usage)"
+        ]
+      }
+    },
+    {
+      "version": "1.5.4",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "`Includes` option to the `Standards` test",
+          "Parent traversal tests to the `Vulnerabilities` test",
+          "`restorefunction` check for upvalue preservation",
+          "Separate view and sub-tab for test settings"
+        ],
+        "changed": [
+          "Test counters now count in real time instead of only updating on check completion",
+          "Console in each test is now hidden until test completion"
+        ]
+      }
+    },
+    {
+      "version": "1.5.3",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "Custom `TestingState` component for test output",
+          "`testTimeout` setting to the tests"
+        ],
+        "changed": [
+          "Use `KeybindLabel` component instead of primitive construction",
+          "`keydown` handling improved for multi-stroke binds"
+        ],
+        "fixed": [
+          "Fixed an issue with keybinds related to multi-stroke binds",
+          "Fixed inconsistency between the standards and vulnerabilities test"
+        ]
+      }
+    },
+    {
+      "version": "1.5.2",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "`Window` settings tab",
+          "Keybinds to each test"
+        ],
+        "changed": [
+          "Test scroll now focuses console when test is run, also focuses tab if not already active"
+        ]
+      }
+    },
+    {
+      "version": "1.5.1",
+      "date": null,
+      "tags": [
+        "STABLE",
+        "HOTFIX"
+      ],
+      "changes": {
+        "changed": [
+          "Removed nested check for `appendfile`; mirror `fopen` instead without path creation"
+        ],
+        "fixed": [
+          "Fixed `cloneref` test contaminating `getnilinstances`",
+          "Fixed dependency checks for related functions"
+        ]
+      }
+    },
+    {
+      "version": "1.5.0",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "New `Manual` framework for the `Standards` tests (#19)",
+          "FileDialog Tests (#18)",
+          "Proper type checking",
+          "Clipboard notification when link is copied (outside main testing game)",
+          "Docs links for file dialog functions",
+          "Filesystem compatibility nesting checks",
+          "Support for PNG, JPG, MP3, OGG, WEBM, MP4, OBJ, and TTF file checks in `getcustomasset`",
+          "`WebSocket.connect` check for `is_binary` parameter and data reception"
+        ],
+        "changed": [
+          "Updated package `Cascade` v1.0.1-beta → v1.2.0",
+          "Reduced executor dependence",
+          "Check actual test results for filesystem dependency in `getcustomasset` instead of global check",
+          "`Filesystem` related tests now check for file nesting compatibility"
+        ]
+      }
+    },
+    {
+      "version": "1.5.0-beta.1",
+      "date": null,
+      "tags": [
+        "PRE-RELEASE"
+      ],
+      "changes": {
+        "added": [
+          "New `Manual` framework for the `Standards` tests (#19)",
+          "FileDialog Tests (#18)"
+        ],
+        "changed": [
+          "Updated package `Cascade` v1.0.1-beta → v1.2.0"
+        ]
+      }
+    },
+    {
+      "version": "1.4.4",
+      "date": null,
+      "tags": [
+        "STABLE",
+        "HOTFIX"
+      ],
+      "changes": {
+        "changed": [
+          "Updated the testing gameid to the new one"
+        ]
+      }
+    },
+    {
+      "version": "1.4.3",
+      "date": null,
+      "tags": [
+        "STABLE",
+        "HOTFIX"
+      ],
+      "changes": {
+        "fixed": [
+          "Fixed inability to publish results due to missing per-test time inclusion"
+        ]
+      }
+    },
+    {
+      "version": "1.4.2",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "changed": [
+          "Backend rework"
+        ]
+      }
+    },
+    {
+      "version": "1.4.1",
+      "date": null,
+      "tags": [
+        "STABLE",
+        "HOTFIX"
+      ],
+      "changes": {
+        "fixed": [
+          "Fixed actor location"
+        ]
+      }
+    },
+    {
+      "version": "1.4.0",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "`getsenv` checks for dead scripts and scripts with nil `.script` property",
+          "`sethiddenproperty` checks to verify property changes vs. memory-only edits",
+          "`gethiddenproperty` check for dynamically changing properties",
+          "`setrawmetatable` checks using strings and property additions",
+          "`hookmetamethod` checks for hook creation vs. function replacement",
+          "`getrawmetatable` checks for error handling, table changes, and `__index` matching",
+          "`compareinstances` checks for object equality and error handling",
+          "`newcclosure` checks for naming support, yielding, wrapping, argument cutting, and multiple executions",
+          "`get_comm_channel` checks for non-existent comm_id errors",
+          "`create_comm_channel` checks for required methods, decimal comm_ids, and return value consistency",
+          "`require` to the standard",
+          "`getreg` to the standard",
+          "New executor vulnerabilities module",
+          "File access vulnerability (`file://` protocol bypass) checks for `request`, `http_request`, `http.request`, `HttpGet`, `HttpGetAsync`, and `game` methods",
+          "`OmniRecommendationsService` and `HttpRbxApiService` to Services blocklist tests",
+          "`escapes` vulnerabilities module with Environment/Context Escape test using `clonefunction` and `hookmetamethod`",
+          "Auth Leak testing as dedicated `leaks` module in vulnerability testing suite"
+        ],
+        "changed": [
+          "Refactored vulnerabilities testing suite to match standard suite's logging format",
+          "Extracted Auth Leak testing from main vulnerabilities module"
+        ],
+        "fixed": [
+          "Fixed `run_on_actor` xrefs conversion",
+          "Fixed `getconstant` out of bounds index check",
+          "Fixed Drawing library alpha conversion check in ScreenGui-based lib check"
+        ]
+      }
+    },
+    {
+      "version": "1.3.3",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "New `debug.getproto` checks"
+        ],
+        "changed": [
+          "Removed `.IsLoaded` check for `getcustomasset`"
+        ],
+        "fixed": [
+          "Fixed `getnilinstances` not checking for `IsDescendantOf`",
+          "Fixed `getproto` problems caused by internal Lua `setfenv` behavior"
+        ]
+      }
+    },
+    {
+      "version": "1.3.2",
+      "date": null,
+      "tags": [
+        "STABLE",
+        "HOTFIX"
+      ],
+      "changes": {
+        "fixed": [
+          "Fixed `cloneref` making a new table per `__index` invocation"
+        ]
+      }
+    },
+    {
+      "version": "1.3.1",
+      "date": null,
+      "tags": [
+        "STABLE",
+        "HOTFIX"
+      ],
+      "changes": {
+        "added": [
+          "New `run_on_actor` checks"
+        ],
+        "changed": [
+          "Removed `IsLoaded` check for `getcustomasset`"
+        ],
+        "deprecated": [
+          "`setfflag`",
+          "`getfflag`"
+        ]
+      }
+    },
+    {
+      "version": "1.3.0",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "Native signal library test (`Signal.new`)",
+          "`cansignalreplicate` checks",
+          "`firesignal` checks",
+          "`getconnections` checks",
+          "`getsignalarguments` checks",
+          "`getsignalargumentsinfo` checks",
+          "`getsignalwhitelist` checks",
+          "`replicatesignal` checks"
+        ],
+        "fixed": [
+          "Fixed `run_on_actor` xrefs check"
+        ]
+      }
+    },
+    {
+      "version": "1.2.5",
+      "date": null,
+      "tags": [
+        "STABLE",
+        "HOTFIX"
+      ],
+      "changes": {
+        "fixed": [
+          "Fixed `set`/`get` fflag tests not returning any status"
+        ]
+      }
+    },
+    {
+      "version": "1.2.4",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "`getcustomasset` checks",
+          "`isfunctionhooked` checks",
+          "`get`/`setfflag` checks",
+          "`setsimulationradius` checks",
+          "`clearqueueonteleport` checks"
+        ],
+        "changed": [
+          "Enforced `run_on_actor` same reference to a global object",
+          "Changed main alias for `keydown` from `keytap` to `keyclick`"
+        ],
+        "fixed": [
+          "Fixed `getscripthash` overwriting source (autofails next run, logically inconsistent)"
+        ]
+      }
+    },
+    {
+      "version": "1.2.3",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "Loadstring source chunk semantics (#5)",
+          "`run_on_actor` extra semantics (#6)",
+          "More rigorous clonefunction checking (#7)",
+          "Checks for actor communication channel creation, retrieval, and parallel execution"
+        ],
+        "changed": [
+          "Changed main alias for `keydown` from `keytap` to `keyclick`"
+        ],
+        "fixed": [
+          "Fixed `debug.getconstant` always passing with inconsistency",
+          "Fixed `Websocket.connect` test to validate signals based on methods rather than type",
+          "Fixed `fireclickdetector`, `fireproximityprompt`, and `firetouchinterest` returning results in connections"
+        ]
+      }
+    },
+    {
+      "version": "1.2.2",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "Vulnerability test webresults support"
+        ],
+        "changed": [
+          "Updated webresults calls to latest format"
+        ]
+      }
+    },
+    {
+      "version": "1.2.1",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "Vulnerability test"
+        ]
+      }
+    },
+    {
+      "version": "1.2.0",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "Global exclusions to standards test"
+        ],
+        "changed": [
+          "UI Library changed from ReGui to Cascade",
+          "Updated internal framework"
+        ],
+        "fixed": [
+          "Fixed crashes related to UI package \"ReGui\""
+        ]
+      }
+    },
+    {
+      "version": "1.1.0",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "`crypt.generatekey` uniqueness check",
+          "Dex check to prevent overwriting `decompile`",
+          "`base64encode` and `base64decode` empty string encoding and padding check"
+        ],
+        "changed": [
+          "Made ReGui less executor-dependent",
+          "Unenforced `getconstant` and `getconstants` constant order"
+        ],
+        "fixed": [
+          "Fixed incorrect hash to algorithm map in `crypt.hash`",
+          "Fixed `debug.getproto` and `debug.getprotos` given protos being non-callable",
+          "Fixed `gethiddenproperty` and `sethiddenproperty` checking for returned Lua state on writeonly properties instead of `nil`"
+        ]
+      }
+    },
+    {
+      "version": "1.0.3",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "Keytap alias \"keyclick\""
+        ],
+        "changed": [
+          "Moved GitHub key to dotenv, releasing the .pcmp config",
+          "Moved standard definitions out of the Lua entrypoint"
+        ],
+        "fixed": [
+          "Updated outdated WebSocket reference (i#3774060932)",
+          "Fixed UI library icon issues"
+        ]
+      }
+    },
+    {
+      "version": "1.0.2",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "changed": [
+          "Backend changes"
+        ],
+        "fixed": [
+          "Fixed status message returned by `sethiddenproperty` when `gethiddenproperty` is missing"
+        ]
+      }
+    },
+    {
+      "version": "1.0.1",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "Touch/ended order checking for `firetouchinterest`",
+          "More build info to home page of UI"
+        ]
+      }
+    },
+    {
+      "version": "1.0.0",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "Moved to GitHub releases (old dist.luau loadstring redirects to the latest release)"
+        ],
+        "changed": [
+          "Build metadata updated"
+        ],
+        "removed": [
+          "`setrawmetatable` originalobject check"
+        ],
+        "fixed": [
+          "Fixed `debug.getconstants` (not completely validated)"
+        ]
+      }
+    },
+    {
+      "version": "1.0.0-beta.3",
+      "date": null,
+      "tags": [
+        "PRE-RELEASE"
+      ],
+      "changes": {
+        "fixed": [
+          "Fixed `debug.getconstants`"
+        ]
+      }
+    },
+    {
+      "version": "1.0.0-beta.2",
+      "date": null,
+      "tags": [
+        "PRE-RELEASE"
+      ],
+      "changes": {
+        "added": [
+          "New build system (ProCMP)"
+        ],
+        "changed": [
+          "Updated ReGui: 1.4.2 → 1.4.3"
+        ],
+        "fixed": [
+          "Fixed setrawmetatable"
+        ]
+      }
+    }
+  ]
+}
