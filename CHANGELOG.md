@@ -1,6 +1,7 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
+[1.6.2]: https://github.com/Proton-Utilities/Myriad/compare/v1.6.1...v1.6.2
 [1.6.1]: https://github.com/Proton-Utilities/Myriad/compare/v1.6.0...v1.6.1
 [1.6.0]: https://github.com/Proton-Utilities/Myriad/compare/v1.5.4...v1.6.0
 [1.5.4]: https://github.com/Proton-Utilities/Myriad/compare/v1.5.3...v1.5.4
@@ -32,9 +33,7 @@
 [1.0.0-beta.3]: https://github.com/Proton-Utilities/Myriad/compare/v1.0.0-beta.2...v1.0.0-beta.3
 [1.0.0-beta.2]: https://github.com/Proton-Utilities/Myriad/releases/tag/v1.0.0-beta.2
 
-## [Unreleased]
-
-> Current Target: `v1.6.2`
+## [1.6.2] - `STABLE`
 
 ### Added
 
