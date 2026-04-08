@@ -1,5 +1,9 @@
 # Changelog
 
+## Unmarked
+
+- Add a home section with a changelog tab
+
 ## `STABLE` `HOTFIX` v1.6.1
 
 - Fixed an issue where Myriad's cleanup function would instead toggle between each execution, meaning you had to execute twice to re-execute.
