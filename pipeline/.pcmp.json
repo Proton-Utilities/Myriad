@@ -21,7 +21,12 @@
             "frame": "pipeline/frames/stable.luau",
             "darkluaConfig": "pipeline/darklua/unminified.json",
             "input": "src/main.luau",
-            "output": "generated/debug/myriad.luau"
+            "output": "generated/debug/myriad.luau",
+            "pipelineHooks": {
+                "preAllBuilds": {
+                    "command": "lune run .pcmp/make_clog.luau CHANGELOG.md packages/CHANGELOG.json"
+                }
+            }
         },
         {
             "name": "Beta",
@@ -32,6 +37,11 @@
             "darkluaConfig": "pipeline/darklua/stable.json",
             "input": "src/main.luau",
             "output": "generated/beta/myriad.luau",
+            "pipelineHooks": {
+                "preAllBuilds": {
+                    "command": "lune run .pcmp/make_clog.luau CHANGELOG.md packages/CHANGELOG.json"
+                }
+            },
             "variants": [
                 {
                     "name": "Legacy-Support",
@@ -59,6 +69,11 @@
             "darkluaConfig": "pipeline/darklua/stable.json",
             "input": "src/main.luau",
             "output": "generated/release/myriad.luau",
+            "pipelineHooks": {
+                "preAllBuilds": {
+                    "command": "lune run .pcmp/make_clog.luau CHANGELOG.md packages/CHANGELOG.json"
+                }
+            },
             "variants": [
                 {
                     "name": "Legacy-Support",
