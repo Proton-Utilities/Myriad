@@ -7,6 +7,7 @@ local types = require("@packages/cascade/types")
 local views = require("@views")
 local tests = require("@tests")
 local ui = require("@ui")
+local changelog = require("@packages/CHANGELOG.json")
 
 --// Variables
 local app = cascade.New({
@@ -47,15 +48,17 @@ if game.PlaceId == gameId then
 
 		local cleaned = false
 		cleanup = function()
-			if cleaned then return end
+			if cleaned then
+				return
+			end
 			cleaned = true
-			
+
 			if env.__myriadCleanup == cleanup then
 				env.__myriadCleanup = nil
 			end
 			app:Destroy()
 		end
-		
+
 		env.__myriadCleanup = cleanup
 	end
 
@@ -75,6 +78,23 @@ if game.PlaceId == gameId then
 			app:Destroy()
 		end
 	end)
+
+	do -- Home
+		local section = window:Section({
+			Disclosure = false,
+			Title = "Home",
+		})
+
+		do -- Window
+			local tab = section:Tab({
+				Title = "Changelog",
+				Icon = cascade.Symbols.house,
+				Selected = true,
+			})
+
+			views.home(cascade, app, window, tab)
+		end
+	end
 
 	do -- Tests
 		local section = window:Section({
