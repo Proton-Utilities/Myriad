@@ -4,7 +4,6 @@
 [lastrel]: https://github.com/Proton-Utilities/Myriad/releases/latest
 [lastcom]: https://github.com/Proton-Utilities/Myriad/commits
 [disc]: https://discord.gg/nn4NxHU3Pu
-
 [badges/stars]: https://img.shields.io/github/stars/Proton-Utilities/Myriad?label=Stars&logo=GitHub
 [badges/lastrel]: https://img.shields.io/github/v/release/Proton-Utilities/Myriad?label=Latest%20Release
 [badges/lastcom]: https://img.shields.io/github/last-commit/Proton-Utilities/Myriad?label=Last%20Modifed
