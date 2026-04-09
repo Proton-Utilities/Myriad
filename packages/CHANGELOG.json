@@ -1,11 +1,19 @@
 {
   "title": "Changelog",
-  "unreleased": {
-    "added": [
-      "Home section with a changelog tab"
-    ]
-  },
+  "unreleased": null,
   "releases": [
+    {
+      "version": "1.6.2",
+      "date": null,
+      "tags": [
+        "STABLE"
+      ],
+      "changes": {
+        "added": [
+          "Home section with a changelog tab"
+        ]
+      }
+    },
     {
       "version": "1.6.1",
       "date": null,
