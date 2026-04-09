@@ -45,6 +45,7 @@ return function()
 
 	--// Alias test
 	local envIndex, failedIndex = require("@dependencies/aliasTest.luau")({
+		"base64decode",
 		"base64_decode",
 		"crypt.base64.decode",
 		"base64.decode",
