@@ -9,4 +9,9 @@ return {
 		icon = "shield",
 		selected = false,
 	},
+--[[ 	Stress = {
+		path = require("@self/stress"),
+		icon = "tachometer",
+		selected = false,
+	}, ]]
 }
