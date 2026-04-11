@@ -3,7 +3,7 @@
 You can load the Myriad UI using our official loader:
 
 ```luau
-loadstring(game:HttpGetAsync("https://github.com/Proton-Utilities/Myriad/releases/latest/download/myriad.luau"))()
+loadstring(game:HttpGetAsync("https://github.com/Standard-2/Myriad/releases/latest/download/myriad.luau"))()
 ```
 
 ::: info

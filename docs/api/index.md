@@ -5,7 +5,7 @@ This section provides information on using Myriad's API.
 ## Getting the API
 
 ```luau
-local API = loadstring(game:HttpGetAsync("https://github.com/Proton-Utilities/Myriad/releases/latest/download/api.luau"))()
+local API = loadstring(game:HttpGetAsync("https://github.com/Standard-2/Myriad/releases/latest/download/api.luau"))()
 ```
 
 ## Metadata

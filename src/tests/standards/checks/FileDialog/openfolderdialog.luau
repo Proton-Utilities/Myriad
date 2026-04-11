@@ -2,7 +2,7 @@
 --!nolint
 
 -- Please reference our manual tests to properly verify your implementation.
--- https://github.com/Proton-Utilities/Myriad/issues/18
+-- https://github.com/Standard-2/Myriad/issues/18
 return function()
 	if not openfolderdialog then
 		return {

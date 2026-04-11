@@ -9,7 +9,7 @@ You still should be in the [Myriad game](https://www.roblox.com/games/7903530683
 ## Usage
 
 ```luau
-local myriadAPI = loadstring(game:HttpGet("https://github.com/Proton-Utilities/Myriad/releases/latest/download/api.luau"))()
+local myriadAPI = loadstring(game:HttpGet("https://github.com/Standard-2/Myriad/releases/latest/download/api.luau"))()
 
 print(myriadAPI.Version)
 print(myriadAPI.Target)

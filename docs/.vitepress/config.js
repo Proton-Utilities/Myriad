@@ -14,7 +14,7 @@ export default withSidebar(
       ],
       search: { provider: "local" },
       socialLinks: [
-        { icon: "github", link: "https://github.com/Proton-Utilities/Myriad" },
+        { icon: "github", link: "https://github.com/Standard-2/Myriad" },
       ],
     },
     head: [["link", { rel: "icon", href: "/Myriad/favicon.ico" }]],

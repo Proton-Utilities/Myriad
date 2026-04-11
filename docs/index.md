@@ -12,7 +12,7 @@ hero:
       link: /getting-started/
     - theme: alt
       text: GitHub
-      link: https://github.com/Proton-Utilities/Myriad
+      link: https://github.com/Standard-2/Myriad
 
 ---
 

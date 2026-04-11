@@ -1,12 +1,12 @@
 # Myriad General Validty Test
 
-[stars]: https://github.com/Proton-Utilities/Myriad/stargazers
-[lastrel]: https://github.com/Proton-Utilities/Myriad/releases/latest
-[lastcom]: https://github.com/Proton-Utilities/Myriad/commits
+[stars]: https://github.com/Standard-2/Myriad/stargazers
+[lastrel]: https://github.com/Standard-2/Myriad/releases/latest
+[lastcom]: https://github.com/Standard-2/Myriad/commits
 [disc]: https://discord.gg/nn4NxHU3Pu
-[badges/stars]: https://img.shields.io/github/stars/Proton-Utilities/Myriad?label=Stars&logo=GitHub
-[badges/lastrel]: https://img.shields.io/github/v/release/Proton-Utilities/Myriad?label=Latest%20Release
-[badges/lastcom]: https://img.shields.io/github/last-commit/Proton-Utilities/Myriad?label=Last%20Modifed
+[badges/stars]: https://img.shields.io/github/stars/Standard-2/Myriad?label=Stars&logo=GitHub
+[badges/lastrel]: https://img.shields.io/github/v/release/Standard-2/Myriad?label=Latest%20Release
+[badges/lastcom]: https://img.shields.io/github/last-commit/Standard-2/Myriad?label=Last%20Modifed
 [badges/disc]: https://img.shields.io/discord/1371325686278651985?style=for-the-badge&label=Discord
 
 [![Stars][badges/stars]][stars]
@@ -24,22 +24,22 @@ After the discontinuation of [UNC](https://github.com/unified-naming-convention/
 You can use our official loadstring:
 
 ```luau
-loadstring(game:HttpGetAsync("https://github.com/Proton-Utilities/Myriad/releases/latest/download/myriad.luau"))()
+loadstring(game:HttpGetAsync("https://github.com/Standard-2/Myriad/releases/latest/download/myriad.luau"))()
 ```
 
-Or load the [raw file](https://github.com/Proton-Utilities/Myriad/releases/latest/download/myriad.luau)
+Or load the [raw file](https://github.com/Standard-2/Myriad/releases/latest/download/myriad.luau)
 
 ## API
 
 You can use our API to easily run tests individually without the UI.
 This is helpful if our UI is specifically giving you issues, or if you want to check a user's executor implementation of a certain function.
 
-See our [API Documentation](https://proton-utilities.github.io/Myriad/api/)
+See our [API Documentation](https://Standard-2.github.io/Myriad/api/)
 
 Example:
 
 ```luau
-local API = loadstring(game:HttpGetAsync("https://github.com/Proton-Utilities/Myriad/releases/latest/download/api.luau"))()
+local API = loadstring(game:HttpGetAsync("https://github.com/Standard-2/Myriad/releases/latest/download/api.luau"))()
 
 local result = API.Standards.Checks.Closures.hookfunction()
 if result.status ~= 200 then
@@ -49,17 +49,17 @@ end
 
 ## How do I contribute?
 
-You need [darklua](https://github.com/seaofvoices/darklua) & [Lune](https://github.com/lune-org/lune) to use edit and build this project as it uses [ProCmp](https://github.com/Proton-Utilities/procmp)
+You need [darklua](https://github.com/seaofvoices/darklua) & [Lune](https://github.com/lune-org/lune) to use edit and build this project as it uses [ProCmp](https://github.com/Standard-2/procmp)
 
 > If you need help setting it up DM me on discord: @biggaboy_212
 
 ## Star History
 
-<a href="https://www.star-history.com/?repos=Proton-Utilities%2Fmyriad&type=date&legend=bottom-right">
+<a href="https://www.star-history.com/?repos=Standard-2%2Fmyriad&type=date&legend=bottom-right">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=Proton-Utilities/myriad&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=Proton-Utilities/myriad&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=Proton-Utilities/myriad&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=Standard-2/myriad&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=Standard-2/myriad&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=Standard-2/myriad&type=date&legend=top-left" />
  </picture>
 </a>
 
