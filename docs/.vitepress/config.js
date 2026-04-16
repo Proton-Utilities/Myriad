@@ -11,6 +11,7 @@ export default withSidebar(
       nav: [
         { text: "Getting Started", link: "/getting-started/" },
         { text: "API", link: "/api/" },
+        { text: "Spec", link: "/spec/" },
       ],
       search: { provider: "local" },
       socialLinks: [
