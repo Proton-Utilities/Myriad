@@ -38,7 +38,7 @@ return function(output, config, isVulnerable, utils)
 		end
 	end
 
-	local env = getgenv and getgenv() or _G
+	local env = getgenv and getgenv()
 	local testUrl = "https://economy.roblox.com/v1/user/currency"
 
 	printc(`\nChecking Auth Leak Vulnerabilities`)
