@@ -1,0 +1,16 @@
+{
+  "name": "Myriad",
+  "tree": {
+    "$className": "DataModel",
+
+    "StarterPlayer": {
+      "$ignoreUnknownInstances": true,
+      "StarterPlayerScripts": {
+        "Client_Debug": {
+          "$ignoreUnknownInstances": true,
+          "$path": "generated/debug/myriad.client.luau"
+        }
+      }
+    }
+  }
+}

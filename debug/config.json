@@ -3,7 +3,7 @@
         "port": 3000
     },
 
-    "input": "generated/debug/myriad.luau",
+    "input": "generated/debug/myriad.client.luau",
     "enableDebugClient": false,
     "hotReloads": true,
     "watchList": []

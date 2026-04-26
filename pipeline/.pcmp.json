@@ -21,7 +21,7 @@
             "frame": "pipeline/frames/stable.luau",
             "darkluaConfig": "pipeline/darklua/unminified.json",
             "input": "src/main.luau",
-            "output": "generated/debug/myriad.luau",
+            "output": "generated/debug/myriad.client.luau",
             "pipelineHooks": {
                 "preAllBuilds": {
                     "command": "lune run .pcmp/make_clog.luau CHANGELOG.md packages/CHANGELOG.json"

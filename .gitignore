@@ -3,4 +3,4 @@ generated/
 
 pipeline/.pcmp.local.json
 game
-default.project.json
+game.project.json
