@@ -9,7 +9,7 @@ return {
 		icon = "shield",
 		selected = false,
 	},
---[[ 	Stress = {
+	--[[ Stress = {
 		path = require("@self/stress"),
 		icon = "tachometer",
 		selected = false,

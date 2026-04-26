@@ -198,9 +198,9 @@ return function(name: string, tab: types.Tab, titledRow: types.Row, app: types.A
 			end
 
 			local endTime = math.floor((time() - startTime) * 10 ^ 2 + 0.5) / 10 ^ 2
-			local executor, executorVers = "Unknown", "N/A"
+			local executor = "Unknown"
 			if identifyexecutor then
-				executor, executorVers = identifyexecutor()
+				executor = identifyexecutor()
 			end
 
 			printc(`\nSummary:`)
