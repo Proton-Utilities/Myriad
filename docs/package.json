@@ -10,5 +10,9 @@
   "devDependencies": {
     "vitepress": "^1.6.3",
     "vitepress-sidebar": "^1.33.1"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "lucide-static": "^1.14.0"
   }
 }
