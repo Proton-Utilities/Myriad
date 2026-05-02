@@ -2,16 +2,16 @@
 
 site_name = "Myriad"
 site_description = "Myriad is an open-source project."
-site_author = "biggaboy212"
-site_url = "https://biggaboy212.github.io/Myriad/"
+site_author = "Standard-2"
+site_url = "https://standard-2.github.io/Myriad/"
 
 copyright = """
-Copyright &copy; 2026 biggaboy212
+Copyright &copy; 2026 Standard-2
 """
 
 # Repository
-repo_url = "https://github.com/biggaboy212/Myriad"
-repo_name = "biggaboy212/Myriad"
+repo_url = "https://github.com/Standard-2/Myriad"
+repo_name = "Standard-2/Myriad"
 edit_uri = "edit/main/docs/"
 
 # https://zensical.org/docs/setup/navigation/
@@ -159,4 +159,4 @@ generator = false
 
 [[project.extra.social]]
 icon = "fontawesome/brands/github"
-link = "https://github.com/biggaboy212/Myriad"
+link = "https://github.com/Standard-2/Myriad"
