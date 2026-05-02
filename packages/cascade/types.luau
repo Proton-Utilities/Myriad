@@ -245,6 +245,9 @@ export type WindowProperties = Frame & {
 	Resizable: boolean?,
 	Title: string?,
 	Subtitle: string?,
+	CanExit: boolean?,
+    CanMinimize: boolean?,
+    CanZoom: boolean?,
 	Maximized: boolean?,
 	Minimized: boolean?,
 
