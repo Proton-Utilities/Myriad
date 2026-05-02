@@ -1,8 +1,5 @@
 # `folder`
 
-[`item`]: ./item.md
-[`dialogItem`]: ./dialogItem.md
-
 A folder returned from a dialog.
 
 ## Summary
@@ -16,5 +13,5 @@ type folder = item & {
 
 ### Extensions
 
-- [`item`]
-- [`dialogItem`]
+- [`item`](./item.md)
+- [`dialogItem`](./dialogItem.md)

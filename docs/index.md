@@ -1,22 +1,4 @@
----
-# https://vitepress.dev/reference/default-theme-home-page
-layout: home
-
-hero:
-  name: "Myriad"
-  text: "The General Validity Test"
-  tagline: A comprehensive test suite for Roblox Luau executors.
-  actions:
-    - theme: brand
-      text: Get Started
-      link: /getting-started/
-    - theme: alt
-      text: GitHub
-      link: https://github.com/Standard-2/Myriad
-
----
-
-## About Myriad
+# About Myriad
 
 Myriad is an open-source standardization, functionality, and mitigations test for executors.
 

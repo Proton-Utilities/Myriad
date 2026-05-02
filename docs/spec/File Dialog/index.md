@@ -1,3 +1,7 @@
+---
+icon: lucide/folder-open
+---
+
 # `File Dialog`
 
 The File Dialog API provides a standard set of functions for users to choose a specific file from anywhere of their choosing. It is completely user-choice and safe, as developers cannot programmatically choose for them.

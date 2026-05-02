@@ -2,9 +2,8 @@
 
 The standards test lets you check the executor's environment and compliance with the Myriad enhanced version of the [UNC](https://www.roblox.com/games/79035306837882) specification.
 
-:::info
-You still should be in the [Myriad game](https://www.roblox.com/games/79035306837882), or else certain functions might error if they can't find our game references.
-:::
+!!! info
+    You still should be in the [Myriad game](https://www.roblox.com/games/79035306837882), or else certain functions might error if they can't find our game references.
 
 ## Usage
 

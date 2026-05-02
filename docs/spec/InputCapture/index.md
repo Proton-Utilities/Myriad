@@ -1,10 +1,13 @@
+---
+icon: lucide/keyboard
+---
+
 # `InputCapture`
 
-::: warning
-This is not in a stable state. A standard proposal issue has not been created yet, and this is subject to change.
+!!! warning
+    This is not in a stable state. A standard proposal issue has not been created yet, and this is subject to change.
 
-There is no guarantee this will be added, and can be removed at any time.
-:::
+    There is no guarantee this will be added, and can be removed at any time.
 
 The input capture library provides useful functions for input capturing.
 This extends upon ROBLOX's enums with other bindings.

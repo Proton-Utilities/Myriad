@@ -1,7 +1,5 @@
 # `file`
 
-[`item`]: ./item.md
-
 A file returned from a dialog.
 
 ## Summary
@@ -16,4 +14,4 @@ type file = item & {
 
 ### Extensions
 
-- [`item`]
+- [`item`](./item.md)

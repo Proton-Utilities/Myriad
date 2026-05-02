@@ -4,3 +4,4 @@ generated/
 pipeline/.pcmp.local.json
 game
 game.project.json
+site/

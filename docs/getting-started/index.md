@@ -6,8 +6,7 @@ You can load the Myriad UI using our official loader:
 loadstring(game:HttpGetAsync("https://github.com/Standard-2/Myriad/releases/latest/download/myriad.luau"))()
 ```
 
-::: info
-You need to join our testing game to use Myriad.
+!!! info
+    You can use Myriad in our official testing game.
 
-<https://www.roblox.com/games/79035306837882>
-:::
+    [Visit](https://www.roblox.com/games/79035306837882)

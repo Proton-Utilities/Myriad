@@ -1,7 +1,5 @@
 # `fileDialogOptions`
 
-[`dialogOptions`]: ./dialogOptions.md
-
 Options for file dialogs.
 
 ## Summary
@@ -14,4 +12,4 @@ type fileDialogOptions = dialogOptions & {
 
 ### Extensions
 
-- [`dialogOptions`]
+- [`dialogOptions`](./dialogOptions.md)

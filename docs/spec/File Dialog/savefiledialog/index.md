@@ -1,8 +1,5 @@
 # `savefiledialog`
 
-[`file`]: ../Types/file.md
-[`saveDialogOptions`]: ../Types/saveDialogOptions.md
-
 Opens a dialog to choose a path to save to, then writes content to that path.
 Blocks the calling thread until the dialog is dismissed.
 
@@ -14,8 +11,8 @@ declare function savefiledialog(content: string, options: saveDialogOptions?): f
 
 ## Extensions
 
-- [`file`]
-- [`saveDialogOptions`]
+- [`file`](../Types/file.md)
+- [`saveDialogOptions`](../Types/saveDialogOptions.md)
 
 ## Summary
 

@@ -1,8 +1,5 @@
 # `openfolderdialog`
 
-[`folder`]: ../Types/folder.md
-[`dialogOptions`]: ../Types/dialogOptions.md
-
 Opens a dialog to select a folder.
 Blocks the calling thread until the dialog is dismissed.
 
@@ -14,8 +11,8 @@ declare function openfolderdialog(options: dialogOptions?): folder?
 
 ## Extensions
 
-- [`folder`]
-- [`dialogOptions`]
+- [`folder`](../Types/folder.md)
+- [`dialogOptions`](../Types/dialogOptions.md)
 
 ## Summary
 

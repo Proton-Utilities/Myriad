@@ -1,8 +1,5 @@
 # `dialogItem`
 
-[`file`]: ./file.md
-[`folder`]: ./folder.md
-
 An item returned from a dialog.
 
 ## Summary
@@ -13,5 +10,5 @@ type dialogItem = file | folder
 
 ### Extensions
 
-- [`file`]
-- [`folder`]
+- [`file`](./file.md)
+- [`folder`](./folder.md)

@@ -1,8 +1,5 @@
 # `openfilesdialog`
 
-[`file`]: ../Types/file.md
-[`fileDialogOptions`]: ../Types/fileDialogOptions.md
-
 Opens a dialog to select multiple files.
 Blocks the calling thread until the dialog is dismissed.
 
@@ -14,8 +11,8 @@ declare function openfilesdialog(options: fileDialogOptions?): {file}?
 
 ## Extensions
 
-- [`file`]
-- [`fileDialogOptions`]
+- [`file`](../Types/file.md)
+- [`fileDialogOptions`](../Types/fileDialogOptions.md)
 
 ## Summary
 
